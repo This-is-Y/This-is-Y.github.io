@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -198,14 +203,14 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/13738043.html">源地址：https://www.cnblogs.com/This-is-Y/p/13738043.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>我是用的phpstudy2018一键配置的mysql</p>
 <p>mysql版本为5.5.53</p>
-<img src="1503868-20200927102048827-1931693713.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql只能显示部分中文问题 解决/1503868-20200927102048827-1931693713.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> </p>
 <p>问题描述：</p>
 <p>show variables like “%char%”;</p>
-<img src="1503868-20200927101315246-300698320.png" width="1000" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql只能显示部分中文问题 解决/1503868-20200927101315246-300698320.png" width="1000" loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -216,7 +221,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>insert into student(Sno,Sname,Ssex,Sage,Sdept) value(201215121,’李勇’,’男’,20,’CS’);<br>insert into student(Sno,Sname,Ssex,Sage,Sdept) value(201215122,’刘晨’,’女’,19,’CS’);<br>insert into student(Sno,Sname,Ssex,Sage,Sdept) value(201215123,’王敏’,’女’,18,’MA’);<br>insert into student(Sno,Sname,Ssex,Sage,Sdept) value(201215125,’张立’,’男’,19,’IS’);</p>
 <p>然鹅，显示出来的却是。。。。。</p>
 <p>只能显示部分中文，不知道是不是叫做乱码</p>
-<img src="1503868-20200927101953799-1973169479.png" width="1000" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql只能显示部分中文问题 解决/1503868-20200927101953799-1973169479.png" width="1000" loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -227,13 +232,13 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p> </p>
 <p>[mysqld]<br>character-set-server=utf8<br>collation-server=utf8_general_ci<br>[client]<br>default-character-set=gbk<br>[mysql]<br>default-character-set=gbk</p>
 <p> </p>
-<img src="1503868-20200927102151290-1842516100.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql只能显示部分中文问题 解决/1503868-20200927102151290-1842516100.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 保存，重启mysql服务</p>
 <p>不过表中已经保存的数据无法修改回来，只能重新添加</p>
-<img src="1503868-20200927102644600-107553228.png" width="1000" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql只能显示部分中文问题 解决/1503868-20200927102644600-107553228.png" width="1000" loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -292,10 +297,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -341,7 +346,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -375,12 +380,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -531,12 +534,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

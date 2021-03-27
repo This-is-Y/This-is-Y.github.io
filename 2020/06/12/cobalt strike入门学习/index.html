@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -201,7 +206,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>apt-get install openjdk-8-jdk</p>
 <p>等待安装</p>
 <p>输入java -version测试安装是否安装成功（如下图即已安装成功）</p>
-<p><strong><img src="1503868-20200615092500010-1005882218.png" alt loading="lazy"></strong></p>
+<p><strong><img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200615092500010-1005882218.png" alt loading="lazy"></strong></p>
 <p> </p>
 <p> </p>
 <p> </p>
@@ -209,34 +214,34 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>上传文件格式： pscp+空格+本地文件+空格+用户名@ip地址:远端路径</p>
 <p> </p>
 <p>（虽然说在服务器上的启动文件是<strong>teamserver</strong>，但是这并不意味着只上传一个teamserver文件就完事了。最妥当的办法是压缩整个cs文件，全部上传到服务器中。</p>
-<img src="1503868-20200615092309174-1297037155.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200615092309174-1297037155.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> ）</p>
 <p> </p>
 <p>要记得设置远端路径，成功后会让你输入服务器密码，然后开始等上传完成</p>
-<img src="1503868-20200612201018161-37228193.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612201018161-37228193.png" alt loading="lazy">
 
 <p> </p>
 <p> 上传完后到服务器中查看，</p>
-<p> <img src="1503868-20200612202623428-112161419.png" width="900" loading="lazy"></p>
+<p> <img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612202623428-112161419.png" width="900" loading="lazy"></p>
 <p> </p>
 <p> 可以看到红色的就是刚刚上传的文件，用apt下载一个unzip ：apt-get isntall unzip</p>
 <p>创建一个文件夹放cs :mkdir /opt/cobaltstrike</p>
 <p>解压：unzip -d /opt/cobaltstrike/ /opt/CobaltStrike.zip</p>
 <p>进入到cobaltstrike文件夹内，给予权限：chmod 777 ./teamserver</p>
 <p>找到teamserver文件。teamserver文件在这里</p>
-<img src="1503868-20200612205727797-1580322160.png" width="900" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612205727797-1580322160.png" width="900" loading="lazy">
 
 <p> 在该目录下执行./teamserver IP 密码     //ip为服务器的公网ip，密码为到时候客户端连接到cs时用到的密码</p>
 <p>执行后不出错是这个样子：</p>
-<img src="1503868-20200612205934813-1129708807.png" width="1000" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612205934813-1129708807.png" width="1000" loading="lazy">
 
 <p> </p>
 <p>（如果出现报错</p>
 <p> java is not in $PATH<br>is Java installed?<br>而java已经安装好了，输入java -version可以正确输出。那就检查上传的cs文件中，是否有这样一个文件</p>
-<img src="1503868-20200615092946200-1474257074.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200615092946200-1474257074.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -244,7 +249,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>有的话，解压出来替换掉原来的部分文件。（目前猜测是因为win和liunx的java路径不同，导致cs文件找不到java）</p>
 <p>）</p>
 <p> 然后在本地打开客户端：启动start.bat批处理文件</p>
-<img src="1503868-20200612210050899-407652551.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612210050899-407652551.png" alt loading="lazy">
 
 <p> </p>
 <p>Host就是服务器的ip</p>
@@ -253,16 +258,16 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>Password：刚才执行./teamserver 命令时设置的密码</p>
 <p>如果出现Connection timed out connect  </p>
 <p>服务器上输入netstat -aptn检查端口打开情况</p>
-<img src="1503868-20200612210342115-1582750316.png" width="900" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612210342115-1582750316.png" width="900" loading="lazy">
 
 <p> </p>
 <p> 像我一开始就是没有打开端口，我用的aliyun服务器，在控制台的安全组中添加访问规则即可</p>
-<img src="1503868-20200612210456695-383156844.png" width="900" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612210456695-383156844.png" width="900" loading="lazy">
 
 <p> </p>
 <p> 如果是出现authentication failure!就检查一下密码有没有写错。</p>
 <p>最后连接成功！</p>
-<img src="1503868-20200612205303009-465713699.png" width="900" loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="cobalt strike入门学习/1503868-20200612205303009-465713699.png" width="900" loading="lazy">
 
 <p> </p>
 <p> 博客参考于：<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/kang77/p/12133087.html">https://www.cnblogs.com/kang77/p/12133087.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -321,10 +326,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -370,7 +375,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -404,12 +409,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -560,12 +563,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

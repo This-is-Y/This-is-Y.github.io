@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -205,35 +210,35 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p> </p>
 <p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
 <p>先把安全程度调低</p>
-<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310171809249-88430808.png" alt width="592" height="330">
 
 <p> 修改密码为123456。</p>
 <p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
 <p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
-<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310172115797-442958379.png" alt width="829" height="627">
 
 <p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
-<img src="1503868-20200310172945814-2015757352.png" alt>
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310172945814-2015757352.png" alt>
 
 <p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
-<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310173422860-1549979433.png" alt width="888" height="493">
 
 <p> </p>
 <p>这边进入到dvwa数据库</p>
-<img src="1503868-20200310174202678-902204027.png" alt>
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310174202678-902204027.png" alt>
 
 <p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
-<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310174449340-1686075278.png" alt width="636" height="221">
 
 <p> 登陆。点击刚才构造的文件的按钮。</p>
 <p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
-<img src="1503868-20200310174844136-268339516.png" alt>
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310174844136-268339516.png" alt>
 
 <p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
 <p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
-<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
+<img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310175012687-654871658.png" alt width="1045" height="439">
 
-<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
+<p> <img lazyload src="/images/loading.svg" data-src="CSRF 简单入门以及用dvwa构造的简单实例/1503868-20200310175104669-1409171740.png" alt></p>
 <p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
 
         </div>
@@ -289,10 +294,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -338,7 +343,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -372,12 +377,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -528,12 +531,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

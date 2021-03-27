@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -198,7 +203,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/14257025.html">源地址：https://www.cnblogs.com/This-is-Y/p/14257025.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>use information_schema;<br>show tables;</p>
 <p>可以看到很多表</p>
-<img src="1503868-20210109155625511-2101199464.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109155625511-2101199464.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -206,41 +211,41 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>这两个表存了整个mysql数据库中的表的信息，列的信息</p>
 <p>看一下两个表中的信息</p>
 <p>TABLES:</p>
-<img src="1503868-20210109160504772-1430230246.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109160504772-1430230246.png" alt loading="lazy">
 
 <p>在注入过程中只需要关注两条，table_name 和table_schema，table_name是所有表的表名，table_schema是数据库的名字，</p>
 <p>比如在jsp表下有很多表</p>
-<img src="1503868-20210109163645243-1260669876.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109163645243-1260669876.png" alt loading="lazy">
 
 <p> </p>
 <p>查找tables表中，当table_schema=jsp时的table_name，可以看到和use jsp;show tables;指令执行的结果一致</p>
 <p>通俗的说法就是 <strong>看看jsp数据库下面有哪些数据表</strong></p>
 <p> </p>
-<p> <img src="1503868-20210109163820630-1425639579.png" alt loading="lazy"></p>
+<p> <img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109163820630-1425639579.png" alt loading="lazy"></p>
 <p> </p>
 <p> </p>
 <p> 或者反过来查， select table_schema from information_schema.tables where table_name=”c_programming”;</p>
 <p>查找当table_name=“c_programming”时，有哪些数据库，通俗点说就是，<strong>看看哪些数据库下面有一个叫做“c_programming”的数据表。</strong></p>
-<img src="1503868-20210109164147702-421909970.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109164147702-421909970.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> </p>
 <p> </p>
 <p>COLUMNS:</p>
-<p> <img src="1503868-20210109160537844-284579978.png" alt loading="lazy"></p>
+<p> <img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109160537844-284579978.png" alt loading="lazy"></p>
 <p> </p>
 <p> </p>
 <p> 这个视图下也有table_schema,table_name，还有一个column_name</p>
 <p>可以看一下column_name，举个例子，看一下jsp表下的c_programming的信息</p>
-<img src="1503868-20210109165317022-57953845.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109165317022-57953845.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 列名分别为number，content,a,b…………</p>
 <p>执行select column_name from information_schema.columns where table_schema=”jsp” and table_name=”c_programming”;</p>
 <p>这个是查看 jsp库下c_programming表的字段信息，</p>
-<img src="1503868-20210109165506744-1652508213.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109165506744-1652508213.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -252,28 +257,28 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>之后是concat和group_concat</p>
 <p> concat可以把字段拼接起来，group_concat可以把每一条数据拼接起来（前提是知道字段名）</p>
 <p>首先看一个表：</p>
-<img src="1503868-20210109170055579-1165692189.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109170055579-1165692189.png" alt loading="lazy">
 
 <p> </p>
 <p> select concat(username,password) from admin.admin;</p>
-<img src="1503868-20210109170226921-15950402.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109170226921-15950402.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 或者是加点其他的字符，方便区分 select concat(username,” + “,password) from admin.admin;</p>
-<img src="1503868-20210109170358985-343402019.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109170358985-343402019.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> </p>
 <p> select group_concat(username,” + “,password) from admin.admin;</p>
-<img src="1503868-20210109170420436-186918281.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109170420436-186918281.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> group_concat也可以加点东西区分，默认是一个”,”，在group_concat()里加一个separator参数（不要逗号）</p>
 <p>举个栗子：select group_concat(username,” + “,password separator ‘;’) from admin.admin;</p>
-<img src="1503868-20210109171517115-1892978071.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109171517115-1892978071.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -284,43 +289,43 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>　　</p>
 <p><strong>1、</strong></p>
 <p>select database();确认数据库名</p>
-<p>　　<img src="1503868-20210109172154974-2106922817.png" alt></p>
+<p>　　<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109172154974-2106922817.png" alt></p>
 <p>select version();确认mysql版本</p>
-<p>　　<img src="1503868-20210109172214468-120839495.png" alt loading="lazy"></p>
+<p>　　<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109172214468-120839495.png" alt loading="lazy"></p>
 <p> </p>
 <p> </p>
 <p> </p>
 <p><strong>2、</strong></p>
 <p>select distinct table_schema from information_schema.columns;查看所有的库名，实战中估计会要用到group_concat</p>
-<img src="1503868-20210109231628046-2130437122.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109231628046-2130437122.png" alt loading="lazy">
 
 <p> </p>
 <p>select  group_concat(distinct table_schema) from information_schema.columns;</p>
 <p> </p>
-<p> <img src="1503868-20210109231638336-1097832532.png" alt loading="lazy"></p>
+<p> <img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109231638336-1097832532.png" alt loading="lazy"></p>
 <p> </p>
 <p> </p>
 <p><strong>3、</strong></p>
 <p> </p>
 <p> select group_concat(distinct table_name) from information_schema.columns where table_schema=”admin”; 查看该库下的表</p>
-<img src="1503868-20210109231925074-269336087.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109231925074-269336087.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> select group_concat(distinct table_name) from information_schema.columns where table_schema=”security”;</p>
-<img src="1503868-20210109232028383-1712345336.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109232028383-1712345336.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> </p>
 <p><strong>4、</strong></p>
 <p>select group_concat(column_name) from information_schema.columns where table_schema=”security” and table_name=”users”;查看该表的字段名</p>
-<img src="1503868-20210109232212707-1594846497.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109232212707-1594846497.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> select group_concat(column_name) from information_schema.columns where table_schema=”admin” and table_name=”admin”;</p>
-<img src="1503868-20210109232358074-130089249.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109232358074-130089249.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -328,11 +333,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p> </p>
 <p> </p>
 <p>select group_concat(id,” = “,username,” = “,password separator “\n”) from security.users;爆数据</p>
-<img src="1503868-20210109232747906-2138412943.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109232747906-2138412943.png" alt loading="lazy">
 
 <p> </p>
 <p>  select group_concat(username,” = “,password separator “\n”) from admin.admin;</p>
-<img src="1503868-20210109232813349-883336675.png" alt loading="lazy">
+<img lazyload src="/images/loading.svg" data-src="mysql下的information与concat/1503868-20210109232813349-883336675.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -395,10 +400,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -444,7 +449,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -478,12 +483,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -634,12 +637,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

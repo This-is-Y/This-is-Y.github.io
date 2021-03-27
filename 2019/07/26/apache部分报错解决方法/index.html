@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -197,28 +202,28 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="article-content markdown-body">
             <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/11251421.html">源地址：https://www.cnblogs.com/This-is-Y/p/11251421.html<i class="fas fa-external-link-alt"></i></a></p>
 <p><strong>AH00558：</strong></p>
-<img src="1503868-20190726161615866-941150129.png" alt>
+<img lazyload src="/images/loading.svg" data-src="apache部分报错解决方法/1503868-20190726161615866-941150129.png" alt>
 
-<p>进入apache文件夹下的conf文件夹，打开httpd.conf文件，用ctrl+F找到ServerName，如下图<img src="1503868-20190726161750794-745672727.png" alt></p>
+<p>进入apache文件夹下的conf文件夹，打开httpd.conf文件，用ctrl+F找到ServerName，如下图<img lazyload src="/images/loading.svg" data-src="apache部分报错解决方法/1503868-20190726161750794-745672727.png" alt></p>
 <p>在下面加上一句：</p>
 <p>ServerName domain_name:80</p>
 <p>或</p>
 <p>ServerName localhost:80</p>
 <p>如图：</p>
-<img src="1503868-20190726161542420-942882834.png" alt>
+<img lazyload src="/images/loading.svg" data-src="apache部分报错解决方法/1503868-20190726161542420-942882834.png" alt>
 
 <p> 之后启动apache服务，httpd -k start</p>
 <p> </p>
 <p> </p>
 <h1 id="AH00451："><a href="#AH00451：" class="headerlink" title="AH00451："></a>AH00451：</h1><p>原因：由于安装了虚拟机VMWare，被占用443端口</p>
 <p><br>解决方法：<br>打开虚拟机VMware，打开菜单 编辑→首选项（Edit–&gt; Preferences）<br>点击共享虚拟机后，找到右边的更改设置，点击它<br>在端口号处，输入444，点击确定，等待一会，大功告成</p>
-<p>如图<img src="1503868-20190726162307639-454184241.png" alt width="1257" height="707"></p>
+<p>如图<img lazyload src="/images/loading.svg" data-src="apache部分报错解决方法/1503868-20190726162307639-454184241.png" alt width="1257" height="707"></p>
 <p> </p>
 <p>** AH00091：**</p>
-<p><strong><img src="1503868-20190726162608683-819523876.png" alt></strong></p>
+<p><strong><img lazyload src="/images/loading.svg" data-src="apache部分报错解决方法/1503868-20190726162608683-819523876.png" alt></strong></p>
 <p> </p>
 <p><strong>AH00015：</strong></p>
-<p> <img src="1503868-20190726162713731-1849500162.png" alt></p>
+<p> <img lazyload src="/images/loading.svg" data-src="apache部分报错解决方法/1503868-20190726162713731-1849500162.png" alt></p>
 <p> </p>
 <p>这两个放一起解决，如果端口没问题的话，那就用管理员打开cmd，执行httpd -k start</p>
 <p> </p>
@@ -277,10 +282,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -326,7 +331,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -360,12 +365,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -516,12 +519,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

