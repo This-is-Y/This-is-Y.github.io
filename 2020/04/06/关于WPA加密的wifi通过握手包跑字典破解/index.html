@@ -30,7 +30,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -89,7 +89,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/cnblogs"
+                               href="/categories/cnblogs/"
                             >
                                 CNBLOGS
                             </a>
@@ -128,7 +128,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/cnblogs">CNBLOGS</a>
+                       href="/categories/cnblogs/">CNBLOGS</a>
                 </li>
             
         </ul>
@@ -205,7 +205,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>扫描，收集信息，记录BSSID，CH，ESSID</p>
 <p>然后airodump-ng -c 10（信道） –bssid xx:xx:xx:xx:xx:xx（MAC地址）-w WEP（文件名）wlan0mon</p>
 <p>现在就是等新的客户端连接该AP，连接的时候才能抓到握手包。成功抓包后是这个样子（<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/tangjikede2008/article/details/104710875/">网图，来源<i class="fas fa-external-link-alt"></i></a>）</p>
-<img lazyload src="/images/loading.svg" data-src="关于WPA加密的wifi通过握手包跑字典破解/1503868-20200405213335616-604793114.png" alt>
+<img src="1503868-20200405213335616-604793114.png" alt>
 
 <p> </p>
 <p> </p>
@@ -217,7 +217,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>不过在这里直接使用会出现一个问题，即wlan0mon is on channel 3, but the AP uses channel 11</p>
 <p>这是因为频道被切换，在网上查找资料后有说是内核版本原因，也有说是驱动程序问题。</p>
 <p>解决方法：先用airodump-ng找到要目标AP所在的信道，然后使用-c参数来固定一个信道扫描</p>
-<p> <img lazyload src="/images/loading.svg" data-src="关于WPA加密的wifi通过握手包跑字典破解/1503868-20200406130747772-69603794.png" alt></p>
+<p> <img src="1503868-20200406130747772-69603794.png" alt></p>
 <p> </p>
 <p>用这个方法成功过一次，但是没有保存文件，，，，，很气</p>
 <p> 最后一通乱搞，我是用这个完成抓包的</p>
@@ -230,9 +230,9 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>aircrack-ng -w /root/john-1.8.0/run/password.lst 1.cap</p>
 <p>因为是测试，就随便在john里面找了一个密码文件，然后在最后加上自己的wifi密码。</p>
 <p>3500跳数据，1秒都没有就出来了。。。。。</p>
-<p><img lazyload src="/images/loading.svg" data-src="关于WPA加密的wifi通过握手包跑字典破解/1503868-20200406141453544-163191272.png" alt>（最后打码的是密码）</p>
+<p><img src="1503868-20200406141453544-163191272.png" alt>（最后打码的是密码）</p>
 <p> </p>
-<img lazyload src="/images/loading.svg" data-src="关于WPA加密的wifi通过握手包跑字典破解/1503868-20200406141641367-1221628472.png" alt>
+<img src="1503868-20200406141641367-1221628472.png" alt>
 
 <p> </p>
 <p>这速度真心可以啊</p>
@@ -527,8 +527,6 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">

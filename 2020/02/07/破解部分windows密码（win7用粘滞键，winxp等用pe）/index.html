@@ -30,7 +30,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -89,7 +89,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/cnblogs"
+                               href="/categories/cnblogs/"
                             >
                                 CNBLOGS
                             </a>
@@ -128,7 +128,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/cnblogs">CNBLOGS</a>
+                       href="/categories/cnblogs/">CNBLOGS</a>
                 </li>
             
         </ul>
@@ -204,34 +204,34 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>先讲思路，在锁定界面下，连续按5次shift会运行c/windows/system32/sethc.exe文件,然后通过异常关机,触发windows的修复策略,然后打开脱机文档,然后掉包sethc.exe文件为cmd.exe文件,重启电脑,触发sethc.exe,实际上是打开了cmd.exe,然后通过net命令修改账户密码</p>
 <p>win7:</p>
 <p>先异常关闭windows系统,再启动,在windows错误恢复界面,点击启动修复</p>
-<img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206232332068-1627158519.png" alt width="706" height="552">
+<img src="1503868-20200206232332068-1627158519.png" alt width="706" height="552">
 
 <p> </p>
 <p> </p>
 <p> 等待,出现如下界面</p>
-<img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206232459230-1881258478.png" alt width="700" height="527">
+<img src="1503868-20200206232459230-1881258478.png" alt width="700" height="527">
 
 <p> </p>
 <p> </p>
 <p> 点击详细信息,拉到最下面,点开脱机阅读隐私声明</p>
-<img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206232606786-1417310284.png" alt width="694" height="521">
+<img src="1503868-20200206232606786-1417310284.png" alt width="694" height="521">
 
 <p> </p>
 <p> </p>
 <p> 然后就会打开一个文件,用记事本打开.点击右上角的打开文件,</p>
-<img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206232843688-1636109825.png" alt width="688" height="519">
+<img src="1503868-20200206232843688-1636109825.png" alt width="688" height="519">
 
 <p> </p>
 <p> </p>
 <p> 在这里,完成掉包工作,,(注意修改下面的文件类型,不然看不到exe文件)</p>
-<img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206233221211-1933566241.png" alt>
+<img src="1503868-20200206233221211-1933566241.png" alt>
 
 <p> </p>
 <p> 掉包完成后(建议复制一份cmd.exe文件),重启电脑,连按5次shift,然后就可以打开cmd.exe文件了</p>
-<img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206233330468-1032146929.png" alt>
+<img src="1503868-20200206233330468-1032146929.png" alt>
 
 <p> </p>
-<p> <img lazyload src="/images/loading.svg" data-src="破解部分windows密码（win7用粘滞键，winxp等用pe）/1503868-20200206233500014-754603426.png" alt width="542" height="374"></p>
+<p> <img src="1503868-20200206233500014-754603426.png" alt width="542" height="374"></p>
 <p> </p>
 <p> 关于net命令的用法,详细在这里可以看到:<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/lonelyxmas/p/9343815.html">https://www.cnblogs.com/lonelyxmas/p/9343815.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>这里我简单说一下要用到的:</p>
@@ -534,8 +534,6 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">

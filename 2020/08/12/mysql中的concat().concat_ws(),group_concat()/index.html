@@ -30,7 +30,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -89,7 +89,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/cnblogs"
+                               href="/categories/cnblogs/"
                             >
                                 CNBLOGS
                             </a>
@@ -128,7 +128,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/cnblogs">CNBLOGS</a>
+                       href="/categories/cnblogs/">CNBLOGS</a>
                 </li>
             
         </ul>
@@ -202,13 +202,13 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="article-content markdown-body">
             <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/13491416.html">源地址：https://www.cnblogs.com/This-is-Y/p/13491416.html<i class="fas fa-external-link-alt"></i></a></p>
 <p> 简单建立一个表</p>
-<img lazyload src="/images/loading.svg" data-src="mysql中的concat().concat_ws(),group_concat()/1503868-20200812161041473-1504706485.png" alt loading="lazy">
+<img src="1503868-20200812161041473-1504706485.png" alt loading="lazy">
 
 <p> </p>
 <p> <strong>concat()</strong></p>
 <p>用于连接字符串，举个例子</p>
 <p> select concat(id,’-‘,name,’-‘,sex,’-‘) from null_test;</p>
-<img lazyload src="/images/loading.svg" data-src="mysql中的concat().concat_ws(),group_concat()/1503868-20200812161031226-883321634.png" alt loading="lazy">
+<img src="1503868-20200812161031226-883321634.png" alt loading="lazy">
 
 <p> </p>
 <p> 值得注意的是，空字符也算字符（第五条数据），但是如果参数中有null，则整个输出变成null（第三第四条数据）；</p>
@@ -218,26 +218,26 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>第一个参数为separator，即分隔符</p>
 <p>如果分隔符为NULL，则所有输出都为NULL；</p>
 <p>select concat_ws(<strong>NULL</strong>,id,name,sex) from null_test;</p>
-<img lazyload src="/images/loading.svg" data-src="mysql中的concat().concat_ws(),group_concat()/1503868-20200812160011781-86849650.png" alt loading="lazy">
+<img src="1503868-20200812160011781-86849650.png" alt loading="lazy">
 
 <p> </p>
 <p>如果参数中有null，直接跳过后，正常输出 </p>
 <p>select concat_ws(‘==’,id,name,sex) from null_test;</p>
-<img lazyload src="/images/loading.svg" data-src="mysql中的concat().concat_ws(),group_concat()/1503868-20200812160114370-1393843926.png" alt loading="lazy">
+<img src="1503868-20200812160114370-1393843926.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p><strong>group_concat()</strong></p>
 <p>group_concat()像是concat()的加强版，concat()把字符串组合起来，group_concat()把组合后的字符串再组合起来，</p>
 <p>select group_concat(id,’-‘,name,’-‘,sex) from null_test;</p>
-<img lazyload src="/images/loading.svg" data-src="mysql中的concat().concat_ws(),group_concat()/1503868-20200812161304728-239534354.png" alt loading="lazy">
+<img src="1503868-20200812161304728-239534354.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
 <p>这三个都可以用as 来修改列名</p>
 <p>举个例子</p>
 <p>select concat(id,’==’,name) as id_name,concat(name,’==’,’sex’) as name_sex from null_test;</p>
-<img lazyload src="/images/loading.svg" data-src="mysql中的concat().concat_ws(),group_concat()/1503868-20200812163708930-428683991.png" alt loading="lazy">
+<img src="1503868-20200812163708930-428683991.png" alt loading="lazy">
 
 <p> </p>
 
@@ -530,8 +530,6 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">

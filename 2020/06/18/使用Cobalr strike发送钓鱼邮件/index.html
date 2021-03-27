@@ -30,7 +30,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.1"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":false},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 
@@ -89,7 +89,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     
                         <li class="menu-item">
                             <a class=""
-                               href="/cnblogs"
+                               href="/categories/cnblogs/"
                             >
                                 CNBLOGS
                             </a>
@@ -128,7 +128,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/cnblogs">CNBLOGS</a>
+                       href="/categories/cnblogs/">CNBLOGS</a>
                 </li>
             
         </ul>
@@ -207,7 +207,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>前面的建立一个office宏病毒、克隆一个网站等操作，在这片freebuf的文章中写的很清楚详细了。</p>
 <p>这里我就针对填写参数做一些细节补充：</p>
 <p><strong>Targets：</strong>是要发送邮箱地址的文件，比如：</p>
-<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618193453413-182685379.png" width="900" loading="lazy">
+<img src="1503868-20200618193453413-182685379.png" width="900" loading="lazy">
 
 <p> </p>
 <p> </p>
@@ -215,40 +215,40 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p><strong>Template：</strong>是要发送邮件的模板，这个可以在个人邮箱中导出一个即可。</p>
 <p>关于如何导出，我用的qq邮箱，这里我以qq邮箱为例</p>
 <p>1.因为要自定义邮件内容，所以先写好一封邮件，即模板，发送给自己的小号或基友。然后在 已发送 中找到那封邮件。</p>
-<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
+<img src="1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
 
 <p> </p>
-<p>点击右边那个小到看不见的<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
+<p>点击右边那个小到看不见的<img src="1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
 <p><strong>Attachment：</strong>放入我们搞好的word（用中文文件名似乎会乱码）</p>
 <p><strong>Embed url：</strong>填写搭建好的网站，然后配置好</p>
 <p><strong>mailserver：</strong>我用的qq邮箱，这里就用qq邮箱做示例。其他的163等邮箱大同小异。</p>
 <p>　　首先在qq邮箱 <strong>设置</strong>、<strong>账户</strong> 中找到 <strong>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</strong> 这一列（POP3/SMTP/IMAP等服务是什么左转百度或谷歌wiki，他们讲的比我好）。打开POP/SMTP服务以及IMAP/SMTP服务（打开这些服务的风险qq邮箱都会告诉你，自行斟酌，出了啥岔子与我无关）打开后，点击下面的生成授权码。会获得一组神秘代码，保存下来。</p>
-<p>　　<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618195235715-123373268.png" width="900">　　</p>
+<p>　　<img src="1503868-20200618195235715-123373268.png" width="900">　　</p>
 <p>　　回到cs中。点开Mail Server后面的这个</p>
-<p> 　　<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
+<p> 　　<img src="1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
 <p> </p>
 <p> 　　进入到配置页面</p>
-<p>　　<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
+<p>　　<img src="1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
 <p> </p>
 <p> 　　这边的参数选项。</p>
 <p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
 <p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#x37;&#49;&#x34;&#x31;&#x33;&#56;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;">&#57;&#53;&#x32;&#x37;&#49;&#x34;&#x31;&#x33;&#56;&#64;&#113;&#x71;&#x2e;&#99;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#x37;&#49;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#57;&#53;&#x32;&#x37;&#49;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
 <p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
 <p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
 <p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
 <p>　　配置好后大概是这个样子</p>
-<p>　　<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
+<p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
 <p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#x39;&#53;&#x32;&#x37;&#49;&#52;&#49;&#x33;&#x38;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#x39;&#53;&#x32;&#x37;&#49;&#52;&#49;&#x33;&#x38;&#x40;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#x39;&#x35;&#50;&#x37;&#49;&#52;&#49;&#51;&#56;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;">&#x39;&#x35;&#50;&#x37;&#49;&#52;&#49;&#51;&#56;&#64;&#113;&#113;&#46;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
-<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618195101320-369498795.png" alt loading="lazy">
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#x32;&#x37;&#x31;&#x34;&#x31;&#51;&#x38;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;">&#57;&#x35;&#x32;&#x37;&#x31;&#x34;&#x31;&#51;&#x38;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#x39;&#x35;&#50;&#x37;&#49;&#52;&#49;&#x33;&#x38;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x39;&#x35;&#50;&#x37;&#49;&#52;&#49;&#x33;&#x38;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
 
 <p> </p>
 <p>全部配置好后差不多就是这样子</p>
-<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618201158502-1594240584.png" alt loading="lazy">
+<img src="1503868-20200618201158502-1594240584.png" alt loading="lazy">
 
 <p>这样就表示发送成功了。</p>
-<img lazyload src="/images/loading.svg" data-src="使用Cobalr strike发送钓鱼邮件/1503868-20200618201554578-968296910.png" alt loading="lazy">
+<img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
 
 <p> </p>
 
@@ -541,8 +541,6 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
 
 
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/lazyload.js"></script>
 
 
 <div class="post-scripts pjax">
