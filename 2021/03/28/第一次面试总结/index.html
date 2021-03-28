@@ -20,7 +20,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     
     <title>
         
-            python 爬虫获取豆瓣电影排行榜前250并写入excel |
+            第一次面试总结 |
         
         This_is_Y
     </title>
@@ -150,7 +150,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">python 爬虫获取豆瓣电影排行榜前250并写入excel</span>
+            <span class="title-hover-animation">第一次面试总结</span>
         </div>
 
         
@@ -168,19 +168,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2020-06-26 22:47:00
+        <i class="fas fa-edit"></i>&nbsp;2021-03-28 17:34:51
     </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
 
@@ -200,55 +189,36 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
 
         <div class="article-content markdown-body">
-            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/13196523.html">源地址：https://www.cnblogs.com/This-is-Y/p/13196523.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>豆瓣电影排行榜前250 分为10页，第一页的url为<a class="link" target="_blank" rel="noopener" href="https://movie.douban.com/top250,%E4%BD%86%E5%AE%9E%E9%99%85%E4%B8%8A%E5%BA%94%E8%AF%A5%E6%98%AFhttps://movie.douban.com/top250?start=0">https://movie.douban.com/top250,但实际上应该是https://movie.douban.com/top250?start=0<i class="fas fa-external-link-alt"></i></a> 后面的参数0表示从第几个开始，如0表示从第一（肖申克的救赎）到第二十五（触不可及），<a class="link" target="_blank" rel="noopener" href="https://movie.douban.com/top250?start=25%E8%A1%A8%E7%A4%BA%E4%BB%8E%E7%AC%AC%E4%BA%8C%E5%8D%81%E5%85%AD%EF%BC%88%E8%9D%99%E8%9D%A0%E4%BE%A0%EF%BC%9A%E9%BB%91%E6%9A%97%E9%AA%91%E5%A3%AB%EF%BC%89%E5%88%B0%E7%AC%AC%E4%BA%94%E5%8D%81%E5%90%8D%EF%BC%88%E6%AD%BB%E4%BA%A1%E8%AF%97%E7%A4%BE%EF%BC%89%E3%80%82%E7%AD%89%E7%AD%89%EF%BC%8C">https://movie.douban.com/top250?start=25表示从第二十六（蝙蝠侠：黑暗骑士）到第五十名（死亡诗社）。等等，<i class="fas fa-external-link-alt"></i></a></p>
-<p>所以可以用一个步长为25的range的for循环参数</p>
-<p>分析完页面组成后，开始获取页面，直接request.get()发现没有返回任何东西，输出一下响应码</p>
-<p>发现返回响应码418</p>
-<img src="1503868-20200626195117645-2033306647.jpg" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 以前没见过这个，拉网线上网查一下，发现给get里面加一个header参数就行了</p>
-<p>这里可以用自己浏览器的user-agent，如 </p>
-<p>headers = {‘User-Agent’: ‘Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.103 Safari/537.36’}</p>
-<p>或者用fake_agent(安装直接用pip install fake_agent) 来为自己生成一个随机的agent添加到header字典中</p>
-<p>之后就可以得到页面源码了。</p>
-<p>然后使用lxml.etree，即xpath解析页面源码。用浏览器插件xpath finder快速定位到元素</p>
-<img src="1503868-20200626200420506-1582812032.png" width="1100" loading="lazy">
-
-<p> </p>
-<p>但是直接这样子，解析到的是这样的结果</p>
-<p>[&lt;Element span at 0x20b2f0cc488&gt;]</p>
-<img src="1503868-20200626200546312-1189421585.png" alt loading="lazy">
-
-<p> </p>
-<p> 关于这东西是什么，有文章写的很好：<a class="link" target="_blank" rel="noopener" href="https://www.jb51.net/article/132145.htm">https://www.jb51.net/article/132145.htm<i class="fas fa-external-link-alt"></i></a></p>
-<p>这里我直接写解决部分，在使用xpath解析时，后面加上/text()</p>
-<p>解决后，再使用xpath finder插件，一步一步获取到电影所有数据</p>
-<p>最后把这个写在函数里，外面再套上一开始说的循环，就OK了</p>
-<p> </p>
-<p>在定位时，发现有4部电影介绍没有slogan，导致获取到的信息为空列表，也就导致了list.append()会出错。所以我加上了几个差错处理，解决方式可能有点傻，如果有更好的解决办法，洗耳恭听</p>
-<p>代码在最后可以看到</p>
-<img src="1503868-20200626202750677-1143963069.png" alt loading="lazy">
-
-<p> </p>
-<p> EXCEL保存部分</p>
-<p>这里我用的xlwt</p>
-<p>创建一个sheet表单。</p>
-<p>数据保存到一个大列表中，列表嵌套列表</p>
-<p>再通过循环把数据导入到excel表单中</p>
-<p>最后在保存一下</p>
-<p>注意文件后缀要用xls，用xlsx会导致文件打不开</p>
-<p>然后就大功告成了</p>
-<p>打开文件，手动加入排名，等部分信息（这些也可以在程序里完成，我嫌麻烦，就没写，直接手动来的快）</p>
-<img src="1503868-20200627102831468-604045736.png" width="1200" loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 前面的✓是我自己整的，用于记录那些看过，那些没看过</p>
-<p>这也是我写这个东西的最初的目的</p>
-<p>完整代码在下面，仅用于参考</p>
+            <p>前段时间投了一个简历给阿里，通过boss直聘走的内推，然后打了一个电话面试。记录一下糟糕的第一次面试，面试过程非常紧张，这还只是电话面试啊。青色的字体表示我的回答, 标题为面试官的问题</p>
+<h1 id="自我介绍"><a href="#自我介绍" class="headerlink" title="自我介绍"></a>自我介绍</h1><p>完全不知道怎么说，说的一团糟。<br>上网去查了一下，知乎：<a class="link" target="_blank" rel="noopener" href="https://www.zhihu.com/question/19603341">https://www.zhihu.com/question/19603341<i class="fas fa-external-link-alt"></i></a><br>稍微总结一下就是：</p>
+<ol>
+<li>时长控制在3分钟内</li>
+<li>基本自我介绍：<br> 介绍自我的一些基本情况，具体模板为：大家好，我叫xx，来自xx大学xx专业，今天面试的岗位为xx</li>
+<li>突出自身特点，做过的比较牛逼的事情，像知乎回答里的骑车去过西藏。适度吹嘘</li>
+<li>善用数字</li>
+<li>把自己向岗位靠拢</li>
+<li>在自我介绍的时候给面试官留下好印象或好感</li>
+</ol>
+<h1 id="最了解的语言"><a href="#最了解的语言" class="headerlink" title="最了解的语言"></a>最了解的语言</h1><p><font color="#8BBDDE">python</font></p>
+<h2 id="那你用python都干过什么"><a href="#那你用python都干过什么" class="headerlink" title="那你用python都干过什么"></a>那你用python都干过什么</h2><p><font color="#8BBDDE">写过爬虫</font></p>
+<h3 id="说一下你写爬虫的思路"><a href="#说一下你写爬虫的思路" class="headerlink" title="说一下你写爬虫的思路"></a>说一下你写爬虫的思路</h3><p>这里我巴拉巴拉撤了一大堆，但是因为紧张，说的稀里糊涂的，很杂乱。事后才想起来，为什么我不把最近在写的爬虫的思路直接说出来呢，比如前两天还没写完但是已经有思路的，把博客园文章爬下来解析成md文件的那个爬虫。</p>
+<h3 id="如果你是网站的经营者，如何反爬"><a href="#如果你是网站的经营者，如何反爬" class="headerlink" title="如果你是网站的经营者，如何反爬"></a>如果你是网站的经营者，如何反爬</h3><p>老实说这一块我真不是特别熟，只知道一点点，但是并不会系统的把他说出来，就随口说了一些，检查IP，user-agent，需要登陆，复杂的验证码。什么的，然后这里我说了一个cookie，面试官随即就问，cookie能反爬吗，我承认我被这样子访问一下问懵逼了（基础不扎实）。<br>我的理解是，如果一个在请求一个网站的时候，没有带上cookie，网站显示的资源就不全或者说根本不会给回应，比如知乎（我两年没爬过知乎了，已经忘了细节了）。<br>但是说到这里的时候，面试官说cookie是可以伪造的，然后还有selenium这个东西的存在，让我再想想其他的。</p>
+<h2 id="说说对java的了解"><a href="#说说对java的了解" class="headerlink" title="说说对java的了解"></a>说说对java的了解</h2><p><font color="#8BBDDE">对java了解不多</font><br>这里面试官提到他们阿里对java的需求更多一些，以后可以多侧重java方面的学习</p>
+<h2 id="用python是否写过网页"><a href="#用python是否写过网页" class="headerlink" title="用python是否写过网页"></a>用python是否写过网页</h2><p><font color="#8BBDDE">没有</font><br>（耿直的回答）</p>
+<h1 id="对数据库的了解，用过什么数据库"><a href="#对数据库的了解，用过什么数据库" class="headerlink" title="对数据库的了解，用过什么数据库"></a>对数据库的了解，用过什么数据库</h1><p><font color="#8BBDDE">用过mysq</font></p>
+<h2 id="什么是数据隔离"><a href="#什么是数据隔离" class="headerlink" title="什么是数据隔离"></a>什么是数据隔离</h2><p><font color="#8BBDDE">不清楚这个东西</font><br>（我是真不知道，给问懵了）</p>
+<h2 id="关于数据库知道什么"><a href="#关于数据库知道什么" class="headerlink" title="关于数据库知道什么"></a>关于数据库知道什么</h2><p><font color="#8BBDDE">写jsp课程设计的使用用到过数据库，知道一些sql注入的东西</font></p>
+<h3 id="说一下注入的原理，如何防御"><a href="#说一下注入的原理，如何防御" class="headerlink" title="说一下注入的原理，如何防御"></a>说一下注入的原理，如何防御</h3><p><font color="#8BBDDE">由于过滤不严或其他原因，恶意用户可以使用精心构造的字符串在数据库查询到设计之外的结果，可以拿到一些敏感数据。严重的时候可以写入文件<br>关于防御，可以购买安全设备，检测用户输入，使用正则加强过滤，除去字符串中的*-+ or and union等字符串</font></p>
+<p>同样回答得很浅薄</p>
+<h1 id="关于linux操作系统的了解"><a href="#关于linux操作系统的了解" class="headerlink" title="关于linux操作系统的了解"></a>关于linux操作系统的了解</h1><p><font color="#8BBDDE">买了你们阿里云的服务器，完成了一些实际功能</font></p>
+<h2 id="用服务器做过什么"><a href="#用服务器做过什么" class="headerlink" title="用服务器做过什么"></a>用服务器做过什么</h2><p><font color="#8BBDDE">搭建过简单的web服务，运行过xray+crawlergo被动扫描工具，搭建了资产灯塔，运行了CobaltStrike的服务器等</font><br>这一块问得很少，不知道是不是我合格了。</p>
+<h1 id="关于操作系统，说一下资源锁（死锁，活锁，互斥锁）"><a href="#关于操作系统，说一下资源锁（死锁，活锁，互斥锁）" class="headerlink" title="关于操作系统，说一下资源锁（死锁，活锁，互斥锁）"></a>关于操作系统，说一下资源锁（死锁，活锁，互斥锁）</h1><p><font color="#8BBDDE">死锁的话。我的理解是A进程占有α资源，B进程占有β资源，在这个前提下，A进程向操作系统请求β资源，B进程操作系统请求α资源。但是两个进程占有的资源都不愿意放开，所以请求的资源一直拿不到，就形成了死锁。活锁我忘了</font><br>专业课没好好学，这还是上学期刚学的，就给忘了。淦</p>
+<h1 id="说说数据结构里的双向链表"><a href="#说说数据结构里的双向链表" class="headerlink" title="说说数据结构里的双向链表"></a>说说数据结构里的双向链表</h1><p><font color="#8BBDDE">记不太清了</font><br>上学期的操作系统都记不清了，更别说上上学期的数据结构了</p>
+<h1 id="hashmap是什么"><a href="#hashmap是什么" class="headerlink" title="hashmap是什么"></a>hashmap是什么</h1><p>这里我乱了，明明不知道却在硬装，说了一通md5，还没说明白。（千万不要不懂装懂，面试官等级高我们太多了）</p>
+<h1 id="说说基本的渗透测试流程"><a href="#说说基本的渗透测试流程" class="headerlink" title="说说基本的渗透测试流程"></a>说说基本的渗透测试流程</h1><p>也是说的一团糟，很乱。需要系统的去过一遍</p>
+<h1 id="最后一个问题，为什么想来阿里"><a href="#最后一个问题，为什么想来阿里" class="headerlink" title="最后一个问题，为什么想来阿里"></a>最后一个问题，为什么想来阿里</h1><p><font color="#8BBDDE">为了更好的学习，为了未来的就业</font></p>
+<p>稀里糊涂的</p>
+<p><img src="image-20210328185902971.png" alt="image-20210328185902971"></p>
 
         </div>
 
@@ -257,29 +227,14 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2020/06/28/DC-2%20%E9%9D%B6%E6%9C%BA/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">DC-2 靶机</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2020/06/26/CVE%202020%201938/"
+                           href="/2021/03/28/arduino%E7%9A%84mouse%E4%BD%BF%E7%94%A8/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">CVE 2020 1938</span>
+                                <span class="post-nav-title-item">arduino的mouse使用</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -483,7 +438,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">自我介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E4%BA%86%E8%A7%A3%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">最了解的语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%82%A3%E4%BD%A0%E7%94%A8python%E9%83%BD%E5%B9%B2%E8%BF%87%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text">那你用python都干过什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E4%BD%A0%E5%86%99%E7%88%AC%E8%99%AB%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">说一下你写爬虫的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%98%AF%E7%BD%91%E7%AB%99%E7%9A%84%E7%BB%8F%E8%90%A5%E8%80%85%EF%BC%8C%E5%A6%82%E4%BD%95%E5%8F%8D%E7%88%AC"><span class="nav-number">2.1.2.</span> <span class="nav-text">如果你是网站的经营者，如何反爬</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4%E5%AF%B9java%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="nav-number">2.2.</span> <span class="nav-text">说说对java的了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8python%E6%98%AF%E5%90%A6%E5%86%99%E8%BF%87%E7%BD%91%E9%A1%B5"><span class="nav-number">2.3.</span> <span class="nav-text">用python是否写过网页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%86%E8%A7%A3%EF%BC%8C%E7%94%A8%E8%BF%87%E4%BB%80%E4%B9%88%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">对数据库的了解，用过什么数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E9%9A%94%E7%A6%BB"><span class="nav-number">3.1.</span> <span class="nav-text">什么是数据隔离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E9%81%93%E4%BB%80%E4%B9%88"><span class="nav-number">3.2.</span> <span class="nav-text">关于数据库知道什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%80%E4%B8%8B%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%8C%E5%A6%82%E4%BD%95%E9%98%B2%E5%BE%A1"><span class="nav-number">3.2.1.</span> <span class="nav-text">说一下注入的原理，如何防御</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Elinux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">关于linux操作系统的了解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%81%9A%E8%BF%87%E4%BB%80%E4%B9%88"><span class="nav-number">4.1.</span> <span class="nav-text">用服务器做过什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%8C%E8%AF%B4%E4%B8%80%E4%B8%8B%E8%B5%84%E6%BA%90%E9%94%81%EF%BC%88%E6%AD%BB%E9%94%81%EF%BC%8C%E6%B4%BB%E9%94%81%EF%BC%8C%E4%BA%92%E6%96%A5%E9%94%81%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">关于操作系统，说一下资源锁（死锁，活锁，互斥锁）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%87%8C%E7%9A%84%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="nav-number">6.</span> <span class="nav-text">说说数据结构里的双向链表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hashmap%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">7.</span> <span class="nav-text">hashmap是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%B4%E8%AF%B4%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="nav-number">8.</span> <span class="nav-text">说说基本的渗透测试流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E6%83%B3%E6%9D%A5%E9%98%BF%E9%87%8C"><span class="nav-number">9.</span> <span class="nav-text">最后一个问题，为什么想来阿里</span></a></li></ol>
     </div>
 </div>
         </aside>
