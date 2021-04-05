@@ -5228,12 +5228,13 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <h2 id="什么是数据隔离"><a href="#什么是数据隔离" class="headerlink" title="什么是数据隔离"></a>什么是数据隔离</h2><p><font color="#8BBDDE">不清楚这个东西</font><br>（我是真不知道，给问懵了）<br>之后去学习了一下，发现是个很重要的东西<br>知乎：<a class="link" href="https://zhuanlan.zhihu.com/p/79382923">https://zhuanlan.zhihu.com/p/79382923<i class="fas fa-external-link-alt"></i></a><br>这篇文章还不错，但是不完美，关于幻读那里有点问题。<br>自己跟着知乎的连接走了一遍写的笔记：<a class="link" href="https://this-is-y.xyz/2021/04/04/%E5%A5%BD%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F%E5%A4%B9/">https://this-is-y.xyz/2021/04/04/%E5%A5%BD%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F%E5%A4%B9/<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="关于数据库知道什么"><a href="#关于数据库知道什么" class="headerlink" title="关于数据库知道什么"></a>关于数据库知道什么</h2><p><font color="#8BBDDE">写jsp课程设计的使用用到过数据库，知道一些sql注入的东西</font></p>
 <h3 id="说一下注入的原理，如何防御"><a href="#说一下注入的原理，如何防御" class="headerlink" title="说一下注入的原理，如何防御"></a>说一下注入的原理，如何防御</h3><p><font color="#8BBDDE">由于过滤不严或其他原因，恶意用户可以使用精心构造的字符串在数据库查询到设计之外的结果，可以拿到一些敏感数据。严重的时候可以写入文件<br>关于防御，可以购买安全设备，检测用户输入，使用正则加强过滤，除去字符串中的*-+ or and union等字符串</font></p>
-<p>同样回答得很浅薄</p>
+<p>同样回答得很浅薄<br>补充：<a class="link" href="https://this-is-y.xyz/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/">https://this-is-y.xyz/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/<i class="fas fa-external-link-alt"></i></a></p>
 <h1 id="关于linux操作系统的了解"><a href="#关于linux操作系统的了解" class="headerlink" title="关于linux操作系统的了解"></a>关于linux操作系统的了解</h1><p><font color="#8BBDDE">买了你们阿里云的服务器，完成了一些实际功能</font></p>
 <h2 id="用服务器做过什么"><a href="#用服务器做过什么" class="headerlink" title="用服务器做过什么"></a>用服务器做过什么</h2><p><font color="#8BBDDE">搭建过简单的web服务，运行过xray+crawlergo被动扫描工具，搭建了资产灯塔，运行了CobaltStrike的服务器等</font><br>这一块问得很少，不知道是不是我合格了。</p>
-<h1 id="关于操作系统，说一下资源锁（死锁，活锁，互斥锁）"><a href="#关于操作系统，说一下资源锁（死锁，活锁，互斥锁）" class="headerlink" title="关于操作系统，说一下资源锁（死锁，活锁，互斥锁）"></a>关于操作系统，说一下资源锁（死锁，活锁，互斥锁）</h1><p><font color="#8BBDDE">死锁的话。我的理解是A进程占有α资源，B进程占有β资源，在这个前提下，A进程向操作系统请求β资源，B进程操作系统请求α资源。但是两个进程占有的资源都不愿意放开，所以请求的资源一直拿不到，就形成了死锁。活锁我忘了</font><br>专业课没好好学，这还是上学期刚学的，就给忘了。淦</p>
+<h1 id="关于操作系统，说一下资源锁（死锁，活锁，互斥锁）"><a href="#关于操作系统，说一下资源锁（死锁，活锁，互斥锁）" class="headerlink" title="关于操作系统，说一下资源锁（死锁，活锁，互斥锁）"></a>关于操作系统，说一下资源锁（死锁，活锁，互斥锁）</h1><p><font color="#8BBDDE">死锁的话。我的理解是A进程占有α资源，B进程占有β资源，在这个前提下，A进程向操作系统请求β资源，B进程操作系统请求α资源。但是两个进程占有的资源都不愿意放开，所以请求的资源一直拿不到，就形成了死锁。活锁我忘了</font><br>专业课没好好学，这还是上学期刚学的，就给忘了。淦了</p>
 <h1 id="说说数据结构里的双向链表"><a href="#说说数据结构里的双向链表" class="headerlink" title="说说数据结构里的双向链表"></a>说说数据结构里的双向链表</h1><p><font color="#8BBDDE">记不太清了</font><br>上学期的操作系统都记不清了，更别说上上学期的数据结构了</p>
-<h1 id="hashmap是什么"><a href="#hashmap是什么" class="headerlink" title="hashmap是什么"></a>hashmap是什么</h1><p>这里我乱了，明明不知道却在硬装，说了一通md5，还没说明白。（千万不要不懂装懂，面试官等级高我们太多了）</p>
+<p>后面补充：<a class="link" href="https://www.jianshu.com/p/c47d40e9c85c">https://www.jianshu.com/p/c47d40e9c85c<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="hashmap是什么"><a href="#hashmap是什么" class="headerlink" title="hashmap是什么"></a>hashmap是什么</h1><p>这里我乱了，明明不知道却在硬装，说了一通md5，还没说明白。（千万不要不懂装懂，面试官等级高我们太多了）<br>tnd，找文章看了都没看懂，太菜了。</p>
 <h1 id="说说基本的渗透测试流程"><a href="#说说基本的渗透测试流程" class="headerlink" title="说说基本的渗透测试流程"></a>说说基本的渗透测试流程</h1><p>也是说的一团糟，很乱。需要系统的去过一遍</p>
 <h1 id="最后一个问题，为什么想来我们这里"><a href="#最后一个问题，为什么想来我们这里" class="headerlink" title="最后一个问题，为什么想来我们这里"></a>最后一个问题，为什么想来我们这里</h1><p><font color="#8BBDDE">为了更好的学习，为了未来的就业</font></p>
 <p>稀里糊涂的</p>
@@ -5243,7 +5244,10 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
   <entry>
     <title>好文章收藏夹</title>
     <url>/2021/04/04/%E5%A5%BD%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F%E5%A4%B9/</url>
-    <content><![CDATA[<p>android获取经纬度 ：<br>    <a class="link" href="https://www.jianshu.com/p/d1b2bfb355dd">https://www.jianshu.com/p/d1b2bfb355dd<i class="fas fa-external-link-alt"></i></a><br>    <a class="link" href="https://blog.csdn.net/jason0539/article/details/12047963">https://blog.csdn.net/jason0539/article/details/12047963<i class="fas fa-external-link-alt"></i></a><br>android写入txt文件并获取：<br>    <a class="link" href="https://www.jianshu.com/p/fdf6178d1a66">https://www.jianshu.com/p/fdf6178d1a66<i class="fas fa-external-link-alt"></i></a></p>
+    <content><![CDATA[<p>android获取经纬度 ：<br>    <a class="link" href="https://www.jianshu.com/p/d1b2bfb355dd">https://www.jianshu.com/p/d1b2bfb355dd<i class="fas fa-external-link-alt"></i></a><br>    <a class="link" href="https://blog.csdn.net/jason0539/article/details/12047963">https://blog.csdn.net/jason0539/article/details/12047963<i class="fas fa-external-link-alt"></i></a></p>
+<p>android写入txt文件并获取：<br>    <a class="link" href="https://www.jianshu.com/p/fdf6178d1a66">https://www.jianshu.com/p/fdf6178d1a66<i class="fas fa-external-link-alt"></i></a></p>
+<p>操作系统死锁与死锁的处理：<br>    <a class="link" href="https://blog.csdn.net/weiyongle1996/article/details/71511956">https://blog.csdn.net/weiyongle1996/article/details/71511956<i class="fas fa-external-link-alt"></i></a></p>
+<p>双向链表：<br>    <a class="link" href="https://www.jianshu.com/p/c47d40e9c85c">https://www.jianshu.com/p/c47d40e9c85c<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -5366,7 +5370,7 @@ insert into test1 value(3,15);
   <entry>
     <title>注入的原理以及防御</title>
     <url>/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/</url>
-    <content><![CDATA[<h2 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
+    <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
 <blockquote>
 <p>  sql注入的原理是将sql代码伪装到输入参数中，传递到服务器解析并执行的一种攻击手法。也就是说，在一些对server端发起的请求参数中植入一些sql代码，server端在执行sql操作时，会拼接对应参数，同时也将一些sql注入攻击的“sql”拼接起来，导致会执行一些预期之外的操作。</p>
 </blockquote>
@@ -5402,6 +5406,25 @@ insert into test1 value(3,15);
 </code></pre>
 <h3 id="严格的参数校验"><a href="#严格的参数校验" class="headerlink" title="严格的参数校验"></a>严格的参数校验</h3><p>拿正则或者其他的函数，过滤掉不该出现的关键字或字符</p>
 <h3 id="owasp-top10中关于如何防止注入"><a href="#owasp-top10中关于如何防止注入" class="headerlink" title="owasp top10中关于如何防止注入"></a>owasp top10中关于如何防止注入</h3><p>防止注入漏洞需要将数据与命令语句、查询语句分隔开来。<br>• 最佳选择是使用安全的API，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM或实体框架。<br>  <strong>注意：当参数化时，存储过程仍然可以引入SQL注入，如果PL/SQL或T-SQL将查询和数据连接在一起，或者执行带有立即执行或exec()的恶意数据。</strong><br>• 使用正确的或“白名单”的具有恰当规范化的输入验证方法同样会有助于防止注入攻击，但这不是一个完整的防御，因为许多应用程序在输入中需要特殊字符，例如文本区域或移动应用程序的API。<br>• 对于任何剩余的动态查询，可以使用该解释器的特定转义语法转义特殊字符。OWASP的Java Encoder和类似的库提供了这样的转义例程。<br>  <strong>注意：SQL结构，比如：表名、列名等无法转义，因此用户提供的结构名是非常危险的。这是编写软件中的一个常见问题。</strong><br>• 在查询中使用LIMIT和其他SQL控件，以防止在SQL注入时大量地泄露记录。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>基本的渗透测试流程</title>
+    <url>/2021/04/05/%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p>转自：<a class="link" href="https://zhuanlan.zhihu.com/p/212503594">https://zhuanlan.zhihu.com/p/212503594<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="一、目标确认"><a href="#一、目标确认" class="headerlink" title="一、目标确认"></a>一、目标确认</h2><p>目标确认指明确此次渗透的目标（获取权限还是获取数据？）、范围时间、约束条件等。这个目标有两层含义，简单来说就是最终目的是什么？我要拿到什么？</p>
+<h2 id="二、信息收集"><a href="#二、信息收集" class="headerlink" title="二、信息收集"></a>二、信息收集</h2><p>信息收集：在明确目标之后，要收集目标范围内的各类信息。在一开始接触渗透测试的时候，你可能听过这样一句话，渗透测试的本质是信息收集。确实没错，为什么需要做信息收集？因为你不去做信息收集，那么你攻击的范围就会很窄，死盯着一个现成的域名或一个IP，无异于把自己框死了。我在实际的项目中，经常会遇到一些同事拿着问题过来找我，说自己做不下去了，无法再继续深入了，一般在这个时候，我都会给他们说，当你没有办法再做下去的时候那就继续回去做信息收集，去看看你遗漏了什么。</p>
+<p>那么我们在信息收集的时候要做收集哪些信息呢？怎么收集呢？信息要收集：域名、子域名、IP及端口、IP反向查域名、服务提供商、应用服务系统\版本、域名历史解析IP、服务端框架\语言、开源情报、防御措施等等。</p>
+<p>信息收集工具，目前市面上有非常非常多，大家可以根据自己的喜好进行选择就可以。</p>
+<h2 id="三、漏洞发现"><a href="#三、漏洞发现" class="headerlink" title="三、漏洞发现"></a>三、漏洞发现</h2><p>漏洞发现：在信息收集的基础上发现目标应用系统的漏洞。漏洞发现我为大家整理了四个方面：</p>
+<p>框架组件公开漏洞：根据所使用的的框架组件版本情况，查找公开漏洞验证payload，通过手工或者工具的手段验证漏洞。一般这种漏洞，存在都是一些不小的漏洞。</p>
+<p>传统漏洞：像比如xss\sql注入\ssrf等传统的网络安全漏洞，这一部分可以利用手工或者工具进行识别，就考验大家对于漏洞的掌握程度了。</p>
+<p>口令漏洞：对系统登录入口点采用口令攻击。</p>
+<p>代码审计0day：在开源或未开源的情况下，获取目标应用系统源码，进行代码审计</p>
+<h2 id="四、漏洞利用"><a href="#四、漏洞利用" class="headerlink" title="四、漏洞利用"></a>四、漏洞利用</h2><p>漏洞利用：对已发现的目标漏洞进行利用，通过漏洞利用获取目标系统权限。</p>
+<p>由于针对不同的漏洞其自身特点，漏洞利用方式也不尽同，漏洞利用考验一个人对漏洞理解的深度问题，与漏洞发现有很大的不同，要想在渗透测试过程中能够有效的对目标进行攻击，需要充分了解各个漏洞的利用方式，并且越多越好，这样我们才能应不同的场景，建议大家在经典Web漏洞的基础上，针对每种漏洞通过搜索漏洞名称+利用方式（如SQL注入漏洞利用方式）不断的深入学习，保持对各类公开漏洞的关注，学习各类安全自动化工具的原理，如通过学习SQLMAP源码学习SQL注入利用，学习XSS平台利用代码学习XSS利用。</p>
+<h2 id="五、权限维持"><a href="#五、权限维持" class="headerlink" title="五、权限维持"></a>五、权限维持</h2><p>权限维持、内网渗透：进入目标内容，进行横向拓展，向渗透目标靠近</p>
+<h2 id="六、目标获取"><a href="#六、目标获取" class="headerlink" title="六、目标获取"></a>六、目标获取</h2><p>目标获取、痕迹清理：获取渗透目标权限或数据，回传数据，进行痕迹清理。</p>
 ]]></content>
   </entry>
 </search>
