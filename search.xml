@@ -5427,4 +5427,37 @@ insert into test1 value(3,15);
 <h2 id="六、目标获取"><a href="#六、目标获取" class="headerlink" title="六、目标获取"></a>六、目标获取</h2><p>目标获取、痕迹清理：获取渗透目标权限或数据，回传数据，进行痕迹清理。</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>痕迹清除</title>
+    <url>/2021/04/05/%E7%97%95%E8%BF%B9%E6%B8%85%E9%99%A4/</url>
+    <content><![CDATA[<h2 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h2><ol>
+<li><p>如果是windows系统，可用MSF中的 clearev 命令清除痕迹</p>
+</li>
+<li><p>如果3389远程登录过，需要清除mstsc痕迹</p>
+<p>regedit定位到  计算机\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Terminal Server Client\Default，就可以看到了</p>
+<p>​    这里提一下如何看别人是否连结果自己电脑</p>
+<p>​    控制面板-&gt;管理工具-&gt;事件查看器</p>
+<p>​    选择windows日志-&gt;安全</p>
+<p>​    筛选事件id528</p>
+</li>
+<li><p>执行命令清除日志：</p>
+</li>
+</ol>
+<p>del %WINDR%* .log /a/s/q/</p>
+<ol start="4">
+<li>如果是web应用，找到web日志文件，删除 </li>
+</ol>
+<p>相关文章：<a class="link" href="https://www.cnblogs.com/milantgh/p/3602191.html">WINDOWS之入侵痕迹清理总结<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="Linux系统"><a href="#Linux系统" class="headerlink" title="Linux系统"></a>Linux系统</h2><ol>
+<li>如果是Linux系统，在获取权限后，执行以下命令，不会记录输入过的命令</li>
+</ol>
+<p>export HISTFILE=/dev/null export HISTSIZE=0</p>
+<ol start="2">
+<li><p>删除 /var/log 目录下的日志文件</p>
+</li>
+<li><p>如果是web应用，找到web日志文件，删除 </p>
+</li>
+</ol>
+]]></content>
+  </entry>
 </search>
