@@ -21,7 +21,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     
     <title>
         
-            使用Cobalr strike发送钓鱼邮件 |
+            cs权限维持测试 |
         
         This_is_Y
     </title>
@@ -151,7 +151,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">使用Cobalr strike发送钓鱼邮件</span>
+            <span class="title-hover-animation">cs权限维持测试</span>
         </div>
 
         
@@ -169,19 +169,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2020-06-18 20:12:00
+        <i class="fas fa-edit"></i>&nbsp;2021-05-14 10:38:14
     </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
 
@@ -201,57 +190,19 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
 
         <div class="article-content markdown-body">
-            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>本文参考<a class="link" target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/124905.html">https://www.freebuf.com/sectool/124905.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>感谢前人指路</p>
-<p> </p>
-<p>前面的建立一个office宏病毒、克隆一个网站等操作，在这片freebuf的文章中写的很清楚详细了。</p>
-<p>这里我就针对填写参数做一些细节补充：</p>
-<p><strong>Targets：</strong>是要发送邮箱地址的文件，比如：</p>
-<img src="1503868-20200618193453413-182685379.png" width="900" loading="lazy">
+            <p>参考：<br><a class="link" target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8095">https://xz.aliyun.com/t/8095<i class="fas fa-external-link-alt"></i></a></p>
+<p>环境：两个靶机，都是win10 LTSC系统，一个装了火绒，一个装了360安全卫士和360杀毒<br>使用powershell拿到权限，上传的exe都是测试过了360和火绒的</p>
+<h2 id="Startup目录"><a href="#Startup目录" class="headerlink" title="Startup目录"></a>Startup目录</h2><p>cs拿到权限后，在file brower里找到这个目录试图上传<br>NT6以后<br>    对当前用户有效：<br>    C:\Users\Username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup<br>    对所有用户有效：<br>    C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</p>
+<p>NT6以前<br>    对当前用户有效：<br>    C:\Documents and Settings\Hunter\「开始」菜单\程序\启动<br>    对所有用户有效：<br>    C:\Documents and Settings\All Users\「开始」菜单\程序\启动</p>
+<p>关于NT可以参考<a class="link" target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Windows_NT">https://zh.wikipedia.org/wiki/Windows_NT<i class="fas fa-external-link-alt"></i></a><br>基本上选择2021应该是已经见不到NT6以前的操作系统了</p>
+<p><img src="image-20210514104603414.png" alt="image-20210514104603414"></p>
+<p>实测：<br>火绒和360对这一操作直接拦截<br><img src="image-20210514104741692.png" alt="image-20210514104741692"><br><img src="image-20210514104841595.png" alt="image-20210514104841595"></p>
+<h2 id="注册键"><a href="#注册键" class="headerlink" title="注册键"></a>注册键</h2><p>首先把exe上传到C:\Windows\Temp目录下（想不明白，我在虚拟机里操作，想进入这个文件夹都要提示管理员权限，cs这边直接上传就可以了，只不过看不到目录下的文件）</p>
+<p>命令都是 shell reg add “XXX注册表项” /v evil /t REG_SZ /d “C:\Windows\Temp\Thread_Pool_Wait.exe”<br>win10 可以不用看了需要管理员权限，而且360和火绒都拦截了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">1.Load注册键</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\load</span><br><span class="line">测试：找不到项，自己去虚拟机里找了一下，确实没有</span><br><span class="line"></span><br><span class="line">2.Userinit注册键</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit</span><br><span class="line">通常该注册键下面有一个userinit.exe。该键允许指定用逗号分隔的多个程序，如userinit.exe,evil.exe。</span><br><span class="line"></span><br><span class="line">3.Explorer\Run注册键</span><br><span class="line">Explorer\Run键在HKEY_CURRENT_USER和HKEY_LOCAL_MACHINE下都有。</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run</span><br><span class="line">Explorer\Run键在HKEY_CURRENT_USER和HKEY_LOCAL_MACHINE下都有。</span><br><span class="line"></span><br><span class="line">4.RunServicesOnce注册键</span><br><span class="line">RunServicesOnce注册键用来启动服务程序，启动时间在用户登录之前，而且先于其他通过注册键启动的程序，在HKEY_CURRENT_USER和HKEY_LOCAL_MACHINE下都有。</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\ Windows\CurrentVersion\RunServicesOnce</span><br><span class="line"></span><br><span class="line">5.RunServices注册键</span><br><span class="line">RunServices注册键指定的程序紧接RunServicesOnce指定的程序之后运行，但两者都在用户登录之前。</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ RunServices</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\ CurrentVersion\RunServices</span><br><span class="line"></span><br><span class="line">6.RunOnce\Setup注册键</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup</span><br><span class="line"></span><br><span class="line">7.RunOnce注册键</span><br><span class="line">安装程序通常用RunOnce键自动运行程序，它的位置在</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce</span><br><span class="line">[小于NT6]HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnceEx</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce</span><br><span class="line">HKEY_LOCAL_MACHINE下面的RunOnce键会在用户登录之后立即运行程序，运行时机在其他Run键指定的程序之前；HKEY_CURRENT_USER下面的RunOnce键在操作系统处理其他Run键以及“启动”文件夹的内容之后运行。</span><br><span class="line"></span><br><span class="line">8.Run注册键</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">Run是自动运行程序最常用的注册键，HKEY_CURRENT_USER下面的Run键紧接HKEY_LOCAL_MACHINE下面的Run键运行，但两者都在处理“启动”文件夹之前。</span><br></pre></td></tr></table></figure>
 
-<p> </p>
-<p> </p>
-<p> 建立一个文件，一个邮箱一行，不要有别的东西</p>
-<p><strong>Template：</strong>是要发送邮件的模板，这个可以在个人邮箱中导出一个即可。</p>
-<p>关于如何导出，我用的qq邮箱，这里我以qq邮箱为例</p>
-<p>1.因为要自定义邮件内容，所以先写好一封邮件，即模板，发送给自己的小号或基友。然后在 已发送 中找到那封邮件。</p>
-<img src="1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
 
-<p> </p>
-<p>点击右边那个小到看不见的<img src="1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
-<p><strong>Attachment：</strong>放入我们搞好的word（用中文文件名似乎会乱码）</p>
-<p><strong>Embed url：</strong>填写搭建好的网站，然后配置好</p>
-<p><strong>mailserver：</strong>我用的qq邮箱，这里就用qq邮箱做示例。其他的163等邮箱大同小异。</p>
-<p>　　首先在qq邮箱 <strong>设置</strong>、<strong>账户</strong> 中找到 <strong>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</strong> 这一列（POP3/SMTP/IMAP等服务是什么左转百度或谷歌wiki，他们讲的比我好）。打开POP/SMTP服务以及IMAP/SMTP服务（打开这些服务的风险qq邮箱都会告诉你，自行斟酌，出了啥岔子与我无关）打开后，点击下面的生成授权码。会获得一组神秘代码，保存下来。</p>
-<p>　　<img src="1503868-20200618195235715-123373268.png" width="900">　　</p>
-<p>　　回到cs中。点开Mail Server后面的这个</p>
-<p> 　　<img src="1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
-<p> </p>
-<p> 　　进入到配置页面</p>
-<p>　　<img src="1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
-<p> </p>
-<p> 　　这边的参数选项。</p>
-<p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#49;&#52;&#49;&#x33;&#56;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#57;&#x35;&#50;&#x37;&#49;&#52;&#49;&#x33;&#56;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
-<p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
-<p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
-<p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
-<p>　　配置好后大概是这个样子</p>
-<p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
-<p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#x31;&#x33;&#56;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#x31;&#x33;&#56;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#52;&#49;&#51;&#x38;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#52;&#49;&#51;&#x38;&#64;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
-<img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
-
-<p> </p>
-<p>全部配置好后差不多就是这样子</p>
-<img src="1503868-20200618201158502-1594240584.png" alt loading="lazy">
-
-<p>这样就表示发送成功了。</p>
-<img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
-
-<p> </p>
+<p>妈个鸡，看了一眼，都要提权</p>
 
         </div>
 
@@ -260,29 +211,14 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2020/06/20/CVE%20-%202020-%200796%E5%A4%8D%E7%8E%B0/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">CVE - 2020- 0796复现</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2020/06/12/cobalt%20strike%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/"
+                           href="/2021/05/12/OWASP-Top10/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">cobalt strike入门学习</span>
+                                <span class="post-nav-title-item">OWASP Top10</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -486,7 +422,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Startup%E7%9B%AE%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">Startup目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E9%94%AE"><span class="nav-number">2.</span> <span class="nav-text">注册键</span></a></li></ol>
     </div>
 </div>
         </aside>

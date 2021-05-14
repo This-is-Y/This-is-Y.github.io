@@ -210,7 +210,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>64位：</p>
 <p>　　下载：wget <a class="link" target="_blank" rel="noopener" href="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb">https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb<i class="fas fa-external-link-alt"></i></a></p>
 <p>　　安装：sudo dpkg -i google-chrome-stable_current_amd64.deb</p>
-<p> </p>
+<p>新方法，直接：sudo apt-get install chromium-browser，然后等着就行了，</p>
 <p>然后找到路径：</p>
 <p>which ch(双击Tab键）（主要为了确认安装是否成功）</p>
 <p>然后填补</p>
@@ -218,21 +218,21 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>比如我的是这样子的(路径记下来，有用的）</p>
 <img src="1503868-20201006163435899-533612440.png" alt loading="lazy">
 
-<p> </p>
-<p> </p>
-<p> </p>
-<p>之后下载python以及用pip下载这些库</p>
+<p>之后下载python，确保有这些库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install queue</span><br><span class="line">pip install simplejson</span><br><span class="line">pip install threading</span><br><span class="line">pip install subprocess</span><br><span class="line">pip install requests</span><br><span class="line">pip install warnings</span><br><span class="line">pip install fake_useragent</span><br></pre></td></tr></table></figure>
+
 <img src="1503868-20201006165325415-1451011024.png" alt loading="lazy">
 
-<p> </p>
-<p> </p>
+<p> 测试一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> queue</span><br><span class="line"><span class="keyword">import</span> simplejson</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line"><span class="keyword">import</span> fake_useragent</span><br></pre></td></tr></table></figure>
+
 <p> </p>
 <p>然后clone原作者的项目<a class="link" target="_blank" rel="noopener" href="https://github.com/timwhitez/crawlergo_x_XRAY">https://github.com/timwhitez/crawlergo_x_XRAY<i class="fas fa-external-link-alt"></i></a></p>
 <p>git clone <a class="link" target="_blank" rel="noopener" href="https://github.com/timwhitez/crawlergo_x_XRAY.git">https://github.com/timwhitez/crawlergo_x_XRAY.git<i class="fas fa-external-link-alt"></i></a></p>
 <p>之后的crawlergo 和xray我是选择手动下载在上传到服务器中的</p>
 <p>crawlergo：<a class="link" target="_blank" rel="noopener" href="https://github.com/0Kee-Team/crawlergo/tags">https://github.com/0Kee-Team/crawlergo/tags<i class="fas fa-external-link-alt"></i></a></p>
 <p>xray：<a class="link" target="_blank" rel="noopener" href="https://github.com/chaitin/xray/tags">https://github.com/chaitin/xray/tags<i class="fas fa-external-link-alt"></i></a></p>
-<p>注意选择linux版本</p>
+<p>注意选择linux版本,arm和amd区别开</p>
 <p> </p>
 <p>crawlergo文件放在和launch.py同目录下</p>
 <p>xray的位置随意，推荐放在crawlergo_x_XRAY里面</p>
@@ -245,7 +245,9 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>可以正常运行：</p>
 <img src="1503868-20201006164321382-1970100337.png" alt loading="lazy">
 
-<p> </p>
+<p> 新版本作者加了fake_location,不过我的有些问题，一直提示Maximum amount of retries reached</p>
+<p>把ua那段改一下就没事了，不知道会不会有别的啥影响</p>
+<p>![image-20210514150610636](linux 配置crawlergo_xray/image-20210514150610636.png)</p>
 <p> <br>xray ：./xray_linux_amd64 version</p>
 <p>可以正常运行：</p>
 <img src="1503868-20201006164629312-162244452.png" alt loading="lazy">
