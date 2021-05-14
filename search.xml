@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>asp、aspx、php、jsp万能密码大全</title>
+    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>.git  .svn  .ds_store  .hg  .idea  .swp    等网页文件泄露</title>
     <url>/2020/03/14/%20.git%20%20.svn%20%20.ds_store%20%20.hg%20%20.idea%20%20.swp%20%20%20%20%E7%AD%89%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12492242.html">源地址：https://www.cnblogs.com/This-is-Y/p/12492242.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -27,16 +37,6 @@
 <p>文件利用：</p>
 <p>下载.swp文件到本地，使用vim -r filename.swp即可恢复文件内容</p>
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>asp、aspx、php、jsp万能密码大全</title>
-    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -481,54 +481,6 @@
       </categories>
   </entry>
   <entry>
-    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
-    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>SRF(跨站请求伪造)</p>
-<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
-<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
-<p>CSRF的两个重点：</p>
-<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
-<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
-<p> </p>
-<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
-<p>先把安全程度调低</p>
-<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
-
-<p> 修改密码为123456。</p>
-<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
-<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
-<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
-
-<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
-<img src="1503868-20200310172945814-2015757352.png" alt>
-
-<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
-<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
-
-<p> </p>
-<p>这边进入到dvwa数据库</p>
-<img src="1503868-20200310174202678-902204027.png" alt>
-
-<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
-<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
-
-<p> 登陆。点击刚才构造的文件的按钮。</p>
-<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
-<img src="1503868-20200310174844136-268339516.png" alt>
-
-<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
-<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
-<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
-
-<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
-<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CSS学习笔记_1</title>
     <url>/2019/12/16/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_1/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12048236.html">源地址：https://www.cnblogs.com/This-is-Y/p/12048236.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -649,6 +601,54 @@
 <p>　　    a:hover {color:#FF00FF;}  </p>
 <p>　　    a:active {color:#0000FF;} <br></p>
 <p>css内容还有很多，这里先写一部分</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
+    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>SRF(跨站请求伪造)</p>
+<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
+<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
+<p>CSRF的两个重点：</p>
+<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
+<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
+<p> </p>
+<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
+<p>先把安全程度调低</p>
+<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
+
+<p> 修改密码为123456。</p>
+<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
+<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
+<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
+
+<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
+<img src="1503868-20200310172945814-2015757352.png" alt>
+
+<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
+<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
+
+<p> </p>
+<p>这边进入到dvwa数据库</p>
+<img src="1503868-20200310174202678-902204027.png" alt>
+
+<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
+<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
+
+<p> 登陆。点击刚才构造的文件的按钮。</p>
+<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
+<img src="1503868-20200310174844136-268339516.png" alt>
+
+<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
+<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
+<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
+
+<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
+<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1891,36 +1891,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>VirtualBox上的靶机与VMware kali网络问题</title>
-    <url>/2019/12/23/VirtualBox%E4%B8%8A%E7%9A%84%E9%9D%B6%E6%9C%BA%E4%B8%8EVMware%20kali%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12084588.html">源地址：https://www.cnblogs.com/This-is-Y/p/12084588.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>在Vulnhub上有许多靶机。其中有很多是在VirtualBox上运行的，而kali大多是使用Vmware</p>
-<p>打开kali，找到虚拟机网络设置</p>
-<img src="1503868-20191223163027008-226967397.png" alt>
-
-<p> </p>
-<img src="1503868-20191223163121461-1181037805.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20191223163150522-798557590.png" alt></p>
-<p> </p>
-<p> 桥接模式</p>
-<p>这里几个选项，（自己记录一下）</p>
-<p>VirtualBox的DC-2虚拟机采用如下网络配置</p>
-<img src="1503868-20191223164132359-2094858340.png" alt>
-
-<p> </p>
-<p>Vmware下的aiweb-2采用和kali一样的桥接模式</p>
-<p>自动 -&gt; 可以扫到virtualBox的虚拟机，但是vmware的虚拟机扫不到</p>
-<p>Realtek PCIe GBE Family Controller，Sangfor SSL VPN CS Support System VNIXC，Microsoft Wi-Fi Direct Virtual Adapter和Microsoft Wi-Fi Direct Virtual Adapter #3  -&gt; 在使用arp-scan -l 时，提示my_lookupdev: no suitable device found</p>
-<p> VirtualBox Host-Only Ethernet Adapter -&gt; 不会有上面的情况，但是使用arp-scan -l 扫不到任何东西</p>
-<p>Qualcomm Atheros QCA61x4A Wireless Network Adapter -&gt; 可以扫到所有东西</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Vulnhub DC-1靶机渗透学习</title>
     <url>/2019/10/10/Vulnhub%20DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11637694.html">源地址：https://www.cnblogs.com/This-is-Y/p/11637694.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -2008,7 +1978,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#103;&#x34;&#64;&#49;&#x39;&#50;&#x2e;&#49;&#x36;&#x38;&#x2e;&#49;&#50;&#x34;&#x2e;&#x37;&#54;">&#x66;&#108;&#97;&#103;&#x34;&#64;&#49;&#x39;&#50;&#x2e;&#49;&#x36;&#x38;&#x2e;&#49;&#50;&#x34;&#x2e;&#x37;&#54;<i class="fas fa-external-link-alt"></i></a></p>
+<p>ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#x67;&#x34;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#46;&#x31;&#x32;&#52;&#x2e;&#55;&#54;">&#x66;&#108;&#97;&#x67;&#x34;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#46;&#x31;&#x32;&#52;&#x2e;&#55;&#54;<i class="fas fa-external-link-alt"></i></a></p>
 <img src="1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
@@ -2064,7 +2034,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#108;&#x61;&#103;&#52;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#46;&#49;&#50;&#x34;&#x2e;&#55;&#54;">&#x66;&#108;&#x61;&#103;&#52;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#46;&#49;&#50;&#x34;&#x2e;&#55;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#x6c;&#x61;&#x67;&#52;&#64;&#x31;&#x39;&#x32;&#x2e;&#49;&#54;&#56;&#46;&#49;&#50;&#52;&#46;&#x37;&#x36;">&#x66;&#x6c;&#x61;&#x67;&#52;&#64;&#x31;&#x39;&#x32;&#x2e;&#49;&#54;&#56;&#46;&#49;&#50;&#52;&#46;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -2140,6 +2110,36 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p>1</p>
 <p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>VirtualBox上的靶机与VMware kali网络问题</title>
+    <url>/2019/12/23/VirtualBox%E4%B8%8A%E7%9A%84%E9%9D%B6%E6%9C%BA%E4%B8%8EVMware%20kali%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12084588.html">源地址：https://www.cnblogs.com/This-is-Y/p/12084588.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>在Vulnhub上有许多靶机。其中有很多是在VirtualBox上运行的，而kali大多是使用Vmware</p>
+<p>打开kali，找到虚拟机网络设置</p>
+<img src="1503868-20191223163027008-226967397.png" alt>
+
+<p> </p>
+<img src="1503868-20191223163121461-1181037805.png" alt>
+
+<p> </p>
+<p> <img src="1503868-20191223163150522-798557590.png" alt></p>
+<p> </p>
+<p> 桥接模式</p>
+<p>这里几个选项，（自己记录一下）</p>
+<p>VirtualBox的DC-2虚拟机采用如下网络配置</p>
+<img src="1503868-20191223164132359-2094858340.png" alt>
+
+<p> </p>
+<p>Vmware下的aiweb-2采用和kali一样的桥接模式</p>
+<p>自动 -&gt; 可以扫到virtualBox的虚拟机，但是vmware的虚拟机扫不到</p>
+<p>Realtek PCIe GBE Family Controller，Sangfor SSL VPN CS Support System VNIXC，Microsoft Wi-Fi Direct Virtual Adapter和Microsoft Wi-Fi Direct Virtual Adapter #3  -&gt; 在使用arp-scan -l 时，提示my_lookupdev: no suitable device found</p>
+<p> VirtualBox Host-Only Ethernet Adapter -&gt; 不会有上面的情况，但是使用arp-scan -l 扫不到任何东西</p>
+<p>Qualcomm Atheros QCA61x4A Wireless Network Adapter -&gt; 可以扫到所有东西</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -2469,134 +2469,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>htttp协议部分笔记</title>
-    <url>/2020/02/05/htttp%E5%8D%8F%E8%AE%AE%E9%83%A8%E5%88%86%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12256079.html">源地址：https://www.cnblogs.com/This-is-Y/p/12256079.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>**报文：　**　</p>
-<p><strong>http请求报文：</strong></p>
-<p>基本格式</p>
-<p>　　<img src="1503868-20200205111708601-107755887.png" alt width="651" height="271"></p>
-<p> 请求行：这里那有道翻译的网页用一下（应该没啥关系吧）</p>
-<p>　　<img src="1503868-20200205155437106-1447717939.png" alt></p>
-<p> 　　请求行由3部分组成，请求方法，请求URL，HTTP协议版本。</p>
-<p>　　　　<strong>方法</strong>：最常见的有GET，POST，请求方法一定是要大写　　　　　　</p>
-<p>HTTP/1.0和HTTP/1.1支持的方法：</p>
-<img src="1503868-20200203143502218-550940739.png" alt width="598" height="308">
-
-<p> 但因为安全隐患等原因，用的最多的还是POST和GET，关于POST和GET：<a class="link" href="https://www.cnblogs.com/This-is-Y/p/12244175.html">https://www.cnblogs.com/This-is-Y/p/12244175.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　　　　　 <strong>URL</strong>：URI（Uniform Resource Identifier）：统一资源标识符</p>
-<p>URL（Uniform Resource Locator）：统一资源定位符</p>
-<p>URL是URI的子集，URL是一种具体的URI。</p>
-<p>较为经典的URI</p>
-<img src="1503868-20200203134002377-1332556046.png" alt width="559" height="114">
-
-<p>协议有http，https，ftp 等</p>
-<p>登陆认证信息一般出现得较少</p>
-<p>　　　　　　<strong>协议版本：</strong>最初的版本HTTP/0.9，然后是HTTP/1.0，再之后是将持久连接改为默认的HTTP/1.1，这是最主流的HTTP协议版本。再到现在的的HTTP/2.0，这个用的不多。</p>
-<p> </p>
-<p><strong>http响应报文：</strong></p>
-<p>基本格式</p>
-<img src="1503868-20200203135421531-427205203.png" alt width="577" height="369">
-
-<p><strong>响应码：</strong> 有2xx，3xx，4xx，5xx这几大类，其中1xx表示信息性状态码，接受的请求正在处理。2xx表示成功，请求正常处理完毕。3xx多表示重定向，需要进行附加操作完成请求。4xx多表示失败（客户端），服务器无法处理请求。5xx同样表示失败（服务端），服务器处理请求出错。</p>
-<p>1xx：有100  Continue，表示继续。101  Switching Protocol，切换协议。1xx响应码很少见，</p>
-<p>2xx：最常见的是200  OK，表示请求正常处理。  204  No Content 没有内容，一般在需要客户端发送信息而服务端不需要返回<strong>新</strong>信息内容时出现（一般在一个网页按F5刷新，看似什么都没有发生，实际上浏览器发送了请求，而此时响应码就是204）。  206 Partial Content 请求并发送部分内容，一般出现在发送内容过大时，在首部字段中使用range头对文件进行分块发送（当浏览一些较大的图片，PDF时会出现）</p>
-<p>3xx：301 Moved Permanently 永久移动，即重定向，当前全球的资源分配了新的URI（可以在首部字段中找到Location字段找到新的URI）。302 Found 临时移动 ，在防火墙认证时经常用到。与302一起出现的还有  303 See Other 查看其他位置 ，在302跳转认证成功了，就会出现303 see other，这个表示由于请求对应的资源存在另一个URI，应使用GET方法定向获取请求的资源（303状态码明确表示用户应该使用GET方法获取资源。）304 Not Modified 未修改，告诉客户端,所请求的内容距离上次访问并没有变化. 客户端可以直接从浏览器缓存里获取该资源（304是3xx里面和重定向没关系的一个）。307  Temporary Redirect  临时重定向 ，和302类似，但307更为严谨，不会从POST变成GET，302尽管禁止POST变换成GET，但是大多数人并不遵守。关于重定向，还有一个META Redirect，只需要在html的head里写上&lt;meta http-equiv=”refresh” content=”5;URL=新的URL”&gt;  content里面的5代表延迟时间5s，这样操作返回的响应码是200 OK<br>4xx：400 Bad Request 错误请求，发送的URL有错误，比如无法正确转码什么的。401 Unauthorized 未认证，在打开一个网页时弹出窗口需要你认证身份。403 Forbidden 禁止访问  ,权限不足，无法访问请求的文件。404 Not Found 喜闻乐见的一个状态码，这个不需要多说了，访问文件不存在。<br>5xx：500 Internal Server Error  内部服务器错误，一般是阿帕奇服务器出现问题。503 Service Unavailable 服务不可用，服务器出现超负载或者正在停机维护。</p>
-<p>　　这里我只说一小部分响应码，响应码总结大全：<a class="link" href="https://www.cnblogs.com/isykw/p/6115469.html">https://www.cnblogs.com/isykw/p/6115469.html<i class="fas fa-external-link-alt"></i></a> 。</p>
-<p> </p>
-<p>首部字段细分：<br>　　 通用首部字段：在请求报文和响应报文中都可能出现</p>
-<p>请求首部字段：只在请求报文中出现</p>
-<p>响应首部字段：只在响应报文中出现</p>
-<p>实体首部字段：和实际传输数据相关的参数。</p>
-<p>其他</p>
-<p> </p>
-<p><strong>通用首部字段：</strong></p>
-<img src="1503868-20200205130853547-1458158193.png" alt width="658" height="411">
-
-<p>　　Cache-Control：缓存控制，是否使用缓存</p>
-<p>　　Connection：持久连接，后文有详细提到，有Keep-Alive ，close等值</p>
-<p>　　Keep-Alive：控制连接断开条件，timeout（超时时间），max请求次数极大值</p>
-<p>　　Date：HTTP报文产生日期</p>
-<p>　　Transfer-Encoding：传输报文主体采用的编码方式，chunked（分段式编码）</p>
-<p>　　Upgrade：检测协议或是否可以使用更高版本协议进行通信（不太懂）</p>
-<p>　　Warning：警告。[警告码][警告主机：端口号][警告内容]（[警告时间]（可省略））</p>
-<p><strong>请求首部字段：</strong></p>
-<p>　　　　<img src="1503868-20200205135524987-1420334523.png" alt></p>
-<p> </p>
-<p> </p>
-<p>　　　　Accept：告知服务器用户代理能够处理的媒体类型及媒体类型的相对优先级 ，如text/plain;q=0.3,text/htm;q=0.4,  不同的文件类型用 ‘ , ‘  分隔，q的值未权重，0~1，可精确到小数点后3位，默认值位1.0。服务器提供多种内容时，优先返回权重值高的媒体类型。</p>
-<p>　　　　　　　　文本文件：text/html，text/plain，text/css……</p>
-<p>　　　　　　　　　　　　　application/xml，application/xhtml+xml……</p>
-<p>　　　　　　　　图片文件：image/jpeg，image/gif，image/png……</p>
-<p>　　　　　　　　视频文件：video/mpeg，video/quicktime……</p>
-<p>　　　　　　　　应用程序使用的二进制文件：application/octet-stream，application/zip……</p>
-<p>   　　　Accept-Charset：可接受的字符集，像utf-8等。同样有优先级</p>
-<p>　　　　Accept-Encoding：告知服务器用户代理支持的内容编码以及内容编码的优先级，gzip，deflate等</p>
-<p>　　　　　　　　gzip：由文件压缩程序gzip（GNU zip）生成的编码格式（RFC1952）</p>
-<p>　　　　　　　　compress：由UNIX压缩程序compress生成的编码格式</p>
-<p>　　　　　　　　deflate：组合使用zlib格式（RFC1950）及由deflate压缩算法（RFC951）生成的编码格式</p>
-<p>　　　　　　　　identity：不执行亚索或不会变化的默认编码格式</p>
-<p>　　　　Accept-Language：告知服务器用户代理能够处理的自然语言集（指中文或英文等），如zh/cn,zh;q=0.9,en-us;q=0.6，同样有优先级</p>
-<p>　　　　Authorization：告知服务器用户的认证信息（证书值），出现401响应码时会出现这个字段</p>
-<p>　　　　Host：告知服务器请求的资源所处的互联网主机名和端口号，Host是HTTP/1.1规范内唯一一个必须被包含在请求内的首部字段。Host和以单台服务器分配多个域名的虚拟主机的工作机制有密切的关系</p>
-<p>　　　　Referer：告知服务器请求的原始资源的URI。相当于告诉服务器我是从哪里过来的，可用于防止盗链，同时有一定安全隐患。Referer的中文意思是推荐人。</p>
-<p>　　　　User-Agent：发送创建请求的浏览器，系统，IP和用户代理名称等信息给服务器，检查User-Agent是一种最简单的反爬手段，与之对应的可以通过fake-useragent库来反反爬。同时也可以使用burpsuite来修改User-Agent。</p>
-<p>　　　<strong>响应首部字段：</strong></p>
-<p>**　　　　<img src="1503868-20200205154342421-1762077444.png" alt width="611" height="380">**</p>
-<p>　　　　Location：出现重定向时，告知客户端新的URL　</p>
-<p> </p>
-<p> 　　　   Server：告知客户端当前服务器上安装的HTTP服务器应用程序的信息，有安全隐患，会暴露apache服务器，openssl，PHP的版本和操作系统等信息。可通过以下方法解决</p>
-<p>　　　　　<img src="1503868-20200205155053585-767915234.png" alt width="510" height="84"></p>
-<p> </p>
-<p> </p>
-<p> 　　　　WWW-Authorizate：和401有关，告知客户端需要做认证</p>
-<p>　　　<strong>实体首部字段：</strong></p>
-<p>**　　　　<img src="1503868-20200205160107818-1373089464.png" alt width="527" height="369">**</p>
-<p> </p>
-<p> </p>
-<p> 　　　　Content-Length：实体主体部分的大小（以字节为单位）</p>
-<p>　　　　 Content-Type：表示报文主体对象类型，常见的是text/html </p>
-<p>　　　　 Allow：用于通知客户端获取指定资源可使用的所有HTTP方法，当接收到不支持的方法时，会返回405 Method Not Allowed。同时，还会把所有能支持的HTTP方法写入Allow字段后返回　</p>
-<p>　　　　 Content-Encoding：告知客户端服务器对实体的主体部分的编码方式（如gzip等）</p>
-<p>　　　　 Content-Language：告知客户端服务器发送的实体主体使用的自然语言</p>
-<p>　　　　 Content-Location：表示报文主题返回资源对应的URI。比如访问一个英文页面，但是请求Accept-Language要求的是中文，就返回一个中文页面给客户端，返回的这个中文页面的URL，就在Content-Location字段里（暂时没找到合适的例子，找到了，我记得的话就补充一下）</p>
-<p>　　　　 Content-Type：说明了实体主体内对象的媒体类型，和Accept一样，用type/subtype的形式赋值。防火墙限制下载部分类型文件，就是从这里找数据</p>
-<p>　　　　 Expires：缓存的存活时间</p>
-<p><strong>其他：</strong></p>
-<p>**　　**为cookie服务的字段：</p>
-<p>　　　　set-cookie：参数（值，存活时间（expires），路径（path），域名（domain），（secure），（HttpOnly））</p>
-<p>　　　　　　值：就是cookie的值。</p>
-<p>　　　　　　expires：cookis可以使用多长时间</p>
-<p>　　　　　　domain：假如设置域名为  .thisisy.com 那么该cookie可以发给<a class="link" href="http://www.thisisy.com,也可以发给mail.thisisy.com等等,存在安全隐患,建议不要设置/">www.thisisy.com,也可以发给mail.thisisy.com等等，存在安全隐患，建议不要设置<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　　　　　path：和域名原理一样，也是建议不要设置（关于path和domain的详解，看这里：<a class="link" href="https://www.jb51.net/article/44561.htm">https://www.jb51.net/article/44561.htm<i class="fas fa-external-link-alt"></i></a>）</p>
-<p>　　　　　　secure：设置该参数，则该cookie只能在建立HTTPS的安全连接下才可以发送cookie</p>
-<p>　　　　　　HttpOnly：使js脚本无法获得cookie，主要用于防止xss攻击对cookie的窃取</p>
-<p> 同样，首部字段与主体之间要留有空行，主体就是网页html源码</p>
-<p> </p>
-<p>http是不保存状态的协议，即<strong>无状态协议</strong>，http协议不对请求和响应之间的通信状态做保存，也就是说，在http这个级别，协议对于已经发送过的请求或响应都不做持久化处理。只是为了<strong>更快的处理大量事物</strong>，确保协议的可伸缩性，而特意把http协议设计得如此简单。而有些时候需要对请求或响应做保存，这时候就出现了隐含参数和cookie</p>
-<p> </p>
-<p><strong>哑服务：</strong></p>
-<p>关于http协议的瞬时性，原始版本http都是建立建立，发送请求，接受响应，连接断开。这样一个过程。但是这个过程在大型网页中非常消耗资源（大量资源都用在了建立三次握手上）。</p>
-<img src="1503868-20200203144646291-544286251.png" alt>
-
-<p>后来提出了持久连接，只要任意一端没有提出断开连接，连接就会一直存在。在http/1.0中，默认关闭，需要在http头中加入”Connection:Keep-Alive”开启持久连接，在http/1.1中，持久连接变成默认开启，在http头中加入”Connection:close”才会关闭。于是整个过程就变成了建立连接，发送请求，接受响应，发送请求，接受响应…………直到断开连接，就像一个人坐一趟列车在两个地方来回走，必须到达A城才可以去B城，到了B城才能再回A城，</p>
-<img src="1503868-20200203144608207-1697778574.png" alt>
-
-<p>但是人们发现这样还不够快，于是出现了管道化，在前面持久连接的基础上，发送一次请求后，不等接受响应，直接发送第二个请求，就像两根管子，分别处理发送的请求与接受的响应</p>
-<img src="1503868-20200203144452571-280682539.png" alt>
-
-<p><strong>cookie：</strong></p>
-<p>**　　**Cookie是一段不超过4KB的小型文本数据，由一个名称（Name）、一个值（Value）和其它几个用于控制Cookie有效期、安全性、使用范围的可选属性组成。</p>
-<p> </p>
-<p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。（如果盗取了别人的cookie，就可以用别人的身份登陆一些网站，当然，有些网站还会有别的认证方式，但这种安全隐患还是值得注意）</p>
-<p> </p>
-<p>（图片来源：乾颐堂）</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>iwebsec学习笔记</title>
     <url>/2021/01/17/iwebsec%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13435718.html">源地址：https://www.cnblogs.com/This-is-Y/p/13435718.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -2876,6 +2748,134 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 留坑</p>
 <p> </p>
 <p>————恢复内容结束————</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>htttp协议部分笔记</title>
+    <url>/2020/02/05/htttp%E5%8D%8F%E8%AE%AE%E9%83%A8%E5%88%86%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12256079.html">源地址：https://www.cnblogs.com/This-is-Y/p/12256079.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>**报文：　**　</p>
+<p><strong>http请求报文：</strong></p>
+<p>基本格式</p>
+<p>　　<img src="1503868-20200205111708601-107755887.png" alt width="651" height="271"></p>
+<p> 请求行：这里那有道翻译的网页用一下（应该没啥关系吧）</p>
+<p>　　<img src="1503868-20200205155437106-1447717939.png" alt></p>
+<p> 　　请求行由3部分组成，请求方法，请求URL，HTTP协议版本。</p>
+<p>　　　　<strong>方法</strong>：最常见的有GET，POST，请求方法一定是要大写　　　　　　</p>
+<p>HTTP/1.0和HTTP/1.1支持的方法：</p>
+<img src="1503868-20200203143502218-550940739.png" alt width="598" height="308">
+
+<p> 但因为安全隐患等原因，用的最多的还是POST和GET，关于POST和GET：<a class="link" href="https://www.cnblogs.com/This-is-Y/p/12244175.html">https://www.cnblogs.com/This-is-Y/p/12244175.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　　　　　 <strong>URL</strong>：URI（Uniform Resource Identifier）：统一资源标识符</p>
+<p>URL（Uniform Resource Locator）：统一资源定位符</p>
+<p>URL是URI的子集，URL是一种具体的URI。</p>
+<p>较为经典的URI</p>
+<img src="1503868-20200203134002377-1332556046.png" alt width="559" height="114">
+
+<p>协议有http，https，ftp 等</p>
+<p>登陆认证信息一般出现得较少</p>
+<p>　　　　　　<strong>协议版本：</strong>最初的版本HTTP/0.9，然后是HTTP/1.0，再之后是将持久连接改为默认的HTTP/1.1，这是最主流的HTTP协议版本。再到现在的的HTTP/2.0，这个用的不多。</p>
+<p> </p>
+<p><strong>http响应报文：</strong></p>
+<p>基本格式</p>
+<img src="1503868-20200203135421531-427205203.png" alt width="577" height="369">
+
+<p><strong>响应码：</strong> 有2xx，3xx，4xx，5xx这几大类，其中1xx表示信息性状态码，接受的请求正在处理。2xx表示成功，请求正常处理完毕。3xx多表示重定向，需要进行附加操作完成请求。4xx多表示失败（客户端），服务器无法处理请求。5xx同样表示失败（服务端），服务器处理请求出错。</p>
+<p>1xx：有100  Continue，表示继续。101  Switching Protocol，切换协议。1xx响应码很少见，</p>
+<p>2xx：最常见的是200  OK，表示请求正常处理。  204  No Content 没有内容，一般在需要客户端发送信息而服务端不需要返回<strong>新</strong>信息内容时出现（一般在一个网页按F5刷新，看似什么都没有发生，实际上浏览器发送了请求，而此时响应码就是204）。  206 Partial Content 请求并发送部分内容，一般出现在发送内容过大时，在首部字段中使用range头对文件进行分块发送（当浏览一些较大的图片，PDF时会出现）</p>
+<p>3xx：301 Moved Permanently 永久移动，即重定向，当前全球的资源分配了新的URI（可以在首部字段中找到Location字段找到新的URI）。302 Found 临时移动 ，在防火墙认证时经常用到。与302一起出现的还有  303 See Other 查看其他位置 ，在302跳转认证成功了，就会出现303 see other，这个表示由于请求对应的资源存在另一个URI，应使用GET方法定向获取请求的资源（303状态码明确表示用户应该使用GET方法获取资源。）304 Not Modified 未修改，告诉客户端,所请求的内容距离上次访问并没有变化. 客户端可以直接从浏览器缓存里获取该资源（304是3xx里面和重定向没关系的一个）。307  Temporary Redirect  临时重定向 ，和302类似，但307更为严谨，不会从POST变成GET，302尽管禁止POST变换成GET，但是大多数人并不遵守。关于重定向，还有一个META Redirect，只需要在html的head里写上&lt;meta http-equiv=”refresh” content=”5;URL=新的URL”&gt;  content里面的5代表延迟时间5s，这样操作返回的响应码是200 OK<br>4xx：400 Bad Request 错误请求，发送的URL有错误，比如无法正确转码什么的。401 Unauthorized 未认证，在打开一个网页时弹出窗口需要你认证身份。403 Forbidden 禁止访问  ,权限不足，无法访问请求的文件。404 Not Found 喜闻乐见的一个状态码，这个不需要多说了，访问文件不存在。<br>5xx：500 Internal Server Error  内部服务器错误，一般是阿帕奇服务器出现问题。503 Service Unavailable 服务不可用，服务器出现超负载或者正在停机维护。</p>
+<p>　　这里我只说一小部分响应码，响应码总结大全：<a class="link" href="https://www.cnblogs.com/isykw/p/6115469.html">https://www.cnblogs.com/isykw/p/6115469.html<i class="fas fa-external-link-alt"></i></a> 。</p>
+<p> </p>
+<p>首部字段细分：<br>　　 通用首部字段：在请求报文和响应报文中都可能出现</p>
+<p>请求首部字段：只在请求报文中出现</p>
+<p>响应首部字段：只在响应报文中出现</p>
+<p>实体首部字段：和实际传输数据相关的参数。</p>
+<p>其他</p>
+<p> </p>
+<p><strong>通用首部字段：</strong></p>
+<img src="1503868-20200205130853547-1458158193.png" alt width="658" height="411">
+
+<p>　　Cache-Control：缓存控制，是否使用缓存</p>
+<p>　　Connection：持久连接，后文有详细提到，有Keep-Alive ，close等值</p>
+<p>　　Keep-Alive：控制连接断开条件，timeout（超时时间），max请求次数极大值</p>
+<p>　　Date：HTTP报文产生日期</p>
+<p>　　Transfer-Encoding：传输报文主体采用的编码方式，chunked（分段式编码）</p>
+<p>　　Upgrade：检测协议或是否可以使用更高版本协议进行通信（不太懂）</p>
+<p>　　Warning：警告。[警告码][警告主机：端口号][警告内容]（[警告时间]（可省略））</p>
+<p><strong>请求首部字段：</strong></p>
+<p>　　　　<img src="1503868-20200205135524987-1420334523.png" alt></p>
+<p> </p>
+<p> </p>
+<p>　　　　Accept：告知服务器用户代理能够处理的媒体类型及媒体类型的相对优先级 ，如text/plain;q=0.3,text/htm;q=0.4,  不同的文件类型用 ‘ , ‘  分隔，q的值未权重，0~1，可精确到小数点后3位，默认值位1.0。服务器提供多种内容时，优先返回权重值高的媒体类型。</p>
+<p>　　　　　　　　文本文件：text/html，text/plain，text/css……</p>
+<p>　　　　　　　　　　　　　application/xml，application/xhtml+xml……</p>
+<p>　　　　　　　　图片文件：image/jpeg，image/gif，image/png……</p>
+<p>　　　　　　　　视频文件：video/mpeg，video/quicktime……</p>
+<p>　　　　　　　　应用程序使用的二进制文件：application/octet-stream，application/zip……</p>
+<p>   　　　Accept-Charset：可接受的字符集，像utf-8等。同样有优先级</p>
+<p>　　　　Accept-Encoding：告知服务器用户代理支持的内容编码以及内容编码的优先级，gzip，deflate等</p>
+<p>　　　　　　　　gzip：由文件压缩程序gzip（GNU zip）生成的编码格式（RFC1952）</p>
+<p>　　　　　　　　compress：由UNIX压缩程序compress生成的编码格式</p>
+<p>　　　　　　　　deflate：组合使用zlib格式（RFC1950）及由deflate压缩算法（RFC951）生成的编码格式</p>
+<p>　　　　　　　　identity：不执行亚索或不会变化的默认编码格式</p>
+<p>　　　　Accept-Language：告知服务器用户代理能够处理的自然语言集（指中文或英文等），如zh/cn,zh;q=0.9,en-us;q=0.6，同样有优先级</p>
+<p>　　　　Authorization：告知服务器用户的认证信息（证书值），出现401响应码时会出现这个字段</p>
+<p>　　　　Host：告知服务器请求的资源所处的互联网主机名和端口号，Host是HTTP/1.1规范内唯一一个必须被包含在请求内的首部字段。Host和以单台服务器分配多个域名的虚拟主机的工作机制有密切的关系</p>
+<p>　　　　Referer：告知服务器请求的原始资源的URI。相当于告诉服务器我是从哪里过来的，可用于防止盗链，同时有一定安全隐患。Referer的中文意思是推荐人。</p>
+<p>　　　　User-Agent：发送创建请求的浏览器，系统，IP和用户代理名称等信息给服务器，检查User-Agent是一种最简单的反爬手段，与之对应的可以通过fake-useragent库来反反爬。同时也可以使用burpsuite来修改User-Agent。</p>
+<p>　　　<strong>响应首部字段：</strong></p>
+<p>**　　　　<img src="1503868-20200205154342421-1762077444.png" alt width="611" height="380">**</p>
+<p>　　　　Location：出现重定向时，告知客户端新的URL　</p>
+<p> </p>
+<p> 　　　   Server：告知客户端当前服务器上安装的HTTP服务器应用程序的信息，有安全隐患，会暴露apache服务器，openssl，PHP的版本和操作系统等信息。可通过以下方法解决</p>
+<p>　　　　　<img src="1503868-20200205155053585-767915234.png" alt width="510" height="84"></p>
+<p> </p>
+<p> </p>
+<p> 　　　　WWW-Authorizate：和401有关，告知客户端需要做认证</p>
+<p>　　　<strong>实体首部字段：</strong></p>
+<p>**　　　　<img src="1503868-20200205160107818-1373089464.png" alt width="527" height="369">**</p>
+<p> </p>
+<p> </p>
+<p> 　　　　Content-Length：实体主体部分的大小（以字节为单位）</p>
+<p>　　　　 Content-Type：表示报文主体对象类型，常见的是text/html </p>
+<p>　　　　 Allow：用于通知客户端获取指定资源可使用的所有HTTP方法，当接收到不支持的方法时，会返回405 Method Not Allowed。同时，还会把所有能支持的HTTP方法写入Allow字段后返回　</p>
+<p>　　　　 Content-Encoding：告知客户端服务器对实体的主体部分的编码方式（如gzip等）</p>
+<p>　　　　 Content-Language：告知客户端服务器发送的实体主体使用的自然语言</p>
+<p>　　　　 Content-Location：表示报文主题返回资源对应的URI。比如访问一个英文页面，但是请求Accept-Language要求的是中文，就返回一个中文页面给客户端，返回的这个中文页面的URL，就在Content-Location字段里（暂时没找到合适的例子，找到了，我记得的话就补充一下）</p>
+<p>　　　　 Content-Type：说明了实体主体内对象的媒体类型，和Accept一样，用type/subtype的形式赋值。防火墙限制下载部分类型文件，就是从这里找数据</p>
+<p>　　　　 Expires：缓存的存活时间</p>
+<p><strong>其他：</strong></p>
+<p>**　　**为cookie服务的字段：</p>
+<p>　　　　set-cookie：参数（值，存活时间（expires），路径（path），域名（domain），（secure），（HttpOnly））</p>
+<p>　　　　　　值：就是cookie的值。</p>
+<p>　　　　　　expires：cookis可以使用多长时间</p>
+<p>　　　　　　domain：假如设置域名为  .thisisy.com 那么该cookie可以发给<a class="link" href="http://www.thisisy.com,也可以发给mail.thisisy.com等等,存在安全隐患,建议不要设置/">www.thisisy.com,也可以发给mail.thisisy.com等等，存在安全隐患，建议不要设置<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　　　　　path：和域名原理一样，也是建议不要设置（关于path和domain的详解，看这里：<a class="link" href="https://www.jb51.net/article/44561.htm">https://www.jb51.net/article/44561.htm<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>　　　　　　secure：设置该参数，则该cookie只能在建立HTTPS的安全连接下才可以发送cookie</p>
+<p>　　　　　　HttpOnly：使js脚本无法获得cookie，主要用于防止xss攻击对cookie的窃取</p>
+<p> 同样，首部字段与主体之间要留有空行，主体就是网页html源码</p>
+<p> </p>
+<p>http是不保存状态的协议，即<strong>无状态协议</strong>，http协议不对请求和响应之间的通信状态做保存，也就是说，在http这个级别，协议对于已经发送过的请求或响应都不做持久化处理。只是为了<strong>更快的处理大量事物</strong>，确保协议的可伸缩性，而特意把http协议设计得如此简单。而有些时候需要对请求或响应做保存，这时候就出现了隐含参数和cookie</p>
+<p> </p>
+<p><strong>哑服务：</strong></p>
+<p>关于http协议的瞬时性，原始版本http都是建立建立，发送请求，接受响应，连接断开。这样一个过程。但是这个过程在大型网页中非常消耗资源（大量资源都用在了建立三次握手上）。</p>
+<img src="1503868-20200203144646291-544286251.png" alt>
+
+<p>后来提出了持久连接，只要任意一端没有提出断开连接，连接就会一直存在。在http/1.0中，默认关闭，需要在http头中加入”Connection:Keep-Alive”开启持久连接，在http/1.1中，持久连接变成默认开启，在http头中加入”Connection:close”才会关闭。于是整个过程就变成了建立连接，发送请求，接受响应，发送请求，接受响应…………直到断开连接，就像一个人坐一趟列车在两个地方来回走，必须到达A城才可以去B城，到了B城才能再回A城，</p>
+<img src="1503868-20200203144608207-1697778574.png" alt>
+
+<p>但是人们发现这样还不够快，于是出现了管道化，在前面持久连接的基础上，发送一次请求后，不等接受响应，直接发送第二个请求，就像两根管子，分别处理发送的请求与接受的响应</p>
+<img src="1503868-20200203144452571-280682539.png" alt>
+
+<p><strong>cookie：</strong></p>
+<p>**　　**Cookie是一段不超过4KB的小型文本数据，由一个名称（Name）、一个值（Value）和其它几个用于控制Cookie有效期、安全性、使用范围的可选属性组成。</p>
+<p> </p>
+<p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。（如果盗取了别人的cookie，就可以用别人的身份登陆一些网站，当然，有些网站还会有别的认证方式，但这种安全隐患还是值得注意）</p>
+<p> </p>
+<p>（图片来源：乾颐堂）</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3320,54 +3320,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>mysql中的concat().concat_ws(),group_concat()</title>
-    <url>/2020/08/12/mysql%E4%B8%AD%E7%9A%84concat().concat_ws(),group_concat()/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13491416.html">源地址：https://www.cnblogs.com/This-is-Y/p/13491416.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> 简单建立一个表</p>
-<img src="1503868-20200812161041473-1504706485.png" alt loading="lazy">
-
-<p> </p>
-<p> <strong>concat()</strong></p>
-<p>用于连接字符串，举个例子</p>
-<p> select concat(id,’-‘,name,’-‘,sex,’-‘) from null_test;</p>
-<img src="1503868-20200812161031226-883321634.png" alt loading="lazy">
-
-<p> </p>
-<p> 值得注意的是，空字符也算字符（第五条数据），但是如果参数中有null，则整个输出变成null（第三第四条数据）；</p>
-<p> </p>
-<p><strong>concat_ws()</strong></p>
-<p>在数据较少时，用concat()可能不会出现什么问题，但是如果数据量过大，一个一个为其配置分隔符就显得累赘，于是就有了concat_ws(),  CONCAT_WS() 代表 CONCAT With Separator</p>
-<p>第一个参数为separator，即分隔符</p>
-<p>如果分隔符为NULL，则所有输出都为NULL；</p>
-<p>select concat_ws(<strong>NULL</strong>,id,name,sex) from null_test;</p>
-<img src="1503868-20200812160011781-86849650.png" alt loading="lazy">
-
-<p> </p>
-<p>如果参数中有null，直接跳过后，正常输出 </p>
-<p>select concat_ws(‘==’,id,name,sex) from null_test;</p>
-<img src="1503868-20200812160114370-1393843926.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p><strong>group_concat()</strong></p>
-<p>group_concat()像是concat()的加强版，concat()把字符串组合起来，group_concat()把组合后的字符串再组合起来，</p>
-<p>select group_concat(id,’-‘,name,’-‘,sex) from null_test;</p>
-<img src="1503868-20200812161304728-239534354.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p>这三个都可以用as 来修改列名</p>
-<p>举个例子</p>
-<p>select concat(id,’==’,name) as id_name,concat(name,’==’,’sex’) as name_sex from null_test;</p>
-<img src="1503868-20200812163708930-428683991.png" alt loading="lazy">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>mysql只能显示部分中文问题 解决</title>
     <url>/2020/09/27/mysql%E5%8F%AA%E8%83%BD%E6%98%BE%E7%A4%BA%E9%83%A8%E5%88%86%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98%20%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13738043.html">源地址：https://www.cnblogs.com/This-is-Y/p/13738043.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3419,14 +3371,48 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</title>
-    <url>/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11279689.html">源地址：https://www.cnblogs.com/This-is-Y/p/11279689.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> 有4到5天没开mysql，这天晚上打=打开phpstudy，想进去mysql练习练习，结果丢给我这个</p>
-<p>ERROR 2013 (HY000): Lost connection to MySQL server at ‘reading initial communication packet’, system error: 0</p>
-<p>错误2013 (HY000):读取初始通信包时MySQL服务器连接丢失，系统错误0</p>
-<p>windows进cmd命令行，输入server.msc，然后找到mysql的服务，重启一下就好了。</p>
-<p>（听说还有更复杂的情况，我又没碰到，关我什么事，碰到了再补上）</p>
+    <title>mysql中的concat().concat_ws(),group_concat()</title>
+    <url>/2020/08/12/mysql%E4%B8%AD%E7%9A%84concat().concat_ws(),group_concat()/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13491416.html">源地址：https://www.cnblogs.com/This-is-Y/p/13491416.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> 简单建立一个表</p>
+<img src="1503868-20200812161041473-1504706485.png" alt loading="lazy">
+
+<p> </p>
+<p> <strong>concat()</strong></p>
+<p>用于连接字符串，举个例子</p>
+<p> select concat(id,’-‘,name,’-‘,sex,’-‘) from null_test;</p>
+<img src="1503868-20200812161031226-883321634.png" alt loading="lazy">
+
+<p> </p>
+<p> 值得注意的是，空字符也算字符（第五条数据），但是如果参数中有null，则整个输出变成null（第三第四条数据）；</p>
+<p> </p>
+<p><strong>concat_ws()</strong></p>
+<p>在数据较少时，用concat()可能不会出现什么问题，但是如果数据量过大，一个一个为其配置分隔符就显得累赘，于是就有了concat_ws(),  CONCAT_WS() 代表 CONCAT With Separator</p>
+<p>第一个参数为separator，即分隔符</p>
+<p>如果分隔符为NULL，则所有输出都为NULL；</p>
+<p>select concat_ws(<strong>NULL</strong>,id,name,sex) from null_test;</p>
+<img src="1503868-20200812160011781-86849650.png" alt loading="lazy">
+
+<p> </p>
+<p>如果参数中有null，直接跳过后，正常输出 </p>
+<p>select concat_ws(‘==’,id,name,sex) from null_test;</p>
+<img src="1503868-20200812160114370-1393843926.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p><strong>group_concat()</strong></p>
+<p>group_concat()像是concat()的加强版，concat()把字符串组合起来，group_concat()把组合后的字符串再组合起来，</p>
+<p>select group_concat(id,’-‘,name,’-‘,sex) from null_test;</p>
+<img src="1503868-20200812161304728-239534354.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>这三个都可以用as 来修改列名</p>
+<p>举个例子</p>
+<p>select concat(id,’==’,name) as id_name,concat(name,’==’,’sex’) as name_sex from null_test;</p>
+<img src="1503868-20200812163708930-428683991.png" alt loading="lazy">
+
+<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3502,6 +3488,20 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>使用这个命令，可以抵御一次攻击</p>
 <p>nmap -sT -A localhost           <img src="1503868-20190720205647681-1115143578.png" alt></p>
 <p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</title>
+    <url>/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11279689.html">源地址：https://www.cnblogs.com/This-is-Y/p/11279689.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> 有4到5天没开mysql，这天晚上打=打开phpstudy，想进去mysql练习练习，结果丢给我这个</p>
+<p>ERROR 2013 (HY000): Lost connection to MySQL server at ‘reading initial communication packet’, system error: 0</p>
+<p>错误2013 (HY000):读取初始通信包时MySQL服务器连接丢失，系统错误0</p>
+<p>windows进cmd命令行，输入server.msc，然后找到mysql的服务，重启一下就好了。</p>
+<p>（听说还有更复杂的情况，我又没碰到，关我什么事，碰到了再补上）</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3780,6 +3780,31 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
+    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>按下win键，输入语言，打开语言设置。</p>
+<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
+
+<p> </p>
+<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
+<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
+
+<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
+<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
+
+<p> </p>
+<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
+<p> gogogo</p>
+<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>shiro漏洞利用_入门</title>
     <url>/2020/10/29/shiro%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8_%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13899977.html">源地址：https://www.cnblogs.com/This-is-Y/p/13899977.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3827,31 +3852,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p><br><br> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
-    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>按下win键，输入语言，打开语言设置。</p>
-<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
-
-<p> </p>
-<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
-<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
-
-<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
-<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
-
-<p> </p>
-<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
-<p> gogogo</p>
-<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
-
-<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3920,65 +3920,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>　　踢人：　　</p>
 <p>　　　　aireplay-ng -0 5(发送断开连接包的数量) -a 2E:15:E1:28:56:08(wifi的MAC地址) -c 28:3A:4D:0B:6C:91(幸运儿的设备MAC地址)  wlan0(工作网卡)</p>
 <p>爆破：<br>　　aircrack-ng -w 字典位置 握手包位置</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>使用Cobalr strike发送钓鱼邮件</title>
-    <url>/2020/06/18/%E4%BD%BF%E7%94%A8Cobalr%20strike%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>本文参考<a class="link" href="https://www.freebuf.com/sectool/124905.html">https://www.freebuf.com/sectool/124905.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>感谢前人指路</p>
-<p> </p>
-<p>前面的建立一个office宏病毒、克隆一个网站等操作，在这片freebuf的文章中写的很清楚详细了。</p>
-<p>这里我就针对填写参数做一些细节补充：</p>
-<p><strong>Targets：</strong>是要发送邮箱地址的文件，比如：</p>
-<img src="1503868-20200618193453413-182685379.png" width="900" loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 建立一个文件，一个邮箱一行，不要有别的东西</p>
-<p><strong>Template：</strong>是要发送邮件的模板，这个可以在个人邮箱中导出一个即可。</p>
-<p>关于如何导出，我用的qq邮箱，这里我以qq邮箱为例</p>
-<p>1.因为要自定义邮件内容，所以先写好一封邮件，即模板，发送给自己的小号或基友。然后在 已发送 中找到那封邮件。</p>
-<img src="1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
-
-<p> </p>
-<p>点击右边那个小到看不见的<img src="1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
-<p><strong>Attachment：</strong>放入我们搞好的word（用中文文件名似乎会乱码）</p>
-<p><strong>Embed url：</strong>填写搭建好的网站，然后配置好</p>
-<p><strong>mailserver：</strong>我用的qq邮箱，这里就用qq邮箱做示例。其他的163等邮箱大同小异。</p>
-<p>　　首先在qq邮箱 <strong>设置</strong>、<strong>账户</strong> 中找到 <strong>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</strong> 这一列（POP3/SMTP/IMAP等服务是什么左转百度或谷歌wiki，他们讲的比我好）。打开POP/SMTP服务以及IMAP/SMTP服务（打开这些服务的风险qq邮箱都会告诉你，自行斟酌，出了啥岔子与我无关）打开后，点击下面的生成授权码。会获得一组神秘代码，保存下来。</p>
-<p>　　<img src="1503868-20200618195235715-123373268.png" width="900">　　</p>
-<p>　　回到cs中。点开Mail Server后面的这个</p>
-<p> 　　<img src="1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
-<p> </p>
-<p> 　　进入到配置页面</p>
-<p>　　<img src="1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
-<p> </p>
-<p> 　　这边的参数选项。</p>
-<p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#55;&#49;&#52;&#x31;&#x33;&#56;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;">&#57;&#x35;&#50;&#55;&#49;&#52;&#x31;&#x33;&#56;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
-<p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
-<p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
-<p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
-<p>　　配置好后大概是这个样子</p>
-<p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
-<p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#x33;&#56;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#x33;&#56;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#x39;&#x35;&#x32;&#x37;&#49;&#x34;&#49;&#x33;&#x38;&#x40;&#113;&#113;&#46;&#99;&#111;&#x6d;">&#x39;&#x35;&#x32;&#x37;&#49;&#x34;&#49;&#x33;&#x38;&#x40;&#113;&#113;&#46;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
-<img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
-
-<p> </p>
-<p>全部配置好后差不多就是这样子</p>
-<img src="1503868-20200618201158502-1594240584.png" alt loading="lazy">
-
-<p>这样就表示发送成功了。</p>
-<img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
-
-<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -4072,6 +4013,65 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>使用Cobalr strike发送钓鱼邮件</title>
+    <url>/2020/06/18/%E4%BD%BF%E7%94%A8Cobalr%20strike%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>本文参考<a class="link" href="https://www.freebuf.com/sectool/124905.html">https://www.freebuf.com/sectool/124905.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>感谢前人指路</p>
+<p> </p>
+<p>前面的建立一个office宏病毒、克隆一个网站等操作，在这片freebuf的文章中写的很清楚详细了。</p>
+<p>这里我就针对填写参数做一些细节补充：</p>
+<p><strong>Targets：</strong>是要发送邮箱地址的文件，比如：</p>
+<img src="1503868-20200618193453413-182685379.png" width="900" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 建立一个文件，一个邮箱一行，不要有别的东西</p>
+<p><strong>Template：</strong>是要发送邮件的模板，这个可以在个人邮箱中导出一个即可。</p>
+<p>关于如何导出，我用的qq邮箱，这里我以qq邮箱为例</p>
+<p>1.因为要自定义邮件内容，所以先写好一封邮件，即模板，发送给自己的小号或基友。然后在 已发送 中找到那封邮件。</p>
+<img src="1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
+
+<p> </p>
+<p>点击右边那个小到看不见的<img src="1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
+<p><strong>Attachment：</strong>放入我们搞好的word（用中文文件名似乎会乱码）</p>
+<p><strong>Embed url：</strong>填写搭建好的网站，然后配置好</p>
+<p><strong>mailserver：</strong>我用的qq邮箱，这里就用qq邮箱做示例。其他的163等邮箱大同小异。</p>
+<p>　　首先在qq邮箱 <strong>设置</strong>、<strong>账户</strong> 中找到 <strong>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</strong> 这一列（POP3/SMTP/IMAP等服务是什么左转百度或谷歌wiki，他们讲的比我好）。打开POP/SMTP服务以及IMAP/SMTP服务（打开这些服务的风险qq邮箱都会告诉你，自行斟酌，出了啥岔子与我无关）打开后，点击下面的生成授权码。会获得一组神秘代码，保存下来。</p>
+<p>　　<img src="1503868-20200618195235715-123373268.png" width="900">　　</p>
+<p>　　回到cs中。点开Mail Server后面的这个</p>
+<p> 　　<img src="1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
+<p> </p>
+<p> 　　进入到配置页面</p>
+<p>　　<img src="1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
+<p> </p>
+<p> 　　这边的参数选项。</p>
+<p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#49;&#52;&#x31;&#51;&#x38;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#57;&#x35;&#50;&#x37;&#49;&#52;&#x31;&#51;&#x38;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
+<p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
+<p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
+<p>　　配置好后大概是这个样子</p>
+<p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
+<p>　　点解set保存设置。</p>
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#52;&#49;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#52;&#49;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#x35;&#x32;&#55;&#49;&#52;&#x31;&#51;&#56;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#57;&#x35;&#x32;&#55;&#49;&#52;&#x31;&#51;&#56;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
+
+<p> </p>
+<p>全部配置好后差不多就是这样子</p>
+<img src="1503868-20200618201158502-1594240584.png" alt loading="lazy">
+
+<p>这样就表示发送成功了。</p>
+<img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于WPA加密的wifi通过握手包跑字典破解</title>
     <url>/2020/04/06/%E5%85%B3%E4%BA%8EWPA%E5%8A%A0%E5%AF%86%E7%9A%84wifi%E9%80%9A%E8%BF%87%E6%8F%A1%E6%89%8B%E5%8C%85%E8%B7%91%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12639589.html">源地址：https://www.cnblogs.com/This-is-Y/p/12639589.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4110,31 +4110,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 
 <p> </p>
 <p>这速度真心可以啊</p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客园装饰</title>
-    <url>/2020/01/18/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%A3%85%E9%A5%B0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12210655.html">源地址：https://www.cnblogs.com/This-is-Y/p/12210655.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>装饰一下博客</p>
-<p>开通js什么的这些功能网上都很多很全了，这里记录找到的几个写得比较好的博客</p>
-<p>较为全面的两个：<a class="link" href="https://www.cnblogs.com/zhaopei/p/4174811.html">https://www.cnblogs.com/zhaopei/p/4174811.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/guokaifeng/p/11121939.html">https://www.cnblogs.com/guokaifeng/p/11121939.html<i class="fas fa-external-link-alt"></i></a> </p>
-<p>（现在生成外链链接可能会没用，歌单上面的id其实就是外链id</p>
-<img src="1503868-20200118230136057-1795119443.png" alt>
-
-<p> </p>
-<p>可以看到这里的id和上面一样，至于其他的参数，前面两个教程都有解释</p>
-<img src="1503868-20200118230447941-838547165.png" alt>
-
-<p> </p>
-<p>有些时候发现博客园装饰出了点问题，不妨把这个禁用了 ↓↓</p>
-<img src="1503868-20200312211648481-430248655.png" alt>
-
 <p> </p>
 ]]></content>
       <categories>
@@ -4273,6 +4248,31 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 火绒 </p>
 <p>hipstray.exe<br> wsctrl.exe<br> usysdiag.exe</p>
 <p><br><br><br><br><br></p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>博客园装饰</title>
+    <url>/2020/01/18/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%A3%85%E9%A5%B0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12210655.html">源地址：https://www.cnblogs.com/This-is-Y/p/12210655.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>装饰一下博客</p>
+<p>开通js什么的这些功能网上都很多很全了，这里记录找到的几个写得比较好的博客</p>
+<p>较为全面的两个：<a class="link" href="https://www.cnblogs.com/zhaopei/p/4174811.html">https://www.cnblogs.com/zhaopei/p/4174811.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/guokaifeng/p/11121939.html">https://www.cnblogs.com/guokaifeng/p/11121939.html<i class="fas fa-external-link-alt"></i></a> </p>
+<p>（现在生成外链链接可能会没用，歌单上面的id其实就是外链id</p>
+<img src="1503868-20200118230136057-1795119443.png" alt>
+
+<p> </p>
+<p>可以看到这里的id和上面一样，至于其他的参数，前面两个教程都有解释</p>
+<img src="1503868-20200118230447941-838547165.png" alt>
+
+<p> </p>
+<p>有些时候发现博客园装饰出了点问题，不妨把这个禁用了 ↓↓</p>
+<img src="1503868-20200312211648481-430248655.png" alt>
+
+<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -4822,6 +4822,38 @@ insert into test1 value(3,15);
       </categories>
   </entry>
   <entry>
+    <title>浅谈xss的各种触发方式以及防护绕过</title>
+    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>触发方式都写在里面了</p>
+<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
+
+<p> </p>
+<p> </p>
+<p>只写部分，更多触发事件可以参考这两篇文章</p>
+<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p>再说一下防护：</p>
+<p>输入检测：</p>
+<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
+<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
+<p>关键字黑名单：</p>
+<p>　　换一个关键字，反正上面有这么多。</p>
+<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　或者用大小写绕过</p>
+<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
+<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
+<p> </p>
+<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
+<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>注入的原理以及防御</title>
     <url>/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/</url>
     <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
@@ -4861,38 +4893,6 @@ insert into test1 value(3,15);
 <h3 id="严格的参数校验"><a href="#严格的参数校验" class="headerlink" title="严格的参数校验"></a>严格的参数校验</h3><p>拿正则或者其他的函数，过滤掉不该出现的关键字或字符</p>
 <h3 id="owasp-top10中关于如何防止注入"><a href="#owasp-top10中关于如何防止注入" class="headerlink" title="owasp top10中关于如何防止注入"></a>owasp top10中关于如何防止注入</h3><p>防止注入漏洞需要将数据与命令语句、查询语句分隔开来。<br>• 最佳选择是使用安全的API，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM或实体框架。<br>  <strong>注意：当参数化时，存储过程仍然可以引入SQL注入，如果PL/SQL或T-SQL将查询和数据连接在一起，或者执行带有立即执行或exec()的恶意数据。</strong><br>• 使用正确的或“白名单”的具有恰当规范化的输入验证方法同样会有助于防止注入攻击，但这不是一个完整的防御，因为许多应用程序在输入中需要特殊字符，例如文本区域或移动应用程序的API。<br>• 对于任何剩余的动态查询，可以使用该解释器的特定转义语法转义特殊字符。OWASP的Java Encoder和类似的库提供了这样的转义例程。<br>  <strong>注意：SQL结构，比如：表名、列名等无法转义，因此用户提供的结构名是非常危险的。这是编写软件中的一个常见问题。</strong><br>• 在查询中使用LIMIT和其他SQL控件，以防止在SQL注入时大量地泄露记录。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>浅谈xss的各种触发方式以及防护绕过</title>
-    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>触发方式都写在里面了</p>
-<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
-
-<p> </p>
-<p> </p>
-<p>只写部分，更多触发事件可以参考这两篇文章</p>
-<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>再说一下防护：</p>
-<p>输入检测：</p>
-<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
-<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
-<p>关键字黑名单：</p>
-<p>　　换一个关键字，反正上面有这么多。</p>
-<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　或者用大小写绕过</p>
-<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
-<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
-<p> </p>
-<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
-<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
   </entry>
   <entry>
     <title>渗透三字经</title>
