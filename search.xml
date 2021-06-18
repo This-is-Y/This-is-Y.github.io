@@ -5829,4 +5829,38 @@ insert into test1 value(3,15);
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>由于粗心，注入的时候没有第一时间找到各个用户的密码，导致后面ssh爆破的时候傻乎乎的花了很多时间，过于粗心。文件包含这个很早就注意过了，但是却没有想到去文件包含（他已经考过一次），后面提权的时候，直接写入passwd文件创建用户，这一点以前没有碰过。</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>信息搜集</title>
+    <url>/2021/06/04/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</url>
+    <content><![CDATA[<p>freebuf：<a class="link" href="https://www.freebuf.com/articles/web/190403.html">https://www.freebuf.com/articles/web/190403.html<i class="fas fa-external-link-alt"></i></a><br><img src="1543072448_5bf96ac069a0b.png" alt="1543072448_5bf96ac069a0b"></p>
+<h2 id="信息搜集内容"><a href="#信息搜集内容" class="headerlink" title="信息搜集内容"></a>信息搜集内容</h2><ul>
+<li>服务器信息(端口、服务、IP)</li>
+<li>网站信息（服务器操作系统、中间件、数据库、编程语言、敏感目录与文件、旁站查询、C段查询）</li>
+<li>域名信息( whois、备案信息、子域名收集)</li>
+<li>网站管理员信息(姓名、职务、生日、联系电话、邮件地址)</li>
+</ul>
+<p>判断CDN<br>    多地ping<br>        <a class="link" href="http://ping.chinaz.com/">http://ping.chinaz.com/<i class="fas fa-external-link-alt"></i></a> 站长之家ping测试在最后有国外的服务器<br>        <a class="link" href="https://www.wepcc.com/">https://www.wepcc.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p>绕过CDN<br>CDN按流浪计费，可能不在境外使用，或者它的边缘业务（子域名）不会架设CDN服务</p>
+<ul>
+<li>国外PING</li>
+<li>子域名PING（子域名在同一个服务器或者C段）</li>
+<li>邮件服务器（子域名在同一个服务器或者C段）</li>
+<li>DNS解析记录（从前没钱挂CDN，IP被记录下来了）<br>  <a class="link" href="https://site.ip138.com/">https://site.ip138.com<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://viewdns.info/history">https://viewdns.info/history<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://securitytrails.com/">https://securitytrails.com/<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>子域名查询：</p>
+<ul>
+<li><p>oneforall  <a class="link" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p>证书查询 </p>
+<p>   <a class="link" href="https://myssl.com/">https://myssl.com/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://search.censys.io/">https://search.censys.io/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://crt.sh/?Identity=">https://crt.sh/?Identity=<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://spyse.com/">https://spyse.com/<i class="fas fa-external-link-alt"></i></a>  查子域名收费</p>
+</li>
+</ul>
+<p>以默安为例子</p>
+<p>公司全称叫：杭州默安科技有限公司<br>官网：<a class="link" href="https://www.moresec.cn/">https://www.moresec.cn/<i class="fas fa-external-link-alt"></i></a></p>
+<p>在企查查上查到对外投资四家公司<br>    北京默安科技有限公司<br>    深圳默安科技有限公司<br>    上海默知安科技有限公司<br>    长沙火线云网络科技有限公司</p>
+<p><img src="image-20210604153232318.png" alt="image-20210604153232318"></p>
+<p>查电话查到另一家公司  0571-57890068<br>    杭州云中盟股权投资合伙企业（有限合伙）</p>
+<p>留个坑</p>
+]]></content>
+  </entry>
 </search>
