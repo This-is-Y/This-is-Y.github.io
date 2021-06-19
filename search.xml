@@ -5865,4 +5865,17 @@ insert into test1 value(3,15);
         <category>cnblogs</category>
       </categories>
   </entry>
+  <entry>
+    <title>在博客中添加自定义页面</title>
+    <url>/2021/06/19/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<h2 id="创建页面文件夹"><a href="#创建页面文件夹" class="headerlink" title="创建页面文件夹"></a>创建页面文件夹</h2><p>在blog/source下面，创建一个文件夹，里面就是要自定义的网页的全部文件。最好是有过index.html</p>
+<h2 id="网页内容"><a href="#网页内容" class="headerlink" title="网页内容"></a>网页内容</h2><p>比如说我这里是想添加一个小游戏<br>游戏github：<a class="link" href="https://github.com/SadTomlzr/catch-cat">https://github.com/SadTomlzr/catch-cat<i class="fas fa-external-link-alt"></i></a><br>原游戏地址：<a class="link" href="https://sadtomlzr.github.io/catch-cat/">https://sadtomlzr.github.io/catch-cat/<i class="fas fa-external-link-alt"></i></a><br>这里我直接把那几个文件放在新建的文件夹里了</p>
+<p><img src="image-20210619210816615.png" alt="image-20210619210816615"></p>
+<p><img src="image-20210619210832495.png" alt="image-20210619210832495"></p>
+<h2 id="停用渲染"><a href="#停用渲染" class="headerlink" title="停用渲染"></a>停用渲染</h2><p>在hexo的配置文件_config.yml 里的skip_render中添加不需要渲染的文件</p>
+<p>** 注意：skip_render参数设置的路径是相对于source目录的路径。 **，比如D:\MyBlog\source\Cat目录，就写成Cat/*就行了，*表示全部文件，可以</p>
+<p><img src="image-20210619211021410.png" alt="image-20210619211021410"></p>
+<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><p>这样添加的页面是在博客中是没有入口的。就是只能输url进去。入口需要在主题里添加，</p>
+]]></content>
+  </entry>
 </search>
