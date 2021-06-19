@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>asp、aspx、php、jsp万能密码大全</title>
+    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>.git  .svn  .ds_store  .hg  .idea  .swp    等网页文件泄露</title>
     <url>/2020/03/14/%20.git%20%20.svn%20%20.ds_store%20%20.hg%20%20.idea%20%20.swp%20%20%20%20%E7%AD%89%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12492242.html">源地址：https://www.cnblogs.com/This-is-Y/p/12492242.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -33,16 +43,6 @@
       </categories>
   </entry>
   <entry>
-    <title>asp、aspx、php、jsp万能密码大全</title>
-    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>辗转相除法求模的逆元</title>
     <url>/2020/11/24/%20%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95%E6%B1%82%E6%A8%A1%E7%9A%84%E9%80%86%E5%85%83/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14031026.html">源地址：https://www.cnblogs.com/This-is-Y/p/14031026.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -63,6 +63,64 @@
 <p> <img src="1503868-20201124163230029-1262419270.png" alt loading="lazy"></p>
 <p> </p>
 <p> <img src="1503868-20201124163238215-138775964.png" alt loading="lazy"></p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android studio新建一个activity</title>
+    <url>/2021/03/17/Android%20studio%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAactivity/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14551779.html">源地址：https://www.cnblogs.com/This-is-Y/p/14551779.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>1、</strong></p>
+<p>res-&gt;layout右键新建一个xml-&gt;layout xml file</p>
+<img src="1503868-20210317195835357-70993166.png" alt loading="lazy">
+
+<p> </p>
+<p> 名字，布局</p>
+<img src="1503868-20210317195920797-142464714.png" alt loading="lazy">
+
+<p> </p>
+<p> 然后随便写点东西到新建的xml文件中</p>
+<p> </p>
+<img src="1503868-20210317200228775-1982566868.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>2、</strong></p>
+<p>app-&gt;java-&gt;第一个 。右键-&gt;新建-&gt;java类</p>
+<img src="1503868-20210317200317728-1094209561.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> <img src="1503868-20210317200419083-640819000.png" alt loading="lazy"></p>
+<p> </p>
+<p> </p>
+<p> 加入代码</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>3、</strong></p>
+<p>在app-&gt;manifest-&gt;AndroidManifest.xml文件中的&lt;application&gt;标签内添加一个新标签，注册这个activity</p>
+<p> </p>
+<p>name是新建的activity名字，后面的label、action android:name随意，自己记得就好了</p>
+<p> </p>
+<p>到这一步就已经建完了。配置一个按钮检测一下</p>
+<p> </p>
+<p>在Activity_Main.xml中新建一个按钮，</p>
+<p> </p>
+<p>在MainActivity.java中写onClick函数。不要写在onCreate函数里面了</p>
+<p> </p>
+<img src="1503868-20210317202726826-1982007743.png" alt loading="lazy">
+
+<p> </p>
+<p> 这里的switch用来获取按钮id，用来区分是按下的哪个按钮。后面的这两个东西（）就是之前在manifest文件中添加的&lt;action android:name=“”&gt;。编译器不会联想，要自己输入，区分大小写</p>
+<img src="1503868-20210317202835646-936331724.png" alt loading="lazy">
+
+<p> </p>
+<p> <img src="1503868-20210317202927158-140619376.png" alt loading="lazy"></p>
 <p> </p>
 ]]></content>
       <categories>
@@ -221,98 +279,6 @@
 <p>（2）php文件中的代码中的这一句exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);具体是什么意思，如何理解</p>
 <p>（3）python -c ‘import pty;pty.spawn(“/bin/bash”)’这玩意儿又是个啥东西</p>
 <p>（4）echo ‘abc:$1$abc$yzqAxwzjwaO0BUFj9nRwF/:0:0::/root:/bin/bash’&gt;&gt;/etc/passwdsu写入文件的格式，参数</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Android studio新建一个activity</title>
-    <url>/2021/03/17/Android%20studio%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAactivity/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14551779.html">源地址：https://www.cnblogs.com/This-is-Y/p/14551779.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>1、</strong></p>
-<p>res-&gt;layout右键新建一个xml-&gt;layout xml file</p>
-<img src="1503868-20210317195835357-70993166.png" alt loading="lazy">
-
-<p> </p>
-<p> 名字，布局</p>
-<img src="1503868-20210317195920797-142464714.png" alt loading="lazy">
-
-<p> </p>
-<p> 然后随便写点东西到新建的xml文件中</p>
-<p> </p>
-<img src="1503868-20210317200228775-1982566868.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> </p>
-<p><strong>2、</strong></p>
-<p>app-&gt;java-&gt;第一个 。右键-&gt;新建-&gt;java类</p>
-<img src="1503868-20210317200317728-1094209561.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> <img src="1503868-20210317200419083-640819000.png" alt loading="lazy"></p>
-<p> </p>
-<p> </p>
-<p> 加入代码</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p><strong>3、</strong></p>
-<p>在app-&gt;manifest-&gt;AndroidManifest.xml文件中的&lt;application&gt;标签内添加一个新标签，注册这个activity</p>
-<p> </p>
-<p>name是新建的activity名字，后面的label、action android:name随意，自己记得就好了</p>
-<p> </p>
-<p>到这一步就已经建完了。配置一个按钮检测一下</p>
-<p> </p>
-<p>在Activity_Main.xml中新建一个按钮，</p>
-<p> </p>
-<p>在MainActivity.java中写onClick函数。不要写在onCreate函数里面了</p>
-<p> </p>
-<img src="1503868-20210317202726826-1982007743.png" alt loading="lazy">
-
-<p> </p>
-<p> 这里的switch用来获取按钮id，用来区分是按下的哪个按钮。后面的这两个东西（）就是之前在manifest文件中添加的&lt;action android:name=“”&gt;。编译器不会联想，要自己输入，区分大小写</p>
-<img src="1503868-20210317202835646-936331724.png" alt loading="lazy">
-
-<p> </p>
-<p> <img src="1503868-20210317202927158-140619376.png" alt loading="lazy"></p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>B站缓存剧集散乱，用python移动，重命名文件</title>
-    <url>/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12423345.html">源地址：https://www.cnblogs.com/This-is-Y/p/12423345.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>使用python的shutil库</p>
-<p>移动</p>
-<p>shutil.move(要移动的文件位置，目标位置）</p>
-<p>复制</p>
-<p>shutil.copy(要移动的文件位置，目标位置）</p>
-<p>如shutil.move(r’E:\41942769\test\111.txt’, r’E:\41942769\test_2\222.txt’)</p>
-<p>(这里加在字符串前面的的r是为了防止 ‘&#39; 转义)</p>
-<p> </p>
-<p>这里是发现b站下载的视频如果有很多集，在文件夹中是如此显示的</p>
-<img src="1503868-20200305222945564-1240341573.png" alt>
-
-<img src="1503868-20200305222935760-32275974.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20200305223031567-526662282.png" alt></p>
-<p> </p>
-<p> 每个视频文件在最后都是0.blv的格式，其他的一些json文件，xml文件是视频信息和弹幕信息。</p>
-<p>这里用了两个小脚本把视频都放在一起，并且把视频文件命名位在B站中看到的名字</p>
-<p>移动</p>
-<p>重命名</p>
-<p>这边在分集下的文件夹中的entry.json文件中找到视频名字，用json稍微操作一下就可以得到视频名字。</p>
-<p>最后结果是这样的</p>
-<img src="1503868-20200305223537903-184238024.png" alt>
-
-<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -481,126 +447,82 @@
       </categories>
   </entry>
   <entry>
-    <title>CSS学习笔记_1</title>
-    <url>/2019/12/16/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_1/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12048236.html">源地址：https://www.cnblogs.com/This-is-Y/p/12048236.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>1.调用</strong></p>
-<p>　　　<strong>内部样式表：</strong></p>
-<p>　　　css可以直接在html代码里面使用&lt;/style&gt;&lt;/style&gt;节点。允许html代码中有两个style节点，但是起作用的是靠后的节点</p>
+    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
+    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>SRF(跨站请求伪造)</p>
+<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
+<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
+<p>CSRF的两个重点：</p>
+<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
+<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
 <p> </p>
+<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
+<p>先把安全程度调低</p>
+<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
+
+<p> 修改密码为123456。</p>
+<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
+<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
+<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
+
+<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
+<img src="1503868-20200310172945814-2015757352.png" alt>
+
+<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
+<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
+
 <p> </p>
-<p>　　　<img src="1503868-20191216111741520-263907810.png" alt width="727" height="457"></p>
+<p>这边进入到dvwa数据库</p>
+<img src="1503868-20200310174202678-902204027.png" alt>
+
+<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
+<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
+
+<p> 登陆。点击刚才构造的文件的按钮。</p>
+<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
+<img src="1503868-20200310174844136-268339516.png" alt>
+
+<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
+<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
+<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
+
+<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
+<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>B站缓存剧集散乱，用python移动，重命名文件</title>
+    <url>/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12423345.html">源地址：https://www.cnblogs.com/This-is-Y/p/12423345.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用python的shutil库</p>
+<p>移动</p>
+<p>shutil.move(要移动的文件位置，目标位置）</p>
+<p>复制</p>
+<p>shutil.copy(要移动的文件位置，目标位置）</p>
+<p>如shutil.move(r’E:\41942769\test\111.txt’, r’E:\41942769\test_2\222.txt’)</p>
+<p>(这里加在字符串前面的的r是为了防止 ‘&#39; 转义)</p>
 <p> </p>
+<p>这里是发现b站下载的视频如果有很多集，在文件夹中是如此显示的</p>
+<img src="1503868-20200305222945564-1240341573.png" alt>
+
+<img src="1503868-20200305222935760-32275974.png" alt>
+
 <p> </p>
-<p> 　　如图的代码，起作用的是最后一个</p>
-<p>　　&lt;style&gt;<br>　　h3{font-size:20pt;color:black;}<br>　　&lt;/style&gt;</p>
-<p>　　<strong>外部样式表：</strong></p>
-<p>　　在&lt;head&gt;&lt;/head&gt;节点中使用&lt;link rel=’stylesheet’  type=’text/css’   href=’css文件位置’ /&gt; 代码来调用css代码</p>
-<p>　　<strong>多重样式表：</strong></p>
-<p>·　　这个放在后面再说</p>
-<p><strong>2.注释</strong></p>
-<p>**　　**html：&lt;!– 注释内容 –&gt; 进行注释。</p>
-<p>　　css：·/* 注释内柔 */ 进行注释。</p>
-<p>　　这里再说一下其他语言的注释方法(参考：<a class="link" href="https://blog.csdn.net/tim_st/article/details/78185807">https://blog.csdn.net/tim_st/article/details/78185807<i class="fas fa-external-link-alt"></i></a>)</p>
-<p>　　C/C++/C#<br>　　行注释：//这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> <img src="1503868-20200305223031567-526662282.png" alt></p>
 <p> </p>
-<p>　　Java<br>　　行注释：//这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> 每个视频文件在最后都是0.blv的格式，其他的一些json文件，xml文件是视频信息和弹幕信息。</p>
+<p>这里用了两个小脚本把视频都放在一起，并且把视频文件命名位在B站中看到的名字</p>
+<p>移动</p>
+<p>重命名</p>
+<p>这边在分集下的文件夹中的entry.json文件中找到视频名字，用json稍微操作一下就可以得到视频名字。</p>
+<p>最后结果是这样的</p>
+<img src="1503868-20200305223537903-184238024.png" alt>
+
 <p> </p>
-<p>　　JavaScript<br>　　行注释：//这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
-<p> </p>
-<p>　　XML<br>　　块注释：&lt;!–这里是注释–&gt;</p>
-<p> </p>
-<p>　　Python<br>　　行注释：#这里是注释<br>　　块注释：’’’这里是注释’’’</p>
-<p>　　PHP</p>
-<p>　　行注释：**// **这里是注释</p>
-<p>**　　*<em>块注释：/</em> 这里是注释内容 */</p>
-<p> </p>
-<p>　　SQL Server/Oracle PLSQL<br>　　行注释：–这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
-<p> </p>
-<p>　　MySQL<br>　　行注释：–这里是注释<br>　　行注释：#这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
-<p> </p>
-<p>　　VB</p>
-<p> </p>
-<p>　　行注释：’这里是注释</p>
-<p> </p>
-<p>　　汇编语言</p>
-<p> </p>
-<p>　　行注释：;这里是注释</p>
-<p> </p>
-<p>　　perl</p>
-<p> </p>
-<p>　　行注释：# 这是一个单行注释</p>
-<p> </p>
-<p>　　块注释：</p>
-<p> </p>
-<p>　　=pod</p>
-<p> </p>
-<p> 　　这里是注释<br>　　=cut</p>
-<p><strong>3.背景</strong></p>
-<ul>
-<li>background-color   #颜色</li>
-<li>background-image　 #图片</li>
-<li>background-repeat     #平铺方式</li>
-<li>background-attachment        #背景图是否固定</li>
-<li>background-position      #位置</li>
-</ul>
-<p>　　background-image:url(图片名)。如background-image:url(‘img.jpg’)（不是位置，图片应放在代码同目录下）</p>
-<p>　　background-repeat：repeat-x(水平平铺)，repeat-y(垂直平铺)，no-repeat(不平铺) </p>
-<p>**<em><em>　　**</em></em>background-attachment：</p>
-<p>　　<img src="1503868-20191216151036055-1946181375.png" alt width="820" height="215"></p>
-<p>　　background-position：</p>
-<p>　　<img src="1503868-20191216150936068-1208465365.png" alt width="815" height="426"></p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> 　　然后可以采用简写属性，如body {background:#ffffff url(‘img_tree.png’) no-repeat right top;}</p>
-<p>　　简写属性对应关系为：</p>
-<ul>
-<li>background-color</li>
-<li>background-image</li>
-<li>background-repeat</li>
-<li>background-attachment</li>
-<li>background-position</li>
-</ul>
-<p>** 4.选择器**</p>
-<p>　　选择器分为id选择器和class选择器，作用效果相同，可以通过特定的id或class对一组元素进行处理。</p>
-<p>　　id选择器使用#id值{}。如&lt;p id=”part1”&gt;Hello World!&lt;/p&gt; id选择器：#part1{ text-align:center; color:red;}</p>
-<p>　　class选择器使用p.class值{}(只有p节点内有class属性的时候，可以写为.class值{})。如&lt;p class=”part2”&gt;Hello World!&lt;/p&gt; id选择器：.class2{ text-align:center; color:red;}</p>
-<p>　　值得注意的是：ID属性不要以数字开头，数字开头的ID在 Mozilla/Firefox 浏览器中不起作用。</p>
-<p>　　　　　　　　　类名的第一个字符不能使用数字！它无法在 Mozilla 或 Firefox 中起作用。</p>
-<p>　　　　　　　　（火狐事真多　　　　==）</p>
-<p><strong>5.文本属性</strong></p>
-<p>　　color：颜色</p>
-<p>　　text-align：对齐方式</p>
-<p>　　text-decoration：文本修饰(主要用于消除下划线)</p>
-<p>　　text-transform：文本转化(大小写转化或首字母大小写转化)</p>
-<p>　　text-indent：文本缩进</p>
-<p>　　letter-spacing：字符之间的距离</p>
-<p>　　line-height：行与行之间的距离</p>
-<p>　　direction：文本方向(从右到左)</p>
-<p>　　word-spacing：单词之间的距离(前面那个是字符)(中文无效)</p>
-<p>　　white-space:元素环绕</p>
-<p>　　vertical-align：图片对齐方向</p>
-<p>　　text-shadow：添加文本阴影</p>
-<p>　　值得注意的事： 对于W3C标准的CSS：如果你定义了颜色属性，你还必须定义背景色属性。</p>
-<p>　　font ：</p>
-<p>　　　　font-family：设置字体系列</p>
-<p>　　　　font-style：设置字体样式</p>
-<p>　　　　font-size：设置字体大小(为了避免Internet Explorer 中无法调整文本的问题，许多开发者使用 em 单位代替像素。em的尺寸单位由W3C建议。1em和当前字体大小相等。在浏览器中默认的文字大小是16px。因此，1em的默认大小是16px。可以通过下面这个公式将像素转换为em：px/16=em**)**</p>
-<p>　　　　font-weight：设置字体粗细</p>
-<p>　　　　font-variant：设置小型大写字体</p>
-<p>6.链接</p>
-<ul>
-<li>a:link - 正常，未访问过的链接</li>
-<li>a:visited - 用户已访问过的链接</li>
-<li>a:hover - 当用户鼠标放在链接上时</li>
-<li>a:active - 链接被点击的那一刻</li>
-</ul>
-<p>　　如 a:link {color:#000000;} </p>
-<p>　 　   a:visited {color:#00FF00;} </p>
-<p>　　    a:hover {color:#FF00FF;}  </p>
-<p>　　    a:active {color:#0000FF;} <br></p>
-<p>css内容还有很多，这里先写一部分</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -788,6 +710,132 @@
 <p> </p>
 <p> </p>
 <p>　</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>CSS学习笔记_1</title>
+    <url>/2019/12/16/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_1/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12048236.html">源地址：https://www.cnblogs.com/This-is-Y/p/12048236.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>1.调用</strong></p>
+<p>　　　<strong>内部样式表：</strong></p>
+<p>　　　css可以直接在html代码里面使用&lt;/style&gt;&lt;/style&gt;节点。允许html代码中有两个style节点，但是起作用的是靠后的节点</p>
+<p> </p>
+<p> </p>
+<p>　　　<img src="1503868-20191216111741520-263907810.png" alt width="727" height="457"></p>
+<p> </p>
+<p> </p>
+<p> 　　如图的代码，起作用的是最后一个</p>
+<p>　　&lt;style&gt;<br>　　h3{font-size:20pt;color:black;}<br>　　&lt;/style&gt;</p>
+<p>　　<strong>外部样式表：</strong></p>
+<p>　　在&lt;head&gt;&lt;/head&gt;节点中使用&lt;link rel=’stylesheet’  type=’text/css’   href=’css文件位置’ /&gt; 代码来调用css代码</p>
+<p>　　<strong>多重样式表：</strong></p>
+<p>·　　这个放在后面再说</p>
+<p><strong>2.注释</strong></p>
+<p>**　　**html：&lt;!– 注释内容 –&gt; 进行注释。</p>
+<p>　　css：·/* 注释内柔 */ 进行注释。</p>
+<p>　　这里再说一下其他语言的注释方法(参考：<a class="link" href="https://blog.csdn.net/tim_st/article/details/78185807">https://blog.csdn.net/tim_st/article/details/78185807<i class="fas fa-external-link-alt"></i></a>)</p>
+<p>　　C/C++/C#<br>　　行注释：//这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> </p>
+<p>　　Java<br>　　行注释：//这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> </p>
+<p>　　JavaScript<br>　　行注释：//这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> </p>
+<p>　　XML<br>　　块注释：&lt;!–这里是注释–&gt;</p>
+<p> </p>
+<p>　　Python<br>　　行注释：#这里是注释<br>　　块注释：’’’这里是注释’’’</p>
+<p>　　PHP</p>
+<p>　　行注释：**// **这里是注释</p>
+<p>**　　*<em>块注释：/</em> 这里是注释内容 */</p>
+<p> </p>
+<p>　　SQL Server/Oracle PLSQL<br>　　行注释：–这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> </p>
+<p>　　MySQL<br>　　行注释：–这里是注释<br>　　行注释：#这里是注释<br>　　块注释：/<em>这里是注释</em>/</p>
+<p> </p>
+<p>　　VB</p>
+<p> </p>
+<p>　　行注释：’这里是注释</p>
+<p> </p>
+<p>　　汇编语言</p>
+<p> </p>
+<p>　　行注释：;这里是注释</p>
+<p> </p>
+<p>　　perl</p>
+<p> </p>
+<p>　　行注释：# 这是一个单行注释</p>
+<p> </p>
+<p>　　块注释：</p>
+<p> </p>
+<p>　　=pod</p>
+<p> </p>
+<p> 　　这里是注释<br>　　=cut</p>
+<p><strong>3.背景</strong></p>
+<ul>
+<li>background-color   #颜色</li>
+<li>background-image　 #图片</li>
+<li>background-repeat     #平铺方式</li>
+<li>background-attachment        #背景图是否固定</li>
+<li>background-position      #位置</li>
+</ul>
+<p>　　background-image:url(图片名)。如background-image:url(‘img.jpg’)（不是位置，图片应放在代码同目录下）</p>
+<p>　　background-repeat：repeat-x(水平平铺)，repeat-y(垂直平铺)，no-repeat(不平铺) </p>
+<p>**<em><em>　　**</em></em>background-attachment：</p>
+<p>　　<img src="1503868-20191216151036055-1946181375.png" alt width="820" height="215"></p>
+<p>　　background-position：</p>
+<p>　　<img src="1503868-20191216150936068-1208465365.png" alt width="815" height="426"></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> 　　然后可以采用简写属性，如body {background:#ffffff url(‘img_tree.png’) no-repeat right top;}</p>
+<p>　　简写属性对应关系为：</p>
+<ul>
+<li>background-color</li>
+<li>background-image</li>
+<li>background-repeat</li>
+<li>background-attachment</li>
+<li>background-position</li>
+</ul>
+<p>** 4.选择器**</p>
+<p>　　选择器分为id选择器和class选择器，作用效果相同，可以通过特定的id或class对一组元素进行处理。</p>
+<p>　　id选择器使用#id值{}。如&lt;p id=”part1”&gt;Hello World!&lt;/p&gt; id选择器：#part1{ text-align:center; color:red;}</p>
+<p>　　class选择器使用p.class值{}(只有p节点内有class属性的时候，可以写为.class值{})。如&lt;p class=”part2”&gt;Hello World!&lt;/p&gt; id选择器：.class2{ text-align:center; color:red;}</p>
+<p>　　值得注意的是：ID属性不要以数字开头，数字开头的ID在 Mozilla/Firefox 浏览器中不起作用。</p>
+<p>　　　　　　　　　类名的第一个字符不能使用数字！它无法在 Mozilla 或 Firefox 中起作用。</p>
+<p>　　　　　　　　（火狐事真多　　　　==）</p>
+<p><strong>5.文本属性</strong></p>
+<p>　　color：颜色</p>
+<p>　　text-align：对齐方式</p>
+<p>　　text-decoration：文本修饰(主要用于消除下划线)</p>
+<p>　　text-transform：文本转化(大小写转化或首字母大小写转化)</p>
+<p>　　text-indent：文本缩进</p>
+<p>　　letter-spacing：字符之间的距离</p>
+<p>　　line-height：行与行之间的距离</p>
+<p>　　direction：文本方向(从右到左)</p>
+<p>　　word-spacing：单词之间的距离(前面那个是字符)(中文无效)</p>
+<p>　　white-space:元素环绕</p>
+<p>　　vertical-align：图片对齐方向</p>
+<p>　　text-shadow：添加文本阴影</p>
+<p>　　值得注意的事： 对于W3C标准的CSS：如果你定义了颜色属性，你还必须定义背景色属性。</p>
+<p>　　font ：</p>
+<p>　　　　font-family：设置字体系列</p>
+<p>　　　　font-style：设置字体样式</p>
+<p>　　　　font-size：设置字体大小(为了避免Internet Explorer 中无法调整文本的问题，许多开发者使用 em 单位代替像素。em的尺寸单位由W3C建议。1em和当前字体大小相等。在浏览器中默认的文字大小是16px。因此，1em的默认大小是16px。可以通过下面这个公式将像素转换为em：px/16=em**)**</p>
+<p>　　　　font-weight：设置字体粗细</p>
+<p>　　　　font-variant：设置小型大写字体</p>
+<p>6.链接</p>
+<ul>
+<li>a:link - 正常，未访问过的链接</li>
+<li>a:visited - 用户已访问过的链接</li>
+<li>a:hover - 当用户鼠标放在链接上时</li>
+<li>a:active - 链接被点击的那一刻</li>
+</ul>
+<p>　　如 a:link {color:#000000;} </p>
+<p>　 　   a:visited {color:#00FF00;} </p>
+<p>　　    a:hover {color:#FF00FF;}  </p>
+<p>　　    a:active {color:#0000FF;} <br></p>
+<p>css内容还有很多，这里先写一部分</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1361,54 +1409,6 @@
 <p><img src="image-20210617121256110.png" alt="image-20210617121256110"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一篇记录得有些乱，这个靶机看来作者是想让我们从github来找敏感信息，找到后使用ssh连上后，后面的操作我确实想不到，从网页设置文件中找到了数据库密码，连上数据库后修改admin用户的密码，再在网页中使用admin用户反弹更高权限的shell，然后就是和上一个靶机类似操作的，修改shell文件，利用定时任务来提权</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
-    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>SRF(跨站请求伪造)</p>
-<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
-<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
-<p>CSRF的两个重点：</p>
-<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
-<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
-<p> </p>
-<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
-<p>先把安全程度调低</p>
-<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
-
-<p> 修改密码为123456。</p>
-<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
-<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
-<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
-
-<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
-<img src="1503868-20200310172945814-2015757352.png" alt>
-
-<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
-<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
-
-<p> </p>
-<p>这边进入到dvwa数据库</p>
-<img src="1503868-20200310174202678-902204027.png" alt>
-
-<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
-<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
-
-<p> 登陆。点击刚才构造的文件的按钮。</p>
-<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
-<img src="1503868-20200310174844136-268339516.png" alt>
-
-<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
-<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
-<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
-
-<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
-<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
   </entry>
   <entry>
     <title>DC-8</title>
@@ -2127,36 +2127,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>VirtualBox上的靶机与VMware kali网络问题</title>
-    <url>/2019/12/23/VirtualBox%E4%B8%8A%E7%9A%84%E9%9D%B6%E6%9C%BA%E4%B8%8EVMware%20kali%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12084588.html">源地址：https://www.cnblogs.com/This-is-Y/p/12084588.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>在Vulnhub上有许多靶机。其中有很多是在VirtualBox上运行的，而kali大多是使用Vmware</p>
-<p>打开kali，找到虚拟机网络设置</p>
-<img src="1503868-20191223163027008-226967397.png" alt>
-
-<p> </p>
-<img src="1503868-20191223163121461-1181037805.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20191223163150522-798557590.png" alt></p>
-<p> </p>
-<p> 桥接模式</p>
-<p>这里几个选项，（自己记录一下）</p>
-<p>VirtualBox的DC-2虚拟机采用如下网络配置</p>
-<img src="1503868-20191223164132359-2094858340.png" alt>
-
-<p> </p>
-<p>Vmware下的aiweb-2采用和kali一样的桥接模式</p>
-<p>自动 -&gt; 可以扫到virtualBox的虚拟机，但是vmware的虚拟机扫不到</p>
-<p>Realtek PCIe GBE Family Controller，Sangfor SSL VPN CS Support System VNIXC，Microsoft Wi-Fi Direct Virtual Adapter和Microsoft Wi-Fi Direct Virtual Adapter #3  -&gt; 在使用arp-scan -l 时，提示my_lookupdev: no suitable device found</p>
-<p> VirtualBox Host-Only Ethernet Adapter -&gt; 不会有上面的情况，但是使用arp-scan -l 扫不到任何东西</p>
-<p>Qualcomm Atheros QCA61x4A Wireless Network Adapter -&gt; 可以扫到所有东西</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Vulnhub DC-1靶机渗透学习</title>
     <url>/2019/10/10/Vulnhub%20DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11637694.html">源地址：https://www.cnblogs.com/This-is-Y/p/11637694.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -2244,7 +2214,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#102;&#x6c;&#97;&#x67;&#52;&#64;&#49;&#x39;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x31;&#50;&#x34;&#46;&#55;&#x36;">&#102;&#x6c;&#97;&#x67;&#52;&#64;&#49;&#x39;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x31;&#50;&#x34;&#46;&#55;&#x36;<i class="fas fa-external-link-alt"></i></a></p>
+<p>ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#103;&#52;&#64;&#49;&#x39;&#x32;&#46;&#49;&#54;&#x38;&#46;&#x31;&#50;&#52;&#46;&#x37;&#54;">&#x66;&#108;&#97;&#103;&#52;&#64;&#49;&#x39;&#x32;&#46;&#49;&#54;&#x38;&#46;&#x31;&#50;&#52;&#46;&#x37;&#54;<i class="fas fa-external-link-alt"></i></a></p>
 <img src="1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
@@ -2300,7 +2270,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#102;&#x6c;&#x61;&#103;&#x34;&#64;&#49;&#57;&#x32;&#46;&#49;&#x36;&#56;&#46;&#49;&#x32;&#x34;&#46;&#x37;&#x36;">&#102;&#x6c;&#x61;&#103;&#x34;&#64;&#49;&#57;&#x32;&#46;&#49;&#x36;&#56;&#46;&#49;&#x32;&#x34;&#46;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#x6c;&#x61;&#x67;&#52;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#46;&#x31;&#x32;&#x34;&#x2e;&#55;&#54;">&#x66;&#x6c;&#x61;&#x67;&#52;&#64;&#49;&#57;&#50;&#46;&#49;&#x36;&#x38;&#46;&#x31;&#x32;&#x34;&#x2e;&#55;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -2412,86 +2382,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>这两个放一起解决，如果端口没问题的话，那就用管理员打开cmd，执行httpd -k start</p>
 <p> </p>
 <p>暂时写到这里，我出现的问题就这么多，后续再更新</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>cobalt strike入门学习</title>
-    <url>/2020/06/12/cobalt%20strike%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13110385.html">源地址：https://www.cnblogs.com/This-is-Y/p/13110385.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>安装：</strong></p>
-<p>我选的服务器是ubuntu，首先安装java</p>
-<p>apt-get install openjdk-8-jdk</p>
-<p>等待安装</p>
-<p>输入java -version测试安装是否安装成功（如下图即已安装成功）</p>
-<p><strong><img src="1503868-20200615092500010-1005882218.png" alt loading="lazy"></strong></p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p>然后将cs文件上传到服务器上，本机windows，这里用pscp</p>
-<p>上传文件格式： pscp+空格+本地文件+空格+用户名@ip地址:远端路径</p>
-<p> </p>
-<p>（虽然说在服务器上的启动文件是<strong>teamserver</strong>，但是这并不意味着只上传一个teamserver文件就完事了。最妥当的办法是压缩整个cs文件，全部上传到服务器中。</p>
-<img src="1503868-20200615092309174-1297037155.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> ）</p>
-<p> </p>
-<p>要记得设置远端路径，成功后会让你输入服务器密码，然后开始等上传完成</p>
-<img src="1503868-20200612201018161-37228193.png" alt loading="lazy">
-
-<p> </p>
-<p> 上传完后到服务器中查看，</p>
-<p> <img src="1503868-20200612202623428-112161419.png" width="900" loading="lazy"></p>
-<p> </p>
-<p> 可以看到红色的就是刚刚上传的文件，用apt下载一个unzip ：apt-get isntall unzip</p>
-<p>创建一个文件夹放cs :mkdir /opt/cobaltstrike</p>
-<p>解压：unzip -d /opt/cobaltstrike/ /opt/CobaltStrike.zip</p>
-<p>进入到cobaltstrike文件夹内，给予权限：chmod 777 ./teamserver</p>
-<p>找到teamserver文件。teamserver文件在这里</p>
-<img src="1503868-20200612205727797-1580322160.png" width="900" loading="lazy">
-
-<p> 在该目录下执行./teamserver IP 密码     //ip为服务器的公网ip，密码为到时候客户端连接到cs时用到的密码</p>
-<p>执行后不出错是这个样子：</p>
-<img src="1503868-20200612205934813-1129708807.png" width="1000" loading="lazy">
-
-<p> </p>
-<p>（如果出现报错</p>
-<p> java is not in $PATH<br>is Java installed?<br>而java已经安装好了，输入java -version可以正确输出。那就检查上传的cs文件中，是否有这样一个文件</p>
-<img src="1503868-20200615092946200-1474257074.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> Win_Linux shell script.7z</p>
-<p>有的话，解压出来替换掉原来的部分文件。（目前猜测是因为win和liunx的java路径不同，导致cs文件找不到java）</p>
-<p>）</p>
-<p> 然后在本地打开客户端：启动start.bat批处理文件</p>
-<img src="1503868-20200612210050899-407652551.png" alt loading="lazy">
-
-<p> </p>
-<p>Host就是服务器的ip</p>
-<p>端口50050，无需改变</p>
-<p>User：随便写</p>
-<p>Password：刚才执行./teamserver 命令时设置的密码</p>
-<p>如果出现Connection timed out connect  </p>
-<p>服务器上输入netstat -aptn检查端口打开情况</p>
-<img src="1503868-20200612210342115-1582750316.png" width="900" loading="lazy">
-
-<p> </p>
-<p> 像我一开始就是没有打开端口，我用的aliyun服务器，在控制台的安全组中添加访问规则即可</p>
-<img src="1503868-20200612210456695-383156844.png" width="900" loading="lazy">
-
-<p> </p>
-<p> 如果是出现authentication failure!就检查一下密码有没有写错。</p>
-<p>最后连接成功！</p>
-<img src="1503868-20200612205303009-465713699.png" width="900" loading="lazy">
-
-<p> </p>
-<p> 博客参考于：<a class="link" href="https://www.cnblogs.com/kang77/p/12133087.html">https://www.cnblogs.com/kang77/p/12133087.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -2698,6 +2588,86 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 可以看到在两种手机，两种电脑中，乱入了一台假装自己是手机的电脑，当LapTop定义了这样两个方法后，它即实现了手机这个接口，又实现了电脑这个接口。于是出现了下面的情况</p>
 <p> 但是只得注意的是，computer.call()并不能执行，虽然这里的computer本质是LapTop，而LapTop有call()这个方法，但是因为接口的关系，它在这里只能成为computer（好像有点绕）</p>
 <p>用蓝皮书上说的，接口就是一种约定</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>cobalt strike入门学习</title>
+    <url>/2020/06/12/cobalt%20strike%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13110385.html">源地址：https://www.cnblogs.com/This-is-Y/p/13110385.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>安装：</strong></p>
+<p>我选的服务器是ubuntu，首先安装java</p>
+<p>apt-get install openjdk-8-jdk</p>
+<p>等待安装</p>
+<p>输入java -version测试安装是否安装成功（如下图即已安装成功）</p>
+<p><strong><img src="1503868-20200615092500010-1005882218.png" alt loading="lazy"></strong></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>然后将cs文件上传到服务器上，本机windows，这里用pscp</p>
+<p>上传文件格式： pscp+空格+本地文件+空格+用户名@ip地址:远端路径</p>
+<p> </p>
+<p>（虽然说在服务器上的启动文件是<strong>teamserver</strong>，但是这并不意味着只上传一个teamserver文件就完事了。最妥当的办法是压缩整个cs文件，全部上传到服务器中。</p>
+<img src="1503868-20200615092309174-1297037155.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> ）</p>
+<p> </p>
+<p>要记得设置远端路径，成功后会让你输入服务器密码，然后开始等上传完成</p>
+<img src="1503868-20200612201018161-37228193.png" alt loading="lazy">
+
+<p> </p>
+<p> 上传完后到服务器中查看，</p>
+<p> <img src="1503868-20200612202623428-112161419.png" width="900" loading="lazy"></p>
+<p> </p>
+<p> 可以看到红色的就是刚刚上传的文件，用apt下载一个unzip ：apt-get isntall unzip</p>
+<p>创建一个文件夹放cs :mkdir /opt/cobaltstrike</p>
+<p>解压：unzip -d /opt/cobaltstrike/ /opt/CobaltStrike.zip</p>
+<p>进入到cobaltstrike文件夹内，给予权限：chmod 777 ./teamserver</p>
+<p>找到teamserver文件。teamserver文件在这里</p>
+<img src="1503868-20200612205727797-1580322160.png" width="900" loading="lazy">
+
+<p> 在该目录下执行./teamserver IP 密码     //ip为服务器的公网ip，密码为到时候客户端连接到cs时用到的密码</p>
+<p>执行后不出错是这个样子：</p>
+<img src="1503868-20200612205934813-1129708807.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>（如果出现报错</p>
+<p> java is not in $PATH<br>is Java installed?<br>而java已经安装好了，输入java -version可以正确输出。那就检查上传的cs文件中，是否有这样一个文件</p>
+<img src="1503868-20200615092946200-1474257074.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> Win_Linux shell script.7z</p>
+<p>有的话，解压出来替换掉原来的部分文件。（目前猜测是因为win和liunx的java路径不同，导致cs文件找不到java）</p>
+<p>）</p>
+<p> 然后在本地打开客户端：启动start.bat批处理文件</p>
+<img src="1503868-20200612210050899-407652551.png" alt loading="lazy">
+
+<p> </p>
+<p>Host就是服务器的ip</p>
+<p>端口50050，无需改变</p>
+<p>User：随便写</p>
+<p>Password：刚才执行./teamserver 命令时设置的密码</p>
+<p>如果出现Connection timed out connect  </p>
+<p>服务器上输入netstat -aptn检查端口打开情况</p>
+<img src="1503868-20200612210342115-1582750316.png" width="900" loading="lazy">
+
+<p> </p>
+<p> 像我一开始就是没有打开端口，我用的aliyun服务器，在控制台的安全组中添加访问规则即可</p>
+<img src="1503868-20200612210456695-383156844.png" width="900" loading="lazy">
+
+<p> </p>
+<p> 如果是出现authentication failure!就检查一下密码有没有写错。</p>
+<p>最后连接成功！</p>
+<img src="1503868-20200612205303009-465713699.png" width="900" loading="lazy">
+
+<p> </p>
+<p> 博客参考于：<a class="link" href="https://www.cnblogs.com/kang77/p/12133087.html">https://www.cnblogs.com/kang77/p/12133087.html<i class="fas fa-external-link-alt"></i></a></p>
 <p> </p>
 ]]></content>
       <categories>
@@ -3869,6 +3839,36 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>VirtualBox上的靶机与VMware kali网络问题</title>
+    <url>/2019/12/23/VirtualBox%E4%B8%8A%E7%9A%84%E9%9D%B6%E6%9C%BA%E4%B8%8EVMware%20kali%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12084588.html">源地址：https://www.cnblogs.com/This-is-Y/p/12084588.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>在Vulnhub上有许多靶机。其中有很多是在VirtualBox上运行的，而kali大多是使用Vmware</p>
+<p>打开kali，找到虚拟机网络设置</p>
+<img src="1503868-20191223163027008-226967397.png" alt>
+
+<p> </p>
+<img src="1503868-20191223163121461-1181037805.png" alt>
+
+<p> </p>
+<p> <img src="1503868-20191223163150522-798557590.png" alt></p>
+<p> </p>
+<p> 桥接模式</p>
+<p>这里几个选项，（自己记录一下）</p>
+<p>VirtualBox的DC-2虚拟机采用如下网络配置</p>
+<img src="1503868-20191223164132359-2094858340.png" alt>
+
+<p> </p>
+<p>Vmware下的aiweb-2采用和kali一样的桥接模式</p>
+<p>自动 -&gt; 可以扫到virtualBox的虚拟机，但是vmware的虚拟机扫不到</p>
+<p>Realtek PCIe GBE Family Controller，Sangfor SSL VPN CS Support System VNIXC，Microsoft Wi-Fi Direct Virtual Adapter和Microsoft Wi-Fi Direct Virtual Adapter #3  -&gt; 在使用arp-scan -l 时，提示my_lookupdev: no suitable device found</p>
+<p> VirtualBox Host-Only Ethernet Adapter -&gt; 不会有上面的情况，但是使用arp-scan -l 扫不到任何东西</p>
+<p>Qualcomm Atheros QCA61x4A Wireless Network Adapter -&gt; 可以扫到所有东西</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>python format() 格式化输出</title>
     <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4015,29 +4015,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>python的if __name__==&#39;__main__&#39;的作用</title>
-    <url>/2020/02/17/python%E7%9A%84if%20__name__==&#39;__main__&#39;%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12322268.html">源地址：https://www.cnblogs.com/This-is-Y/p/12322268.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>学的比较浅显，目前只知道这一种作用</p>
-<p>在一个python文件中使用if <strong>name</strong>==’<strong>main</strong>‘:这个语句是看不出明显效果的</p>
-<p>但当你在另外一个python文件中import一个未使用if <strong>name</strong>==’<strong>main</strong>‘:的python文件时，会将这个文件执行一遍。</p>
-<p>而如果是import一个使用了 if <strong>name</strong>==’<strong>main</strong>‘: 语句的python文件，则不会执行主动执行这个python文件。</p>
-<p> </p>
-<p>简单示例一下：</p>
-<p>建立了3个文件，t1,t2,t3,其中</p>
-<p>t1：</p>
-<p>t2：</p>
-<p>t3</p>
-<p>最后运行的结果：</p>
-<img src="1503868-20200217163527179-1380410819.png" alt>
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>shiro漏洞利用_入门</title>
     <url>/2020/10/29/shiro%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8_%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13899977.html">源地址：https://www.cnblogs.com/This-is-Y/p/13899977.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4085,6 +4062,29 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p><br><br> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>python的if __name__==&#39;__main__&#39;的作用</title>
+    <url>/2020/02/17/python%E7%9A%84if%20__name__==&#39;__main__&#39;%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12322268.html">源地址：https://www.cnblogs.com/This-is-Y/p/12322268.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>学的比较浅显，目前只知道这一种作用</p>
+<p>在一个python文件中使用if <strong>name</strong>==’<strong>main</strong>‘:这个语句是看不出明显效果的</p>
+<p>但当你在另外一个python文件中import一个未使用if <strong>name</strong>==’<strong>main</strong>‘:的python文件时，会将这个文件执行一遍。</p>
+<p>而如果是import一个使用了 if <strong>name</strong>==’<strong>main</strong>‘: 语句的python文件，则不会执行主动执行这个python文件。</p>
+<p> </p>
+<p>简单示例一下：</p>
+<p>建立了3个文件，t1,t2,t3,其中</p>
+<p>t1：</p>
+<p>t2：</p>
+<p>t3</p>
+<p>最后运行的结果：</p>
+<img src="1503868-20200217163527179-1380410819.png" alt>
+
+<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -4219,14 +4219,14 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 　　这边的参数选项。</p>
 <p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
 <p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#53;&#50;&#x37;&#49;&#52;&#49;&#51;&#56;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#x39;&#53;&#50;&#x37;&#49;&#52;&#49;&#51;&#56;&#x40;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#55;&#x31;&#52;&#49;&#x33;&#56;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#57;&#x35;&#50;&#55;&#x31;&#52;&#49;&#x33;&#56;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
 <p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
 <p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
 <p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
 <p>　　配置好后大概是这个样子</p>
 <p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
 <p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#57;&#53;&#x32;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#x38;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#x38;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#53;&#x32;&#x37;&#49;&#x34;&#x31;&#51;&#56;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;">&#57;&#53;&#x32;&#x37;&#49;&#x34;&#x31;&#51;&#56;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#53;&#x32;&#x37;&#49;&#52;&#49;&#x33;&#56;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#109;">&#57;&#53;&#x32;&#x37;&#49;&#52;&#49;&#x33;&#56;&#x40;&#113;&#113;&#x2e;&#x63;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
 <img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
 
 <p> </p>
@@ -4241,40 +4241,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title>信息搜集</title>
-    <url>/2021/06/04/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</url>
-    <content><![CDATA[<p>freebuf：<a class="link" href="https://www.freebuf.com/articles/web/190403.html">https://www.freebuf.com/articles/web/190403.html<i class="fas fa-external-link-alt"></i></a><br><img src="1543072448_5bf96ac069a0b.png" alt="1543072448_5bf96ac069a0b"></p>
-<h2 id="信息搜集内容"><a href="#信息搜集内容" class="headerlink" title="信息搜集内容"></a>信息搜集内容</h2><ul>
-<li>服务器信息(端口、服务、IP)</li>
-<li>网站信息（服务器操作系统、中间件、数据库、编程语言、敏感目录与文件、旁站查询、C段查询）</li>
-<li>域名信息( whois、备案信息、子域名收集)</li>
-<li>网站管理员信息(姓名、职务、生日、联系电话、邮件地址)</li>
-</ul>
-<p>判断CDN<br>    多地ping<br>        <a class="link" href="http://ping.chinaz.com/">http://ping.chinaz.com/<i class="fas fa-external-link-alt"></i></a> 站长之家ping测试在最后有国外的服务器<br>        <a class="link" href="https://www.wepcc.com/">https://www.wepcc.com/<i class="fas fa-external-link-alt"></i></a></p>
-<p>绕过CDN<br>CDN按流浪计费，可能不在境外使用，或者它的边缘业务（子域名）不会架设CDN服务</p>
-<ul>
-<li>国外PING</li>
-<li>子域名PING（子域名在同一个服务器或者C段）</li>
-<li>邮件服务器（子域名在同一个服务器或者C段）</li>
-<li>DNS解析记录（从前没钱挂CDN，IP被记录下来了）<br>  <a class="link" href="https://site.ip138.com/">https://site.ip138.com<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://viewdns.info/history">https://viewdns.info/history<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://securitytrails.com/">https://securitytrails.com/<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<p>子域名查询：</p>
-<ul>
-<li><p>oneforall  <a class="link" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll<i class="fas fa-external-link-alt"></i></a></p>
-</li>
-<li><p>证书查询 </p>
-<p>   <a class="link" href="https://myssl.com/">https://myssl.com/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://search.censys.io/">https://search.censys.io/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://crt.sh/?Identity=">https://crt.sh/?Identity=<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://spyse.com/">https://spyse.com/<i class="fas fa-external-link-alt"></i></a>  查子域名收费</p>
-</li>
-</ul>
-<p>以默安为例子</p>
-<p>公司全称叫：杭州默安科技有限公司<br>官网：<a class="link" href="https://www.moresec.cn/">https://www.moresec.cn/<i class="fas fa-external-link-alt"></i></a></p>
-<p>在企查查上查到对外投资四家公司<br>    北京默安科技有限公司<br>    深圳默安科技有限公司<br>    上海默知安科技有限公司<br>    长沙火线云网络科技有限公司</p>
-<p><img src="image-20210604153232318.png" alt="image-20210604153232318"></p>
-<p>查电话查到另一家公司  0571-57890068<br>    杭州云中盟股权投资合伙企业（有限合伙）</p>
-<p>留个坑</p>
-]]></content>
   </entry>
   <entry>
     <title>信息收集笔记</title>
@@ -4362,6 +4328,40 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>信息搜集</title>
+    <url>/2021/06/04/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</url>
+    <content><![CDATA[<p>freebuf：<a class="link" href="https://www.freebuf.com/articles/web/190403.html">https://www.freebuf.com/articles/web/190403.html<i class="fas fa-external-link-alt"></i></a><br><img src="1543072448_5bf96ac069a0b.png" alt="1543072448_5bf96ac069a0b"></p>
+<h2 id="信息搜集内容"><a href="#信息搜集内容" class="headerlink" title="信息搜集内容"></a>信息搜集内容</h2><ul>
+<li>服务器信息(端口、服务、IP)</li>
+<li>网站信息（服务器操作系统、中间件、数据库、编程语言、敏感目录与文件、旁站查询、C段查询）</li>
+<li>域名信息( whois、备案信息、子域名收集)</li>
+<li>网站管理员信息(姓名、职务、生日、联系电话、邮件地址)</li>
+</ul>
+<p>判断CDN<br>    多地ping<br>        <a class="link" href="http://ping.chinaz.com/">http://ping.chinaz.com/<i class="fas fa-external-link-alt"></i></a> 站长之家ping测试在最后有国外的服务器<br>        <a class="link" href="https://www.wepcc.com/">https://www.wepcc.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p>绕过CDN<br>CDN按流浪计费，可能不在境外使用，或者它的边缘业务（子域名）不会架设CDN服务</p>
+<ul>
+<li>国外PING</li>
+<li>子域名PING（子域名在同一个服务器或者C段）</li>
+<li>邮件服务器（子域名在同一个服务器或者C段）</li>
+<li>DNS解析记录（从前没钱挂CDN，IP被记录下来了）<br>  <a class="link" href="https://site.ip138.com/">https://site.ip138.com<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://viewdns.info/history">https://viewdns.info/history<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://securitytrails.com/">https://securitytrails.com/<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>子域名查询：</p>
+<ul>
+<li><p>oneforall  <a class="link" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p>证书查询 </p>
+<p>   <a class="link" href="https://myssl.com/">https://myssl.com/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://search.censys.io/">https://search.censys.io/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://crt.sh/?Identity=">https://crt.sh/?Identity=<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://spyse.com/">https://spyse.com/<i class="fas fa-external-link-alt"></i></a>  查子域名收费</p>
+</li>
+</ul>
+<p>以默安为例子</p>
+<p>公司全称叫：杭州默安科技有限公司<br>官网：<a class="link" href="https://www.moresec.cn/">https://www.moresec.cn/<i class="fas fa-external-link-alt"></i></a></p>
+<p>在企查查上查到对外投资四家公司<br>    北京默安科技有限公司<br>    深圳默安科技有限公司<br>    上海默知安科技有限公司<br>    长沙火线云网络科技有限公司</p>
+<p><img src="image-20210604153232318.png" alt="image-20210604153232318"></p>
+<p>查电话查到另一家公司  0571-57890068<br>    杭州云中盟股权投资合伙企业（有限合伙）</p>
+<p>留个坑</p>
+]]></content>
   </entry>
   <entry>
     <title>关于WPA加密的wifi通过握手包跑字典破解</title>
@@ -4612,6 +4612,45 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 ]]></content>
   </entry>
   <entry>
+    <title>安装zsh时git太慢，换代理</title>
+    <url>/2020/12/21/%E5%AE%89%E8%A3%85zsh%E6%97%B6git%E5%A4%AA%E6%85%A2%EF%BC%8C%E6%8D%A2%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14170330.html">源地址：https://www.cnblogs.com/This-is-Y/p/14170330.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>电脑用的<img src="1503868-20201221215539766-413682498.png" loading="lazy" style="vertical-align: top">进行科学冲浪，开启的全局（也不知道开PAC有没有用，没去测试了）</p>
+<p> </p>
+<p>端口如下</p>
+<img src="1503868-20201221215149658-220143656.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>来自<a class="link" href="https://gist.github.com/laispace/666dd7b27e9116faece6">https://gist.github.com/laispace/666dd7b27e9116faece6<i class="fas fa-external-link-alt"></i></a></p>
+<p>给git设置代理</p>
+<p> git config –global http.proxy ‘socks5://127.0.0.1:10808’<br> git config –global https.proxy ‘socks5://127.0.0.1:10808’</p>
+<p> </p>
+<p>取消代理</p>
+<p>git config –global –unset http.proxy</p>
+<p>git config –global –unset https.proxy</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<img src="1503868-20201221215342041-839913743.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 这种情况是没配置好</p>
+<img src="1503868-20201221215434314-1677226010.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 有个代理git起来是真滴快</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>安装Tomcat，配置环境变量时遇上的坑</title>
     <url>/2020/02/11/%E5%AE%89%E8%A3%85Tomcat%EF%BC%8C%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%97%B6%E9%81%87%E4%B8%8A%E7%9A%84%E5%9D%91/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12297395.html">源地址：https://www.cnblogs.com/This-is-Y/p/12297395.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4657,45 +4696,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 如果出现乱码，找到conf下面的logging.properties文件，打开，修改这一行的值为GBK，默认应该是UTF-8</p>
 <img src="1503868-20200211232114536-513354596.png" alt width="592" height="348">
 
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安装zsh时git太慢，换代理</title>
-    <url>/2020/12/21/%E5%AE%89%E8%A3%85zsh%E6%97%B6git%E5%A4%AA%E6%85%A2%EF%BC%8C%E6%8D%A2%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14170330.html">源地址：https://www.cnblogs.com/This-is-Y/p/14170330.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>电脑用的<img src="1503868-20201221215539766-413682498.png" loading="lazy" style="vertical-align: top">进行科学冲浪，开启的全局（也不知道开PAC有没有用，没去测试了）</p>
-<p> </p>
-<p>端口如下</p>
-<img src="1503868-20201221215149658-220143656.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p>来自<a class="link" href="https://gist.github.com/laispace/666dd7b27e9116faece6">https://gist.github.com/laispace/666dd7b27e9116faece6<i class="fas fa-external-link-alt"></i></a></p>
-<p>给git设置代理</p>
-<p> git config –global http.proxy ‘socks5://127.0.0.1:10808’<br> git config –global https.proxy ‘socks5://127.0.0.1:10808’</p>
-<p> </p>
-<p>取消代理</p>
-<p>git config –global –unset http.proxy</p>
-<p>git config –global –unset https.proxy</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<img src="1503868-20201221215342041-839913743.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 这种情况是没配置好</p>
-<img src="1503868-20201221215434314-1677226010.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 有个代理git起来是真滴快</p>
 <p> </p>
 ]]></content>
       <categories>
@@ -5106,6 +5106,27 @@ insert into test1 value(3,15);
       </categories>
   </entry>
   <entry>
+    <title>检查文件MD5检验文件是否被修改</title>
+    <url>/2020/08/18/%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6MD5%E6%A3%80%E9%AA%8C%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E4%BF%AE%E6%94%B9/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13523493.html">源地址：https://www.cnblogs.com/This-is-Y/p/13523493.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>cmd下，输入certutil -hashfile 文件名 md5</p>
+<p>举个例子</p>
+<img src="1503868-20200818144805053-2036147690.png" alt loading="lazy">
+
+<p> </p>
+<p> 某个工具的下载页面</p>
+<p>下载好后，cmd下执行</p>
+<img src="1503868-20200818144927582-1324965701.png" alt loading="lazy">
+
+<p> </p>
+<p>文件正常</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>注入的原理以及防御</title>
     <url>/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/</url>
     <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
@@ -5145,27 +5166,6 @@ insert into test1 value(3,15);
 <h3 id="严格的参数校验"><a href="#严格的参数校验" class="headerlink" title="严格的参数校验"></a>严格的参数校验</h3><p>拿正则或者其他的函数，过滤掉不该出现的关键字或字符</p>
 <h3 id="owasp-top10中关于如何防止注入"><a href="#owasp-top10中关于如何防止注入" class="headerlink" title="owasp top10中关于如何防止注入"></a>owasp top10中关于如何防止注入</h3><p>防止注入漏洞需要将数据与命令语句、查询语句分隔开来。<br>• 最佳选择是使用安全的API，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM或实体框架。<br>  <strong>注意：当参数化时，存储过程仍然可以引入SQL注入，如果PL/SQL或T-SQL将查询和数据连接在一起，或者执行带有立即执行或exec()的恶意数据。</strong><br>• 使用正确的或“白名单”的具有恰当规范化的输入验证方法同样会有助于防止注入攻击，但这不是一个完整的防御，因为许多应用程序在输入中需要特殊字符，例如文本区域或移动应用程序的API。<br>• 对于任何剩余的动态查询，可以使用该解释器的特定转义语法转义特殊字符。OWASP的Java Encoder和类似的库提供了这样的转义例程。<br>  <strong>注意：SQL结构，比如：表名、列名等无法转义，因此用户提供的结构名是非常危险的。这是编写软件中的一个常见问题。</strong><br>• 在查询中使用LIMIT和其他SQL控件，以防止在SQL注入时大量地泄露记录。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>检查文件MD5检验文件是否被修改</title>
-    <url>/2020/08/18/%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6MD5%E6%A3%80%E9%AA%8C%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E8%A2%AB%E4%BF%AE%E6%94%B9/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13523493.html">源地址：https://www.cnblogs.com/This-is-Y/p/13523493.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>cmd下，输入certutil -hashfile 文件名 md5</p>
-<p>举个例子</p>
-<img src="1503868-20200818144805053-2036147690.png" alt loading="lazy">
-
-<p> </p>
-<p> 某个工具的下载页面</p>
-<p>下载好后，cmd下执行</p>
-<img src="1503868-20200818144927582-1324965701.png" alt loading="lazy">
-
-<p> </p>
-<p>文件正常</p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
   </entry>
   <entry>
     <title>浅谈xss的各种触发方式以及防护绕过</title>
@@ -5244,58 +5244,6 @@ insert into test1 value(3,15);
 ]]></content>
   </entry>
   <entry>
-    <title>破解部分windows密码（win7用粘滞键，winxp等用pe）</title>
-    <url>/2020/02/07/%E7%A0%B4%E8%A7%A3%E9%83%A8%E5%88%86windows%E5%AF%86%E7%A0%81%EF%BC%88win7%E7%94%A8%E7%B2%98%E6%BB%9E%E9%94%AE%EF%BC%8Cwinxp%E7%AD%89%E7%94%A8pe%EF%BC%89/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12271610.html">源地址：https://www.cnblogs.com/This-is-Y/p/12271610.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>先讲思路，在锁定界面下，连续按5次shift会运行c/windows/system32/sethc.exe文件,然后通过异常关机,触发windows的修复策略,然后打开脱机文档,然后掉包sethc.exe文件为cmd.exe文件,重启电脑,触发sethc.exe,实际上是打开了cmd.exe,然后通过net命令修改账户密码</p>
-<p>win7:</p>
-<p>先异常关闭windows系统,再启动,在windows错误恢复界面,点击启动修复</p>
-<img src="1503868-20200206232332068-1627158519.png" alt width="706" height="552">
-
-<p> </p>
-<p> </p>
-<p> 等待,出现如下界面</p>
-<img src="1503868-20200206232459230-1881258478.png" alt width="700" height="527">
-
-<p> </p>
-<p> </p>
-<p> 点击详细信息,拉到最下面,点开脱机阅读隐私声明</p>
-<img src="1503868-20200206232606786-1417310284.png" alt width="694" height="521">
-
-<p> </p>
-<p> </p>
-<p> 然后就会打开一个文件,用记事本打开.点击右上角的打开文件,</p>
-<img src="1503868-20200206232843688-1636109825.png" alt width="688" height="519">
-
-<p> </p>
-<p> </p>
-<p> 在这里,完成掉包工作,,(注意修改下面的文件类型,不然看不到exe文件)</p>
-<img src="1503868-20200206233221211-1933566241.png" alt>
-
-<p> </p>
-<p> 掉包完成后(建议复制一份cmd.exe文件),重启电脑,连按5次shift,然后就可以打开cmd.exe文件了</p>
-<img src="1503868-20200206233330468-1032146929.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20200206233500014-754603426.png" alt width="542" height="374"></p>
-<p> </p>
-<p> 关于net命令的用法,详细在这里可以看到:<a class="link" href="https://www.cnblogs.com/lonelyxmas/p/9343815.html">https://www.cnblogs.com/lonelyxmas/p/9343815.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>这里我简单说一下要用到的:</p>
-<p>net user 当前账户名 “” 让当前账户密码为空,(在本该填写密码的位置填写 两个双引号 设空)</p>
-<p>net user 新建账户名 新建账户密码 /add  新建一个属于自己的账户(此时权限不足,需要提权)</p>
-<p>net localgroup administrators 你的新建的账户名 /add  使新建的账户达到administrators权限</p>
-<p>net user 新建的账户名 /del 注销后,再运行一次这样操作,再cmd里面用这条命令删除账户,消除证据</p>
-<p> </p>
-<p>winxp：</p>
-<p>　　思路，从bios系统修改电脑启动顺序，让u盘启动优先级高于硬盘，之后插入制作好的pe盘</p>
-<p>　　网上搜索pe系统，可以找到如大白菜，老毛桃等pe系统，安装到u盘上，然后在电脑开机的时候，加入bios系统，具体进入方法因电脑而异，需要上网去查，进入后，在boot下，修改　优先级，之后插入u盘，重启电脑。进入pe系统，差不多就完成了。因为u盘没在身边，所有就简单记录一下，没有实验。</p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>第一次面试总结</title>
     <url>/2021/03/28/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>前段时间投了一个简历给一家公司，通过boss直聘走的内推，然后打了一个电话面试。记录一下糟糕的第一次面试，面试过程非常紧张，这还只是电话面试啊。青色的字体表示我的回答, 标题为面试官的问题</p>
@@ -5361,6 +5309,58 @@ insert into test1 value(3,15);
 <p> </p>
 <p> <img src="1503868-20200223124112051-220060555.png" alt></p>
 <p>小白一枚，有任何想法都愿意洗耳恭听。</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>破解部分windows密码（win7用粘滞键，winxp等用pe）</title>
+    <url>/2020/02/07/%E7%A0%B4%E8%A7%A3%E9%83%A8%E5%88%86windows%E5%AF%86%E7%A0%81%EF%BC%88win7%E7%94%A8%E7%B2%98%E6%BB%9E%E9%94%AE%EF%BC%8Cwinxp%E7%AD%89%E7%94%A8pe%EF%BC%89/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12271610.html">源地址：https://www.cnblogs.com/This-is-Y/p/12271610.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>先讲思路，在锁定界面下，连续按5次shift会运行c/windows/system32/sethc.exe文件,然后通过异常关机,触发windows的修复策略,然后打开脱机文档,然后掉包sethc.exe文件为cmd.exe文件,重启电脑,触发sethc.exe,实际上是打开了cmd.exe,然后通过net命令修改账户密码</p>
+<p>win7:</p>
+<p>先异常关闭windows系统,再启动,在windows错误恢复界面,点击启动修复</p>
+<img src="1503868-20200206232332068-1627158519.png" alt width="706" height="552">
+
+<p> </p>
+<p> </p>
+<p> 等待,出现如下界面</p>
+<img src="1503868-20200206232459230-1881258478.png" alt width="700" height="527">
+
+<p> </p>
+<p> </p>
+<p> 点击详细信息,拉到最下面,点开脱机阅读隐私声明</p>
+<img src="1503868-20200206232606786-1417310284.png" alt width="694" height="521">
+
+<p> </p>
+<p> </p>
+<p> 然后就会打开一个文件,用记事本打开.点击右上角的打开文件,</p>
+<img src="1503868-20200206232843688-1636109825.png" alt width="688" height="519">
+
+<p> </p>
+<p> </p>
+<p> 在这里,完成掉包工作,,(注意修改下面的文件类型,不然看不到exe文件)</p>
+<img src="1503868-20200206233221211-1933566241.png" alt>
+
+<p> </p>
+<p> 掉包完成后(建议复制一份cmd.exe文件),重启电脑,连按5次shift,然后就可以打开cmd.exe文件了</p>
+<img src="1503868-20200206233330468-1032146929.png" alt>
+
+<p> </p>
+<p> <img src="1503868-20200206233500014-754603426.png" alt width="542" height="374"></p>
+<p> </p>
+<p> 关于net命令的用法,详细在这里可以看到:<a class="link" href="https://www.cnblogs.com/lonelyxmas/p/9343815.html">https://www.cnblogs.com/lonelyxmas/p/9343815.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>这里我简单说一下要用到的:</p>
+<p>net user 当前账户名 “” 让当前账户密码为空,(在本该填写密码的位置填写 两个双引号 设空)</p>
+<p>net user 新建账户名 新建账户密码 /add  新建一个属于自己的账户(此时权限不足,需要提权)</p>
+<p>net localgroup administrators 你的新建的账户名 /add  使新建的账户达到administrators权限</p>
+<p>net user 新建的账户名 /del 注销后,再运行一次这样操作,再cmd里面用这条命令删除账户,消除证据</p>
+<p> </p>
+<p>winxp：</p>
+<p>　　思路，从bios系统修改电脑启动顺序，让u盘启动优先级高于硬盘，之后插入制作好的pe盘</p>
+<p>　　网上搜索pe系统，可以找到如大白菜，老毛桃等pe系统，安装到u盘上，然后在电脑开机的时候，加入bios系统，具体进入方法因电脑而异，需要上网去查，进入后，在boot下，修改　优先级，之后插入u盘，重启电脑。进入pe系统，差不多就完成了。因为u盘没在身边，所有就简单记录一下，没有实验。</p>
+<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
