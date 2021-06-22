@@ -119,7 +119,7 @@
                 }
             },
 
-            escapeHTML: (text) => String(text).replace(//, '&gt;'),
+            escapeHTML: (text) => String(text).replace(/</, '&lt;').replace(/>/, '&gt;'),
 
             getIP: () => rsg.ip,
 
@@ -434,4 +434,3 @@
 
         // TODO: add a random fifo for netcat mkfifo
         //let randomId = Math.random().toString(36).substring(2, 4);
-</payload>
