@@ -76,7 +76,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             <a class=""
                                href="/"
                             >
-                                HOME
+                                首页
                             </a>
                         </li>
                     
@@ -84,7 +84,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             <a class=""
                                href="/archives"
                             >
-                                ARCHIVES
+                                归档
                             </a>
                         </li>
                     
@@ -135,12 +135,12 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">HOME</a>
+                       href="/">首页</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">ARCHIVES</a>
+                       href="/archives">归档</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -217,14 +217,16 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
         <div class="article-content markdown-body">
             <p>先放一张图在这里<img src="image-20210713223910890.png" alt="image-20210713223910890"></p>
+<p>在放一张图</p>
+<p><img src="image-20210714092454756.png" alt="image-20210714092454756"></p>
 <p>再放一个链接:<a class="link" target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/265245.html">https://www.freebuf.com/articles/web/265245.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>实践操作过 √</p>
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="1-js检查√"><a href="#1-js检查√" class="headerlink" title="1. js检查√"></a>1. js检查√</h3><ul>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="1-js检查-√"><a href="#1-js检查-√" class="headerlink" title="1. js检查  √"></a>1. js检查  √</h3><ul>
 <li>原理：通过javascript来校验上传文件的后缀是否合法，可以采用白名单，也可以采用黑名单的方式。</li>
 <li>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。</li>
 <li>客户端的校验绕过：直接修改js代码或者使用抓包的方法修改请求内容绕过，可以先上传一个gif木马，通过抓包修改为jsp/php/asp，只用这种方法来检测是肯定可以绕过的。</li>
 </ul>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="检查后缀"><a href="#检查后缀" class="headerlink" title="检查后缀"></a>检查后缀</h3><h4 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h4><h5 id="1-上传特殊可解析后缀"><a href="#1-上传特殊可解析后缀" class="headerlink" title="1. 上传特殊可解析后缀"></a>1. 上传特殊可解析后缀</h5><p>黑名单规则不严谨，在某些特定的环境中，某些特殊的后缀名仍然会被当做php文件解析。<br><code>Php|php2|php3|php4|php5|php6|php7|pht|phtm|phtml</code><br>比如，黑名单禁止上传.asp|.aspx|.php|.jsp后缀文件。<br>但是Apache的httpd.conf配置文件中，有这样一行内容：<br><code>AddType application/x-httpd-php .php .php3 .phtml</code><br>这里上传.php、.php3、.phtml后缀的文件都可以当做php文件来执行</p>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="检查后缀"><a href="#检查后缀" class="headerlink" title="检查后缀"></a>检查后缀</h3><h4 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h4><h5 id="1-上传特殊可解析后缀-√"><a href="#1-上传特殊可解析后缀-√" class="headerlink" title="1. 上传特殊可解析后缀  √"></a>1. 上传特殊可解析后缀  √</h5><p>黑名单规则不严谨，在某些特定的环境中，某些特殊的后缀名仍然会被当做php文件解析。<br><code>Php|php2|php3|php4|php5|php6|php7|pht|phtm|phtml</code><br>比如，黑名单禁止上传.asp|.aspx|.php|.jsp后缀文件。<br>但是Apache的httpd.conf配置文件中，有这样一行内容：<br><code>AddType application/x-httpd-php .php .php3 .phtml</code><br>这里上传.php、.php3、.phtml后缀的文件都可以当做php文件来执行</p>
 <h5 id="2-上传-htaccess"><a href="#2-上传-htaccess" class="headerlink" title="2. 上传.htaccess"></a>2. 上传.htaccess</h5><ul>
 <li>原理：在Apache里，.htaccess是一个配置文件。它可以用来控制所在目录的访问权限以及解析设置。可以通过修改该文件的配置项，将该目录下的所有文件作为php文件来解析。.htaccess可以写入apache配置信息，改变当前目录以及子目录的apache配置信息。</li>
 <li>应用场景：黑名单没有禁止.htaccess文件上传。</li>
@@ -259,7 +261,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p>例如:<code>&quot;shell.php &quot;</code>Windows会自动去掉末尾的空格变成<code>&quot;shell.php&quot;</code></p>
 </li>
 </ul>
-<h5 id="6-DATA绕过√"><a href="#6-DATA绕过√" class="headerlink" title="6. ::$DATA绕过√"></a>6. ::$DATA绕过√</h5><ul>
+<h5 id="6-DATA绕过-√"><a href="#6-DATA绕过-√" class="headerlink" title="6. ::$DATA绕过  √"></a>6. ::$DATA绕过  √</h5><ul>
 <li>应用场景：Windows平台，没有使用str_ireplace()将::$DATA替换为空，导致可以利用<strong>NTFS文件流特性。</strong></li>
 <li>利用方式：假设xxx.php的内容为<?php phpinfo();?></li>
 </ul>
@@ -375,7 +377,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                         >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">google hacking常用</span>
-                                <span class="post-nav-item">Next posts</span>
+                                <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
                               <i class="fas fa-chevron-right"></i>
@@ -391,7 +393,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 <div class="comments-container">
     <div id="comment-anchor"></div>
     <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;Comments</i>
+        <i class="fas fa-comments">&nbsp;评论</i>
     </div>
     
 
@@ -488,18 +490,18 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
         </div>
         
     </div>
@@ -578,7 +580,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-js%E6%A3%80%E6%9F%A5%E2%88%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1. js检查√</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%90%8E%E7%BC%80"><span class="nav-number">2.1.</span> <span class="nav-text">检查后缀</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">黑名单</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E4%B8%8A%E4%BC%A0%E7%89%B9%E6%AE%8A%E5%8F%AF%E8%A7%A3%E6%9E%90%E5%90%8E%E7%BC%80"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">1. 上传特殊可解析后缀</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%B8%8A%E4%BC%A0-htaccess"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">2. 上传.htaccess</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%90%8E%E7%BC%80%E5%A4%A7%E5%B0%8F%E5%86%99%E7%BB%95%E8%BF%87"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">3. 后缀大小写绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E7%82%B9%E7%BB%95%E8%BF%87"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">4. 点绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%A9%BA%E6%A0%BC%E8%BF%87"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">5. 空格过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-DATA%E7%BB%95%E8%BF%87%E2%88%9A"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">6. ::$DATA绕过√</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E9%85%8D%E5%90%88%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="nav-number">2.1.1.7.</span> <span class="nav-text">7. 配合解析漏洞</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%8F%8C%E5%90%8E%E7%BC%80%E5%90%8D%E7%BB%95%E8%BF%87"><span class="nav-number">2.1.1.8.</span> <span class="nav-text">8. 双后缀名绕过</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">白名单</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-MIME%E8%BF%87-%E2%88%9A"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">1. MIME过 √</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-00%E6%88%AA%E6%96%AD"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2. %00截断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-0x00%E6%88%AA%E6%96%AD"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">3. 0x00截断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-0x0a%E6%88%AA%E6%96%AD"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">4. 0x0a截断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">检查内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A3%80%E6%9F%A5"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 文件头检查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%AA%81%E7%A0%B4getimagesize"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 突破getimagesize()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%AA%81%E7%A0%B4exif-imagetype"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 突破exif_imagetype()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 二次渲染</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">2.3.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%B8%A6%E6%8F%90%E4%B8%80%E5%98%B4%E9%98%B2%E5%BE%A1"><span class="nav-number">3.</span> <span class="nav-text">顺带提一嘴防御</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">1.</span> <span class="nav-text">客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-js%E6%A3%80%E6%9F%A5-%E2%88%9A"><span class="nav-number">1.1.</span> <span class="nav-text">1. js检查  √</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">服务端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%90%8E%E7%BC%80"><span class="nav-number">2.1.</span> <span class="nav-text">检查后缀</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95"><span class="nav-number">2.1.1.</span> <span class="nav-text">黑名单</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E4%B8%8A%E4%BC%A0%E7%89%B9%E6%AE%8A%E5%8F%AF%E8%A7%A3%E6%9E%90%E5%90%8E%E7%BC%80-%E2%88%9A"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">1. 上传特殊可解析后缀  √</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%B8%8A%E4%BC%A0-htaccess"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">2. 上传.htaccess</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%90%8E%E7%BC%80%E5%A4%A7%E5%B0%8F%E5%86%99%E7%BB%95%E8%BF%87"><span class="nav-number">2.1.1.3.</span> <span class="nav-text">3. 后缀大小写绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E7%82%B9%E7%BB%95%E8%BF%87"><span class="nav-number">2.1.1.4.</span> <span class="nav-text">4. 点绕过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E7%A9%BA%E6%A0%BC%E8%BF%87"><span class="nav-number">2.1.1.5.</span> <span class="nav-text">5. 空格过</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-DATA%E7%BB%95%E8%BF%87-%E2%88%9A"><span class="nav-number">2.1.1.6.</span> <span class="nav-text">6. ::$DATA绕过  √</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E9%85%8D%E5%90%88%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="nav-number">2.1.1.7.</span> <span class="nav-text">7. 配合解析漏洞</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E5%8F%8C%E5%90%8E%E7%BC%80%E5%90%8D%E7%BB%95%E8%BF%87"><span class="nav-number">2.1.1.8.</span> <span class="nav-text">8. 双后缀名绕过</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BD%E5%90%8D%E5%8D%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">白名单</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-MIME%E8%BF%87-%E2%88%9A"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">1. MIME过 √</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-00%E6%88%AA%E6%96%AD"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2. %00截断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-0x00%E6%88%AA%E6%96%AD"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">3. 0x00截断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-0x0a%E6%88%AA%E6%96%AD"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">4. 0x0a截断</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">检查内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%96%87%E4%BB%B6%E5%A4%B4%E6%A3%80%E6%9F%A5"><span class="nav-number">2.2.1.</span> <span class="nav-text">1. 文件头检查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%AA%81%E7%A0%B4getimagesize"><span class="nav-number">2.2.2.</span> <span class="nav-text">2. 突破getimagesize()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%AA%81%E7%A0%B4exif-imagetype"><span class="nav-number">2.2.3.</span> <span class="nav-text">3. 突破exif_imagetype()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93"><span class="nav-number">2.2.4.</span> <span class="nav-text">4. 二次渲染</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">2.3.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%BA%E5%B8%A6%E6%8F%90%E4%B8%80%E5%98%B4%E9%98%B2%E5%BE%A1"><span class="nav-number">3.</span> <span class="nav-text">顺带提一嘴防御</span></a></li></ol>
     </div>
 </div>
         </aside>
@@ -600,7 +602,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="Search..."
+                       placeholder="搜索..."
                        spellcheck="false"
                        type="search"
                        class="search-input"

