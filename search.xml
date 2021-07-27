@@ -4636,6 +4636,8 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>android写入txt文件并获取：<br>    <a class="link" href="https://www.jianshu.com/p/fdf6178d1a66">https://www.jianshu.com/p/fdf6178d1a66<i class="fas fa-external-link-alt"></i></a></p>
 <p>操作系统死锁与死锁的处理：<br>    <a class="link" href="https://blog.csdn.net/weiyongle1996/article/details/71511956">https://blog.csdn.net/weiyongle1996/article/details/71511956<i class="fas fa-external-link-alt"></i></a></p>
 <p>双向链表：<br>    <a class="link" href="https://www.jianshu.com/p/c47d40e9c85c">https://www.jianshu.com/p/c47d40e9c85c<i class="fas fa-external-link-alt"></i></a></p>
+<p> <a class="link" href="https://www.hackinn.com/index.php/archives/672/">微信小程序的渗透五脉<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/X-caiji/p/11209963.html">常见逻辑漏洞解析<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -6564,6 +6566,31 @@ insert into test1 value(3,15);
 <p>3.为 Redis 添加密码验证</p>
 <p>4.禁止外网访问 Redis</p>
 <p>5.保证 authorized_keys 文件的安全</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>php代码审计入门</title>
+    <url>/2021/07/27/php%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>环境用的phpstorm+phpstudy2018+xdebug</p>
+<h3 id="phpstudy2018"><a href="#phpstudy2018" class="headerlink" title="phpstudy2018"></a>phpstudy2018</h3><p>扩展里打开Xdebug<br><img src="image-20210727194225989.png" alt="image-20210727194225989"></p>
+<p>然后打开php的配置文件php.ini,拉到最下面，添加配置信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xdebug.profiler_output_dir&#x3D;&quot;E:\phpStudy\PHPTutorial\tmp\xdebug&quot;</span><br><span class="line">xdebug.trace_output_dir&#x3D;&quot;E:\phpStudy\PHPTutorial\tmp\xdebug&quot;</span><br><span class="line">zend_extension&#x3D;&quot;E:\phpStudy\PHPTutorial\php\php-5.4.45\ext\php_xdebug.dll&quot;</span><br><span class="line">xdebug.remote_log &#x3D; &quot;E:\phpStudy\PHPTutorial\php\php-5.4.45\ext\xdebug\xdebug.log&quot;</span><br><span class="line">xdebug.remote_enable &#x3D; On</span><br><span class="line">xdebug.remote_host&#x3D;localhost</span><br><span class="line">xdebug.remote_port&#x3D;9000</span><br><span class="line">xdebug.remote_handler&#x3D;dbgp</span><br><span class="line">xdebug.idekey&#x3D;PHPSTORM</span><br></pre></td></tr></table></figure>
+<p><img src="image-20210727194409268.png" alt="image-20210727194409268"><br>扩展文件xdebug.dll，phpstudy默认有，确定路径无误就行，idekey要确保是PHPSTORM,因为xdebug浏览器插件用的就是这个，端口9000，这个也是有用的。<br>如果配置好了，打开phpinfo，搜索xdebug应该可以看到这个，同时注意IDE Key 是PHPSTORM ，这个东西每次更新，都要重启apache或者nignx（可能）服务器，看不到变化的话，清除缓存或者换个浏览器。</p>
+<p><img src="image-20210727194818897.png" alt="image-20210727194818897"></p>
+<p>确定插件无误后，给要审计的cms配置一个域名，phpstudy其他选项菜单-&gt;站点域名管理<br><img src="image-20210727212106435.png" alt="image-20210727212106435"></p>
+<p>再去host文件里加一条<br><code>127.0.0.1 www.bluecms.com</code><br><img src="image-20210727212314262.png" alt="image-20210727212314262"></p>
+<p>可以ping一下域名，看看生效了没有，没有的话清空一下dns缓存<br><code>ipconfig /flushdns</code></p>
+<p>当浏览器可以用域名访问到目标后，就可以开始配置phpstorm了</p>
+<h3 id="phpstorm"><a href="#phpstorm" class="headerlink" title="phpstorm"></a>phpstorm</h3><p>设置-&gt;语言和框架-&gt;PHP，选择合适的php解释器<br><img src="image-20210727210520371.png" alt="image-20210727210520371"></p>
+<p>点开php的二级设置，选择服务器，添加一个新服务器，主机写之前配置好的目标域名<br><img src="image-20210727214628860.png" alt="image-20210727214628860"></p>
+<p>选择调试，选择xdebug的端口为9000，和之前php.ini里的对应<br><img src="image-20210727210630889.png" alt="image-20210727210630889"></p>
+<p>点开调试的二级目录，选择DBGp代理，IDE键写PHPSTORM ，主机localhost，端口9000<br><img src="image-20210727211022795.png" alt="image-20210727211022795"></p>
+<p>应用，确定。右上角添加配置，添加一个phpweb页面，服务器选刚刚配置的，起始url保持默认就行，一个*/*<br><img src="image-20210727214841825.png" alt="image-20210727214841825"></p>
+<p>然后点击下面的验证，测试能不能正常工作<br><img src="image-20210727214927949.png" alt="image-20210727214927949"></p>
+<p>正常<br>现在点击配置旁边的绿色启动按钮就应该会自动打开浏览器访问目标网站了</p>
+<h3 id="xdebug"><a href="#xdebug" class="headerlink" title="xdebug"></a>xdebug</h3><p>在火狐浏览器的扩展里找到他，添加<br><img src="image-20210727212747070.png" alt="image-20210727212747070"></p>
+<p>修改配置，选择phpstorm，这里就可以看到为什么之前的idekey要写PHPSTORM 了，就是为了要和这个插件这里对应。不然插件没法工作<br><img src="image-20210727212838148.png" alt="image-20210727212838148"></p>
+<p>设置完成之后，phpstorm设置断点，开启监听。<br>打开网站，把xdebug插件的工作模式改为debug，然后和网站交互，搜索，刷新之类的，就可以在phpstorm监听到信息了，<img src="image-20210727213211148.png" alt="image-20210727213211148"><img src="image-20210727213225492.png" alt="image-20210727213225492"></p>
 ]]></content>
   </entry>
 </search>
