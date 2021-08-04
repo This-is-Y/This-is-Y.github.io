@@ -76,7 +76,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             <a class=""
                                href="/"
                             >
-                                首页
+                                HOME
                             </a>
                         </li>
                     
@@ -84,7 +84,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                ARCHIVES
                             </a>
                         </li>
                     
@@ -135,12 +135,12 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/">HOME</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/archives">ARCHIVES</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -319,7 +319,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             </span>
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">python爬虫使用lxml解析数据编码乱码问题</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
                     </div>
@@ -332,7 +332,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                         >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">DC-4靶机</span>
-                                <span class="post-nav-item">下一篇</span>
+                                <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
                               <i class="fas fa-chevron-right"></i>
@@ -348,7 +348,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 <div class="comments-container">
     <div id="comment-anchor"></div>
     <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;评论</i>
+        <i class="fas fa-comments">&nbsp;Comments</i>
     </div>
     
 
@@ -445,18 +445,18 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
         </div>
         
     </div>
@@ -547,33 +547,182 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
 
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="搜索..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
+        $icon-size = 1.2rem;
+
+.search-pop-overlay {
+  position: fixed;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  z-index: $z-index-8;
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
+
+  &.active {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.35);
+
+    .search-popup {
+      transform: scale(1);
+    }
+
+  }
+
+
+  .search-popup {
+    background: var(--background-color);
+    border-radius: 5px;
+    height: 80%;
+    width: 70%;
+    margin: auto;
+    transform: scale(0);
+    z-index: $z-index-6;
+    transition-t("transform", "0", "0.3", "ease");
+
+    +keep-tablet() {
+      width: 80%;
+    }
+
+    +keep-mobile() {
+      width: 90%;
+    }
+
+    .search-header {
+      background: var(--fourth-text-color);
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      display: flex;
+      padding: 10px;
+
+      .search-input-field-pre, .popup-btn-close {
+        font-size: $icon-size;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-input-field-pre {
+        cursor: pointer;
+        color: var(--third-text-color);
+      }
+
+      .popup-btn-close {
+        color: var(--default-text-color);
+      }
+
+
+      .search-input-container {
+
+        flex-grow: 1;
+        padding: 2px;
+
+        .search-input {
+          background: transparent;
+          border: 0;
+          outline: 0;
+          width: 100%;
+          font-size: 1.2rem;
+          color: var(--default-text-color);
+
+          &::-webkit-search-cancel-button {
+            display: none;
+          }
+        }
+
+
+      }
+
+
+      .popup-btn-close {
+        cursor: pointer;
+
+        &:hover .fas, far, fab {
+          color: var(--first-text-color);
+        }
+      }
+
+    }
+
+
+    #search-result {
+      display: flex;
+      height: calc(100% - 55px);
+      overflow: auto;
+      padding: 5px 25px;
+
+      .search-result-list {
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+
+        li {
+          border-bottom: 1px dashed var(--border-color);
+          padding: 10px 0;
+          margin: 10px 0;
+          box-sizing: border-box;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+
+          .search-result-title {
+            position: relative;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-left: 16px;
+            display: flex;
+            align-items: center;
+
+            &::after {
+              content: '';
+              position: absolute;
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              top: 50%;
+              transform: translateY(-50%);
+              left: 0;
+              background: var(--default-text-color);
+            }
+          }
+
+
+          .search-result {
+            line-height: 2rem;
+            margin: 0;
+            padding-left: 16px;
+            word-wrap: break-word;
+          }
+
+          a {
+            &:hover {
+              color: var(--default-text-color);
+            }
+          }
+
+          .search-keyword {
+            border-bottom: 1px dashed var(--primary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+          }
+
+        }
+      }
+
+
+      #no-result {
+        color: var(--third-text-color);
+        margin: auto;
+      }
+
+    }
+  }
+}
+
 
     
 
