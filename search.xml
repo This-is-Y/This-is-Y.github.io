@@ -6256,8 +6256,22 @@ insert into test1 value(3,15);
 <li>msf：MSF根目录/embedded/framework/data/exploits/mysql</li>
 <li>网页16进制：国光大佬写的<a class="link" href="https://www.sqlsec.com/tools/udf.html">https://www.sqlsec.com/tools/udf.html<i class="fas fa-external-link-alt"></i></a></li>
 </ul>
-<h2 id="9-wireshark过滤规则"><a href="#9-wireshark过滤规则" class="headerlink" title="9. wireshark过滤规则"></a>9. wireshark过滤规则</h2><h3 id="IP："><a href="#IP：" class="headerlink" title="IP："></a>IP：</h3><p>源、目的IP为xxx<br>ip.addr == 172.16.0.0/16<br>ip.src==172.16.0.0/16<br>ip.dst==192.168.0.0/16</p>
-<h3 id="端口："><a href="#端口：" class="headerlink" title="端口："></a>端口：</h3><p>方法一样，但是需要区别TCP和UDP<br>TCP.port==80<br>UDP.port==3702<br>TCP.srcport == 80<br>tcp.dstport == 80<br>……</p>
+<h2 id="9-mysql-getshell的方式"><a href="#9-mysql-getshell的方式" class="headerlink" title="9.mysql getshell的方式"></a>9.mysql getshell的方式</h2><h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><ul>
+<li><p>root权限</p>
+</li>
+<li><p>绝对路径</p>
+</li>
+<li><p>文件写入 secure_file_priv参数</p>
+</li>
+</ul>
+<h3 id="方式"><a href="#方式" class="headerlink" title="方式"></a>方式</h3><p>慢查询，写日志，</p>
+<p>dumpfile()</p>
+<p>outfile()</p>
+<h2 id="10-linux-计划任务"><a href="#10-linux-计划任务" class="headerlink" title="10. linux 计划任务"></a>10. linux 计划任务</h2><h5 id="1-一次性任务计划：at"><a href="#1-一次性任务计划：at" class="headerlink" title="1.一次性任务计划：at"></a>1.一次性任务计划：at</h5><h5 id="2-周期性任务计划：crontab"><a href="#2-周期性任务计划：crontab" class="headerlink" title="2.周期性任务计划：crontab"></a>2.周期性任务计划：crontab</h5><h2 id="11-代码审计"><a href="#11-代码审计" class="headerlink" title="11. 代码审计"></a>11. 代码审计</h2><p>简单浏览网站目录结构</p>
+<p>简单看完目录后，我会看主页的index.php，在看这个文件的同时，我还会打开它的网页，做到一边看代码，一边看网页的效果</p>
+<p>看用户输入，找功能点，找敏感函数</p>
+<h2 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h2><h2 id="9-wireshark过滤规则"><a href="#9-wireshark过滤规则" class="headerlink" title="9. wireshark过滤规则"></a>9. wireshark过滤规则</h2><h3 id="IP："><a href="#IP：" class="headerlink" title="IP："></a>IP：</h3><p>源、目的IP为xxx<br>ip.addr == 172.16.0.0/16<br>ip.src == 172.16.0.0/16<br>ip.dst == 192.168.0.0/16</p>
+<h3 id="端口："><a href="#端口：" class="headerlink" title="端口："></a>端口：</h3><p>方法一样，但是需要区别TCP和UDP<br>TCP.port == 80<br>UDP.port == 3702<br>TCP.srcport == 80<br>tcp.dstport == 80<br>……</p>
 <h3 id="协议："><a href="#协议：" class="headerlink" title="协议："></a>协议：</h3><p>协议直接输就行了<br>tcp<br>icmp<br>dns<br>snmp<br>……</p>
 <h2 id="10-宽字节注入"><a href="#10-宽字节注入" class="headerlink" title="10. 宽字节注入"></a>10. 宽字节注入</h2><p>留坑</p>
 <h2 id="11-RSA加密过程"><a href="#11-RSA加密过程" class="headerlink" title="11. RSA加密过程"></a>11. RSA加密过程</h2><p>留坑</p>
