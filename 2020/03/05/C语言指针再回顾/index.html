@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            C语言指针再回顾 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">C语言指针再回顾</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-03-05 16:40:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/12417028.html">源地址：https://www.cnblogs.com/This-is-Y/p/12417028.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>内存</strong></p>
+<p>C语言内存四区：代码区，全局区，栈区，堆区</p>
+<p>代码区：存放代码的</p>
+<p>全局区：用于存放全局变量和静态变量， 里面细分有一个常量区，字符串常量和其他常量也存放在此。该区域是在程序结束后由操作系统释放。</p>
+<p>栈区：由系统自动开辟，系统自动释放，并不大。</p>
+<p>堆区：程序员动态开辟的内存，由我们手动开辟，手动释放，非常大。链表，数据结构，动态数组，动态结构体与此相关。</p>
+<p><strong>地址</strong></p>
+<p>一个字节8位，内存以单个字节位单位分开，每个字节有一个<strong>不可修改</strong>的<strong>连续</strong>的<strong>唯一</strong>的编号，这个编号就是地址。就像酒店里的房间。一个一个的房间就是一个一个字节，编号，也就是地址，就是门牌号，而且是刻在房间门上的，不可修改。</p>
+<p>每个在代码里的变量都有地址，用取地址运算符：&amp; （单目运算符，优先级仅低于“（）”，从右往左）来获取地址。</p>
+<p><strong>首地址</strong></p>
+<p>一段内存空间中，<strong>第一个存储单元</strong>的地址。如定于一个int a，占用内存中4个字节，首地址就是这四个字节中，第一个字节的地址。如图：</p>
+<img src="1503868-20200304192329614-245727354.png" alt width="525" height="251">
+
+<p> </p>
+<p> </p>
+<p> 第二个数组的首地址是他的第一个存储单元，也就是a[0]的地址，实际上a[0]的首地址就是他的第一个字节的首地址，数值上看是一样的，但是意义并不同</p>
+<p><strong>指针变量</strong></p>
+<p>地址如上所说，是一种编号，是一种数据。用来存放地址的变量，</p>
+<p>内存大小位4B（4个字节）</p>
+<p>整数 int a;</p>
+<p>字符 char b;</p>
+<p>小数 float c;</p>
+<p>地址  指针变量</p>
+<p>指针变量的定义：指针变量不是单独存在的，是相对与其他数据类型来的，比如整形指针变量 int *p;，字符型指针变量 char *p; 。</p>
+<p>　　 int <em>p;//指明一个指针变量，存的数据为地址。int表明存放的<strong>地址</strong>指向的<strong>内存空间</strong>里面存放的<strong>数据类型</strong>是int。</em>表明p这个变量是指针变量。这个指针变量名字就叫做p(不是*p)。其他的类型(char,float,……）相同</p>
+<p>指针变量的赋值：</p>
+<p>加入a的地址是1001，此时p中存的是a的地址，即1001，称p指向a</p>
+<p>指针变量的引用：接上一条的代码，访问a的值。可以直接用a来访问，如一条printf语句，当然这里说指针，看到要用指针来访问，就像第二条printf语句。</p>
+<img src="1503868-20200304195504407-2131474534.png" alt width="432" height="132">
+
+<p> </p>
+<p>指针访问：<em>指针变量（</em>为取值运算符，单目运算符，从右到左）（在定义指针变量时，<em>只是表明后面接的变量是一个指针变量。在未定义时出现的</em>，表示为取值运算符。</p>
+<p> </p>
+<p>野指针：不能明确指向的指针变量 ，当一个指针变量指向一个为定义的变量时，这个指针变量就是野指针。（很危险！！！！有可能在未知情况下操作意料之外的数据）</p>
+<p>解决部分，定义该指针为NULL，即内存中的第一个字节的地址，0</p>
+<p>空指针：空指针相对于int*,float*,char*,等，空指针为void*，不知道指向什么样子的内存，比如一个4个字节的内存，可以存int，long等类型的数据，未确定时，使用void，当确定下来后，可以强制把void转化需要的类型。在后期动态内存分配，用到malloc等函数时用得更多</p>
+<p> </p>
+<p> </p>
+<p><strong>指针的运算</strong></p>
+<p>只有4个，+， -， ++， –</p>
+<p>单纯指针加减没有意义，主要是为了指针偏移。指针变量的加减，以指针所指向的类型空间为单位进行偏移。如</p>
+<img src="1503868-20200304203301771-315667024.png" alt width="453" height="212">
+
+<p> </p>
+<p> </p>
+<p>从数据类型的知识可以知道，在64位windows操作系统中，int占用4个字节，char占用1个字节。 从结果中可以看到，pi+1后，指针的值比之前加了4，而pc+1后，指针的值比之前加了1。（16进制数字加减）</p>
+<p> </p>
+<p> </p>
+<p><strong>首地址：一段内存空间中第一个存储单元的地址，存储单元。</strong></p>
+<p><strong>指针变量的加减：以指针所指向的类型空间位单位进行偏移。</strong></p>
+<p><strong>一维数组和指针：</strong></p>
+<p>**　　1.定义一个一维数组。数组中的元素依次存放，数组名是这个数组的‘首地址**</p>
+<p><strong>先定义一个数组int a[10]</strong></p>
+<p><strong>a指向a[0] ，a[0] 的类型是int，所以a是int*类型。</strong></p>
+<p><strong>a[0]这个地址指向a[0] int(*)[10]元素，字节为4，</strong></p>
+<p><strong>&amp;a这个执行整个数组。</strong></p>
+<p><strong>如下，数组长度为10。</strong></p>
+<p><strong>第一个a+1比a增加了4，</strong></p>
+<p><strong>第二个&amp;a+1比&amp;a增加了40（4x10）</strong></p>
+<p> </p>
+<p> </p>
+<img src="1503868-20200304205608787-117557920.png" alt width="439" height="122">
+
+<p> </p>
+<p>访问数组元素：</p>
+<p>普通下标法：最常见，最基础的，</p>
+<p>指针法： 可以使用以下几种，建议<em>p++,<em>单目运算符优先级比+双目运算符优先级高，建议加一个’（）‘。同时也可以使用</em>(a+i)来调用数组元素。此时不能用</em>a++。a是数组名，a++会改变a 。数组名不能改变</p>
+<p> </p>
+<p> </p>
+<p><strong>二维数组与指针：</strong></p>
+<p><strong>数组名是这个数组的首地址</strong></p>
+<p><strong>首地址是一段内容中第一个存储单元</strong></p>
+<p><strong>定义一个二维数组int a[3][4],在我们看来，这是一个3x4的矩阵，然鹅在计算机中，依然是线性的，此时</strong></p>
+<p><strong>a指向a[0]这个一维数组，类型为int(*)[4]， a+1一次加16B</strong></p>
+<p><strong>&amp;a指向整个二维数组，类型为int(*)[3][4]</strong></p>
+<p><em><em>a[0]指向a[0][0]这个int ，类型为int</em> a[0]+1一次加4B</em>*</p>
+<p><strong>&amp;a[0]指向a[0]这个一维数组，类型为int(*)[4]  (a=&amp;a[0])</strong></p>
+<p><strong>二维数组取值</strong></p>
+<p><strong>下表法：a[m][n]</strong></p>
+<p><em><em>指针法：</em>(a[m]+n)</em>*</p>
+<p>**　　　　<em>(</em>(a+m)+n)****　　(a先偏移到m行数组，再用<em>往下走一层，再偏移n个位置，走到a[m][n]的位置，再用一个</em>取这个地址的值）**</p>
+<p>** **</p>
+<p><strong>多维数组：</strong></p>
+<p>**　　从高到低一步一步走下去，**</p>
+<p>**　　假设一个5维数组 a[][][][][]**</p>
+<p>**　　变量名　　　　　　　　类型**</p>
+<p>**　　a　　　　　　　　　　 int(<em>)[][][][]</em>*</p>
+<p>**　　a[0]   　　　　　　　 int(<em>)[][][]<br></em>*</p>
+<p>**　　a[0][0]　　　　　　　 int(<em>)[][]</em>*</p>
+<p>**　　a[0][0][0]　　　　　　int(<em>)[]</em>*</p>
+<p>**　　<strong>a[0][0][0][0]　　　　 int***</strong></p>
+<p>**　　<strong>a[0][0][0][0][0]      int**</strong></p>
+<p>**　　**</p>
+<p><strong><strong>　善用*的取值和走向下一层和&amp;的取地址功能，明白首地址的意义。可以很快理解各种奇奇怪怪的指针。</strong></strong></p>
+<p> </p>
+<p> </p>
+<p>**　　<strong>注意区分</strong>int*<strong>*这种**多级指针</strong>和<strong>int*[]<strong>这种</strong>数组指针</strong>以及<em><em>int</em>[]<strong>这种</strong>指针数组</em>*的区别，同是还有函数指针，结构体指针，字符串与指针，指针形参的函数，</p>
+<p> </p>
+<p>　　这里我统称他们为自闭指针</p>
+<p>**　**</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>** **</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">B站缓存剧集散乱，用python移动，重命名文件</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/02/23/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%AABUG/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">记录一个BUG</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

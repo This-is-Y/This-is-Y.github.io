@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            MYSQL简单使用 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">MYSQL简单使用</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2019-07-31 23:54:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/11252206.html">源地址：https://www.cnblogs.com/This-is-Y/p/11252206.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p><strong>安装：</strong></p>
+<p>安装phpstudy，通过phpstdy来学习MySQL。</p>
+<img src="1503868-20190726174305966-1191081252.png" alt>
+
+<p>然后登陆mysql，使用你的密码登陆（默认是root）<img src="1503868-20190726174419670-239530772.png" alt></p>
+<p>之后就可以开始学习mysql语句了。</p>
+<p> </p>
+<p><strong>使用：</strong></p>
+<p>mysql语句不区分大小写，每一个命令都是以；结束（如create database sqlname;）</p>
+<p>\h获取帮助</p>
+<p>\c退出编辑（如图<strong>）</strong></p>
+<img src="1503868-20190726174750242-2119898869.png" alt>
+
+<p> 进入’&gt;模式时，使用\c退出到-&gt;(如图）</p>
+<img src="1503868-20190726183015187-2081354509.png" alt>
+
+<p><strong>增加：</strong>CREATE DATABASE ’数据表名字‘;（如create database sqlname;）</p>
+<p><strong>创建内容：</strong></p>
+<p>create table teacher(<br>id int(4) not null primary key auto_increment,<br>name char(20) not null,<br>sex char(10) not null,<br>addr char(10) not null<br>);</p>
+<p><strong>插入数据：</strong>insert into teacher(name,sex,addr) values(‘Y’,’male’,’jxpx’);</p>
+<p><strong>检索数据：</strong></p>
+<p>　　1，* 通配符：</p>
+<p>　　select * from teacher;（*表示所有，这个select关键字本来是查找某个数据）</p>
+<p>　　之后就是这个样子：</p>
+<p>　　<img src="1503868-20190726180413393-298999237.png" alt></p>
+<p>　　2，distinct  （独特的）关键字，不显示重复的。如：</p>
+<p>　　select distinct name from teacher;</p>
+<p>　　<img src="1503868-20190903154742321-553056492.png" alt></p>
+<p>　　然后就是：</p>
+<p>　　<img src="1503868-20190903154826628-347624395.png" alt></p>
+<p> </p>
+<p> 　　3，限制数据</p>
+<p>　　在各个数据库中的实现各不一样</p>
+<p>　　　　SQL Server和Access中：select top 4 id from teacher；</p>
+<p>　　　　DB2：select id from teacher fetch first 5 rows only；</p>
+<p>　　　　Oracle：select id from teacher where rownum &lt;= 5;</p>
+<p>　　　　MySQL,MariaDB,PostgreSQL,SQLite:select id from teacher limit 5;</p>
+<p>　　　　</p>
+<p> </p>
+<p> </p>
+<p><strong>切换到一个数据库：</strong>use ’数据表名字‘；（如use test）</p>
+<p><strong>显示所有数据库：</strong>show databases；</p>
+<p>　　如图：</p>
+<p>　　<img src="1503868-20190726180540474-991019553.png" alt></p>
+<p><strong>在数据库中显示数据表：</strong>show tables;</p>
+<img src="1503868-20190731225436333-354448396.png" alt>
+
+<p><strong>更新数据：</strong> update teacher set name=’Josely’ where id=5;</p>
+<p>　　<img src="1503868-20190726181733881-1808131227.png" alt></p>
+<p>　　更新前：<img src="1503868-20190726181853465-400935725.png" alt>   更新后：<img src="1503868-20190726182008351-600678085.png" alt></p>
+<p> </p>
+<p><strong>删除数据：</strong> delete from teacher where id=5; </p>
+<p> 删除前：参考前面的图，删除后：</p>
+<img src="1503868-20190726182257158-907567071.png" alt>
+
+<h5 id><a href="#" class="headerlink" title></a></h5><p><strong>where句子：</strong></p>
+<p>　　select 你要的信息 from 一个表或者多个表 where 满足的条件（判断）</p>
+<p>　　如：select * from teacher where sex=‘male’；</p>
+<p>　　<img src="1503868-20190726183130016-1736347318.png" alt></p>
+<p>　　如：select name from teacher where sex=‘male’；</p>
+<p>　　<img src="1503868-20190726183202319-928833568.png" alt></p>
+<p> 　　where 语句可以加上and 与or 进行连接，以及（）</p>
+<p><strong>order by 语句：</strong></p>
+<p>select 你要的信息 from 一个表或者多个表 order by 字段 asc/desc</p>
+<p>asc与desc表示正序与逆序（默认为asc，可以不写）</p>
+<p>如 select * from teacher order by name;</p>
+<img src="1503868-20190726183724028-1486939311.png" alt>
+
+<p>select * from teacher order by name desc</p>
+<img src="1503868-20190726184011865-1450854214.png" alt>
+
+<p> </p>
+<p><strong>此时，注意，order by 后面可以加数字（在sqli中有用的）</strong></p>
+<p>select * from teacher order by 1;（1=id）</p>
+<p>select * from teacher order by 2;（2=name）</p>
+<p>select * from teacher order by 3;（3=sex）</p>
+<p>select * from teacher order by 4;（4=addr）</p>
+<p> </p>
+<p><strong>like 操作符：</strong></p>
+<p>**　　**创建比较特殊数据的搜索模式</p>
+<p>　　样例表：</p>
+<p>　　<img src="1503868-20190903223351953-887640450.png" alt></p>
+<p>　　1:%　　表示任意字符出现任意次数</p>
+<p>　　　　如：select * from student where name like ‘l%’;</p>
+<p>　　　　<img src="1503868-20190903223642174-55506609.png" alt></p>
+<p>　　2:_　　 用法与%一样，但是只匹配单个字符</p>
+<p>　　　　如：select * from student where name like ‘<em>j</em>‘</p>
+<p>　　　　<img src="1503868-20190903223611288-393900627.png" alt></p>
+<p>　　3:[] 　　指定一个字符集，他必须匹配指定位置（通配符的位置）的一个字符</p>
+<p>　　　　如：……我的MYSQL用不了[]…………淦</p>
+<p> </p>
+<p><strong>字段：</strong></p>
+<p>**　　**字段连接：‘+’只能连接数字，连接字符串要用concat（）</p>
+<p>　　<img src="1503868-20190903234352743-1565143818.png" alt></p>
+<p>　　<img src="1503868-20190903234151893-1389936975.png" alt></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>union语句：</strong></p>
+<p>select 需要的信息 from 数据表1 union select 需要的信息 from 数据表2 </p>
+<p>如图两个表：</p>
+<img src="1503868-20190731230904907-661461468.png" alt>
+
+<p>使用select name from student union select name from teacher;后，</p>
+<img src="1503868-20190731231031153-841213505.png" alt>
+
+<p>值得注意的是，这样子写，不会显示重复的（name为Y的两个数据只显示一个）</p>
+<p>要显示两个，应使用union all。</p>
+<p> select name from student union all select name from teacher;</p>
+<p>效果如下图</p>
+<p> <img src="1503868-20190731231203944-655228719.png" alt></p>
+<p>使用union，还可以这样子玩：</p>
+<img src="1503868-20190731232146899-1220530028.png" alt>
+
+<p> </p>
+<p> <strong>注释：</strong></p>
+<p>使用#字符，或– （减号减号空格）来注释单行，还有一个/*   */。</p>
+<img src="1503868-20190731231425498-1057335509.png" alt>
+
+<img src="1503868-20190731231541124-538656639.png" alt>
+
+<p> </p>
+<p> <strong>内置函数：</strong></p>
+<p> database():</p>
+<img src="1503868-20190731232650168-85759288.png" alt>
+
+<p> </p>
+<p>load_file(‘写文件路径’):</p>
+<img src="1503868-20190731235335003-1766633922.png" alt>
+
+<p>（不知道为啥没有。。。。）</p>
+<p>current_user:</p>
+<img src="1503868-20190731232713203-1952569957.png" alt>
+
+<p> </p>
+<p>当出现<img src="1503868-20190903140043228-1854590949.png" alt>时：</p>
+<p> </p>
+<p>原因是没有选择一个数据库，可以先show databases；查看有哪些数据库，再use ’数据库名‘ 来使用一个数据库。</p>
+<p> </p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/09/08/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">PHP学习笔记</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/07/31/mysql%E7%99%BB%E9%99%86%E6%97%B6%E5%87%BA%E7%8E%B0ERROR%202013%20(HY000)%20Lost%20connection%20to%20MySQL%20server%20at%20&#39;reading%20initial%20communication%20packet&#39;,%20system%20error%200/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">mysql登陆时出现ERROR 2013 (HY000) Lost connection to MySQL server at &#39;reading initial communication packet&#39;, system error 0</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
