@@ -246,8 +246,9 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <p><img src="image-20221126182305948.png" alt="image-20221126182305948"></p>
 <p><img src="image-20221126182434549.png" alt="image-20221126182434549"></p>
 <p>这里$filephp=”manager/class/web/database.php”</p>
-<h2 id="1-RCE"><a href="#1-RCE" class="headerlink" title="1.RCE"></a>1.RCE</h2><p>见上篇</p>
-<h2 id="2-文件删除漏洞"><a href="#2-文件删除漏洞" class="headerlink" title="2.文件删除漏洞"></a>2.文件删除漏洞</h2><p>漏洞点在system/manager/class/web/database.php文件中第253行的rmdirs($path . $d);</p>
+<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><p>见上篇</p>
+<h2 id="文件删除漏洞"><a href="#文件删除漏洞" class="headerlink" title="文件删除漏洞"></a>文件删除漏洞</h2><p>（事后发现已经被人挖到了。<a class="link" target="_blank" rel="noopener" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-25873">CVE-2020-25873<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>漏洞点在system/manager/class/web/database.php文件中第253行的rmdirs($path . $d);</p>
 <p><img src="image-20221127012249402.png" alt="image-20221127012249402"></p>
 <p>首先需要访问首页的备份与还原，备份一次，因为初始状态下，/config/data_backup/文件夹是不存在的，如果不进行备份来创建该文件夹，后续在</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(is_dir(<span class="variable">$path</span> . <span class="variable">$d</span>)) </span><br></pre></td></tr></table></figure>
@@ -270,6 +271,21 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2023/02/04/%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A7%8D%E6%8A%93apop%E7%9A%84%E5%8C%85%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">记录一种抓apop的包的新方法</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">
@@ -385,7 +401,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <div class="copyright-info info-item">
             &copy;
             
-            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
         </div>
         
             <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -482,7 +498,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B7%AF%E7%94%B1"><span class="nav-number">1.</span> <span class="nav-text">系统路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%A8%A1%E5%9D%97"><span class="nav-number">1.1.</span> <span class="nav-text">定位模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">定位文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-RCE"><span class="nav-number">2.</span> <span class="nav-text">1.RCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%96%87%E4%BB%B6%E5%88%A0%E9%99%A4%E6%BC%8F%E6%B4%9E"><span class="nav-number">3.</span> <span class="nav-text">2.文件删除漏洞</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B7%AF%E7%94%B1"><span class="nav-number">1.</span> <span class="nav-text">系统路由</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%A8%A1%E5%9D%97"><span class="nav-number">1.1.</span> <span class="nav-text">定位模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">定位文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RCE"><span class="nav-number">2.</span> <span class="nav-text">RCE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%A0%E9%99%A4%E6%BC%8F%E6%B4%9E"><span class="nav-number">3.</span> <span class="nav-text">文件删除漏洞</span></a></li></ol>
     </div>
 </div>
         </aside>
