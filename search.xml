@@ -18425,4 +18425,27 @@ insert into test1 value(3,15);
         <category>cnblogs</category>
       </categories>
   </entry>
+  <entry>
+    <title>记录一种抓app的包的新方法</title>
+    <url>/2023/02/04/%E8%AE%B0%E5%BD%95%E4%B8%80%E7%A7%8D%E6%8A%93app%E7%9A%84%E5%8C%85%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>记录一个新的安卓抓包思路<br>参考：<a class="link" href="https://www.52pojie.cn/thread-1701215-1-1.html">https://www.52pojie.cn/thread-1701215-1-1.html<i class="fas fa-external-link-alt"></i></a><br>简单来说就是：<br>    app &gt; vmos &gt; clash &gt;(无线局域网)&gt; burp</p>
+<p>先说一下设备</p>
+<ol>
+<li>小米6（未root）</li>
+<li>pu口袋校园</li>
+</ol>
+<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>首先配置好普通的局域网burp抓包环境，网上很多教程了，这里不细说。<br>配置好后，在浏览器输入网址，能抓到包就算成功。</p>
+<p><img src="image-20230204001057748.png" alt="image-20230204001057748"></p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>之后安装clash，vmos两个app。在vmos里安装好需要抓包的app<br>clash配置文件如下，来自52的Fythem</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mixed-port: 7890</span><br><span class="line">allow-lan: false</span><br><span class="line">mode: global</span><br><span class="line">log-level: info</span><br><span class="line">external-controller: 127.0.0.1:9090</span><br><span class="line">proxies:</span><br><span class="line">  - name: &quot;burp&quot;</span><br><span class="line">    type: http</span><br><span class="line">    server: 192.168.70.72</span><br><span class="line">    port: 8080</span><br><span class="line">proxy-groups:</span><br><span class="line">  - name: Proxy</span><br><span class="line">    type: select</span><br><span class="line">    proxies:</span><br><span class="line">      - burp</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将server和port改成burp监听的端口，随后保存，导入clash（推荐电脑保存文件后，开启web服务，把文件链接复制下来，然后clash选择url导入），选择该配置文件。点击代理，选择burp</p>
+<p><img src="image-20230204001616084.png" alt="image-20230204001616084"></p>
+<p>在vmos中打开需要抓包的app，然后在burp就可以看到包了。</p>
+<p><img src="image-20230204002231746.png" alt="image-20230204002231746"></p>
+<p>如果失败了，可以先检查一下各个需要填写监听信息的地方的ip和端口有没有出错，然后先从浏览器访问抓包开始检查。</p>
+]]></content>
+  </entry>
 </search>
