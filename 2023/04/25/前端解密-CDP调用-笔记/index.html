@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            前端解密-CDP调用-笔记 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">前端解密-CDP调用-笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2023-04-25 22:15:28
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="屁话"><a href="#屁话" class="headerlink" title="屁话"></a>屁话</h1><p>​    在面对前端加密http参数的时候，如果需要解密，以前我一直是两步：</p>
+<ol>
+<li>首先在js代码中找到加密逻辑，这一步一般比较快，通过搜索加密关键字比如text，data，或者encode，encrypt等，然后全部打上断点，一步一步分析。如果没找到关键字就麻烦一点，只能硬着头皮看。</li>
+<li>第二步一般是比较蛋疼的，在找到加密逻辑后，就需要在本地还原js代码以实现在bp或者python中调用，碍于js代码的层层嵌套结构，这一步往往花费了最多的时间和精力</li>
+</ol>
+<p>但是如果把断点停在调用加密函数前，在浏览器的console中就可以运行加密代码。如下</p>
+<p><img src="image-20230425222922840.png" alt="image-20230425222922840"></p>
+<p>1处是加密参数的代码。2处是我在console中进行调用，可以看到完成了加密，但是加密代码 <strong>m.encode((0,o.default)(s))</strong> 只能在断点停在这一步时才能运行。所以现在需要做的就是把浏览器停在这里，然后借助cdp远程运行代码。</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>（前提：需要先手动找到加解密代码并且在浏览器中测试成功）</p>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>需要一个chrome浏览器，找到文件位置，使用以下命令启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\chrome.exe --remote-debugging-port=9222 --user-data-dir=&quot;C:\Users\This_is_Y\Desktop\test&quot;  --remote-allow-origins=http://127.0.0.1:9222</span><br></pre></td></tr></table></figure>
+
+<p> –remote-debugging-port  ： 启远程调试，端口9222和我们之前转发出来的端口一致</p>
+<p>–user-data-dir  ：设置独立的文件保存目录，建议一个网站一个目录</p>
+<p>–remote-allow-origins ：允许远程调试</p>
+<p>启动浏览器后，在设置中开启并打开protocol monitor，</p>
+<p><img src="image-20230425224624917.png" alt="image-20230425224624917"></p>
+<p><img src="image-20230425224652960.png" alt="image-20230425224652960"></p>
+<p><img src="image-20230425224747849.png" alt="image-20230425224747849"></p>
+<p>确保控制台抽屉栏中出现了protocol monitor或者协议监视器</p>
+<p>这一步主要是为了获取一个参数<strong>callFrameId</strong>（或者objectID）</p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>在确认protocol monitor启动后，访问网站，下好断点，然后让流程停在断点前。可以先在浏览器中测试，看看加解密代码能不能正常运行，如图，</p>
+<p><img src="image-20230425224455605.png" alt="image-20230425224455605"></p>
+<p>然后打开<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:9222/json%EF%BC%8C%E6%89%BE%E5%88%B0%E7%9B%AE%E6%A0%87%E7%BD%91%E7%AB%99%E7%9A%84webSocketDebuggerUrl">http://127.0.0.1:9222/json，找到目标网站的webSocketDebuggerUrl<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20230425225607568.png" alt="image-20230425225607568"></p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>python代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># 目标网站的webSocketDebuggerUrl</span></span><br><span class="line">    ws_url = <span class="string">&quot;ws://127.0.0.1:9222/devtools/page/916C5F171E538078844D5D10770465BB&quot;</span></span><br><span class="line">    conn = websocket.create_connection(ws_url,header=&#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;this_is_y&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 配置cdp命令</span></span><br><span class="line">    <span class="comment"># 解决一些小bug</span></span><br><span class="line">    false = <span class="literal">False</span></span><br><span class="line">    true = <span class="literal">True</span></span><br><span class="line">    <span class="comment"># 随意</span></span><br><span class="line">    request_id = <span class="number">1</span></span><br><span class="line">    method = <span class="string">&quot;Debugger.evaluateOnCallFrame&quot;</span></span><br><span class="line"></span><br><span class="line">    js_code = <span class="string">&quot;m.decode(&#x27;eyJVc2VyTmFtZSI6ImFkbWluIiwiUGFzc1dvcmQiOiIxMjM0IiwiTG9naW5UeXBlIjowLCJUb2tlbiI6IiIsInRpbWVzdGFtcCI6MTY4MjM0OTk5MTcxOX0=&#x27;)&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 注意换上第一步获取到的 callFrameId</span></span><br><span class="line">    param = &#123;<span class="string">&quot;callFrameId&quot;</span>:<span class="string">&quot;5749928402698829430.1.0&quot;</span>,<span class="string">&quot;expression&quot;</span>:<span class="string">&quot;&quot;</span>,<span class="string">&quot;objectGroup&quot;</span>:<span class="string">&quot;console&quot;</span>,<span class="string">&quot;includeCommandLineAPI&quot;</span>:true,<span class="string">&quot;silent&quot;</span>:false,<span class="string">&quot;returnByValue&quot;</span>:false,<span class="string">&quot;generatePreview&quot;</span>:true&#125;</span><br><span class="line"></span><br><span class="line">    command  = &#123;<span class="string">&#x27;method&#x27;</span>: method,</span><br><span class="line">               <span class="string">&#x27;id&#x27;</span>: request_id,</span><br><span class="line">               <span class="string">&#x27;params&#x27;</span>: param&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送命令</span></span><br><span class="line">    conn.send(json.dumps(command))</span><br><span class="line">    <span class="comment"># 接受websocket的响应，并将字符串转换为 dict()</span></span><br><span class="line">    result = json.loads(conn.recv())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230425230523470.png" alt="image-20230425230523470"></p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="1-Handshake-status-403-Forbidden"><a href="#1-Handshake-status-403-Forbidden" class="headerlink" title="1.Handshake status 403 Forbidden"></a>1.Handshake status 403 Forbidden</h2><p>这一步卡了我非常久，打算写细致一点。在运行别人的代码的时候，发现一直报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">websocket._exceptions.WebSocketBadStatusException: Handshake status 403 Forbidden</span><br></pre></td></tr></table></figure>
+
+<p>唯一一个有帮助的就是在**websocket.create_connection()<strong>前加上</strong>websocket.enableTrace(True)**查看数据包细节。这引导我使用wireshark去抓包查看原始数据包是什么样子</p>
+<p><img src="image-20230425223833826.png" alt="image-20230425223833826"></p>
+<p>然后在wireshark中发现了这个。可以看到右边的提示信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rejected an incoming WebSocket connection from the http:&#x2F;&#x2F;127.0.0.1:9222 origin.  Use the command line flag --remote-allow-origins&#x3D;http:&#x2F;&#x2F;127.0.0.1:9222 to allow connections from this origin or --remote-allow-origins&#x3D;* to allow all origins.</span><br></pre></td></tr></table></figure>
+
+<p>在简单查了点资料和测试下，我在浏览器启动的时候加上了**–remote-allow-origins=<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:9222/">http://127.0.0.1:9222<i class="fas fa-external-link-alt"></i></a>** 参数，才解决问题</p>
+<h2 id="2-callFrameId"><a href="#2-callFrameId" class="headerlink" title="2.callFrameId"></a>2.callFrameId</h2><p>在发送cdp命令的时候，需要用到<strong>callFrameId</strong>参数，这个参数我还没找到怎么使用代码自动获取，先留个坑</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a class="link" target="_blank" rel="noopener" href="https://1oid.github.io/2023/02/15/frontend-encrypt-crack-cdp-debug-function-eval/">https://1oid.github.io/2023/02/15/frontend-encrypt-crack-cdp-debug-function-eval/<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://chromedevtools.github.io/devtools-protocol/tot/Debugger/">https://chromedevtools.github.io/devtools-protocol/tot/Debugger/<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/110213782">https://blog.csdn.net/freeking101/article/details/110213782<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/04/09/app-%E6%9D%82%E9%A1%B9%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">app 杂项笔记</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%81%E8%AF%9D"><span class="nav-number">1.</span> <span class="nav-text">屁话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-number">2.2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-number">2.3.</span> <span class="nav-text">3</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Handshake-status-403-Forbidden"><span class="nav-number">3.1.</span> <span class="nav-text">1.Handshake status 403 Forbidden</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-callFrameId"><span class="nav-number">3.2.</span> <span class="nav-text">2.callFrameId</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
