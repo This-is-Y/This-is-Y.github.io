@@ -3131,7 +3131,7 @@ document.getElementById("t6").innerHTML=muti;   //123</pre>
 <figure class="highlight rust"><table><tr><td class="code"><pre><span class="line">Fiddler-&gt;Tools-&gt;Connecttions-&gt;Allow remote computers to conect</span><br></pre></td></tr></table></figure>
 
 <p><img src="1702434-20200804102944950-1222750935.png" alt="img"></p>
-<h1 id="问题1：本地转发抓包"><a href="#问题1：本地转发抓包" class="headerlink" title="问题1：本地转发抓包"></a>问题1：本地转发抓包</h1><p>把burp设置成系统代理后，抓到一个app的包，但是host地址是127.0.0.1:3000</p>
+<h1 id="问题1：本地转发抓包"><a href="#问题1：本地转发抓包" class="headerlink" title="问题1：本地转发抓包"></a>问题1：本地转发抓包</h1><p>把burp设置成系统代理后，抓到一个app的包，但是host地址是127.0.0.1:30000,很显然这不是我电脑上的，也不是一个远程地址，那就只能是手机上某个app开放的端口了</p>
 <p><img src="image-20230409224824561.png" alt="image-20230409224824561"></p>
 <p>查看发现是app启动的端口：</p>
 <p><img src="image-20230409224929423.png" alt="image-20230409224929423"></p>
@@ -18682,5 +18682,28 @@ insert into test1 value(3,15);
       <categories>
         <category>cnblogs</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Burp 插件开发学习笔记</title>
+    <url>/2023/05/18/Burp-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>burp从2022.9.1版本后，就换了新api，虽然可以向下兼容，但是新api的资料太少了，所以我下了一个2022.3.7的版本来学习插件开发</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>先简单配置好环境，</p>
+<p>idea动态调试</p>
+<p><img src="image-20230518102828924.png" alt="image-20230518102828924"></p>
+<p>burp启动，我下的时<a class="link" href="http://www.ddosi.org上的burp,启动vbs脚本内容如下/">www.ddosi.org上的burp，启动vbs脚本内容如下<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">CreateObject</span>(<span class="string">&quot;WScript.Shell&quot;</span>).Run <span class="string">&quot;java  --illegal-access=permit -Xmx8G -XX:-UseParallelGC -noverify --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -javaagent:BurpSuiteLoader_v2022.3.7.jar -Dfile.encoding=utf-8  -jar burpsuite_pro_v2022.3.7.jar&quot;</span>,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>而这是配合idea动态调试的启动脚本，多加了一段  -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005   </p>
+<figure class="highlight vbscript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">CreateObject</span>(<span class="string">&quot;WScript.Shell&quot;</span>).Run <span class="string">&quot;java     -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005     --illegal-access=permit -Xmx8G -XX:-UseParallelGC -noverify --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -javaagent:BurpSuiteLoader_v2022.3.7.jar -Dfile.encoding=utf-8 -jar burpsuite_pro_v2022.3.7.jar&quot;</span>,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p><img src="image-20230518102906183.png" alt="image-20230518102906183"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>感谢bit4woo大佬<br><a class="link" href="https://github.com/bit4woo/burp-api-drops">https://github.com/bit4woo/burp-api-drops<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://github.com/bit4woo/burp-api-common">https://github.com/bit4woo/burp-api-common<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://github.com/bit4woo/Burp_Extender_random_X-Forward-For">https://github.com/bit4woo/Burp_Extender_random_X-Forward-For<i class="fas fa-external-link-alt"></i></a><br><a class="link" href="https://t0data.gitbooks.io/burpsuite/content/chapter16.html">https://t0data.gitbooks.io/burpsuite/content/chapter16.html<i class="fas fa-external-link-alt"></i></a></p>
+]]></content>
   </entry>
 </search>

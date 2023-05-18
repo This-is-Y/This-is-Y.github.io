@@ -344,7 +344,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
 <figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Fiddler-&gt;Tools-&gt;Connecttions-&gt;Allow remote computers to conect</span><br></pre></td></tr></table></figure>
 
 <p><img src="1702434-20200804102944950-1222750935.png" alt="img"></p>
-<h1 id="问题1：本地转发抓包"><a href="#问题1：本地转发抓包" class="headerlink" title="问题1：本地转发抓包"></a>问题1：本地转发抓包</h1><p>把burp设置成系统代理后，抓到一个app的包，但是host地址是127.0.0.1:3000</p>
+<h1 id="问题1：本地转发抓包"><a href="#问题1：本地转发抓包" class="headerlink" title="问题1：本地转发抓包"></a>问题1：本地转发抓包</h1><p>把burp设置成系统代理后，抓到一个app的包，但是host地址是127.0.0.1:30000,很显然这不是我电脑上的，也不是一个远程地址，那就只能是手机上某个app开放的端口了</p>
 <p><img src="image-20230409224824561.png" alt="image-20230409224824561"></p>
 <p>查看发现是app启动的端口：</p>
 <p><img src="image-20230409224929423.png" alt="image-20230409224929423"></p>

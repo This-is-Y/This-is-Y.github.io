@@ -21,6 +21,8 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
     
     <title>
         
+            Burp 插件开发学习笔记 |
+        
         This_is_Y
     </title>
     <link rel="stylesheet" href="/css/style.css">
@@ -71,7 +73,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
                 <ul class="menu-list">
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/"
                             >
                                 HOME
@@ -132,7 +134,7 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
         <ul class="drawer-menu-list">
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/">HOME</a>
                 </li>
             
@@ -171,118 +173,174 @@ color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com
             <div class="main-content">
 
                 
-                    <div class="home-content-container fade-in-down-animation">
-    <ul class="home-article-list">
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Burp 插件开发学习笔记</span>
+        </div>
+
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2019/07/20/nmap%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
-                        nmap的简单使用
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        来自之前cnblog的博客源地址：https://www.cnblogs.com/This-is-Y/p/11219448.html
-主机探测
-1.扫描单个主机
-nmap 192.168.1.2
-2.扫描整个子网
-nmap 192.168.1.1/2...
-                    
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
                 </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2023-05-18 10:24:18
+    </span>
+    
+    
 
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Jul 20 2019 21:50:00 GMT+0800">2019-07-20</span></span>
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
+
+        <div class="article-content markdown-body">
+            <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>burp从2022.9.1版本后，就换了新api，虽然可以向下兼容，但是新api的资料太少了，所以我下了一个2022.3.7的版本来学习插件开发</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>先简单配置好环境，</p>
+<p>idea动态调试</p>
+<p><img src="image-20230518102828924.png" alt="image-20230518102828924"></p>
+<p>burp启动，我下的时<a class="link" target="_blank" rel="noopener" href="http://www.ddosi.org上的burp,启动vbs脚本内容如下/">www.ddosi.org上的burp，启动vbs脚本内容如下<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CreateObject</span>(<span class="string">&quot;WScript.Shell&quot;</span>).Run <span class="string">&quot;java  --illegal-access=permit -Xmx8G -XX:-UseParallelGC -noverify --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -javaagent:BurpSuiteLoader_v2022.3.7.jar -Dfile.encoding=utf-8  -jar burpsuite_pro_v2022.3.7.jar&quot;</span>,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>而这是配合idea动态调试的启动脚本，多加了一段  -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005   </p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CreateObject</span>(<span class="string">&quot;WScript.Shell&quot;</span>).Run <span class="string">&quot;java     -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005     --illegal-access=permit -Xmx8G -XX:-UseParallelGC -noverify --add-opens=java.desktop/javax.swing=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED -javaagent:BurpSuiteLoader_v2022.3.7.jar -Dfile.encoding=utf-8 -jar burpsuite_pro_v2022.3.7.jar&quot;</span>,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p><img src="image-20230518102906183.png" alt="image-20230518102906183"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>感谢bit4woo大佬<br><a class="link" target="_blank" rel="noopener" href="https://github.com/bit4woo/burp-api-drops">https://github.com/bit4woo/burp-api-drops<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://github.com/bit4woo/burp-api-common">https://github.com/bit4woo/burp-api-common<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://github.com/bit4woo/Burp_Extender_random_X-Forward-For">https://github.com/bit4woo/Burp_Extender_random_X-Forward-For<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://t0data.gitbooks.io/burpsuite/content/chapter16.html">https://t0data.gitbooks.io/burpsuite/content/chapter16.html<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
         
+
         
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/04/25/%E5%89%8D%E7%AB%AF%E8%A7%A3%E5%AF%86-CDP%E8%B0%83%E7%94%A8-%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">前端解密-CDP调用-笔记</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
     </div>
 
-    <a href="/2019/07/20/nmap%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
 
-            </li>
+
         
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2019/07/20/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E7%AC%94%E8%AE%B0/">
-                        信息收集笔记
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        来自之前cnblog的博客源地址：https://www.cnblogs.com/This-is-Y/p/11216357.html
-大体分为8块（图片来源carcer）
-
-
-
-域名信息
-敏感目录
-端口扫描
-旁站C段
-整站分析
-谷歌hacker
-ur...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Jul 20 2019 20:33:00 GMT+0800">2019-07-20</span></span>
-        
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-    </div>
-
-    <a href="/2019/07/20/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E7%AC%94%E8%AE%B0/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-    </ul>
-
-    <div class="home-paginator">
-        <div class="paginator">
-    
-        <a class="prev btn"
-           href="/page/13/"
-        >Prev</a>
-    
-
     
 </div>
 
+            </div>
+        
     </div>
 </div>
 
@@ -325,6 +383,27 @@ ur...
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -371,6 +450,14 @@ ur...
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -412,7 +499,6 @@ ur...
 
 
 
-
 <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
 
 
@@ -426,6 +512,8 @@ ur...
 
 
 <div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
     
 </div>
 
