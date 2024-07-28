@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            TP-LINK TL-WN722N无线网卡入门 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">TP-LINK TL-WN722N无线网卡入门</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-04-05 20:43:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/12629315.html">源地址：https://www.cnblogs.com/This-is-Y/p/12629315.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>某宝上花了我138块大洋买的</p>
+<p>（值得注意的是，要买v1版本，v2不支持kali）</p>
+<p>信道：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/lee_xuwei/article/details/86635864">又被称为通道或频道<i class="fas fa-external-link-alt"></i></a>，是信号在通信系统中传输的通道，由信号从发射端传输到接收端所经过的传输媒质所构成。而无线信道就是以辐射无线电波为传输方式的无线电信道，简单来说就是无线数据传输的通道。</p>
+<p>扫描模式：</p>
+<p>　　被动扫描：在每个信道上切换以监听AP（无线接入点）周期性发送的Beacon帧，通过解析Beacon帧可以得到该接入点的SSID（热点名称），BSSID（MAC地址），支持的频率等。默认情况下，接入点每100ms发生一次Beacon帧。如果客户端没有在信道上等待足够长的世界，可能会错过AP的Beacon帧。所以这时候就要有主动扫描了</p>
+<p>　　主动扫描：在主动扫描中，客户端依然在每个信道中切换，但同时发送Probe Request帧询问该信道上的可用网络，Probe Request帧被发送到广播地址（ff:ff:ff:ff:ff:ff:ff）,一旦发送后就会启动一个计时器并等待响应，计时器结束时处理所有收到的应答。如果没有收到响应，客户端会切换到下一个信道重复发现过程。发送的Probe Requset帧可以指定特定的SSID，称为Directed Probe Requset（定向探测请求），只有具有该SSID的接入点会应答；也可以将SSID的值设为空，称为Broadcast Probe Request（广播探测请求）。收到该请求的所有热点都将进行响应</p>
+<p> </p>
+<p>监听模式：在监听模式中，内核会直接将802.11帧传递给上层。而不会进行筛选，然后再将802.11帧封装成普通的网络帧传递给上层（非监听模式）。使用在监听模式中，用户可以通过接口直接获得802.11原始数据包。需要注意的是，Linux操作系统下的NetworkManger等网络配置服务可能会改变网卡的工作模式和对信道造成干扰，最好先停止此类服务：airmon-ng check kill</p>
+<p> </p>
+<p>因为我用的kali虚拟机，建议先等kali开机后，再插入网卡进行识别</p>
+<p> </p>
+<p>用iwconfig查看网卡状态或修改模式：</p>
+<img src="1503868-20200403203319220-1311541029.png" alt>
+
+<p> </p>
+<p> </p>
+<p>将wlan0无线网卡切换至监听模式，设置信道为11：</p>
+<p>i<strong>f</strong>config wlan0 down　　</p>
+<p>i<strong>w</strong>config wlan0 mode monitor</p>
+<p>i<strong>f</strong>config wlan0 up</p>
+<p>i<strong>w</strong>config wlan0 channel 11</p>
+<p>出现<img src="1503868-20200403210843386-1237887314.png" alt></p>
+<p> </p>
+<p> 一般是没有运行ifconfig wlan0 down</p>
+<p>要是出现iwconfig: unknown command “down”，擦一下眼睛，检查是不是把ifconfig写成了iwconfig<br><br>设置完后，再iwconfig看看</p>
+<img src="1503868-20200403210959168-204663008.png" alt>
+
+<p> </p>
+<p> 可以看到模式以及变成了monitor（监听）</p>
+<p>Frequency（频率）是2.462GHz，对比可以知道就是11信道</p>
+<img src="1503868-20200403211211857-953378904.png" alt>
+
+<p> </p>
+<p>除了iwconfig，也可以用iw dev wlan0 info来查看网卡属性</p>
+<img src="1503868-20200403211546174-1089635981.png" alt>
+
+<p> </p>
+<p> 设置监听模式以及信道</p>
+<p>iw dev wlan0 interface add mon0 type monitor（新增mon0虚拟接口并指定为监听模式。删除该接口：iw dev mon0 del）</p>
+<p>ifconfig up</p>
+<p>iw dev mon0 set channel 11</p>
+<p> </p>
+<p>除了上面两个，当然还少不了我们的Aircrack-ng了</p>
+<p>用它下面的airmon-ng组件新增一个监听端口</p>
+<p>airmon-ng start wlan0</p>
+<p>用iwconfig查看（这是接口名为wlan0mon）</p>
+<img src="1503868-20200403215348773-200607643.png" alt>
+
+<p> </p>
+<p> </p>
+<p>扫描</p>
+<p>airodump-ng：</p>
+<p>airodump-ng wlan0mon</p>
+<p>可以看到出现的热点信息</p>
+<img src="1503868-20200403215640481-1791151241.png" alt>
+
+<p> </p>
+<p> 参数值分别为BSSID（MAC地址），PWR（信号强度），Beacon（信标帧数量），Data（数据分组数量），CH（信道），ENC（加密算法），CIPHER（认证协议），ESSID（热点名称）</p>
+<p> 下部分为捕获到的无线客户端信息，包裹BSSID，STATION（已连接热点MAC地址），PWR，ProbeRequest帧中的热点名称</p>
+<p>然后还可以用Kismet，Wireshark来扫描，这里就不写了（真不是是我懒）</p>
+<p> </p>
+<p>发现隐藏网络：</p>
+<p>使用aireplay-ng –deauth 10 -a &lt;BSSID&gt; mon0（后面再细说）</p>
+<p> </p>
+<p>关于绕过MAC地址认证</p>
+<p>MAC地址认证：通过在路由器设置，从而只允许列表内的客户端连接该网络。然而可以通过修改本机无线网卡的MAC地址来达到绕过。</p>
+<p>第一步，使用airodump-ng扫描周边无线网络，可以在下面获取到已连接到热点的正常客户端MAC地址，复制一个保存下来，</p>
+<p>第二部，修改本机MAC地址，ifconfig wlan0 down（先停止服务）。ifconfig wlan0 hw ether xx:xx:xx:xx:xx:xx（刚才保存的正常客户端MAC地址）。ifconfig wlan0 up （开始工作）。嫌麻烦可以直接用macchanger -m xx:xx:xx:xx:xx:xx wlan0</p>
+<p>值得注意的是，最好等该客户端下线后再尝试绕过连接。否则网络会因为多个客户端有相同的NAC地址而发生网络异常。</p>
+<p>修改MAC地址除了可以用来绕过路由器访问限制之外，还可以对某些公共热点对免费使用时间的限制，因为有些免费热点是通过MAC地址来判断客户端新旧的。使用macchanger -r wlan0可以随机设置一个MAC地址（然而在5G即将到来的时候，这种行为显然不是很有必要）</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>　　　　</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/04/06/%E5%85%B3%E4%BA%8EWPA%E5%8A%A0%E5%AF%86%E7%9A%84wifi%E9%80%9A%E8%BF%87%E6%8F%A1%E6%89%8B%E5%8C%85%E8%B7%91%E5%AD%97%E5%85%B8%E7%A0%B4%E8%A7%A3-This-is-Y/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">关于WPA加密的wifi通过握手包跑字典破解</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/03/12/PHP%E5%BA%8F%E5%88%97%E5%8C%96%E5%85%A5%E9%97%A8-This-is-Y/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">PHP序列化入门</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

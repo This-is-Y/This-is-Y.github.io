@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            DC-2 靶机 |
+        
+        This_is_Y
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/title.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"cn","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":false,"init_open":false},"style":{"primary_color":"#33CCCC","avatar":"/images/head.png","favicon":"/images/title.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":false,"background_img":"/images/Watch.png","description":"Life is but a Dream"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"trigger":"auto","unescape":false,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.1"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+
+</head>
+
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                This_is_Y
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/Game"
+                            >
+                                GAME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/ReShell"
+                            >
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs">CNBLOGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/Game">GAME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/ReShell">SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">DC-2 靶机</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/head.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">This_is_Y</span>
+                        
+                            <span class="author-label">Lv6</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2020-06-28 19:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/cnblogs/">cnblogs</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/13203455.html">源地址：https://www.cnblogs.com/This-is-Y/p/13203455.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>配置好vmbox网络环境，运行DC2靶机</p>
+<p>打开kali，改用桥接模式。可以ping通物理机，可以上网。</p>
+<p>用nmap扫描存活主机</p>
+<p>nmap -sP 192.168.123.0/24</p>
+<img src="1503868-20200628152208271-533964091.png" alt loading="lazy">
+
+<p> 可以看到有DC-2，DC-3（这是我另外开的，暂时不用管）</p>
+<p>DC-2靶机ip：192.168.123.57</p>
+<p> </p>
+<p>得到了靶机ip，根据制作者提示，在windows下host文件中加入 </p>
+<p>192.168.123.57 dc-2</p>
+<p>用于DNS解析</p>
+<p>打开dc-2</p>
+<img src="1503868-20200628154558018-221801633.png" width="1000" loading="lazy">
+
+<p> </p>
+<p>提示我们要用字典，cewl，应该是后台爆破</p>
+<p>用dirsearch 爆破后台</p>
+<img src="1503868-20200628155003138-860036943.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> 回到kali，用cewl生成字典</p>
+<p>直接在kali下用cewl是用没用的，因为kali下访问dc-2得不到任何结果，需要配置kali下的hosts文件，</p>
+<p>vim /etc/hosts</p>
+<img src="1503868-20200628155810899-1613282049.png" alt loading="lazy">
+
+<p> :wq保存退出，浏览器访问dc-2正常表示配置成功</p>
+<p>然后开始使用cewl获取网页信息同时生成字典</p>
+<p>根据提示，我们通过cewl获得的应该只是密码字典，要登陆后台，还需要用户名。</p>
+<p>发现在忘记密码这里没有做验证码，而且当填写admin和其他乱七八糟数据时，回显不同（填写admin，直接跳转了，其他的则是提示<strong>ERROR</strong>: Invalid username or email.）考虑从忘记密码这里爆破获取可用用户名</p>
+<p>打开bp，抓包，添加参数，导入字典。</p>
+<p> <img src="1503868-20200628161501976-1473739774.png" alt loading="lazy"></p>
+<p> </p>
+<p> 这里我用的<a class="link" target="_blank" rel="noopener" href="https://github.com/danielmiessler/SecLists/tree/master/Usernames/Names">github上的一个字典<i class="fas fa-external-link-alt"></i></a>，70kb的username，1w+条数据。等他跑一会。</p>
+<p>等了差不多10来分钟，跑出的结果有3个：</p>
+<p>admin</p>
+<p>jerry</p>
+<p>tom</p>
+<p>。。。。tom，jerry？？！！</p>
+<img src="1503868-20200628165854911-408749608.jpg" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> <img src="1503868-20200628165857501-880201027.jpg" alt loading="lazy"></p>
+<img src="1503868-20200628164318178-1334289903.png" alt loading="lazy">
+
+<p>再分别对这3个用户爆破密码</p>
+<p>admin爆破失败</p>
+<p>tom：parturient</p>
+<p>jerry：adipiscing</p>
+<img src="1503868-20200628165937274-2045012683.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> 用jerry登陆到后台，找了找，发现flag2</p>
+<img src="1503868-20200628171821434-1423694220.png" width="1000" loading="lazy">
+
+<p> </p>
+<p> 这个只有jerry账户里面有，登陆tom可以看到page，但是打不开</p>
+<img src="1503868-20200628172204258-2048291702.png" alt loading="lazy">
+
+<p> 根据flag的提示，应该要我们从别的地方突破</p>
+<p>这里我卡住了，看别人的博客发现。用</p>
+<p>nmap -sS -p- 192.168.123.57</p>
+<p>可以扫出80，7744端口（我在这里卡住是因为我nmap就扫出来一个80端口，得好好再学学nmap了）</p>
+<img src="1503868-20200628200801736-1637018596.png" alt loading="lazy">
+
+<p> </p>
+<p> 这里显示的服务看不懂，再用nmap扫一下确认服务</p>
+<p>nmap -sV -p 7744 192.168.123.57</p>
+<img src="1503868-20200628200937767-1295816569.png" alt loading="lazy">
+
+<p> </p>
+<p> ssh。这应该就是flag说的另一个突破口了</p>
+<p> 用jerry账户连接，被阻止</p>
+<img src="1503868-20200628201529792-694956156.png" alt loading="lazy">
+
+<p> </p>
+<p> 用tom连接，可以连接，目录下有一个flag3.txt文件，但是提示command not found</p>
+<img src="1503868-20200628201613334-1099460565.png" alt loading="lazy">
+
+<p> 提示-rbash，受限制的bash</p>
+<p>参考<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38677814/article/details/80003851">这个：https://blog.csdn.net/qq_38677814/article/details/80003851<i class="fas fa-external-link-alt"></i></a></p>
+<p>解决了cat的问题</p>
+<p>BASH_CMDS[a]=/bin/sh;a</p>
+<p>export PATH=$PATH:/bin/</p>
+<p>export PATH=$PATH:/usr/bin</p>
+<img src="1503868-20200715200949671-876939956.png" alt loading="lazy">
+
+<p> </p>
+<p> flag3.txt:  Poor old Tom is always running after Jerry. Perhaps he should su for all the stress he causes.（可怜的老汤姆总是追着杰瑞跑。也许他应该为他造成的所有压力辩护）<br>su，提到了这个</p>
+<p>继续在这个shell下操作，su jerry</p>
+<p>然后就切换到了jerry</p>
+<img src="1503868-20200715201748549-18632348.png" width="800" loading="lazy">
+
+<p> </p>
+<p> 但是想要ls的时候，提示说被禁止</p>
+<p>cd ../..退出一下就好了</p>
+<p>cat一下flag4.txt</p>
+<img src="1503868-20200715202248120-1883659899.png" alt loading="lazy">
+
+<p> </p>
+<p> 提示让我们git </p>
+<p>百度查了查，git -p help和git help config然后搭配!/bin/bash都试过了，没用。</p>
+<p>然后看攻略，，发现我忽略了一个sudo，</p>
+<p>正确提权姿势</p>
+<p>sudo git help config</p>
+<p>然后直接输入!/bin/bash</p>
+<p>出来就变成root了</p>
+<img src="1503868-20200715204742386-737572022.png" alt loading="lazy">
+
+<p> </p>
+<p> </p>
+<p> 学习点：</p>
+<p>1、cewl生成字典</p>
+<p>2、nmap的使用（-p-）要不是不会这个，也不至于找不到端口，卡死在ssh连接上</p>
+<p>3、suid提权</p>
+<p>4、git提权</p>
+<p>5、bash这一块有关知识</p>
+<p>6、sudo</p>
+<p> </p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2020/06/29/%E5%BD%B1%E6%88%AA/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">影截</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2020/06/26/python%20%E7%88%AC%E8%99%AB%E8%8E%B7%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1%E6%8E%92%E8%A1%8C%E6%A6%9C%E5%89%8D250%E5%B9%B6%E5%86%99%E5%85%A5excel-This-is-Y/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">python 爬虫获取豆瓣电影排行榜前250并写入excel</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+                    appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '生命是上天的馈赠，我不想虚度年华',
+                    lang: 'cn'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'This_is_Y';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+            2024&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">This_is_Y</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.1</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.1/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
