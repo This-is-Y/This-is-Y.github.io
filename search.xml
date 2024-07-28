@@ -19022,11 +19022,6 @@ insert into test1 value(3,15);
       </categories>
   </entry>
   <entry>
-    <title>漏洞复现笔记</title>
-    <url>/2024/04/22/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>痕迹清除</title>
     <url>/2021/04/05/%E7%97%95%E8%BF%B9%E6%B8%85%E9%99%A4-This-is-Y/</url>
     <content><![CDATA[<h2 id="Windows系统"><a href="#Windows系统" class="headerlink" title="Windows系统"></a>Windows系统</h2><ol>
@@ -19726,61 +19721,6 @@ insert into test1 value(3,15);
       <categories>
         <category>cnblogs</category>
       </categories>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/18/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87-y-acer/</url>
-    <content><![CDATA[<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><ol>
-<li>安全八股文，</li>
-<li>shiro原理</li>
-<li>sqlmap os-shell执行命令的原理</li>
-<li>简历项目，印象较深的漏洞挖掘经历，应急能力等</li>
-<li>登录页面如何渗透，思路。</li>
-<li>sqlserver xmp_cmd</li>
-</ol>
-<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><ol>
-<li>对SDL的认知，给一个业务场景(比如登录页面)，说说可以从哪些方面开展SDL建设</li>
-<li>针对项目经历，谈谈过程，如何优化做得更好</li>
-<li></li>
-</ol>
-<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>抽象问题，怎么做一次好的渗透测试</p>
-<h1 id="北京"><a href="#北京" class="headerlink" title="北京"></a>北京</h1><p>shiro反序列化</p>
-<p>log4j反序列化</p>
-<p>fastjson反序列化-利用链流程分析</p>
-<p>登录页面如何渗透，思路。</p>
-<p>应急响应经验</p>
-<p>CTF经验</p>
-<p>护网经验</p>
-<p>代码审计经验（挖到的漏洞）</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2024/03/11/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87/</url>
-    <content><![CDATA[<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><ol>
-<li>安全八股文，</li>
-<li>shiro原理</li>
-<li>sqlmap os-shell执行命令的原理</li>
-<li>简历项目，印象较深的漏洞挖掘经历，应急能力等</li>
-<li>登录页面如何渗透，思路。</li>
-<li>sqlserver xmp_cmd</li>
-</ol>
-<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><ol>
-<li>对SDL的认知，给一个业务场景(比如登录页面)，说说可以从哪些方面开展SDL建设</li>
-<li>针对项目经历，谈谈过程，如何优化做得更好</li>
-<li></li>
-</ol>
-<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>抽象问题，怎么做一次好的渗透测试</p>
-<h1 id="北京"><a href="#北京" class="headerlink" title="北京"></a>北京</h1><p>shiro反序列化</p>
-<p>log4j反序列化</p>
-<p>fastjson反序列化-利用链流程分析</p>
-<p>登录页面如何渗透，思路。</p>
-<p>应急响应经验</p>
-<p>CTF经验</p>
-<p>护网经验</p>
-<p>代码审计经验（挖到的漏洞）</p>
-<p>阿里云 OSS 对象存储攻防 <a class="link" href="https://cloudsec.huoxian.cn/docs/articles/aliyun/aliyun_oss#4bucket-object%E9%81%8D%E5%8E%86">https://cloudsec.huoxian.cn/docs/articles/aliyun/aliyun_oss#4bucket-object%E9%81%8D%E5%8E%86<i class="fas fa-external-link-alt"></i></a></p>
-]]></content>
   </entry>
   <entry>
     <title>面试题查漏补缺</title>
