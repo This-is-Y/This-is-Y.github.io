@@ -1,6 +1,6 @@
 /* global KEEP */
 
-KEEP.initTOC = () => {
+function initTOC() {
   const pageContainer = document.querySelector('.page-container')
   const postPageContainer = document.querySelector('.post-page-container')
   const pcTocContainer = document.querySelector('.pc-post-toc')
@@ -115,7 +115,7 @@ KEEP.initTOC = () => {
 }
 
 if (KEEP.theme_config?.pjax?.enable === true && KEEP.utils) {
-  KEEP.initTOC()
+  initTOC()
 } else {
-  window.addEventListener('DOMContentLoaded', KEEP.initTOC)
+  window.addEventListener('DOMContentLoaded', initTOC)
 }

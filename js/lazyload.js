@@ -1,10 +1,6 @@
 /* global KEEP */
 
 KEEP.initLazyLoad = () => {
-  if (KEEP?.theme_config?.lazyload?.enable !== true) {
-    return
-  }
-
   const imgs = document.querySelectorAll('img')
   let now = Date.now()
   let needLoad = true

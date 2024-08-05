@@ -5,8 +5,6 @@ KEEP.initHeaderShrink = () => {
     headerWrapperDom: null,
     isHeaderShrink: false,
     headerHeight: 70,
-    drawerMenuListDom: document.querySelector('.header-drawer .drawer-menu-list'),
-    windowMaskDom: document.querySelector('.window-mask'),
 
     init() {
       this.headerWrapperDom = document.querySelector('.header-wrapper')
@@ -16,12 +14,15 @@ KEEP.initHeaderShrink = () => {
     },
 
     headerShrink() {
-      const fullPageHeight = KEEP.utils.getFullPageHeight()
+      const fullPageHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      )
       if (fullPageHeight < window.innerHeight + 2 * this.headerHeight) {
         return
       }
 
-      const scrollTop = KEEP.utils.getScrollTop()
+      const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
       const isHeaderTransparent =
         KEEP.theme_config?.first_screen?.enable === true &&
         !window.location.pathname.includes('/page/')
@@ -41,13 +42,8 @@ KEEP.initHeaderShrink = () => {
       }
     },
 
-    cleanHeaderShrink() {
-      document.body.classList.remove('header-shrink')
-      this.isHeaderShrink = false
-    },
-
     sideToolsBarShowHandle() {
-      const scrollTop = KEEP.utils.getScrollTop()
+      const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
       const sideToolsDom = document.querySelector('.side-tools .side-tools-container')
       if (scrollTop > this.headerHeight / 2) {
         sideToolsDom.classList.add('show')
@@ -57,11 +53,12 @@ KEEP.initHeaderShrink = () => {
     },
 
     toggleHeaderDrawerShow() {
-      const domList = [this.windowMaskDom, document.querySelector('.menu-bar')]
+      const domList = [document.querySelector('.window-mask'), document.querySelector('.menu-bar')]
 
       if (KEEP.theme_config?.pjax?.enable === true) {
-        domList.push(...this.drawerMenuListDom.querySelectorAll('.not-sub-menu'))
-        domList.push(...this.drawerMenuListDom.querySelectorAll('.has-sub-menu .sub-menu-item'))
+        domList.push(
+          ...document.querySelectorAll('.header-drawer .drawer-menu-list .drawer-menu-item')
+        )
       }
 
       domList.forEach((v) => {
@@ -69,29 +66,9 @@ KEEP.initHeaderShrink = () => {
           document.body.classList.toggle('show-header-drawer')
         })
       })
-    },
-
-    // menu nav jump handle
-    menuNavJumpHandle() {
-      const menuLabels = this.drawerMenuListDom.querySelectorAll('.has-sub-menu .drawer-menu-label')
-      menuLabels.forEach((menu) => {
-        menu.addEventListener('click', () => {
-          menu.parentElement.classList.toggle('show-sub-menu')
-        })
-      })
-    },
-
-    closeHeaderDrawer() {
-      const siteInfoDom = document.querySelector('.header-wrapper .header-content .left')
-      siteInfoDom.addEventListener('click', () => {
-        document.body.classList.remove('show-header-drawer')
-      })
     }
   }
   KEEP.utils.headerShrink.init()
   KEEP.utils.headerShrink.headerShrink()
   KEEP.utils.headerShrink.toggleHeaderDrawerShow()
-  KEEP.utils.headerShrink.menuNavJumpHandle()
-  KEEP.utils.headerShrink.closeHeaderDrawer()
-  KEEP.utils.headerShrink.cleanHeaderShrink()
 }
