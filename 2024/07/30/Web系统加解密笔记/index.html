@@ -236,7 +236,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Wed Aug 07 2024 20:12:23 GMT+0800">2024-08-07 20:12:23</span>
+                <span class="datetime" data-updated="Wed Aug 07 2024 23:27:26 GMT+0800">2024-08-07 23:27:26</span>
             </span>
         
 
@@ -341,7 +341,7 @@
 <p><img src="image-20240806172733356.png" alt="image-20240806172733356"></p>
 <p><img src="image-20240807093224199.png" alt="image-20240807093224199"></p>
 <p>如果没搜到，或者搜到了，断点没下来，那就要甩最后的办法了。</p>
-<p>打开Any XHR or fetch，调出Call stack，然后在右边的每个地方都打上断点，逐步往回观察参数是什么时候变成密文的。这个笨办法会比较耗时耗力，有时候可能还会看漏，所以要很仔细，以上面那个系统为例，打上XHR断点了，右边的堆栈主要是app.js和56.js。可以用<del>二分法</del>从中间开始断一下看看也没有请求参数，是明文还是密文。这里我选的<code>t.xjyPostRequest app.201c6403c77...rmattedl:189293</code>这个。打</p>
+<p>打开Any XHR or fetch，调出Call stack，然后在右边的每个地方都打上断点，逐步往回观察参数是什么时候变成密文的。这个笨办法会比较耗时耗力，有时候可能还会看漏，所以要很仔细，以上面那个系统为例，打上XHR断点了，右边的堆栈主要是app.js和56.js。可以用<del>二分法</del>从中间开始断一下看看也没有请求参数，是明文还是密文。这里我选的<code>t.xjyPostRequest app.201c6403c77...rmattedl:189293</code>这个。打上断点</p>
 <p><img src="image-20240807094448247.png" alt="image-20240807094448247"></p>
 <p>可以看到在这里请求参数<code>t</code>还是明文，所以继续取<code>(anonymous)  app.201c6403c77..ormatted:25196</code>和<code>t.xjyPostRequest app.201c6403c77...rmattedl:189293</code>中间的断点<code>(anonymous) app.201c6403c77..ormattedl:53688</code>。</p>
 <p><img src="image-20240807095854146.png" alt="image-20240807095854146"></p>
@@ -383,6 +383,22 @@
 
                 
                     <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/08/27/JsRpc%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"
+                                   title="JsRpc使用笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">JsRpc使用笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
                         
                         
                             <div class="next-post">
