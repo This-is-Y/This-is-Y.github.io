@@ -236,7 +236,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Mon Oct 21 2024 20:58:03 GMT+0800">2024-10-21 20:58:03</span>
+                <span class="datetime" data-updated="Wed Jan 08 2025 16:21:22 GMT+0800">2025-01-08 16:21:22</span>
             </span>
         
 
@@ -252,7 +252,7 @@
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>9 分钟</span>
             </span>
         
         
@@ -367,6 +367,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 &lt;hash&gt;.0 传到手机</span></span><br><span class="line">adb push 9a5ba575.0 /sdcard/</span><br><span class="line"><span class="comment"># adb连接至设备</span></span><br><span class="line">adb shell</span><br><span class="line"><span class="comment"># shell获取root权限</span></span><br><span class="line">su</span><br><span class="line"><span class="comment"># 系统重新挂载</span></span><br><span class="line">mount -o rw,remount /</span><br><span class="line">mount -o rw,remount /system</span><br><span class="line"><span class="comment"># 复制 &lt;hash&gt;.0 </span></span><br><span class="line">cp /sdcard/9a5ba575.0 /system/etc/security/cacerts/</span><br><span class="line"><span class="comment"># 授权，644 rw-r--r--，本用户有可读可写权限，群组有只读权限，其他用户为只读权限。</span></span><br><span class="line">chmod 644 /system/etc/security/cacerts/9a5ba575.0</span><br><span class="line"><span class="comment"># 重启手机</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20230409205716080.png" alt="image-20230409205716080"></p>
+<p>出现mount:’/dev/block/dm-3’-&gt;’/‘:I/0 error时，是由于安卓的保护机制，可以考虑如下解决办法</p>
+<p><img src="2013743-20230324133442970-1878834925.png" alt="img"></p>
+<p><img src="image-20250108162101734.png" alt="image-20250108162101734"></p>
 <ol start="4">
 <li>验证</li>
 </ol>
@@ -480,11 +483,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2023/02/12/%E3%80%8A%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B%E3%80%8B/"
-                                   title="《我与地坛》"
+                                   href="/2023/02/08/xp%E9%9D%A2%E6%9D%BFxss-%E6%90%AD%E9%85%8D%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1rce/"
+                                   title="xp面板xss(搭配定时任务rce)"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">《我与地坛》</span>
+                                        <span class="post-nav-title-item text-ellipsis">xp面板xss(搭配定时任务rce)</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -613,7 +616,7 @@
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2024
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
         

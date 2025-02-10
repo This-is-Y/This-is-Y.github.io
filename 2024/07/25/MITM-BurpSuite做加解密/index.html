@@ -236,7 +236,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Nov 26 2024 20:30:51 GMT+0800">2024-11-26 20:30:51</span>
+                <span class="datetime" data-updated="Thu Jan 23 2025 18:42:18 GMT+0800">2025-01-23 18:42:18</span>
             </span>
         
 
@@ -256,12 +256,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.3k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
             </span>
         
         
@@ -321,6 +321,17 @@
 <p><img src="image-20240725151939367-1721907091291-1.png" alt="image-20240725151939367"></p>
 <h2 id="优化代码"><a href="#优化代码" class="headerlink" title="优化代码"></a>优化代码</h2><p>优化一下代码，方便写加解密过程：</p>
 <p>(留个坑)</p>
+<h2 id="记录碰到的一些问题"><a href="#记录碰到的一些问题" class="headerlink" title="记录碰到的一些问题"></a>记录碰到的一些问题</h2><h3 id="mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b’keep-alive’"><a href="#mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b’keep-alive’" class="headerlink" title="mitm HTTP/2 protocol error: Connection-specific header field present: b’keep-alive’."></a>mitm HTTP/2 protocol error: Connection-specific header field present: b’keep-alive’.</h3><p>当配置下游代理后，mitm日志中报这种问题</p>
+<p><img src="image-20250123183652737.png" alt="image-20250123183652737"></p>
+<p>解决方法，在mitm配置目录下的config.yaml文件中（如果没有就新增一个），将validate_inbound_headers改为false（默认为true）。</p>
+<p>配置文件默认读取路径：<code>~/.mitmproxy/config.yaml</code>，见配置项：<code>confdir: &#39;~/.mitmproxy&#39;</code></p>
+<ol>
+<li>linux 系统，如<code>/root/.mitmproxy/config.yaml</code>，没有则需要新建<code>config.yaml</code></li>
+<li>windows 系统，如：<code>C:\Users\Admin\.mitmproxy\config.yaml</code>，用户名：<code>Admin</code>，没有则需要新建<code>config.yaml</code></li>
+</ol>
+<p>之后在启动mitm时，加上 –set confdir=’~/.mitmproxy’</p>
+<p>比如： mitmdump -p 7070 -s tmp.py –mode upstream:<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080<i class="fas fa-external-link-alt"></i></a> –ssl-insecure  –set confdir=’~/.mitmproxy’</p>
+<p>参考：<a class="link" target="_blank" rel="noopener" href="https://github.com/mitmproxy/mitmproxy/issues/4836">https://github.com/mitmproxy/mitmproxy/issues/4836<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://docs.mitmproxy.org/stable/concepts-options/">https://docs.mitmproxy.org/stable/concepts-options/<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/yqbaowo/p/18175529">https://www.cnblogs.com/yqbaowo/p/18175529<i class="fas fa-external-link-alt"></i></a></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p> Mitmproxy/mitmdump中文文档以及配置教程：<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/yoyo1216/p/16165758.html">https://www.cnblogs.com/yoyo1216/p/16165758.html<i class="fas fa-external-link-alt"></i></a></p>
 <p>Mitmdump 和 Burp Suite整合详解：<a class="link" target="_blank" rel="noopener" href="https://xz.aliyun.com/t/13218?time__1311=GqmxuD070=o05Rx+OrmwK0KqY5kWbD#toc-5">https://xz.aliyun.com/t/13218?time__1311=GqmxuD070%3Do05Rx%2BOrmwK0KqY5kWbD#toc-5<i class="fas fa-external-link-alt"></i></a></p>
 
@@ -484,7 +495,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM%E8%84%9A%E6%9C%AC"><span class="nav-text">MITM脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-text">优化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM%E8%84%9A%E6%9C%AC"><span class="nav-text">MITM脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-text">优化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">记录碰到的一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b%E2%80%99keep-alive%E2%80%99"><span class="nav-text">mitm HTTP&#x2F;2 protocol error: Connection-specific header field present: b’keep-alive’.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
     </div>
 </div>
 
@@ -502,7 +513,7 @@
             
 <footer class="footer border-box">
     <div class="copyright-info info-item">
-        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2024
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
         
             &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
         
@@ -665,7 +676,7 @@
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
         <!-- use hexo-blog-encrypt -->
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM%E8%84%9A%E6%9C%AC"><span class="nav-text">MITM脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-text">优化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM%E8%84%9A%E6%9C%AC"><span class="nav-text">MITM脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-text">优化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">记录碰到的一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b%E2%80%99keep-alive%E2%80%99"><span class="nav-text">mitm HTTP&#x2F;2 protocol error: Connection-specific header field present: b’keep-alive’.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
     </div>
 </div>
 
