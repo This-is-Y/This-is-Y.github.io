@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            前端解密-CDP调用-笔记 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        前端解密-CDP调用-笔记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-04-25 22:15:28</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Jul 05 2023 11:25:06 GMT+0800">2023-07-05 11:25:06</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.9k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="屁话"><a href="#屁话" class="headerlink" title="屁话"></a>屁话</h1><p>​    在面对前端加密http参数的时候，如果需要解密，以前我一直是两步：</p>
+<ol>
+<li>首先在js代码中找到加密逻辑，这一步一般比较快，通过搜索加密关键字比如text，data，或者encode，encrypt等，然后全部打上断点，一步一步分析。如果没找到关键字就麻烦一点，只能硬着头皮看。</li>
+<li>第二步一般是比较蛋疼的，在找到加密逻辑后，就需要在本地还原js代码以实现在bp或者python中调用，碍于js代码的层层嵌套结构，这一步往往花费了最多的时间和精力</li>
+</ol>
+<p>但是如果把断点停在调用加密函数前，在浏览器的console中就可以运行加密代码。如下</p>
+<p><img src="image-20230425222922840.png" alt="image-20230425222922840"></p>
+<p>1处是加密参数的代码。2处是我在console中进行调用，可以看到完成了加密，但是加密代码 <strong>m.encode((0,o.default)(s))</strong> 只能在断点停在这一步时才能运行。所以现在需要做的就是把浏览器停在这里，然后借助cdp远程运行代码。</p>
+<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><p>（前提：需要先手动找到加解密代码并且在浏览器中测试成功）</p>
+<h2 id="1-启动浏览器，配置断点"><a href="#1-启动浏览器，配置断点" class="headerlink" title="1.启动浏览器，配置断点"></a>1.启动浏览器，配置断点</h2><p>需要一个chrome浏览器，找到文件位置，使用以下命令启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\chrome.exe --remote-debugging-port=9222 --user-data-dir=&quot;C:\Users\This_is_Y\Desktop\test&quot;  --remote-allow-origins=http://127.0.0.1:9222 --ignore-certificate-errors</span><br></pre></td></tr></table></figure>
+
+<p>–remote-debugging-port  ： 启远程调试，端口9222和我们之前转发出来的端口一致</p>
+<p>–user-data-dir  ：设置独立的文件保存目录，建议一个网站一个目录</p>
+<p>–remote-allow-origins ：允许远程调试</p>
+<p>–ignore-certificate-errors   ：强制忽略掉证书错误</p>
+<p>启动浏览器后，在设置中开启并打开protocol monitor，</p>
+<p><img src="image-20230425224624917.png" alt="image-20230425224624917"></p>
+<p><img src="image-20230425224652960.png" alt="image-20230425224652960"></p>
+<h2 id="2-拿到webSocketDebuggerUrl和callFrameId"><a href="#2-拿到webSocketDebuggerUrl和callFrameId" class="headerlink" title="2.拿到webSocketDebuggerUrl和callFrameId"></a>2.拿到webSocketDebuggerUrl和callFrameId</h2><p>在确认protocol monitor启动后，访问网站，下好断点，然后让流程停在断点前。可以先在浏览器中测试，看看加解密代码能不能正常运行，如图，</p>
+<p><img src="image-20230425224455605.png" alt="image-20230425224455605"></p>
+<p>随后跳到协议监视器来，过滤Debugger.evaluateOnCallFrame，拿到参数<strong>callFrameId</strong></p>
+<p><img src="image-20230425224747849.png" alt="image-20230425224747849"></p>
+<p>然后打开<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:9222/json%EF%BC%8C%E6%89%BE%E5%88%B0%E7%9B%AE%E6%A0%87%E7%BD%91%E7%AB%99%E7%9A%84webSocketDebuggerUrl">http://127.0.0.1:9222/json，找到目标网站的webSocketDebuggerUrl<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20230425225607568.png" alt="image-20230425225607568"></p>
+<h2 id="3-测试代码"><a href="#3-测试代码" class="headerlink" title="3.测试代码"></a>3.测试代码</h2><p>python代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>(<span class="params">callFrameId,js_code</span>):</span></span><br><span class="line">    <span class="comment"># 目标网站的webSocketDebuggerUrl</span></span><br><span class="line">    ws_url = <span class="string">&quot;ws://127.0.0.1:9222/devtools/page/916C5F171E538078844D5D10770465BB&quot;</span></span><br><span class="line">    conn = websocket.create_connection(ws_url,header=&#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;this_is_y&quot;</span>&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 配置cdp命令</span></span><br><span class="line">    <span class="comment"># 解决一些小bug</span></span><br><span class="line">    false = <span class="literal">False</span></span><br><span class="line">    true = <span class="literal">True</span></span><br><span class="line">    <span class="comment"># 随意</span></span><br><span class="line">    request_id = <span class="number">1</span></span><br><span class="line">    method = <span class="string">&quot;Debugger.evaluateOnCallFrame&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># js_code = &quot;m.decode(&#x27;eyJVc2VyTmFtZSI6ImFkbWluIiwiUGFzc1dvcmQiOiIxMjM0IiwiTG9naW5UeXBlIjowLCJUb2tlbiI6IiIsInRpbWVzdGFtcCI6MTY4MjM0OTk5MTcxOX0=&#x27;)&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 注意换上callFrameId</span></span><br><span class="line">    param = &#123;<span class="string">&quot;callFrameId&quot;</span>:callFrameId,<span class="string">&quot;expression&quot;</span>:js_code,<span class="string">&quot;objectGroup&quot;</span>:<span class="string">&quot;console&quot;</span>,<span class="string">&quot;includeCommandLineAPI&quot;</span>:true,<span class="string">&quot;silent&quot;</span>:false,<span class="string">&quot;returnByValue&quot;</span>:false,<span class="string">&quot;generatePreview&quot;</span>:true&#125;</span><br><span class="line"></span><br><span class="line">    command  = &#123;<span class="string">&#x27;method&#x27;</span>: method,</span><br><span class="line">               <span class="string">&#x27;id&#x27;</span>: request_id,</span><br><span class="line">               <span class="string">&#x27;params&#x27;</span>: param&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送命令</span></span><br><span class="line">    conn.send(json.dumps(command))</span><br><span class="line">    <span class="comment"># 接受websocket的响应，并将字符串转换为 dict()</span></span><br><span class="line">    result = json.loads(conn.recv())</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    js_code = <span class="string">&quot;m.decode(&#x27;eyJVc2VyTmFtZSI6ImFkbWluIiwiUGFzc1dvcmQiOiIxMjM0IiwiTG9naW5UeXBlIjowLCJUb2tlbiI6IiIsInRpbWVzdGFtcCI6MTY4MjM0OTk5MTcxOX0=&#x27;)&quot;</span></span><br><span class="line">    callFrameId = <span class="string">&quot;5749928402698829430.1.0&quot;</span></span><br><span class="line">    main(callFrameId,js_code)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20230425230523470.png" alt="image-20230425230523470"></p>
+<p>这里有一些错误消息：可供参考</p>
+<h2 id="4-mitmproxy代码"><a href="#4-mitmproxy代码" class="headerlink" title="4.mitmproxy代码"></a>4.mitmproxy代码</h2><p>worker.py（还未完善）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">import mitmproxy.http</span><br><span class="line">from mitmproxy import ctx, http</span><br><span class="line">import json</span><br><span class="line">import websocket</span><br><span class="line"></span><br><span class="line">ws_url &#x3D; &quot;ws:&#x2F;&#x2F;127.0.0.1:9222&#x2F;devtools&#x2F;page&#x2F;5CE4DFECA307706DCFFA590DCE41FA85&quot;</span><br><span class="line">callFrameId &#x3D; &quot;-338402750453211968.1.0&quot;</span><br><span class="line">count &#x3D; 0</span><br><span class="line"></span><br><span class="line"># error 消息：</span><br><span class="line"># &#123;&#39;code&#39;: -32000, &#39;message&#39;: &#39;Can only perform operation while paused.&#39;&#125;  断点没下好</span><br><span class="line"># &#123;&#39;code&#39;: -32000, &#39;message&#39;: &#39;Cannot find context with specified id&#39;&#125;    callFrameId可能有点问题</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def main(ws_url,callFrameId,js_code):</span><br><span class="line">    conn &#x3D; websocket.create_connection(ws_url,header&#x3D;&#123;&quot;User-Agent&quot;: &quot;this_is_y&quot;&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    false &#x3D; False</span><br><span class="line">    true &#x3D; True</span><br><span class="line">    request_id &#x3D; 1</span><br><span class="line"></span><br><span class="line">    method &#x3D; &quot;Debugger.evaluateOnCallFrame&quot;</span><br><span class="line">    param &#x3D; &#123;&quot;callFrameId&quot;:callFrameId,&quot;expression&quot;:js_code,&quot;objectGroup&quot;:&quot;console&quot;,&quot;includeCommandLineAPI&quot;:true,&quot;silent&quot;:false,&quot;returnByValue&quot;:false,&quot;generatePreview&quot;:true&#125;</span><br><span class="line">    command &#x3D; &#123;&#39;method&#39;: method,</span><br><span class="line">    &#39;id&#39;: request_id,</span><br><span class="line">    &#39;params&#39;: param&#125;</span><br><span class="line"></span><br><span class="line">    # 发送命令</span><br><span class="line">    conn.send(json.dumps(command))</span><br><span class="line">    # 接受websocket的响应，并将字符串转换为 dict()</span><br><span class="line">    result &#x3D; json.loads(conn.recv())</span><br><span class="line">    # print(&quot;result:&quot;,result)</span><br><span class="line">    return result</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">def decrypt(ws_url,callFrameId,ctext):</span><br><span class="line">    js_code &#x3D; &quot;m.decode(&#39;&#123;&#125;&#39;)&quot;.format(ctext)</span><br><span class="line">    print(&quot;Js_Code:&quot;,js_code)</span><br><span class="line">    return main(ws_url,callFrameId,js_code)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def encrypt(ws_url,callFrameId,ptext):</span><br><span class="line">    js_code &#x3D; &quot;m.encode(&#39;&#123;&#125;&#39;)&quot;.format(ptext)</span><br><span class="line">    print(&quot;Js_Code:&quot;,js_code)</span><br><span class="line">    return main(ws_url,callFrameId,js_code)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Worker:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.num &#x3D; 0</span><br><span class="line"></span><br><span class="line">    def request(self, flow: mitmproxy.http.HTTPFlow):</span><br><span class="line"></span><br><span class="line">        if flow.request.host !&#x3D; &quot;211.83.160.61&quot;:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        print(&quot;Request &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;)</span><br><span class="line">        print(&quot;body:&quot;,flow.request.method)</span><br><span class="line">        print(&quot;body:&quot;,flow.request.path)</span><br><span class="line">        print(&quot;body:&quot;,flow.request.get_text())</span><br><span class="line">        body &#x3D; flow.request.get_text()</span><br><span class="line">        if &quot;&#123;&quot; in body and &quot;&#125;&quot; in body:</span><br><span class="line">            # 未加密的明文，需要对其加密</span><br><span class="line">            result &#x3D; encrypt(ws_url,callFrameId,body)</span><br><span class="line">        else:</span><br><span class="line">            result &#x3D; decrypt(ws_url,callFrameId,body)</span><br><span class="line">        try:</span><br><span class="line">            error &#x3D; result[&#39;error&#39;]</span><br><span class="line">            print(&quot;error:&quot;,error)</span><br><span class="line">            return</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">        v &#x3D; result[&#39;result&#39;][&#39;result&#39;][&#39;value&#39;]</span><br><span class="line">        print(&quot;V:&quot;,self.num,v,type(v))</span><br><span class="line">        self.num +&#x3D; 1</span><br><span class="line">        flow.request.content &#x3D; v.encode(&#39;utf-8&#39;)</span><br><span class="line"></span><br><span class="line">    def response(self, flow: mitmproxy.http.HTTPFlow):</span><br><span class="line">        if flow.request.host !&#x3D; &quot;211.83.160.61&quot;:</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        print(&quot;Response &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;)</span><br><span class="line">        print(&quot;body:&quot;,flow.response.get_text())</span><br><span class="line">        body &#x3D; flow.response.get_text()</span><br><span class="line">        result &#x3D; decrypt(ws_url,callFrameId,body)</span><br><span class="line">        try:</span><br><span class="line">            error &#x3D; result[&#39;error&#39;]</span><br><span class="line">            print(&quot;error:&quot;,error)</span><br><span class="line">            return</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line">        v &#x3D; result[&#39;result&#39;][&#39;result&#39;][&#39;value&#39;]</span><br><span class="line">        print(&quot;V:&quot;,self.num,v,type(v))</span><br><span class="line">        self.num +&#x3D; 1</span><br><span class="line">        flow.response.content &#x3D; v.encode(&#39;utf-8&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addons &#x3D; [</span><br><span class="line">    Worker()</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用该代码，配合mitmproxy的正向代理模式，</p>
+<ul>
+<li>mitmweb -s .\3.py -p 8082 –mode regular</li>
+</ul>
+<p>同时在User options  -&gt; UpStream Proxy Servers 中添加mitmproxy监听的8082端口</p>
+<p><img src="image-20230427010258503.png" alt="image-20230427010258503"></p>
+<p>已经可以做到在burp-repeater中发送明文请求，自动解密返回</p>
+<p><img src="image-20230427010102577.png" alt="image-20230427010102577"></p>
+<p>但是没法做到burp抓包自动解密，可以用mitm上游代理的方式转发数据包到burp，但是那样子burp不能发出包</p>
+<p>最后还是放弃了用python结合 mitmproxy的方法，</p>
+<h1 id="理想状态"><a href="#理想状态" class="headerlink" title="理想状态"></a>理想状态</h1><p><img src="image-20230427011105760.png" alt="image-20230427011105760"></p>
+<h1 id="BURP开发"><a href="#BURP开发" class="headerlink" title="BURP开发"></a>BURP开发</h1><p>最好的还是写一个burp插件来完成这件事，所以我花了一个月的时间来写这个插件<del>虽然每天就写半小时</del>。最后简单完成了一个丑陋的的插件</p>
+<ul>
+<li><input checked disabled type="checkbox"> 加密参数选择</li>
+<li><input checked disabled type="checkbox"> 动态添加参数</li>
+<li><input checked disabled type="checkbox"> 工具目标地址自动获取wsurl并可以发送cdp命令到服务器</li>
+<li><input checked disabled type="checkbox"> 可以发送http请求并回显</li>
+<li><input disabled type="checkbox"> 可以修改请求并解密回显</li>
+<li><input disabled type="checkbox"> 自动获取callFrameId</li>
+<li><input disabled type="checkbox"> 优化ui页面</li>
+</ul>
+<p><img src="image-20230531224445531.png" alt="image-20230531224445531"></p>
+<p>还顺便写了一个测试CDP的小工具</p>
+<p><img src="image-20230531220339150.png" alt="image-20230531220339150"></p>
+<h1 id="autoDecoder"><a href="#autoDecoder" class="headerlink" title="autoDecoder"></a>autoDecoder</h1><p><a class="link" target="_blank" rel="noopener" href="https://github.com/f0ng/autoDecoder">https://github.com/f0ng/autoDecoder<i class="fas fa-external-link-alt"></i></a></p>
+<p>在朋友帮助下知道了这个插件，发现可以将cdp调用的过程打包为python的web接口，然后通过这个工具完成解密。</p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="1-Handshake-status-403-Forbidden"><a href="#1-Handshake-status-403-Forbidden" class="headerlink" title="1.Handshake status 403 Forbidden"></a>1.Handshake status 403 Forbidden</h2><p>这一步卡了我非常久，打算写细致一点。在运行别人的代码的时候，发现一直报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">websocket._exceptions.WebSocketBadStatusException: Handshake status 403 Forbidden</span><br></pre></td></tr></table></figure>
+
+<p>唯一一个有帮助的就是在**websocket.create_connection()<strong>前加上</strong>websocket.enableTrace(True)**查看数据包细节。这引导我使用wireshark去抓包查看原始数据包是什么样子</p>
+<p><img src="image-20230425223833826.png" alt="image-20230425223833826"></p>
+<p>然后在wireshark中发现了这个。可以看到右边的提示信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rejected an incoming WebSocket connection from the http:&#x2F;&#x2F;127.0.0.1:9222 origin.  Use the command line flag --remote-allow-origins&#x3D;http:&#x2F;&#x2F;127.0.0.1:9222 to allow connections from this origin or --remote-allow-origins&#x3D;* to allow all origins.</span><br></pre></td></tr></table></figure>
+
+<p>在简单查了点资料和测试下，我在浏览器启动的时候加上了**–remote-allow-origins=<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:9222/">http://127.0.0.1:9222<i class="fas fa-external-link-alt"></i></a>** 参数，才解决问题</p>
+<h2 id="2-callFrameId"><a href="#2-callFrameId" class="headerlink" title="2.callFrameId"></a>2.callFrameId</h2><p>在发送cdp命令的时候，需要用到<strong>callFrameId</strong>参数，这个参数我还没找到怎么使用代码自动获取，先留个坑</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a class="link" target="_blank" rel="noopener" href="https://1oid.github.io/2023/02/15/frontend-encrypt-crack-cdp-debug-function-eval/">https://1oid.github.io/2023/02/15/frontend-encrypt-crack-cdp-debug-function-eval/<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://chromedevtools.github.io/devtools-protocol/tot/Debugger/">https://chromedevtools.github.io/devtools-protocol/tot/Debugger/<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/freeking101/article/details/110213782">https://blog.csdn.net/freeking101/article/details/110213782<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2023/05/18/Burp-%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+                                   title="Burp 插件开发学习笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Burp 插件开发学习笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/04/09/app-%E6%9D%82%E9%A1%B9%E7%AC%94%E8%AE%B0/"
+                                   title="app 杂项笔记"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">app 杂项笔记</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%81%E8%AF%9D"><span class="nav-text">屁话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%90%AF%E5%8A%A8%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%8C%E9%85%8D%E7%BD%AE%E6%96%AD%E7%82%B9"><span class="nav-text">1.启动浏览器，配置断点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8B%BF%E5%88%B0webSocketDebuggerUrl%E5%92%8CcallFrameId"><span class="nav-text">2.拿到webSocketDebuggerUrl和callFrameId</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">3.测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mitmproxy%E4%BB%A3%E7%A0%81"><span class="nav-text">4.mitmproxy代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E7%8A%B6%E6%80%81"><span class="nav-text">理想状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BURP%E5%BC%80%E5%8F%91"><span class="nav-text">BURP开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#autoDecoder"><span class="nav-text">autoDecoder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Handshake-status-403-Forbidden"><span class="nav-text">1.Handshake status 403 Forbidden</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-callFrameId"><span class="nav-text">2.callFrameId</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%81%E8%AF%9D"><span class="nav-text">屁话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%90%AF%E5%8A%A8%E6%B5%8F%E8%A7%88%E5%99%A8%EF%BC%8C%E9%85%8D%E7%BD%AE%E6%96%AD%E7%82%B9"><span class="nav-text">1.启动浏览器，配置断点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%8B%BF%E5%88%B0webSocketDebuggerUrl%E5%92%8CcallFrameId"><span class="nav-text">2.拿到webSocketDebuggerUrl和callFrameId</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="nav-text">3.测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-mitmproxy%E4%BB%A3%E7%A0%81"><span class="nav-text">4.mitmproxy代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E7%8A%B6%E6%80%81"><span class="nav-text">理想状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BURP%E5%BC%80%E5%8F%91"><span class="nav-text">BURP开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#autoDecoder"><span class="nav-text">autoDecoder</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Handshake-status-403-Forbidden"><span class="nav-text">1.Handshake status 403 Forbidden</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-callFrameId"><span class="nav-text">2.callFrameId</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

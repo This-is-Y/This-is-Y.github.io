@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            对国外某站点的签名逆向&amp;异步函数的jsrpc |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        对国外某站点的签名逆向&amp;异步函数的jsrpc
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-03-07 20:47:59</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Fri Mar 28 2025 22:34:04 GMT+0800">2025-03-28 22:34:04</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.8k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h2 id="基本情况"><a href="#基本情况" class="headerlink" title="基本情况"></a>基本情况</h2><p>先看数据包</p>
+<p><img src="image-20250324172406440.png" alt="image-20250324172406440"></p>
+<p>数据包中存在X-Client-Signature:、X-Request-Timestamp、X-Client-Signature-Version三个字段，无法修改请求参数，且数据包会过期，时间大概是一分钟，过期后返回<code>令牌验证失败 (&#123;reason&#125;)</code>。</p>
+<p><img src="image-20250324172523439.png" alt="image-20250324172523439"></p>
+<h2 id="签名函数"><a href="#签名函数" class="headerlink" title="签名函数"></a>签名函数</h2><p>先f12通过关键字定位签名函数</p>
+<p><img src="image-20250324172711414.png" alt="image-20250324172711414"></p>
+<p>找倒是很快就找到了，但是当我想断点时却发现，直接跳到一个没见过的地方，只返回两句消息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Please wait a bit.</span><br><span class="line">&#x2F;&#x2F; Compiled script is not shown while source map is being loaded！</span><br></pre></td></tr></table></figure>
+
+<p><img src="f1325872c01807d557dee5320404b085.jpg" alt="f1325872c01807d557dee5320404b085"></p>
+<p><img src="be204b14de3e2d6a50f7aadfa339bd88.jpg" alt="be204b14de3e2d6a50f7aadfa339bd88"></p>
+<p>查了一圈没差明白是啥情况，发现使用火狐浏览器可以正常断点，所以之后都用火狐浏览器进行的逆向。</p>
+<p><img src="image-20250324173231823.png" alt="image-20250324173231823"></p>
+<p>（后面在群里问了一些大哥，发现只需要取消勾选谷歌浏览器的<code>javaScript 源代码映射</code>就可以解决这个问题。</p>
+<p><img src="image-20250324173335074.png" alt="image-20250324173335074"></p>
+<p>可以正常下断点后，就开始逆向了</p>
+<p><img src="image-20250324204832622.png" alt="image-20250324204832622"></p>
+<p>在case 5这里，定义了我们需要的X-Client-Signature、X-Request-Timestamp、X-Client-Signature-Version三个字段，其中</p>
+<p>X-Client-Signature-Version是由W.get(bt)函数生成的，通过简单的分析，可以得知这个函数内容就是获取一个固定值，比较简单。</p>
+<p><img src="image-20250324205246018.png" alt="image-20250324205246018"></p>
+<p>X-Request-Timestamp是取的i.timestamp，而i的定义在case 0中，t.ontConfig，而t则是从入参，不太好找，但是考虑到它的值貌似是一个普通的时间戳，可以看是否能手动生产</p>
+<p>X-Client-Signature是通过 e.sent获取到的，而e.sent这个东西，和case这块的代码有关，可以在上面case 3中看到一个return，case 5中的e.sent的值就是上面case 3中return的值。</p>
+<p><img src="image-20250324210110169.png" alt="image-20250324210110169"></p>
+<p>将断点下载case 3中，通过观察入参以及变量名可以知道，签名和url，请求方法（请求参数），时间戳有关。不过n和i的变量类型都是object，所以在写脚本的时候只需要注意修改requestUrl和fetchConfig，以及控制时间戳就行了，手动构造了一下js代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dn.getSignature(<span class="built_in">JSON</span>.parse(<span class="string">&#x27;&#123;&quot;requestUrl&quot;:&quot;/v3/users/im/basic/petname&quot;,&quot;fetchConfig&quot;:&#123;&quot;method&quot;:&quot;post&quot;,&quot;body&quot;:&quot;&#123;\\&quot;petname\\&quot;:\\&quot;admin\\&quot;&#125;&quot;,&quot;headers&quot;:&#123;&quot;Content-Type&quot;:&quot;application/json&quot;&#125;&#125;,&quot;ontConfig&quot;:&#123;&quot;useNativeTokenInApp&quot;:true,&quot;dexEnv&quot;:0,&quot;isHandling401&quot;:false,&quot;timestamp&quot;:1742822711366&#125;&#125;&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250324212846632.png" alt="image-20250324212846632"></p>
+<p>运行是没问题的</p>
+<p>所以在python脚本中，只需要修改requestUrl的值、body的内容以及timestamp就行，大致代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmp = <span class="string">f&#x27;&#x27;&#x27;&#123;&#123;&quot;requestUrl&quot;:&quot;<span class="subst">&#123;url&#125;</span>&quot;,&quot;fetchConfig&quot;:&#123;&#123;&quot;method&quot;:&quot;post&quot;,&quot;body&quot;:<span class="subst">&#123;data2&#125;</span>,&quot;headers&quot;:&#123;&#123;&quot;Content-Type&quot;:&quot;application/json&quot;&#125;&#125;&#125;&#125;,&quot;ontConfig&quot;:&#123;&#123;&quot;useNativeTokenInApp&quot;:true,&quot;dexEnv&quot;:0,&quot;isHandling401&quot;:false,&quot;timestamp&quot;:<span class="subst">&#123;newTimestamp&#125;</span>&#125;&#125;&#125;&#125;&#x27;&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;dn.getSignature(JSON.parse(&#x27;<span class="subst">&#123;tmp&#125;</span>&#x27;))&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>不过这里有两个坑点，</p>
+<h3 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h3><p>仔细观察上面执行签名函数的输出可以看到，它不像普通的js函数，执行后直接就是结果，这里有一个<code>Promise &#123; &lt;state&gt;: &quot;pending&quot; </code>。这种就是异步函数。</p>
+<p><img src="image-20250324212846632.png" alt="image-20250324212846632"></p>
+<p>如果直接用以前的方法将函数通过window代理出来,然后直接通过<a class="link" target="_blank" rel="noopener" href="http://localhost:12080/execjs%E6%89%A7%E8%A1%8Cjs%E7%9A%84%E6%96%B9%E5%BC%8F%E8%8E%B7%E5%8F%96%E5%87%BD%E6%95%B0%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%8E%B0%E4%B8%8D%E8%A1%8C%EF%BC%8C%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%7B%7D">http://localhost:12080/execjs执行js的方式获取函数执行结果，会发现不行，得到的结果是{}<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20250324214325026.png" alt="image-20250324214325026"></p>
+<p><img src="image-20250324214624561.png" alt="image-20250324214624561"></p>
+<p>所以需要换一个方法，通过先在浏览器里注册一个方法，然后通过<a class="link" target="_blank" rel="noopener" href="http://localhost:12080/go%E8%B0%83%E7%94%A8%E8%AF%A5%E6%96%B9%E6%B3%95%EF%BC%8C%E7%84%B6%E5%90%8E%E7%94%B1%E4%BA%8E%E9%9C%80%E8%A6%81%E8%B0%83%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95%E6%98%AF%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%EF%BC%8C%E6%89%80%E4%BB%A5%E6%B3%A8%E5%86%8C%E6%96%B9%E6%B3%95%E7%9A%84js%E4%B9%9F%E4%BC%9A%E6%9C%89%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%90%8C%EF%BC%8C%E5%85%B7%E4%BD%93%E5%8F%AF%E4%BB%A5%E7%9C%8Bhttps://github.com/jxhczhl/JsRpc/issues/12%E3%80%82%E7%AE%80%E5%8D%95%E8%AF%B4%E4%B8%80%E4%B8%8B%EF%BC%8C%E7%AD%BE%E5%90%8D%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81%E5%A6%82%E4%B8%8B">http://localhost:12080/go调用该方法，然后由于需要调用的方法是异步函数，所以注册方法的js也会有一些不同，具体可以看https://github.com/jxhczhl/JsRpc/issues/12。简单说一下，签名函数相关代码如下<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20250324215112519.png" alt="image-20250324215112519"></p>
+<p>看上去好像传了3个参数，r、n、i，实际上只传入了一个参数，一个有3个键值对的json，稍微优化一下代码如下，</p>
+<p><code>dn.getSignature(&#123;requestUrl: r,fetchConfig: n,ontConfig: i&#125;);</code></p>
+<p>入参为<code>&#123;requestUrl: r,fetchConfig: n,ontConfig: i&#125;</code>。所以在编写注册方法代码时，只需要传入一个参数即可</p>
+<p>注册方法如下，核心部分就是<code>dn.getSignature(JSON.parse(atob(param)))</code>。其中可以JSON.parse是将字符串变成json，但是还有一个atob的base64解码，这个涉及到第二个问题，后面再说</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">demo.regAction(<span class="string">&#x27;getSignature&#x27;</span>, <span class="keyword">async</span> (resolve, param) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> result = <span class="keyword">await</span> dn.getSignature(<span class="built_in">JSON</span>.parse(atob(param))).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;);</span><br><span class="line">        resolve(result);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">&#x27;Error in getSignature:&#x27;</span>, error);</span><br><span class="line">        resolve(<span class="literal">null</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id><a href="#" class="headerlink" title="\"></a>\</h3><p>第二个问题就是反斜杠，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmp = <span class="string">f&#x27;&#x27;&#x27;&#123;&#123;&quot;requestUrl&quot;:&quot;<span class="subst">&#123;url&#125;</span>&quot;,&quot;fetchConfig&quot;:&#123;&#123;&quot;method&quot;:&quot;post&quot;,&quot;body&quot;:<span class="subst">&#123;data2&#125;</span>,&quot;headers&quot;:&#123;&#123;&quot;Content-Type&quot;:&quot;application/json&quot;&#125;&#125;&#125;&#125;,&quot;ontConfig&quot;:&#123;&#123;&quot;useNativeTokenInApp&quot;:true,&quot;dexEnv&quot;:0,&quot;isHandling401&quot;:false,&quot;timestamp&quot;:<span class="subst">&#123;newTimestamp&#125;</span>&#125;&#125;&#125;&#125;&#x27;&#x27;&#x27;</span></span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&quot;dn.getSignature(JSON.parse(&#x27;<span class="subst">&#123;tmp&#125;</span>&#x27;))&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>通过如上的python代码print出来的js代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dn.getSignature(<span class="built_in">JSON</span>.parse(<span class="string">&#x27;&#123;&quot;requestUrl&quot;:&quot;/v3/users/im/basic/petname&quot;,&quot;fetchConfig&quot;:&#123;&quot;method&quot;:&quot;post&quot;,&quot;body&quot;:&quot;&#123;\&quot;petname\&quot;:\&quot;admin\&quot;&#125;&quot;,&quot;headers&quot;:&#123;&quot;Content-Type&quot;:&quot;application/json&quot;&#125;&#125;,&quot;ontConfig&quot;:&#123;&quot;useNativeTokenInApp&quot;:true,&quot;dexEnv&quot;:0,&quot;isHandling401&quot;:false,&quot;timestamp&quot;:1742822711366&#125;&#125;&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>然而这个js直接丢到控制台中运行是会出错的</p>
+<p><img src="image-20250324213408687.png" alt="image-20250324213408687"></p>
+<p>具体原因可以和上面能正常运行的js对比一下就知道，在”body”这里，出错的js只有一个<code>\</code>,而能正常运行的js有两个<code>\</code></p>
+<p>这里先来写一下普通的直接传入字符串的注册方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">demo.regAction(<span class="string">&#x27;tmpgetSignature&#x27;</span>, <span class="keyword">async</span> (resolve, param) =&gt; &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> result = <span class="keyword">await</span> dn.getSignature(<span class="built_in">JSON</span>.parse(param)).then(<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;);</span><br><span class="line">        resolve(result);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(<span class="string">&#x27;Error in getSignature:&#x27;</span>, error);</span><br><span class="line">        resolve(<span class="literal">null</span>); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250324220142917.png" alt="image-20250324220142917"></p>
+<p>然后python这边大概如下：</p>
+<p><img src="image-20250324220431506.png" alt="image-20250324220431506"></p>
+<p>但是js这边毫不留情的报错了</p>
+<p><img src="image-20250324220501624.png" alt="image-20250324220501624"></p>
+<p>起初我发现这边的生成的tmp，直接丢到js中报错，我一直以为是\数量的问题，所以通过替换的方法给他增加到了两个\</p>
+<p><img src="image-20250324220641978.png" alt="image-20250324220641978"></p>
+<p>但是js依旧报错，但是报错又不一样了，一个是unexpected character。一个是expected ‘,’or ‘}’ after property value in object</p>
+<p><img src="image-20250324220726588.png" alt="image-20250324220726588"></p>
+<p>可是这里的js明明又是可以执行的，就搞得我很烦，找了一圈没找到方法，</p>
+<p><img src="image-20250324221318293.png" alt="image-20250324221318293"></p>
+<p>后面灵机一动,想到python这边拼接成的参数可能并不是我真正看到样子，所以我用encode()编码输出了一下tmp字符串，发现它其实就是有两个\的，所以才决定用base64编码python拼接好的参数发给jsrpc，</p>
+<p><img src="image-20250324221733732.png" alt="image-20250324221733732"></p>
+<p>关键部分的python代码最终如下：</p>
+<p><img src="image-20250324222223537.png" alt="image-20250324222223537"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>简单总结一下就是两点，</p>
+<ul>
+<li>对于异步加密函数，要用特殊的注册方法，使用<a class="link" target="_blank" rel="noopener" href="http://localhost:12080/go%E8%BF%9B%E8%A1%8C%E4%BC%A0%E5%8F%82%E5%92%8C%E8%B0%83%E7%94%A8%EF%BC%8C">http://localhost:12080/go进行传参和调用，<i class="fas fa-external-link-alt"></i></a></li>
+<li>在使用python和js进行参数传递时，尽量对参数进行base64编码后再进行传递，能省很多事情，</li>
+<li><del>加强基础学习</del> 学不动啊md</li>
+</ul>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/03/20/%E6%95%B0%E6%8D%AE%E9%87%8F%E9%9D%9E%E5%B8%B8%E5%A4%A7%E6%97%B6%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A7%A3%E5%AF%86/"
+                                   title="数据量非常大时该如何解密"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">数据量非常大时该如何解密</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/02/08/%E5%B8%B8%E8%A7%81%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E8%AE%BE%E5%A4%87%E5%8E%9F%E7%90%86%E5%8F%8A%E5%8A%9F%E8%83%BD/"
+                                   title="常见安全防护设备原理及功能"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">常见安全防护设备原理及功能</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%83%85%E5%86%B5"><span class="nav-text">基本情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%BE%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-text">签名函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0"><span class="nav-text">异步函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">\</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%83%85%E5%86%B5"><span class="nav-text">基本情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AD%BE%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-text">签名函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0"><span class="nav-text">异步函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text">\</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            常见安全防护设备原理及功能 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        常见安全防护设备原理及功能
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-02-08 12:38:11</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Mon Feb 24 2025 15:46:41 GMT+0800">2025-02-24 15:46:41</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/">安全防护</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>5.4k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>26 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="RASP"><a href="#RASP" class="headerlink" title="RASP"></a>RASP</h1><p>（Runtime Application Self-Protection）(运行时应用程序安全保护)</p>
+<h2 id="从0开始的Java-RASP实现"><a href="#从0开始的Java-RASP实现" class="headerlink" title="从0开始的Java RASP实现"></a>从0开始的Java RASP实现</h2><p>跟着手动操作一下</p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/bitterz/p/15080403.html">https://www.cnblogs.com/bitterz/p/15080403.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/bitterz/p/15152287.html">https://www.cnblogs.com/bitterz/p/15152287.html<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>跟着这两篇博客写了点代码实现了一个简单的RASP功能，先看效果,首先是写了一个目标jar，功能是执行命令。</p>
+<p><img src="image-20250212113008358.png" alt="image-20250212113008358"></p>
+<p>然后是一个agent jar，用于监测执行的命令是否危险，这里我设置的whoami为危险命令，大致效果如下：</p>
+<p><img src="image-20250212113218211.png" alt="image-20250212113218211"></p>
+<p>新建两个idea项目，RASP和TestRun，</p>
+<p>RASP项目结构如下</p>
+<p><img src="image-20250211113938050.png" alt="image-20250211113938050"></p>
+<p>在使用maven打包时，pom文件如下，其中要注意，Agent-Class和Premain-Class，否则可能打包后出现“Failed to find Premain-Class manifest attribute”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Agent-Class&gt;com.rasp.PreMain&lt;&#x2F;Agent-Class&gt;</span><br><span class="line">&lt;Premain-Class&gt;com.rasp.PreMain&lt;&#x2F;Premain-Class&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250211114007200.png" alt="image-20250211114007200"></p>
+<h2 id="一些危险操作的底层逻辑"><a href="#一些危险操作的底层逻辑" class="headerlink" title="一些危险操作的底层逻辑"></a>一些危险操作的底层逻辑</h2><h3 id="java-执行命令-（processBuilder-start-）"><a href="#java-执行命令-（processBuilder-start-）" class="headerlink" title="java 执行命令 （processBuilder.start()）"></a>java 执行命令 （processBuilder.start()）</h3><h4 id="先贴代码和环境"><a href="#先贴代码和环境" class="headerlink" title="先贴代码和环境"></a>先贴代码和环境</h4><p>Idea: 2024.3.2.2<br>MacOs: 15.3.1 M4pro<br>Java: corretto-1.8.0_442_idea<br>mybatis: 3.5.7<br>mysql: 5.7.28</p>
+<p>org/example/Main.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;-------test4.main() start-------&quot;</span>);</span><br><span class="line"></span><br><span class="line">    BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">    String input;</span><br><span class="line"></span><br><span class="line">    ProcessBuilder processBuilder = <span class="keyword">new</span> ProcessBuilder();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            System.out.print(<span class="string">&quot;请输入命令 (输入 &#x27;quit&#x27; 退出): &quot;</span>);</span><br><span class="line">            input = reader.readLine().trim();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;quit&quot;</span>.equalsIgnoreCase(input)) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;退出程序。&quot;</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!input.isEmpty()) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    processBuilder.command(input.split(<span class="string">&quot; &quot;</span>));</span><br><span class="line">                    Process process = processBuilder.start();</span><br><span class="line">                    InputStream inputStream =  process.getInputStream();</span><br><span class="line">                    BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(inputStream, <span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line"></span><br><span class="line">                    String line;</span><br><span class="line">                    <span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        System.out.println(line);</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">                    System.err.println(<span class="string">&quot;NullPointerException caught: &quot;</span> + e.getMessage());</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;<span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                    System.err.println(<span class="string">&quot;执行命令时出错: &quot;</span> + e.getMessage());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        System.err.println(<span class="string">&quot;读取输入时出错: &quot;</span> + e.getMessage());</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            reader.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;关闭输入流时出错: &quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行效果如下</p>
+<p><img src="image-20250221100618796.png" alt="image-20250221100618796"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>PreMain.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.rasp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.ClassFileTransformer;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.IllegalClassFormatException;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"><span class="keyword">import</span> java.security.ProtectionDomain;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> com.rasp.hoook.ProcessBuilderHook;</span><br><span class="line"><span class="keyword">import</span> com.rasp.hoook.MybatisHook;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.UnmodifiableClassException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreMain</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">(String agentArgs, Instrumentation inst)</span><span class="keyword">throws</span> IOException, UnmodifiableClassException </span>&#123;</span><br><span class="line">        <span class="comment">// 先测试一次使用ProcessBuilder获取当前路径</span></span><br><span class="line">        System.out.println(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        ProcessBuilder processBuilder = <span class="keyword">new</span> ProcessBuilder();</span><br><span class="line">        processBuilder.command(<span class="string">&quot;pwd&quot;</span>);</span><br><span class="line">        Process process = processBuilder.start();</span><br><span class="line">        BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(process.getInputStream(), <span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">        System.out.println(bufferedReader.readLine());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加ClassFileTransformer类</span></span><br><span class="line">        ProcessBuilderHook processBuilderHook = <span class="keyword">new</span> ProcessBuilderHook(inst);</span><br><span class="line">        inst.addTransformer(processBuilderHook, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取所有jvm中加载过的类</span></span><br><span class="line">        Class[] allLoadedClasses = inst.getAllLoadedClasses();</span><br><span class="line">        <span class="keyword">for</span> (Class aClass : allLoadedClasses) &#123;</span><br><span class="line"><span class="comment">//            System.out.println(&quot;+++++++++&quot;);</span></span><br><span class="line"><span class="comment">//            System.out.println(aClass.getName());</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (inst.isModifiableClass(aClass) &amp;&amp; !aClass.getName().startsWith(<span class="string">&quot;java.lang.invoke.LambdaForm&quot;</span>))&#123;</span><br><span class="line">                <span class="comment">// 调用instrumentation中所有的ClassFileTransformer#transform方法，实现类字节码修改</span></span><br><span class="line">                inst.retransformClasses(<span class="keyword">new</span> Class[]&#123;aClass&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;++++++++++++++++++hook finished++++++++++++++++++\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">premain</span><span class="params">(String agentArgs, Instrumentation inst)</span> <span class="keyword">throws</span> UnmodifiableClassException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        test1(agentArgs, inst);</span></span><br><span class="line"><span class="comment">//        test2(agentArgs, inst);</span></span><br><span class="line">        test3(agentArgs,  inst);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Hook/ProcessBuilderHook</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.rasp.hoook;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在transform中执行类转换的逻辑，插入过滤代码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.ClassFileTransformer;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"><span class="keyword">import</span> java.security.ProtectionDomain;</span><br><span class="line"><span class="keyword">import</span> javassist.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProcessBuilderHook</span> <span class="keyword">implements</span> <span class="title">ClassFileTransformer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Instrumentation inst;</span><br><span class="line">    <span class="keyword">private</span> ClassPool classPool;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ProcessBuilderHook</span><span class="params">(Instrumentation inst)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ProcessBuilderHook&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.inst = inst;</span><br><span class="line">        <span class="keyword">this</span>.classPool = <span class="keyword">new</span> ClassPool(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] transform(ClassLoader loader, String className, Class&lt;?&gt; classBeingRedefined, ProtectionDomain protectionDomain, <span class="keyword">byte</span>[] classfileBuffer) &#123;</span><br><span class="line">        <span class="keyword">if</span> (className.equals(<span class="string">&quot;java/lang/ProcessBuilder&quot;</span>))&#123;</span><br><span class="line">            CtClass ctClass = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 找到ProcessBuilder对应的字节码</span></span><br><span class="line">                ctClass = <span class="keyword">this</span>.classPool.get(<span class="string">&quot;java.lang.ProcessBuilder&quot;</span>);</span><br><span class="line">                <span class="comment">// 获取所有method</span></span><br><span class="line">                CtMethod[] methods = ctClass.getMethods();</span><br><span class="line">                <span class="comment">// $0代表this，这里this = 用户创建的ProcessBuilder实例对象</span></span><br><span class="line">                String src = <span class="string">&quot;if ($0.command.get(0).equals(\&quot;whoami\&quot;))&quot;</span> +</span><br><span class="line">                        <span class="string">&quot;&#123;System.out.println(\&quot;可能执行危险命令!\&quot;);&quot;</span>;</span><br><span class="line">                <span class="keyword">for</span> (CtMethod method : methods) &#123;</span><br><span class="line">                    <span class="comment">// 找到start方法，并插入拦截代码</span></span><br><span class="line">                    <span class="keyword">if</span> (method.getName().equals(<span class="string">&quot;start&quot;</span>))&#123;</span><br><span class="line">                        method.insertBefore(src);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                classfileBuffer = ctClass.toBytecode();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (NotFoundException | CannotCompileException | IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (ctClass != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    ctClass.detach();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> classfileBuffer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行效果如下：</p>
+<p><img src="image-20250221145747222.png" alt="image-20250221145747222"></p>
+<h3 id="java-mysql执行sql-（mybatis-select）"><a href="#java-mysql执行sql-（mybatis-select）" class="headerlink" title="java mysql执行sql （mybatis-select）"></a>java mysql执行sql （mybatis-select）</h3><h4 id="先贴代码和环境-1"><a href="#先贴代码和环境-1" class="headerlink" title="先贴代码和环境"></a>先贴代码和环境</h4><p>Idea: 2024.3.2.2<br>MacOs: 15.3.1 M4pro<br>Java: corretto-1.8.0_442_idea<br>mybatis: 3.5.7<br>mysql: 5.7.28</p>
+<p>org/example/Main.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException, IOException </span>&#123;</span><br><span class="line">        String resource = <span class="string">&quot;mybatis-config.xml&quot;</span>;</span><br><span class="line">        InputStream inputStream = <span class="keyword">null</span>;</span><br><span class="line">        SqlSession sqlSession = <span class="keyword">null</span>;</span><br><span class="line">        BufferedReader reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line"></span><br><span class="line">        String input,input2;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">            SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">            sqlSession = sqlSessionFactory.openSession();</span><br><span class="line"></span><br><span class="line">            SysDictDataMapper mapper = sqlSession.getMapper(SysDictDataMapper.class);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;请输入dictCode: &quot;</span>);</span><br><span class="line">                input = reader.readLine().trim();</span><br><span class="line">                System.out.print(<span class="string">&quot;请输入dictSort: &quot;</span>);</span><br><span class="line">                input2 = reader.readLine().trim();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (<span class="string">&quot;quit&quot;</span>.equalsIgnoreCase(input)) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;退出程序。&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!input.isEmpty()) &#123;</span><br><span class="line">                    System.out.println(input);</span><br><span class="line">                    System.out.println(input2);</span><br><span class="line">                    List&lt;SysDictData&gt; result = mapper.selectByDictCodeorSort(input,input2);</span><br><span class="line">                    <span class="keyword">for</span> (SysDictData data : result) &#123;</span><br><span class="line">                        System.out.println(data);</span><br><span class="line">                        System.out.println(data.getCreateBy());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;NullPointerException caught: &quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>org/example/mapper/SysDictDataMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.example.domain.SysDictData;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span> nuvolebianche</span></span><br><span class="line"><span class="comment">* <span class="doctag">@description</span> 针对表【sys_dict_data(字典数据表)】的数据库操作Mapper</span></span><br><span class="line"><span class="comment">* <span class="doctag">@createDate</span> 2025-02-13 17:12:35</span></span><br><span class="line"><span class="comment">* <span class="doctag">@Entity</span> org.example.domain.SysDictData</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SysDictDataMapper</span> </span>&#123;</span><br><span class="line">    <span class="function">List&lt;SysDictData&gt; <span class="title">selectByDictCode</span><span class="params">(String dictCode)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>org/example/domain/SysDictData.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.example.domain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 字典数据表</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@TableName</span> sys_dict_data</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysDictData</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Long dictCode;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典排序</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Integer dictSort;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典标签</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String dictLabel;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典键值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String dictValue;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String dictType;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 样式属性（其他样式扩展）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String cssClass;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表格回显样式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String listClass;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否默认（Y是 N否）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String isDefault;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 状态（0正常 1停用）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String status;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String createBy;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String updateBy;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Date updateTime;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 备注</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String remark;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Long <span class="title">getDictCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dictCode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典编码</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDictCode</span><span class="params">(Long dictCode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dictCode = dictCode;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典排序</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getDictSort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dictSort;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典排序</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDictSort</span><span class="params">(Integer dictSort)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dictSort = dictSort;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典标签</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDictLabel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dictLabel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典标签</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDictLabel</span><span class="params">(String dictLabel)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dictLabel = dictLabel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典键值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDictValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dictValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典键值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDictValue</span><span class="params">(String dictValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dictValue = dictValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDictType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> dictType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 字典类型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDictType</span><span class="params">(String dictType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.dictType = dictType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 样式属性（其他样式扩展）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCssClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cssClass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 样式属性（其他样式扩展）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCssClass</span><span class="params">(String cssClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.cssClass = cssClass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表格回显样式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getListClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> listClass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 表格回显样式</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setListClass</span><span class="params">(String listClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.listClass = listClass;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否默认（Y是 N否）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getIsDefault</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isDefault;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否默认（Y是 N否）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIsDefault</span><span class="params">(String isDefault)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.isDefault = isDefault;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 状态（0正常 1停用）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStatus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 状态（0正常 1停用）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStatus</span><span class="params">(String status)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.status = status;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCreateBy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> createBy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateBy</span><span class="params">(String createBy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.createBy = createBy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getCreateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateTime</span><span class="params">(Date createTime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.createTime = createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUpdateBy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> updateBy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新者</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUpdateBy</span><span class="params">(String updateBy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.updateBy = updateBy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getUpdateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> updateTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUpdateTime</span><span class="params">(Date updateTime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.updateTime = updateTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 备注</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getRemark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> remark;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 备注</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRemark</span><span class="params">(String remark)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.remark = remark;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object that)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> == that) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (that == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (getClass() != that.getClass()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        SysDictData other = (SysDictData) that;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">this</span>.getDictCode() == <span class="keyword">null</span> ? other.getDictCode() == <span class="keyword">null</span> : <span class="keyword">this</span>.getDictCode().equals(other.getDictCode()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getDictSort() == <span class="keyword">null</span> ? other.getDictSort() == <span class="keyword">null</span> : <span class="keyword">this</span>.getDictSort().equals(other.getDictSort()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getDictLabel() == <span class="keyword">null</span> ? other.getDictLabel() == <span class="keyword">null</span> : <span class="keyword">this</span>.getDictLabel().equals(other.getDictLabel()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getDictValue() == <span class="keyword">null</span> ? other.getDictValue() == <span class="keyword">null</span> : <span class="keyword">this</span>.getDictValue().equals(other.getDictValue()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getDictType() == <span class="keyword">null</span> ? other.getDictType() == <span class="keyword">null</span> : <span class="keyword">this</span>.getDictType().equals(other.getDictType()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getCssClass() == <span class="keyword">null</span> ? other.getCssClass() == <span class="keyword">null</span> : <span class="keyword">this</span>.getCssClass().equals(other.getCssClass()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getListClass() == <span class="keyword">null</span> ? other.getListClass() == <span class="keyword">null</span> : <span class="keyword">this</span>.getListClass().equals(other.getListClass()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getIsDefault() == <span class="keyword">null</span> ? other.getIsDefault() == <span class="keyword">null</span> : <span class="keyword">this</span>.getIsDefault().equals(other.getIsDefault()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getStatus() == <span class="keyword">null</span> ? other.getStatus() == <span class="keyword">null</span> : <span class="keyword">this</span>.getStatus().equals(other.getStatus()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getCreateBy() == <span class="keyword">null</span> ? other.getCreateBy() == <span class="keyword">null</span> : <span class="keyword">this</span>.getCreateBy().equals(other.getCreateBy()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getCreateTime() == <span class="keyword">null</span> ? other.getCreateTime() == <span class="keyword">null</span> : <span class="keyword">this</span>.getCreateTime().equals(other.getCreateTime()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getUpdateBy() == <span class="keyword">null</span> ? other.getUpdateBy() == <span class="keyword">null</span> : <span class="keyword">this</span>.getUpdateBy().equals(other.getUpdateBy()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getUpdateTime() == <span class="keyword">null</span> ? other.getUpdateTime() == <span class="keyword">null</span> : <span class="keyword">this</span>.getUpdateTime().equals(other.getUpdateTime()))</span><br><span class="line">            &amp;&amp; (<span class="keyword">this</span>.getRemark() == <span class="keyword">null</span> ? other.getRemark() == <span class="keyword">null</span> : <span class="keyword">this</span>.getRemark().equals(other.getRemark()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> prime = <span class="number">31</span>;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">1</span>;</span><br><span class="line">        result = prime * result + ((getDictCode() == <span class="keyword">null</span>) ? <span class="number">0</span> : getDictCode().hashCode());</span><br><span class="line">        result = prime * result + ((getDictSort() == <span class="keyword">null</span>) ? <span class="number">0</span> : getDictSort().hashCode());</span><br><span class="line">        result = prime * result + ((getDictLabel() == <span class="keyword">null</span>) ? <span class="number">0</span> : getDictLabel().hashCode());</span><br><span class="line">        result = prime * result + ((getDictValue() == <span class="keyword">null</span>) ? <span class="number">0</span> : getDictValue().hashCode());</span><br><span class="line">        result = prime * result + ((getDictType() == <span class="keyword">null</span>) ? <span class="number">0</span> : getDictType().hashCode());</span><br><span class="line">        result = prime * result + ((getCssClass() == <span class="keyword">null</span>) ? <span class="number">0</span> : getCssClass().hashCode());</span><br><span class="line">        result = prime * result + ((getListClass() == <span class="keyword">null</span>) ? <span class="number">0</span> : getListClass().hashCode());</span><br><span class="line">        result = prime * result + ((getIsDefault() == <span class="keyword">null</span>) ? <span class="number">0</span> : getIsDefault().hashCode());</span><br><span class="line">        result = prime * result + ((getStatus() == <span class="keyword">null</span>) ? <span class="number">0</span> : getStatus().hashCode());</span><br><span class="line">        result = prime * result + ((getCreateBy() == <span class="keyword">null</span>) ? <span class="number">0</span> : getCreateBy().hashCode());</span><br><span class="line">        result = prime * result + ((getCreateTime() == <span class="keyword">null</span>) ? <span class="number">0</span> : getCreateTime().hashCode());</span><br><span class="line">        result = prime * result + ((getUpdateBy() == <span class="keyword">null</span>) ? <span class="number">0</span> : getUpdateBy().hashCode());</span><br><span class="line">        result = prime * result + ((getUpdateTime() == <span class="keyword">null</span>) ? <span class="number">0</span> : getUpdateTime().hashCode());</span><br><span class="line">        result = prime * result + ((getRemark() == <span class="keyword">null</span>) ? <span class="number">0</span> : getRemark().hashCode());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        sb.append(getClass().getSimpleName());</span><br><span class="line">        sb.append(<span class="string">&quot; [&quot;</span>);</span><br><span class="line">        sb.append(<span class="string">&quot;Hash = &quot;</span>).append(hashCode());</span><br><span class="line">        sb.append(<span class="string">&quot;, dictCode=&quot;</span>).append(dictCode);</span><br><span class="line">        sb.append(<span class="string">&quot;, dictSort=&quot;</span>).append(dictSort);</span><br><span class="line">        sb.append(<span class="string">&quot;, dictLabel=&quot;</span>).append(dictLabel);</span><br><span class="line">        sb.append(<span class="string">&quot;, dictValue=&quot;</span>).append(dictValue);</span><br><span class="line">        sb.append(<span class="string">&quot;, dictType=&quot;</span>).append(dictType);</span><br><span class="line">        sb.append(<span class="string">&quot;, cssClass=&quot;</span>).append(cssClass);</span><br><span class="line">        sb.append(<span class="string">&quot;, listClass=&quot;</span>).append(listClass);</span><br><span class="line">        sb.append(<span class="string">&quot;, isDefault=&quot;</span>).append(isDefault);</span><br><span class="line">        sb.append(<span class="string">&quot;, status=&quot;</span>).append(status);</span><br><span class="line">        sb.append(<span class="string">&quot;, createBy=&quot;</span>).append(createBy);</span><br><span class="line">        sb.append(<span class="string">&quot;, createTime=&quot;</span>).append(createTime);</span><br><span class="line">        sb.append(<span class="string">&quot;, updateBy=&quot;</span>).append(updateBy);</span><br><span class="line">        sb.append(<span class="string">&quot;, updateTime=&quot;</span>).append(updateTime);</span><br><span class="line">        sb.append(<span class="string">&quot;, remark=&quot;</span>).append(remark);</span><br><span class="line">        sb.append(<span class="string">&quot;]&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mybatis-config.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/ry-vue&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/example/mapper/SysDictDataMapper.xml&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>org/example/mapper/SysDictDataMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.example.mapper.SysDictDataMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;BaseResultMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;org.example.domain.SysDictData&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">&quot;dictCode&quot;</span> <span class="attr">column</span>=<span class="string">&quot;dict_code&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;dictSort&quot;</span> <span class="attr">column</span>=<span class="string">&quot;dict_sort&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;dictLabel&quot;</span> <span class="attr">column</span>=<span class="string">&quot;dict_label&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;dictValue&quot;</span> <span class="attr">column</span>=<span class="string">&quot;dict_value&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;dictType&quot;</span> <span class="attr">column</span>=<span class="string">&quot;dict_type&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;cssClass&quot;</span> <span class="attr">column</span>=<span class="string">&quot;css_class&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;listClass&quot;</span> <span class="attr">column</span>=<span class="string">&quot;list_class&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;isDefault&quot;</span> <span class="attr">column</span>=<span class="string">&quot;is_default&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;status&quot;</span> <span class="attr">column</span>=<span class="string">&quot;status&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;createBy&quot;</span> <span class="attr">column</span>=<span class="string">&quot;create_by&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;createTime&quot;</span> <span class="attr">column</span>=<span class="string">&quot;create_time&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;updateBy&quot;</span> <span class="attr">column</span>=<span class="string">&quot;update_by&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;updateTime&quot;</span> <span class="attr">column</span>=<span class="string">&quot;update_time&quot;</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">&quot;remark&quot;</span> <span class="attr">column</span>=<span class="string">&quot;remark&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectByDictCodeorSort&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;BaseResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM `ry-vue`.`sys_dict_data` WHERE dict_code = &quot;$&#123;dictCode&#125;&quot; or dict_sort = #&#123;dictSort&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectByDictCode&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;BaseResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM `ry-vue`.`sys_dict_data` WHERE dict_code = &quot;$&#123;dictCode&#125;&quot;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectByDictSort&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;BaseResultMap&quot;</span>&gt;</span></span><br><span class="line">        SELECT * FROM `ry-vue`.`sys_dict_data` WHERE dict_sort = #&#123;dictSort&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>项目结构如下，数据库时是拿ruoyi-vue的一个表来测试的</p>
+<p><img src="image-20250218112446808.png" alt="image-20250218112446808"></p>
+<p><img src="image-20250218112537741.png" alt="image-20250218112537741"></p>
+<p><img src="image-20250218112552680.png" alt="image-20250218112552680"></p>
+<h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p>在这一行打上断点，就可以步入mybatis函数内。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;SysDictData&gt; result = mapper.selectByDictCode(input);</span><br></pre></td></tr></table></figure>
+
+<p>对于${}，mybatis是在这一套流程中进行替换的。<br>org.apache.ibatis.scripting.xmltags.DynamicSqlSource#getBoundSql<br>org.apache.ibatis.scripting.xmltags.MixedSqlNode#apply<br>org.apache.ibatis.scripting.xmltags.TextSqlNode#apply<br>org.apache.ibatis.parsing.GenericTokenParser#parse<br>org.apache.ibatis.scripting.xmltags.TextSqlNode.BindingTokenParser#handleToken</p>
+<p><img src="image-20250220111029401.png" alt="image-20250220111029401"></p>
+<p>在前面经过一系列处理后，定位到${}以及内部的’expression’,通过handler.handleToken()方法获取到expression对应的参数，比如我这里expression是dictCode，输入的值是3</p>
+<p><img src="image-20250220110925713.png" alt="image-20250220110925713"></p>
+<p>这样这个parse函数最后返回的sql就是长这样</p>
+<p><img src="image-20250220111134135.png" alt="image-20250220111134135"></p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><p>现在我想要把这个sql输出出来，所以我尝试用javaasist写个javaagent试一下</p>
+<p>首先确定到该函数位置org.apache.ibatis.parsing.GenericTokenParser#parse</p>
+<p><img src="image-20250221095547383.png" alt="image-20250221095547383"></p>
+<p>PreMain.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.rasp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.ClassFileTransformer;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.IllegalClassFormatException;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"><span class="keyword">import</span> java.security.ProtectionDomain;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> com.rasp.hoook.ProcessBuilderHook;</span><br><span class="line"><span class="keyword">import</span> com.rasp.hoook.MybatisHook;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.UnmodifiableClassException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PreMain</span> </span>&#123;</span><br><span class="line">    <span class="comment">// hook mybatis 监测注入</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">(String agentArgs, Instrumentation inst)</span><span class="keyword">throws</span> IOException, UnmodifiableClassException </span>&#123;</span><br><span class="line">        <span class="comment">// 先测试一次使用ProcessBuilder获取当前路径</span></span><br><span class="line">        System.out.println(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        ProcessBuilder processBuilder = <span class="keyword">new</span> ProcessBuilder();</span><br><span class="line">        processBuilder.command(<span class="string">&quot;pwd&quot;</span>);</span><br><span class="line">        Process process = processBuilder.start();</span><br><span class="line">        BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(process.getInputStream(), <span class="string">&quot;utf-8&quot;</span>));</span><br><span class="line">        System.out.println(bufferedReader.readLine());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加ClassFileTransformer类</span></span><br><span class="line">        MybatisHook MybatisHook = <span class="keyword">new</span> MybatisHook(inst);</span><br><span class="line">        inst.addTransformer(MybatisHook, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取所有jvm中加载过的类</span></span><br><span class="line">        Class[] allLoadedClasses = inst.getAllLoadedClasses();</span><br><span class="line">        <span class="keyword">for</span> (Class aClass : allLoadedClasses) &#123;</span><br><span class="line"><span class="comment">//            System.out.println(&quot;+++++++++&quot;);</span></span><br><span class="line"><span class="comment">//            System.out.println(aClass.getName());</span></span><br><span class="line">            <span class="keyword">if</span> (inst.isModifiableClass(aClass) &amp;&amp; !aClass.getName().startsWith(<span class="string">&quot;java.lang.invoke.LambdaForm&quot;</span>))&#123;</span><br><span class="line">                <span class="comment">// 调用instrumentation中所有的ClassFileTransformer#transform方法，实现类字节码修改</span></span><br><span class="line">                inst.retransformClasses(<span class="keyword">new</span> Class[]&#123;aClass&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;++++++++++++++++++hook finished++++++++++++++++++\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">premain</span><span class="params">(String agentArgs, Instrumentation inst)</span> <span class="keyword">throws</span> UnmodifiableClassException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//        test1(agentArgs, inst);</span></span><br><span class="line">        test2(agentArgs, inst);</span><br><span class="line"><span class="comment">//        test3(agentArgs,  inst);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Hoook/MybatisHook.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.rasp.hoook;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javassist.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.ClassFileTransformer;</span><br><span class="line"><span class="keyword">import</span> java.lang.instrument.Instrumentation;</span><br><span class="line"><span class="keyword">import</span> java.security.ProtectionDomain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisHook</span> <span class="keyword">implements</span> <span class="title">ClassFileTransformer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Instrumentation inst;</span><br><span class="line">    <span class="keyword">private</span> ClassPool classPool;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MybatisHook</span><span class="params">(Instrumentation inst)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;MybatisHook&quot;</span>);</span><br><span class="line">        <span class="keyword">this</span>.inst = inst;</span><br><span class="line">        <span class="keyword">this</span>.classPool = <span class="keyword">new</span> ClassPool(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    org.apache.ibatis.parsing.GenericTokenParser#parse</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] transform(ClassLoader loader, String className, Class&lt;?&gt; classBeingRedefined, ProtectionDomain protectionDomain, <span class="keyword">byte</span>[] classfileBuffer) &#123;</span><br><span class="line">        <span class="keyword">if</span> (className.equals(<span class="string">&quot;org/apache/ibatis/parsing/GenericTokenParser&quot;</span>))&#123;</span><br><span class="line">            CtClass ctClass = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;MybatisHook-transform:&quot;</span>+className);</span><br><span class="line">              	<span class="comment">// 避免出现javassist.NotFoundException的情况</span></span><br><span class="line">								<span class="keyword">this</span>.classPool.appendClassPath(<span class="string">&quot;~/.m2/repository/org/mybatis/mybatis/3.5.7/mybatis-3.5.7.jar&quot;</span>);</span><br><span class="line">              	ctClass = <span class="keyword">this</span>.classPool.get(<span class="string">&quot;org.apache.ibatis.parsing.GenericTokenParser&quot;</span>);</span><br><span class="line">                System.out.println(<span class="string">&quot;000000&quot;</span>);</span><br><span class="line">                <span class="comment">// 获取所有method</span></span><br><span class="line">                CtMethod[] methods = ctClass.getMethods();</span><br><span class="line">                <span class="comment">// $_代表返回值，这里输出parse函数的返回值</span></span><br><span class="line">                String src = <span class="string">&quot;System.out.println(\&quot;hook= \&quot;+$_);&quot;</span>;</span><br><span class="line">                <span class="keyword">for</span> (CtMethod method : methods) &#123;</span><br><span class="line">                    <span class="comment">// 找到parse方法，并插入代码</span></span><br><span class="line">                    <span class="keyword">if</span> (method.getName().equals(<span class="string">&quot;parse&quot;</span>))&#123;</span><br><span class="line">                        method.insertAfter(src);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                classfileBuffer = ctClass.toBytecode();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">catch</span> (NotFoundException | CannotCompileException | IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (ctClass != <span class="keyword">null</span>)&#123;</span><br><span class="line">                    ctClass.detach();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> classfileBuffer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后把这个打包出jar，运行效果如下，虽然有点丑陋，但是至少能用</p>
+<p><img src="image-20250221100022421.png" alt="image-20250221100022421"></p>
+<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><ol>
+<li><p>在写mybatis的javaasist时，在ctClass = this.classPool.get(“org.apache.ibatis.parsing.GenericTokenParser”);这一行一直报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javassist.NotFoundException: org.apache.ibatis.parsing.GenericTokenParser</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：在报错行之前加上这句话，javassist 官网对此有如下说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The default ClassPool returned by a static method ClassPool.getDefault() searches the same path that the underlying JVM (Java virtual machine) has. If a program is running on a web application server such as JBoss and Tomcat, the ClassPoolobject may not be able to find user classes since such a web application server uses multiple class loaders as well as the system class loader. In that case, an additional class path must be registered to the ClassPool.</span><br><span class="line">静态方法 ClassPool.getDefault（） 返回的默认 ClassPool 搜索底层 JVM（Java 虚拟机）的相同路径。如果程序在 Web 应用程序服务器（如 JBoss 和 Tomcat）上运行，则 ClassPoolobject 可能无法找到用户类，因为此类 Web 应用程序服务器使用多个类加载器以及系统类加载器。在这种情况下，必须向 ClassPool 注册一个额外的类路径。(机器翻译)</span><br></pre></td></tr></table></figure>
+
+<p>参考<a class="link" target="_blank" rel="noopener" href="https://my.oschina.net/idiotsky/blog/208734">https://my.oschina.net/idiotsky/blog/208734<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.classPool.appendClassPath(<span class="string">&quot;~/.m2/repository/org/mybatis/mybatis/3.5.7/mybatis-3.5.7.jar&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="OPENRASP"><a href="#OPENRASP" class="headerlink" title="OPENRASP"></a>OPENRASP</h2><p>在ruoyi-vue 3.8.8 上安装,考虑到手上并没有ruoyi-vue-3.8.8的漏洞，所以需要自己加一个</p>
+<p><img src="image-20250224151538912.png" alt="image-20250224151538912"></p>
+<p><img src="image-20250224151549516.png" alt="image-20250224151549516"></p>
+<p>然后打包好项目文件得到ruoyi-admin.jar</p>
+<p>带着openrasp的javaagent启动ruoyi-admin.jar</p>
+<p>java -javaagent:/Users/nuvolebianche/Library/CloudStorage/OneDrive-个人/Code/rasp-2022-01-28/rasp/rasp.jar -jar target/ruoyi-admin.jar</p>
+<p><img src="image-20250224153437900.png" alt="image-20250224153437900"></p>
+<p><img src="image-20250224153500570.png" alt="image-20250224153500570"></p>
+<p><img src="image-20250224153617094.png" alt="image-20250224153617094"></p>
+<p>根据<a class="link" target="_blank" rel="noopener" href="https://rasp.baidu.com/doc/install/manual/spring-boot.html%EF%BC%8C">https://rasp.baidu.com/doc/install/manual/spring-boot.html，<i class="fas fa-external-link-alt"></i></a></p>
+<p>数据响应包中出现x-protected-by: OpenRASP，安装成功。</p>
+<p>结果发现居然连一个报错注入都没拦住。。。</p>
+<p><img src="image-20250224154010686.png" alt="image-20250224154010686"></p>
+<p>然后发现这个功能得加钱。。</p>
+<p><img src="image-20250224154259089.png" alt="image-20250224154259089"></p>
+<p>那没办法，只能再加个发序列化漏洞试试看了。</p>
+<h1 id="SCA"><a href="#SCA" class="headerlink" title="SCA"></a>SCA</h1><h1 id="WAF"><a href="#WAF" class="headerlink" title="WAF"></a>WAF</h1><p>部署，搭建南墙和雷池，</p>
+<h1 id="内存马"><a href="#内存马" class="headerlink" title="内存马"></a>内存马</h1><h1 id="一些概念的东西"><a href="#一些概念的东西" class="headerlink" title="一些概念的东西"></a>一些概念的东西</h1><h4 id="SAST"><a href="#SAST" class="headerlink" title="SAST"></a>SAST</h4><p>（Static Application Security Testing）（静态应用安全测试）</p>
+<p><strong>SAST 是一种白盒测试方法，它在不运行代码的情况下对源代码或二进制代码进行安全扫描</strong>。SAST 工具通过分析代码结构、逻辑和模式来发现潜在的安全漏洞和不良编码实践。</p>
+<p><strong>工作原理：</strong></p>
+<p>静态分析：SAST工具在应用代码未运行时，通过分析源代码、字节码或二进制代码，查找潜在的安全漏洞。</p>
+<p>代码扫描：利用静态分析技术，扫描代码中的常见漏洞模式，如缓冲区溢出、SQL注入、跨站脚本（XSS）等。</p>
+<p><strong>技术细节：</strong></p>
+<p>数据流分析：追踪变量和数据在代码中的流动，识别可能导致安全问题的数据流。</p>
+<p>控制流分析：分析代码的控制结构，查找可能导致漏洞的执行路径。</p>
+<p>语义分析：检查代码的逻辑和语义，识别不安全的编码实践和潜在的逻辑错误。</p>
+<p><strong>优点：</strong></p>
+<p>可以在开发早期发现和修复安全漏洞，减少修复成本。</p>
+<p>能够检测代码中的所有路径和状态，提供全面的漏洞报告。</p>
+<p><strong>缺点：</strong></p>
+<p>误报率较高：因为仅基于代码分析，可能会有一些误报，需要开发人员进一步确认。</p>
+<p>依赖代码质量：代码的复杂性和质量可能影响检测效果，复杂代码可能导致漏报。</p>
+<p>无法看到执行流。通常需要定制或调参。</p>
+<p><strong>使用场景：</strong></p>
+<p>开发阶段：在开发早期和中期，帮助开发人员在编码时发现和修复安全问题。</p>
+<p>代码审查：作为代码审查的一部分，确保代码的安全性和质量。</p>
+<h4 id="DAST"><a href="#DAST" class="headerlink" title="DAST"></a>DAST</h4><p>（Dynamic Application Security Testing）（动态应用安全测试）</p>
+<p><strong>DAST 是一种黑盒测试技术，通过模拟攻击者的行为来测试正在运行的应用程序，以发现安全漏洞</strong>。它不接触源代码，而是通过发送各种输入并观察应用程序的响应来检测潜在的安全问题</p>
+<p><strong>输入模糊测试（Fuzzing）：</strong>向应用发送各种随机或特制的输入数据，观察应用的响应，以发现潜在的漏洞。</p>
+<p><strong>爬虫技术：</strong>自动化工具遍历应用的所有页面和功能，确保测试覆盖全面。</p>
+<p><strong>工作原理：</strong></p>
+<p>DAST工具在应用运行时进行黑盒测试，通过发送各种输入和请求来检测应用的安全漏洞。模拟真实攻击者的行为，尝试通过注入恶意输入、探测开放端口、绕过验证等手段发现漏洞。</p>
+<p><strong>DAST的优点是：</strong></p>
+<p>自动化程度高：可以自动化运行，定期扫描应用，发现新的安全问题。</p>
+<p><strong>缺点：</strong></p>
+<p>误报率：由于无法了解应用的内部逻辑，可能会产生误报，需要手动验证。</p>
+<p>时间消耗：完整的扫描可能需要较长时间，尤其是大型复杂应用。</p>
+<p>覆盖不足：无法检测应用的所有路径和状态变化，可能漏报某些内部逻辑漏洞。</p>
+<p>无法理解代码逻辑：DAST 无法深入理解代码逻辑，因此可能漏掉一些编码错误。</p>
+<p><strong>使用场景：</strong></p>
+<p>生产环境：定期对运行中的应用进行安全检测，确保上线后的安全性。也可以在测试环境下用。</p>
+<p>安全评估：作为安全评估的一部分，验证应用的实际防御能力。</p>
+<h4 id="IAST"><a href="#IAST" class="headerlink" title="IAST"></a>IAST</h4><p>（Interactive Application Security Testing）（交互式应用安全测试）</p>
+<p><strong>IAST 结合了 SAST 和 DAST 的优点，通过在应用程序内部植入探针，在运行时动态地监测和报告安全漏洞</strong>。<strong>比如将IAST代理JAR文件放置在Java应用程序的根目录或者指定目录下，并且在启动应用程序时，通过-javaagent参数指定代理JAR文件的路径。</strong></p>
+<p>IAST 可以像 SAST 一样看到源代码，也可以像 DAST 一样看到应用程序运行时的执行流。IAST 工具在应用程序运行时工作，通过代理和传感器收集关于其功能和性能的信息，以实时识别漏洞 。 </p>
+<p><strong>工作原理：</strong></p>
+<p>嵌入式代理：IAST工具通过在应用服务器上部署代理，嵌入到应用的运行环境中。代理可以监控和分析应用的执行流程。</p>
+<p>实时分析：在应用运行时，IAST工具会实时监控输入、输出、数据流和控制流，分析这些信息以发现潜在的安全漏洞。</p>
+<p>组合检测：IAST结合了SAST和DAST的优点，可以在运行时分析源代码和应用行为，提供更全面的检测。</p>
+<p><strong>技术细节：</strong></p>
+<p>数据流分析：IAST工具能够追踪用户输入的数据流，识别跨越多个函数和模块的潜在漏洞。</p>
+<p>行为监控：实时监控应用的行为，识别异常的操作或不安全的行为，如SQL注入、命令注入等。</p>
+<p><strong>优点：</strong></p>
+<p>上下文感知：能够了解应用的内部状态和运行环境，因此提供的漏洞信息更准确和详细。</p>
+<p>实时反馈：开发人员可以在开发和测试阶段实时获得安全反馈，及时修复漏洞。</p>
+<p>低误报率：结合了静态和动态分析的信息，通常比单独使用SAST或DAST的误报率更低。</p>
+<p><strong>缺点：</strong></p>
+<p>性能开销：嵌入代理可能会增加应用的运行开销，影响性能。</p>
+<p>依赖环境：需要在特定的运行环境中才能发挥作用，可能不适用于所有开发流程。</p>
+<p><strong>使用场景：</strong></p>
+<p>开发和测试阶段：特别适合在CI/CD流水线中集成，进行持续监控和检测。</p>
+<p>高敏感度应用：对安全性要求高的应用，如金融、医疗等领域。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a class="link" target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/197823.html">浅谈RASP技术攻防之基础篇<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/bitterz/p/15080403.html">从零开始的Java RASP实现(一)<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/bitterz/p/15152287.html">从零开始的Java RASP实现(二) <i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://github.com/W01fh4cker/LearnJavaMemshellFromZero">完全零基础从0到1掌握Java内存马<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://paper.seebug.org/513/">Java RASP浅析——以百度OpenRASP为例<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/rickiyang/p/11368932.html">javaagent使用指南<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://xz.aliyun.com/news/6601">Java底层防护 - OpenRASP核心源码浅析<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://turn1tup.github.io/2022/09/20/JAVA-RASP%E9%AB%98%E6%95%88%E6%A3%80%E6%B5%8BSQL%E6%B3%A8%E5%85%A5/">JAVA-RASP高效检测SQL注入<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/">安全防护</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/03/07/%E5%AF%B9%E5%9B%BD%E5%A4%96%E6%9F%90%E7%AB%99%E7%82%B9%E7%9A%84%E7%AD%BE%E5%90%8D%E9%80%86%E5%90%91-%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E7%9A%84jsrpc/"
+                                   title="对国外某站点的签名逆向&amp;异步函数的jsrpc"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">对国外某站点的签名逆向&amp;异步函数的jsrpc</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/12/11/douyin%E8%AF%84%E8%AE%BA%E6%8A%93%E5%8F%96-%E7%AC%94%E8%AE%B0/"
+                                   title="douyin评论抓取-笔记"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">douyin评论抓取-笔记</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RASP"><span class="nav-text">RASP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84Java-RASP%E5%AE%9E%E7%8E%B0"><span class="nav-text">从0开始的Java RASP实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%8D%B1%E9%99%A9%E6%93%8D%E4%BD%9C%E7%9A%84%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91"><span class="nav-text">一些危险操作的底层逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4-%EF%BC%88processBuilder-start-%EF%BC%89"><span class="nav-text">java 执行命令 （processBuilder.start()）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E8%B4%B4%E4%BB%A3%E7%A0%81%E5%92%8C%E7%8E%AF%E5%A2%83"><span class="nav-text">先贴代码和环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-mysql%E6%89%A7%E8%A1%8Csql-%EF%BC%88mybatis-select%EF%BC%89"><span class="nav-text">java mysql执行sql （mybatis-select）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E8%B4%B4%E4%BB%A3%E7%A0%81%E5%92%8C%E7%8E%AF%E5%A2%83-1"><span class="nav-text">先贴代码和环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-text">调试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-text">报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OPENRASP"><span class="nav-text">OPENRASP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SCA"><span class="nav-text">SCA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WAF"><span class="nav-text">WAF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%A9%AC"><span class="nav-text">内存马</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="nav-text">一些概念的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SAST"><span class="nav-text">SAST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DAST"><span class="nav-text">DAST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IAST"><span class="nav-text">IAST</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RASP"><span class="nav-text">RASP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84Java-RASP%E5%AE%9E%E7%8E%B0"><span class="nav-text">从0开始的Java RASP实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%8D%B1%E9%99%A9%E6%93%8D%E4%BD%9C%E7%9A%84%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91"><span class="nav-text">一些危险操作的底层逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4-%EF%BC%88processBuilder-start-%EF%BC%89"><span class="nav-text">java 执行命令 （processBuilder.start()）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E8%B4%B4%E4%BB%A3%E7%A0%81%E5%92%8C%E7%8E%AF%E5%A2%83"><span class="nav-text">先贴代码和环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-mysql%E6%89%A7%E8%A1%8Csql-%EF%BC%88mybatis-select%EF%BC%89"><span class="nav-text">java mysql执行sql （mybatis-select）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88%E8%B4%B4%E4%BB%A3%E7%A0%81%E5%92%8C%E7%8E%AF%E5%A2%83-1"><span class="nav-text">先贴代码和环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E8%AF%95"><span class="nav-text">调试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-text">报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OPENRASP"><span class="nav-text">OPENRASP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SCA"><span class="nav-text">SCA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WAF"><span class="nav-text">WAF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%A9%AC"><span class="nav-text">内存马</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="nav-text">一些概念的东西</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SAST"><span class="nav-text">SAST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DAST"><span class="nav-text">DAST</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IAST"><span class="nav-text">IAST</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

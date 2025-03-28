@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            PHP学习笔记 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        PHP学习笔记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2019-09-08 12:19:00</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Mar 27 2021 19:44:26 GMT+0800">2021-03-27 19:44:26</span>
+            </span>
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/cnblogs/">cnblogs</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.7k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>来自之前cnblog的博客<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/This-is-Y/p/11466633.html">源地址：https://www.cnblogs.com/This-is-Y/p/11466633.html<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong>准备工作：</strong></p>
+<p>　　首先打开notepad++，新建文件，选择PHP语言，打开这个插件管理</p>
+<p>　　<img src="1503868-20190905154502363-135413426.png" alt></p>
+<p> </p>
+<p> 　　找到NPPEXEC插件（我这里已经安装了）：</p>
+<p>　　<img src="1503868-20190905154624355-286798278.png" alt></p>
+<p> </p>
+<p> </p>
+<p> 　　然后退出来，写一个最简单的php代码，echo啥的，然后按下F6，在弹出的command界面中输入</p>
+<p> 　　</p>
+<p>　　cd $(CURRENT_DIRECTORY)<br>   　　E:\phpStudy\PHPTutorial\php\php-7.2.1-nts\php.exe $(FULL_CURRENT_PATH)</p>
+<p>　　之后点击ok就可以运行了</p>
+<p>　　<img src="1503868-20190905154802364-1439181856.png" alt></p>
+<p>　　</p>
+<p>　　（这里的E:\phpStudy\PHPTutorial\php\php-7.2.1-nts\php.exe是你安装的php的位置，因为我使用的是phpstudy，所以直接用phpstudy里面的php</p>
+<p>　　php文件不要有空格，可以有下划线，不然在运行时会报错，什么什么，如图<img src="1503868-20190905155334351-1321611837.png" alt>）</p>
+<p> </p>
+<p> 　　</p>
+<p>　　如果你之前有使用过phpstudy的话，可以把php代码文件放在phpstudy的www文件夹中，这样子的话，你可以通过开启phpstudy，然后访问127.0.0.1/php代码文件名（要加上.php)来直接运行你的php文件，比在notepad++中更直观</p>
+<p>　　举个例子，</p>
+<p>　　<img src="1503868-20190905155901401-479557064.png" alt></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> 　　我的代码文件名叫new2.php，放在www文件夹里的php文件夹中，这样子就可以直接打开了，hello world，这是我的代码　</p>
+<p>　　　<img src="1503868-20190905155729352-1664413383.png" alt>　　　　　　</p>
+<p>　　　　 　　</p>
+<p>　　简单代码：</p>
+<p> </p>
+<p> 　　<img src="1503868-20190905162323431-2071707038.png" alt></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>　　</p>
+<p>　　PHP是一个Web编程语言，在编程过程中难免会遇到用echo来输出大段的html和javascript脚本的情况，如果用传统的输出方法 ——按字符串输出的话，肯定要有大量的转义符来对字符串中的引号等特殊字符进行转义，以免出现语法错误。如果是一两处还可以容忍，但是要是一个完整的 html文本或者是一个200行的js我想是谁都会崩溃的。这就是PHP为什么要引入一个定界符的原因——至少一大部分原因是这样的。</p>
+<p>1.<strong>PHP定界符的作用就是按照原样，包括换行格式什么的，输出在其内部的东西；</strong></p>
+<p>2.在PHP定界符中的任何特殊字符都不需要转义。</p>
+<p>3.PHP定界符中的PHP变量会被正常的用其值来替换。</p>
+<p>4.位于开始标记和结束标记之间的变量可以被正常解析，<strong>但是函数则不可以</strong>。</p>
+<p><strong>PHP中的定界符格式是这样的：</strong></p>
+<p>&lt;&lt;&lt;Eof<br>……<br>Eof;</p>
+<p> 　　(只需要前后一致即可，EOF不是固定的，EOT，ETO什么什么的都可以)</p>
+<p>　　参考<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/jcs-cs-s/p/6922190.html">https://www.cnblogs.com/jcs-cs-s/p/6922190.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　 </p>
+<p>　　此外，php中也有print，它与echo的区别在于</p>
+<ul>
+<li>echo - 可以输出一个或多个字符串</li>
+<li>print - 只允许输出一个字符串，返回值总为1</li>
+</ul>
+<p>**　　提示：** echo输出的速度比print fast，echo no有返回值，print有返回值1。</p>
+<p>　　括号与单双引号的效果粗略来说都是一样的</p>
+<p>　　　　</p>
+<p><strong>类型比较</strong></p>
+<p>　　==与===</p>
+<ul>
+<li>松散比较：使用两个等号 == 比较，只比较值，不比较类型。</li>
+<li>严格比较：用三个等号 === 比较，除了比较值，也比较类型。</li>
+</ul>
+<p>　　对与多种类型的比较，参考（<a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/php/php-types-comparisons.html">https://www.runoob.com/php/php-types-comparisons.html<i class="fas fa-external-link-alt"></i></a>）</p>
+<p>　　</p>
+<p><strong>常量</strong></p>
+<p>　　</p>
+<h2 id="设置-PHP-常量"><a href="#设置-PHP-常量" class="headerlink" title="设置 PHP 常量"></a>设置 PHP 常量</h2><p>　　设置常量，使用 define() 函数，函数语法如下：</p>
+<p>　　该函数有三个参数:</p>
+<ul>
+<li><strong>name：</strong>必选参数，常量名称，即标志符。</li>
+<li><strong>value：</strong>必选参数，常量的值。</li>
+<li>**case_insensitive **：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。</li>
+</ul>
+<p>　　定义常量有两种方式：define与const</p>
+<p>　　一般是define在类外定义常量，const在类内定义常量，并且const必须通过类名::变量名来进行访问。但是php5.3以上支持类外通过const定义常量</p>
+<p>　　</p>
+<p><strong>字符串</strong></p>
+<p>　　PHP并置运算符（.）</p>
+<p> 　　strlen():计算字符长度</p>
+<p>　　strpos(A;B):在A中搜索B关键字</p>
+<p>　　</p>
+<p><strong>数组：</strong></p>
+<ul>
+<li><strong>数值数组</strong> - 带有数字 ID 键的数组</li>
+<li><strong>关联数组</strong> - 带有指定的键的数组，每个键关联一个值</li>
+<li><strong>多维数组</strong> - 包含一个或多个数组的数组</li>
+</ul>
+<p>　　数值数组和C语言的数组一样，差不太多</p>
+<p>　　关联数组类似python的字典，具体用法如下：</p>
+<p>　　<img src="1503868-20190907220838420-1942367434.png" alt></p>
+<p> </p>
+<p> 　　代码输出如上</p>
+<p>　　foreach():来遍历关联数组中的元素</p>
+<p>　　 count():计算数组长度</p>
+<p>　　多维数组之后再接受，留个坑</p>
+<p> </p>
+<p><strong>数组排序:</strong></p>
+<ul>
+<li>sort（） - 对数组进行升序排列</li>
+<li>rsort（） - 对数组进行降序排列</li>
+<li>asort（） - 根据关联数组的值，对数组进行升序排列</li>
+<li>ksort（） - 根据关联数组的键，对数组进行升序排列</li>
+<li>arsort（） - 根据关联数组的值，对数组进行降序排列</li>
+<li>krsort（） - 根据关联数组的键，对数组进行降序排列</li>
+</ul>
+<p>　　挺简单的。。。。maybe</p>
+<p>　　详细参考：<a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/php/php-arrays-sort.html">https://www.runoob.com/php/php-arrays-sort.html<i class="fas fa-external-link-alt"></i></a></p>
+<p> </p>
+<p><strong>超级全局变量：</strong></p>
+<p>　　好多好多，，，我也不想看，我也不想写</p>
+<p>**　　**直接给个链接吧</p>
+<p>**　　**<a class="link" target="_blank" rel="noopener" href="https://www.runoob.com/php/php-superglobals.html">https://www.runoob.com/php/php-superglobals.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>　　里边还有$_REQUEST，$_POST和$_GET </p>
+<p> <strong>函数：</strong></p>
+<p>**　　**使用function()关键字，传参，返回值，什么什么的，都一样，八九不离十。粗略来看如此。</p>
+<p>　　毕竟我也只求一个看得懂php代码。</p>
+<p><strong>魔术常量：</strong></p>
+<p>**　　**(下面的都是由两个下划线组成的，前后一共4个下划线)</p>
+<ol>
+<li>**　　**<strong>LINE</strong>:返回当前行号</li><li>**　　**__FILE__:返回文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。
+自 PHP 4.0.2 起，__FILE__ 总是包含一个绝对路径（如果是符号连接，则是解析后的绝对路径），而在此之前的版本有时会包含一个相对路径。
+</li>
+<li>　　__DIR__:返回文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。
+它等价于 dirname(__FILE__)。除非是根目录，否则目录中名不包括末尾的斜杠。
+</li>
+<li>　　<strong>FUNCTION</strong>:返回函数名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该函数被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。</li>
+<li>　　<strong>CLASS</strong>:返回类的名称（PHP 4.3.0 新加）。自 PHP 5 起本常量返回该类被定义时的名字（区分大小写）。在 PHP 4 中该值总是小写字母的。</li>
+<li>       <strong>TRAIT</strong>:首先你得知道什么是trait（参考：<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.oop5.traits.php">https://www.php.net/manual/zh/language.oop5.traits.php<i class="fas fa-external-link-alt"></i></a>（坦白说，我没搞懂））。返回Trait 的名字（PHP 5.4.0 新加）</li>
+<li>　　<strong>METHOD</strong>:返回类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）。</li>
+<li>　　<strong>NAMESPACE</strong>:返回当前命名空间的名称（区分大小写）。此常量是在编译时定义的（PHP 5.3.0 新增）。</li>
+</ol>
+<p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　（我猜，，，这些东西有时候还是挺有用的）</p>
+<p> </p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2019/09/16/kali%E5%AE%89%E8%A3%85vmtool%E5%90%8E%E4%BE%9D%E6%97%A7%E6%97%A0%E6%B3%95%E6%8B%96%E6%8B%BD%E6%96%87%E4%BB%B6%EF%BC%8C%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4%EF%BC%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"
+                                   title="kali安装vmtool后依旧无法拖拽文件，复制粘贴，解决办法"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">kali安装vmtool后依旧无法拖拽文件，复制粘贴，解决办法</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2019/07/31/MYSQL%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"
+                                   title="MYSQL简单使用"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">MYSQL简单使用</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-PHP-%E5%B8%B8%E9%87%8F"><span class="nav-text">设置 PHP 常量</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-PHP-%E5%B8%B8%E9%87%8F"><span class="nav-text">设置 PHP 常量</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

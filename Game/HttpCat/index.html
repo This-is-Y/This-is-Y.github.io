@@ -1,0 +1,598 @@
+<html>
+     <head>
+         <style>
+             .over {position: fixed; left:0; top:0; width:100%; z-index:100;}
+             .tempContainer {position:fixed; width:100%; margin-right:0px; margin-left:0px; text-align:center; z-index:101;}
+         </style>
+         <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+
+         <style>
+         .display-flex {
+          display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-auto-rows: minmax(100px, auto);
+            grid-gap: 50px;
+            margin:20px;
+          
+          
+        }
+
+        .div-size {
+          text-align: center;
+          margin: 10px;
+        }
+         </style>
+         <title>HTTP_CAT</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+         
+
+     </head>
+     <body style="background:#000; color:#FFF">
+
+
+         <div class="logoImg amplifyImg" margin=10px><!--注意：此处的amlifyImg不可少-->
+             <div class="display-flex" >
+
+
+        <div class="div-size" >
+            <img height="200" width="250" src="cat/100.jpg"/>
+            <a><br>100 Continue</a>
+            <a><br>100继续</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/101.jpg"/>
+            <a><br>101 Switching Protocols</a>
+            <a><br>101交换协议</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/102.jpg"/>
+            <a><br>102 Processing</a>
+            <a><br>102处理</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/200.jpg"/>
+            <a><br>200 OK</a>
+            <a><br>200 OK.</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/201.jpg"/>
+            <a><br>201 Created</a>
+            <a><br>201创建了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/202.jpg"/>
+            <a><br>202 Accepted</a>
+            <a><br>202接受了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/203.jpg"/>
+            <a><br>203 Non-Authoritative Information</a>
+            <a><br>203非权威信息</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/204.jpg"/>
+            <a><br>204 No Content</a>
+            <a><br>204没有内容</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/206.jpg"/>
+            <a><br>206 Partial Content</a>
+            <a><br>206部分内容</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/207.jpg"/>
+            <a><br>207 Multi-Status</a>
+            <a><br>207多地位</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/300.jpg"/>
+            <a><br>300 Multiple Choices</a>
+            <a><br>300多种选择</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/301.jpg"/>
+            <a><br>301 Moved Permanently</a>
+            <a><br>301永久搬动</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/302.jpg"/>
+            <a><br>302 Found</a>
+            <a><br>332发现</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/303.jpg"/>
+            <a><br>303 See Other</a>
+            <a><br>303见其他</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/304.jpg"/>
+            <a><br>304 Not Modified</a>
+            <a><br>304未修改</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/305.jpg"/>
+            <a><br>305 Use Proxy</a>
+            <a><br>305使用代理</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/307.jpg"/>
+            <a><br>307 Temporary Redirect</a>
+            <a><br>307临时重定向</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/308.jpg"/>
+            <a><br>308 Permanent Redirect</a>
+            <a><br>308永久重定向</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/400.jpg"/>
+            <a><br>400 Bad Request</a>
+            <a><br>400个糟糕的要求</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/401.jpg"/>
+            <a><br>401 Unauthorized</a>
+            <a><br>401未经授权</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/402.jpg"/>
+            <a><br>402 Payment Required</a>
+            <a><br>要求402付款</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/403.jpg"/>
+            <a><br>403 Forbidden</a>
+            <a><br>403禁止</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/404.jpg"/>
+            <a><br>404 Not Found</a>
+            <a><br>404没有找到</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/405.jpg"/>
+            <a><br>405 Method Not Allowed</a>
+            <a><br>405方法不允许</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/406.jpg"/>
+            <a><br>406 Not Acceptable</a>
+            <a><br>406不可接受</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/407.jpg"/>
+            <a><br>407 Proxy Authentication Required</a>
+            <a><br>需要407代理身份验证</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/408.jpg"/>
+            <a><br>408 Request Timeout</a>
+            <a><br>408请求超时</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/409.jpg"/>
+            <a><br>409 Conflict</a>
+            <a><br>409冲突</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/410.jpg"/>
+            <a><br>410 Gone</a>
+            <a><br>410走了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/411.jpg"/>
+            <a><br>411 Length Required</a>
+            <a><br>需要411长度</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/412.jpg"/>
+            <a><br>412 Precondition Failed</a>
+            <a><br>412前提条件失败了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/413.jpg"/>
+            <a><br>413 Payload Too Large</a>
+            <a><br>413有效载荷太大</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/414.jpg"/>
+            <a><br>414 Request-URI Too Long</a>
+            <a><br>414要求 -  URI太长了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/415.jpg"/>
+            <a><br>415 Unsupported Media Type</a>
+            <a><br>415不支持的媒体类型</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/416.jpg"/>
+            <a><br>416 Request Range Not Satisfiable</a>
+            <a><br>416请求范围不满足</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/417.jpg"/>
+            <a><br>417 Expectation Failed</a>
+            <a><br>417期望失败了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/418.jpg"/>
+            <a><br>418 IÂ´m a teapot</a>
+            <a><br>418我是一个茶壶</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/420.jpg"/>
+            <a><br>420 Enhance Your Calm</a>
+            <a><br>420增强你的平静</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/421.jpg"/>
+            <a><br>421 Misdirected Request</a>
+            <a><br>421误导的请求</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/422.jpg"/>
+            <a><br>422 Unprocessable Entity</a>
+            <a><br>422无法治疗的实体</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/423.jpg"/>
+            <a><br>423 Locked</a>
+            <a><br>423锁定</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/424.jpg"/>
+            <a><br>424 Failed Dependency</a>
+            <a><br>424失败依赖</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/425.jpg"/>
+            <a><br>425 Too Early</a>
+            <a><br>425太早了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/426.jpg"/>
+            <a><br>426 Upgrade Required</a>
+            <a><br>需要426升级</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/429.jpg"/>
+            <a><br>429 Too Many Requests</a>
+            <a><br>429要求太多了</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/431.jpg"/>
+            <a><br>431 Request Header Fields Too Large</a>
+            <a><br>431请求标题字段太大</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/444.jpg"/>
+            <a><br>444 No Response</a>
+            <a><br>444没有回应</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/450.jpg"/>
+            <a><br>450 Blocked by Windows Parental Controls</a>
+            <a><br>450由Windows父母控制阻止</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/451.jpg"/>
+            <a><br>451 Unavailable For Legal Reasons</a>
+            <a><br>451不可用的法律原因</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/497.jpg"/>
+            <a><br>497 HTTP Request Sent to HTTPS Port</a>
+            <a><br>497 HTTP请求发送到HTTPS端口</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/498.jpg"/>
+            <a><br>498 Token expired/invalid</a>
+            <a><br>498令牌过期/无效</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/499.jpg"/>
+            <a><br>499 Client Closed Request</a>
+            <a><br>499客户关闭请求</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/500.jpg"/>
+            <a><br>500 Internal Server Error</a>
+            <a><br>500内部服务器错误</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/501.jpg"/>
+            <a><br>501 Not Implemented</a>
+            <a><br>501未实施</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/502.jpg"/>
+            <a><br>502 Bad Gateway</a>
+            <a><br>502错误的网关</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/503.jpg"/>
+            <a><br>503 Service Unavailable</a>
+            <a><br>503服务不可用</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/504.jpg"/>
+            <a><br>504 Gateway Timeout</a>
+            <a><br>504网关超时</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/506.jpg"/>
+            <a><br>506 Variant Also Negotiates</a>
+            <a><br>506变量也谈判</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/507.jpg"/>
+            <a><br>507 Insufficient Storage</a>
+            <a><br>507存储不足</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/508.jpg"/>
+            <a><br>508 Loop Detected</a>
+            <a><br>检测到508循环</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/509.jpg"/>
+            <a><br>509 Bandwidth Limit Exceeded</a>
+            <a><br>超过509带宽限制</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/510.jpg"/>
+            <a><br>510 Not Extended</a>
+            <a><br>510未扩展</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/511.jpg"/>
+            <a><br>511 Network Authentication Required</a>
+            <a><br>511需要网络身份验证</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/521.jpg"/>
+            <a><br>521 Web Server Is Down</a>
+            <a><br>521 Web服务器已关闭</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/523.jpg"/>
+            <a><br>523 Origin Is Unreachable</a>
+            <a><br>523起源无法访问</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/525.jpg"/>
+            <a><br>525 SSL Handshake Failed</a>
+            <a><br>525 SSL握手失败</a>
+        </div>
+
+
+        <div class="div-size">
+            <img height="200" width="250" src="cat/599.jpg"/>
+            <a><br>599 Network Connect Timeout Error</a>
+            <a><br>599网络连接超时错误</a>
+        </div>
+
+
+  
+                    
+             </div> 
+         </div>
+         
+
+
+
+<div align=center>
+<a href="https://http.cat/">HTTP_CAT</a>
+<p>Developed by <a href="https://twitter.com/rogeriopvl">@rogeriopvl</a></p>
+<p>Images by Tomomi Imura (<a href="https://twitter.com/girlie_mac">@girlie_mac</a>)</p>
+</div>
+
+         <script>
+             $(document).ready(function () {
+                 var imgsObj = $('.amplifyImg img');//需要放大的图像
+                 if(imgsObj){
+                     $.each(imgsObj,function(){
+                         $(this).click(function(){
+                             var currImg = $(this);
+                             coverLayer(1);
+                             var tempContainer = $('<div class=tempContainer></div>');//图片容器
+                             with(tempContainer){//width方法等同于$(this)
+                                 appendTo("body");
+                                 var windowWidth=600;
+                                 var windowHeight=600;
+                                 //获取图片原始宽度、高度
+                                 var orignImg = new Image();
+                                 orignImg.src =currImg.attr("src") ;
+                                 var currImgWidth= orignImg.width;
+                                 var currImgHeight = orignImg.height;
+                                 if(currImgWidth<windowWidth){//为了让图片不失真，当图片宽度较小的时候，保留原图
+                                     if(currImgHeight<windowHeight){
+                                         var topHeight=(windowHeight-currImgHeight)/2;
+                                         if(topHeight>35){/*此处为了使图片高度上居中显示在整个手机屏幕中：因为在android,ios的微信中会有一个title导航，35为title导航的高度*/
+                                             topHeight=topHeight-35;
+                                             css('top',topHeight);
+                                         }else{
+                                             css('top',0);
+                                         }
+                                         html('<img border=0 src=' + currImg.attr('src') + '>');
+                                     }else{
+                                         css('top',0);
+                                         html('<img border=0 src=' + currImg.attr('src') + ' height='+windowHeight+'>');
+                                     }
+                                 }else{
+                                     var currImgChangeHeight=(currImgHeight*windowWidth)/currImgWidth;
+                                     if(currImgChangeHeight<windowHeight){
+                                         var topHeight=(windowHeight-currImgChangeHeight)/2;
+                                         if(topHeight>35){
+                                             topHeight=topHeight-35;
+                                             css('top',topHeight);
+                                         }else{
+                                             css('top',0);
+                                         }
+                                         html('<img border=0 src=' + currImg.attr('src') + ' width='+windowWidth+';>');
+                                     }else{
+                                         css('top',0);
+                                         html('<img border=0 src=' + currImg.attr('src') + ' width='+windowWidth+'; height='+windowHeight+'>');
+                                     }
+                                 }
+                             }
+                             tempContainer.click(function(){
+                                 $(this).remove();
+                                 coverLayer(0);
+                             });
+                         });
+                     });
+                 }
+                 else{
+                     return false;
+                 }
+                 //使用禁用蒙层效果
+                 function coverLayer(tag){
+                     with($('.over')){
+                         if(tag==1){
+                             css('height',$(document).height());
+                             css('display','block');
+                             css('opacity',1);
+                             css("background-color","#FFFFFF");
+                             css("background-color","rgba(0,0,0,0.7)" );  //蒙层透明度
+                         }
+                         else{
+                             css('display','none');
+                         }
+                     }
+                 }
+             });
+         </script>
+     </body>
+ </html>

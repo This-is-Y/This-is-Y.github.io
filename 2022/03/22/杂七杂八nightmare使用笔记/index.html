@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            杂七杂八nightmare使用笔记 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        杂七杂八nightmare使用笔记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2022-03-22 21:15:59</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Fri Aug 02 2024 20:45:43 GMT+0800">2024-08-02 20:45:43</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">杂七杂八</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>github：<a class="link" target="_blank" rel="noopener" href="https://github.com/joxeankoret/nightmare">https://github.com/joxeankoret/nightmare<i class="fas fa-external-link-alt"></i></a><br>doc里的介绍文件是全英文的，我用有道翻译简单整理了一下，上传到博客园了<br><a class="link" target="_blank" rel="noopener" href="https://files.cnblogs.com/files/This-is-Y/doc_CN.zip?t=1647955220">https://files.cnblogs.com/files/This-is-Y/doc_CN.zip?t=1647955220<i class="fas fa-external-link-alt"></i></a></p>
+<p>最初是在windows上搭建的，但是有个beanstalkd不会用，然后考虑到作者本身就是在linux上使用的，最后还是决定使用linux搭建。</p>
+<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>下载、构建和安装Capstone。<br><a class="link" target="_blank" rel="noopener" href="http://www.capstone-engine.org/">http://www.capstone-engine.org<i class="fas fa-external-link-alt"></i></a><br>安装Capstone的一个快速方法是使用“pip”，如下所示:<br>   sudo pip install capstone</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>使用脚本sql/nightmare在MySQL或SQLite数据库中创建模式。sql或sql / nightmare_sqlite.sql。您需要在CONFIG表中修改SAMPLES_PATH, TEMPLATES_PATH和are_path这些路径。每个配置指令的含义如下:</p>
+<ul>
+<li>TEMPLATES_PATH: 查找样本的基本路径。当执行fuzzing会话时，必须为每个文件格式或目标创建子目录，并且只有子目录必须从web界面中选择。</li>
+<li>SAMPLES_PATH: 存储临时创建的文件和所有结果文件的路径，即概念崩溃证明和diff文件。</li>
+<li>NIGHTMARE_PATH: Nightmare安装的基本路径。</li>
+</ul>
+<p>这一步我需要先在ubuntu上安装mysql，<a class="link" target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1655900">参考这篇文章<i class="fas fa-external-link-alt"></i></a><br>这里直接使用的apt安装的<br>   sudo apt-get install mysql-server</p>
+<p>然后记得修改密码，以及把数据库编码改成utf8<br>值得注意的是，需要修改sql文件，把里面的latin改成utf8<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/beenoisy/p/4046074.html">https://www.cnblogs.com/beenoisy/p/4046074.html<i class="fas fa-external-link-alt"></i></a><br>vim打开，命令模式，:%s/latin1/utf8/g<br>然后再运行sql文件导入到数据库中<br>   mysql -u root -p nightmare&lt;/home/ubuntu/nightmare/doc/sql/nightmare.sql</p>
+<p>一般来说，在终端里修改配置数据库太麻烦了，这里我选择开放远程连接，在win上用navicat连接它去操作数据库，所以需要在服务器控制台打开修改端口，然后配置文件（/etc/mysql/mysql.conf.d/mysqld.cnf）里修改为<br>   bind-address=0.0.0.0<br>然后service mysql restart重启数据库，测试连接报错1130，进入mysql，执行<br>   GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root’@’%’ IDENTIFIED BY ‘您的数据库密码’ WITH GRANT OPTION;<br>然后就可以远程连接了。<br>之后把config表里的参数改一下</p>
+<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>安装并配置beanstalkd(可以使用doc/beanstalkd.recommended中的推荐文件)<br>需要用到beanstalkd，这东西是c/s架构的，服务器上我直接用<br>   sudo apt-get install beanstalkd<br>然后启动<br>   service beanstalkd start</p>
+<p>然后需要安装客户端，他这里需要python支持，用的<a class="link" target="_blank" rel="noopener" href="https://github.com/earl/beanstalkc/">https://github.com/earl/beanstalkc/<i class="fas fa-external-link-alt"></i></a> 这里我发现可以用pip安装，但是有个问题是，这个beanstalkc是基于python2的，没有更新到python3。但是nightmare是python3的，我现在不知道会不会有什么问题（绝壁会有）<br>   pip2 install beanstalkc<br>然后python2，运行这段代码，看看会不会有什么问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> beanstalkc</span><br><span class="line">beanstalk = beanstalkc.Connection(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">11300</span>)</span><br><span class="line">beanstalk.put(<span class="string">&#x27;hey!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">job = beanstalk.reserve()</span><br><span class="line">job.body</span><br><span class="line"><span class="string">&#x27;hey!&#x27;</span></span><br><span class="line">job.delete()</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20220322220640931.png" alt="image-20220322220640931"></p>
+<h1 id="4"><a href="#4" class="headerlink" title="4"></a>4</h1><p>安装radamsa(把它放在$PATH的某个地方)。<br>   sudo apt-get install gcc make git wget<br>   git clone <a class="link" target="_blank" rel="noopener" href="https://gitlab.com/akihe/radamsa.git">https://gitlab.com/akihe/radamsa.git<i class="fas fa-external-link-alt"></i></a><br>   cd radamsa<br>   make</p>
+<p>编译好后，在 radamsa/bin 下生成 radamsa ,尝试 ./radamsa -h</p>
+<p><img src="image-20220322221917131.png" alt="image-20220322221917131"></p>
+<p>然后要求配置好$PATH，关于这个，有一篇不错的文章<a class="link" target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000038313883">https://segmentfault.com/a/1190000038313883<i class="fas fa-external-link-alt"></i></a><br>可以先用<br>   export PATH=$PATH:/home/ubuntu/nightmare/radamsa/bin<br>测试一下<br>由于我服务器用的zsh，所以改的是zshrc文件，<br>   vim ~/.zshrc<br>在最后添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># radamsa of nightmare</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;home&#x2F;ubuntu&#x2F;nightmare&#x2F;radamsa&#x2F;bin</span><br></pre></td></tr></table></figure>
+<p>然后source ~/.zshrc ，就可以了。<br>关于radamsa的使用，找了这些文章<a class="link" target="_blank" rel="noopener" href="https://docmiao.com/community/tutorials/how-to-install-and-use-radamsa-to-fuzz-test-programs-and-network-services-on-ubuntu-18-04">https://docmiao.com/community/tutorials/how-to-install-and-use-radamsa-to-fuzz-test-programs-and-network-services-on-ubuntu-18-04<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://blog.51cto.com/u_13280061/3081122">https://blog.51cto.com/u_13280061/3081122<i class="fas fa-external-link-alt"></i></a></p>
+<p>作者在install.txt里还提到可安装以下软件包(可选):</p>
+<h4 id="DynamoRhmIO"><a href="#DynamoRhmIO" class="headerlink" title="DynamoRhmIO"></a>DynamoRhmIO</h4><p>没折腾明白</p>
+<h4 id="Zzuf"><a href="#Zzuf" class="headerlink" title="Zzuf"></a>Zzuf</h4><p>sudo apt install zzuf</p>
+<h4 id="Python-macholib"><a href="#Python-macholib" class="headerlink" title="Python macholib"></a>Python macholib</h4><p>pip直接安装，python2和python3都成功了</p>
+<h4 id="Python-OleFileIO-PL-提供"><a href="#Python-OleFileIO-PL-提供" class="headerlink" title="Python OleFileIO_PL(提供)"></a>Python OleFileIO_PL(提供)</h4><p>pip直接安装，python3成功，python2失败</p>
+<h1 id="5"><a href="#5" class="headerlink" title="5"></a>5</h1><p>进入“$INSTALL_DIR/runtime”目录。复制一份config.cfg.example 和config.py.example文件（备用）然后删掉后缀，得到config.py和config.cfg 两个文件。<br>config.cfg文件是连接数据库用的信息的文件，这里建议在数据库中新建一个用户，不要用root用户登录。建立用户命令如下<br>    create user fuzzing identified by ‘fuzzing’;<br>    grant all privileges on nightmare.* to fuzzing@’%’ identified by ‘fuzzing’;<br>    flush privileges;</p>
+<p>config.py文件保存web管理页面的账号密码设置以及Beanstalk连接的ip以及端口信息，修改成需要的就行了。</p>
+<p>执行如下命令。<br>    $ python nightmare_frontend.py</p>
+<p><img src="image-20220325175036567.png" alt="image-20220325175036567">    </p>
+<p>现在就可以输入地址，访问它了</p>
+<p><img src="image-20220325192541415.png" alt="image-20220325192541415"></p>
+<h1 id="6"><a href="#6" class="headerlink" title="6"></a>6</h1>
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">杂七杂八</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2022/03/25/python2-%E5%87%BA%E7%8E%B0ERROR-Command-errored-out-with-exit-status-1/"
+                                   title="python2 出现ERROR： Command errored out with exit status 1"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">python2 出现ERROR： Command errored out with exit status 1</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2022/03/20/%E5%BD%93%E6%89%8B%E6%9C%BA%E5%B1%8F%E5%B9%95%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E6%97%B6/"
+                                   title="当手机屏幕无法使用时"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">当手机屏幕无法使用时</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-text">1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-text">2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-text">3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4"><span class="nav-text">4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DynamoRhmIO"><span class="nav-text">DynamoRhmIO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Zzuf"><span class="nav-text">Zzuf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-macholib"><span class="nav-text">Python macholib</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-OleFileIO-PL-%E6%8F%90%E4%BE%9B"><span class="nav-text">Python OleFileIO_PL(提供)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5"><span class="nav-text">5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6"><span class="nav-text">6</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-text">1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-text">2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-text">3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4"><span class="nav-text">4</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DynamoRhmIO"><span class="nav-text">DynamoRhmIO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Zzuf"><span class="nav-text">Zzuf</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-macholib"><span class="nav-text">Python macholib</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-OleFileIO-PL-%E6%8F%90%E4%BE%9B"><span class="nav-text">Python OleFileIO_PL(提供)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5"><span class="nav-text">5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6"><span class="nav-text">6</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

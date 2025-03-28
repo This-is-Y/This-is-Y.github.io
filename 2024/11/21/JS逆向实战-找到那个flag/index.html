@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            JS逆向实战-找到那个flag |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        JS逆向实战-找到那个flag
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-11-21 16:30:11</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Nov 26 2024 20:26:31 GMT+0800">2024-11-26 20:26:31</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/js%E9%80%86%E5%90%91/">js逆向</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.3k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>9 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h2 id="目标站点情况"><a href="#目标站点情况" class="headerlink" title="目标站点情况"></a>目标站点情况</h2><p>如下图，可以看到请求和响应都加密了，不过有突破口，可以看到请求参数是{“xxx-param”:”xxxxxxxxx”}这种格式。运气好的话，只需要去F12搜索xxx-param即可定位到目标。</p>
+<p><img src="image-20241121201549162.png" alt="image-20241121201549162"></p>
+<h2 id="定位加解密函数"><a href="#定位加解密函数" class="headerlink" title="定位加解密函数"></a>定位加解密函数</h2><p>直接搜索xxx-param，10秒钟定位到目标函数。但是看到encrypt后面跟的这个字符串，感觉不妙，怕是非对称加密。先不管，根据加密的代码，找一下解密代码，果不其然，现在已经拿到了加解密函数：</p>
+<ul>
+<li>y[“b”].encrypt()</li>
+<li>y[“b”].decrypt()</li>
+</ul>
+<p>以及加密用到的公钥<strong>req-pubkey</strong>以及解密需要的私钥<strong>resp-prikey</strong>：</p>
+<ul>
+<li>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVYKTzIhIQiUkixXUhLakag96jJ7L+9cBXUjWVCyluXKlX+VeG7BROK6OiV5apk6f36tlm52q61gE1bqRk+m2K2w6KqV…………0C+ouzJ+GU1wKcGAxEZS5+bjzT7HoRgt5QIDAQAB</li>
+<li>MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAI3ZNKQ18Tdy+Gr/9wsKNziXwYKocj/62szhgptKURTZfaDs2RCFnY1cUt3JIpoFZRb828iyWCzEgaQF9quOOqzFJ/rPtevkwmOswvBEf0RUDVufuHuRRHSc8jy6MwK/1j7t4T22WCHwTw5ioIG9H98KXNvY9nWk4O5asn2IsMb7AgMBAAECgYAL1afmiBjwezdOV2hpSOMTkIG/dhtWIDFPb68sZ/ZngBUoWdUVuPgh+lEa757jQnj319qPHjtsvMEONMXVnrUMDknNPI1L7gxRPUT4ljcLGYPimDsgCEyK/QOtTGmKOblDre0tTu56TlPEtLrI1HR4eD2mS2DSY9jpxKWm……………w+Uc2kmVKlYMhxkAn0VP8gdlDRQ/yNhVhdPSlEZ8UYsY4rIyN/BezRAkEAh3LmxD2Dxmp4OY/3GFNRGdNeoHpzQU2SLW58Xfvia3gtTQegh1DATtWxbmpf4ne2wAQPH/6VHyfr4B9/9Cc76wJAChq/yE5pTFGoIXp7azhsBVMynFiJTyg5zLvkHCB9Yysirv1pXiUNd7SjBmLHwORNi4We7e0U4R5QH9KjzgAAEQJBALR+KB5NmY1e8tsl8RzUNrrTjnk+DdFry3/qRo/lEbDVmcXuNOcx9I2QU4BB1gZwVv5knjDm8Xqy3u3TIhYHTe8=</li>
+</ul>
+<p><img src="image-20241121201535938.png" alt="image-20241121201535938"></p>
+<p><img src="image-20241121201805875.png" alt="image-20241121201805875"></p>
+<p>因为是非对称加密，所以我如果想解密请求参数，或者篡改响应重新加密，就必须拿到请求加密的公钥对应的私钥（<strong>req-prikey</strong>）和解密响应的私钥对应的公钥（<strong>resp-pubkey</strong>）。一般情况下是拿不到这东西，不过有些开发可能会用<strong>req-pubkey</strong>加密响应返回，也就是说，请求和响应的加解密用的是一套密钥。这里我抓一个包，拿到密文请求，在console中尝试使用<strong>resp-prikey</strong>进行解密。可以看到上面是解密响应密文，正常发挥了明文结果，但是下面是尝试解密请求密文，显然不行，这个系统的开发们还是可以的。</p>
+<p><img src="image-20241121203815281.png" alt="image-20241121203815281"></p>
+<h2 id="编写脚本"><a href="#编写脚本" class="headerlink" title="编写脚本"></a>编写脚本</h2><p>那么在这种情况下，我如果想要在bp中直接抓明文数据包，查看明文响应该怎么办呢，查看明文响应很简单，直接使用JsRpc调用y[“b”].decrypt()即可。那抓明文请求，这里我的思路是，修改加密函数，使之返回明文，然后在bp中通过JsRpc调用y[“b”].encrypt()将函数再加密。思路有了，先把加解密函数代理出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.rsaencode = y[<span class="string">&quot;b&quot;</span>].encrypt</span><br><span class="line"><span class="built_in">window</span>.rsadecode = y[<span class="string">&quot;b&quot;</span>].decrypt</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20241121205042065.png" alt="image-20241121205042065"></p>
+<p>然后放掉debug断点，开始连接JsRpc</p>
+<p><img src="image-20241121205306877.png" alt="image-20241121205306877"></p>
+<p><img src="image-20241121205332456.png" alt="image-20241121205332456"></p>
+<p>再然后，先把解密函数写完，这边思路比较简单，在处理响应密文时，我保留了原始密文，在原始响应json中新加入了一个decode-data来存放解密后的明文。想过如图。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsadecode</span>(<span class="params">data</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    传入响应中的后的data</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    jscode = <span class="string">&quot;&quot;&quot;rsadecode(\&quot;MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAI3ZNKQ18Tdy+Gr/9wsKNziXwYKocj/62szhgptKURTZfaDs2RCFnY1cUt3JIpoFZRb828iyWCzEgaQF9quOOqzFJ/rPtevkwmOswvBEf0RUDVufuHuRRHSc8jy6MwK/1j7t4T22WCHwTw5ioIG9H98KXNvY9nWk4O5asn2IsMb7AgMBAAECgYAL1afmiBjwezdOV2hpSOMTkIG/dhtWIDFPb68sZ/ZngBUoWdUVuPgh+lEa757jQnj319qPHjtsvMEONMXVnrUMDknNPI1L7gxRPUT4ljcLGYPimDsgCEyK/QOtTGmKOblDre0tTu56TlPEtLrI1HR4eD2mS2DSY9jpxKWmezhw0QJBAMTOMorcqGhJI9eFukVKZ………………BezRAkEAh3LmxD2Dxmp4OY/3GFNRGdNeoHpzQU2SLW58Xfvia3gtTQegh1DATtWxbmpf4ne2wAQPH/6VHyfr4B9/9Cc76wJAChq/yE5pTFGoIXp7azhsBVMynFiJTyg5zLvkHCB9Yysirv1pXiUNd7SjBmLHwORNi4We7e0U4R5QH9KjzgAAEQJBALR+KB5NmY1e8tsl8RzUNrrTjnk+DdFry3/qRo/lEbDVmcXuNOcx9I2QU4BB1gZwVv5knjDm8Xqy3u3TIhYHTe8=\&quot;,&#x27;&#123;&#125;&#x27;)&quot;&quot;&quot;</span>.<span class="built_in">format</span>(data)</span><br><span class="line">    url = <span class="string">&quot;http://localhost:12080/execjs&quot;</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;group&quot;</span>: group,</span><br><span class="line">        <span class="string">&quot;code&quot;</span>: jscode</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    res = requests.post(url, data=data)</span><br><span class="line">    <span class="keyword">return</span> json.loads(res.text)[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/decode&#x27;</span>,methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decrypt</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;==============/decode==================&quot;</span>)</span><br><span class="line">    dataHeaders = request.form.get(<span class="string">&quot;dataHeaders&quot;</span>)   <span class="comment"># 获取 headers </span></span><br><span class="line">    dataBody = request.form.get(<span class="string">&#x27;dataBody&#x27;</span>).replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&#x27;&#x27;</span>)  <span class="comment"># 获取 body 参数</span></span><br><span class="line">    logging.info(<span class="string">&quot;dataHeaders&gt;&gt;\n&quot;</span>+dataHeaders)</span><br><span class="line">    logging.info(<span class="string">&quot;dataBody&gt;&gt;\n&quot;</span>+dataBody)</span><br><span class="line"></span><br><span class="line">    data = json.loads(dataBody)</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;000&#x27;</span> <span class="keyword">in</span> data[<span class="string">&#x27;code&#x27;</span>]:</span><br><span class="line">        <span class="built_in">print</span>(data[<span class="string">&#x27;data&#x27;</span>])</span><br><span class="line">        decodedata = rsadecode(data[<span class="string">&#x27;data&#x27;</span>])</span><br><span class="line">        <span class="built_in">print</span>(decodedata)</span><br><span class="line">        <span class="comment"># 生成新字段</span></span><br><span class="line">        data[<span class="string">&#x27;decode-data&#x27;</span>] = json.loads(decodedata)</span><br><span class="line">        <span class="keyword">return</span> dataHeaders+<span class="string">&quot;\r\n\r\n\r\n\r\n&quot;</span>+json.dumps(data,indent=<span class="number">4</span>, ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> dataHeaders+<span class="string">&quot;\r\n\r\n\r\n\r\n&quot;</span>+dataBody</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20241121210045302.png" alt="image-20241121210045302"></p>
+<p><img src="image-20241121210107042.png" alt="image-20241121210107042"></p>
+<p>再然后是加密过程，首先要修改加密函数，让它返回明文。由于我撇脚的js和hook水平，这里我找AI要了个hook函数。<strong>注意</strong>，这里要避开JsRpc连接的那个标签页，要重新开一个标签页hook。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalEncrypt = y[<span class="string">&quot;b&quot;</span>].encrypt;</span><br><span class="line">y[<span class="string">&quot;b&quot;</span>].encrypt = <span class="keyword">new</span> <span class="built_in">Proxy</span>(originalEncrypt, &#123;</span><br><span class="line">    apply: <span class="function"><span class="keyword">function</span>(<span class="params">target, thisArg, argumentsList</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 返回第二个参数作为结果</span></span><br><span class="line">        <span class="keyword">return</span> argumentsList[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 恢复原始的 encrypt 函数</span></span><br><span class="line">y[<span class="string">&quot;b&quot;</span>].encrypt = originalEncrypt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20241121210651521.png" alt="image-20241121210651521"></p>
+<p>现在在这个hook后的标签页中点击各种功能点，就可以发现抓到的包都是密文了。</p>
+<p><img src="image-20241121211859308.png" alt="image-20241121211859308"></p>
+<p>但是可以看到，我明明传入了companyId，却提示”入参companyId不能为空”。显然我现在还需要将参数再次加密，这里就和前面写解密一样了，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsaencode</span>(<span class="params">data</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    传入格式化后的body</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    jscode = <span class="string">&quot;&quot;&quot;rsaencode(&quot;MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVYKTzIhIQiUkixTy0vv4q1ITi6TvQDztWdldTR5hQ4vi6M/xYPJDO5ardJ1FXUhLakag96jJ7L+9cBXUjWVCyluX………………+GU1wKcGAxEZS5+bjzT7HoRgt5QIDAQAB&quot;,&#x27;&#123;&#125;&#x27;)&quot;&quot;&quot;</span>.<span class="built_in">format</span>(data)</span><br><span class="line">    url = <span class="string">&quot;http://localhost:12080/execjs&quot;</span></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&quot;group&quot;</span>: group,</span><br><span class="line">        <span class="string">&quot;code&quot;</span>: jscode</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">print</span>(data)</span><br><span class="line">    res = requests.post(url, data=data)</span><br><span class="line">    <span class="keyword">return</span> json.loads(res.text)[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/encode&#x27;</span>,methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;==============/encode==================&quot;</span>)</span><br><span class="line">    dataHeaders = request.form.get(<span class="string">&quot;dataHeaders&quot;</span>)   <span class="comment"># 获取 headers </span></span><br><span class="line">    dataBody = request.form.get(<span class="string">&#x27;dataBody&#x27;</span>).replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&#x27;&#x27;</span>)  <span class="comment"># 获取 body 参数</span></span><br><span class="line">    logging.info(<span class="string">&quot;dataHeaders&gt;&gt;\n&quot;</span>+dataHeaders)</span><br><span class="line">    logging.info(<span class="string">&quot;dataBody&gt;&gt;\n&quot;</span>+dataBody)</span><br><span class="line"></span><br><span class="line">    data = json.loads(dataBody)</span><br><span class="line">    <span class="comment"># print(data[&#x27;xxx-param&#x27;])</span></span><br><span class="line">    <span class="comment"># 生成新字段</span></span><br><span class="line">    encodedata = rsaencode(data[<span class="string">&#x27;xxx-param&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> dataHeaders+<span class="string">&quot;\r\n\r\n\r\n&quot;</span>+json.dumps(&#123;<span class="string">&quot;xxx-param&quot;</span>:encodedata&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20241121213826092.png" alt="image-20241121213826092"></p>
+<p>现在把这个密文数据包发送，再配置之前写好的解密模块。</p>
+<p><img src="image-20241121213001662.png" alt="image-20241121213001662"></p>
+<p><img src="image-20241121213209416.png" alt="image-20241121213209416"></p>
+<p>最后就是针对GET，特殊符号的脚本优化过程，这里就不写了。</p>
+<h2 id="？"><a href="#？" class="headerlink" title="？"></a>？</h2><p>在我把脚本给同事用了一段时间后，他和我说这系统能直接接收明文参数，而且如果你传入的数据是明文，那返回的也是明文。如下图：</p>
+<p><img src="image-20241121213721149.png" alt="image-20241121213721149"></p>
+<p>然后晚上回家后，在测这个系统的app端时，也意外发现我抓到的包是明文请求明文响应，域名地址和web端相同，但是第二天上班再抓就发现变成了密文，这意味着服务器是可以同时接收明文参数和密文参数。而且在app上两次抓包结果不一样，说明系统应该有一个参数控制请求参数是否需要加密，而我现在就想找到这个参数。</p>
+<p>思路比较简单暴力，在y[“b”].encrypt()加密前，一层一层回溯，查找仔细看if判断和switch类的代码。最后经过枯燥的回溯后，找到这里。</p>
+<p><img src="image-20241121222021395.png" alt="image-20241121222021395"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (e.prev = e.next) &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">    <span class="keyword">if</span> (C || _(t.url)) &#123;</span><br><span class="line">        e.next = <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">return</span> t.headers = v(v(&#123;&#125;, t.headers || &#123;&#125;), &#123;&#125;, &#123;</span><br><span class="line">    <span class="string">&quot;xxx-method&quot;</span>: <span class="string">&quot;rsa&quot;</span></span><br><span class="line">&#125;),</span><br><span class="line">e.next = <span class="number">4</span>,</span><br><span class="line">a();</span><br><span class="line"><span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;end&quot;</span>:</span><br><span class="line">    <span class="keyword">return</span> e.stop()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个代码的if中，有一个 || 或判断，在这里，只要C或者 _(t.url)中至少有一个为true，就会走下面的e.next = 4然后结束循环，反之就走下面的代码，虽然也会有e.next = 4，但是下面的a()，跟进后可以看到就是加密函数</p>
+<p><img src="image-20241121223010547.png" alt="image-20241121223010547"></p>
+<p>所以思路一下子就清晰了，要让C或者 _(t.url)返回true。</p>
+<h3 id="C"><a href="#C" class="headerlink" title="C"></a>C</h3><p>先说C。C变量是false，由于学艺不精和工作上的干扰，花了半个多小时的回溯才找到了C的定义，但又是因为学艺不精，看不懂代码（先挖个坑，明天上班的时候补上）。</p>
+<p>不过可以记录一下找这个C变量的方法，断点到相关代码，在右边作用域中一层一层找，找到这个闭包（2d81），然后开始搜关键字2d81，主要是去查闭包（2d81）的定义位置，查看整个代码中有关 2d81 的定义部分，可能会找到变量 C 的赋值语句，这里搜了一下，不多。</p>
+<p><img src="image-20241121232835818.png" alt="image-20241121232835818"></p>
+<p>但是这个代码块太大，我把文件下载下来后，在vscode中格式化查看，然后再大小写敏感的搜了一下C，就找到了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C = !<span class="built_in">Object</span>(p[<span class="string">&quot;p&quot;</span>])() &amp;&amp; <span class="built_in">Object</span>(p[<span class="string">&quot;d&quot;</span>])()</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20241121233022782.png" alt="image-20241121233022782"></p>
+<p>浏览器中的返回结果也确定了这就是C的定义代码</p>
+<p><img src="image-20241121233134762.png" alt="image-20241121233134762"></p>
+<p>跟进这两个函数后可以看到，p是检查ua中是否存在xxxsdk，而d是检查ua中是否存在EQBANDROID、EQBIOS、QYBHarmonyOS这三个字符串。</p>
+<p><img src="image-20241121233950859.png" alt="image-20241121233950859"></p>
+<p>那总结一下，如果要C为true，则需要ua中不能出现xxxsdk，且要出现EQBANDROID、EQBIOS、QYBHarmonyOS这三个字符串其中一个或多个，而且字符串大小写不敏感。</p>
+<p>测试一下，用浏览器插件改个ua，再刷新一下页面</p>
+<p><img src="image-20241121234449051.png" alt="image-20241121234449051"></p>
+<p><img src="image-20241121234804594.png" alt="image-20241121234804594"></p>
+<p>ok,解决！</p>
+<h3 id="t-url"><a href="#t-url" class="headerlink" title="_(t.url)"></a>_(t.url)</h3><p>C解决了，再来看 _(t.url)，这个<code>_</code>函数的入参是当前请求的url，而JSON.parse(sessionStorage.getItem(“fetchignore”))中是一堆接口url，有一些验证码、登录相关的接口，可能是白名单，无需加密。所以可以大致猜测这个函数是判断当前请求是否在白名单中。</p>
+<p><img src="image-20241121224213698.png" alt="image-20241121224213698"></p>
+<p><img src="image-20241121224333098.png" alt="image-20241121224333098"></p>
+<p><del>其实分析函数作用也没啥用，直接改个返回就可以了</del>，把这个函数的返回结果改为true就可以了，直接写在burp的replace rule中，然后重新加载这个index.js文件就好了，这里有个细节是，最好在burp中找到相关字符串拿过来进行替换，而不是用浏览器中的字符串，浏览器中的js代码一般是格式化美化过的，可能会多一些缩进和空格，burp会匹配不到。</p>
+<p><img src="image-20241121225714076.png" alt="image-20241121225714076"></p>
+<p><img src="image-20241121225914549.png" alt="image-20241121225914549"></p>
+<p>（此外，关于app，由于app部分页面是h5加载的，所以可以在它加载js时修改<code>_</code>函数，不过app的js是在chunk.package.js中，函数内容一样。）</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/js%E9%80%86%E5%90%91/">js逆向</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/26/%E4%BB%8Ejs%E5%88%86%E6%9E%90-%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%B3%A8%E5%86%8C/"
+                                   title="JS逆向实战-找到那个flag"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">JS逆向实战-找到那个flag</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/09/10/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%90%AF%E4%BB%A3%E7%90%86(Burp)%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E4%BD%BF%E7%94%A8/"
+                                   title="小程序开启代理(Burp)无法正常使用"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">小程序开启代理(Burp)无法正常使用</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E7%AB%99%E7%82%B9%E6%83%85%E5%86%B5"><span class="nav-text">目标站点情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%87%BD%E6%95%B0"><span class="nav-text">定位加解密函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC"><span class="nav-text">编写脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%9F"><span class="nav-text">？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C"><span class="nav-text">C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-url"><span class="nav-text">_(t.url)</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E7%AB%99%E7%82%B9%E6%83%85%E5%86%B5"><span class="nav-text">目标站点情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E5%8A%A0%E8%A7%A3%E5%AF%86%E5%87%BD%E6%95%B0"><span class="nav-text">定位加解密函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC"><span class="nav-text">编写脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%9F"><span class="nav-text">？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C"><span class="nav-text">C</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#t-url"><span class="nav-text">_(t.url)</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

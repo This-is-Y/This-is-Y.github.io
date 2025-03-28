@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            小程序开启代理(Burp)无法正常使用 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        小程序开启代理(Burp)无法正常使用
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-09-10 15:06:19</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Nov 26 2024 20:30:45 GMT+0800">2024-11-26 20:30:45</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/js%E9%80%86%E5%90%91/">js逆向</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.7k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>6 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <p>目标：北京市第六医院</p>
+<p>抓包方式：proxifier设置代理抓包</p>
+<p>Burp v2024.5.3：127.0.0.1:8080</p>
+<p>Yakit v1.3.6-0906：127.0.0.1:8181</p>
+<p><img src="image-20240906153326732.png" alt="image-20240906153326732"></p>
+<p>（先说结论，微信对协议的处理问题）</p>
+<h2 id="异常情况"><a href="#异常情况" class="headerlink" title="异常情况"></a>异常情况</h2><p>目前的情况是，当没有代理的时候，一切正常。开启代理后，小程序页面出现请求失败，但奇怪的是，数据包的响应是正常的。</p>
+<p><img src="image-20240906153919402.png" alt="image-20240906153919402"></p>
+<p><img src="image-20240906153934600.png" alt="image-20240906153934600"></p>
+<p>目前知道的是，加解密函数使用的AES/ECB。key没有写死，是通过请求获取到的，加解密函数为usr/app-service.js:formatted中的interceptorDecrypt/interceptorEncrypt。</p>
+<p><img src="image-20240906155042718.png" alt="image-20240906155042718"></p>
+<p><img src="image-20240906155243806.png" alt="image-20240906155243806"></p>
+<h2 id="逆向过程"><a href="#逆向过程" class="headerlink" title="逆向过程"></a>逆向过程</h2><h3 id="关键定位-randomVersion"><a href="#关键定位-randomVersion" class="headerlink" title="关键定位 randomVersion"></a>关键定位 randomVersion</h3><p>通过搜索”请求失败”关键字，定位到notice: d.message || “请求失败”。发现这里是个switch判断，向前读代码，查它为什么会跑到case19这里。</p>
+<p><img src="image-20240906155531833.png" alt="image-20240906155531833"></p>
+<p>然后发现是前面case12 的时候有个判断<code>if(h.statusCode !== t.default.HTTP_OK || d.code !== t.default.ERR_HTTP_TOKEN)</code>，当为true的时候就会跳到case19，其中<code>t.default.HTTP_OK</code>是200，<code>t.default.ERR_HTTP_TOKEN</code>是401。</p>
+<p><img src="image-20240906160341544.png" alt="image-20240906160341544"></p>
+<p>当走到这里的时候，发现d.code是未定义undefined，那现在的重点就到了去查为什么这个d.code没有定义了。继续向前看，可以看到d是在case7中的if里面被定义的，这时候d就是一整串的密文，所以后面的d.code就会undefined。</p>
+<p><img src="image-20240906163629034.png" alt="image-20240906163629034"></p>
+<p>对比一下，不开代理的情况下，这里的h.data结果为解密后的请求，其中就有code。那现在的重点就变成了去找h.data的定义，找到为什么两种情况下h.data的值不一样。</p>
+<p><img src="image-20240906164131084.png" alt="image-20240906164131084"></p>
+<p>继续向前，是在case0的中进行定义<code>h=v(l,u)</code>,两个入参只有l是带了数据的，然后通过对比，发现在这之前，l就已经不一样了，所以不是这个v()函数检测的代理，那现在应该去找l的定义，但是这里再往前就没东西了，这个函数内没有任何关于l的定义，</p>
+<p><img src="image-20240906165120142.png" alt="image-20240906165120142"></p>
+<p>然后就是根据scope堆栈信息一直向前找，但是由于水平比较次，对js不熟悉，花了大把时间后毫无结果，然后我想到，既然两种情况下的结果的不同点是，正常请求的data为解密后的内容，代理情况请求的data为没有解密的密文，那我<strong>在正确请求下，去解密函数那边打个断点不就能找到区别了</strong>，于是就在interceptorDecrypt里面和调用了interceptorDecrypt的地方打上了断点，然后关掉代理，随后就定位到了这里</p>
+<p><img src="image-20240906171623198.png" alt="image-20240906171623198"></p>
+<p>有了前一次的经验，这里直接往前看，要到case7，就要到case3里面的<code>(((s = u.randomVersion) || 0 === s) &amp;&amp; &quot;[object Object]&quot; !== Object.prototype.toString.call(o))</code>在这里打上断点，观察两重情况下的区别</p>
+<p>不开代理的情况下，判断条件为true，其中u.randomVersion为8，请求中的randomVersion是大写。</p>
+<p><img src="image-20240906172737708.png" alt="image-20240906172737708"></p>
+<p><img src="image-20240906173357884.png" alt="image-20240906173357884"></p>
+<p>开代理后，u.randomVersion直接就获取不到了，所以导致这里直接为false，无法做到case7进行解密。不过这里可以获取到u.randomversion,此时请求头中的字段也是小写randomversion。<del>找到区别后，绕过方法就简单了，直接bp的replace里把小写的randomversion改成randomVersion即可</del>(实际操作发现并不行，改完之后的请求头到``(((s = u.randomVersion) || 0 === s)`这里还是小写)。不过我现在想知道的是它怎么知道我开了代理。</p>
+<p><img src="image-20240906173054539.png" alt="image-20240906173054539"></p>
+<p><img src="image-20240906173220894.png" alt="image-20240906173220894"></p>
+<p><img src="image-20240909124921504.png" alt="image-20240909124921504"></p>
+<h3 id="确定问题"><a href="#确定问题" class="headerlink" title="确定问题"></a>确定问题</h3><p>在和朋友交流后，尝试确定小程序是检测了代理情况还是检测了Burp，所以我分别用proxifier转clash和yakit进行尝试，发现小程序都正常响应，所以确定是检测了Burp，但是我对比yakit和burp的响应，几乎是一模一样，后面我又把yakit的响应拦截，全部换成burp的响应，结果还是正常，那基本可以确定不是响应的不同导致的小程序不同。</p>
+<p>于是还是决定去js中确定问题，首先是确定发包情况，这个小程序的http请求是通过XMLHttpRequest发送的，像randomVersion: 23这种自定义的请求头，是通过setRequestHeader()方法设置的。于是找到相关代码，下好断点，发现这里设置的是randomVersion，大写</p>
+<p><img src="image-20240912114009383.png" alt="image-20240912114009383"></p>
+<p>而我实际拦截到的却是Randomversion，小程序报请求失败。</p>
+<p><img src="image-20240912114054952.png" alt="image-20240912114054952"></p>
+<p>而我在yakit的情况下，这里设置的请求头依然是randomVersion，大写</p>
+<p><img src="image-20240912114348196.png" alt="image-20240912114348196"></p>
+<p>我实际拦截到的却是randomVersion，和js中看到的一样，小程序正常。</p>
+<p><img src="image-20240912114805189.png" alt="image-20240912114805189"></p>
+<p>请求的时候，在js中完全一致，但是抓包到的时候却不同。那再看一下响应，XMLHttpRequest中获取响应头的方法是getAllResponseHeaders()。同样是找到相关代码，然后下断点，在burp代理的情况下，y.getAllResponseHeaders()的结果全是小写的。</p>
+<p><img src="image-20240912115411703.png" alt="image-20240912115411703"></p>
+<p>在yakit代理的情况下，y.getAllResponseHeaders()的结果是有大写有小写的。</p>
+<p><img src="image-20240912115241670.png" alt="image-20240912115241670"></p>
+<p>那这样几乎可以判断，这个大小写问题似乎和这个小程序没关系，然后我又去找了其他几个小程序，去看他们的发送请求和接收响应的代码，几乎一样，那是不是意味着是微信平台识别了我的burp，然后改写过XMLHttpRequest这个对象，去问了一下做过小程序开发的朋友，然后找到了类似的问题<a class="link" target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/search?query=%25E5%2593%258D%25E5%25BA%2594%25E5%25A4%25B4%2520%25E5%25B0%258F%25E5%2586%2599&amp;page=1&amp;block=1&amp;random=1726109156271&amp;type=1%E3%80%82%E4%BC%BC%E4%B9%8E%E6%98%AF%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E7%84%B6%E5%90%8E%E5%8E%BB%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9A%84network%E9%82%A3%E8%BE%B9%E7%A1%AE%E8%AE%A4%E4%B8%80%E4%B8%8B%EF%BC%8C%E9%80%89%E4%B8%8A%E5%8D%8F%E8%AE%AE%E3%80%82">https://developers.weixin.qq.com/community/search?query=%25E5%2593%258D%25E5%25BA%2594%25E5%25A4%25B4%2520%25E5%25B0%258F%25E5%2586%2599&amp;page=1&amp;block=1&amp;random=1726109156271&amp;type=1。似乎是协议的问题，然后去控制台的network那边确认一下，选上协议。<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20240912122800696.png" alt="image-20240912122800696"></p>
+<p>果不其然，这里面协议是h2的请求，都是走bp的请求，也是会导报”请求失败”的请求。于是关掉bp的h2，在proxy listeners里面，取消勾选”Support HTTP/2”。然后就一切正常了</p>
+<p><img src="image-20240912123043445.png" alt="image-20240912123043445"></p>
+<p><img src="image-20240912123838891.png" alt="image-20240912123838891"></p>
+<p><img src="image-20240912123905438.png" alt="image-20240912123905438"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结一下的话就是，微信平台对于协议的处理+小程序自定义字段的识别导致的这个问题，我猜测微信平台检测到流量使用http2协议时，为了符合要求，会自动将数据包请求头改为小写，而小程序的开发者似乎没有意识到这个问题，在后台中写了<code>if (((s = u.randomVersion) || 0 === s) &amp;&amp; &quot;[object Object]&quot; !== Object.prototype.toString.call(o)) </code>这样一个判断，用来正常检测响应头中是否存在randomVersion字段（这个字段对于该系统来说是必须的），结果却误打误撞（可能）检测了burp代理。</p>
+<p><img src="image-20240912131134481.png" alt="image-20240912131134481"></p>
+<p>那感觉这种东西好像可以拿来做蜜罐，不过好像也不能百分之百确定从http2进来的就是攻击者的流量，容易误伤。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a class="link" target="_blank" rel="noopener" href="https://phantomvk.github.io/2018/12/13/HTTP2_Header_lower_case/">https://phantomvk.github.io/2018/12/13/HTTP2_Header_lower_case/<i class="fas fa-external-link-alt"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/00044cd9fa05687e731afd4fa51c00">https://developers.weixin.qq.com/community/develop/doc/00044cd9fa05687e731afd4fa51c00<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/js%E9%80%86%E5%90%91/">js逆向</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/11/21/JS%E9%80%86%E5%90%91%E5%AE%9E%E6%88%98-%E6%89%BE%E5%88%B0%E9%82%A3%E4%B8%AAflag/"
+                                   title="JS逆向实战-找到那个flag"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">JS逆向实战-找到那个flag</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/08/27/JsRpc%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"
+                                   title="JsRpc使用笔记"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">JsRpc使用笔记</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5"><span class="nav-text">异常情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%BF%87%E7%A8%8B"><span class="nav-text">逆向过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AE%9A%E4%BD%8D-randomVersion"><span class="nav-text">关键定位 randomVersion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="nav-text">确定问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E6%83%85%E5%86%B5"><span class="nav-text">异常情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%90%91%E8%BF%87%E7%A8%8B"><span class="nav-text">逆向过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%AE%9A%E4%BD%8D-randomVersion"><span class="nav-text">关键定位 randomVersion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E9%97%AE%E9%A2%98"><span class="nav-text">确定问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

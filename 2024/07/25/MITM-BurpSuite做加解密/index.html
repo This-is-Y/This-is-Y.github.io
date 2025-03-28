@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            MITM&amp;BurpSuite做加解密 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        MITM&amp;BurpSuite做加解密
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-07-25 19:29:34</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Thu Jan 23 2025 18:42:18 GMT+0800">2025-01-23 18:42:18</span>
+            </span>
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/js%E9%80%86%E5%90%91/">js逆向</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.5k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>先创建一个加解密的环境，这里我用python的flask搭建</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, request, jsonify, render_template_string</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span>, methods=[<span class="string">&#x27;GET&#x27;</span>, <span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>():</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&#x27;POST&#x27;</span>:</span><br><span class="line">        <span class="keyword">if</span> request.is_json:</span><br><span class="line">            postData = request.get_json()</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;======================&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;服务端最终接受到的请求:&quot;</span>,json.dumps(postData,ensure_ascii=<span class="literal">False</span>))</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;encodedData&#x27;</span> <span class="keyword">in</span> postData:</span><br><span class="line">                encodedData = postData[<span class="string">&#x27;encodedData&#x27;</span>]</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> encodedData.endswith(<span class="string">&#x27;=&#x27;</span>):</span><br><span class="line">                    decodedData = base64.b64decode(encodedData).decode()</span><br><span class="line">                    decodedData = base64.b64encode(decodedData.encode()).decode()</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    decodedData = base64.b64encode(encodedData.encode()).decode()</span><br><span class="line"></span><br><span class="line">                response = &#123;<span class="string">&#x27;reencodedData&#x27;</span>: decodedData&#125;</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;服务端最终返回的请求:&quot;</span>,json.dumps(response,ensure_ascii=<span class="literal">False</span>))</span><br><span class="line">                <span class="keyword">return</span> jsonify(response)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                errorResponse = &#123;<span class="string">&#x27;error&#x27;</span>: <span class="string">&#x27;Invalid data received&#x27;</span>&#125;</span><br><span class="line">                <span class="keyword">return</span> jsonify(errorResponse), <span class="number">400</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> jsonify(&#123;<span class="string">&#x27;error&#x27;</span>: <span class="string">&#x27;Request must be in JSON format&#x27;</span>&#125;), <span class="number">400</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> render_template_string(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">&lt;html lang=&quot;en&quot;&gt;</span></span><br><span class="line"><span class="string">&lt;head&gt;</span></span><br><span class="line"><span class="string">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;title&gt;Base64编码示例&lt;/title&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;form id=&quot;myForm&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;label for=&quot;userInput&quot;&gt;输入文本：&lt;/label&gt;</span></span><br><span class="line"><span class="string">        &lt;input type=&quot;text&quot; id=&quot;userInput&quot; name=&quot;userInput&quot; required&gt;</span></span><br><span class="line"><span class="string">        &lt;button type=&quot;button&quot; onclick=&quot;encodeAndSend()&quot;&gt;提交&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/form&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;!-- 添加用于显示服务端返回的数据的元素 --&gt;</span></span><br><span class="line"><span class="string">    &lt;div id=&quot;responseDataContainer&quot;&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;script&gt;</span></span><br><span class="line"><span class="string">        function encodeAndSend() &#123;</span></span><br><span class="line"><span class="string">            var userInput = document.getElementById(&quot;userInput&quot;).value;</span></span><br><span class="line"><span class="string">            var encodedData = btoa(userInput);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            var jsonData = &#123;</span></span><br><span class="line"><span class="string">                encodedData: encodedData</span></span><br><span class="line"><span class="string">            &#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            fetch(&#x27;/&#x27;, &#123;</span></span><br><span class="line"><span class="string">                method: &#x27;POST&#x27;,</span></span><br><span class="line"><span class="string">                headers: &#123;</span></span><br><span class="line"><span class="string">                    &#x27;Content-Type&#x27;: &#x27;application/json&#x27;</span></span><br><span class="line"><span class="string">                &#125;,</span></span><br><span class="line"><span class="string">                body: JSON.stringify(jsonData)</span></span><br><span class="line"><span class="string">            &#125;)</span></span><br><span class="line"><span class="string">            .then(response =&gt; response.json())</span></span><br><span class="line"><span class="string">            .then(data =&gt; &#123;</span></span><br><span class="line"><span class="string">                var responseDataContainer = document.getElementById(&quot;responseDataContainer&quot;);</span></span><br><span class="line"><span class="string">                responseDataContainer.innerHTML = &#x27;服务端返回的数据： &#x27; + JSON.stringify(data);</span></span><br><span class="line"><span class="string">            &#125;)</span></span><br><span class="line"><span class="string">            .catch(error =&gt; &#123;</span></span><br><span class="line"><span class="string">                console.error(&#x27;Error:&#x27;, error);</span></span><br><span class="line"><span class="string">            &#125;);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &lt;/script&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="string">&quot;8081&quot;</span>,debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行，抓包如下：</p>
+<p><img src="image-20240725110511241-1721907265733-5.png" alt="image-20240725110511241"></p>
+<h2 id="MITM脚本"><a href="#MITM脚本" class="headerlink" title="MITM脚本"></a>MITM脚本</h2><p>整体流程大概如此，需要运行两个MITM脚本，分别处理上游代理和下游代理</p>
+<p><img src="image-20240725151939367-1721907091291-1.png" alt="image-20240725151939367"></p>
+<p>这里我设置</p>
+<p>MITM下游代理为：127.0.0.1:7070</p>
+<p>bp代理代理为：127.0.0.1:8080</p>
+<p>MITM上游代理为：127.0.0.1:9090</p>
+<p>下游代理脚本：MITM-downstream.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mitmproxy <span class="keyword">import</span> flowfilter,ctx</span><br><span class="line"><span class="keyword">from</span> mitmproxy.http <span class="keyword">import</span> HTTPFlow</span><br><span class="line"><span class="keyword">from</span> mitmproxy <span class="keyword">import</span> flowfilter</span><br><span class="line"><span class="keyword">from</span> mitmproxy.http <span class="keyword">import</span> HTTPFlow</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mimit</span>():</span></span><br><span class="line">    TargetHost = [<span class="string">&quot;192.168.1.1&quot;</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span>(<span class="params">self,flow</span>):</span></span><br><span class="line">        <span class="keyword">if</span> flow.request.host <span class="keyword">in</span> self.TargetHost:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;======处理下游请求======&quot;</span>)</span><br><span class="line">            <span class="comment"># 获取请求头 header</span></span><br><span class="line">            req_header = flow.request.headers</span><br><span class="line">            ctx.log.info(req_header)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取请求体 body</span></span><br><span class="line">            req = flow.request.get_text()</span><br><span class="line">            ctx.log.info(req)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 修改请求头</span></span><br><span class="line">            req_json = json.loads(req)</span><br><span class="line">            req_json[<span class="string">&#x27;new-down&#x27;</span>] = <span class="string">&quot;下游请求&quot;</span></span><br><span class="line">            ctx.log.info(req_json)</span><br><span class="line">            <span class="comment"># 处理json.dumps中文问题 ensure_ascii=False</span></span><br><span class="line">            new_req_str = json.dumps(req_json,ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">            ctx.log.info(new_req_str)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 设置修改过后的请求体</span></span><br><span class="line">            flow.request.set_text(new_req_str)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">response</span>(<span class="params">self,flow</span>):</span></span><br><span class="line">        <span class="keyword">if</span> flow.response.host <span class="keyword">in</span> self.TargetHost:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;======处理下游响应======&quot;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取请求头 header</span></span><br><span class="line">            rep_header = flow.response.headers</span><br><span class="line">            ctx.log.info(rep_header)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取请求体 body</span></span><br><span class="line">            rep = flow.response.get_text()</span><br><span class="line">            ctx.log.info(rep)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 修改请求头</span></span><br><span class="line">            rep_json = json.loads(rep)</span><br><span class="line">            rep_json[<span class="string">&#x27;new-down&#x27;</span>] = <span class="string">&quot;下游响应&quot;</span></span><br><span class="line">            ctx.log.info(rep_json)</span><br><span class="line">            <span class="comment"># 处理json.dumps中文问题 ensure_ascii=False</span></span><br><span class="line">            new_rep_str = json.dumps(rep_json,ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">            ctx.log.info(new_rep_str)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 设置修改过后的请求体</span></span><br><span class="line">            flow.response.set_text(new_rep_str)</span><br><span class="line"></span><br><span class="line">addons = [Mimit(),]</span><br></pre></td></tr></table></figure>
+
+<p>执行命令：mitmdump -p 7070 -s MITM-downstream.py  –mode upstream:<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080<i class="fas fa-external-link-alt"></i></a> –ssl-insecure</p>
+<p>然后bp中设置bp的上游代理：</p>
+<p><img src="image-20240725174733794-1721907254684-3.png" alt="image-20240725174733794"></p>
+<p>上游代理脚本：MITM-upstream.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> mitmproxy <span class="keyword">import</span> flowfilter,ctx</span><br><span class="line"><span class="keyword">from</span> mitmproxy.http <span class="keyword">import</span> HTTPFlow</span><br><span class="line"><span class="keyword">from</span> mitmproxy <span class="keyword">import</span> flowfilter</span><br><span class="line"><span class="keyword">from</span> mitmproxy.http <span class="keyword">import</span> HTTPFlow</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mimit</span>():</span></span><br><span class="line"></span><br><span class="line">    TargetHost = [<span class="string">&quot;192.168.1.1&quot;</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">request</span>(<span class="params">self,flow</span>):</span></span><br><span class="line">        <span class="keyword">if</span> flow.request.host <span class="keyword">in</span> self.TargetHost:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;======处理上游请求======&quot;</span>)</span><br><span class="line">            <span class="comment"># 获取请求头 header</span></span><br><span class="line">            req_header = flow.request.headers</span><br><span class="line">            ctx.log.info(req_header)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取请求体 body</span></span><br><span class="line">            req = flow.request.get_text()</span><br><span class="line">            ctx.log.info(req)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 修改请求头</span></span><br><span class="line">            req_json = json.loads(req)</span><br><span class="line">            req_json[<span class="string">&#x27;new-up&#x27;</span>] = <span class="string">&quot;上游请求&quot;</span></span><br><span class="line">            ctx.log.info(req_json)</span><br><span class="line">            <span class="comment"># 处理json.dumps中文问题 ensure_ascii=False</span></span><br><span class="line">            new_req_str = json.dumps(req_json,ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">            ctx.log.info(new_req_str)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 设置修改过后的请求体 </span></span><br><span class="line">            flow.request.set_text(new_req_str)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">response</span>(<span class="params">self,flow</span>):</span></span><br><span class="line">        <span class="keyword">if</span> flow.response.host <span class="keyword">in</span> self.TargetHost:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;======处理上游响应======&quot;</span>)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取请求头 header</span></span><br><span class="line">            rep_header = flow.response.headers</span><br><span class="line">            ctx.log.info(rep_header)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 获取请求体 body</span></span><br><span class="line">            rep = flow.response.get_text()</span><br><span class="line">            ctx.log.info(rep)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 修改请求头</span></span><br><span class="line">            rep_json = json.loads(rep)</span><br><span class="line">            rep_json[<span class="string">&#x27;new-up&#x27;</span>] = <span class="string">&quot;上游响应&quot;</span></span><br><span class="line">            ctx.log.info(rep_json)</span><br><span class="line">            <span class="comment"># 处理json.dumps中文问题 ensure_ascii=False</span></span><br><span class="line">            new_rep_str = json.dumps(rep_json,ensure_ascii=<span class="literal">False</span>)</span><br><span class="line">            ctx.log.info(new_rep_str)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 设置修改过后的请求体</span></span><br><span class="line">            flow.response.set_text(new_rep_str)</span><br><span class="line"></span><br><span class="line">addons = [Mimit(),]</span><br></pre></td></tr></table></figure>
+
+<p>执行命令：mitmdump -p 9090 -s MITM-upstream.py –ssl-insecure</p>
+<p>最后的执行效果如下：</p>
+<p>浏览器默认效果：</p>
+<p><img src="image-20240727181854912.png" alt="image-20240727181854912"></p>
+<p>开启MITM加解密后：</p>
+<p><img src="image-20240727181914354.png" alt="image-20240727181914354"></p>
+<p>而服务器接受的数据以及MITM两层代理中的数据为：</p>
+<p><img src="image-20240727182413636.png" alt="image-20240727182413636"></p>
+<p>Bp中显示的效果如下：</p>
+<p><img src="image-20240727195223677.png" alt="image-20240727195223677"></p>
+<p>假设有一个web系统，请求和响应全加密。借助这套MITM可以达到：</p>
+<p>浏览器 - Burp： 下游代理 request()    bp明文显示浏览器发送的加密过的请求</p>
+<p>Burp - 服务器： 上游代理 request()    bp修改后，重新加密发给服务器，以便服务器正常响应</p>
+<p>服务器 - Burp： 上游代理 reponse()    bp明文显示服务器返回的加密过的响应</p>
+<p>Burp - 浏览器： 下游代理 reponse()    重新加密返回给浏览器，以便浏览器显示正常</p>
+<p>再把流程图贴一下：</p>
+<p><img src="image-20240725151939367-1721907091291-1.png" alt="image-20240725151939367"></p>
+<h2 id="优化代码"><a href="#优化代码" class="headerlink" title="优化代码"></a>优化代码</h2><p>优化一下代码，方便写加解密过程：</p>
+<p>(留个坑)</p>
+<h2 id="记录碰到的一些问题"><a href="#记录碰到的一些问题" class="headerlink" title="记录碰到的一些问题"></a>记录碰到的一些问题</h2><h3 id="mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b’keep-alive’"><a href="#mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b’keep-alive’" class="headerlink" title="mitm HTTP/2 protocol error: Connection-specific header field present: b’keep-alive’."></a>mitm HTTP/2 protocol error: Connection-specific header field present: b’keep-alive’.</h3><p>当配置下游代理后，mitm日志中报这种问题</p>
+<p><img src="image-20250123183652737.png" alt="image-20250123183652737"></p>
+<p>解决方法，在mitm配置目录下的config.yaml文件中（如果没有就新增一个），将validate_inbound_headers改为false（默认为true）。</p>
+<p>配置文件默认读取路径：<code>~/.mitmproxy/config.yaml</code>，见配置项：<code>confdir: &#39;~/.mitmproxy&#39;</code></p>
+<ol>
+<li>linux 系统，如<code>/root/.mitmproxy/config.yaml</code>，没有则需要新建<code>config.yaml</code></li>
+<li>windows 系统，如：<code>C:\Users\Admin\.mitmproxy\config.yaml</code>，用户名：<code>Admin</code>，没有则需要新建<code>config.yaml</code></li>
+</ol>
+<p>之后在启动mitm时，加上 –set confdir=’~/.mitmproxy’</p>
+<p>比如： mitmdump -p 7070 -s tmp.py –mode upstream:<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1:8080/">http://127.0.0.1:8080<i class="fas fa-external-link-alt"></i></a> –ssl-insecure  –set confdir=’~/.mitmproxy’</p>
+<p>参考：<a class="link" target="_blank" rel="noopener" href="https://github.com/mitmproxy/mitmproxy/issues/4836">https://github.com/mitmproxy/mitmproxy/issues/4836<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://docs.mitmproxy.org/stable/concepts-options/">https://docs.mitmproxy.org/stable/concepts-options/<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/yqbaowo/p/18175529">https://www.cnblogs.com/yqbaowo/p/18175529<i class="fas fa-external-link-alt"></i></a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p> Mitmproxy/mitmdump中文文档以及配置教程：<a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/yoyo1216/p/16165758.html">https://www.cnblogs.com/yoyo1216/p/16165758.html<i class="fas fa-external-link-alt"></i></a></p>
+<p>Mitmdump 和 Burp Suite整合详解：<a class="link" target="_blank" rel="noopener" href="https://xz.aliyun.com/t/13218?time__1311=GqmxuD070=o05Rx+OrmwK0KqY5kWbD#toc-5">https://xz.aliyun.com/t/13218?time__1311=GqmxuD070%3Do05Rx%2BOrmwK0KqY5kWbD#toc-5<i class="fas fa-external-link-alt"></i></a></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/js%E9%80%86%E5%90%91/">js逆向</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/07/30/Web%E7%B3%BB%E7%BB%9F%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AC%94%E8%AE%B0/"
+                                   title="Web系统加解密笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Web系统加解密笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/12/18/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E5%89%8D%E7%AB%AF%E8%A7%A3%E5%AF%86/"
+                                   title="网易云音乐前端解密"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">网易云音乐前端解密</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM%E8%84%9A%E6%9C%AC"><span class="nav-text">MITM脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-text">优化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">记录碰到的一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b%E2%80%99keep-alive%E2%80%99"><span class="nav-text">mitm HTTP&#x2F;2 protocol error: Connection-specific header field present: b’keep-alive’.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83"><span class="nav-text">环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM%E8%84%9A%E6%9C%AC"><span class="nav-text">MITM脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-text">优化代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95%E7%A2%B0%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">记录碰到的一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mitm-HTTP-2-protocol-error-Connection-specific-header-field-present-b%E2%80%99keep-alive%E2%80%99"><span class="nav-text">mitm HTTP&#x2F;2 protocol error: Connection-specific header field present: b’keep-alive’.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            网易云音乐前端解密 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        网易云音乐前端解密
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2023-12-18 00:00:06</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Wed Dec 20 2023 13:15:13 GMT+0800">2023-12-20 13:15:13</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>8 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p>我需要解开网易云的青少年模式，密码四位数字，我给忘了。想爆破一下，用小黄鸟抓包后发现，数据都给加密了。</p>
+<h1 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h1><h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>数据包如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/weapi/user/setting/teenpattern/close</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>music.163.com</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>434</span><br><span class="line"><span class="attribute">accept</span><span class="punctuation">: </span>application/json, text/javascript</span><br><span class="line"><span class="attribute">origin</span><span class="punctuation">: </span>https://music.163.com</span><br><span class="line"><span class="attribute">x-requested-with</span><span class="punctuation">: </span>XMLHttpRequest</span><br><span class="line"><span class="attribute">user-agent</span><span class="punctuation">: </span>Mozilla/5.0 (Linux; Android 9; MI 6 Build/PKQ1.190118.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36 CloudMusic/0.1.2 NeteaseMusic/8.2.30</span><br><span class="line"><span class="attribute">content-type</span><span class="punctuation">: </span>application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">referer</span><span class="punctuation">: </span>https://music.163.com/</span><br><span class="line"><span class="attribute">accept-encoding</span><span class="punctuation">: </span>gzip, deflate</span><br><span class="line"><span class="attribute">accept-language</span><span class="punctuation">: </span>zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7</span><br><span class="line"></span><br><span class="line">params=nhyLwglDvPz0T5fsiTNexRnfGk8e5opkRzm马赛克4IlNa3c8KsA%3D%3D&amp;encSecKey=3aea6c31f570a95f马赛克656c2e6a7149d9a410b4254418d3aa538d14c4d489ddd4769a1ab9e5e63cdcd944e4353dee13fcbe7afe1711acb5008</span><br></pre></td></tr></table></figure>
+
+<p>用mt管理器找青少年模式的activity。发现是一个叫做embedbrowserActivity的东西，用jadx没发现什么内容，根据这个activity的英文名，查了一下发现，这其实是一种混合开发<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/s13383754499/article/details/78869683%E3%80%82%E5%AE%83%E5%AE%9E%E9%99%85%E4%B8%8A%E6%98%AF%E5%8A%A0%E8%BD%BD%E4%BA%86%E4%B8%80%E4%B8%AAhtml%E3%80%82">https://blog.csdn.net/s13383754499/article/details/78869683。它实际上是加载了一个html。<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="4dc994003f6512a7b33102533187bfa0.jpg" alt="4dc994003f6512a7b33102533187bfa0"></p>
+<p><img src="image-20231218000430919.png" alt="image-20231218000430919"></p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>所以开始找那个请求并加载了加密js的html。同样是用小黄鸟，从点击进入青少年模式开始抓包，给我抓了一大堆，一个一个看，果真发现了一个特殊的包。</p>
+<p><img src="473dc361995e448e4d7aa266a6c99632_720.jpg" alt="473dc361995e448e4d7aa266a6c99632_720"></p>
+<p>数据包url为<a class="link" target="_blank" rel="noopener" href="https://music.163.com/st/platform/young/home?bounces=false&amp;type=1&amp;userId=%E9%A9%AC%E8%B5%9B%E5%85%8B">https://music.163.com/st/platform/young/home?bounces=false&amp;type=1&amp;userId=马赛克<i class="fas fa-external-link-alt"></i></a></p>
+<p>直接浏览器打开，发现就是那个页面。只不过无法正常像app内一样操作。会提示‘该功能仅限客户端内使用’</p>
+<p><img src="image-20231218000854074.png" alt="image-20231218000854074"></p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>在一顿乱点后发现，虽然无法正常使用解密功能，但是依然可以通过直接访问<a class="link" target="_blank" rel="noopener" href="https://music.163.com/st/platform/young/%E5%8F%91%E9%80%81%E5%8A%A0%E5%AF%86%E8%AF%B7%E6%B1%82%E5%8C%85%E3%80%82%E4%BA%8E%E6%98%AF%E5%AE%9A%E4%BD%8D%E5%88%B0%E5%A6%82%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81">https://music.163.com/st/platform/young/发送加密请求包。于是定位到如下的代码<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="image-20231218001223403.png" alt="image-20231218001223403"></p>
+<p>先简单说一下结论。</p>
+<p>encText， 也就是数据包里的params。使用了两次aes加密。第一次的key为0CoJUm6Qyw8W8jud，iv为0102030405060708。CBC模式。</p>
+<p>第二次的key为随机生成，iv还是0102030405060708，也还是CBC模式。</p>
+<p>encSecKey，也就是数据包里的encSecKey，使用rsa加密（应该，我没太看懂这块的代码。这里加密的内容是前面第二次aes加密的key）。</p>
+<p>现在我要爆破密码需要完成两步，</p>
+<ul>
+<li><p>1.找到明文数据包。</p>
+</li>
+<li><p>2.然后将他们加密。</p>
+</li>
+</ul>
+<p>第二步好解决，直接用cdp就好了。关键在于我该如何找到明文数据包。</p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><p>在上班摸鱼的时候研究了一下，想解密比较难，所以我决定绕开‘该功能仅限客户端内使用’。这里就不说怎么找到的了（花了我一个下午）。直接说操作，</p>
+<ol>
+<li>首先打开<a class="link" target="_blank" rel="noopener" href="https://music.163.com/st/platform/young/home?bounces=false&amp;type=1&amp;userId=502037707%EF%BC%8C%E7%9B%B4%E6%8E%A5%E6%90%9C%E7%B4%A2**%E8%AF%A5%E5%8A%9F%E8%83%BD%E4%BB%85%E9%99%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%86%85%E4%BD%BF%E7%94%A8**%E3%80%82%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E5%85%B3%E9%97%AD%E9%9D%92%E5%B0%91%E5%B9%B4%E6%A8%A1%E5%BC%8F%E6%8C%89%E9%92%AE%EF%BC%8C%E8%BF%99%E9%87%8C%E4%BC%9A%E8%B7%B3%E5%88%B0%60checkAvaliable%60%E5%87%BD%E6%95%B0%E5%86%85%EF%BC%8C%E7%84%B6%E5%90%8E%E8%BF%99%E9%87%8C%E6%9C%89%E4%B8%AA%E5%85%B3%E9%94%AE%E7%82%B9%E3%80%82%E9%9C%80%E8%A6%81%E8%AE%A9%E8%BF%99%E4%B8%AA%60checkAvaliable%60%E8%BF%94%E5%9B%9Etrue%EF%BC%8C%E5%B0%B1%E6%98%AF%E9%9C%80%E8%A6%81%60e=true%60%E4%B8%94%60w.a.isMobile()=true%60%E3%80%82">https://music.163.com/st/platform/young/home?bounces=false&amp;type=1&amp;userId=502037707，直接搜索**该功能仅限客户端内使用**。然后点击关闭青少年模式按钮，这里会跳到`checkAvaliable`函数内，然后这里有个关键点。需要让这个`checkAvaliable`返回true，就是需要`e=true`且`w.a.isMobile()=true`。<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p><img src="image-20231218233600670.png" alt="image-20231218233600670"></p>
+<ol start="2">
+<li>第一个<code>e=true</code>好解决，直接console输入<code>e=true</code>即可。<code>w.a.isMobile()</code>是调用了一个函数，这里需要跳进isMobile()函数内。在这里一行打个断点，等流程进来的时候在console中输入<code>m.isMobile=true</code>就可以改变<code>w.a.isMobile()</code>的返回结果了。不过这个断点的作用不仅仅是为了改变<code>isMobile()</code>的输出结果<del>（其实流程在checkAvaliable函数内的时候就可以输入<code>m.isMobile=true</code>了）</del>，也是为了后面做准备。</li>
+</ol>
+<p><img src="image-20231218233838395.png" alt="image-20231218233838395"></p>
+<ol start="3">
+<li>在修改了<code>e=true</code>和<code>w.a.isMobile()=true</code>后，<code>checkAvaliable</code>已经返回true了，此时代码已经走到<code>if (i.checkAvaliable(!0))</code>的下一行<code>if (i.state.loading)</code>了。这里需要修改<code>i.state.loading</code>的值，将其改为false以便绕过’无法验证青少年模式开启状态’。在这之后，是一个三元表达式，流程需要走下面的start。也是简单的修改e为false即可。</li>
+</ol>
+<p><img src="image-20231218234849032.png" alt="image-20231218234849032"></p>
+<ol start="4">
+<li>当流程走到这里的时候，已经完成一半了。直接F8，继续执行脚本，把代码全部放走。不出意外的话，就会停在刚刚下的<code>return m.isMobile</code>这个断点处了。这里是有第二个判断的。看右边堆栈，点击<code>checkAvailable()</code>函数，在<code>S.a &amp;&amp; (w.a.isMobile() &amp;&amp; F || a.redirect())</code>这一行打上断点。随后F8。重新来一次。</li>
+</ol>
+<p><img src="image-20231218235156132.png" alt="image-20231218235156132"></p>
+<ol start="5">
+<li>第二次点击点击关闭青少年模式按钮，前面的照常设置，直到流程来到<code>checkAvailable()</code>函数内，停在<code>S.a &amp;&amp; (w.a.isMobile() &amp;&amp; F || a.redirect())</code>这一行时，console输入F = true即可。现在就可以自由输入密码了。（在<code>r.asrsea)(JSON.stringify(v), (0,</code>打上断点）也可以得到数据明文了。</li>
+</ol>
+<p><img src="image-20231219000823145.png" alt="image-20231219000823145"></p>
+<p>妈个鸡简单得很，密码口算了一下，是md5加密。{“userId”:”5xxxx7”,”password”:”81dc9bdb52d04dc20036dbd8313ed055”}</p>
+<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><p>找到了明文，就可以开始写CDP加密脚本了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="comment"># author:This_is_Y</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,Response,request</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> websocket</span><br><span class="line"><span class="keyword">import</span> requests <span class="keyword">as</span> Req</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> urllib.parse</span><br><span class="line"></span><br><span class="line">target = <span class="string">&quot;https://music.163.com/&quot;</span></span><br><span class="line">callFrameId = <span class="string">&#x27;&#123;&quot;ordinal&quot;:0,&quot;injectedScriptId&quot;:1&#125;&#x27;</span></span><br><span class="line">level = logging.DEBUG</span><br><span class="line">logging.basicConfig(level=level)</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sendCDP</span>(<span class="params">js_code</span>):</span></span><br><span class="line">    ws_res = Req.get(url = <span class="string">&quot;http://127.0.0.1:9222/json&quot;</span>)</span><br><span class="line">    ws_res_json = json.loads(ws_res.content)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ws_res_json:</span><br><span class="line">        <span class="keyword">if</span> target <span class="keyword">in</span> i[<span class="string">&#x27;url&#x27;</span>]:</span><br><span class="line">            <span class="comment"># logging.info(&quot;webSocketDebuggerUrl&gt;&gt;&gt;&quot;+i[&#x27;webSocketDebuggerUrl&#x27;])</span></span><br><span class="line">            <span class="comment"># print(&quot;webSocketDebuggerUrl&gt;&gt;&gt;&quot;,i[&#x27;webSocketDebuggerUrl&#x27;])</span></span><br><span class="line">            ws_url = i[<span class="string">&#x27;webSocketDebuggerUrl&#x27;</span>]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    conn = websocket.create_connection(ws_url,header=&#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;this_is_y&quot;</span>&#125;)</span><br><span class="line">    request_id = <span class="built_in">int</span>(random.random()*<span class="number">10000</span>)</span><br><span class="line">    method = <span class="string">&quot;Debugger.evaluateOnCallFrame&quot;</span></span><br><span class="line">    param = &#123;<span class="string">&quot;callFrameId&quot;</span>:callFrameId,<span class="string">&quot;expression&quot;</span>:js_code,<span class="string">&quot;generatePreview&quot;</span>:<span class="literal">True</span>,<span class="string">&quot;includeCommandLineAPI&quot;</span>:<span class="literal">True</span>,<span class="string">&quot;silent&quot;</span>:<span class="literal">False</span>,<span class="string">&quot;returnByValue&quot;</span>:<span class="literal">True</span>&#125;</span><br><span class="line">    command  = &#123;<span class="string">&#x27;method&#x27;</span>: method,</span><br><span class="line">               <span class="string">&#x27;id&#x27;</span>: request_id,</span><br><span class="line">               <span class="string">&#x27;params&#x27;</span>: param&#125;</span><br><span class="line">    request_id+=<span class="number">1</span></span><br><span class="line">    logging.info(<span class="string">&quot;sendCDP-payload&gt;&gt;&gt; &quot;</span>+<span class="built_in">str</span>(command)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    conn.send(json.dumps(command))</span><br><span class="line">    <span class="comment"># 接受websocket的响应，并将字符串转换为 dict()</span></span><br><span class="line">    result = json.loads(conn.recv())</span><br><span class="line">    <span class="comment"># print(&quot;&gt;result:&quot;,result)</span></span><br><span class="line">    logging.info(<span class="string">&quot;sendCDP-result&gt;&gt;&gt;&gt; &quot;</span>+<span class="built_in">str</span>(result)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">asrsea</span>(<span class="params">params</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">    构造CDP请求,发送，并解析返回结果,</span></span><br><span class="line"><span class="string">    &#x27;&#x27;&#x27;</span></span><br><span class="line">    js_code = <span class="string">&quot;&quot;&quot;(0,r.asrsea)(&#x27;&#123;&#125;&#x27;, (0,r.emj2code)([&quot;流泪&quot;, &quot;强&quot;]), r.BASE_CODE, (0,r.emj2code)([&quot;爱心&quot;, &quot;女孩&quot;, &quot;惊恐&quot;, &quot;大笑&quot;]))&quot;&quot;&quot;</span>.<span class="built_in">format</span>(params)</span><br><span class="line">    logging.info(<span class="string">&quot;mydecrypt_js_code&gt;&gt;&gt;&quot;</span>+js_code+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> sendCDP(js_code)[<span class="string">&#x27;result&#x27;</span>][<span class="string">&#x27;result&#x27;</span>][<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/encode&#x27;</span>,methods=[<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;==============/encode==================&quot;</span>)</span><br><span class="line">    dataHeaders = request.form.get(<span class="string">&quot;dataHeaders&quot;</span>)   <span class="comment"># 获取 headers </span></span><br><span class="line">    dataBody = request.form.get(<span class="string">&#x27;dataBody&#x27;</span>).replace(<span class="string">&quot;\r\n&quot;</span>,<span class="string">&quot;&quot;</span>)  <span class="comment"># 获取 body 参数</span></span><br><span class="line">    logging.info(<span class="string">&quot;dataHeaders&gt;&gt;&quot;</span>+dataHeaders)</span><br><span class="line">    logging.info(<span class="string">&quot;dataBody&gt;&gt;&quot;</span>+dataBody)</span><br><span class="line">    requestbody = dataBody</span><br><span class="line">    data = asrsea(requestbody)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">type</span>(data) != <span class="built_in">dict</span>:</span><br><span class="line">        logging.error(<span class="string">&quot;data error&quot;</span>)</span><br><span class="line">    params = urllib.parse.urlencode(data).replace(<span class="string">&quot;encText&quot;</span>,<span class="string">&quot;params&quot;</span>)</span><br><span class="line">    logging.info(<span class="string">&quot;params&quot;</span>+params)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dataHeaders+<span class="string">&quot;\r\n\r\n\r\n&quot;</span>+params</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    app.debug = <span class="literal">True</span> <span class="comment"># 设置调试模式，生产模式的时候要关掉debug</span></span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>,port=<span class="string">&quot;8890&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>所以我密码应该是2315？（反正密码现在确实已经解开了）</p>
+<p><img src="image-20231219005801122.png" alt="image-20231219005801122"></p>
+<p><img src="7a66b2837f34f29028e7466300e6e5da_720.jpg" alt="7a66b2837f34f29028e7466300e6e5da_720"></p>
+<p><img src="d6f6e6592f5485f709f053a9af0f1d29_720.jpg" alt="d6f6e6592f5485f709f053a9af0f1d29_720"></p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>网易云这个前端js的加解密，有点意思。</p>
+<ol>
+<li><p>首先是加密函数的命名，asrsea。其实就是 aes rsa 倒过来。</p>
+</li>
+<li><p>关于一些变量，比如rsa公钥，不是直接什么publickey = xxxxx。他这里用了一个字符串替换，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> E = (<span class="number">0</span>,</span><br><span class="line">r.asrsea)(<span class="built_in">JSON</span>.stringify(v), (<span class="number">0</span>,</span><br><span class="line">r.emj2code)([<span class="string">&quot;流泪&quot;</span>, <span class="string">&quot;强&quot;</span>]), r.BASE_CODE, (<span class="number">0</span>,</span><br><span class="line">r.emj2code)([<span class="string">&quot;爱心&quot;</span>, <span class="string">&quot;女孩&quot;</span>, <span class="string">&quot;惊恐&quot;</span>, <span class="string">&quot;大笑&quot;</span>]));</span><br><span class="line">简化一下</span><br><span class="line"><span class="keyword">var</span> E = (<span class="number">0</span>,r.asrsea)(<span class="built_in">JSON</span>.stringify(v), (<span class="number">0</span>,r.emj2code)([<span class="string">&quot;流泪&quot;</span>, <span class="string">&quot;强&quot;</span>]), r.BASE_CODE, (<span class="number">0</span>,r.emj2code)([<span class="string">&quot;爱心&quot;</span>, <span class="string">&quot;女孩&quot;</span>, <span class="string">&quot;惊恐&quot;</span>, <span class="string">&quot;大笑&quot;</span>]));</span><br></pre></td></tr></table></figure>
+
+<p>比如这里。asrsea函数闯入了四个值，只有第一个是需要处理的明文，后面三个都是固定值，写死了的。其中第二个和第四个，(0,r.emj2code)([“流泪”, “强”])可以在main.js里搜索一下。这里实际上都对应了字符串，如下图</p>
+</li>
+</ol>
+<p><img src="image-20231219001604342.png" alt="image-20231219001604342"></p>
+<ol start="3">
+<li>因为关闭青少年模式的接口（/weapi/user/setting/teenpattern/close）不需要cookie，本来以为这几个接口能未授权，结果拿到open的数据包后，发现开启青少年模式居然又要cookie。绝了，肯定是以前被人挖过了</li>
+</ol>
+<p><img src="image-20231220131447600.png" alt="image-20231220131447600"></p>
+<p><img src="image-20231220131512479.png" alt="image-20231220131512479"></p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/07/25/MITM-BurpSuite%E5%81%9A%E5%8A%A0%E8%A7%A3%E5%AF%86/"
+                                   title="MITM&amp;BurpSuite做加解密"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">MITM&amp;BurpSuite做加解密</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2023/12/08/log4j%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/"
+                                   title="log4j反序列化分析笔记"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">log4j反序列化分析笔记</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-text">操作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-text">2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-text">3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-text">4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5"><span class="nav-text">5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-text">题外话</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-text">起因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="nav-text">操作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-text">1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-text">2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-text">3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-text">4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5"><span class="nav-text">5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-text">题外话</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
