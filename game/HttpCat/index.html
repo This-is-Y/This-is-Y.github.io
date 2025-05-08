@@ -1,600 +1,328 @@
-<html>
-     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <style>
-             .over {position: fixed; left:0; top:0; width:100%; z-index:100;}
-             .tempContainer {position:fixed; width:100%; margin-right:0px; margin-left:0px; text-align:center; z-index:101;}
-         </style>
-         <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HTTP_CAT</title>
+    <link rel="icon" href="./cat/title.png" type="image/png">
+    <style>
+        body {
+            background: #000;
+            color: #FFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
-         <style>
-         .display-flex {
-          display: grid;
+        .display-flex {
+            display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-auto-rows: minmax(100px, auto);
-            grid-gap: 50px;
-            margin:20px;
-          
-          
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .div-size {
-          text-align: center;
-          margin: 10px;
+            text-align: center;
         }
-         </style>
-         <title>HTTP_CAT</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1" />
-   
-         
 
-     </head>
-     <body style="background:#000; color:#FFF">
-
-
-         <div class="logoImg amplifyImg" margin=10px><!--注意：此处的amlifyImg不可少-->
-             <div class="display-flex" >
-
-
-        <div class="div-size" >
-            <img height="200" width="250" src="cat/100.jpg"/>
-            <a><br>100 Continue</a>
-            <a><br>100继续</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/101.jpg"/>
-            <a><br>101 Switching Protocols</a>
-            <a><br>101交换协议</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/102.jpg"/>
-            <a><br>102 Processing</a>
-            <a><br>102处理</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/200.jpg"/>
-            <a><br>200 OK</a>
-            <a><br>200 OK.</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/201.jpg"/>
-            <a><br>201 Created</a>
-            <a><br>201创建了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/202.jpg"/>
-            <a><br>202 Accepted</a>
-            <a><br>202接受了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/203.jpg"/>
-            <a><br>203 Non-Authoritative Information</a>
-            <a><br>203非权威信息</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/204.jpg"/>
-            <a><br>204 No Content</a>
-            <a><br>204没有内容</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/206.jpg"/>
-            <a><br>206 Partial Content</a>
-            <a><br>206部分内容</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/207.jpg"/>
-            <a><br>207 Multi-Status</a>
-            <a><br>207多地位</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/300.jpg"/>
-            <a><br>300 Multiple Choices</a>
-            <a><br>300多种选择</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/301.jpg"/>
-            <a><br>301 Moved Permanently</a>
-            <a><br>301永久搬动</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/302.jpg"/>
-            <a><br>302 Found</a>
-            <a><br>332发现</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/303.jpg"/>
-            <a><br>303 See Other</a>
-            <a><br>303见其他</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/304.jpg"/>
-            <a><br>304 Not Modified</a>
-            <a><br>304未修改</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/305.jpg"/>
-            <a><br>305 Use Proxy</a>
-            <a><br>305使用代理</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/307.jpg"/>
-            <a><br>307 Temporary Redirect</a>
-            <a><br>307临时重定向</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/308.jpg"/>
-            <a><br>308 Permanent Redirect</a>
-            <a><br>308永久重定向</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/400.jpg"/>
-            <a><br>400 Bad Request</a>
-            <a><br>400个糟糕的要求</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/401.jpg"/>
-            <a><br>401 Unauthorized</a>
-            <a><br>401未经授权</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/402.jpg"/>
-            <a><br>402 Payment Required</a>
-            <a><br>要求402付款</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/403.jpg"/>
-            <a><br>403 Forbidden</a>
-            <a><br>403禁止</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/404.jpg"/>
-            <a><br>404 Not Found</a>
-            <a><br>404没有找到</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/405.jpg"/>
-            <a><br>405 Method Not Allowed</a>
-            <a><br>405方法不允许</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/406.jpg"/>
-            <a><br>406 Not Acceptable</a>
-            <a><br>406不可接受</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/407.jpg"/>
-            <a><br>407 Proxy Authentication Required</a>
-            <a><br>需要407代理身份验证</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/408.jpg"/>
-            <a><br>408 Request Timeout</a>
-            <a><br>408请求超时</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/409.jpg"/>
-            <a><br>409 Conflict</a>
-            <a><br>409冲突</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/410.jpg"/>
-            <a><br>410 Gone</a>
-            <a><br>410走了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/411.jpg"/>
-            <a><br>411 Length Required</a>
-            <a><br>需要411长度</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/412.jpg"/>
-            <a><br>412 Precondition Failed</a>
-            <a><br>412前提条件失败了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/413.jpg"/>
-            <a><br>413 Payload Too Large</a>
-            <a><br>413有效载荷太大</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/414.jpg"/>
-            <a><br>414 Request-URI Too Long</a>
-            <a><br>414要求 -  URI太长了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/415.jpg"/>
-            <a><br>415 Unsupported Media Type</a>
-            <a><br>415不支持的媒体类型</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/416.jpg"/>
-            <a><br>416 Request Range Not Satisfiable</a>
-            <a><br>416请求范围不满足</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/417.jpg"/>
-            <a><br>417 Expectation Failed</a>
-            <a><br>417期望失败了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/418.jpg"/>
-            <a><br>418 IÂ´m a teapot</a>
-            <a><br>418我是一个茶壶</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/420.jpg"/>
-            <a><br>420 Enhance Your Calm</a>
-            <a><br>420增强你的平静</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/421.jpg"/>
-            <a><br>421 Misdirected Request</a>
-            <a><br>421误导的请求</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/422.jpg"/>
-            <a><br>422 Unprocessable Entity</a>
-            <a><br>422无法治疗的实体</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/423.jpg"/>
-            <a><br>423 Locked</a>
-            <a><br>423锁定</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/424.jpg"/>
-            <a><br>424 Failed Dependency</a>
-            <a><br>424失败依赖</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/425.jpg"/>
-            <a><br>425 Too Early</a>
-            <a><br>425太早了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/426.jpg"/>
-            <a><br>426 Upgrade Required</a>
-            <a><br>需要426升级</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/429.jpg"/>
-            <a><br>429 Too Many Requests</a>
-            <a><br>429要求太多了</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/431.jpg"/>
-            <a><br>431 Request Header Fields Too Large</a>
-            <a><br>431请求标题字段太大</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/444.jpg"/>
-            <a><br>444 No Response</a>
-            <a><br>444没有回应</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/450.jpg"/>
-            <a><br>450 Blocked by Windows Parental Controls</a>
-            <a><br>450由Windows父母控制阻止</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/451.jpg"/>
-            <a><br>451 Unavailable For Legal Reasons</a>
-            <a><br>451不可用的法律原因</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/497.jpg"/>
-            <a><br>497 HTTP Request Sent to HTTPS Port</a>
-            <a><br>497 HTTP请求发送到HTTPS端口</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/498.jpg"/>
-            <a><br>498 Token expired/invalid</a>
-            <a><br>498令牌过期/无效</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/499.jpg"/>
-            <a><br>499 Client Closed Request</a>
-            <a><br>499客户关闭请求</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/500.jpg"/>
-            <a><br>500 Internal Server Error</a>
-            <a><br>500内部服务器错误</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/501.jpg"/>
-            <a><br>501 Not Implemented</a>
-            <a><br>501未实施</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/502.jpg"/>
-            <a><br>502 Bad Gateway</a>
-            <a><br>502错误的网关</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/503.jpg"/>
-            <a><br>503 Service Unavailable</a>
-            <a><br>503服务不可用</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/504.jpg"/>
-            <a><br>504 Gateway Timeout</a>
-            <a><br>504网关超时</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/506.jpg"/>
-            <a><br>506 Variant Also Negotiates</a>
-            <a><br>506变量也谈判</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/507.jpg"/>
-            <a><br>507 Insufficient Storage</a>
-            <a><br>507存储不足</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/508.jpg"/>
-            <a><br>508 Loop Detected</a>
-            <a><br>检测到508循环</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/509.jpg"/>
-            <a><br>509 Bandwidth Limit Exceeded</a>
-            <a><br>超过509带宽限制</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/510.jpg"/>
-            <a><br>510 Not Extended</a>
-            <a><br>510未扩展</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/511.jpg"/>
-            <a><br>511 Network Authentication Required</a>
-            <a><br>511需要网络身份验证</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/521.jpg"/>
-            <a><br>521 Web Server Is Down</a>
-            <a><br>521 Web服务器已关闭</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/523.jpg"/>
-            <a><br>523 Origin Is Unreachable</a>
-            <a><br>523起源无法访问</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/525.jpg"/>
-            <a><br>525 SSL Handshake Failed</a>
-            <a><br>525 SSL握手失败</a>
-        </div>
-
-
-        <div class="div-size">
-            <img height="200" width="250" src="cat/599.jpg"/>
-            <a><br>599 Network Connect Timeout Error</a>
-            <a><br>599网络连接超时错误</a>
-        </div>
-
-
-  
-                    
-             </div> 
-         </div>
-         
-
-
-
-<div align=center>
-<a href="https://http.cat/">HTTP_CAT</a>
-<p>Developed by <a href="https://twitter.com/rogeriopvl">@rogeriopvl</a></p>
-<p>Images by Tomomi Imura (<a href="https://twitter.com/girlie_mac">@girlie_mac</a>)</p>
+        .div-size img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .tempContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .tempContainer img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid #fff;
+        }
+
+        .over {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            display: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="logoImg amplifyImg">
+    <div class="display-flex" id="imageGrid"></div>
 </div>
 
-         <script>
-             $(document).ready(function () {
-                 var imgsObj = $('.amplifyImg img');//需要放大的图像
-                 if(imgsObj){
-                     $.each(imgsObj,function(){
-                         $(this).click(function(){
-                             var currImg = $(this);
-                             coverLayer(1);
-                             var tempContainer = $('<div class=tempContainer></div>');//图片容器
-                             with(tempContainer){//width方法等同于$(this)
-                                 appendTo("body");
-                                 var windowWidth=600;
-                                 var windowHeight=600;
-                                 //获取图片原始宽度、高度
-                                 var orignImg = new Image();
-                                 orignImg.src =currImg.attr("src") ;
-                                 var currImgWidth= orignImg.width;
-                                 var currImgHeight = orignImg.height;
-                                 if(currImgWidth<windowWidth){//为了让图片不失真，当图片宽度较小的时候，保留原图
-                                     if(currImgHeight<windowHeight){
-                                         var topHeight=(windowHeight-currImgHeight)/2;
-                                         if(topHeight>35){/*此处为了使图片高度上居中显示在整个手机屏幕中：因为在android,ios的微信中会有一个title导航，35为title导航的高度*/
-                                             topHeight=topHeight-35;
-                                             css('top',topHeight);
-                                         }else{
-                                             css('top',0);
-                                         }
-                                         html('<img border=0 src=' + currImg.attr('src') + '>');
-                                     }else{
-                                         css('top',0);
-                                         html('<img border=0 src=' + currImg.attr('src') + ' height='+windowHeight+'>');
-                                     }
-                                 }else{
-                                     var currImgChangeHeight=(currImgHeight*windowWidth)/currImgWidth;
-                                     if(currImgChangeHeight<windowHeight){
-                                         var topHeight=(windowHeight-currImgChangeHeight)/2;
-                                         if(topHeight>35){
-                                             topHeight=topHeight-35;
-                                             css('top',topHeight);
-                                         }else{
-                                             css('top',0);
-                                         }
-                                         html('<img border=0 src=' + currImg.attr('src') + ' width='+windowWidth+';>');
-                                     }else{
-                                         css('top',0);
-                                         html('<img border=0 src=' + currImg.attr('src') + ' width='+windowWidth+'; height='+windowHeight+'>');
-                                     }
-                                 }
-                             }
-                             tempContainer.click(function(){
-                                 $(this).remove();
-                                 coverLayer(0);
-                             });
-                         });
-                     });
-                 }
-                 else{
-                     return false;
-                 }
-                 //使用禁用蒙层效果
-                 function coverLayer(tag){
-                     with($('.over')){
-                         if(tag==1){
-                             css('height',$(document).height());
-                             css('display','block');
-                             css('opacity',1);
-                             css("background-color","#FFFFFF");
-                             css("background-color","rgba(0,0,0,0.7)" );  //蒙层透明度
-                         }
-                         else{
-                             css('display','none');
-                         }
-                     }
-                 }
-             });
-         </script>
-     </body>
- </html>
+<!-- 放大图层 -->
+<div class="over"></div>
+<div class="tempContainer" style="display:none;"></div>
+
+
+<script>
+    const httpStatuses_Machine_translation= [
+    {"code": "100", "en": "Continue", "zh": "继续"} ,
+    {"code": "101", "en": "Switching Protocols", "zh": "交换协议"} ,
+    {"code": "102", "en": "Processing", "zh": "处理"} ,
+    {"code": "200", "en": "OK", "zh": " OK."} ,
+    {"code": "201", "en": "Created", "zh": "创建了"} ,
+    {"code": "202", "en": "Accepted", "zh": "接受了"} ,
+    {"code": "203", "en": "Non-Authoritative Information", "zh": "非权威信息"} ,
+    {"code": "204", "en": "No Content", "zh": "没有内容"} ,
+    {"code": "206", "en": "Partial Content", "zh": "部分内容"} ,
+    {"code": "207", "en": "Multi-Status", "zh": "多地位"} ,
+    {"code": "300", "en": "Multiple Choices", "zh": "多种选择"} ,
+    {"code": "301", "en": "Moved Permanently", "zh": "永久搬动"} ,
+    {"code": "302", "en": "Found", "zh": "发现"} ,
+    {"code": "303", "en": "See Other", "zh": "见其他"} ,
+    {"code": "304", "en": "Not Modified", "zh": "未修改"} ,
+    {"code": "305", "en": "Use Proxy", "zh": "使用代理"} ,
+    {"code": "307", "en": "Temporary Redirect", "zh": "临时重定向"} ,
+    {"code": "308", "en": "Permanent Redirect", "zh": "永久重定向"} ,
+    {"code": "400", "en": "Bad Request", "zh": "个糟糕的要求"} ,
+    {"code": "401", "en": "Unauthorized", "zh": "未经授权"} ,
+    {"code": "402", "en": "Payment Required", "zh": " Forbidden"} ,
+    {"code": "404", "en": "Not Found", "zh": "没有找到"} ,
+    {"code": "405", "en": "Method Not Allowed", "zh": "方法不允许"} ,
+    {"code": "406", "en": "Not Acceptable", "zh": "不可接受"} ,
+    {"code": "407", "en": "Proxy Authentication Required", "zh": " Request Timeout"} ,
+    {"code": "409", "en": "Conflict", "zh": "冲突"} ,
+    {"code": "410", "en": "Gone", "zh": "走了"} ,
+    {"code": "411", "en": "Length Required", "zh": " Precondition Failed"} ,
+    {"code": "413", "en": "Payload Too Large", "zh": "有效载荷太大"} ,
+    {"code": "414", "en": "Request-URI Too Long", "zh": "要求 -  URI太长了"} ,
+    {"code": "415", "en": "Unsupported Media Type", "zh": "不支持的媒体类型"} ,
+    {"code": "416", "en": "Request Range Not Satisfiable", "zh": "请求范围不满足"} ,
+    {"code": "417", "en": "Expectation Failed", "zh": "期望失败了"} ,
+    {"code": "418", "en": "IÂ´m a teapot", "zh": "我是一个茶壶"} ,
+    {"code": "420", "en": "Enhance Your Calm", "zh": "增强你的平静"} ,
+    {"code": "421", "en": "Misdirected Request", "zh": "误导的请求"} ,
+    {"code": "422", "en": "Unprocessable Entity", "zh": "无法治疗的实体"} ,
+    {"code": "423", "en": "Locked", "zh": "锁定"} ,
+    {"code": "424", "en": "Failed Dependency", "zh": "失败依赖"} ,
+    {"code": "425", "en": "Too Early", "zh": "太早了"} ,
+    {"code": "426", "en": "Upgrade Required", "zh": " Too Many Requests"} ,
+    {"code": "431", "en": "Request Header Fields Too Large", "zh": "请求标题字段太大"} ,
+    {"code": "444", "en": "No Response", "zh": "没有回应"} ,
+    {"code": "450", "en": "Blocked by Windows Parental Controls", "zh": "由Windows父母控制阻止"} ,
+    {"code": "451", "en": "Unavailable For Legal Reasons", "zh": "不可用的法律原因"} ,
+    {"code": "497", "en": "HTTP Request Sent to HTTPS Port", "zh": " HTTP请求发送到HTTPS端口"} ,
+    {"code": "498", "en": "Token expired/invalid", "zh": "令牌过期/无效"} ,
+    {"code": "499", "en": "Client Closed Request", "zh": "客户关闭请求"} ,
+    {"code": "500", "en": "Internal Server Error", "zh": "内部服务器错误"} ,
+    {"code": "501", "en": "Not Implemented", "zh": "未实施"} ,
+    {"code": "502", "en": "Bad Gateway", "zh": "错误的网关"} ,
+    {"code": "503", "en": "Service Unavailable", "zh": "服务不可用"} ,
+    {"code": "504", "en": "Gateway Timeout", "zh": "网关超时"} ,
+    {"code": "506", "en": "Variant Also Negotiates", "zh": "变量也谈判"} ,
+    {"code": "507", "en": "Insufficient Storage", "zh": "存储不足"} ,
+    {"code": "508", "en": "Loop Detected", "zh": " Bandwidth Limit Exceeded"} ,
+    {"code": "510", "en": "Not Extended", "zh": "未扩展"} ,
+    {"code": "511", "en": "Network Authentication Required", "zh": "需要网络身份验证"} ,
+    {"code": "521", "en": "Web Server Is Down", "zh": " Web服务器已关闭"} ,
+    {"code": "523", "en": "Origin Is Unreachable", "zh": "起源无法访问"} ,
+    {"code": "525", "en": "SSL Handshake Failed", "zh": " SSL握手失败"} ,
+    {"code": "599", "en": "Network Connect Timeout Error", "zh": "网络连接超时错误"}
+    ];
+
+    const httpStatuses_tongyi = [
+    {"code": "100", "en": "Continue", "zh": "继续"},
+    {"code": "101", "en": "Switching Protocols", "zh": "切换协议"},
+    {"code": "102", "en": "Processing", "zh": "已接受请求，但尚未处理完成"},
+    {"code": "200", "en": "OK", "zh": "请求成功"},
+    {"code": "201", "en": "Created", "zh": "已创建"},
+    {"code": "202", "en": "Accepted", "zh": "已接受请求，正在处理"},
+    {"code": "203", "en": "Non-Authoritative Information", "zh": "非权威信息"},
+    {"code": "204", "en": "No Content", "zh": "无内容（服务器成功处理但无返回数据）"},
+    {"code": "206", "en": "Partial Content", "zh": "部分内容"},
+    {"code": "207", "en": "Multi-Status", "zh": "多状态"},
+    {"code": "300", "en": "Multiple Choices", "zh": "多种选择"},
+    {"code": "301", "en": "Moved Permanently", "zh": "永久移动"},
+    {"code": "302", "en": "Found", "zh": "找到（资源临时移动）"},
+    {"code": "303", "en": "See Other", "zh": "参见其他位置"},
+    {"code": "304", "en": "Not Modified", "zh": "未修改（用于缓存控制）"},
+    {"code": "305", "en": "Use Proxy", "zh": "需通过代理访问"},
+    {"code": "307", "en": "Temporary Redirect", "zh": "临时重定向"},
+    {"code": "308", "en": "Permanent Redirect", "zh": "永久重定向"},
+    {"code": "400", "en": "Bad Request", "zh": "错误请求（客户端发送的请求有误）"},
+    {"code": "401", "en": "Unauthorized", "zh": "未授权"},
+    {"code": "402", "en": "Payment Required", "zh": "被禁止访问"},
+    {"code": "404", "en": "Not Found", "zh": "未找到（资源不存在）"},
+    {"code": "405", "en": "Method Not Allowed", "zh": "请求方法不允许"},
+    {"code": "406", "en": "Not Acceptable", "zh": "不可接受的内容类型"},
+    {"code": "407", "en": "Proxy Authentication Required", "zh": "请求超时"},
+    {"code": "409", "en": "Conflict", "zh": "冲突（资源冲突）"},
+    {"code": "410", "en": "Gone", "zh": "已被移除"},
+    {"code": "411", "en": "Length Required", "zh": "前置条件失败"},
+    {"code": "413", "en": "Payload Too Large", "zh": "有效载荷过大"},
+    {"code": "414", "en": "Request-URI Too Long", "zh": "请求的 URI 过长"},
+    {"code": "415", "en": "Unsupported Media Type", "zh": "不支持的媒体类型"},
+    {"code": "416", "en": "Request Range Not Satisfiable", "zh": "请求范围不可满足"},
+    {"code": "417", "en": "Expectation Failed", "zh": "期望条件未满足"},
+    {"code": "418", "en": "IÂ´m a teapot", "zh": "我是一个茶壶（测试用）"},
+    {"code": "420", "en": "Enhance Your Calm", "zh": "请冷静一点（限流提示）"},
+    {"code": "421", "en": "Misdirected Request", "zh": "请求被错误定向"},
+    {"code": "422", "en": "Unprocessable Entity", "zh": "无法处理的实体"},
+    {"code": "423", "en": "Locked", "zh": "资源已被锁定"},
+    {"code": "424", "en": "Failed Dependency", "zh": "依赖操作失败"},
+    {"code": "425", "en": "Too Early", "zh": "请求过早"},
+    {"code": "426", "en": "Upgrade Required", "zh": "请求过多（速率限制）"},
+    {"code": "431", "en": "Request Header Fields Too Large", "zh": "请求头过大"},
+    {"code": "444", "en": "No Response", "zh": "无响应"},
+    {"code": "450", "en": "Blocked by Windows Parental Controls", "zh": "被 Windows 家长控制阻止"},
+    {"code": "451", "en": "Unavailable For Legal Reasons", "zh": "因法律原因不可用"},
+    {"code": "497", "en": "HTTP Request Sent to HTTPS Port", "zh": "HTTP 请求发送到了 HTTPS 端口"},
+    {"code": "498", "en": "Token expired/invalid", "zh": "Token 过期或无效"},
+    {"code": "499", "en": "Client Closed Request", "zh": "客户端已关闭请求"},
+    {"code": "500", "en": "Internal Server Error", "zh": "内部服务器错误"},
+    {"code": "501", "en": "Not Implemented", "zh": "尚未实现"},
+    {"code": "502", "en": "Bad Gateway", "zh": "错误网关"},
+    {"code": "503", "en": "Service Unavailable", "zh": "服务暂时不可用"},
+    {"code": "504", "en": "Gateway Timeout", "zh": "网关超时"},
+    {"code": "506", "en": "Variant Also Negotiates", "zh": "协商参数不匹配"},
+    {"code": "507", "en": "Insufficient Storage", "zh": "存储空间不足"},
+    {"code": "508", "en": "Loop Detected", "zh": "带宽限制超出"},
+    {"code": "510", "en": "Not Extended", "zh": "无法扩展请求"},
+    {"code": "511", "en": "Network Authentication Required", "zh": "需要网络身份验证"},
+    {"code": "521", "en": "Web Server Is Down", "zh": "Web 服务器已关闭"},
+    {"code": "523", "en": "Origin Is Unreachable", "zh": "源服务器不可达"},
+    {"code": "525", "en": "SSL Handshake Failed", "zh": "SSL 握手失败"},
+    {"code": "599", "en": "Network Connect Timeout Error", "zh": "网络连接超时"}
+];
+
+    const httpStatuses_copilot = [
+    {"code": "100", "en": "Continue", "zh": "继续"} ,
+    {"code": "101", "en": "Switching Protocols", "zh": "切换协议"} ,
+    {"code": "102", "en": "Processing", "zh": "处理中"} ,
+    {"code": "200", "en": "OK", "zh": "成功"} ,
+    {"code": "201", "en": "Created", "zh": "已创建"} ,
+    {"code": "202", "en": "Accepted", "zh": "已接受"} ,
+    {"code": "203", "en": "Non-Authoritative Information", "zh": "非权威信息"} ,
+    {"code": "204", "en": "No Content", "zh": "无内容"} ,
+    {"code": "206", "en": "Partial Content", "zh": "部分内容"} ,
+    {"code": "207", "en": "Multi-Status", "zh": "多状态"} ,
+    {"code": "300", "en": "Multiple Choices", "zh": "多种选择"} ,
+    {"code": "301", "en": "Moved Permanently", "zh": "永久重定向"} ,
+    {"code": "302", "en": "Found", "zh": "已找到"} ,
+    {"code": "303", "en": "See Other", "zh": "查看其他"} ,
+    {"code": "304", "en": "Not Modified", "zh": "未修改"} ,
+    {"code": "305", "en": "Use Proxy", "zh": "使用代理"} ,
+    {"code": "307", "en": "Temporary Redirect", "zh": "临时重定向"} ,
+    {"code": "308", "en": "Permanent Redirect", "zh": "永久重定向"} ,
+    {"code": "400", "en": "Bad Request", "zh": "错误请求"} ,
+    {"code": "401", "en": "Unauthorized", "zh": "未授权"} ,
+    {"code": "402", "en": "Payment Required", "zh": "需要付款"} ,
+    {"code": "404", "en": "Not Found", "zh": "未找到"} ,
+    {"code": "405", "en": "Method Not Allowed", "zh": "方法不被允许"} ,
+    {"code": "406", "en": "Not Acceptable", "zh": "不可接受"} ,
+    {"code": "407", "en": "Proxy Authentication Required", "zh": "需要代理身份验证"} ,
+    {"code": "409", "en": "Conflict", "zh": "冲突"} ,
+    {"code": "410", "en": "Gone", "zh": "已删除"} ,
+    {"code": "411", "en": "Length Required", "zh": "需要长度"} ,
+    {"code": "413", "en": "Payload Too Large", "zh": "请求体过大"} ,
+    {"code": "414", "en": "Request-URI Too Long", "zh": "请求URI过长"} ,
+    {"code": "415", "en": "Unsupported Media Type", "zh": "不支持的媒体类型"} ,
+    {"code": "416", "en": "Request Range Not Satisfiable", "zh": "请求范围不满足"} ,
+    {"code": "417", "en": "Expectation Failed", "zh": "预期失败"} ,
+    {"code": "418", "en": "I'm a teapot", "zh": "我是一个茶壶"} ,
+    {"code": "420", "en": "Enhance Your Calm", "zh": "保持冷静"} ,
+    {"code": "421", "en": "Misdirected Request", "zh": "错误的请求"} ,
+    {"code": "422", "en": "Unprocessable Entity", "zh": "无法处理的实体"} ,
+    {"code": "423", "en": "Locked", "zh": "已锁定"} ,
+    {"code": "424", "en": "Failed Dependency", "zh": "依赖失败"} ,
+    {"code": "425", "en": "Too Early", "zh": "过早的请求"} ,
+    {"code": "426", "en": "Upgrade Required", "zh": "需要升级"} ,
+    {"code": "431", "en": "Request Header Fields Too Large", "zh": "请求头字段过大"} ,
+    {"code": "444", "en": "No Response", "zh": "无响应"} ,
+    {"code": "450", "en": "Blocked by Windows Parental Controls", "zh": "被Windows家长控制阻止"} ,
+    {"code": "451", "en": "Unavailable For Legal Reasons", "zh": "因法律原因不可用"} ,
+    {"code": "497", "en": "HTTP Request Sent to HTTPS Port", "zh": "HTTP请求发送到HTTPS端口"} ,
+    {"code": "498", "en": "Token expired/invalid", "zh": "令牌过期或无效"} ,
+    {"code": "499", "en": "Client Closed Request", "zh": "客户端关闭请求"} ,
+    {"code": "500", "en": "Internal Server Error", "zh": "内部服务器错误"} ,
+    {"code": "501", "en": "Not Implemented", "zh": "未实现"} ,
+    {"code": "502", "en": "Bad Gateway", "zh": "错误网关"} ,
+    {"code": "503", "en": "Service Unavailable", "zh": "服务不可用"} ,
+    {"code": "504", "en": "Gateway Timeout", "zh": "网关超时"} ,
+    {"code": "506", "en": "Variant Also Negotiates", "zh": "变体协商失败"} ,
+    {"code": "507", "en": "Insufficient Storage", "zh": "存储空间不足"} ,
+    {"code": "508", "en": "Loop Detected", "zh": "检测到循环"} ,
+    {"code": "510", "en": "Not Extended", "zh": "未扩展"} ,
+    {"code": "511", "en": "Network Authentication Required", "zh": "需要网络身份验证"} ,
+    {"code": "521", "en": "Web Server Is Down", "zh": "Web服务器已关闭"} ,
+    {"code": "523", "en": "Origin Is Unreachable", "zh": "源不可达"} ,
+    {"code": "525", "en": "SSL Handshake Failed", "zh": "SSL握手失败"} ,
+    {"code": "599", "en": "Network Connect Timeout Error", "zh": "网络连接超时错误"}
+];
+
+    const imageGrid = $('#imageGrid');
+
+    const httpStatuses = httpStatuses_tongyi;
+    httpStatuses.forEach(status => {
+        const div = $(`
+            <div class="div-size">
+                <img src="cat/${status.code}.jpg" alt="${status.code}" loading="lazy"/>
+                <a><br>${status.code} ${status.en}</a>
+                <a><br>${status.code} ${status.zh}</a>
+            </div>
+        `);
+
+        imageGrid.append(div);
+    });
+
+    $('.amplifyImg img').on('click', function () {
+        const src = $(this).attr('src');
+        const overlay = $('.over');
+        const tempContainer = $('.tempContainer');
+
+        overlay.show();
+        tempContainer.html(`<img src="${src}" />`).show();
+
+        tempContainer.off('click').on('click', function () {
+            $(this).hide().empty();
+            overlay.hide();
+        });
+    });
+
+    function coverLayer(tag) {
+        const overlay = $('.over');
+        if (tag === 1) {
+            overlay.css({
+                height: $(document).height(),
+                display: 'block',
+                opacity: 1,
+                backgroundColor: "rgba(0,0,0,0.7)"
+            });
+        } else {
+            overlay.hide();
+        }
+    }
+</script>
+
+</body>
+</html>
