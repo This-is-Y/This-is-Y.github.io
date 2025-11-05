@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="This_is_Y">
+    
+    <title>
+        
+            猿人学-反混淆-web |
+        
+        This_is_Y
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/title.jpg">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"this-is-y.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#33CCCC","title":"This_is_Y","author":"This_is_Y","avatar":"/images/head.png","logo":"/images/title1.jpg","favicon":"/images/title.jpg","url":"https://github.com/This-is-Y/"},"menu":{"home":"/","archives":"/archives","Archives":"/archives","cnblogs":"/categories/cnblogs","Game":"/Game","shell":"/Reverseshell"},"first_screen":{"enable":false,"background_img":"/images/Watch.png","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"mac"},"highlight_theme":"obsidian"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false,"layout":"left"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"valine","valine":{"appid":"pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz","appkey":"itjAi31G55tfhpSKJiuLDe2g","meta":["nick","mail","link"],"placeholder":"生命是上天的馈赠，我不想虚度年华"},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.36"},"waline":{"server_url":null,"reaction":false,"version":"3.2.1"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2021,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.3"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/title1.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               This_is_Y
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories/cnblogs"
+                            >
+                                
+                                CNBLOGS
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/game"
+                            >
+                                
+                                GAME
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/reverseshell"
+                            >
+                                
+                                SHELL
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories/cnblogs"
+                    >CNBLOGS</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/game"
+                    >GAME</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/reverseshell"
+                    >SHELL</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        猿人学-反混淆-web
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/head.png">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">This_is_Y</span>
+                                
+                                    <span class="author-badge">Lv6</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-05-10 15:24:10</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Sat Aug 30 2025 01:24:26 GMT+0800">2025-08-30 01:24:26</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.8k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>19 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><h2 id="计时器debugger反调试"><a href="#计时器debugger反调试" class="headerlink" title="计时器debugger反调试"></a>计时器debugger反调试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setInterval</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">debugger</span></span><br><span class="line">&#125;, <span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">99999</span>; i++) <span class="built_in">window</span>.clearInterval(i);</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250510152553766.png" alt="image-20250510152553766"></p>
+<h2 id="js逆向"><a href="#js逆向" class="headerlink" title="js逆向"></a>js逆向</h2><p>通过XHR添加/api/match，进入断点，感觉堆栈信息找到m的生成</p>
+<p><img src="image-20250510153046286.png" alt="image-20250510153046286"></p>
+<p>代码混淆了，目前看上去是hex，用上之前学习两天半的ast知识，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">&quot;@babel/parser&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> generate = <span class="built_in">require</span>(<span class="string">&quot;@babel/generator&quot;</span>).default</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">&quot;@babel/traverse&quot;</span>).default</span><br><span class="line"><span class="keyword">const</span> types = <span class="built_in">require</span>(<span class="string">&quot;@babel/types&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = fs.readFileSync(<span class="string">&quot;./request.js&quot;</span>, <span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line"><span class="keyword">const</span> ast = parser.parse(code)</span><br><span class="line"></span><br><span class="line"><span class="comment">// \x00字符串还原</span></span><br><span class="line"><span class="keyword">const</span> visitor1 = &#123;</span><br><span class="line">    <span class="function"><span class="title">StringLiteral</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 以下方法均可</span></span><br><span class="line">        <span class="comment">// path.node.extra.raw = path.node.rawValue</span></span><br><span class="line">        <span class="comment">// path.node.extra.raw = &#x27;&quot;&#x27; + path.node.value + &#x27;&quot;&#x27;</span></span><br><span class="line">        <span class="comment">// delete path.node.extra</span></span><br><span class="line">        <span class="keyword">delete</span> path.node.extra.raw</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">traverse(ast, visitor1)</span><br><span class="line"><span class="keyword">const</span> result = generate(ast)</span><br><span class="line"><span class="built_in">console</span>.log(result.code)</span><br><span class="line">fs.writeFileSync(<span class="string">&quot;output1.js&quot;</span>, result.code, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 去除无用表达式</span></span><br><span class="line"><span class="keyword">const</span> visitor2 = &#123;</span><br><span class="line">    <span class="string">&quot;BinaryExpression|CallExpression|ConditionalExpression&quot;</span>(path) &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;confident, value&#125; = path.evaluate()</span><br><span class="line">        <span class="keyword">if</span> (confident)&#123;</span><br><span class="line">            path.replaceInline(types.valueToNode(value))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">traverse(ast,visitor2)</span><br><span class="line"><span class="keyword">const</span> result2 = generate(ast)</span><br><span class="line"><span class="built_in">console</span>.log(result2.code)</span><br><span class="line">fs.writeFileSync(<span class="string">&quot;output2.js&quot;</span>, result2.code, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 Unicode 转换为中文</span></span><br><span class="line"><span class="keyword">const</span> decodedContent = result2.code.replace(<span class="regexp">/\\u([\dA-Fa-f]&#123;4&#125;)/g</span>, <span class="function">(<span class="params">match, group</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(<span class="built_in">parseInt</span>(group, <span class="number">16</span>));</span><br><span class="line">&#125;);</span><br><span class="line">fs.writeFileSync(<span class="string">&quot;output3.js&quot;</span>, decodedContent, <span class="string">&quot;utf-8&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>一顿操作下来后，代码已经能看了</p>
+<p><img src="image-20250510154915579.png" alt="image-20250510154915579"></p>
+<p>从代码中可以知道，m的定义为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _0x2268f9 = <span class="built_in">Date</span>[<span class="string">&quot;parse&quot;</span>](<span class="keyword">new</span> <span class="built_in">Date</span>()) + <span class="number">100000000</span>,</span><br><span class="line">    _0x57feae = oo0O0(_0x2268f9[<span class="string">&quot;toString&quot;</span>]()) + <span class="built_in">window</span>[<span class="string">&quot;f&quot;</span>];</span><br><span class="line">  <span class="keyword">const</span> _0x5d83a3 = &#123;&#125;;</span><br><span class="line">  _0x5d83a3[<span class="string">&quot;page&quot;</span>] = <span class="built_in">window</span>[<span class="string">&quot;page&quot;</span>], _0x5d83a3[<span class="string">&quot;m&quot;</span>] = _0x57feae + <span class="string">&quot;丨&quot;</span> + _0x2268f9 / <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>关键点在oo0O0函数中，打个断点，跟踪一下，在1中，后面就不用管了，接jsrpc调用一下就结束了</p>
+<p><img src="image-20250510161549590.png" alt="image-20250510161549590"></p>
+<h2 id="逃课脚本"><a href="#逃课脚本" class="headerlink" title="逃课脚本"></a>逃课脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_info</span>(<span class="params">page</span>):</span></span><br><span class="line">    <span class="comment"># page = 1</span></span><br><span class="line">    url = <span class="string">f&#x27;https://match.yuanrenxue.cn/api/match/1?page=<span class="subst">&#123;page&#125;</span>&amp;m=71c000bf3e2745fc1cf280515e9283e9%E4%B8%A81746883369&#x27;</span> </span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;Cookie&quot;</span>:<span class="string">&quot;Hm_…………db=1746781667&quot;</span>,</span><br><span class="line">               &#125;</span><br><span class="line">    </span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="built_in">print</span>(resp.json())</span><br><span class="line">    <span class="keyword">return</span> resp.json()[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">all</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">    data = get_info(i)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> data:</span><br><span class="line">        <span class="built_in">all</span> += j[<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">all</span>/<span class="number">50</span>)</span><br></pre></td></tr></table></figure>
+
+<p>burp抓个包，找一个新一点的m替换进来就行了</p>
+<p><img src="image-20250510161842042.png" alt="image-20250510161842042"></p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><h2 id="无限debugger反调试"><a href="#无限debugger反调试" class="headerlink" title="无限debugger反调试"></a>无限debugger反调试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">anonymous</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">debugger</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">Function</span>.prototype.__constructor_back = <span class="built_in">Function</span>.prototype.constructor;</span><br><span class="line"><span class="built_in">Function</span>.prototype.constructor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">arguments</span> &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">arguments</span>[<span class="number">0</span>]===<span class="string">&#x27;string&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">arguments</span>[<span class="number">0</span>].indexOf(<span class="string">&quot;debugger&quot;</span>)!=-<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">Function</span>.prototype.__constructor_back.apply(<span class="built_in">this</span>,<span class="built_in">arguments</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250510162529857.png" alt="image-20250510162529857"></p>
+<h2 id="js逆向-1"><a href="#js逆向-1" class="headerlink" title="js逆向"></a>js逆向</h2><h2 id="逃课脚本-1"><a href="#逃课脚本-1" class="headerlink" title="逃课脚本"></a>逃课脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_info</span>(<span class="params">page</span>):</span></span><br><span class="line">    <span class="comment"># page = 1</span></span><br><span class="line">    url = <span class="string">f&#x27;https://match.yuanrenxue.cn/api/match/2?page=<span class="subst">&#123;page&#125;</span>&#x27;</span> </span><br><span class="line">    headers = &#123;</span><br><span class="line">        <span class="string">&quot;Cookie&quot;</span>:<span class="string">&quot;Hm_…………db=1746781667&quot;</span>,</span><br><span class="line">               &#125;</span><br><span class="line">    </span><br><span class="line">    resp = requests.get(url, headers=headers)</span><br><span class="line">    <span class="built_in">print</span>(resp.json())</span><br><span class="line">    <span class="keyword">return</span> resp.json()[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">all</span> = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">    data = get_info(i)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> data:</span><br><span class="line">        <span class="built_in">all</span> += j[<span class="string">&#x27;value&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">all</span>)</span><br></pre></td></tr></table></figure>
+
+<p>burp抓个包，找一个新一点的cookie替换进来就行了</p>
+<p><img src="image-20250510163646317.png" alt="image-20250510163646317"></p>
+<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>不需要你想，只需要分析一下请求数据包即可，每一个page数据请求前，都有一个jssm请求，用python模拟一下就好了</p>
+<p><img src="image-20250824135641682.png" alt="image-20250824135641682"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"></span><br><span class="line">session = requests.Session()</span><br><span class="line">session.headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Content-Length&#x27;</span>: <span class="string">&#x27;0&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;*/*&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;https://match.yuanrenxue.cn/match/3&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Encoding&#x27;</span>: <span class="string">&#x27;gzip, deflate, br&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&quot;sessionid=pw3524k………………ej3; expires=Wed, 28 Feb 2024 20:15:46 GMT; Max-Age=21600; Path=/; SameSite=Lax&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">page = <span class="number">1</span></span><br><span class="line">url1 = <span class="string">&quot;https://match.yuanrenxue.cn/jssm&quot;</span></span><br><span class="line">url2 = <span class="string">f&quot;https://match.yuanrenxue.cn/api/match/3?page=<span class="subst">&#123;page&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">all</span> = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">6</span>):</span><br><span class="line">    jssm = session.post(url1)</span><br><span class="line">    <span class="built_in">print</span>(jssm.status_code)</span><br><span class="line">    match = session.get(url2)</span><br><span class="line">    <span class="built_in">print</span>(match.status_code, match.headers)</span><br><span class="line">    result = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> match.json()[<span class="string">&#x27;data&#x27;</span>]:</span><br><span class="line">        result.append(i[<span class="string">&#x27;value&#x27;</span>])</span><br><span class="line">    <span class="built_in">print</span>(result)</span><br><span class="line">    <span class="built_in">all</span> += result</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计出现次数</span></span><br><span class="line">counter = collections.Counter(<span class="built_in">all</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到出现次数最多的元素</span></span><br><span class="line">most_common = counter.most_common(<span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;出现频率最高的申请号：&quot;</span>, most_common)</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="5"><a href="#5" class="headerlink" title="5"></a>5</h1><h2 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h2><p>打开，下xhr断点，找到相关代码，发现提示content unavailable. Resource was not cached</p>
+<p><img src="image-20250827155004159.png" alt="image-20250827155004159"></p>
+<p>结果对比，数据包有时效性，可能有关的参数为uri中的m和f，cookie中的m和RM4hZBv0dDon443M</p>
+<p>然后就要带着这几个参数准备逆向js了，</p>
+<p>既然5的request不给我看，就把断点打到dispatch中，然后手动进去</p>
+<p><img src="image-20250827161849766.png" alt="image-20250827161849766"></p>
+<p>在这里进入下一个函数，然后就到5里面了</p>
+<p><img src="image-20250827162006464.png" alt="image-20250827162006464"></p>
+<p><img src="image-20250827162052239.png" alt="image-20250827162052239"></p>
+<p>通过搜索，在这里的最后一行发现关键信息，下断点，然后忘回找定义和赋值</p>
+<p><img src="image-20250827161630149.png" alt="image-20250827161630149"></p>
+<p><code>_$is</code> 没找到有用的东西，但是<code>$_zw</code>有，</p>
+<p><img src="image-20250827163442531.png" alt="image-20250827163442531"></p>
+<p>跟踪这个变量走，需要的f是第24个元素，可以知道是这个$_t1</p>
+<p><img src="image-20250827163504274.png" alt="image-20250827163504274"></p>
+<p>于是继续跟$_t1,tmd就是一个时间戳</p>
+<p><img src="image-20250827163602198.png" alt="image-20250827163602198"></p>
+<p>解决这个后，需要解决其他的参数，在控制台中，一直在输出’世上无难事，只要肯放弃’。点击进入了混淆后的文件中，</p>
+<p><img src="image-20250827180303020.png" alt="image-20250827180303020"></p>
+<p>在这里再搜一下关键字信息</p>
+<p>RM4hZBv0dDon443M</p>
+<p>m</p>
+<p>f</p>
+<p>Cookie</p>
+<p>一番搜索下来只有一个m=有结果</p>
+<p><img src="image-20250827180547527.png" alt="image-20250827180547527"></p>
+<p>把几个m=打上断点后，刷新页面，确定就是此处，然后就可以判断，前面的<code> _0x3d0f3f[_$Fe]</code>应该是操作cookie之类的东西，顺着或许就可以找到RM4hZBv0dDon443M参数的定义</p>
+<p><img src="image-20250827234525234.png" alt="image-20250827234525234"></p>
+<p>果不其然，之前一直搜不到RM4hZBv0dDon443M是因为字符串被分解了</p>
+<p><img src="image-20250827234719032.png" alt="image-20250827234719032"></p>
+<p><img src="image-20250827234807131.png" alt="image-20250827234807131"></p>
+<p>于是cookie中的两个字段就都找到了，</p>
+<p><code>m= _0x474032(_$Wa) </code></p>
+<p><code>RM4hZBv0dDon443M=_0x4e96b4[&#39;_$ss&#39;] </code></p>
+<p>先看m，入参只有一个_$Wa，这个参数的生成，简单跟了一下，就是一个时间戳</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">_$Wa = _0x12eaf3();</span><br><span class="line">…………</span><br><span class="line"> _0x35bb1d = <span class="built_in">Date</span></span><br><span class="line">…………</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_0x12eaf3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> _0x35bb1d[_$UH[<span class="number">0xff</span>]](<span class="keyword">new</span> _0x35bb1d());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后是RM4hZBv0dDon443M，_0x4e96b4在调试时发现，就是window变量，<code>_0x4e96b4[&#39;_$ss&#39;]</code>就是<code>window._$ss</code></p>
+<p>所以需要去追window是什么时候添加<code>_$ss</code>的，直接搜索搜不到，估计和上面一样，所以决定去搜，然后一个一个看，最后发现这个地方有些可疑，跟了一下，果然</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_0x4e96b4[<span class="string">&#x27;_$&#x27;</span> + _$UH[<span class="number">0x348</span>][<span class="number">0x1</span>] + _$UH[<span class="number">0x353</span>][<span class="number">0x1</span>]] = _0x29dd83[_$UH[<span class="number">0x1f</span>]]();</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250828002959030.png" alt="image-20250828002959030"></p>
+<p>随后跟一下这段内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_$Ww = _$Tk[_$UH[<span class="number">0x2db</span>]][_$UH[<span class="number">0x2dc</span>]][_$UH[<span class="number">0xff</span>]](_0x4e96b4[<span class="string">&#x27;_$pr&#x27;</span>][_$UH[<span class="number">0x1f</span>]]()),</span><br><span class="line">                                   _0x29dd83 = _$Tk[<span class="string">&#x27;A&#x27;</span> + _$UH[<span class="number">0x32d</span>]][_$UH[<span class="number">0x337</span>] + _$UH[<span class="number">0x336</span>]](_$Ww, _0x4e96b4[_0xc77418(<span class="string">&#x27;0x6&#x27;</span>, <span class="string">&#x27;OCbs&#x27;</span>)], &#123;</span><br><span class="line">                                       <span class="string">&#x27;mode&#x27;</span>: _$Tk[_$UH[<span class="number">0x339</span>] + _$UH[<span class="number">0x33a</span>]][_$UH[<span class="number">0x2e5</span>]],</span><br><span class="line">                                       <span class="string">&#x27;padding&#x27;</span>: _$Tk[_$UH[<span class="number">0x33b</span>]][_$UH[<span class="number">0x33c</span>] + _$UH[<span class="number">0x33d</span>]]</span><br><span class="line">                                   &#125;),</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//简单处理一下</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="干扰"><a href="#干扰" class="headerlink" title="干扰"></a>干扰</h3><p><img src="image-20250829103756191.png" alt="image-20250829103756191"></p>
+<p>在调试的时候，一直有输出干扰信息，定位一下发现是计时器</p>
+<p><img src="image-20250829103931307.png" alt="image-20250829103931307"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">99999</span>; i++) <span class="built_in">window</span>.clearInterval(i);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="用ast还原混淆代码"><a href="#用ast还原混淆代码" class="headerlink" title="用ast还原混淆代码"></a>用ast还原混淆代码</h2><h3 id="框架-16进制-字符串拼接"><a href="#框架-16进制-字符串拼接" class="headerlink" title="框架-16进制-字符串拼接"></a>框架-16进制-字符串拼接</h3><p>还原的框架代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> file = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> parser = <span class="built_in">require</span>(<span class="string">&#x27;@babel/parser&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> traverse = <span class="built_in">require</span>(<span class="string">&#x27;@babel/traverse&#x27;</span>).default</span><br><span class="line"><span class="keyword">const</span> types = <span class="built_in">require</span>(<span class="string">&#x27;@babel/types&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">&#x27;@babel/template&#x27;</span>).default</span><br><span class="line"><span class="keyword">const</span> generator = <span class="built_in">require</span>(<span class="string">&#x27;@babel/generator&#x27;</span>).default</span><br><span class="line"></span><br><span class="line"><span class="comment">// 混淆代码文件</span></span><br><span class="line">encodeFile = <span class="string">&#x27;./ob-5.js&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> sourceCode = file.readFileSync(encodeFile, &#123;<span class="attr">encoding</span>: <span class="string">&#x27;utf-8&#x27;</span>&#125;)</span><br><span class="line"><span class="comment">// 将混淆代码解析成抽象语法树 AST</span></span><br><span class="line"><span class="keyword">let</span> ast = parser.parse(sourceCode)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 编写visitor</span></span><br><span class="line"><span class="comment">// 1. 还原16进制字符串</span></span><br><span class="line"><span class="keyword">const</span> hextostring = &#123;</span><br><span class="line">    <span class="function"><span class="title">StringLiteral</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 以下方法均可</span></span><br><span class="line">        <span class="comment">// path.node.extra.raw = path.node.rawValue</span></span><br><span class="line">        <span class="comment">// path.node.extra.raw = &#x27;&quot;&#x27; + path.node.value + &#x27;&quot;&#x27;</span></span><br><span class="line">        <span class="comment">// delete path.node.extra</span></span><br><span class="line">        <span class="keyword">delete</span> path.node.extra.raw</span><br><span class="line">        <span class="keyword">delete</span> path.node.extra.raw</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 2.还原字符串拼接</span></span><br><span class="line"><span class="keyword">const</span> str_process = &#123;</span><br><span class="line">    <span class="function"><span class="title">BinaryExpression</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">        <span class="comment">// 递归合并所有字符串拼接</span></span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getString</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (types.isBinaryExpression(node) &amp;&amp; node.operator === <span class="string">&#x27;+&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">const</span> left = getString(node.left);</span><br><span class="line">                <span class="keyword">const</span> right = getString(node.right);</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span> left === <span class="string">&#x27;string&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> right === <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> left + right;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (types.isStringLiteral(node)) &#123;</span><br><span class="line">                <span class="keyword">return</span> node.value;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> result = getString(path.node);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> result === <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">            path.replaceWith(types.StringLiteral(result));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3.还原16进制int-10进制int</span></span><br><span class="line"><span class="keyword">const</span> hextoint = &#123;</span><br><span class="line">    <span class="function"><span class="title">NumericLiteral</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">delete</span> path.node.extra</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">traverse(ast, hextostring);</span><br><span class="line">traverse(ast, hextoint);</span><br><span class="line">traverse(ast, str_process);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 AST 还原为代码</span></span><br><span class="line"><span class="keyword">let</span> &#123;code&#125; = generator(ast, opts = &#123;<span class="attr">jsescOption</span>: &#123;<span class="attr">minimal</span>: <span class="literal">true</span>&#125;&#125;)</span><br><span class="line"><span class="comment">// 将还原后的代码保存</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;处理完毕，耗时&quot;</span>)</span><br><span class="line">decodeFile = <span class="string">&#x27;./ob-5-ourput.js&#x27;</span></span><br><span class="line">file.writeFile(decodeFile, code, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>只需要按需求编写visitor，通过traverse修改代码即可，这里目前还原了一些比较容易处理的，</p>
+<p>还原效果和对比如下,</p>
+<p><img src="image-20250828151213267.png" alt="image-20250828151213267"></p>
+<p><img src="image-20250828150908170.png" alt="image-20250828150908170"></p>
+<p><img src="image-20250828151137406.png" alt="image-20250828151137406"></p>
+<p><img src="image-20250828151028555.png" alt="image-20250828151028555"></p>
+<h3 id="替换-UH"><a href="#替换-UH" class="headerlink" title="替换_$UH"></a>替换<code>_$UH</code></h3><p>然后是替换掉<code>_$UH</code>，<code>_$UH</code>长度为853，首先需要找到<code>_$UH</code>的定义，向上翻，</p>
+<p><img src="image-20250828155439381.png" alt="image-20250828155439381"></p>
+<p><img src="image-20250828155534300.png" alt="image-20250828155534300"><img src="image-20250828155554852.png" alt="image-20250828155554852"></p>
+<p>将这里相关的代码全部扒下来，(从<code>_$UH = _0xceb4b2;</code>这一行往上)，然后解决一点小bug</p>
+<p><img src="image-20250828155901920.png" alt="image-20250828155901920"></p>
+<p><img src="image-20250828155918330.png" alt="image-20250828155918330"></p>
+<p><img src="image-20250828160551173.png" alt="image-20250828160122473"></p>
+<p>整理后，加上console.log看一下，发现只有725个</p>
+<p><img src="image-20250828162749759.png" alt="image-20250828162749759"></p>
+<p>害得看一下是哪里多了，搜索，_$UH，有关push的地方,发现12处，前面11处都是push了字符串，后面的<code>$_qp</code>实际上就是window，</p>
+<p><img src="image-20250828162956818.png" alt="image-20250828162956818"></p>
+<p>打上断点观察一下，发现是先循环push了6个<code>$_qp</code>进去,不过这里不能直接丢<code>$_qp</code>，要给他改成window不然后面ast替换的时候会报错·，然后循环push上面的11个字符串,在中间775的位置有加了一个<code>$_qp</code>。所以手动添加一下。</p>
+<p><img src="image-20250828165708930.png" alt="image-20250828165708930"></p>
+<p><img src="image-20250828170020177.png" alt="image-20250828170020177"></p>
+<p>在确保<code>$_qp</code>无误后，把它加入到ast脚本中，然后使用下面两个visitor，因为存在一些<code>_$UH[840][1]</code>和<code>_$UH[827]</code>两种情况，所以用了两个visitor</p>
+<p><img src="image-20250828230804608.png" alt="image-20250828230804608"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 4. 替换 _$UH[xx] 为实际值</span></span><br><span class="line"><span class="keyword">const</span> change_UH_1 = &#123;</span><br><span class="line">  <span class="function"><span class="title">MemberExpression</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (</span><br><span class="line">        types.isMemberExpression(path.node.object) &amp;&amp;</span><br><span class="line">        types.isIdentifier(path.node.object.object, &#123; <span class="attr">name</span>: <span class="string">&quot;_$UH&quot;</span> &#125;) &amp;&amp;</span><br><span class="line">        types.isNumericLiteral(path.node.object.property) &amp;&amp;</span><br><span class="line">        types.isNumericLiteral(path.node.property)</span><br><span class="line">      ) &#123;</span><br><span class="line">        <span class="keyword">const</span> arrIdx = path.node.object.property.value;</span><br><span class="line">        <span class="keyword">const</span> strIdx = path.node.property.value;</span><br><span class="line">        <span class="keyword">const</span> arrVal = _$UH[arrIdx];</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> arrVal === <span class="string">&quot;string&quot;</span> &amp;&amp; arrVal.length &gt; strIdx) &#123;</span><br><span class="line">          <span class="comment">// 替换为具体字符</span></span><br><span class="line">          path.replaceWith(types.stringLiteral(arrVal[strIdx]));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> change_UH_2 = &#123;</span><br><span class="line"><span class="comment">// 4.1. 替换 _$UH[xx] 为实际值</span></span><br><span class="line">  <span class="function"><span class="title">MemberExpression</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      types.isIdentifier(path.node.object, &#123; <span class="attr">name</span>: <span class="string">&quot;_$UH&quot;</span> &#125;) &amp;&amp;</span><br><span class="line">      types.isNumericLiteral(path.node.property)</span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="keyword">const</span> idx = path.node.property.value;</span><br><span class="line">      <span class="keyword">const</span> value = _$UH[idx];</span><br><span class="line">      <span class="built_in">console</span>.log(idx, value);</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">&quot;undefined&quot;</span>) &#123;</span><br><span class="line">        </span><br><span class="line">        path.replaceWith(types.valueToNode(value));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后的效果大致如下：</p>
+<p><img src="image-20250828231615335.png" alt="image-20250828231615335"></p>
+<h3 id="替换字符串"><a href="#替换字符串" class="headerlink" title="替换字符串"></a>替换字符串</h3><p>在这个混淆js中经常可以看到_0x4e96b4这个东西，其实就是window，所以要给他换掉，增加js的可读性</p>
+<p><img src="image-20250828231349025.png" alt="image-20250828231349025"></p>
+<p>首先找到定义处，还发现一堆其他的，顺手一起处理了</p>
+<p><img src="image-20250828231458032.png" alt="image-20250828231458032"></p>
+<p>代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mapping = &#123;</span><br><span class="line">  <span class="string">&quot;_0x4e96b4&quot;</span>: <span class="string">&quot;window&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x30bc70&quot;</span>: <span class="string">&quot;String&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x4d2d2c&quot;</span>: <span class="string">&quot;Array&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x109910&quot;</span>: <span class="string">&quot;Math&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x35bb1d&quot;</span>: <span class="string">&quot;Date&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x3d0f3f&quot;</span>: <span class="string">&quot;document&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x5cd506&quot;</span>: <span class="string">&quot;Object&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_0x3b2c8e&quot;</span>: <span class="string">&quot;Function&quot;</span>,</span><br><span class="line">  <span class="string">&quot;_$Tk&quot;</span>:<span class="string">&quot;CryptoJS&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归替换最左侧对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">replaceRootObject</span>(<span class="params">memberExpr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    types.isMemberExpression(memberExpr.object)</span><br><span class="line">  ) &#123;</span><br><span class="line">    memberExpr.object = replaceRootObject(memberExpr.object);</span><br><span class="line">    <span class="keyword">return</span> memberExpr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (</span><br><span class="line">    types.isIdentifier(memberExpr.object) &amp;&amp;</span><br><span class="line">    mapping[memberExpr.object.name]</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="comment">// 替换根对象</span></span><br><span class="line">    memberExpr.object = types.identifier(mapping[memberExpr.object.name]);</span><br><span class="line">    <span class="keyword">return</span> memberExpr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> memberExpr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换_0x4e96b4为window</span></span><br><span class="line"><span class="keyword">const</span> chang_varia = &#123;</span><br><span class="line">  <span class="function"><span class="title">MemberExpression</span>(<span class="params">path</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// 只处理左侧根对象在映射表内的 MemberExpression</span></span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      types.isIdentifier(path.node.object) &amp;&amp;</span><br><span class="line">      mapping[path.node.object.name]</span><br><span class="line">    ) &#123;</span><br><span class="line">      path.node.object = types.identifier(mapping[path.node.object.name]);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (types.isMemberExpression(path.node.object)) &#123;</span><br><span class="line">      <span class="comment">// 递归处理多层</span></span><br><span class="line">      replaceRootObject(path.node);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 把 [&quot;prop&quot;] 换成 .prop</span></span><br><span class="line">    <span class="keyword">if</span> (types.isStringLiteral(path.node.property)) &#123;</span><br><span class="line">      path.node.property = types.identifier(path.node.property.value);</span><br><span class="line">      path.node.computed = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250829000314899.png" alt="image-20250829000314899"></p>
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>ast没办法完整还原出来，只能辅助看代码，又不想扣代码，rpc好像也有点麻烦，最后决定用cdp远程调用</p>
+<p>uri中的m是时间戳，f是另一个时间戳，直接用代码实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Get_uri_m</span>():</span></span><br><span class="line">    <span class="keyword">import</span> time</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(<span class="built_in">int</span>(time.time()*<span class="number">1000</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Get_uri_f</span>():</span></span><br><span class="line">    <span class="keyword">import</span> time</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">str</span>(<span class="built_in">int</span>(time.time()))+<span class="string">&quot;000&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>cookie中的m和RM4hZBv0dDon443M就需要用到调用</p>
+<p>允许CDP调用的浏览器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;/Applications/Google Chrome.app/Contents/MacOS/Google Chrome&quot;</span> --remote-debugging-port=9222 --user-data-dir=<span class="string">&quot;~/tmp/tmpchrome&quot;</span> --remote-allow-origins=http://127.0.0.1:9222 --ignore-certificate-errors</span><br></pre></td></tr></table></figure>
+
+<p>获取callFrameId和发送CDP请求，发送请求前先运行get_callFrameId()获取callFrameId。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_callFrameId</span>():</span></span><br><span class="line">    ws_res = requests.get(url = <span class="string">&quot;http://127.0.0.1:9222/json&quot;</span>)</span><br><span class="line">    ws_res_json = json.loads(ws_res.content)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ws_res_json:</span><br><span class="line">        <span class="keyword">if</span> target <span class="keyword">in</span> i[<span class="string">&#x27;url&#x27;</span>]:</span><br><span class="line">            <span class="comment"># logging.info(&quot;webSocketDebuggerUrl&gt;&gt;&gt;&quot;+i[&#x27;webSocketDebuggerUrl&#x27;])</span></span><br><span class="line">            <span class="comment"># print(&quot;webSocketDebuggerUrl&gt;&gt;&gt;&quot;,i[&#x27;webSocketDebuggerUrl&#x27;])</span></span><br><span class="line">            ws_url = i[<span class="string">&#x27;webSocketDebuggerUrl&#x27;</span>]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    ws_res = requests.get(url = <span class="string">&quot;http://127.0.0.1:9222/json&quot;</span>)</span><br><span class="line">    ws_res_json = json.loads(ws_res.content)</span><br><span class="line">    conn = websocket.create_connection(ws_url,header=&#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;this_is_y&quot;</span>&#125;)</span><br><span class="line">    <span class="comment"># 1. 启用调试器</span></span><br><span class="line">    conn.send(json.dumps(&#123;<span class="string">&quot;id&quot;</span>: <span class="number">1</span>, <span class="string">&quot;method&quot;</span>: <span class="string">&quot;Debugger.enable&quot;</span>&#125;))</span><br><span class="line">    conn.recv()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 2. 设置断点（示例）</span></span><br><span class="line">    conn.send(json.dumps(&#123;</span><br><span class="line">        <span class="string">&quot;id&quot;</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="string">&quot;method&quot;</span>: <span class="string">&quot;Debugger.setBreakpointByUrl&quot;</span>,</span><br><span class="line">        <span class="string">&quot;params&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;lineNumber&quot;</span>: <span class="number">123</span>,</span><br><span class="line">            <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://your-url.js&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;))</span><br><span class="line">    conn.recv()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 3. 等待 Debugger.paused 事件</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">global</span> callFrameId</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        msg = json.loads(conn.recv())</span><br><span class="line">        <span class="keyword">if</span> msg.get(<span class="string">&quot;method&quot;</span>) == <span class="string">&quot;Debugger.paused&quot;</span>:</span><br><span class="line">            callFrameId = msg[<span class="string">&quot;params&quot;</span>][<span class="string">&quot;callFrames&quot;</span>][<span class="number">0</span>][<span class="string">&quot;callFrameId&quot;</span>]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> callFrameId</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_CDP</span>(<span class="params">js_code</span>):</span></span><br><span class="line">    ws_res = requests.get(url = <span class="string">&quot;http://127.0.0.1:9222/json&quot;</span>)</span><br><span class="line">    ws_res_json = json.loads(ws_res.content)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ws_res_json:</span><br><span class="line">        <span class="keyword">if</span> target <span class="keyword">in</span> i[<span class="string">&#x27;url&#x27;</span>]:</span><br><span class="line">            <span class="comment"># logging.info(&quot;webSocketDebuggerUrl&gt;&gt;&gt;&quot;+i[&#x27;webSocketDebuggerUrl&#x27;])</span></span><br><span class="line">            <span class="comment"># print(&quot;webSocketDebuggerUrl&gt;&gt;&gt;&quot;,i[&#x27;webSocketDebuggerUrl&#x27;])</span></span><br><span class="line">            ws_url = i[<span class="string">&#x27;webSocketDebuggerUrl&#x27;</span>]</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    conn = websocket.create_connection(ws_url,header=&#123;<span class="string">&quot;User-Agent&quot;</span>: <span class="string">&quot;this_is_y&quot;</span>&#125;)</span><br><span class="line">    request_id = <span class="built_in">int</span>(random.random()*<span class="number">10000</span>)</span><br><span class="line">    method = <span class="string">&quot;Debugger.evaluateOnCallFrame&quot;</span></span><br><span class="line">    param = &#123;<span class="string">&quot;callFrameId&quot;</span>:callFrameId,</span><br><span class="line">             <span class="string">&quot;expression&quot;</span>:js_code,</span><br><span class="line">             <span class="string">&quot;generatePreview&quot;</span>:<span class="literal">True</span>,</span><br><span class="line">             <span class="string">&quot;includeCommandLineAPI&quot;</span>:<span class="literal">True</span>,</span><br><span class="line">             <span class="string">&quot;silent&quot;</span>:<span class="literal">False</span>,</span><br><span class="line">             <span class="string">&quot;returnByValue&quot;</span>:<span class="literal">True</span>&#125;</span><br><span class="line">    command  = &#123;<span class="string">&#x27;method&#x27;</span>: method,</span><br><span class="line">               <span class="string">&#x27;id&#x27;</span>: request_id,</span><br><span class="line">               <span class="string">&#x27;params&#x27;</span>: param&#125;</span><br><span class="line">    <span class="comment"># command = &#123;&quot;command&quot;:method,</span></span><br><span class="line">    <span class="comment">#            &quot;parameters&quot;:param&#125;</span></span><br><span class="line">    request_id+=<span class="number">1</span></span><br><span class="line">    logging.debug(<span class="string">&quot;sendCDP-payload&gt;&gt;&gt; &quot;</span>+<span class="built_in">str</span>(command)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    conn.send(json.dumps(command))</span><br><span class="line">    <span class="comment"># 接受websocket的响应，并将字符串转换为 dict()</span></span><br><span class="line">    result = json.loads(conn.recv())</span><br><span class="line"></span><br><span class="line">    conn.close()</span><br><span class="line">    <span class="comment"># print(&quot;&gt;result:&quot;,result)</span></span><br><span class="line">    logging.debug(<span class="string">&quot;sendCDP-result&gt;&gt;&gt;&gt; &quot;</span>+<span class="built_in">str</span>(result)+<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问目标网站<a class="link" target="_blank" rel="noopener" href="https://match.yuanrenxue.cn/match/5%EF%BC%8C%E6%96%AD%E7%82%B9%E6%89%93%E5%9C%A8%60">https://match.yuanrenxue.cn/match/5，断点打在`<i class="fas fa-external-link-alt"></i></a> _0x3d0f3f[_$Fe] = ‘m=’ + _0x474032(_$yw) + ‘;\x20path=/‘;`，且保持断点状态</p>
+<p>调用_0x474032函数加密时间戳，获取cookie中的m</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_0x474032</span>(<span class="params">_0x5e8f2c</span>):</span></span><br><span class="line">    js = <span class="string">&quot;_0x474032(&#x27;&quot;</span>+_0x5e8f2c+<span class="string">&quot;&#x27;)&quot;</span></span><br><span class="line">    res = send_CDP(js)</span><br><span class="line">    <span class="keyword">return</span> res[<span class="string">&#x27;result&#x27;</span>][<span class="string">&#x27;result&#x27;</span>][<span class="string">&#x27;value&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>cookie中的RM4hZBv0dDon443M</p>
+<p>从ast还原后的一部分代码来看，RM4hZBv0dDon443M是用<code>window._pr</code>做明文，<code>window._$qF</code>通过AES(ECB,Pkcs7)加密得来的</p>
+<p><img src="image-20250830001914556.png" alt="image-20250830001914556"></p>
+<p>所以需要看一下<code>window._pr</code>和<code>window._$qF</code>分别是什么</p>
+<p><img src="image-20250830002356120.png" alt="image-20250830002356120"></p>
+<p><img src="image-20250830002319907.png" alt="image-20250830002319907"></p>
+<p>可以看到<code>window._pr</code>是前面加进去的cookie中的m</p>
+<p>``window._$qF`是前面m处理前的时间戳，通过base64编码后，去16位的长度</p>
+<p>所以稍加处理一下，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Get_cookie_rm</span>(<span class="params">uri_m</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    data: 明文（bytes 或 str）</span></span><br><span class="line"><span class="string">    key:  密钥（16/24/32字节，bytes 或 str）</span></span><br><span class="line"><span class="string">    返回: 密文（bytes）</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    data = Get_cookie_m(Get_uri_f())+<span class="string">&quot;,&quot;</span>+Get_cookie_m(Get_uri_f())+<span class="string">&quot;,&quot;</span>+Get_cookie_m(Get_uri_f())+<span class="string">&quot;,&quot;</span>+Get_cookie_m(Get_uri_f())+<span class="string">&quot;,&quot;</span>+Get_cookie_m(uri_m)</span><br><span class="line">    key = b64encode(uri_m.encode()).decode()[:<span class="number">16</span>]</span><br><span class="line">    <span class="built_in">print</span>(data,key)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(data, <span class="built_in">str</span>):</span><br><span class="line">        data = data.encode()</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(key, <span class="built_in">str</span>):</span><br><span class="line">        key = key.encode()</span><br><span class="line">    cipher = AES.new(key, AES.MODE_ECB)</span><br><span class="line">    padded_data = pad(data, AES.block_size)</span><br><span class="line">    encrypted = cipher.encrypt(padded_data)</span><br><span class="line">    <span class="keyword">return</span> b64encode(encrypted).decode()</span><br></pre></td></tr></table></figure>
+
+<p><img src="image-20250830012101061.png" alt="image-20250830012101061"></p>
+<h2 id="逃课脚本-2"><a href="#逃课脚本-2" class="headerlink" title="逃课脚本"></a>逃课脚本</h2><p>在刷新页面后，迅速将数据包拿出来，丢到代码中，趁还热乎，把数据都请求出来</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">info = <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">GET /api/match/5?page=3&amp;m=1756400067885&amp;f=1756400067000 HTTP/2</span></span><br><span class="line"><span class="string">Host: match.yuanrenxue.cn</span></span><br><span class="line"><span class="string">Cookie: XXXXXXXX</span></span><br><span class="line"><span class="string">Sec-Ch-Ua-Platform: &quot;macOS&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">info1 = re.findall(<span class="string">r&quot;&amp;m=(\d+)&amp;f=(\d+)&quot;</span>, info)[<span class="number">0</span>]</span><br><span class="line">info2 = re.findall(<span class="string">r&quot;m=(\w+); RM4hZBv0dDon443M=(.&#123;236&#125;)&quot;</span>, info)[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(info1,info2)</span><br><span class="line"><span class="built_in">print</span>(info1,info2[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># exit()</span></span><br><span class="line">session = requests.Session()</span><br><span class="line">session.headers = &#123;</span><br><span class="line">    <span class="string">&#x27;Accept-Language&#x27;</span>: <span class="string">&#x27;zh-CN,zh;q=0.9,en;q=0.8&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Priority&#x27;</span>: <span class="string">&#x27;u=0, i=1&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">f&quot;Hm_lvt_c99546cf032aaa5a679230de9a95c7db=XXXXXXXX; Hm_lvt_9bcbda9cbf86757998a2339a0437208e=XXXXXXXX; Hm_lvt_434c501fe98c1a8ec74b813751d4e3e3=XXXXXXXX; Hm_lpvt_434c501fe98c1a8ec74b813751d4e3e3=XXXXXXXX; HMACCOUNT=XXXXXXXX; sessionid=XXXXXXXX; no-alert3=true; tk=309791175527873411; m=<span class="subst">&#123;info2[<span class="number">0</span>]&#125;</span>; RM4hZBv0dDon443M=<span class="subst">&#123;info2[<span class="number">1</span>]&#125;</span>&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">coll = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">    url = <span class="string">f&quot;https://match.yuanrenxue.cn/api/match/5?page=<span class="subst">&#123;i&#125;</span>&amp;m=<span class="subst">&#123;info1[<span class="number">0</span>]&#125;</span>&amp;f=<span class="subst">&#123;info1[<span class="number">1</span>]&#125;</span>&quot;</span></span><br><span class="line">    resp = session.get(url)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">print</span>(i,resp.text)</span><br><span class="line">    items = resp.json()[<span class="string">&#x27;data&#x27;</span>]</span><br><span class="line">    <span class="built_in">print</span>(items)</span><br><span class="line">    t = [x[<span class="string">&#x27;value&#x27;</span>] <span class="keyword">for</span> x <span class="keyword">in</span> items]</span><br><span class="line">    coll += t</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新增：对 coll 按大小排序，取前五大并相加</span></span><br><span class="line">top5 = <span class="built_in">sorted</span>(coll, reverse=<span class="literal">True</span>)[:<span class="number">5</span>]</span><br><span class="line">top5_sum = <span class="built_in">sum</span>(top5)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;前五大数字：&quot;</span>, top5)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;前五大数字之和：&quot;</span>, top5_sum)</span><br><span class="line"><span class="comment"># ...existing code...</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/08/26/%E5%A4%A9%E9%94%90%E7%BB%BF%E7%9B%BE%E5%AE%A1%E6%89%B9%E7%B3%BB%E7%BB%9FuploadWxFile%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%88%86%E6%9E%90/"
+                                   title="天锐绿盾审批系统uploadWxFile任意文件上传分析"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">天锐绿盾审批系统uploadWxFile任意文件上传分析</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/05/09/AST%E8%A7%A3%E6%B7%B7%E6%B7%86-%E7%AC%94%E8%AE%B0/"
+                                   title="AST解混淆-笔记"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">AST解混淆-笔记</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="valine-container">
+        <div id="vcomments"></div>
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        ></script>
+        <script data-pjax
+                async
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          window.KeepCommentPlugin.initValine = () => {
+            const config = {
+              el: '#vcomments',
+              appId: 'pnLUL03RCIjbXBNX6m4sBrtq-gzGzoHsz',
+              appKey: 'itjAi31G55tfhpSKJiuLDe2g',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '生命是上天的馈赠，我不想虚度年华',
+              lang: 'zh-CN'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            if (window?.Valine) {
+              new Valine(config)
+              window.KeepCommentPlugin.hideLoading()
+            } else {
+              setTimeout(() => {
+                window.KeepCommentPlugin.initValine()
+              }, 1000)
+            }
+          }
+
+          if ('true' === 'true') {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initValine()
+            }, 1200)
+          } else {
+            window.addEventListener('DOMContentLoaded', window.KeepCommentPlugin.initValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc left-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E6%97%B6%E5%99%A8debugger%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="nav-text">计时器debugger反调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E9%80%86%E5%90%91"><span class="nav-text">js逆向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%83%E8%AF%BE%E8%84%9A%E6%9C%AC"><span class="nav-text">逃课脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E9%99%90debugger%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="nav-text">无限debugger反调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E9%80%86%E5%90%91-1"><span class="nav-text">js逆向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%83%E8%AF%BE%E8%84%9A%E6%9C%AC-1"><span class="nav-text">逃课脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-text">3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5"><span class="nav-text">5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%90%91"><span class="nav-text">逆向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B2%E6%89%B0"><span class="nav-text">干扰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8ast%E8%BF%98%E5%8E%9F%E6%B7%B7%E6%B7%86%E4%BB%A3%E7%A0%81"><span class="nav-text">用ast还原混淆代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6-16%E8%BF%9B%E5%88%B6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-text">框架-16进制-字符串拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2-UH"><span class="nav-text">替换_$UH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">替换字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%83%E8%AF%BE%E8%84%9A%E6%9C%AC-2"><span class="nav-text">逃课脚本</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+        &copy;&nbsp;<span>2021</span>&nbsp;-&nbsp;2025
+        
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">This_is_Y</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools left-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <!-- use hexo-blog-encrypt -->
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E6%97%B6%E5%99%A8debugger%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="nav-text">计时器debugger反调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E9%80%86%E5%90%91"><span class="nav-text">js逆向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%83%E8%AF%BE%E8%84%9A%E6%9C%AC"><span class="nav-text">逃课脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2"><span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E9%99%90debugger%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="nav-text">无限debugger反调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#js%E9%80%86%E5%90%91-1"><span class="nav-text">js逆向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%83%E8%AF%BE%E8%84%9A%E6%9C%AC-1"><span class="nav-text">逃课脚本</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-text">3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5"><span class="nav-text">5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%90%91"><span class="nav-text">逆向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B2%E6%89%B0"><span class="nav-text">干扰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8ast%E8%BF%98%E5%8E%9F%E6%B7%B7%E6%B7%86%E4%BB%A3%E7%A0%81"><span class="nav-text">用ast还原混淆代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6-16%E8%BF%9B%E5%88%B6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5"><span class="nav-text">框架-16进制-字符串拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2-UH"><span class="nav-text">替换_$UH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">替换字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-text">脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%83%E8%AF%BE%E8%84%9A%E6%9C%AC-2"><span class="nav-text">逃课脚本</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+<!-- common -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/anime.min.js"></script>
+
+<!-- local-search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+
+<div class="pjax">
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.1.3/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
