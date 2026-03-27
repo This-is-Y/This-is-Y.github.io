@@ -203,114 +203,6 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2025/03/28/SQL%E6%B3%A8%E5%85%A5-%E7%BB%95waf%E7%AC%94%E8%AE%B0/">
-                            SQL注入-绕waf笔记
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            先说手法，不能使用单双引号，加上函数过滤，无法获取user证明危害，使用两次hex，消除字母，通过locate获取到user的两次hex结果，然后再unhex获取到user信息
-简单说一下注入情况，排序注入，payload为：
-case+when+1...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Fri Jan 02 2026 18:13:50 GMT+0800"
-                >2026-01-02 18:13:50</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/03/28/SQL%E6%B3%A8%E5%85%A5-%E7%BB%95waf%E7%AC%94%E8%AE%B0/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2025/03/20/%E6%95%B0%E6%8D%AE%E9%87%8F%E9%9D%9E%E5%B8%B8%E5%A4%A7%E6%97%B6%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A7%A3%E5%AF%86/">
-                            数据量非常大时该如何解密
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            记录一下当数据量非常大时，解密数据的一个思路，方法比较呆，但是主打一个能用就行
-
-加解密分析先看数据包
-
-可以看到请求和响应都加密了，不过运气比较好，请求中有关键字helloworld。顺着这个查应该就能找到加密函数了
-
-两个地方，下面这个地方仔细看...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Mon Mar 24 2025 13:39:52 GMT+0800"
-                >2025-03-24 13:39:52</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2025/03/20/%E6%95%B0%E6%8D%AE%E9%87%8F%E9%9D%9E%E5%B8%B8%E5%A4%A7%E6%97%B6%E8%AF%A5%E5%A6%82%E4%BD%95%E8%A7%A3%E5%AF%86/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
                         <a href="/2025/03/07/%E5%AF%B9%E5%9B%BD%E5%A4%96%E6%9F%90%E7%AB%99%E7%82%B9%E7%9A%84%E7%AD%BE%E5%90%8D%E9%80%86%E5%90%91-%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0%E7%9A%84jsrpc/">
                             对国外某站点的签名逆向&amp;异步函数的jsrpc
                         </a>
@@ -721,6 +613,108 @@ JsEnv_Dev.js内容,全部复制到需要调用js代码的页面中，这里我�
 
     
         <a class="home-read-more" href="/2024/08/27/JsRpc%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/07/30/Web%E7%B3%BB%E7%BB%9F%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AC%94%E8%AE%B0/">
+                            Web系统加解密笔记
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            前言目前越来越多的web系统开始做http数据包的签名了，有的甚至会加上防重放功能，又或者直接对数据包的请求体，响应体进行加密。这里我先叫这种为防重放防篡改机制。
+理想情况下，用bp抓到的数据包，只能发送一次，同时也不能修改参数，路径，token（c...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Tue Nov 26 2024 20:30:56 GMT+0800"
+                >2024-11-26 20:30:56</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2024/07/30/Web%E7%B3%BB%E7%BB%9F%E5%8A%A0%E8%A7%A3%E5%AF%86%E7%AC%94%E8%AE%B0/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2024/07/25/MITM-BurpSuite%E5%81%9A%E5%8A%A0%E8%A7%A3%E5%AF%86/">
+                            MITM&amp;BurpSuite做加解密
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            环境先创建一个加解密的环境，这里我用python的flask搭建
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Thu Jan 23 2025 18:42:18 GMT+0800"
+                >2025-01-23 18:42:18</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2024/07/25/MITM-BurpSuite%E5%81%9A%E5%8A%A0%E8%A7%A3%E5%AF%86/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
