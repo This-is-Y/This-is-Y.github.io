@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HTTP_CAT</title>
+    <link rel="icon" href="./cat/title.png" type="image/png">
+    <style>
+        body {
+            background: #000;
+            color: #FFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .display-flex {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .div-size {
+            text-align: center;
+        }
+
+        .div-size img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .tempContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 101;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .tempContainer img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid #fff;
+        }
+
+        .over {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            display: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="logoImg amplifyImg">
+    <div class="display-flex" id="imageGrid"></div>
+</div>
+
+<!-- 放大图层 -->
+<div class="over"></div>
+<div class="tempContainer" style="display:none;"></div>
+
+
+<script>
+    const httpStatuses_Machine_translation= [
+    {"code": "100", "en": "Continue", "zh": "继续"} ,
+    {"code": "101", "en": "Switching Protocols", "zh": "交换协议"} ,
+    {"code": "102", "en": "Processing", "zh": "处理"} ,
+    {"code": "200", "en": "OK", "zh": " OK."} ,
+    {"code": "201", "en": "Created", "zh": "创建了"} ,
+    {"code": "202", "en": "Accepted", "zh": "接受了"} ,
+    {"code": "203", "en": "Non-Authoritative Information", "zh": "非权威信息"} ,
+    {"code": "204", "en": "No Content", "zh": "没有内容"} ,
+    {"code": "206", "en": "Partial Content", "zh": "部分内容"} ,
+    {"code": "207", "en": "Multi-Status", "zh": "多地位"} ,
+    {"code": "300", "en": "Multiple Choices", "zh": "多种选择"} ,
+    {"code": "301", "en": "Moved Permanently", "zh": "永久搬动"} ,
+    {"code": "302", "en": "Found", "zh": "发现"} ,
+    {"code": "303", "en": "See Other", "zh": "见其他"} ,
+    {"code": "304", "en": "Not Modified", "zh": "未修改"} ,
+    {"code": "305", "en": "Use Proxy", "zh": "使用代理"} ,
+    {"code": "307", "en": "Temporary Redirect", "zh": "临时重定向"} ,
+    {"code": "308", "en": "Permanent Redirect", "zh": "永久重定向"} ,
+    {"code": "400", "en": "Bad Request", "zh": "个糟糕的要求"} ,
+    {"code": "401", "en": "Unauthorized", "zh": "未经授权"} ,
+    {"code": "402", "en": "Payment Required", "zh": " Forbidden"} ,
+    {"code": "404", "en": "Not Found", "zh": "没有找到"} ,
+    {"code": "405", "en": "Method Not Allowed", "zh": "方法不允许"} ,
+    {"code": "406", "en": "Not Acceptable", "zh": "不可接受"} ,
+    {"code": "407", "en": "Proxy Authentication Required", "zh": " Request Timeout"} ,
+    {"code": "409", "en": "Conflict", "zh": "冲突"} ,
+    {"code": "410", "en": "Gone", "zh": "走了"} ,
+    {"code": "411", "en": "Length Required", "zh": " Precondition Failed"} ,
+    {"code": "413", "en": "Payload Too Large", "zh": "有效载荷太大"} ,
+    {"code": "414", "en": "Request-URI Too Long", "zh": "要求 -  URI太长了"} ,
+    {"code": "415", "en": "Unsupported Media Type", "zh": "不支持的媒体类型"} ,
+    {"code": "416", "en": "Request Range Not Satisfiable", "zh": "请求范围不满足"} ,
+    {"code": "417", "en": "Expectation Failed", "zh": "期望失败了"} ,
+    {"code": "418", "en": "IÂ´m a teapot", "zh": "我是一个茶壶"} ,
+    {"code": "420", "en": "Enhance Your Calm", "zh": "增强你的平静"} ,
+    {"code": "421", "en": "Misdirected Request", "zh": "误导的请求"} ,
+    {"code": "422", "en": "Unprocessable Entity", "zh": "无法治疗的实体"} ,
+    {"code": "423", "en": "Locked", "zh": "锁定"} ,
+    {"code": "424", "en": "Failed Dependency", "zh": "失败依赖"} ,
+    {"code": "425", "en": "Too Early", "zh": "太早了"} ,
+    {"code": "426", "en": "Upgrade Required", "zh": " Too Many Requests"} ,
+    {"code": "431", "en": "Request Header Fields Too Large", "zh": "请求标题字段太大"} ,
+    {"code": "444", "en": "No Response", "zh": "没有回应"} ,
+    {"code": "450", "en": "Blocked by Windows Parental Controls", "zh": "由Windows父母控制阻止"} ,
+    {"code": "451", "en": "Unavailable For Legal Reasons", "zh": "不可用的法律原因"} ,
+    {"code": "497", "en": "HTTP Request Sent to HTTPS Port", "zh": " HTTP请求发送到HTTPS端口"} ,
+    {"code": "498", "en": "Token expired/invalid", "zh": "令牌过期/无效"} ,
+    {"code": "499", "en": "Client Closed Request", "zh": "客户关闭请求"} ,
+    {"code": "500", "en": "Internal Server Error", "zh": "内部服务器错误"} ,
+    {"code": "501", "en": "Not Implemented", "zh": "未实施"} ,
+    {"code": "502", "en": "Bad Gateway", "zh": "错误的网关"} ,
+    {"code": "503", "en": "Service Unavailable", "zh": "服务不可用"} ,
+    {"code": "504", "en": "Gateway Timeout", "zh": "网关超时"} ,
+    {"code": "506", "en": "Variant Also Negotiates", "zh": "变量也谈判"} ,
+    {"code": "507", "en": "Insufficient Storage", "zh": "存储不足"} ,
+    {"code": "508", "en": "Loop Detected", "zh": " Bandwidth Limit Exceeded"} ,
+    {"code": "510", "en": "Not Extended", "zh": "未扩展"} ,
+    {"code": "511", "en": "Network Authentication Required", "zh": "需要网络身份验证"} ,
+    {"code": "521", "en": "Web Server Is Down", "zh": " Web服务器已关闭"} ,
+    {"code": "523", "en": "Origin Is Unreachable", "zh": "起源无法访问"} ,
+    {"code": "525", "en": "SSL Handshake Failed", "zh": " SSL握手失败"} ,
+    {"code": "599", "en": "Network Connect Timeout Error", "zh": "网络连接超时错误"}
+    ];
+
+    const httpStatuses_tongyi = [
+    {"code": "100", "en": "Continue", "zh": "继续"},
+    {"code": "101", "en": "Switching Protocols", "zh": "切换协议"},
+    {"code": "102", "en": "Processing", "zh": "已接受请求，但尚未处理完成"},
+    {"code": "200", "en": "OK", "zh": "请求成功"},
+    {"code": "201", "en": "Created", "zh": "已创建"},
+    {"code": "202", "en": "Accepted", "zh": "已接受请求，正在处理"},
+    {"code": "203", "en": "Non-Authoritative Information", "zh": "非权威信息"},
+    {"code": "204", "en": "No Content", "zh": "无内容（服务器成功处理但无返回数据）"},
+    {"code": "206", "en": "Partial Content", "zh": "部分内容"},
+    {"code": "207", "en": "Multi-Status", "zh": "多状态"},
+    {"code": "300", "en": "Multiple Choices", "zh": "多种选择"},
+    {"code": "301", "en": "Moved Permanently", "zh": "永久移动"},
+    {"code": "302", "en": "Found", "zh": "找到（资源临时移动）"},
+    {"code": "303", "en": "See Other", "zh": "参见其他位置"},
+    {"code": "304", "en": "Not Modified", "zh": "未修改（用于缓存控制）"},
+    {"code": "305", "en": "Use Proxy", "zh": "需通过代理访问"},
+    {"code": "307", "en": "Temporary Redirect", "zh": "临时重定向"},
+    {"code": "308", "en": "Permanent Redirect", "zh": "永久重定向"},
+    {"code": "400", "en": "Bad Request", "zh": "错误请求（客户端发送的请求有误）"},
+    {"code": "401", "en": "Unauthorized", "zh": "未授权"},
+    {"code": "402", "en": "Payment Required", "zh": "被禁止访问"},
+    {"code": "404", "en": "Not Found", "zh": "未找到（资源不存在）"},
+    {"code": "405", "en": "Method Not Allowed", "zh": "请求方法不允许"},
+    {"code": "406", "en": "Not Acceptable", "zh": "不可接受的内容类型"},
+    {"code": "407", "en": "Proxy Authentication Required", "zh": "请求超时"},
+    {"code": "409", "en": "Conflict", "zh": "冲突（资源冲突）"},
+    {"code": "410", "en": "Gone", "zh": "已被移除"},
+    {"code": "411", "en": "Length Required", "zh": "前置条件失败"},
+    {"code": "413", "en": "Payload Too Large", "zh": "有效载荷过大"},
+    {"code": "414", "en": "Request-URI Too Long", "zh": "请求的 URI 过长"},
+    {"code": "415", "en": "Unsupported Media Type", "zh": "不支持的媒体类型"},
+    {"code": "416", "en": "Request Range Not Satisfiable", "zh": "请求范围不可满足"},
+    {"code": "417", "en": "Expectation Failed", "zh": "期望条件未满足"},
+    {"code": "418", "en": "IÂ´m a teapot", "zh": "我是一个茶壶（测试用）"},
+    {"code": "420", "en": "Enhance Your Calm", "zh": "请冷静一点（限流提示）"},
+    {"code": "421", "en": "Misdirected Request", "zh": "请求被错误定向"},
+    {"code": "422", "en": "Unprocessable Entity", "zh": "无法处理的实体"},
+    {"code": "423", "en": "Locked", "zh": "资源已被锁定"},
+    {"code": "424", "en": "Failed Dependency", "zh": "依赖操作失败"},
+    {"code": "425", "en": "Too Early", "zh": "请求过早"},
+    {"code": "426", "en": "Upgrade Required", "zh": "请求过多（速率限制）"},
+    {"code": "431", "en": "Request Header Fields Too Large", "zh": "请求头过大"},
+    {"code": "444", "en": "No Response", "zh": "无响应"},
+    {"code": "450", "en": "Blocked by Windows Parental Controls", "zh": "被 Windows 家长控制阻止"},
+    {"code": "451", "en": "Unavailable For Legal Reasons", "zh": "因法律原因不可用"},
+    {"code": "497", "en": "HTTP Request Sent to HTTPS Port", "zh": "HTTP 请求发送到了 HTTPS 端口"},
+    {"code": "498", "en": "Token expired/invalid", "zh": "Token 过期或无效"},
+    {"code": "499", "en": "Client Closed Request", "zh": "客户端已关闭请求"},
+    {"code": "500", "en": "Internal Server Error", "zh": "内部服务器错误"},
+    {"code": "501", "en": "Not Implemented", "zh": "尚未实现"},
+    {"code": "502", "en": "Bad Gateway", "zh": "错误网关"},
+    {"code": "503", "en": "Service Unavailable", "zh": "服务暂时不可用"},
+    {"code": "504", "en": "Gateway Timeout", "zh": "网关超时"},
+    {"code": "506", "en": "Variant Also Negotiates", "zh": "协商参数不匹配"},
+    {"code": "507", "en": "Insufficient Storage", "zh": "存储空间不足"},
+    {"code": "508", "en": "Loop Detected", "zh": "带宽限制超出"},
+    {"code": "510", "en": "Not Extended", "zh": "无法扩展请求"},
+    {"code": "511", "en": "Network Authentication Required", "zh": "需要网络身份验证"},
+    {"code": "521", "en": "Web Server Is Down", "zh": "Web 服务器已关闭"},
+    {"code": "523", "en": "Origin Is Unreachable", "zh": "源服务器不可达"},
+    {"code": "525", "en": "SSL Handshake Failed", "zh": "SSL 握手失败"},
+    {"code": "599", "en": "Network Connect Timeout Error", "zh": "网络连接超时"}
+];
+
+    const httpStatuses_copilot = [
+    {"code": "100", "en": "Continue", "zh": "继续"} ,
+    {"code": "101", "en": "Switching Protocols", "zh": "切换协议"} ,
+    {"code": "102", "en": "Processing", "zh": "处理中"} ,
+    {"code": "200", "en": "OK", "zh": "成功"} ,
+    {"code": "201", "en": "Created", "zh": "已创建"} ,
+    {"code": "202", "en": "Accepted", "zh": "已接受"} ,
+    {"code": "203", "en": "Non-Authoritative Information", "zh": "非权威信息"} ,
+    {"code": "204", "en": "No Content", "zh": "无内容"} ,
+    {"code": "206", "en": "Partial Content", "zh": "部分内容"} ,
+    {"code": "207", "en": "Multi-Status", "zh": "多状态"} ,
+    {"code": "300", "en": "Multiple Choices", "zh": "多种选择"} ,
+    {"code": "301", "en": "Moved Permanently", "zh": "永久重定向"} ,
+    {"code": "302", "en": "Found", "zh": "已找到"} ,
+    {"code": "303", "en": "See Other", "zh": "查看其他"} ,
+    {"code": "304", "en": "Not Modified", "zh": "未修改"} ,
+    {"code": "305", "en": "Use Proxy", "zh": "使用代理"} ,
+    {"code": "307", "en": "Temporary Redirect", "zh": "临时重定向"} ,
+    {"code": "308", "en": "Permanent Redirect", "zh": "永久重定向"} ,
+    {"code": "400", "en": "Bad Request", "zh": "错误请求"} ,
+    {"code": "401", "en": "Unauthorized", "zh": "未授权"} ,
+    {"code": "402", "en": "Payment Required", "zh": "需要付款"} ,
+    {"code": "404", "en": "Not Found", "zh": "未找到"} ,
+    {"code": "405", "en": "Method Not Allowed", "zh": "方法不被允许"} ,
+    {"code": "406", "en": "Not Acceptable", "zh": "不可接受"} ,
+    {"code": "407", "en": "Proxy Authentication Required", "zh": "需要代理身份验证"} ,
+    {"code": "409", "en": "Conflict", "zh": "冲突"} ,
+    {"code": "410", "en": "Gone", "zh": "已删除"} ,
+    {"code": "411", "en": "Length Required", "zh": "需要长度"} ,
+    {"code": "413", "en": "Payload Too Large", "zh": "请求体过大"} ,
+    {"code": "414", "en": "Request-URI Too Long", "zh": "请求URI过长"} ,
+    {"code": "415", "en": "Unsupported Media Type", "zh": "不支持的媒体类型"} ,
+    {"code": "416", "en": "Request Range Not Satisfiable", "zh": "请求范围不满足"} ,
+    {"code": "417", "en": "Expectation Failed", "zh": "预期失败"} ,
+    {"code": "418", "en": "I'm a teapot", "zh": "我是一个茶壶"} ,
+    {"code": "420", "en": "Enhance Your Calm", "zh": "保持冷静"} ,
+    {"code": "421", "en": "Misdirected Request", "zh": "错误的请求"} ,
+    {"code": "422", "en": "Unprocessable Entity", "zh": "无法处理的实体"} ,
+    {"code": "423", "en": "Locked", "zh": "已锁定"} ,
+    {"code": "424", "en": "Failed Dependency", "zh": "依赖失败"} ,
+    {"code": "425", "en": "Too Early", "zh": "过早的请求"} ,
+    {"code": "426", "en": "Upgrade Required", "zh": "需要升级"} ,
+    {"code": "431", "en": "Request Header Fields Too Large", "zh": "请求头字段过大"} ,
+    {"code": "444", "en": "No Response", "zh": "无响应"} ,
+    {"code": "450", "en": "Blocked by Windows Parental Controls", "zh": "被Windows家长控制阻止"} ,
+    {"code": "451", "en": "Unavailable For Legal Reasons", "zh": "因法律原因不可用"} ,
+    {"code": "497", "en": "HTTP Request Sent to HTTPS Port", "zh": "HTTP请求发送到HTTPS端口"} ,
+    {"code": "498", "en": "Token expired/invalid", "zh": "令牌过期或无效"} ,
+    {"code": "499", "en": "Client Closed Request", "zh": "客户端关闭请求"} ,
+    {"code": "500", "en": "Internal Server Error", "zh": "内部服务器错误"} ,
+    {"code": "501", "en": "Not Implemented", "zh": "未实现"} ,
+    {"code": "502", "en": "Bad Gateway", "zh": "错误网关"} ,
+    {"code": "503", "en": "Service Unavailable", "zh": "服务不可用"} ,
+    {"code": "504", "en": "Gateway Timeout", "zh": "网关超时"} ,
+    {"code": "506", "en": "Variant Also Negotiates", "zh": "变体协商失败"} ,
+    {"code": "507", "en": "Insufficient Storage", "zh": "存储空间不足"} ,
+    {"code": "508", "en": "Loop Detected", "zh": "检测到循环"} ,
+    {"code": "510", "en": "Not Extended", "zh": "未扩展"} ,
+    {"code": "511", "en": "Network Authentication Required", "zh": "需要网络身份验证"} ,
+    {"code": "521", "en": "Web Server Is Down", "zh": "Web服务器已关闭"} ,
+    {"code": "523", "en": "Origin Is Unreachable", "zh": "源不可达"} ,
+    {"code": "525", "en": "SSL Handshake Failed", "zh": "SSL握手失败"} ,
+    {"code": "599", "en": "Network Connect Timeout Error", "zh": "网络连接超时错误"}
+];
+
+    const imageGrid = $('#imageGrid');
+
+    const httpStatuses = httpStatuses_tongyi;
+    httpStatuses.forEach(status => {
+        const div = $(`
+            <div class="div-size">
+                <img src="cat/${status.code}.jpg" alt="${status.code}" loading="lazy"/>
+                <a><br>${status.code} ${status.en}</a>
+                <a><br>${status.code} ${status.zh}</a>
+            </div>
+        `);
+
+        imageGrid.append(div);
+    });
+
+    $('.amplifyImg img').on('click', function () {
+        const src = $(this).attr('src');
+        const overlay = $('.over');
+        const tempContainer = $('.tempContainer');
+
+        overlay.show();
+        tempContainer.html(`<img src="${src}" />`).show();
+
+        tempContainer.off('click').on('click', function () {
+            $(this).hide().empty();
+            overlay.hide();
+        });
+    });
+
+    function coverLayer(tag) {
+        const overlay = $('.over');
+        if (tag === 1) {
+            overlay.css({
+                height: $(document).height(),
+                display: 'block',
+                opacity: 1,
+                backgroundColor: "rgba(0,0,0,0.7)"
+            });
+        } else {
+            overlay.hide();
+        }
+    }
+</script>
+
+</body>
+</html>
