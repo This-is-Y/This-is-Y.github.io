@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -293,7 +293,7 @@
 </ul>
 <p>这一步我需要先在ubuntu上安装mysql，<a class="link" target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1655900">参考这篇文章<i class="fas fa-external-link-alt"></i></a><br>这里直接使用的apt安装的<br>   sudo apt-get install mysql-server</p>
 <p>然后记得修改密码，以及把数据库编码改成utf8<br>值得注意的是，需要修改sql文件，把里面的latin改成utf8<br><a class="link" target="_blank" rel="noopener" href="https://www.cnblogs.com/beenoisy/p/4046074.html">https://www.cnblogs.com/beenoisy/p/4046074.html<i class="fas fa-external-link-alt"></i></a><br>vim打开，命令模式，:%s/latin1/utf8/g<br>然后再运行sql文件导入到数据库中<br>   mysql -u root -p nightmare&lt;/home/ubuntu/nightmare/doc/sql/nightmare.sql</p>
-<p>一般来说，在终端里修改配置数据库太麻烦了，这里我选择开放远程连接，在win上用navicat连接它去操作数据库，所以需要在服务器控制台打开修改端口，然后配置文件（/etc/mysql/mysql.conf.d/mysqld.cnf）里修改为<br>   bind-address=0.0.0.0<br>然后service mysql restart重启数据库，测试连接报错1130，进入mysql，执行<br>   GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root’@’%’ IDENTIFIED BY ‘您的数据库密码’ WITH GRANT OPTION;<br>然后就可以远程连接了。<br>之后把config表里的参数改一下</p>
+<p>一般来说，在终端里修改配置数据库太麻烦了，这里我选择开放远程连接，在win上用navicat连接它去操作数据库，所以需要在服务器控制台打开修改端口，然后配置文件（/etc/mysql/mysql.conf.d/mysqld.cnf）里修改为<br>   bind-address=0.0.0.0<br>然后service mysql restart重启数据库，测试连接报错1130，进入mysql，执行<br>   GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root‘@’%’ IDENTIFIED BY ‘您的数据库密码’ WITH GRANT OPTION;<br>然后就可以远程连接了。<br>之后把config表里的参数改一下</p>
 <h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>安装并配置beanstalkd(可以使用doc/beanstalkd.recommended中的推荐文件)<br>需要用到beanstalkd，这东西是c/s架构的，服务器上我直接用<br>   sudo apt-get install beanstalkd<br>然后启动<br>   service beanstalkd start</p>
 <p>然后需要安装客户端，他这里需要python支持，用的<a class="link" target="_blank" rel="noopener" href="https://github.com/earl/beanstalkc/">https://github.com/earl/beanstalkc/<i class="fas fa-external-link-alt"></i></a> 这里我发现可以用pip安装，但是有个问题是，这个beanstalkc是基于python2的，没有更新到python3。但是nightmare是python3的，我现在不知道会不会有什么问题（绝壁会有）<br>   pip2 install beanstalkc<br>然后python2，运行这段代码，看看会不会有什么问题</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> beanstalkc</span><br><span class="line">beanstalk = beanstalkc.Connection(host=<span class="string">&#x27;localhost&#x27;</span>, port=<span class="number">11300</span>)</span><br><span class="line">beanstalk.put(<span class="string">&#x27;hey!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">job = beanstalk.reserve()</span><br><span class="line">job.body</span><br><span class="line"><span class="string">&#x27;hey!&#x27;</span></span><br><span class="line">job.delete()</span><br></pre></td></tr></table></figure>
@@ -303,7 +303,7 @@
 <p>编译好后，在 radamsa/bin 下生成 radamsa ,尝试 ./radamsa -h</p>
 <p><img src="image-20220322221917131.png" alt="image-20220322221917131"></p>
 <p>然后要求配置好$PATH，关于这个，有一篇不错的文章<a class="link" target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000038313883">https://segmentfault.com/a/1190000038313883<i class="fas fa-external-link-alt"></i></a><br>可以先用<br>   export PATH=$PATH:/home/ubuntu/nightmare/radamsa/bin<br>测试一下<br>由于我服务器用的zsh，所以改的是zshrc文件，<br>   vim ~/.zshrc<br>在最后添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># radamsa of nightmare</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;home&#x2F;ubuntu&#x2F;nightmare&#x2F;radamsa&#x2F;bin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># radamsa of nightmare</span><br><span class="line">export PATH=$PATH:/home/ubuntu/nightmare/radamsa/bin</span><br></pre></td></tr></table></figure>
 <p>然后source ~/.zshrc ，就可以了。<br>关于radamsa的使用，找了这些文章<a class="link" target="_blank" rel="noopener" href="https://docmiao.com/community/tutorials/how-to-install-and-use-radamsa-to-fuzz-test-programs-and-network-services-on-ubuntu-18-04">https://docmiao.com/community/tutorials/how-to-install-and-use-radamsa-to-fuzz-test-programs-and-network-services-on-ubuntu-18-04<i class="fas fa-external-link-alt"></i></a><br><a class="link" target="_blank" rel="noopener" href="https://blog.51cto.com/u_13280061/3081122">https://blog.51cto.com/u_13280061/3081122<i class="fas fa-external-link-alt"></i></a></p>
 <p>作者在install.txt里还提到可安装以下软件包(可选):</p>
 <h4 id="DynamoRhmIO"><a href="#DynamoRhmIO" class="headerlink" title="DynamoRhmIO"></a>DynamoRhmIO</h4><p>没折腾明白</p>

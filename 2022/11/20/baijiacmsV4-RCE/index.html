@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -294,14 +294,14 @@
 
 
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>在该漏洞中，漏洞点为文件includes/baijiacms/common.inc.php<br>第654行的system()。该函数位于file_save()函数中。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system(<span class="string">&#x27;convert&#x27;</span>.<span class="variable">$quality_command</span>.<span class="string">&#x27; &#x27;</span>.<span class="variable">$file_full_path</span>.<span class="string">&#x27; &#x27;</span>.<span class="variable">$file_full_path</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">system</span>(<span class="string">&#x27;convert&#x27;</span>.<span class="variable">$quality_command</span>.<span class="string">&#x27; &#x27;</span>.<span class="variable">$file_full_path</span>.<span class="string">&#x27; &#x27;</span>.<span class="variable">$file_full_path</span>);</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20221121021939492.png" alt="image-20221121021939492"></p>
 <p>其中，$quality_command无法控制，能够控制的只有$file_full_path。</p>
 <p>由于上一步调用file_save()的，是fetch_net_file_upload()函数的return部分</p>
 <p><img src="image-20221121022039870.png" alt="image-20221121022039870"></p>
 <p>$file_full_path的定义往上翻为：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file_full_path</span> = WEB_ROOT .<span class="variable">$path</span> . <span class="variable">$extpath</span>. <span class="variable">$filename</span>;</span><br><span class="line"><span class="comment"># 后面三个参数定义分别为</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$path</span> = <span class="string">&#x27;/attachment/&#x27;</span>;</span><br><span class="line"><span class="variable">$extpath</span>=<span class="string">&quot;<span class="subst">&#123;$extention&#125;</span>/&quot;</span> . date(<span class="string">&#x27;Y/m/&#x27;</span>);</span><br><span class="line"><span class="variable">$filename</span> = random(<span class="number">15</span>) . <span class="string">&quot;.<span class="subst">&#123;$extention&#125;</span>&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在$extpath和$filename中出现的$extention的定义为</span></span><br><span class="line"><span class="variable">$extention</span> = pathinfo(<span class="variable">$url</span>,PATHINFO_EXTENSION );</span><br><span class="line"><span class="comment"># 而$url就是可以用户控制的参数，</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$file_full_path</span> = WEB_ROOT .<span class="variable">$path</span> . <span class="variable">$extpath</span>. <span class="variable">$filename</span>;</span><br><span class="line"><span class="comment"># 后面三个参数定义分别为</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$path</span> = <span class="string">&#x27;/attachment/&#x27;</span>;</span><br><span class="line"><span class="variable">$extpath</span>=<span class="string">&quot;<span class="subst">&#123;$extention&#125;</span>/&quot;</span> . <span class="title function_ invoke__">date</span>(<span class="string">&#x27;Y/m/&#x27;</span>);</span><br><span class="line"><span class="variable">$filename</span> = <span class="title function_ invoke__">random</span>(<span class="number">15</span>) . <span class="string">&quot;.<span class="subst">&#123;$extention&#125;</span>&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在$extpath和$filename中出现的$extention的定义为</span></span><br><span class="line"><span class="variable">$extention</span> = <span class="title function_ invoke__">pathinfo</span>(<span class="variable">$url</span>,PATHINFO_EXTENSION );</span><br><span class="line"><span class="comment"># 而$url就是可以用户控制的参数，</span></span><br></pre></td></tr></table></figure>
 
 <p>所以能使用的payload只能存在于url后的文件名后缀中，且payload中由于代码功能的限制不能出现，</p>
 <ul>
@@ -351,16 +351,16 @@
 <p>所以payload中首先排除了 &lt; &gt; “ ‘ &amp;这些符号</p>
 <h2 id="pathinfo"><a href="#pathinfo" class="headerlink" title="pathinfo()"></a>pathinfo()</h2><p>pathinfo()会返回文件路径的信息</p>
 <p><img src="image-20221121023633375.png" alt="image-20221121023633375"></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$extention</span> = pathinfo(<span class="variable">$url</span>,PATHINFO_EXTENSION );</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$extention</span> = <span class="title function_ invoke__">pathinfo</span>(<span class="variable">$url</span>,PATHINFO_EXTENSION );</span><br></pre></td></tr></table></figure>
 
 <p>代码中传入了PATHINFO_EXTENSION参数，根据官方介绍，传入该参数，只会返回最后一个扩展名，扩展名以  .   划分。结合后面的分析，所以payload只能存在与扩展名中</p>
 <p><img src="image-20221121023748242.png" alt="image-20221121023748242"></p>
 <h2 id="file-get-contents"><a href="#file-get-contents" class="headerlink" title="file_get_contents()"></a>file_get_contents()</h2><p>这一步有两个条件，首先file_get_contents()需要可以get到文件，其次文件中需要有内容满足file_put_contents()</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (file_put_contents(<span class="variable">$file_tmp_name</span>, file_get_contents(<span class="variable">$url</span>)) == <span class="literal">false</span>) </span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$file_tmp_name</span>, <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$url</span>)) == <span class="literal">false</span>) </span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20221117212518384.png" alt="image-20221117212518384"></p>
 <h2 id="settings-‘image-compress-openscale’"><a href="#settings-‘image-compress-openscale’" class="headerlink" title="$settings[‘image_compress_openscale’]"></a>$settings[‘image_compress_openscale’]</h2><p>最后在file_save()中还有一步</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(!empty($settings[&#39;image_compress_openscale&#39;]))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(!empty($settings[&#x27;image_compress_openscale&#x27;]))</span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20221121024152075.png" alt="image-20221121024152075"></p>
 <p>这一步在略读了代码后才知道，它由函数globaPriveteSystemSetting()获的，取自数据库中。</p>
@@ -378,7 +378,7 @@
 <p>代码运行到fetch_net_file_upload函数中，走到$extention = pathinfo($url,PATHINFO_EXTENSION );时，截取到了payload：;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;</p>
 <p><img src="image-20221121030454954.png" alt="image-20221121030454954"></p>
 <p>随后是mkdir根据时间，后缀，建立文件夹。之后来到if (file_put_contents($file_tmp_name, file_get_contents($url)) == false) 进行判断，这边我为了方便查看file_get_contents和file_put_contents哪个会出问题，多加了两行代码。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$flag1</span> = file_put_contents(<span class="variable">$file_tmp_name</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line"><span class="variable">$flag2</span> = file_get_contents(<span class="variable">$url</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$flag1</span> = <span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$file_tmp_name</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line"><span class="variable">$flag2</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$url</span>);</span><br></pre></td></tr></table></figure>
 
 <p>在这里之后进入file_save() 。传入了关键的变量 </p>
 <p>$file_full_path：/www/admin/localhost_80/wwwroot/baijiacmsV4-4.1.4/attachment/;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;/2022/11/G55bRGvfRVr00o3.;echo${IFS}d2hvYW1p|base64${IFS}-d|bash;</p>

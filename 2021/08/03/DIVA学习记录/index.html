@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -333,7 +333,7 @@
 <p>同样是跳转到一个新的activity，不过同时会传递一个参数，参数名使用getString(R.string.chk_pin)获得，参数值由radiobutton组件决定，类型为boolean。所以需要知道R.string.chk_pin的值是什么，这块想了很久，无果，去查了一下，这个值在res/values/string.xml里存着，</p>
 <p><img src="image-20210803114215566.png" alt="image-20210803114215566"></p>
 <p>Chk_pin的值为check_pin,所以传递的代码是putExtra(“check_pin”, chk_pin)<br>而这个值，在下一个activity中，决定了是否会显示APIKEY，所以用adb控制，启动新的activity，同时带上参数，<br>Payload:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Program_Files\Nox\bin\nox_adb.exe <span class="literal">-s</span> <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">62026</span> shell am <span class="built_in">start</span> <span class="literal">-n</span> jakhar.aseem.diva/.APICreds2Activity -<span class="literal">-ez</span> check_pin <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Program_Files\Nox\bin\nox_adb.exe <span class="literal">-s</span> <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">62026</span> shell am <span class="built_in">start</span> <span class="literal">-n</span> jakhar.aseem.diva/.APICreds2Activity <span class="literal">--ez</span> check_pin <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="image-20210803114334516.png" alt="image-20210803114334516"></p>
 <p>关于命令：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/luguangxu68/article/details/99828329">https://blog.csdn.net/luguangxu68/article/details/99828329<i class="fas fa-external-link-alt"></i></a></p>
@@ -347,14 +347,14 @@
 <p>直接输入pin查看数据</p>
 <p><img src="image-20210803114412950.png" alt="image-20210803114412950"></p>
 <p>然而这不行，这关要求是尝试在不知道PIN码的情况下从<strong>应用程序外部</strong>访问私人笔记。<br>从头开始，分析一下从数据库中查表的代码，发现有用到一个查询语句是这样子写的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query(NotesProvider.CONTENT_URI, new String[]&#123;&quot;_id&quot;, &quot;title&quot;, &quot;note&quot;&#125;, null, null, null),</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query(NotesProvider.CONTENT_URI, new String[]&#123;&quot;_id&quot;, &quot;title&quot;, &quot;note&quot;&#125;, null, null, null),</span><br></pre></td></tr></table></figure>
 <p>就去查了一下NotesProvider.CONTENT_URI,<br>资料：<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/luoqingyan/article/details/107617479">https://blog.csdn.net/luoqingyan/article/details/107617479<i class="fas fa-external-link-alt"></i></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell content query --uri &lt;URI&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell content query --uri &lt;URI&gt;</span><br></pre></td></tr></table></figure>
 <p>要查询的话，需要知道uri，资源的位置，现在只知道整个uri使用content://开头的。用jadx搜索整个项目文件，</p>
 <p><img src="image-20210803114529825.png" alt="image-20210803114529825"></p>
 <p><img src="image-20210803114534691.png" alt="image-20210803114534691"></p>
 <p>content://jakhar.aseem.diva.provider.notesprovider/notes<br>找到一个，adb下面试一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Program_Files\Nox\bin\nox_adb.exe -s 127.0.0.1:62026 shell content query --uri content:&#x2F;&#x2F;jakhar.aseem.diva.provider.notesprovider&#x2F;notes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Program_Files\Nox\bin\nox_adb.exe -s 127.0.0.1:62026 shell content query --uri content://jakhar.aseem.diva.provider.notesprovider/notes</span><br></pre></td></tr></table></figure>
 <p><img src="image-20210803114549249.png" alt="image-20210803114549249"></p>
 <h1 id="12-hardcoding-issues-part2"><a href="#12-hardcoding-issues-part2" class="headerlink" title="12. hardcoding issues part2"></a>12. hardcoding issues part2</h1><p>又是一个硬编码问题。这次没有直接写在activity里，</p>
 <p><img src="image-20210803114630720.png" alt="image-20210803114630720"></p>

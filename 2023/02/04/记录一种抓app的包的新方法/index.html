@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -282,7 +282,7 @@
 <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>首先配置好普通的局域网burp抓包环境，网上很多教程了，这里不细说。<br>配置好后，在浏览器输入网址，能抓到包就算成功。</p>
 <p><img src="image-20230204001057748.png" alt="image-20230204001057748"></p>
 <h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>之后安装clash，vmos两个app。在vmos里安装好需要抓包的app<br>clash配置文件如下，来自52的Fythem</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mixed-port: 7890</span><br><span class="line">allow-lan: false</span><br><span class="line">mode: global</span><br><span class="line">log-level: info</span><br><span class="line">external-controller: 127.0.0.1:9090</span><br><span class="line">proxies:</span><br><span class="line">  - name: &quot;burp&quot;</span><br><span class="line">    type: http</span><br><span class="line">    server: 192.168.70.72</span><br><span class="line">    port: 8080</span><br><span class="line">proxy-groups:</span><br><span class="line">  - name: Proxy</span><br><span class="line">    type: select</span><br><span class="line">    proxies:</span><br><span class="line">      - burp</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mixed-port: 7890</span><br><span class="line">allow-lan: false</span><br><span class="line">mode: global</span><br><span class="line">log-level: info</span><br><span class="line">external-controller: 127.0.0.1:9090</span><br><span class="line">proxies:</span><br><span class="line">  - name: &quot;burp&quot;</span><br><span class="line">    type: http</span><br><span class="line">    server: 192.168.70.72</span><br><span class="line">    port: 8080</span><br><span class="line">proxy-groups:</span><br><span class="line">  - name: Proxy</span><br><span class="line">    type: select</span><br><span class="line">    proxies:</span><br><span class="line">      - burp</span><br></pre></td></tr></table></figure>
 
 
 

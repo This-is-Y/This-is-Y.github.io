@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -247,7 +247,7 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>962 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>953 字</span>
             </span>
         
         
@@ -320,7 +320,7 @@ SELECT mid(USER(),1,1) in (&quot;r&quot;)
 <h3 id="group-by"><a href="#group-by" class="headerlink" title="group by"></a>group by</h3><p>逻辑绕过<br>过滤代码 1 &amp;&amp; (select user from users group by user_id having user_id = 1) = ‘admin’<br>绕过方式 1 &amp;&amp; (select substr(group_concat(user_id),1,1) user from users ) = 1</p>
 <h2 id="绕过addslashes"><a href="#绕过addslashes" class="headerlink" title="绕过addslashes"></a>绕过addslashes</h2><p>addslashes函数使用反斜线引用字符串，返回一个字符串，该字符串为了数据库查询语句等的需要在某些字符前加上了反斜线。这些字符是单引号（’）、双引号（”）、反斜线（\）与 NUL（NULL 字符）<br>在mysql使用了gbk编码的情况下，可以用宽字节注入绕过addslashes<br>原理：在使用GBK编码后，他认为两个字节代表一个汉字。那如何判断一个字符是不是中文，当第一个字节ascii码大于128，他就会认为这里两个字符是中文，所以%81和后面的  /（%5c)就会组合在一起，mysql会认为他们是一个字符，而这时候，/ 的转义作用就失效了。<br>128转换16进制是0x80，所以只要大于0x81就行</p>
 <p>这里出问题的地方在于mysql，php已经尽职尽责了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1&#x2F;sqli-labs-master&#x2F;Less-33&#x2F;?id&#x3D;-1&#39;union select 1,user(),3--+</span><br><span class="line">127.0.0.1&#x2F;sqli-labs-master&#x2F;Less-33&#x2F;?id&#x3D;-1**%81**&#39;union select 1,user(),3--+</span><br><span class="line">SELECT * FROM users WHERE id&#x3D;&#39;-1�\&#39;union select 1,user(),3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/sqli-labs-master/Less-33/?id=-1&#x27;union select 1,user(),3--+</span><br><span class="line">127.0.0.1/sqli-labs-master/Less-33/?id=-1**%81**&#x27;union select 1,user(),3--+</span><br><span class="line">SELECT * FROM users WHERE id=&#x27;-1�\&#x27;union select 1,user(),3</span><br></pre></td></tr></table></figure>
 
 
 <h2 id="关键字内联绕所有"><a href="#关键字内联绕所有" class="headerlink" title="关键字内联绕所有"></a>关键字内联绕所有</h2><p>/<em>!union</em>/<br>/<em>!select</em>/</p>

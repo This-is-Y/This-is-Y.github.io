@@ -32,7 +32,7 @@
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 <body>
@@ -285,7 +285,7 @@
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>第二天晚上，同事和我说有个接口返回的数据量特别大，有达到了几十MB甚至100MB，用jsrpc解密直接卡死，</p>
 <p><img src="image-20250324130609048.png" alt="image-20250324130609048"></p>
 <p>最开始我想的是把js下载下来，用nodejs运行解密函数，简单分析了一下代码构造了一下js，修改了一点报错。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.Int32 = &#123;</span><br><span class="line">^</span><br><span class="line"><span class="built_in">ReferenceError</span>: <span class="built_in">window</span> is not defined</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">Int32</span> = &#123;</span><br><span class="line">^</span><br><span class="line"><span class="title class_">ReferenceError</span>: <span class="variable language_">window</span> is not defined</span><br></pre></td></tr></table></figure>
 
 <p>这种报错，只需要把window.给删掉就行了，然后在最前面加上<code>const crypto = require(&#39;crypto&#39;);</code>即可。</p>
 <p><img src="image-20250324131358835.png" alt="image-20250324131358835"></p>
